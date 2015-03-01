@@ -58,14 +58,11 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 ### Start in background
 
+Starting the container happens with the `macinectl start` command. It should not
+take any longer than a couple of seconds.
 ```
-root@amd64_factory_systemd_20150228172018_faa83f5 ~ # journalctl -f
-...
-Mar 01 15:51:45 amd64_factory_systemd_20150228172018_faa83f5 systemd[1]: Started Container Getty on /dev/pts/0.
-Mar 01 15:51:52 amd64_factory_systemd_20150228172018_faa83f5 systemd[1]: Started Container Getty on /dev/pts/0.
-Mar 01 15:51:52 amd64_factory_systemd_20150228172018_faa83f5 systemd[1]: Starting Container Getty on /dev/pts/0...
-Mar 01 15:51:54 amd64_factory_systemd_20150228172018_faa83f5 login[39]: pam_securetty(login:auth): access denied: tty 'pts/0' is not secure !
-Mar 01 15:52:00 amd64_factory_systemd_20150228172018_faa83f5 login[39]: FAILED LOGIN (1) on '/dev/pts/0' FOR 'root', Authentication failure
+# machinectl start amd64_factory_systemd_20150228172018_faa83f5
+#
 ```
 
 ### Login
@@ -79,3 +76,7 @@ Password:
 Last login: Sun Mar  1 15:49:43  2015 on pts/0
 root@amd64_factory_systemd_20150228172018_faa83f5 ~ # 
 ```
+
+That's it! The default setup of a container is heavily based on the 
+***systemd-nspawn@.service***-Template installed in the system, which may
+differ between Linux distributions.
