@@ -1,195 +1,186 @@
 ## Linux
+To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
+*platform* branch. The branches need to have the following name scheme:
 
-To create a Linux kernel embEDUx needs two branches within the *linux*
-repository which need to have the following name scheme.
+* Kernel branch: \<kernel\_version> (eg. 3.17.2)
+* Platform branch: \<kernel\_version>\_\<platform\_name\> (eg. 3.17.2_raspberry-pi)
 
-* \<kernel\_version> (eg. 3.17.2)
-* \<kernel\_version>\_\<platform\> (eg. 3.17.2_raspberry-pi)
+**Importan: The platform\_name must not contain an underscore, use a dash
+instead!**
 
-**The name of the platform can not contain an underscore, please prefer the
-dash!**
 
-The first branch will be called *base branch* and the second one *platform
-branch*.
+### Kernel branch
+The *kernel* branch will provide all the platform independent files, which are
+the kernel sources, the Gentoo patches and the build script to patch and build
+the kernel. Multiple platforms use the same *kernel* branch for the same kernel
+version. 
 
-### Base Branch
-
-The base branch only needs to contain a build script, which downloads the kernel
-sources and Gentoo patches for the desired kernel version. The script by itself
-doesn't do much, but will be used by the *platform branch*. 
-
-#### Build script
-
-A simple template that can be easily adapted to the desired kernel version looks
-like [this](template/base_build). 
+Following [template](template/kernel-build) should be used as a build script:
 
 ```bash
-#! /bin/bash -ex
-
-#####################
-# Configuration     #
-#####################
-
+...
 ### Sources
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
 KERNEL_FILE="linux-<Major>.<Minor>.tar.gz"
-KERNEL_SHA="sha256sums.asc"
-
-### Patches
-PATCH_DIR="genpatches"
+...
 PATCH_VERSION="<Major>.<Minor>-<Subminor>"
-PATCH_URL="http://dev.gentoo.org/~mpagano/genpatches/tarballs"
-PATCH_PART="base extras experimental"
-
-#####################
-# Script            #
-#####################
-
-function dl_src {
-  wget -N ${KERNEL_URL}/${KERNEL_SHA} -P ${EMBEDUX_TMP}
-  wget -N ${KERNEL_URL}/${KERNEL_FILE} -P ${EMBEDUX_TMP}
-
-  if [[ -z $(grep `shasum -a 256 ${EMBEDUX_TMP}/${KERNEL_FILE}` ${EMBEDUX_TMP}/${KERNEL_SHA}) ]]
-    then exit
-  fi
-
-  tar -xf ${EMBEDUX_TMP}/${KERNEL_FILE} -C ${SRC_DIR} --strip 1
-}
-
-function dl_patch {
-  mkdir -p ${PATCH_DIR}
-
-  for PART in $PATCH_PART; do
-    PATCH="genpatches-${PATCH_VERSION}.${PART}.tar.xz"
-    wget -N ${PATCH_URL}/${PATCH} -P ${EMBEDUX_TMP}
-    tar -xf ${EMBEDUX_TMP}/${PATCH} -C ${PATCH_DIR}
-  done
-}
-
-function apply_patch {
-  for patch in $(ls ${PATCH_DIR}/*.patch* 2>/dev/null); do
-        patch -d ${SRC_DIR} -t -p1 < $patch
-  done
-}
-
-function apply_user_patch {
-  for patch in $(ls *.patch 2>/dev/null); do
-    patch -d ${SRC_DIR} -t -p1 < $patch
-  done
-}
-
-function copy_config {
-  cp ${KERNEL_CONFIG} ${SRC_DIR}/.config
-}
-
-function pack_src {
-  tar --transform=s,^,usr/src/,S --transform=s/${SRC_DIR}/${SRC_DIR}-${KERNEL_VERSION}-embedux/ --exclude=.git -cf root.tar ${SRC_DIR}
-}
-
-function build_src {
-  make -C ${SRC_DIR} -j$(nproc) ${KERNEL_DTB} ${KERNEL_IMG}
-}
-
-function build_modules {
-  MODULES_DIR="modules"
-  if [ $(grep CONFIG_MODULES=y ${SRC_DIR}/.config) ]
-    then
-      make modules -C ${SRC_DIR}
-      mkdir -p ${MODULES_DIR}
-      INSTALL_MOD_PATH=$(pwd)/${MODULES_DIR} make modules_install -C ${SRC_DIR}
-  fi
-}
-
-function provide_output {
-  OUTPUT_DIR="output"
-  OUTPUT_PREFIX="$(git rev-parse --abbrev-ref HEAD)_$(date '+%Y%m%d%H%M%S')_$(git rev-parse --short HEAD)"
-
-  mkdir -p ${OUTPUT_DIR}
-  tar -cf ${OUTPUT_DIR}/${OUTPUT_PREFIX}_boot.tar -C ${SRC_DIR}/arch/${ARCH}/boot ${KERNEL_IMG}
-  tar -rf ${OUTPUT_DIR}/${OUTPUT_PREFIX}_boot.tar -C ${SRC_DIR}/arch/${ARCH}/boot/dts ${KERNEL_DTB}
-  bzip2 -5 ${OUTPUT_DIR}/${OUTPUT_PREFIX}_boot.tar
-
-  mv root.tar ${OUTPUT_DIR}/${OUTPUT_PREFIX}_root.tar
-  if [ $(grep CONFIG_MODULES=y ${SRC_DIR}/.config) ]
-    then tar --transform=s,${MODULES_DIR},, --transform=s,/lib/,lib/, -rf ${OUTPUT_DIR}/${OUTPUT_PREFIX}_root.tar ${MODULES_DIR}
-  fi
-  bzip2 -5 ${OUTPUT_DIR}/${OUTPUT_PREFIX}_root.tar
-
-  cp ${SRC_DIR}/.config ${OUTPUT_DIR}/${OUTPUT_PREFIX}_config
-}
-
-function prepare {
-  dl_src
-  dl_patch
-  apply_patch
-  apply_user_patch
-  copy_config
-  pack_src
-}
-
-function build {
-  build_src
-  build_modules
-  if [ "$(type -t pre_output)" == "function" ]
-    then pre_output
-  fi
-  provide_output
-  if [ "$(type -t post_output)" == "function" ]
-    then post_output
-  fi
-}
+...
 ```
 
-Only change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to fit
-the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
+The user only needs to change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to
+fit to the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
 obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
 [dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
-### Platform Branch
+### Platform branch
+The *platform* branch has to contain all platform dependent informations and a
+build script. Those are a valid kernel configuration, the build script and any
+needed user patches.
 
-The platform branch has to contain the user patches and the build script.
-
-#### Build script
-A template for the build script looks like [this](template/platform_build).
+Following [template](template/platform-build) should be used as build script:
 
 ```
-#! /bin/bash -ex
-
-######################################
-# Configuration                      #                    
-######################################
-
 KERNEL_VERSION="<kernel_version>"
+...
 KERNEL_DTB="<platform_dtb>"
 KERNEL_CONFIG=".config"
 KERNEL_IMG="zImage"
-
-######################################
-# Script (modify only with caution!) #
-######################################
-SRC_DIR="linux"
-
-git clone -b ${KERNEL_VERSION} --depth 1 --single-branch $(git remote -v | sed -n '/.git/{p;q;}' | awk '{print $(NF-1)}') ${SRC_DIR} && . ${SRC_DIR}/build
-
-prepare
-build
-
+...
 ```
 
-Only edit *kernel_version* to the name of the *base* branch (eg. 3.17.2) and
-*platform_dtb* to the desired platform dtb file (eg. bcm2835-rpi-b.dtb). The
-sources for this dtb file must exist within the kernel sources! If it doesn't
-exist, please add it with a user patch.
+The build script clones the *kernel* branch and executes the prepare and build
+function. As long as the user sticks to the standard name scheme, the user only
+needs to replace the *kernel_version*, which has to be the *kernel* branch name
+and the *platform_dtb*, which is the device tree blob that should be created
+for the platform during the build.
 
+**Important: The sources for the *platform_dtb* have to be present in the kernel
+sources, or otherwise added by a user patch.**
 
 #### User patches
+Any files that need to be added to the kernel sources need to be in the root
+folder of the *platform* branch and follow the format and naming scheme of a
+patch.
 
-The only possibility to extend the kernel sources with external files is with
-patches. These patchs have to be in the root folder of the *platform* branch.
-They will be automatically patched during the build process.
+### Usage example 
+
+#### Add new kernel branch
+Following steps are necessary to get *platform* build working.
+
+1. Add a *kernel* branch *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
+   repository.
+   ```
+   $ git checkout master
+   $ git branch 3.18.7
+   $ git checkout 3.18.7
+   $ git touch README.md
+   $ git add README.md
+   $ git commit -m "inital commit"
+   $ git push --set-upstream origin 3.18.7
+   ```
+
+1. Add the [template](template/kernel_build) as ***build*** to the branch and
+   make it executable.
+   ```
+   ls -hl
+   total 4.0K
+   -rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
+   -rw-r--r-- 1 user user    0 Mar  1 20:51 README
+   ```
+
+1. Modify *KERNEL\_URL*, *KERNEL\_FILE*, and *PATCH\_VERSION* in the ***build***
+   script.
+   ```
+   ...
+   KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
+   KERNEL_FILE="linux-3.18.tar.xz"
+   ...
+   PATCH_VERSION="3.18-9"
+   ...
+   ```
+
+1. Push the branch upstream. 
+   ```
+   $ git add build
+   $ git commit -m "new kernel"
+   $ git push 
+   ```
+
+The build script in the corresponding *platform* branch can now use the just
+created  *kernel* branch.
+
+### Add new platform
+This step requires an existing *kernel* branch.
+
+1. Add a *platform* branch *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
+   repository. It is necessary that you push this initial branch, so **embEDUx**
+   ```
+   $ git checkout master
+   $ git branch 3.18.7_raspberry-pi
+   $ git checkout 3.18.7_raspberry-pi
+   $ git touch README.md
+   $ git add README.md
+   $ git commit -m "inital commit"
+   $ git push --set-upstream origin 3.18.7_raspberry-pi
+   ```
+
+1. Add the [template](template/platform_build) as ***build*** to the branch and make
+   it executable.
+   ```
+   ls -hl
+   total 4.0K
+   -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
+   -rw-r--r-- 1 user user    0 Mar  1 21:19 README
+   ```
+
+1. Modify *KERNEL\_URL*, *KERNEL\_FILE*, and *PATCH\_VERSION* in the ***build***
+   script.
+   ```
+   KERNEL_VERSION="3.18.7"
+   ...
+   KERNEL_DTB="bcm2835-rpi-b.dtb"
+   KERNEL_CONFIG=".config"
+   KERNEL_IMG="zImage"
+   ...
+   ```
+
+1. Add a working kernel configuration ***.config*** to the branch.
+   ```
+   $ ls -hla
+   total 76K
+   drwxr-xr-x 1 user user  44 Mar  1 21:29 .
+   drwxr-xr-x 1 user user 650 Mar  1 15:04 ..
+   -rwxr-xr-x 1 user user 562 Mar  1 21:25 build
+   -rw-r--r-- 1 user user 69K Mar  1 21:29 .config
+   drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
+   -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
+   ```
+
+1. Optional: Add needed patches ***foo.patch*** to the branch (this is only an
+example!).
+   ```
+   $ ls -hl
+   total 8.0K
+   -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
+   -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
+   -rw-r--r-- 1 user user    0 Mar  1 20:51 README
+   ```
+
+1. Add all files and push branch upstream.
+   ```
+   $ git add build
+   $ git add .config
+   $ git add \*.patch
+   $ git commit -m "new platform"
+   $ git push
+   ```
+
+1. The **buildbot** should start building your kernel now. You can follow the
+   build process on the **buildbot** website.
 
 ## Uboot
+
 
 ### Base Uboot
 ### Platform Uboot
