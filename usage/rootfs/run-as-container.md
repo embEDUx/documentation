@@ -1,7 +1,7 @@
 Once a RootFS has successfully been built and uploaded to the *buildmaster*, it
 can be imported into and run by various container management systems. As there are many of
 them and the number is growing, the examples cover the currently
-most and least popular ones: ***Docker*** and ***systemd***.
+most and least popular ones: *Docker* and *systemd*.
 
 This page will include fully working examples, with the assumption that the
 container management systems are installed and ready for usage.
