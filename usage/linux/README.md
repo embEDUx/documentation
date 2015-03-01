@@ -55,7 +55,7 @@ needs to replace the *kernel_version*, which has to be the *kernel* branch name
 and the *platform_dtb*, which is the device tree blob that should be created
 for the platform during the build.
 
-**Important: The sources for the *platform_dtb* have to be present in the kernel
+**Important: The sources for the *platform\_dtb* have to be present in the kernel
 sources, or otherwise added by a user patch.**
 
 #### User patches
@@ -87,13 +87,13 @@ Following steps are necessary to get *platform* build working.
 1. Add the [template](template/kernel_build) as ***build*** to the repository
    and make it executable.
    ```
-   ls -hl
+   $ ls -hl
    total 4.0K
    -rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
    -rw-r--r-- 1 user user    0 Mar  1 20:51 README
    ```
 
-1. Modify *KERNEL\_URL*, *KERNEL\_FILE*, and *PATCH\_VERSION* in the ***build***
+1. Modify *KERNEL\_URL*, *KERNEL\_FILE* and *PATCH\_VERSION* in the ***build***
    script.
    ```
    ...
@@ -112,9 +112,9 @@ Following steps are necessary to get *platform* build working.
    ```
 
 The build script in the corresponding *platform* branch can now use the just
-created  *kernel* branch.
+created *kernel* branch.
 
-### Add new platform
+#### Add new platform
 This step requires an existing *kernel* branch.
 
 1. Add a *platform* branch named
@@ -134,7 +134,7 @@ This step requires an existing *kernel* branch.
 1. Add the [template](template/platform_build) as ***build*** to the repository
    and make it executable.
    ```
-   ls -hl
+   $ ls -hl
    total 4.0K
    -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
    -rw-r--r-- 1 user user    0 Mar  1 21:19 README
@@ -184,12 +184,4 @@ This step requires an existing *kernel* branch.
 1. The **buildbot** should start building your kernel now. You can follow the
    build process on the **buildbot** website.
    ![Buildbot done](img/buildbot_done.png)
-
-## Uboot
-
-
-### Base Uboot
-### Platform Uboot
-
-## Misc Files
 
