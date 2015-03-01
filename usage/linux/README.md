@@ -20,6 +20,7 @@ this. Change *KERNEL_URL, KERNEL_FILE and PATCH_VERSION* to fit the desired
 kernel version.
 
 ´´´bash
+
 #! /bin/bash -ex
 
 #####################
