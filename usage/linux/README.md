@@ -19,8 +19,7 @@ template that can be easily adapted to the desired kernel version looks like
 this. Change *KERNEL_URL, KERNEL_FILE and PATCH_VERSION* to fit the desired
 kernel version.
 
-´´´shell
-
+```bash
 #! /bin/bash -ex
 
 #####################
@@ -135,8 +134,8 @@ function build {
     then post_output
   fi
 }
+```
 
-´´´
 
 ### Platform Branch
 
