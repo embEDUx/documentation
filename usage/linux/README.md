@@ -33,11 +33,11 @@ obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
 [dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
-**Important: Because **Gentoo** patches are needed, the user has to check which
-base version of the kernel sources was used for patches. Most of the time it is
-the *\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19). The **Gentoo** patches
-don't strictly follow the kernel version, which can lead to the situation, that
-**Gentoo** patches 3.18.8 result in the linux kernel version 3.18.7.**
+**Important: Because Gentoo patches are needed, the user has to check which base
+version of the kernel sources was used for patches. Most of the time it is the
+*\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19). The Gentoo patches don't
+strictly follow the kernel version, which can lead to the situation, that Gentoo
+patches 3.18.8 result in the linux kernel version 3.18.7.**
 
 ## Platform branch
 The *platform* branch has to contain all platform dependent informations and a
