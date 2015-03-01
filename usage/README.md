@@ -1,14 +1,15 @@
 This document will give you pointers at anything you need to know for building
-the various components for specific hardware.
+and deploying the various components for specific platform.
 
 ## Build instructions
-### Linux
-### U-Boot
-### RootFS
+To deploy a complete system, you have to build all of the following components
+for your platform.
 
-## Build monitoring
+### [U-Boot](uboot)
+### [Linux](linux)
+### [RootFS](roofs)
+### [Miscellaneous](misc) files
 
-### Waterfall
-![](usage/common/img/buildmaster_waterfall_rootfs-builds.png)
+## [Build monitoring](common/build-monitoring.md)
 
-## Hardware Deployment
+## [Hardware Deployment](flashtool)
