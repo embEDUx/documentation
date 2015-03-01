@@ -3,8 +3,8 @@
 To create a Linux kernel embEDUx needs two branches within the *linux*
 repository which need to have the following name scheme.
 
-* <kernel_version> (eg. 3.17.2)
-* <kernel_version>_<platform> (eg. 3.17.2_raspberry-pi)
+* \<kernel\_version> (eg. 3.17.2)
+* \<kernel\_version>\_\<platform\> (eg. 3.17.2_raspberry-pi)
 
 **The name of the platform can not contain an underscore!**
 
