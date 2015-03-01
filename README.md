@@ -19,24 +19,30 @@ for tasks concerning the preparation of soft- and hardware for these lab-courses
 offered at the HTWG, which is the reason why the embEDUx requirements will have
 a strong bias towards the requirements specific to the lab-courses.
 
-The embEDUx buildsystem has been designed to build the following components
+## Terminology
+Before you continue reading the different documentation snippets, please read 
+through [Terminology](Terminology.md) for terms used within the documentation.
+
+
+## Components
+The embEDUx build system has been designed to build the following components
 according to user-provided specifications:
 - Das U-Boot Bootloader
 - Linux Kernel images and modules
 - RootFS-archives based on Gentoo
 
 
-# Usage Information
-If you have access to a setup instance of the embEDUx buildsystem and want to 
+## Usage Information
+If you have access to a setup instance of the embEDUx build system and want to 
 start using it please goto [USAGE.md](USAGE.md). You will learn how to build the
 components offered by the system.
 
 
-# Setup Information
-If you want to run the embEDUx buildsystem on your own machine(s), please
+## Setup Information
+If you want to run the embEDUx build system on your own machine(s), please
 consult [SETUP.md](SETUP.md)
 
 
-# Background Information
+## Background Information
 For information on the development and the made decisions, please consult 
 [BACKGROUND.md](BACKGROUND.md)
