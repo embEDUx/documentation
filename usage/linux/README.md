@@ -6,18 +6,16 @@ repository which need to have the following name scheme.
 * \<kernel\_version> (eg. 3.17.2)
 * \<kernel\_version>\_\<platform\> (eg. 3.17.2_raspberry-pi)
 
-**The name of the platform can not contain an underscore!**
+**The name of the platform can not contain an underscore, please prefer the
+dash!**
 
 The first branch will be called *base branch* and the second one *platform
 branch*.
 
 ### Base Branch
 
-The base branch only needs to contain a build script, which downloads and
-patches the desired kernel sources for the desired kernel version. A simple
-template that can be easily adapted to the desired kernel version looks like
-this. Change *KERNEL_URL, KERNEL_FILE and PATCH_VERSION* to fit the desired
-kernel version.
+The base branch only needs to contain a build script, which downloads the kernel
+sources and Gentoo patches for the desired kernel version. 
 
 ```bash
 #! /bin/bash -ex
@@ -28,7 +26,7 @@ kernel version.
 
 ### Sources
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
-KERNEL_FILE="linux-3.18.tar.gz"
+KERNEL_FILE="linux-<Major>.<Minor>.tar.gz"
 KERNEL_SHA="sha256sums.asc"
 
 ### Patches
@@ -136,6 +134,12 @@ function build {
 }
 ```
 
+A simple template that can be easily adapted to the desired kernel version looks
+like this. Only change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to fit
+the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
+obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
+the desired kernel version can be obtained from
+[dev.gentoo.org](dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
 ### Platform Branch
 
