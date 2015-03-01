@@ -21,7 +21,7 @@ a strong bias towards the requirements specific to the lab-courses.
 
 ## Terminology
 Before you continue reading the different documentation snippets, please read 
-through [Terminology](Terminology.md) for terms used within the documentation.
+through [background/Terminology](background/Terminology.md) for terms used within the documentation.
 
 
 ## Components
@@ -34,15 +34,15 @@ according to user-provided specifications:
 
 # Usage Information
 If you have access to a setup instance of the embEDUx build system and want to 
-start using it please goto [USAGE.md](USAGE.md). You will learn how to build the
+start using it please goto [usage](usage/README.md). You will learn how to build the
 components offered by the system.
 
 
 # Setup Information
 If you want to run the embEDUx build system on your own machine(s), please
-consult [SETUP.md](SETUP.md)
+consult [setup](setup)
 
 
 # Background Information
 For information on the development and the made decisions, please consult 
-[BACKGROUND.md](BACKGROUND.md)
+[background](background)
