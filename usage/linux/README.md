@@ -144,7 +144,7 @@ Only change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to fit
 the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
 obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
-[dev.gentoo.org](dev.gentoo.org/~mpagano/genpatches/tarballs/).
+[dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
 ### Platform Branch
 
