@@ -15,7 +15,10 @@ branch*.
 ### Base Branch
 
 The base branch only needs to contain a build script, which downloads the kernel
-sources and Gentoo patches for the desired kernel version. 
+sources and Gentoo patches for the desired kernel version. The script by itself
+doesn't do much, but will be used by the *platform branch*. A simple template
+that can be easily adapted to the desired kernel version looks like
+[this](template/base_build). 
 
 ```bash
 #! /bin/bash -ex
@@ -31,7 +34,7 @@ KERNEL_SHA="sha256sums.asc"
 
 ### Patches
 PATCH_DIR="genpatches"
-PATCH_VERSION="3.18-2"
+PATCH_VERSION="<Major>.<Minor>-<Subminor>"
 PATCH_URL="http://dev.gentoo.org/~mpagano/genpatches/tarballs"
 PATCH_PART="base extras experimental"
 
@@ -134,14 +137,20 @@ function build {
 }
 ```
 
-A simple template that can be easily adapted to the desired kernel version looks
-like this. Only change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to fit
+Only change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to fit
 the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
 obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
 [dev.gentoo.org](dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
 ### Platform Branch
+
+The platform branch has to contain the user patches and the build script. A
+template for the build script looks like this.
+
+```
+placeholer
+```
 
 ## Uboot
 
