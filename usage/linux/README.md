@@ -1,4 +1,4 @@
-## Linux
+# Linux
 To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
 *platform* branch. The branches need to have the following name scheme:
 
@@ -9,7 +9,7 @@ To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
 instead!**
 
 
-### Kernel branch
+## Kernel branch
 The *kernel* branch will provide all the platform independent files, which are
 the kernel sources, the Gentoo patches and the build script to patch and build
 the kernel. Multiple platforms use the same *kernel* branch for the same kernel
@@ -33,7 +33,7 @@ obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
 [dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
-### Platform branch
+## Platform branch
 The *platform* branch has to contain all platform dependent informations and a
 build script. Those are a valid kernel configuration, the build script and any
 needed user patches.
@@ -58,17 +58,17 @@ for the platform during the build.
 **Important: The sources for the *platform\_dtb* have to be present in the kernel
 sources, or otherwise added by a user patch.**
 
-#### User patches
+### User patches
 Any files that need to be added to the kernel sources need to be in the root
 folder of the *platform* branch and follow the format and naming scheme of a
 patch.
 
-### Usage example 
+## Usage example 
 In the following example we will add a new 3.18.7 kernel to the *linux*
 repository. Then we will add the platform raspberry-pi for the 3.18.7 kernel to
 the repository.
 
-#### Add new kernel branch
+### Add new kernel branch
 Following steps are necessary to get *platform* build working.
 
 1. Add a *kernel* branch named *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
@@ -114,7 +114,7 @@ Following steps are necessary to get *platform* build working.
 The build script in the corresponding *platform* branch can now use the just
 created *kernel* branch.
 
-#### Add new platform
+### Add new platform
 This step requires an existing *kernel* branch.
 
 1. Add a *platform* branch named
@@ -184,4 +184,6 @@ This step requires an existing *kernel* branch.
 1. The **buildbot** should start building your kernel now. You can follow the
    build process on the **buildbot** website.
    ![Buildbot done](img/buildbot_done.png)
+
+Congratulations, you just built your first kernel for your first platform.
 
