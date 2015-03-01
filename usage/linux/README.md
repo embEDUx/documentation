@@ -64,6 +64,9 @@ folder of the *platform* branch and follow the format and naming scheme of a
 patch.
 
 ### Usage example 
+In the following example we will add a new 3.18.7 kernel to the *linux*
+repository. Then we will add the platform raspberry-pi for the 3.18.7 kernel to
+the repository.
 
 #### Add new kernel branch
 Following steps are necessary to get *platform* build working.
