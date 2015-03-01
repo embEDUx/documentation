@@ -71,8 +71,10 @@ the repository.
 #### Add new kernel branch
 Following steps are necessary to get *platform* build working.
 
-1. Add a *kernel* branch *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
-   repository.
+1. Add a *kernel* branch named *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
+   repository. It is necessary that you push this initial branch, so **embEDUx**
+   can start building your kernel after the last step.
+
    ```
    $ git checkout master
    $ git branch 3.18.7
@@ -116,8 +118,10 @@ created  *kernel* branch.
 ### Add new platform
 This step requires an existing *kernel* branch.
 
-1. Add a *platform* branch *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
-   repository. It is necessary that you push this initial branch, so **embEDUx**
+1. Add a *platform* branch named
+   *\<Major\>.\<Minor\>.\<Subminor\>\_\<platform\>* to the *linux* repository.
+   It is necessary that you push this initial branch, so **embEDUx** can start
+   building your kernel after the last step.
    ```
    $ git checkout master
    $ git branch 3.18.7_raspberry-pi
