@@ -55,6 +55,13 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 ```
 
+### Allow login via machinectl
+`machinectl` is connecting via *pts/0*, which is excluded from
+***/etc/securetty*** on **Gentoo**. This prevents *root*-login via `machinectl
+login` and needs to be changed as follows.
+```
+echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
+```
 
 ### Start in background
 
@@ -66,9 +73,15 @@ take any longer than a couple of seconds.
 ```
 
 ### Login
-`machinectl login` will provide access to a running container.
+`machinectl login` will provide access to a running container. Login should now
+be possible with the previously set root password.
 
 ```
+# machinectl login amd64_factory_systemd_20150228172018_faa83f5                                 
+Connected to machine amd64_factory_systemd_20150228172018_faa83f5. Press ^]
+three times within 1s to exit session.
+
+
 This is amd64_factory_systemd_20150228172018_faa83f5.unknown_domain (Linux x86_64 4.0.0-rc1) 15:50:56
 
 amd64_factory_systemd_20150228172018_faa83f5 login: root
@@ -76,7 +89,13 @@ Password:
 Last login: Sun Mar  1 15:49:43  2015 on pts/0
 root@amd64_factory_systemd_20150228172018_faa83f5 ~ # 
 ```
+We're in!
 
-That's it! The default setup of a container is heavily based on the 
-***[systemd-nspawn@.service](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
-differ between Linux distributions.
+### Notes
+
+The default setup of a container is heavily based on the 
+***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
+differ between Linux distributions. This has an influence on many apsects of the
+containers, including but not limited to it's network connection. As an
+example, on **Gentoo** the default setup does not automatically setup an internet
+connection for containers.
