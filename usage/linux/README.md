@@ -82,7 +82,7 @@ to work, following environment variables need to be set.
 
 ## Usage example 
 In the following example we will add a new 3.18.7 kernel to the *linux*
-repository. Then we will add the platform raspberry-pi for the 3.18.7 kernel to
+repository. Then we will add the raspberry-pi platform for the 3.18.7 kernel to
 the repository.
 
 ### Add new kernel branch
