@@ -63,6 +63,17 @@ Any files that need to be added to the kernel sources need to be in the root
 folder of the *platform* branch and follow the format and naming scheme of a
 patch.
 
+### Environment variables
+With a local installed cross toolchain and an exising *kernel* branch in the
+repository it is possible to test the *platform* build script locally. In order
+to work, following environment variables need to be set.
+* Target architecture:
+  ARCH=
+* Path to the cross toolchain:
+  CROSS_COMPILE=
+* Path where **embEDUx** should store its files:
+  EMBEDUX_TMP=
+
 ## Usage example 
 In the following example we will add a new 3.18.7 kernel to the *linux*
 repository. Then we will add the platform raspberry-pi for the 3.18.7 kernel to
