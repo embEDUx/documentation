@@ -146,11 +146,38 @@ the desired kernel version can be obtained from
 ### Platform Branch
 
 The platform branch has to contain the user patches and the build script. A
-template for the build script looks like this.
+template for the build script looks like [this](files/template_platform_build).
 
 ```
-placeholer
+#! /bin/bash -ex
+
+######################################
+# Configuration                      #                    
+######################################
+
+KERNEL_VERSION="<kernel_version>"
+KERNEL_DTB="<platform_dtb>"
+KERNEL_CONFIG=".config"
+KERNEL_IMG="zImage"
+
+######################################
+# Script (modify only with caution!) #
+######################################
+SRC_DIR="linux"
+
+git clone -b ${KERNEL_VERSION} --depth 1 --single-branch $(git remote -v | sed -n '/.git/{p;q;}' | awk '{print $(NF-1)}') ${SRC_DIR} && . ${SRC_DIR}/build
+
+prepare
+build
+
 ```
+
+Only edit *kernel_version* to the name of the *base* branch and *platform_dtb*
+to the desired platform dtb file. This base file must exist within the kernel
+sources! If it doesn't exist, please add it with a user patch.
+
+
+
 
 ## Uboot
 
