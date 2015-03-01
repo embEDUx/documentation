@@ -5,10 +5,10 @@ and deploying the various components for specific platform.
 To deploy a complete system, you have to build all of the following components
 for your platform.
 
-### [U-Boot](uboot)
-### [Linux](linux)
-### [RootFS](roofs)
-### [Miscellaneous](misc) files
+* [U-Boot](uboot)
+* [Linux](linux)
+* [RootFS](roofs)
+* [Miscellaneous files](misc)
 
 ## [Build monitoring](common/build-monitoring.md)
 
