@@ -85,7 +85,13 @@ Password:
 Last login: Sun Mar  1 15:49:43  2015 on pts/0
 root@amd64_factory_systemd_20150228172018_faa83f5 ~ # 
 ```
+We're in!
 
-That's it! The default setup of a container is heavily based on the 
+### Notes
+
+The default setup of a container is heavily based on the 
 ***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
-differ between Linux distributions.
+differ between Linux distributions. This has an influence on many apsects of the
+containers, including but not limited to it's network connection. As an
+example, on *Gentoo* the default setup does not automatically setup an internet
+connection for containers.
