@@ -181,7 +181,7 @@ example!).
 
 1. The **buildbot** should start building your kernel now. You can follow the
    build process on the **buildbot** website.
-
+   ![Buildbot done](img/buildbot_done.png)
 ## Uboot
 
 
