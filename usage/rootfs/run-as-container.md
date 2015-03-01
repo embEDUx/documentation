@@ -78,5 +78,5 @@ root@amd64_factory_systemd_20150228172018_faa83f5 ~ #
 ```
 
 That's it! The default setup of a container is heavily based on the 
-***[systemd-nspawn@.service](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
+***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
 differ between Linux distributions.
