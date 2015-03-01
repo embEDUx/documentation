@@ -16,9 +16,12 @@ branch*.
 
 The base branch only needs to contain a build script, which downloads the kernel
 sources and Gentoo patches for the desired kernel version. The script by itself
-doesn't do much, but will be used by the *platform branch*. A simple template
-that can be easily adapted to the desired kernel version looks like
-[this](template/base_build). 
+doesn't do much, but will be used by the *platform branch*. 
+
+#### Build script
+
+A simple template that can be easily adapted to the desired kernel version looks
+like [this](template/base_build). 
 
 ```bash
 #! /bin/bash -ex
@@ -145,8 +148,10 @@ the desired kernel version can be obtained from
 
 ### Platform Branch
 
-The platform branch has to contain the user patches and the build script. A
-template for the build script looks like [this](template/platform_build).
+The platform branch has to contain the user patches and the build script.
+
+#### Build script
+A template for the build script looks like [this](template/platform_build).
 
 ```
 #! /bin/bash -ex
@@ -172,12 +177,17 @@ build
 
 ```
 
-Only edit *kernel_version* to the name of the *base* branch and *platform_dtb*
-to the desired platform dtb file. This base file must exist within the kernel
-sources! If it doesn't exist, please add it with a user patch.
+Only edit *kernel_version* to the name of the *base* branch (eg. 3.17.2) and
+*platform_dtb* to the desired platform dtb file (eg. bcm2835-rpi-b.dtb). The
+sources for this dtb file must exist within the kernel sources! If it doesn't
+exist, please add it with a user patch.
 
 
+#### User patches
 
+The only possibility to extend the kernel sources with external files is with
+patches. These patchs have to be in the root folder of the *platform* branch.
+They will be automatically patched during the build process.
 
 ## Uboot
 
