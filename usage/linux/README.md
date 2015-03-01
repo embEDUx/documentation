@@ -84,8 +84,8 @@ Following steps are necessary to get *platform* build working.
    $ git push --set-upstream origin 3.18.7
    ```
 
-1. Add the [template](template/kernel_build) as ***build*** to the branch and
-   make it executable.
+1. Add the [template](template/kernel_build) as ***build*** to the repository
+   and make it executable.
    ```
    ls -hl
    total 4.0K
@@ -104,7 +104,7 @@ Following steps are necessary to get *platform* build working.
    ...
    ```
 
-1. Push the branch upstream. 
+1. Add the changed files, commit and push. 
    ```
    $ git add build
    $ git commit -m "new kernel"
@@ -131,8 +131,8 @@ This step requires an existing *kernel* branch.
    $ git push --set-upstream origin 3.18.7_raspberry-pi
    ```
 
-1. Add the [template](template/platform_build) as ***build*** to the branch and make
-   it executable.
+1. Add the [template](template/platform_build) as ***build*** to the repository
+   and make it executable.
    ```
    ls -hl
    total 4.0K
@@ -151,7 +151,7 @@ This step requires an existing *kernel* branch.
    ...
    ```
 
-1. Add a working kernel configuration ***.config*** to the branch.
+1. Add a working kernel configuration ***.config*** to the repository.
    ```
    $ ls -hla
    total 76K
@@ -163,8 +163,7 @@ This step requires an existing *kernel* branch.
    -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
    ```
 
-1. Optional: Add needed patches ***foo.patch*** to the branch (this is only an
-example!).
+1. Optional: Add needed patches to the repository.
    ```
    $ ls -hl
    total 8.0K
@@ -173,7 +172,7 @@ example!).
    -rw-r--r-- 1 user user    0 Mar  1 20:51 README
    ```
 
-1. Add all files and push branch upstream.
+1. Add all files, commit  and push branch upstream.
    ```
    $ git add build
    $ git add .config
@@ -185,6 +184,7 @@ example!).
 1. The **buildbot** should start building your kernel now. You can follow the
    build process on the **buildbot** website.
    ![Buildbot done](img/buildbot_done.png)
+
 ## Uboot
 
 
