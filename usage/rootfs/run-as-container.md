@@ -73,6 +73,10 @@ take any longer than a couple of seconds.
 `machinectl login` will provide access to a running container.
 
 ```
+# machinectl login amd64_factory_systemd_20150228172018_faa83f5                                 
+Connected to machine amd64_factory_systemd_20150228172018_faa83f5. Press ^]
+three times within 1s to exit session.
+
 
 This is amd64_factory_systemd_20150228172018_faa83f5.unknown_domain (Linux x86_64 4.0.0-rc1) 15:50:56
 
