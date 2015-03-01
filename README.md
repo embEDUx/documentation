@@ -32,17 +32,17 @@ according to user-provided specifications:
 - RootFS-archives based on Gentoo
 
 
-## Usage Information
+# Usage Information
 If you have access to a setup instance of the embEDUx build system and want to 
 start using it please goto [USAGE.md](USAGE.md). You will learn how to build the
 components offered by the system.
 
 
-## Setup Information
+# Setup Information
 If you want to run the embEDUx build system on your own machine(s), please
 consult [SETUP.md](SETUP.md)
 
 
-## Background Information
+# Background Information
 For information on the development and the made decisions, please consult 
 [BACKGROUND.md](BACKGROUND.md)
