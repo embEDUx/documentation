@@ -55,6 +55,10 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 ```
 
+### Allow login via machinectl
+```
+echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
+```
 
 ### Start in background
 
@@ -69,6 +73,7 @@ take any longer than a couple of seconds.
 `machinectl login` will provide access to a running container.
 
 ```
+
 This is amd64_factory_systemd_20150228172018_faa83f5.unknown_domain (Linux x86_64 4.0.0-rc1) 15:50:56
 
 amd64_factory_systemd_20150228172018_faa83f5 login: root
