@@ -44,7 +44,7 @@ PATCH_VERSION="<Major>.<Minor>-<Subminor>"
 The *platform* branch has to contain all platform dependent informations, which
 are a valid kernel configuration and optional user patches. Furthermore it needs
 to contain the build script named ***build***. This is a good
-[template](usage/linux/template/platform-build) to start with.
+[template](usage/linux/template/platform_build) to start with.
 
 With template, the only variables that have to be changed are *KERNEL\_VERSION*,
 which should be the name of the *kernel* branch and the *KERNEL\_DTB*, which
