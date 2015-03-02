@@ -1,13 +1,13 @@
 # Linux
 To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
-*platform* branch. The branches need to have the following name scheme:
+*platform* branch. The branches need to have the following name schema:
 
+## Naming schema
 * Kernel branch: \<kernel\_version> (eg. 3.17.2)
 * Platform branch: \<kernel\_version>\_\<platform\_name\> (eg. 3.17.2_raspberry-pi)
 
 **Importan: The platform\_name must not contain an underscore, use a dash
 instead!**
-
 
 ## Kernel branch
 The *kernel* branch will provide all the platform independent files, which are
@@ -33,11 +33,12 @@ obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
 the desired kernel version can be obtained from
 [dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
-**Important: Because Gentoo patches are needed, the user has to check which base
-version of the kernel sources was used for patches. Most of the time it is the
-*\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19). The Gentoo patches don't
-strictly follow the kernel version, which can lead to the situation, that Gentoo
-patches 3.18.8 result in the linux kernel version 3.18.7.**
+**Important: Because Gentoo patches are applied during build process, the user
+has to check which base version of the kernel sources was used for patches. The
+*\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19) is a common base version
+for the Gentoo patches. The Gentoo patches don't strictly follow the kernel
+  version, which can lead to the situation, that Gentoo patches 3.18.8 result in
+  the linux kernel version 3.18.7.**
 
 ## Platform branch
 The *platform* branch has to contain all platform dependent informations and a
@@ -56,7 +57,7 @@ KERNEL_IMG="zImage"
 ```
 
 The build script clones the *kernel* branch and executes the prepare and build
-function. As long as the user sticks to the standard name scheme, the user only
+function. As long as the user sticks to the standard name schema, the user only
 needs to replace the *kernel_version*, which has to be the *kernel* branch name
 and the *platform_dtb*, which is the device tree blob that should be created
 for the platform during the build.
@@ -66,7 +67,7 @@ sources, or otherwise added by a user patch.**
 
 ### User patches
 Any files that need to be added to the kernel sources need to be in the root
-folder of the *platform* branch and follow the format and naming scheme of a
+folder of the *platform* branch and follow the format and naming schema of a
 patch.
 
 ### Environment variables
@@ -74,13 +75,13 @@ With a local installed cross toolchain and an exising *kernel* branch in the
 repository it is possible to test the *platform* build script locally. In order
 to work, following environment variables need to be set.
 * Target architecture:
-  ARCH=
+  ARCH= (eg. 'arm')
 * Path to the cross toolchain:
-  CROSS_COMPILE=
+  CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')
 * Path where **embEDUx** should store its files:
-  EMBEDUX_TMP=
+  EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
 
-## Usage example 
+## Example 
 In the following example we will add a new 3.18.7 kernel to the *linux*
 repository. Then we will add the raspberry-pi platform for the 3.18.7 kernel to
 the repository.
@@ -111,7 +112,7 @@ Following steps are necessary to get *platform* build working.
    ```
 
 1. Modify *KERNEL\_URL*, *KERNEL\_FILE* and *PATCH\_VERSION* in the ***build***
-   script.
+   script, to match the desired kernel version.
    ```
    ...
    KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
@@ -157,8 +158,10 @@ This step requires an existing *kernel* branch.
    -rw-r--r-- 1 user user    0 Mar  1 21:19 README
    ```
 
-1. Modify *KERNEL\_URL*, *KERNEL\_FILE*, and *PATCH\_VERSION* in the ***build***
-   script.
+1. Modify *KERNEL\_VERSION* in ***build*** to the desired version, which is also
+   the name of the *kernel* branch. Finally modify *KERNEL\_DTB* to the desired
+   device tree blobs name and make sure the device tree sources do exist in the
+   kernel sources.
    ```
    KERNEL_VERSION="3.18.7"
    ...
