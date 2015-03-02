@@ -1,0 +1,11 @@
+site_name: embEDUx Doc
+theme:
+  readthedocs
+use_directory_urls: false
+docs_dir: '.'
+pages:
+- [README.md, Home]
+- ['background/README.md', Background]
+- ['background/Terminology.md', Background]
+- ['usage/README.md',Usage]
+- ['usage/linux/README.md', Usage]
