@@ -56,8 +56,8 @@ and make it executable.
 1. Add at least these two files and modify them to fit to the platform.
    ```
    $ mkdir src_boot
-   $ mkdir src_root
    $ touch src_boot/boot.scr.txt
+   $ mkdir src_root
    $ mkdir src_root/etc/
    $ touch src_root/etc/inittab
    # Edit files
