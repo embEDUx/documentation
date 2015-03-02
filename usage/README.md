@@ -20,11 +20,11 @@ At the end of the setup, the Administrator is instructed to create the
 ## Build instructions
 Triggering builds works by 
 
-* [U-Boot](uboot)
-* [Linux](linux)
-* [RootFS](roofs)
-* [Miscellaneous files](misc)
-* [Toolchains](toolchains)
+* [U-Boot](usage/uboot)
+* [Linux](usage/linux)
+* [RootFS](usage/roofs)
+* [Miscellaneous files](usage/misc)
+* [Toolchains](usage/toolchains)
 
 ## Monitoring instructions
 While your builds are running, you might want to 
