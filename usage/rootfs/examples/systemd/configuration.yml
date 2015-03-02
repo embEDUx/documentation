@@ -1,0 +1,42 @@
+---
+global:
+    use:
+        +: "vim-syntax systemd"
+        -: "X doc consolekit"
+
+packages:
+    sys-apps/util-linux:
+        use:
+            -: "systemd"
+    virtual/udev:
+        kw:
+            +: "~amd64 ~x86"
+    sys-apps/systemd:
+        kw:
+            +: "~amd64 ~x86"
+        use: 
+            +: "importd gcrypt curl lz4 lzma"
+    app-portage/layman: {}
+    app-portage/eix: {}
+    app-editors/vim: {}
+    app-portage/genlop: {}
+    net-misc/ntp: {}
+    sys-apps/iproute2: {}
+    net-analyzer/netcat: {}
+    net-wireless/iw: {}
+    sys-fs/btrfs-progs: {}
+
+pre_install_commands:
+    - "emerge-webrsync"
+    - "chown -R portage:portage /usr/portage"
+    - "emerge -1uvkb perl"
+    - "perl-cleaner --reallyall -- -kb"
+
+post_install_commands:
+    - "echo Europe/Berlin > /etc/timezone"
+    - "emerge --config timezone-data"
+    - "mv /sbin/init /sbin/init-openrc"
+    - "ln -sf /usr/lib/systemd/systemd /sbin/init"
+    - "tar -C /usr/ -cjvf /usr/portage.tbz2 portage"
+    - "rm -Rf /usr/portage/*"
+
