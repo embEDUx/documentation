@@ -11,7 +11,7 @@ it includes setting up the repositories that are used by users to supply the
 build instructions to the *buildserver*.
 
 At the end of the setup, the Administrator is instructed to create the
-[User-Documentation](../setup/user-documentation.md). See the ([example setup @ HTWG](../../setup/examples/user-documentation.md)
+[User-Documentation](setup/user-documentation.md/#Repositories). See the ([example setup @ HTWG](setup/examples/user-documentation.md))
 
 
 * [Download repositories](common/checkout-repositories.md)

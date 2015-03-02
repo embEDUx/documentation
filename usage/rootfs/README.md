@@ -11,6 +11,8 @@ the *rootfs*-Repository. The file is written in YAML-Syntax and the following is
 a fully working example, taken out of [the file from example]
 (usage/rootfs/examples/systemd/configuration.md)
 
+The *global*-Section configures [use-Flags](use-flags.md) and keywords
+
 ### Example
 ```yaml
 ---
