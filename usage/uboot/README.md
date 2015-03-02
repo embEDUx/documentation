@@ -131,6 +131,7 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
    ```
    $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
+
 1. Add a *platform* branch named *\<uboot-version\>\_\<platform\>* to the
    *uboot* repository.  It is necessary that you push this initial branch, so
    **embEDUx** can start building your **U-Boot** image after the last step of
