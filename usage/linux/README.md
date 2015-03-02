@@ -3,7 +3,7 @@
 1. [Naming schema](#naming-schema)
 1. [Kernel branch](#kernel-branch)
 1. [Platform branch](#platform-branch)
-1. [Example](#example)
+1. [Usage example](#usage-example)
 
 ## Naming schema
 To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
@@ -86,7 +86,7 @@ to work, following environment variables need to be set.
 * Path where **embEDUx** should store its files:
   EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
 
-## Example 
+## Usage example 
 In the following example a new 3.18.7 kernel and the raspberry-pi platform for
 that kernel will be added to the *linux* repository. 
 
