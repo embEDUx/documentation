@@ -103,7 +103,6 @@ The following steps are necessary before you can [add](#add-new-platform) a
    total 4.0K
    -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
    -rw-r--r-- 1 user user    0 Mar  2 18:48 README
-
    ```
 
 1. Modify *UBOOT\_FILE* in the ***build*** script, to match the desired
