@@ -90,7 +90,7 @@ The following steps are necessary before you can [add](#add-new-platform) a
    $ git checkout master
    $ git branch 2015.01
    $ git checkout 2015.01
-   $ git touch README.md
+   $ touch README.md
    $ git add README.md
    $ git commit -m "inital commit"
    $ git push --set-upstream origin 2015.01
@@ -127,77 +127,58 @@ created *uboot* branch.
 ### Add new platform
 This step requires an [existing](#add-new-kernel) *kernel* branch.
 
-1. Add a *platform* branch named
-   *\<Major\>.\<Minor\>.\<Subminor\>\_\<platform\>* to the *linux* repository.
-   It is necessary that you push this initial branch, so **embEDUx** can start
-   building your kernel after the last step.
+1. If not already done, clone the *uboot* repository with the URL provided by
+   your system administrator.
+   ```
+   $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
+   ```
+1. Add a *platform* branch named *\<uboot-version\>\_\<platform\>* to the
+   *uboot* repository.  It is necessary that you push this initial branch, so
+   **embEDUx** can start building your **U-Boot** image after the last step of
+   this example.
    ```
    $ git checkout master
-   $ git branch 3.18.7_raspberry-pi
-   $ git checkout 3.18.7_raspberry-pi
-   $ git touch README.md
+   $ git branch 2015.01_raspberry-pi
+   $ git checkout 2015.01_raspberry-pi
+   $ touch README.md
    $ git add README.md
    $ git commit -m "inital commit"
-   $ git push --set-upstream origin 3.18.7_raspberry-pi
+   $ git push --set-upstream origin 2015.01_raspberry-pi
    ```
 
-1. Add the [template](template/platform_build) as ***build*** to the repository
-   and make it executable. 
+1. Add the [template](usage/uboot/template/platform_build) as ***build*** to the
+   repository and make it executable. 
    ```
    $ ls -hl
    total 4.0K
-   -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
-   -rw-r--r-- 1 user user    0 Mar  1 21:19 README
+   -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
+   -rw-r--r-- 1 user user   0 Mar  2 18:57 README
    ```
 
-1. Modify *KERNEL\_VERSION* in ***build*** to the desired version, which is also
-   the name of the *kernel* branch. Finally modify *KERNEL\_DTB* to the desired
-   device tree blobs name and make sure the device tree sources do exist in the
-   kernel sources.
+1. Modify *UBOOT\_VERSION* in ***build*** to the desired version, which is also
+   the name of the *uboot* branch. Also modify *UBOOT\_CONFIG* to the platform
+   configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG*.
    ```
-   KERNEL_VERSION="3.18.7"
+   UBOOT_VERSION="2015.01"
+   UBOOT_CONFIG="rpi_b_config"
    ...
-   KERNEL_DTB="bcm2835-rpi-b.dtb"
-   KERNEL_CONFIG=".config"
-   KERNEL_IMG="zImage"
-   ...
+   FIRMWARE_IMG="u-boot.bin"
    ```
 
-1. Add a working kernel configuration ***.config*** to the repository.
-   ```
-   $ ls -hla
-   total 76K
-   drwxr-xr-x 1 user user  44 Mar  1 21:29 .
-   drwxr-xr-x 1 user user 650 Mar  1 15:04 ..
-   -rwxr-xr-x 1 user user 562 Mar  1 21:25 build
-   -rw-r--r-- 1 user user 69K Mar  1 21:29 .config
-   drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
-   -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
-   ```
-
-1. Optional: Add needed patches to the repository.
-   ```
-   $ ls -hl
-   total 8.0K
-   -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
-   -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
-   -rw-r--r-- 1 user user    0 Mar  1 20:51 README
-   ```
+1. Optional: Add pre_output or post_output functions to the ***build*** script.
 
 1. Add all files, commit  and push branch upstream.
    ```
    $ git add build
-   $ git add .config
-   $ git add \*.patch
    $ git commit -m "new platform"
    $ git push
    ```
 
-1. The **buildbot** should start building your kernel now. You can follow the
+1. The **buildbot** should start building your **U-Boot** now. You can follow the
    build process on the **buildbot** website.
    ![Buildbot done](img/buildbot_done.png)
 
-1. Congratulations, you just built your first kernel for your first platform.
-   You can use the [flashtool](usage/flashtool/README.md) to flash the kernel image
-   to your platform device.
+1. Congratulations, you just built your first **U-Boot** for your first
+   platform.  You can use the [flashtool](usage/flashtool/README.md) to flash
+   the **U-Boot** image to your platform device.
 
