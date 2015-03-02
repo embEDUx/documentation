@@ -96,8 +96,8 @@ The following steps are necessary before you can [add](#add-new-platform) a
    $ git push --set-upstream origin 2015.01
    ```
 
-1. Add the [template](usage/uboot/template/uboot_build) as ***build*** to the repository
-   and make it executable.
+1. Add the [template](usage/uboot/template/uboot_build) as ***build*** to the
+   repository and make it executable.
    ```
    $ ls -hl
    total 4.0K
