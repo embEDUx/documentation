@@ -17,15 +17,16 @@ five outputs that **embEDUx** can build. Those are:
 * misc: files
 
 ### 1
-For each version of **U-Boot** and **Linux** there needs to be one
-*kernelÜ*/*uboot* branch in the *linux*/*uboot* repository.
+Each version of the **Linux** kernel needs to have exactly one *kernel* branch in
+the *linux* repository. Also for each version of **U-Boot**, exactly one *uboot*
+branch is needed in the *uboot* repository.
 
 ### 2
 For each platform there needs to be one *platform* branch in the *linux*,
 *uboot* and *misc* repository.
 
 ### 3
-For each arch, which can be obtained from the desired platforms, there needs to
+For each architecture, which can be obtained from the desired platforms, there needs to
 be a rootfs. Furthermore as there are multiple courses that use the same arch,
 there has to be one branch for each course/arch combination.
 
