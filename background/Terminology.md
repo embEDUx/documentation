@@ -1,4 +1,4 @@
-*(stjunker)*
+### Common
 
 The introduction and the following sections contains terms that will be
 explained or respectively defined in this chapter. For the scope of the embEDUx
@@ -82,6 +82,12 @@ this are situations where the system is running on a sub-architecture that is
 not compatible with the sub-architecture that a binary has been compiled for. 
 Unfortunately this is very likely to happen nowadays when dealing with different
 sub-architectures of the ARM architecture.
+
+### embEDUx
+
+#### Buildserver
+The buildserver is defined to the logical unit that takes and executes build
+requests provided by the user. It does not imply implementation details.
 
 # Links
 

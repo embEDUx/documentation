@@ -1,8 +1,14 @@
 # Linux
+
+1. [Naming schema](#naming-schema)
+1. [Kernel branch](#kernel-branch)
+1. [Platform branch](#platform-branch)
+1. [Usage example](#usage-example)
+
+## Naming schema
 To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
 *platform* branch. The branches need to follow a certain name schema:
 
-## Naming schema
 * Kernel branch: \<kernel\_version> (eg. 3.17.2)
 * Platform branch: \<kernel\_version>\_\<platform\_name\> (eg. 3.17.2_raspberry-pi)
 
@@ -11,12 +17,28 @@ instead!**
 
 ## Kernel branch
 The *kernel* branch will provide all the platform independent files, which are
-the kernel sources, the Gentoo patches and the build script to patch and build
-the kernel. Multiple platforms use the same *kernel* branch for the same kernel
-version. 
+the kernel sources, the **Gentoo** patches and the build script to patch and build
+the kernel. Multiple platforms use the same *kernel* branch and therefore the
+same kernel sources for the same kernel version. 
 
-Following [template](template/kernel-build) should be used as a build script:
+This [template](usage/linux/template/kernel_build) should be used as a build script. The
+user only has to change the variables  *KERNEL_URL*, *KERNEL_FILE* and
+*PATCH_VERSION* to fit to the desired kernel version. The *KERNEL_URL* and the
+*KERNEL_FILE* can be obtained from [www.kernel.org](https://www.kernel.org/).
+The *PATCH_VERSION* for the desired kernel version can be obtained from
+[dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
+Because Gentoo patches are applied during build process, the user has to make
+sure that the kernel version and the Gentoo patch version match to each other.
+The *\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19) is a common base
+version for the Gentoo patches. The version of the  Gentoo patches doesn't
+strictly follow the kernel version, which can lead to the situation, that Gentoo
+patches 3.18-8 result in the linux kernel version 3.18.7.
+
+**Important: Gentoo patch version does NOT need to reflect resulting linux
+kernel version**
+
+These are the important lines, that need to be modified for each kernel version.
 ```bash
 ...
 ### Sources
@@ -27,26 +49,20 @@ PATCH_VERSION="<Major>.<Minor>-<Subminor>"
 ...
 ```
 
-The user only needs to change *KERNEL_URL*, *KERNEL_FILE* and *PATCH_VERSION* to
-fit to the desired kernel version. The *KERNEL_URL* and the *KERNEL_FILE* can be
-obtained from [www.kernel.org](https://www.kernel.org/). The *PATCH_VERSION* for
-the desired kernel version can be obtained from
-[dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
-
-**Important: Because Gentoo patches are applied during build process, the user
-has to check which base version of the kernel sources was used for patches. The
-*\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19) is a common base version
-for the Gentoo patches. The Gentoo patches don't strictly follow the kernel
-  version, which can lead to the situation, that Gentoo patches 3.18.8 result in
-  the linux kernel version 3.18.7.**
-
 ## Platform branch
-The *platform* branch has to contain all platform dependent informations and a
-build script. Those are a valid kernel configuration, the build script and any
-needed user patches.
+The *platform* branch has to contain all platform dependent informations, which
+are a valid kernel configuration and optional user patches. Furthermore it needs
+to contain the build script named ***build***. This is a good
+[template](usage/linux/template/platform_build) to start with.
 
-Following [template](template/platform-build) should be used as build script:
+With template, the only variables that have to be changed are *KERNEL\_VERSION*,
+which should be the name of the *kernel* branch and the *KERNEL\_DTB*, which
+should be the name of the desired device tree file.
 
+**Important: The sources for the device tree file have to be present in the
+kernel sources, or otherwise added by a user patch.**
+
+These are the lines that need to be modified to fit to the *kernel* branch.
 ```
 KERNEL_VERSION="<kernel_version>"
 ...
@@ -56,19 +72,8 @@ KERNEL_IMG="zImage"
 ...
 ```
 
-The build script clones the *kernel* branch and executes the prepare and build
-function. As long as the user sticks to the standard name schema, the user only
-needs to replace the *kernel_version*, which has to be the *kernel* branch name
-and the *platform_dtb*, which is the device tree blob that should be created
-for the platform during the build.
-
-**Important: The sources for the *platform\_dtb* have to be present in the kernel
-sources, or otherwise added by a user patch.**
-
 ### User patches
-Any files that need to be added to the kernel sources need to be in the root
-folder of the *platform* branch and follow the format and naming schema of a
-patch.
+Any files that need to be added to the kernel sources before the build process need to be present as a patch in the root folder of the *platform* branch.
 
 ### Environment variables
 With a local installed cross toolchain and an exising *kernel* branch in the
@@ -81,13 +86,13 @@ to work, following environment variables need to be set.
 * Path where **embEDUx** should store its files:
   EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
 
-## Example 
-In the following example we will add a new 3.18.7 kernel to the *linux*
-repository. Then we will add the raspberry-pi platform for the 3.18.7 kernel to
-the repository.
+## Usage example 
+In the following example a new 3.18.7 kernel and the raspberry-pi platform for
+that kernel will be added to the *linux* repository. 
 
-### Add new kernel branch
-Following steps are necessary to get *platform* build working.
+### Add new kernel
+The following steps are necessary before you can [add](#add-new-platform) a
+*plaform* for the desired kernel version to the repository.
 
 1. Add a *kernel* branch named *\<Major\>.\<Minor\>.\<Subminor\>* to the *linux*
    repository. It is necessary that you push this initial branch, so **embEDUx**
@@ -133,7 +138,7 @@ The build script in the corresponding *platform* branch can now use the just
 created *kernel* branch.
 
 ### Add new platform
-This step requires an existing *kernel* branch.
+This step requires an [existing](#add-new-kernel) *kernel* branch.
 
 1. Add a *platform* branch named
    *\<Major\>.\<Minor\>.\<Subminor\>\_\<platform\>* to the *linux* repository.
@@ -150,7 +155,7 @@ This step requires an existing *kernel* branch.
    ```
 
 1. Add the [template](template/platform_build) as ***build*** to the repository
-   and make it executable.
+   and make it executable. 
    ```
    $ ls -hl
    total 4.0K
@@ -205,5 +210,7 @@ This step requires an existing *kernel* branch.
    build process on the **buildbot** website.
    ![Buildbot done](img/buildbot_done.png)
 
-Congratulations, you just built your first kernel for your first platform.
+1. Congratulations, you just built your first kernel for your first platform.
+   You can use the [flashtool](usage/flashtool/README.md) to flash the kernel image
+   to your platform device.
 
