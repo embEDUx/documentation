@@ -1,4 +1,4 @@
-# Misc
+# Miscellaneous files
 
 The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
