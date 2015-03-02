@@ -49,8 +49,8 @@ and make it executable.
    ```
    $ ls -hl
    total 8.0K
-   -rwxr-xr-x 1 lars lars 939 Mar  2 19:35 build
-   -rw-r--r-- 1 lars lars   1 Mar  2 19:33 README.md
+   -rwxr-xr-x 1 user user 939 Mar  2 19:35 build
+   -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md
    ```
 
 1. Add at least these two files and modify them to fit to the platform.
@@ -61,6 +61,25 @@ and make it executable.
    $ mkdir src_root/etc/
    $ touch src_root/etc/inittab
    # Edit files
+   ```
+1. The raspberry-pi also needs some firmware blobs, which need to be placed in
+the boot partition, so adding these files to the *misc* repository is a great
+idea.
+   ```
+   $ ls -hl src_boot/
+   total 6.6M
+   -rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
+   -rw-r--r-- 1 user user  307 Mar  2 19:53 boot.scr.txt
+   -rw-r--r-- 1 user user   18 Mar  2 19:53 config.txt
+   -rw-r--r-- 1 user user  19K Mar  2 19:53 COPYING.linux
+   -rw-r--r-- 1 user user 2.3K Mar  2 19:53 fixup_cd.dat
+   -rw-r--r-- 1 user user 6.0K Mar  2 19:53 fixup.dat
+   -rw-r--r-- 1 user user 9.0K Mar  2 19:53 fixup_x.dat
+   -rw-r--r-- 1 user user 1.5K Mar  2 19:53 LICENCE.broadcom
+   -rw-r--r-- 1 user user 525K Mar  2 19:53 start_cd.elf
+   -rw-r--r-- 1 user user 2.5M Mar  2 19:53 start.elf
+   -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf
+
    ```
 
 1. Add all files to the repository, commit and push.
