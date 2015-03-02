@@ -24,6 +24,7 @@ Triggering builds works by
 * [Linux](linux)
 * [RootFS](roofs)
 * [Miscellaneous files](misc)
+* [Toolchains](toolchains)
 
 ## Monitoring instructions
 While your builds are running, you might want to 
