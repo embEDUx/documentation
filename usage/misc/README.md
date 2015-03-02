@@ -22,6 +22,8 @@ The branches have to be named for the platform they are meant for.
 instead.**
 
 ## Add new platform
+To add a new platform following steps are required. We will also give examples
+and add the mandatory files to the repository.
 
 1. Clone the *misc* repository with the URL that was provided by your system
    administrator.
