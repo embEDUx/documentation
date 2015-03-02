@@ -27,11 +27,11 @@ for dirpath, dirnames, filenames in os.walk(basepath):
             reldirpath = dirpath.replace(basepath+'/','')
             if reldirpath == basepath:
                 filename = f
-                title1 = os.path.basename(f).replace('.md','').replace('-', ' ').capitalize()
+                title1 = os.path.basename(f).replace('.md','').replace('-', ' ').title()
             else:
                 filename = u'{}/{}'.format(reldirpath, f)
-                title1 = reldirpath.capitalize().capitalize()
-                title2 = os.path.basename(f).replace('.md','').replace('-', ' ').capitalize()
+                title1 = reldirpath.title().title()
+                title2 = os.path.basename(f).replace('.md','').replace('-', ' ').title()
             entry = [filename, title1] if not title2 else [filename, title1, title2] 
             pages.append(entry)
 
