@@ -7,11 +7,11 @@ present in the root or boot partition, that don't belong in the *rootfs*,
 Two mandatory files are:
 * boot.scr: This boot script is required for **U-Boot** and needs to go on the
   boot partition.
-* inittab: This file is required within the root partition and needs to go on the root
-  partition.
+* inittab: This file is required by the operating system and needs to go on the
+  root partition.
 
 The files have to be stored in the folder ***src_boot*** and ***src_root*** and
-within their folder structure, so that the [build](usage/misc/files/build)
+**within their folder structure**, so that the [build](usage/misc/files/build)
 script can pack them in the required archives.
 
 ## Name schema
