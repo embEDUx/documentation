@@ -15,7 +15,7 @@ the kernel sources, the **Gentoo** patches and the build script to patch and bui
 the kernel. Multiple platforms use the same *kernel* branch and therefore the
 same kernel sources for the same kernel version. 
 
-This [template](usage/linux/template/kernel-build) should be used as a build script. The
+This [template](usage/linux/template/kernel_build) should be used as a build script. The
 user only has to change the variables  *KERNEL_URL*, *KERNEL_FILE* and
 *PATCH_VERSION* to fit to the desired kernel version. The *KERNEL_URL* and the
 *KERNEL_FILE* can be obtained from [www.kernel.org](https://www.kernel.org/).
