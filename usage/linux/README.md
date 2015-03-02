@@ -22,12 +22,15 @@ user only has to change the variables  *KERNEL_URL*, *KERNEL_FILE* and
 The *PATCH_VERSION* for the desired kernel version can be obtained from
 [dev.gentoo.org](https://dev.gentoo.org/~mpagano/genpatches/tarballs/).
 
-**Important: Because Gentoo patches are applied during build process, the user
-has to make sure that the kernel version and the Gentoo patch version match to
-each other. The *\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19) is a common
-base version for the Gentoo patches. The Gentoo patches don't strictly follow
-the kernel version, which can lead to the situation, that Gentoo patches 3.18.8
-result in the linux kernel version 3.18.7.**
+Because Gentoo patches are applied during build process, the user has to make
+sure that the kernel version and the Gentoo patch version match to each other.
+The *\<Major\>.\<Minor\>* version (eg. 3.17, 3.18, 3.19) is a common base
+version for the Gentoo patches. The version of the  Gentoo patches doesn't
+strictly follow the kernel version, which can lead to the situation, that Gentoo
+patches 3.18-8 result in the linux kernel version 3.18.7.
+
+**Important: Gentoo patch version does NOT need to reflect resulting linux
+kernel version**
 
 These are the important lines, that need to be modified for each kernel version.
 ```bash
