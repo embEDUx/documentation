@@ -160,7 +160,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
    configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG*.
    ```
    UBOOT_VERSION="2015.01"
-   UBOOT_CONFIG="rpi_b_config"
+   UBOOT_CONFIG="rpi_config"
    ...
    FIRMWARE_IMG="u-boot.bin"
    ```
