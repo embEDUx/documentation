@@ -232,7 +232,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
    ![Buildbot done](img/buildbot_done.png)
 
 1. Congratulations, you just built your first kernel for your first platform.
-   You can either use the [flashtool](flashtool/README.md) to flash the
+   You can either use the [flashtool](flashtool.md) to flash the
    kernel image to your platform device or simple do the flash process manually
    with the archives from the **Buildbot** website.
 

@@ -91,4 +91,4 @@ idea.
    $ git push
    ```
 
-1. The **Buildbot** will now execute the build script and provide the output on the website. You can flash the output with the [flashtool](flashtool/README.md).
+1. The **Buildbot** will now execute the build script and provide the output on the website. You can flash the output with the [flashtool](flashtool.md).

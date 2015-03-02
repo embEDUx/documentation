@@ -22,7 +22,7 @@ instead!**
 The uboot branch will contain the platform independent files, which in this case
 are the uboot sources and the build script to build the uboot image.
 
-Use this [template](usage/uboot/template/uboot_build) to add a new **U-Boot**
+Use this [template](uboot/template/uboot_build) to add a new **U-Boot**
 version to the *uboot* repository. Modify *UBOOT\_FILE* to the desired uboot
 version archive (eg. u-boot-2015.01-rc1.tar.bz2). The archive name can be
 obtained from [ftp.denx.de](http://ftp.denx.de/pub/u-boot/).
@@ -37,7 +37,7 @@ UBOOT_FILE="<uboot_filename>"
 ## Platform branch 
 The *platform* branch only contains the build script ***build***. This build
 script needs to be modified to build the desired uboot version. Use this
-[template](usage/uboot/template/platform_build) to add a new platform to the
+[template](uboot/template/platform_build) to add a new platform to the
 *uboot* repository.
 
 Only *UBOOT\_VERSION*, *UBOOT\_CONFIG* and eventually *FIRMWARE\_IMG* need to be
@@ -96,7 +96,7 @@ The following steps are necessary before you can [add](#add-new-platform) a
    $ git push --set-upstream origin 2015.01
    ```
 
-1. Add the [template](usage/uboot/template/uboot_build) as ***build*** to the
+1. Add the [template](uboot/template/uboot_build) as ***build*** to the
    repository and make it executable.
    ```
    $ ls -hl
@@ -146,7 +146,7 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
    $ git push --set-upstream origin 2015.01_raspberry-pi
    ```
 
-1. Add the [template](usage/uboot/template/platform_build) as ***build*** to the
+1. Add the [template](uboot/template/platform_build) as ***build*** to the
    repository and make it executable. 
    ```
    $ ls -hl
@@ -179,6 +179,6 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
    ![Buildbot done](img/buildbot_done.png)
 
 1. Congratulations, you just built your first **U-Boot** for your first
-   platform.  You can use the [flashtool](usage/flashtool/README.md) to flash
+   platform.  You can use the [flashtool](flashtool.md) to flash
    the **U-Boot** image to your platform device.
 

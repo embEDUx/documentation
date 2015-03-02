@@ -9,9 +9,9 @@
 The RootFS specification is done in the ***configruation.yml*** in the root of
 the *rootfs*-Repository. The file is written in YAML-Syntax and the following is
 a fully working example, taken out of [the file from example]
-(usage/rootfs/examples/systemd/configuration.md)
+(rootfs/examples/systemd/configuration.md)
 
-The *global*-Section configures [use-Flags](use-flags.md) and keywords
+The *global*-Section configures [use-Flags](rootfs/use-flags.md) and keywords
 
 ### Example
 ```yaml
@@ -55,4 +55,4 @@ post_install_commands:
 ### Pre/Post-Install overlays
 
 ## Advanced use cases
-* [Running containers based on a generated RootFS](run-as-container.md)
+* [Running containers based on a generated RootFS](rootfs/run-as-container.md)
