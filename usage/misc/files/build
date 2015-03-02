@@ -1,0 +1,37 @@
+#! /bin/bash -e
+
+#####################
+# Configuration     # 							     
+#####################
+
+### Sources
+BOOT_DIR="src_boot"
+ROOT_DIR="src_root"
+BOOT_SCR="boot.scr"
+
+#####################
+# Script            #
+#####################
+
+### Make boot.scr
+mkimage -A arm -O linux -T script -C none -n ${BOOT_SCR} -d ${BOOT_DIR}/${BOOT_SCR}.txt \
+	${BOOT_DIR}/${BOOT_SCR}
+
+### Prepare output
+OUTPUT_PREFIX="$(git rev-parse --abbrev-ref HEAD)_$(date '+%Y%m%d%H%M%S')_$(git rev-parse --short HEAD)"
+OUTPUT_DIR="output"
+
+mkdir -p ${OUTPUT_DIR}
+
+if [ -e ${BOOT_DIR} ]
+  then 
+    echo "Packing files for boot partition in ${OUTPUT_BOOT}"
+    tar --exclude=${BOOT_SCR}.txt -czf ${OUTPUT_DIR}/${OUTPUT_PREFIX}_misc_boot.tar.gz -C ${BOOT_DIR} .
+fi
+
+if [ -e ${ROOT_DIR} ]
+  then
+    echo "Packing files for root partition in ${OUTPUT_ROOT}"
+    tar --exclude=${BOOT_SCR}.txt -czf ${OUTPUT_DIR}/${OUTPUT_PREFIX}_misc_root.tar.gz -C ${ROOT_DIR} .
+fi
+
