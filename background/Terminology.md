@@ -1,5 +1,3 @@
-*(stjunker)*
-
 ### Common
 
 The introduction and the following sections contains terms that will be

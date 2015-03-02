@@ -1,6 +1,4 @@
 # Introduction to embEDUx
-*(stjunker)*
-
 The name *embEDUx* includes hints for the words **embedded linux** and
 **education**. The idea is to deliver an environment that eases the effort of
 creating various embedded linux distributions depending on the educational

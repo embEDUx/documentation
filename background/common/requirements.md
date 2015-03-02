@@ -1,5 +1,3 @@
-*(stjunker)*
-
 The generic and automated approach that needs to be found
 by this project must meet the sum of the requirements for
 every single lab-course. The determination for this set of
@@ -15,7 +13,7 @@ the feature road-maps for the chosen technologies and by
 respecting changes that will happen in the near future.
 
 
-## Criteria *(stjunker, mahieke)*
+## Criteria
 
 Before any requirements can be acquired it is necessary to
 determine which criteria matter. This section eventually
