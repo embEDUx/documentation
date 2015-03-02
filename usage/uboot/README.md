@@ -124,7 +124,7 @@ The build script in the corresponding *platform* branch can now use the just
 created *uboot* branch.
 
 ### Add new platform
-This step requires an [existing](#add-new-kernel) *kernel* branch.
+This step requires an [existing](#add-new-kernel) *uboot* branch.
 
 1. If not already done, clone the *uboot* repository with the URL provided by
    your system administrator.
