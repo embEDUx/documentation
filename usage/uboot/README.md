@@ -1,4 +1,4 @@
-# U-boot
+# U-Boot
 
 1. [Naming schema](#naming-schema)
 1. [Kernel branch](#kernel-branch)
@@ -9,10 +9,10 @@ The *uboot* repository contains the scripts to build a **U-Boot** image for your
 desired platform.
 
 ## Naming schema
-To create **u-boot** **embEDUx** needs at least one *uboot* branch and a
+To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 *platform* branch. The branches need to follow a certain name schema:
 
-* Uboot branch: \<uboot\_version> (eg. 2015.01-rc1)
+* U-Boot branch: \<uboot\_version> (eg. 2015.01-rc1)
 * Platform branch: \<uboot\_version>\_\<platform\_name\> (eg. 2015.01-rc1_raspberry-pi)
 
 **Importan: The platform\_name must not contain any underscores, use dashes
