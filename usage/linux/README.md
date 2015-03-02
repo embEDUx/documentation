@@ -1,6 +1,6 @@
 # Linux
 To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
-*platform* branch. The branches need to have the following name schema:
+*platform* branch. The branches need to follow a certain name schema:
 
 ## Naming schema
 * Kernel branch: \<kernel\_version> (eg. 3.17.2)
