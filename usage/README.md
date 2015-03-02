@@ -36,3 +36,12 @@ This means, single components can be built and deployed if there exists
 previous successful builds for the target platform. After the required build
 have successfully completed you can finally 
 [deploy to hardware using the flashtool](flashtool)
+
+### Change the root password
+
+```bash
+#!/bin/bash -ex
+CHROOT_PATH=$(pwd)
+sed -i '1d' ${CHROOT_PATH}/etc/shadow
+echo root:$(python -c 'import crypt; print crypt.crypt("toor","$6$somesalt$")'):10770:0::::: >> ${CHROOT_PATH}/etc/shadow
+```

@@ -1,18 +1,3 @@
-## Requirements
-### rootfs-Repository
-
-
-## Branch name scheme
-
-
-## RootFS specification
-The RootFS specification is done in the ***configruation.yml*** in the root of
-the *rootfs*-Repository. The file is written in YAML-Syntax and the following is
-a fully working example, taken out of [the file from example]
-(usage/rootfs/examples/systemd/configuration.md)
-
-### Example
-```yaml
 ---
 global:
     use:
@@ -31,26 +16,27 @@ packages:
             +: "~amd64 ~x86"
         use: 
             +: "importd gcrypt curl lz4 lzma"
+    app-portage/layman: {}
+    app-portage/eix: {}
     app-editors/vim: {}
+    app-portage/genlop: {}
+    net-misc/ntp: {}
+    sys-apps/iproute2: {}
+    net-analyzer/netcat: {}
+    net-wireless/iw: {}
+    sys-fs/btrfs-progs: {}
 
 pre_install_commands:
     - "emerge-webrsync"
     - "chown -R portage:portage /usr/portage"
+    - "emerge -1uvkb perl"
+    - "perl-cleaner --reallyall -- -kb"
 
 post_install_commands:
     - "echo Europe/Berlin > /etc/timezone"
     - "emerge --config timezone-data"
     - "mv /sbin/init /sbin/init-openrc"
     - "ln -sf /usr/lib/systemd/systemd /sbin/init"
-```
+    - "tar -C /usr/ -cjvf /usr/portage.tbz2 portage"
+    - "rm -Rf /usr/portage/*"
 
-
-
-### Global flags
-### Packages and flags
-### Available Packages
-### Pre/Post-Install commands
-### Pre/Post-Install overlays
-
-## Advanced use cases
-* [Running containers based on a generated RootFS](run-as-container.md)
