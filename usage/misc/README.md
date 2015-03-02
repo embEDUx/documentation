@@ -7,12 +7,12 @@ present in the root or boot partition, that don't belong in the *rootfs*,
 Two mandatory files are:
 * boot.scr: This boot script is required for **U-Boot** and needs to go on the
   boot partition.
-* inittab: This file is required for the TTYs and needs to go on the root
+* inittab: This file is required within the root partition and needs to go on the root
   partition.
 
-The files have to be stored in the folder ***src_boot*** and ***src_root***, so
-that the [build](usage/misc/files/build) script can pack them in the required
-archives.
+The files have to be stored in the folder ***src_boot*** and ***src_root*** and
+within their folder structure, so that the [build](usage/misc/files/build)
+script can pack them in the required archives.
 
 ## Name schema
 The branches have to be named for the platform they are meant for.
@@ -56,7 +56,8 @@ and make it executable.
    $ mkdir src_boot
    $ mkdir src_root
    $ touch src_boot/boot.scr.txt
-   $ touch src_root/inittab
+   $ mkdir src_root/etc/
+   $ touch src_root/etc/inittab
    # Edit files
    ```
 
