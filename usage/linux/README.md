@@ -1,6 +1,4 @@
 # Linux
-To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
-*platform* branch. The branches need to follow a certain name schema:
 
 1. [Naming schema](#naming-schema)
 1. [Kernel branch](#kernel-branch)
@@ -8,6 +6,9 @@ To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
 1. [Example](#example)
 
 ## Naming schema
+To create a Linux kernel **embEDUx** needs at least a *kernel* branch and a
+*platform* branch. The branches need to follow a certain name schema:
+
 * Kernel branch: \<kernel\_version> (eg. 3.17.2)
 * Platform branch: \<kernel\_version>\_\<platform\_name\> (eg. 3.17.2_raspberry-pi)
 
