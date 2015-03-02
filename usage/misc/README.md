@@ -62,6 +62,7 @@ and make it executable.
    $ touch src_root/etc/inittab
    # Edit files
    ```
+
 1. The raspberry-pi also needs some firmware blobs, which need to be placed in
 the boot partition, so adding these files to the *misc* repository is a great
 idea.
@@ -79,7 +80,6 @@ idea.
    -rw-r--r-- 1 user user 525K Mar  2 19:53 start_cd.elf
    -rw-r--r-- 1 user user 2.5M Mar  2 19:53 start.elf
    -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf
-
    ```
 
 1. Add all files to the repository, commit and push.
