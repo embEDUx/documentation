@@ -18,7 +18,7 @@ five outputs that **embEDUx** can build. Those are:
 
 ### 1
 For each version of **U-Boot** and **Linux** there needs to be one
-*(kernel/uboot)* branch in the *linux/uboot* repository.
+*kernelÜ*/*uboot* branch in the *linux*/*uboot* repository.
 
 ### 2
 For each platform there needs to be one *platform* branch in the *linux*,
