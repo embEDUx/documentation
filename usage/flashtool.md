@@ -8,7 +8,7 @@
 
 ## Getting started
 
-After [installing](setup/flashtool/README.md) the **flashtool** on a linux system it
+After [installing](../setup/flashtool/README.md) the **flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
 > `flashtool init`

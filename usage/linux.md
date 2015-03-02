@@ -23,7 +23,7 @@ the kernel sources, the **Gentoo** patches and the build script to patch and
 build the kernel. Multiple platforms use for the same kernel version the same
 *kernel* branch and therefore the same kernel sources.
 
-Use this [template](usage/linux/template/kernel_build) when adding a new kernel
+Use this [template](linux/template/kernel_build) when adding a new kernel
 version to the *linux* repository. Only change the variables  *KERNEL_URL*,
 *KERNEL_FILE* and *PATCH_VERSION* to fit to the desired kernel version. The
 *KERNEL_URL* and the *KERNEL_FILE* can be obtained from
@@ -56,7 +56,7 @@ PATCH_VERSION="<Major>.<Minor>-<Subminor>"
 The *platform* branch has to contain all platform dependent informations, which
 are a valid kernel configuration and optional user patches. Furthermore it needs
 to contain the build script named ***build***. Use this
-[template](usage/linux/template/platform_build) to add a new platform, or a new
+[template](linux/template/platform_build) to add a new platform, or a new
 kernel version for the platform to the *linux* repository.
 
 With this template, the only variables that have to be changed are
@@ -232,7 +232,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
    ![Buildbot done](img/buildbot_done.png)
 
 1. Congratulations, you just built your first kernel for your first platform.
-   You can either use the [flashtool](usage/flashtool/README.md) to flash the
+   You can either use the [flashtool](flashtool/README.md) to flash the
    kernel image to your platform device or simple do the flash process manually
    with the archives from the **Buildbot** website.
 

@@ -11,7 +11,7 @@ Two mandatory files are:
   root partition.
 
 The files have to be stored in the folder ***src_boot*** and ***src_root*** and
-**within their folder structure**, so that the [build](usage/misc/files/build)
+**within their folder structure**, so that the [build](misc/files/build)
 script can pack them in the required archives.
 
 ## Name schema
@@ -44,7 +44,7 @@ files at the end of this example.
    $ git push --set-upstream origin raspberry-pi 
    ```
 
-1. Add the [build](usage/misc/files/build) script to your *platform* repository
+1. Add the [build](misc/files/build) script to your *platform* repository
 and make it executable.
    ```
    $ ls -hl
@@ -91,4 +91,4 @@ idea.
    $ git push
    ```
 
-1. The **Buildbot** will now execute the build script and provide the output on the website. You can flash the output with the [flashtool](usage/flashtool/README.md).
+1. The **Buildbot** will now execute the build script and provide the output on the website. You can flash the output with the [flashtool](flashtool/README.md).

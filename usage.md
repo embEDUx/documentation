@@ -14,8 +14,8 @@ At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](setup/user-documentation.md#Repositories). See the ([example setup @ HTWG](setup/examples/user-documentation.md))
 
 
-* [Download repositories](common/checkout-repositories.md)
-* [Determine repositories](common/checkout-repositories.md)
+* [Download repositories](usage/common/checkout-repositories.md)
+* [Determine repositories](usage/common/checkout-repositories.md)
 
 ## Build instructions
 Triggering builds works by 
