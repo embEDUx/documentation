@@ -15,7 +15,7 @@ the kernel sources, the **Gentoo** patches and the build script to patch and bui
 the kernel. Multiple platforms use the same *kernel* branch and therefore the
 same kernel sources for the same kernel version. 
 
-This [usage/linux/template](template/kernel-build) should be used as a build script. The
+This [template](usage/linux/template/kernel-build) should be used as a build script. The
 user only has to change the variables  *KERNEL_URL*, *KERNEL_FILE* and
 *PATCH_VERSION* to fit to the desired kernel version. The *KERNEL_URL* and the
 *KERNEL_FILE* can be obtained from [www.kernel.org](https://www.kernel.org/).
@@ -41,7 +41,10 @@ PATCH_VERSION="<Major>.<Minor>-<Subminor>"
 ```
 
 ## Platform branch
-The *platform* branch has to contain all platform dependent informations, which are a valid kernel configuration and optional user patches. Furthermore it needs to contain the build script named ***build***. This is a good [usage/linux/template](template/platform-build) to start with.
+The *platform* branch has to contain all platform dependent informations, which
+are a valid kernel configuration and optional user patches. Furthermore it needs
+to contain the build script named ***build***. This is a good
+[template](usage/linux/template/platform-build) to start with.
 
 With template, the only variables that have to be changed are *KERNEL\_VERSION*,
 which should be the name of the *kernel* branch and the *KERNEL\_DTB*, which
