@@ -20,16 +20,19 @@ for dirpath, dirnames, filenames in os.walk(basepath):
         dirnames.remove(d)
     for f in filenames:
         if '.md' in f:
-            title = None
+            
+            title1 = None
+            title2 = None
             filename = None
             reldirpath = dirpath.replace(basepath+'/','')
             if reldirpath == basepath:
                 filename = f
-                title = projecttitle
+                title1 = os.path.basename(f).replace('.md','').replace('-', ' ').capitalize()
             else:
                 filename = u'{}/{}'.format(reldirpath, f)
-                title = reldirpath
-            entry = [filename, title]
+                title1 = reldirpath.capitalize().capitalize()
+                title2 = os.path.basename(f).replace('.md','').replace('-', ' ').capitalize()
+            entry = [filename, title1] if not title2 else [filename, title1, title2] 
             pages.append(entry)
 
 with open('mkdocs.yml', 'w') as target, \
