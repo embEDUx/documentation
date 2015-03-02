@@ -4,8 +4,15 @@ The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
 *linux* or *uboot* repository.
 
-Each branch contains the files needed for the boot and root partition. Those can
-be for example the ***boot.scr*** for **U-Boot**, or the ***inittab*** for the rootfs. To pack these files in a smart way, this branch also has to contain this [build](usage/misc/files/build) script.
+Two mandatory files are:
+* boot.scr: This boot script is required for **U-Boot** and needs to go on the
+  boot partition.
+* inittab: This file is required for the TTYs and needs to go on the root
+  partition.
+
+The files have to be stored in the folder ***src_boot*** and ***src_root***, so
+that the [build](usage/misc/files/build) script can pack them in the required
+archives.
 
 ## Name schema
 The branches have to be named for the platform they are meant for.
