@@ -113,7 +113,7 @@ The following steps are necessary before you can [add](#add-new-platform) a
    $ git checkout master
    $ git branch 3.18.7
    $ git checkout 3.18.7
-   $ git touch README.md
+   $ touch README.md
    $ git add README.md
    $ git commit -m "inital commit"
    $ git push --set-upstream origin 3.18.7
@@ -169,7 +169,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
    $ git checkout master
    $ git branch 3.18.7_raspberry-pi
    $ git checkout 3.18.7_raspberry-pi
-   $ git touch README.md
+   $ touch README.md
    $ git add README.md
    $ git commit -m "inital commit"
    $ git push --set-upstream origin 3.18.7_raspberry-pi
