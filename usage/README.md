@@ -6,12 +6,12 @@ Before you can start heading over to the components sections, go through the
 list of requirements and fulfill them if needed.
 
 ### Successful Setup
-A successful [Setup of the buildserver](../setup) is a strong requirement, since
+A successful [Setup of the buildserver](setup) is a strong requirement, since
 it includes setting up the repositories that are used by users to supply the
 build instructions to the *buildserver*.
 
 At the end of the setup, the Administrator is instructed to create the
-[User-Documentation](setup/user-documentation.md/#Repositories). See the ([example setup @ HTWG](setup/examples/user-documentation.md))
+[User-Documentation](setup/user-documentation.md#Repositories). See the ([example setup @ HTWG](setup/examples/user-documentation.md))
 
 
 * [Download repositories](common/checkout-repositories.md)
