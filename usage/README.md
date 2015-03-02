@@ -2,6 +2,12 @@ This document will give you pointers at anything you need to know for building
 and deploying the various components for specific platform.
 
 ## Requirements
+Before you can start heading over to the components sections, go through the
+list of requirements and fulfill them if needed.
+
+### Successful Setup
+
+
 * [Download repositories](common/checkout-repositories.md)
 * [Determine repositories](common/checkout-repositories.md)
 
