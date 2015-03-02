@@ -143,7 +143,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
    ```
 
 1. Add the [template](template/platform_build) as ***build*** to the repository
-   and make it executable.
+   and make it executable. 
    ```
    $ ls -hl
    total 4.0K
