@@ -29,7 +29,7 @@ Triggering builds works by
 ## Monitoring instructions
 While your builds are running, you might want to 
 [monitor the build system on the internal
-webserver](common/build-monitoring.md).
+webserver](usage/common/build-monitoring.md).
 
 ## Hardware Deployment
 To deploy a complete system, successful of all components need to be available.
