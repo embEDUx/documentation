@@ -9,7 +9,22 @@ container management systems are installed and ready for usage.
 The examples will use a RootFS called *amd64_factory_systemd*.
 
 ## Docker
+
+### Download/Import
+```
+$ docker import http://moe.in.htwg-konstanz.de:8010/rootfs/factory/amd64_factory_20150122184525_294b218_rootfs.tbz2 embedux/amd64_factory:20150122184525_294b218
+```
+
+### Verify
+```
+ $ docker images
+REPOSITORY                     TAG                      IMAGE ID            CREATED             VIRTUAL SIZE
+embedux/amd64_factory          20150122184525_294b218   8d02c7806b47        5 minutes ago       1.156 GB
+```
+
+### Run interactive container
 TODO
+
 
 ## systemd
 Starting with version 219 of *systemd*, the utility `machinectl` provides the

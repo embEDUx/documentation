@@ -2,12 +2,11 @@ This document will give you pointers at anything you need to know for building
 and deploying the various components for specific platform.
 
 ## Requirements
-* Git repositories for 
+* [Download repositories](common/checkout-repositories.md)
+* [Determine repositories](common/checkout-repositories.md)
 
 ## Build instructions
-To deploy a complete system, successful of all components need to be available.
-This means, single components can be built and deployed if there exists
-previous successful builds for the target platform.
+Triggering builds works by 
 
 * [U-Boot](uboot)
 * [Linux](linux)
