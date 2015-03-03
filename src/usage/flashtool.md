@@ -99,6 +99,7 @@ important, that the hardware name is also registered on the buildserver. The
 next example shows how to use this naming scheme for a Raspberry Pi.
 
 > raspberry-pi.yml
+
 > raspberry-pi\_media_center.yml
 
 The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
