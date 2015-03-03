@@ -1,5 +1,5 @@
-# Introduction to embEDUx
-The name *embEDUx* includes hints for the words **embedded linux** and
+# The **embEDUx** Project
+The name *embEDUx* includes hints for the words **embedded Linux** and
 **education**. The idea is to deliver an environment that eases the effort of
 creating various embedded linux distributions depending on the educational
 purpose that they are specifically aiming for.
@@ -35,15 +35,15 @@ according to user-provided specifications:
 
 # Usage Information
 If you have access to a setup instance of the embEDUx build system and want to 
-start using it please goto [usage](home/usage.md). You will learn how to build the
+start using it please goto [usage](usage/home.md). You will learn how to build the
 components offered by the system.
 
 
 # Setup Information
 If you want to run the embEDUx build system on your own machine(s), please
-consult [setup](home/setup.md)
+consult [setup](setup/home.md)
 
 
 # Background Information
 For information on the development and the made decisions, please consult 
-[background](home/background.md)
+[background](background/home.md)

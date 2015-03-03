@@ -20,7 +20,7 @@ for dirpath, dirnames, filenames in os.walk(basepath):
     for d in to_delete:
         dirnames.remove(d)
     for f in filenames:
-        if '.md' in f:
+        if f.endswith('.md'):
             title1 = None
             title2 = None
             filename = None
@@ -33,8 +33,9 @@ for dirpath, dirnames, filenames in os.walk(basepath):
                 title1 = reldirpath.title().title()
                 title2 = os.path.basename(f).replace('.md','').replace('-', ' ').title()
             entry = [filename, title1, title2] 
-            if entry[0].startswith('home.md'):
-                entry[2] = 'Introduction'
+            if title2 == None:
+                del entry[2]
+            if entry[0] == ('home.md'):
                 pages.insert(0, entry)
             elif entry[0].startswith('home'):
                 pages.insert(1, entry)
