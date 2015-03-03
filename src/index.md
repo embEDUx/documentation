@@ -22,7 +22,7 @@ Before you continue reading the different documentation snippets, please read
 through [Terminology](background/common/terminology.md) for terms used within the documentation.
 
 ## Architectural Overview
-![](background/common/img/architectural_overview.png)
+[![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png))
 
 
 ## Components
