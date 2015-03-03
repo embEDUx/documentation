@@ -1,10 +1,11 @@
 
 
 ## Prerequisites
-All of [the common prerequisites apply](usage.md#Prerequisites)
+Please review [the common usage prerequisites](usage.md#Prerequisites), which
+are needed for the usage of every component.
 
 ### Requirements
-
+#### RootFS Git-Repository
 
 ### Suggestions
 

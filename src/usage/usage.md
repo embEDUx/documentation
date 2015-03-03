@@ -4,21 +4,30 @@ and deploying the various components for specific platform.
 
 ## Prerequisites
 ### Requirements
+
+#### Local Software
+* Git
+
 #### Successful Setup
-A successful [Setup of the buildserver](../setup/setup.md) is a definite
+A successful [setup of the buildserver](../setup/setup.md) is a definite
 requirement, since it includes setting up the repositories that are used by
 users to supply the build instructions to the *buildserver*.
 
+#### User Documentation
 At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](../setup/user-documentation.md#Repositories).
 
-If you want to see an example, or you're a user at the HTWG, follow 
-[User Documentation at the HTWG](../setup/examples/user-documentation_htwg.md)
+#### [User Documentation at the HTWG](../setup/examples/user-documentation_htwg.md)
+If you want to see an example, or you're a user at the HTWG, follow the link in
+the headline to obtain the information you need for the component you want to build.
 
-* [Determine repositories](common/checkout-repositories.md)
-* [Download repositories](common/checkout-repositories.md)
+##### Git-Repositories
+You need to retrieve the Git-repository for every component you want to build.
+
 
 ### Suggestions
+* Git skills. You will deal with and handful of repositories and branching will
+  be an important part of the work flow
 
 
 
