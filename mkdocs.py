@@ -25,21 +25,20 @@ key_order = {
         ],
 }
 
-flatten = lambda *n: (e for a in n
-            for e in (flatten(*a) if isinstance(a, (tuple, list)) else (a,)))
 
 for dirpath, dirnames, filenames in os.walk(basepath):
     to_delete = []
     for d in dirnames:
         if any([
-            'site' in d,
-            '/.' in d,
-            '/img' in d,
-            d.startswith('.'),
+                'site' in d,
+                '/.' in d,
+                '/img' in d,
+                d.startswith('.'),
             ]):
             to_delete.append(d)
     for d in to_delete:
         dirnames.remove(d)
+
     for f in filenames:
         if f.endswith('.md'):
             title1 = None

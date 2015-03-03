@@ -1,4 +1,6 @@
-### Common
+# Terminology
+
+## Common
 
 The introduction and the following sections contains terms that will be
 explained or respectively defined in this chapter. For the scope of the embEDUx
@@ -6,45 +8,45 @@ project, these terms will be assumed as known by any reader or other participant
 in the project. As a reminder this section includes explanations to important
 terms and techniques used by Linux which are essential for this project.
 
-#### Linux
+### Linux
 Linux is the operating system of choice for the embEDUx project. In order to
 work on or with embEDUx a fair knowledge about Linux is mandatory and assumed to
 be present on users and developers involved in the project.
 
-#### (Linux) Kernel
+### (Linux) Kernel
 Kernel refers to the linux kernel which is the core application providing linux'
 main functionality. It is responsible for initializing and driving the system's
 hardware resources. 
 
-#### Kernel-Space
+### Kernel-Space
 Kernel-Space refers to software that is executed by the linux kernel inside it's
 own context This context is defined by memory space and provided permissions.
 Kernel-Space software is either compiled into the kernel and shipped with it, or
 it can be loaded at runtime from a kernel module file.
 
-#### User-Space
+### User-Space
 The user-space context is defined by a memory space and provided permissions
 strictly separated by the kernel-space. An application running in the a
 user-space context is not able to access the kernel-space, or the user-space
 context of other applications
 
-#### Bootloader
+### Bootloader
 TODO: 
 
-#### Root-Filesystem *(RootFS*)
+### Root-Filesystem *(RootFS*)
 The RootFS is a collection of software that is executable by a system running
 the linux kernel. It can stored on many different types of storage, from which
 it can be loaded by the linux kernel. The location and content of a RootFS is
 heavily dependent on the purpose of the system it is designed for.
 
-#### Platform
+### Platform
 The platform specification refers to a system's hardware configuration. It is
 defined by the system's CPU architecture and peripherals that are connected to
 the CPU. The term platform is often interchanged with the term board, but it
 should be kept in mind that a system can consist of multiple boards that are
 stacked upon each other.
 
-#### Architecture
+### Architecture
 Architecture refers to a CPU's type of architecture. The CPU architecture
 defines a set of CPU instructions that are known to the CPU. In the process of
 software development and compilation, the supported CPU instructions are a very
@@ -54,12 +56,12 @@ architecture type, because the CPU will not be able to run the instructions
 given by application's binary code. The linux kernel supports a wide range of
 architectures and can therefore be run on many different systems.
 
-#### Sub-Architecture
+### Sub-Architecture
 Architectures can be further specialized as sub-architectures. Sub-architectures
 are not necessarily compatible to other sub-architectures within their common
 architectures.
 
-#### (Cross-)Toolchain
+### (Cross-)Toolchain
 A toolchain is a set of applications that are able to compile source code to
 executable binary files. The toolchain produces binary files executable by a
 specific architecture type, by translating the source code to CPU instructions
@@ -68,7 +70,7 @@ other application, compiled for a specific architecture type. If this
 architecture differs from the toolchain's target architecture it is considered a
 cross-toolchain and the process is called cross-compilation.
 
-#### ELF
+### ELF
 ELF (Executable and Linkable Format) is a format for binary application files.
 If configured to, the linux kernel is able to execute these kind of files. It is
 a very common file format for applications compiled for linux but is also found
@@ -82,12 +84,6 @@ this are situations where the system is running on a sub-architecture that is
 not compatible with the sub-architecture that a binary has been compiled for. 
 Unfortunately this is very likely to happen nowadays when dealing with different
 sub-architectures of the ARM architecture.
-
-### embEDUx
-
-#### Buildserver
-The buildserver is defined to the logical unit that takes and executes build
-requests provided by the user. It does not imply implementation details.
 
 # Links
 
