@@ -8,7 +8,8 @@ Please make sure that you and your systems fulfill the given requirements before
 proceeding to the actual build instructions.
 
 #### Local Software
-* Git is needed to download and submit build specifications
+* Git is needed to download and submit build specifications.
+* $EDITOR - to specify the builds you will need your favorite text editor.
 
 #### Successful Setup
 A successful [setup of the buildserver](../setup/setup.md) is a definite
@@ -39,10 +40,6 @@ repository.
 
 
 ## Build Instructions
-
-The work flow is basically all the same for every component. The only exception for
-this is the RootFS, more information will follow in the detailed section.
-
 1. Open the *User Documentation*  ([example HTWG-userdocs](../setup/examples/user-documentation-HTWG.md))
 
 1. Acquire the repository URL for the component(s)
@@ -52,13 +49,22 @@ this is the RootFS, more information will follow in the detailed section.
 1. Run `git checkout` the branch of interest. This depends on the *component* and
    the *Platform* you want to build for
 
-1. **Make changes. It is necessary to read the instructions for every
-   component you want to build**
+1. **Specify your build.** Since the build specifications are very
+   different from each other, it's necessary to separate the instructions into
+   distinct sections. Please follow the instructions given in the detailed
+   sections:
     * [U-Boot](../usage/uboot.md)
     * [Linux](../usage/linux.md)
     * [RootFS](../usage/rootfs.md)
     * [Miscellaneous files](../usage/misc.md)
     * [Toolchains](../usage/toolchains.md)
+
+       The work flow is basically the same for every component. The biggest
+       variation happens when building for this is the RootFS, which you will
+       not be able to test before you submit your specification to the
+       buildserver.  More information will follow in the detailed section for
+       building the RootFS.
+
 
 1. Run `git add` and `git commit` according to your changes. Please use **sane commit messages**
    to improve collaboration. The buildserver will pick up your changes, schedule
