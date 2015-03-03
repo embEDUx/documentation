@@ -3,7 +3,7 @@ This guide will help you through the steps to generate a **U-Boot** image for
 your desired platform.
 
 ## Prerequisites
-All of the [...]() apply also to this guide.
+All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * Git Repository *uboot*

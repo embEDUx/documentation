@@ -1,4 +1,11 @@
 # Miscellaneous files
+
+## Prerequisites
+All of the [...]() apply also to this guide.
+
+### Requirements
+
+
 The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
 *linux* or *uboot* repository.
