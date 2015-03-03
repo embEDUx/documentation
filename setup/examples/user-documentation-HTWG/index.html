@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Examples/User Documentation_Htwg - embEDUx Project</title>
+        <title>Examples/User Documentation Htwg - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Examples/User Documentation_Htwg</a>
+                            <a href="index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -213,7 +213,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../../background/background/index.html">
+                    <a rel="prev" href="../../customization/buildslaves-add-packages/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -227,58 +227,24 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#platform-strings">Platform Strings</a></li>
-        
-    
-        <li class="main "><a href="#repositories">Repositories</a></li>
+        <li class="main active"><a href="#repositories">Repositories</a></li>
         
     
         <li class="main "><a href="#buildbot">Buildbot</a></li>
         
-            <li><a href="#buildmaster-webinterfaces">Buildmaster Webinterfaces</a></li>
+            <li><a href="#buildmaster-web-interfaces">Buildmaster Web-Interfaces</a></li>
+        
+            <li><a href="#buildmaster-file-storage">Buildmaster File Storage</a></li>
+        
+            <li><a href="#platform-strings">Platform Strings</a></li>
+        
+            <li><a href="#build-commands">Build commands</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="platform-strings">Platform Strings</h2>
-<table>
-<thead>
-<tr>
-<th>Platform</th>
-<th>Platform-String</th>
-<th>RootFS-String</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Raspberry Pi</td>
-<td>raspberry-pi</td>
-<td>armv6j_hardfp</td>
-</tr>
-<tr>
-<td>Banana Pi</td>
-<td>banana-pi</td>
-<td>armv7a_hardfp</td>
-</tr>
-<tr>
-<td>Utilite Pro</td>
-<td>utilite-pro</td>
-<td>armv7a_hardfp</td>
-</tr>
-<tr>
-<td>Qemu ARM</td>
-<td>qemu-virt-arm</td>
-<td>armv7a_hardfp</td>
-</tr>
-<tr>
-<td>Beaglebone Black</td>
-<td>beaglebone-black</td>
-<td>armv7a_hardfp</td>
-</tr>
-</tbody>
-</table>
 <h2 id="repositories">Repositories</h2>
 <table>
 <thead>
@@ -307,11 +273,11 @@
 </tbody>
 </table>
 <h2 id="buildbot">Buildbot</h2>
-<h3 id="buildmaster-webinterfaces">Buildmaster Webinterfaces</h3>
+<h3 id="buildmaster-web-interfaces">Buildmaster Web-Interfaces</h3>
 <table>
 <thead>
 <tr>
-<th>Servername</th>
+<th>Server-Name</th>
 <th>URL</th>
 </tr>
 </thead>
@@ -319,6 +285,107 @@
 <tr>
 <td>moe</td>
 <td>http://moe.in.htwg-konstanz.de:8010</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buildmaster-file-storage">Buildmaster File Storage</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U-Boot</td>
+<td>http://moe.in.htwg-konstanz.de:8010/uboot/</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>http://moe.in.htwg-konstanz.de:8010/linux/</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td>http://moe.in.htwg-konstanz.de:8010/rootfs/</td>
+</tr>
+<tr>
+<td>Miscellaneous files</td>
+<td>http://moe.in.htwg-konstanz.de:8010/misc/</td>
+</tr>
+</tbody>
+</table>
+<h3 id="platform-strings">Platform Strings</h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Platform-String</th>
+<th>RootFS-String</th>
+<th>Toolchain-Strings (target_arch)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi</td>
+<td>raspberry-pi</td>
+<td>armv6j_hardfp</td>
+<td>armv6j</td>
+</tr>
+<tr>
+<td>Banana Pi</td>
+<td>banana-pi</td>
+<td>armv7a_hardfp</td>
+<td>armv7a</td>
+</tr>
+<tr>
+<td>Utilite Pro</td>
+<td>utilite-pro</td>
+<td>armv7a_hardfp</td>
+<td>armv7a</td>
+</tr>
+<tr>
+<td>Qemu ARM</td>
+<td>qemu-virt-arm</td>
+<td>armv7a_hardfp</td>
+<td>armv7a</td>
+</tr>
+<tr>
+<td>Beaglebone Black</td>
+<td>beaglebone-black</td>
+<td>armv7a_hardfp</td>
+<td>armv7a</td>
+</tr>
+</tbody>
+</table>
+<h3 id="build-commands">Build commands</h3>
+<table>
+<thead>
+<tr>
+<th>Builders</th>
+<th>Buildcommands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>special ansible buildroutine: TODO LINK</em></td>
 </tr>
 </tbody>
 </table>

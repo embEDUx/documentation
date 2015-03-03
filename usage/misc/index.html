@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -274,14 +274,14 @@ files!</p>
 <ol>
 <li>
 <p>Clone the <em>misc</em> repository with the URL that was provided by your system
-   administrator.
-   <code>$ git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
+   administrator.</p>
+<p><code>$ git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
 <p>Add new <em>platform</em> branch to the <em>misc</em> repository and push it upstream.
    This last step is required, so the <strong>Buildbot</strong> can pack and deploy the misc
-   files at the end of this example.
-   <code>$ git checkout master
+   files at the end of this example.</p>
+<p><code>$ git checkout master
 $ git branch raspberry-pi
 $ git checkout raspberry-pi
 $ touch README.md
@@ -291,15 +291,15 @@ $ git push --set-upstream origin raspberry-pi</code></p>
 </li>
 <li>
 <p>Add the <a href="../../usage/misc/files/build">build</a> script to your <em>platform</em> branch and
-   make it executable.
-   <code>$ ls -hl
+   make it executable.</p>
+<p><code>$ ls -hl
 total 8.0K
 -rwxr-xr-x 1 user user 939 Mar  2 19:35 build
 -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md</code></p>
 </li>
 <li>
-<p>Add at least these two files and modify them to fit to the platform.
-   <code>$ mkdir src_boot
+<p>Add at least these two files and modify them to fit to the platform.</p>
+<p><code>$ mkdir src_boot
 $ touch src_boot/boot.scr.txt
 $ mkdir src_root
 $ mkdir src_root/etc/
@@ -307,8 +307,8 @@ $ touch src_root/etc/inittab</code></p>
 </li>
 <li>
 <p>The raspberry pi also needs some firmware blobs present at boot, so we simply
-   add these files to the <em>platform</em> branch in the <em>misc</em> repository.
-  <code>$ ls -hl src_boot/
+   add these files to the <em>platform</em> branch in the <em>misc</em> repository.</p>
+<p><code>$ ls -hl src_boot/
 total 6.6M
 -rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
 -rw-r--r-- 1 user user  307 Mar  2 19:53 boot.scr.txt
@@ -323,8 +323,8 @@ total 6.6M
 -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf</code></p>
 </li>
 <li>
-<p>Add all files to the repository, commit and push.
-   <code>$ git add build
+<p>Add all files to the repository, commit and push.</p>
+<p><code>$ git add build
 $ git add src_boot
 $ git add src_root
 $ git commit -m "new platform"

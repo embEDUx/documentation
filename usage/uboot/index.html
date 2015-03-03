@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -273,13 +273,13 @@ archive can be found at <a href="http://ftp.denx.de/pub/u-boot/">U-Boot website<
 <ol>
 <li>
 <p>Clone the <em>uboot</em> repository with the URL provided by your system
-   administrator.
-   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
+   administrator.</p>
+<p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
 <p>Add a <em>uboot</em> branch named like the <strong>U-Boot</strong> version to the <em>uboot</em>
-   repository.
-   <code>$ git checkout master
+   repository.</p>
+<p><code>$ git checkout master
 $ git branch 2015.01
 $ git checkout 2015.01
 $ touch README.md
@@ -289,22 +289,22 @@ $ git push --set-upstream origin 2015.01</code></p>
 </li>
 <li>
 <p>Add the <a href="../../usage/uboot/template/uboot_build">template</a> as <strong><em>build</em></strong> to the
-   repository and make it executable.
-   <code>$ ls -hl
+   repository and make it executable.</p>
+<p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
 -rw-r--r-- 1 user user    0 Mar  2 18:48 README</code></p>
 </li>
 <li>
 <p>Modify <em>UBOOT_FILE</em> in the <strong><em>build</em></strong> script, to match the <strong>U-Boot</strong>
-   archive for the desired version.
-   <code>...
+   archive for the desired version.</p>
+<p><code>...
 UBOOT_FILE="u-boot-2015.01.tar.bz2"
 ...</code></p>
 </li>
 <li>
-<p>Add the changed files, commit and push. 
-   <code>$ git add build
+<p>Add the changed files, commit and push. </p>
+<p><code>$ git add build
 $ git commit -m "new uboot 2015.01"
 $ git push</code></p>
 </li>
@@ -316,15 +316,15 @@ the desired <strong>U-Boot</strong> version.</p>
 <ol>
 <li>
 <p>If not already done, clone the <em>uboot</em> repository with the URL provided by
-   your system administrator.
-   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
+   your system administrator.</p>
+<p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
 <p>Add a <em>platform</em> branch named <em>&lt;uboot-version>_&lt;platform></em> to the <em>uboot</em>
    repository.  It is necessary that you push this initial branch, so the
    <strong>Buildbot</strong> can start building your <strong>U-Boot</strong> image after last step of this
-   example.
-   <code>$ git checkout master
+   example.</p>
+<p><code>$ git checkout master
 $ git branch 2015.01_raspberry-pi
 $ git checkout 2015.01_raspberry-pi
 $ touch README.md
@@ -334,8 +334,8 @@ $ git push --set-upstream origin 2015.01_raspberry-pi</code></p>
 </li>
 <li>
 <p>Add the <a href="../../usage/uboot/template/platform_build">template</a> as <strong><em>build</em></strong> to the
-   repository and make it executable. 
-   <code>$ ls -hl
+   repository and make it executable. </p>
+<p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
 -rw-r--r-- 1 user user   0 Mar  2 18:57 README</code></p>
@@ -347,8 +347,8 @@ total 4.0K
    for you platform within the <strong>U-Boot</strong> source. If this isn't the case, please
      read furhter informations at <a href="../../background/uboot/index.html">background/uboot</a>. If
      needed also modify the <em>FIRMWARE_IMG</em> to the format that your platform
-     expects, or add more files if needed.
-   <code>...
+     expects, or add more files if needed.</p>
+<p><code>...
 UBOOT_VERSION="2015.01"
 UBOOT_CONFIG="rpi_config"
 ...
@@ -361,8 +361,8 @@ FIRMWARE_IMG="u-boot.bin"
    further information check <a href="../../background/uboot/index.html">background/uboot</a>.</p>
 </li>
 <li>
-<p>Add all files, commit  and push branch upstream.
-   <code>$ git add build
+<p>Add all files, commit  and push branch upstream.</p>
+<p><code>$ git add build
 $ git commit -m "new platform"
 $ git push</code></p>
 </li>

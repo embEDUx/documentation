@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -261,13 +261,13 @@ architecture of your desired platform.</p>
 <ol>
 <li>
 <p>Clone the <em>toolchains</em> repository. The URL should have been provided to you
-   by your system administrator.
-   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
+   by your system administrator.</p>
+<p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
 </li>
 <li>
 <p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. Follow the <a href="#name-schema">name
-   schema</a> carefully.
-   <code>$ git checkout master
+   schema</a> carefully.</p>
+<p><code>$ git checkout master
 $ git branch amd64_armv6j-ctng-linux-gnueabi
 $ git checkout amd64_armv6j-ctng-linux-gnueabi 
 $ touch README.md
@@ -277,8 +277,8 @@ $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi</code></p>
 </li>
 <li>
 <p>Add the <a href="../../toolchains/template/build">build script</a> as <strong><em>build</em></strong> to the repository
-   and make it executable.
-   <code>$ ls -hl
+   and make it executable.</p>
+<p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 470 Mar  3 20:52 build
 -rw-r--r-- 1 user user   0 Mar  3 20:51 README</code></p>
@@ -290,12 +290,12 @@ total 4.0K
    <a href="../../background/toolchains/index.html">background/toolchains</a>.</p>
 </li>
 <li>
-<p>Test your toolchain configuration
-   <code>$ ct-ng build</code></p>
+<p>Test your toolchain configuration</p>
+<p><code>$ ct-ng build</code></p>
 </li>
 <li>
-<p>Add the files, commit and push. 
-   <code>$ git add build
+<p>Add the files, commit and push. </p>
+<p><code>$ git add build
 $ git commit -m "new toolchain for amd64 -&gt; armv6j"
 $ git push</code></p>
 </li>

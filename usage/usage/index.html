@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -231,9 +231,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#build-instructions">Build instructions</a></li>
+            <li><a href="#build-instructions">Build Instructions</a></li>
         
-            <li><a href="#monitoring-instructions">Monitoring instructions</a></li>
+            <li><a href="#monitor-your-builds">Monitor your builds</a></li>
         
             <li><a href="#hardware-deployment">Hardware Deployment</a></li>
         
@@ -246,22 +246,58 @@
 <p>This document will give you pointers at anything you need to know for building
 and deploying the various components for specific platform.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<h3 id="requirements">Requirements</h3>
+<p>The following requirements are common to the build procedures of all components.
+Please make sure that you and your systems fulfill the given requirements before
+proceeding to the actual build instructions.</p>
+<h4 id="local-software">Local Software</h4>
+<ul>
+<li>Git is needed to download and submit build specifications</li>
+</ul>
 <h4 id="successful-setup">Successful Setup</h4>
-<p>A successful <a href="../../setup/setup/index.html">Setup of the buildserver</a> is a definite
+<p>A successful <a href="../../setup/setup/index.html">setup of the buildserver</a> is a definite
 requirement, since it includes setting up the repositories that are used by
 users to supply the build instructions to the <em>buildserver</em>.</p>
+<h4 id="user-documentation">User Documentation</h4>
 <p>At the end of the setup, the Administrator is instructed to create the
 <a href="../../setup/user-documentation/index.html#Repositories">User-Documentation</a>.</p>
-<p>If you want to see an example, or you're a user at the HTWG, follow 
-<a href="../../setup/examples/user-documentation_htwg/index.html">User Documentation at the HTWG</a></p>
-<ul>
-<li><a href="../common/checkout-repositories/index.html">Determine repositories</a></li>
-<li><a href="../common/checkout-repositories/index.html">Download repositories</a></li>
-</ul>
+<p>If you want to see an example, or you're a user at the HTWG please go to <a href="../../setup/examples/user-documentation-HTWG/index.html">User
+Documentation at the HTWG</a> the
+headline to obtain the information you need for the components you want to
+build.</p>
+<h4 id="git-repositories">Git-Repositories</h4>
+<p>You need to retrieve the Git-repository for every component you want to build.
+The detailed component build instructions will guide you in finding the needed
+repository.</p>
 <h3 id="suggestions">Suggestions</h3>
-<h2 id="build-instructions">Build instructions</h2>
-<p>Triggering builds works by </p>
+<ul>
+<li>Git practice! You will deal with and handful of repositories and different
+  on the way of managing builds for your systems.</li>
+<li>Have a glimpse at the <a href="../../background/background/index.html">background documentation</a>
+  to understand why your are instructed to do so. In case you don't, you  might
+  miss potential functionality or potential to help yourself in case of problems.</li>
+</ul>
+<h2 id="build-instructions">Build Instructions</h2>
+<h3 id="work-flow">Work flow</h3>
+<p>The work flow is basically all the same for every component. The only exception for
+this is the RootFS, more information will follow in the detailed section.</p>
+<p>You will basically always</p>
+<ol>
+<li>
+<p>Open the <em>User Documentation</em>  (<a href="../../setup/examples/user-documentation-HTWG/index.html">example HTWG-userdocs</a>)</p>
+</li>
+<li>
+<p>Acquire the repository URL for the component(s)</p>
+</li>
+<li>
+<p>Run <code>git clone</code> for a fresh start or <code>git pull</code> for an existing repository</p>
+</li>
+<li>
+<p>Run <code>git checkout</code> the branch of interest. This depends on the <em>component</em> and
+   the <em>Platform</em> you want to build for</p>
+</li>
+<li>
+<p><strong>Make changes. It is necessary to read the instructions for every
+   component you want to build</strong></p>
 <ul>
 <li><a href="../uboot/index.html">U-Boot</a></li>
 <li><a href="../linux/index.html">Linux</a></li>
@@ -269,15 +305,33 @@ users to supply the build instructions to the <em>buildserver</em>.</p>
 <li><a href="../misc/index.html">Miscellaneous files</a></li>
 <li><a href="../toolchains/index.html">Toolchains</a></li>
 </ul>
-<h2 id="monitoring-instructions">Monitoring instructions</h2>
-<p>While your builds are running, you might want to <a href="../common/build-monitoring/index.html">monitor the build system on
-the internal webserver</a>.</p>
+</li>
+<li>
+<p>Run <code>git add</code> and <code>git commit</code> according to your changes. Please use <strong>sane commit messages</strong>
+   to improve collaboration. The buildserver will pick up your changes, schedule
+   a build and execute it as soon as it can.</p>
+</li>
+</ol>
+<h2 id="monitor-your-builds">Monitor your builds</h2>
+<p>In the meantime of your build, and also to check if it has been scheduled
+correctly, you can <a href="../common/build-monitoring/index.html">monitor the builds</a>.</p>
+<p>In case of a build failure please either</p>
+<ol>
+<li>
+<p>contact the Administrator and provide the Link to your failed build job if
+you need support,</p>
+</li>
+<li>
+<p>or fix the specification and commit them again</p>
+</li>
+</ol>
 <h2 id="hardware-deployment">Hardware Deployment</h2>
-<p>To deploy a complete system, successful builds of all components need to be
-available.  This means, single components can be built and deployed if there
-exists previous successful builds for the target platform. After the required
-build have successfully completed you can finally <a href="../flashtool/index.html">deploy to hardware using the
-flashtool</a></p>
+<p>If your build succeeded you can continue to 
+<a href="../flashtool/index.html">deploy your builds to hardware using the flashtool</a></p>
+<p>Please note that to deploy a complete system, successful builds of all
+components need to be available.  This means, single components can be built and
+deployed if there exists previous successful builds for the target platform.
+After the required build have successfully completed you can finally </p>
 </div>
         </div>
 

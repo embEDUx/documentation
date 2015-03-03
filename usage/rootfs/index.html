@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -262,8 +262,10 @@
             <div class="col-md-9" role="main">
 
 <h2 id="prerequisites">Prerequisites</h2>
-<p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a></p>
+<p>Please review <a href="../usage/index.html#Prerequisites">the common usage prerequisites</a>, which
+are needed for the usage of every component.</p>
 <h3 id="requirements">Requirements</h3>
+<h4 id="rootfs-git-repository">RootFS Git-Repository</h4>
 <h3 id="suggestions">Suggestions</h3>
 <h3 id="rootfs-repository">rootfs-Repository</h3>
 <h2 id="branch-name-scheme">Branch name scheme</h2>
@@ -280,11 +282,11 @@ please visit the following sites:</p>
 <p>The follow is is a fully working example, taken from 
 <a href="../../rootfs/examples/systemd/configuration.yml">an example</a></p>
 <p>The <em>global</em>-Section configures the settings for global
-<a href="../../background/common/terminology/index.html#use-flags">use-Flags</a> and 
-<a href="../../background/common/terminology/index.html#keywords">keyywords</a>, which apply for every
-installed package. If you find yourself putting the same keywords or use-flags
+<a href="../../background/common/terminology/index.html#USE-flags">USE-Flags</a> and 
+<a href="../../background/common/terminology/index.html#keywords">keywords</a>, which apply for every
+installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead. </p>
-<pre><code>---
+<pre><code class="yaml">---
 global:
     use:
         +: &quot;python&quot;

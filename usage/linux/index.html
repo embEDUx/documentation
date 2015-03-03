@@ -138,15 +138,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/user-documentation/index.html">User Documentation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                     </ul>
@@ -270,18 +270,18 @@ locally.</p>
 instead!</strong></p>
 <h2 id="add-new-upstream-kernel">Add new upstream kernel</h2>
 <p>Before you can add <a href="#add-new-platform-for-a-linux-kernel">a new platfom</a>, for
-which you want to build a <strong>Linux</strong> kernel, you first need to add an <em>kernel</em>
+which you want to build a <strong>Linux</strong> kernel, you first need to add a <em>kernel</em>
 branch to the <em>linux</em> repository.</p>
 <ol>
 <li>
 <p>Clone the <em>linux</em> repository. The URL should have been provided to you by
-   your system administrator.
-   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
+   your system administrator.</p>
+<p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
 <p>Add a <em>kernel</em> branch named <em>&lt;Major>.&lt;Minor>.&lt;Subminor></em> to the <em>linux</em>
-   repository. 
-   <code>$ git checkout master
+   repository. </p>
+<p><code>$ git checkout master
 $ git branch 3.18.7
 $ git checkout 3.18.7
 $ touch README.md
@@ -290,9 +290,9 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/kernel_build">template</a> as <strong><em>build</em></strong> to the repository
-   and make it executable.
-   <code>$ ls -hl
+<p>Add the <a href="../../usage/linux/template/kernel_build">template</a> as <strong><em>build</em></strong> to the
+   repository and make it executable.</p>
+<p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
@@ -302,8 +302,8 @@ total 4.0K
    script, to match the desired kernel version. Be careful with the <strong>Gentoo</strong>
    patch version, as the version number not necessarily needs to fit to the
    resulting <strong>Linux</strong> kernel. In this case <strong>Gentoo</strong> patches 3.18-9 result in
-   <strong>Linux</strong> kernel 3.18.7.
-   <code>...
+   <strong>Linux</strong> kernel 3.18.7.</p>
+<p><code>...
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
 KERNEL_FILE="linux-3.18.tar.xz"
 ...
@@ -311,8 +311,8 @@ PATCH_VERSION="3.18-9"
 ...</code></p>
 </li>
 <li>
-<p>Add the files, commit and push. 
-   <code>$ git add build
+<p>Add the files, commit and push. </p>
+<p><code>$ git add build
 $ git commit -m "new kernel"
 $ git push</code></p>
 </li>
@@ -328,15 +328,15 @@ which you want to add a platform.</p>
 <ol>
 <li>
 <p>If not already done, clone the <em>linux</em> repository. The URL should have been
-   provided to you by your system administrator. 
-   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
+   provided to you by your system administrator. </p>
+<p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
 <p>Add a <em>platform</em> branch following the naming schema
    <em>&lt;Major>.&lt;Minor>.&lt;Subminor>_&lt;platform></em> to the <em>linux</em> repository.
    It is necessary for that the <strong>Buildbot</strong> is able to detect the just created
-   branch, therefore this branch needs to be pushed to the remote repository
-   <code>$ git checkout master
+   branch, therefore this branch needs to be pushed to the remote repository</p>
+<p><code>$ git checkout master
 $ git branch 3.18.7_raspberry-pi
 $ git checkout 3.18.7_raspberry-pi
 $ touch README.md
@@ -346,8 +346,8 @@ $ git push --set-upstream origin 3.18.7_raspberry-pi</code></p>
 </li>
 <li>
 <p>Add the <a href="../../usage/linux/template/platform_build">template</a> as <strong><em>build</em></strong> to the
-   repository and make it executable. 
-   <code>$ ls -hl
+   repository and make it executable. </p>
+<p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
 -rw-r--r-- 1 user user    0 Mar  1 21:19 README</code></p>
@@ -358,8 +358,8 @@ total 4.0K
    the desired device tree blobs name. Make sure the device tree sources exist
    in the <strong>Linux</strong> sources, which will be downloaded by the <em>kernel</em> branch. If
    not, you need to add them by adding a patch to the <em>platform</em> branch. In this
-   case the desired device tree sources do exist, so nothing is left to do.
-   <code>...
+   case the desired device tree sources do exist, so nothing is left to do.</p>
+<p><code>...
 KERNEL_VERSION="3.18.7"
 ...
 KERNEL_DTB="bcm2835-rpi-b.dtb"
@@ -370,8 +370,8 @@ KERNEL_IMG="zImage"
 <li>
 <p>Add a working kernel configuration <strong><em>.config</em></strong> to the repository. If you
    aren't sure if your kernel configuration is working, you can test it locally
-   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html">toolchain</a>.
-   <code>$ ls -hla
+   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html">toolchain</a>.</p>
+<p><code>$ ls -hla
 total 76K
 drwxr-xr-x 1 user user  44 Mar  1 21:29 .
 drwxr-xr-x 1 user user 650 Mar  1 15:04 ..
@@ -381,16 +381,16 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Optional: Add needed patches to the repository.
-   <code>$ ls -hl
+<p>Optional: Add needed patches to the repository.</p>
+<p><code>$ ls -hl
 total 8.0K
 -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
 -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Add all files, commit  and push branch upstream.
-   <code>$ git add build
+<p>Add all files, commit  and push branch upstream.</p>
+<p><code>$ git add build
 $ git add .config
 $ git add *.patch
 $ git commit -m "added raspberry-pi 3.18.7 kernel build"
