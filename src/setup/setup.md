@@ -71,5 +71,5 @@ Currently the setup routine supports
 The last step is to create the documentation that will be necessary for the
 usage of the setup buildserver.
 
-([example](examples/user-documentation_htwg.md)
+([example](examples/user-documentation-HTWG.md)
 * Buildbot Webinterface URL

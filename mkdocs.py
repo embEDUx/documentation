@@ -21,7 +21,8 @@ key_order = {
         'Toolchain',
         ], 
     'back': [ 
-        'Examples/'
+        'Examples/',
+        'Customization/',
         ],
 }
 

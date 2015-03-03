@@ -17,9 +17,9 @@ users to supply the build instructions to the *buildserver*.
 At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](../setup/user-documentation.md#Repositories).
 
-#### [User Documentation at the HTWG](../setup/examples/user-documentation_htwg.md)
+#### [User Documentation at the HTWG](../setup/examples/user-documentation-HTWG.md)
 If you want to see an example, or you're a user at the HTWG, follow the link in
-the headline to obtain the information you need for the component you want to build.
+the headline to obtain the information you need for the components you want to build.
 
 ##### Git-Repositories
 You need to retrieve the Git-repository for every component you want to build.
@@ -30,19 +30,40 @@ You need to retrieve the Git-repository for every component you want to build.
   be an important part of the work flow
 
 
+## Build Instructions
+### Work flow
+The work flow is basically all the same for every component. The only exception for
+this is the RootFS, more information will follow in the detailed section.
 
-## Build instructions
-Triggering builds works by 
+You will basically always
 
-* [U-Boot](../usage/uboot.md)
-* [Linux](../usage/linux.md)
-* [RootFS](../usage/rootfs.md)
-* [Miscellaneous files](../usage/misc.md)
-* [Toolchains](../usage/toolchains.md)
+1. Open the *User Documentation*  ([go here for HTWG-User-Doc](../setup/examples/user-documentation-HTWG.md))
 
-## Monitoring instructions
-While your builds are running, you might want to [monitor the build system on
-the internal webserver](../usage/common/build-monitoring.md).
+1. Acquire the repository URL for the component(s)
+
+1. `git clone` for a fresh start or `git pull` for an existing repository
+
+1. `git checkout` the branch of interest. This depends on the *component* and
+   the *Platform* you want to build for
+
+1. **Make changes. It is necessary to read the instructions for every
+   component you want to build**
+    * [U-Boot](../usage/uboot.md)
+    * [Linux](../usage/linux.md)
+    * [RootFS](../usage/rootfs.md)
+    * [Miscellaneous files](../usage/misc.md)
+    * [Toolchains](../usage/toolchains.md)
+
+1. `git add` and `git commit` your changes. Please use **sane commit messages**
+   to improve collaboration. 
+
+1. [Monitor your builds](../usage/common/build-monitoring.md) and wait for them
+    to finish.
+    In case of **FAILURE**:
+        1. Repeat the procedure if your build failed.
+        1. Contact the Administrator and provide the Link to your failed build job if
+          you need support
+
 
 ## Hardware Deployment
 To deploy a complete system, successful builds of all components need to be
@@ -50,3 +71,4 @@ available.  This means, single components can be built and deployed if there
 exists previous successful builds for the target platform. After the required
 build have successfully completed you can finally [deploy to hardware using the
 flashtool](../usage/flashtool.md)
+
