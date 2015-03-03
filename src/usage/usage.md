@@ -39,11 +39,9 @@ repository.
 
 
 ## Build Instructions
-### Work flow
+
 The work flow is basically all the same for every component. The only exception for
 this is the RootFS, more information will follow in the detailed section.
-
-You will basically always
 
 1. Open the *User Documentation*  ([example HTWG-userdocs](../setup/examples/user-documentation-HTWG.md))
 
