@@ -81,43 +81,43 @@ The following steps are necessary before you can [add](#add-new-platform) a
 1. Clone the *uboot* repository with the URL provided by your system
    administrator.
    ```
-   $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
+$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
 
 1. Add a *uboot* branch named like the **U-Boot** version to the *uboot*
    repository.
    ```
-   $ git checkout master
-   $ git branch 2015.01
-   $ git checkout 2015.01
-   $ touch README.md
-   $ git add README.md
-   $ git commit -m "inital commit"
-   $ git push --set-upstream origin 2015.01
+$ git checkout master
+$ git branch 2015.01
+$ git checkout 2015.01
+$ touch README.md
+$ git add README.md
+$ git commit -m "inital commit"
+$ git push --set-upstream origin 2015.01
    ```
 
 1. Add the [template](uboot/template/uboot_build) as ***build*** to the
    repository and make it executable.
    ```
-   $ ls -hl
-   total 4.0K
-   -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
-   -rw-r--r-- 1 user user    0 Mar  2 18:48 README
+$ ls -hl
+total 4.0K
+-rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
+-rw-r--r-- 1 user user    0 Mar  2 18:48 README
    ```
 
 1. Modify *UBOOT\_FILE* in the ***build*** script, to match the desired
    **U-Boot** version.
    ```
-   ...
-   UBOOT_FILE="u-boot-2015.01.tar.bz2"
-   ...
+...
+UBOOT_FILE="u-boot-2015.01.tar.bz2"
+...
    ```
 
 1. Add the changed files, commit and push. 
    ```
-   $ git add build
-   $ git commit -m "new uboot"
-   $ git push 
+$ git add build
+$ git commit -m "new uboot"
+$ git push 
    ```
 
 The build script in the corresponding *platform* branch can now use the just
@@ -129,7 +129,7 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
 1. If not already done, clone the *uboot* repository with the URL provided by
    your system administrator.
    ```
-   $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
+$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
 
 1. Add a *platform* branch named *\<uboot-version\>\_\<platform\>* to the
@@ -137,41 +137,43 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
    **embEDUx** can start building your **U-Boot** image after the last step of
    this example.
    ```
-   $ git checkout master
-   $ git branch 2015.01_raspberry-pi
-   $ git checkout 2015.01_raspberry-pi
-   $ touch README.md
-   $ git add README.md
-   $ git commit -m "inital commit"
-   $ git push --set-upstream origin 2015.01_raspberry-pi
+$ git checkout master
+$ git branch 2015.01_raspberry-pi
+$ git checkout 2015.01_raspberry-pi
+$ touch README.md
+$ git add README.md
+$ git commit -m "inital commit"
+$ git push --set-upstream origin 2015.01_raspberry-pi
    ```
 
 1. Add the [template](uboot/template/platform_build) as ***build*** to the
    repository and make it executable. 
    ```
-   $ ls -hl
-   total 4.0K
-   -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
-   -rw-r--r-- 1 user user   0 Mar  2 18:57 README
+$ ls -hl
+total 4.0K
+-rwxr-xr-x 1 user user 431 Mar  2 18:59 build
+-rw-r--r-- 1 user user   0 Mar  2 18:57 README
    ```
 
 1. Modify *UBOOT\_VERSION* in ***build*** to the desired version, which is also
    the name of the *uboot* branch. Also modify *UBOOT\_CONFIG* to the platform
    configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG*.
    ```
-   UBOOT_VERSION="2015.01"
-   UBOOT_CONFIG="rpi_config"
-   ...
-   FIRMWARE_IMG="u-boot.bin"
+...
+UBOOT_VERSION="2015.01"
+UBOOT_CONFIG="rpi_config"
+...
+FIRMWARE_IMG="u-boot.bin"
+...
    ```
 
 1. Optional: Add pre_output or post_output functions to the ***build*** script.
 
 1. Add all files, commit  and push branch upstream.
    ```
-   $ git add build
-   $ git commit -m "new platform"
-   $ git push
+$ git add build
+$ git commit -m "new platform"
+$ git push
    ```
 
 1. The **buildbot** should start building your **U-Boot** now. You can follow the
