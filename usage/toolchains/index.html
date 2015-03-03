@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../setup/uboot/index.html">Uboot</a>
                         </li>
                     
@@ -186,6 +190,14 @@
                             <a href="../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/eval/buildserver/index.html">Eval/Buildserver</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -215,10 +227,84 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#toolchains">Toolchains</a></li>
+        
+            <li><a href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a href="#name-scheme">Name scheme</a></li>
+        
+            <li><a href="#add-a-new-toolchain">Add a new toolchain</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="toolchains">Toolchains</h1>
+<p>This guide will help you through the steps to build a toolchain for the
+architecture of your desired platform.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Git Repository <em>toolchains</em></li>
+<li><strong>Buildbot</strong> setup for your host architecture.</li>
+<li>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</li>
+</ul>
+<h2 id="name-scheme">Name scheme</h2>
+<p><strong>Buildbot</strong> can only build your toolchains, if you follow this naming schema</p>
+<ul>
+<li>&lt;host_arch>_&lt;target_arch>-ctng-linux-&lt;abi></li>
+</ul>
+<h2 id="add-a-new-toolchain">Add a new toolchain</h2>
+<p>Following steps are necessary to add a toolchain to the <em>toolchains</em> repository.</p>
+<ol>
+<li>
+<p>Clone the <em>toolchains</em> repository. The URL should have been provided to you
+   by your system administrator.
+   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
+</li>
+<li>
+<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. Follow the <a href="#name-schema">name
+   schema</a> carefully.
+   <code>$ git checkout master
+$ git branch amd64_armv6j-ctng-linux-gnueabi
+$ git checkout amd64_armv6j-ctng-linux-gnueabi 
+$ touch README.md
+$ git add README.md
+$ git commit -m "inital commit"
+$ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi</code></p>
+</li>
+<li>
+<p>Add the <a href="../../toolchains/template/build">build script</a> as <strong><em>build</em></strong> to the repository
+   and make it executable.
+   <code>$ ls -hl
+total 4.0K
+-rwxr-xr-x 1 user user 470 Mar  3 20:52 build
+-rw-r--r-- 1 user user   0 Mar  3 20:51 README</code></p>
+</li>
+<li>
+<p>Configure your desired toolchain with <em>ct-ng</em> and add the <strong><em>.config</em></strong> to
+   the repository. In this case we will just use a default configuration, with
+   some mandatory modifications. For further information read
+   <a href="../../background/toolchains/index.html">background/toolchains</a>.</p>
+</li>
+<li>
+<p>Test your toolchain configuration
+   <code>$ ct-ng build</code></p>
+</li>
+<li>
+<p>Add the files, commit and push. 
+   <code>$ git add build
+$ git commit -m "new toolchain for amd64 -&gt; armv6j"
+$ git push</code></p>
+</li>
+<li>
+<p>The <strong>Buildbot</strong> should start building your toolchain now. For further
+   informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
+   guide</a>.</p>
+</li>
+</ol>
 </div>
         </div>
 

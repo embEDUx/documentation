@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../setup/uboot/index.html">Uboot</a>
                         </li>
                     
@@ -186,6 +190,14 @@
                             <a href="../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/eval/buildserver/index.html">Eval/Buildserver</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -217,13 +229,13 @@
     
         <li class="main active"><a href="#linux">Linux</a></li>
         
-            <li><a href="#naming-schema">Naming schema</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#kernel-branch">Kernel branch</a></li>
+            <li><a href="#name-scheme">Name scheme</a></li>
         
-            <li><a href="#platform-branch">Platform branch</a></li>
+            <li><a href="#add-new-upstream-kernel">Add new upstream kernel</a></li>
         
-            <li><a href="#usage-example">Usage example</a></li>
+            <li><a href="#add-new-platform-for-a-linux-kernel">Add new platform for a Linux kernel</a></li>
         
     
     </ul>
@@ -231,103 +243,43 @@
             <div class="col-md-9" role="main">
 
 <h1 id="linux">Linux</h1>
-<p>The <em>linux</em> repository contains the scripts to build a <em>Linux</em> kernel.</p>
-<h2 id="naming-schema">Naming schema</h2>
-<p>To create a Linux kernel <strong>embEDUx</strong> needs at least one <em>kernel</em> branch and a
-<em>platform</em> branch. The branches need to follow a certain name schema:</p>
+<p>This guide will help you through the steps to build <strong>Linux</strong> kernel for
+your desired platform.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
+<h3 id="requirements">Requirements</h3>
 <ul>
-<li>Kernel branch: \<kernel\_version> (eg. 3.17.2)</li>
-<li>Platform branch: \<kernel\_version>_\&lt;platform_name> (eg. 3.17.2_raspberry-pi)</li>
+<li>Git Repository <em>linux</em></li>
+<li><strong>Buildbot</strong> setup for desired platform architecture</li>
+</ul>
+<h3 id="suggestions">Suggestions</h3>
+<ul>
+<li>
+<p>Toolchain (Host architecture -&gt; target architecture)</p>
+<p>A toolchain will allow you to test your platforms' kernel configuration
+locally.</p>
+</li>
+</ul>
+<h2 id="name-scheme">Name scheme</h2>
+<p><strong>Buildbot</strong> can only build your images, if you follow this naming schema</p>
+<ul>
+<li>Kernel branch: &lt;kernel_version> (eg. 3.17.2)</li>
+<li>Platform branch: &lt;kernel_version>_&lt;platform_name> (eg. 3.17.2_raspberry-pi)</li>
 </ul>
 <p><strong>Importan: The platform_name must not contain any underscores, use dashes
 instead!</strong></p>
-<h2 id="kernel-branch">Kernel branch</h2>
-<p>The <em>kernel</em> branch will provide all the platform independent files, which are
-the kernel sources, the <strong>Gentoo</strong> patches and the build script to patch and
-build the kernel. Multiple platforms use for the same kernel version the same
-<em>kernel</em> branch and therefore the same kernel sources.</p>
-<p>Use this <a href="../../usage/linux/template/kernel_build">template</a> when adding a new kernel
-version to the <em>linux</em> repository. Only change the variables  <em>KERNEL_URL</em>,
-<em>KERNEL_FILE</em> and <em>PATCH_VERSION</em> to fit to the desired kernel version. The
-<em>KERNEL_URL</em> and the <em>KERNEL_FILE</em> can be obtained from
-<a href="https://www.kernel.org/">www.kernel.org</a>.  The <em>PATCH_VERSION</em> for the desired
-kernel version can be obtained from
-<a href="https://dev.gentoo.org/~mpagano/genpatches/tarballs/">dev.gentoo.org</a>.</p>
-<p>Because Gentoo patches are applied during build process, make sure that the
-kernel version and the Gentoo patch version match to each other.  The
-<em>\&lt;Major>.\&lt;Minor></em> version (eg. 3.17, 3.18, 3.19) is a common base version
-for the Gentoo patches. The version of the  Gentoo patches doesn't strictly
-  follow the kernel version, which can lead to the situation, that Gentoo
-  patches 3.18-8 result in the linux kernel version 3.18.7.</p>
-<p><strong>Important: Gentoo patch version does NOT need to reflect resulting linux
-kernel version</strong></p>
-<p>These are the, that need to be modified for each kernel version.</p>
-<pre><code class="bash">...
-### Sources
-KERNEL_URL=&quot;http://www.kernel.org/pub/linux/kernel/v3.x&quot;
-KERNEL_FILE=&quot;linux-&lt;Major&gt;.&lt;Minor&gt;.tar.gz&quot;
-...
-PATCH_VERSION=&quot;&lt;Major&gt;.&lt;Minor&gt;-&lt;Subminor&gt;&quot;
-...
-</code></pre>
-
-<h2 id="platform-branch">Platform branch</h2>
-<p>The <em>platform</em> branch has to contain all platform dependent informations, which
-are a valid kernel configuration and optional user patches. Furthermore it needs
-to contain the build script named <strong><em>build</em></strong>. Use this
-<a href="../../usage/linux/template/platform_build">template</a> to add a new platform, or a new
-kernel version for the platform to the <em>linux</em> repository.</p>
-<p>With this template, the only variables that have to be changed are
-<em>KERNEL_VERSION</em>, which should be the name of the <em>kernel</em> branch and the
-<em>KERNEL_DTB</em>, which should be the name of the desired device tree file.</p>
-<p><strong>Important: The sources for the device tree file have to be present in the
-kernel sources, or otherwise added by a user patch.</strong></p>
-<p>These are the lines that need to be modified.</p>
-<pre><code>KERNEL_VERSION=&quot;&lt;kernel_version&gt;&quot;
-...
-KERNEL_DTB=&quot;&lt;platform_dtb&gt;&quot;
-KERNEL_CONFIG=&quot;.config&quot;
-KERNEL_IMG=&quot;zImage&quot;
-...
-</code></pre>
-
-<h3 id="user-patches">User patches</h3>
-<p>Sometime the user wants to add new drivers, device tree source code, or a bug
-fix before the build process is started. In this case those files need to be
-present as a patch in the root folder of the <em>platform</em> branch.</p>
-<h3 id="environment-variables">Environment variables</h3>
-<p>With a local installed cross toolchain and valid  <em>kernel</em> branch in the <em>linux</em>
-repository it is possible to test the <em>platform</em> build script locally. In order
-to be able to execute the <strong><em>build</em></strong> script, the following environment
-variables need to be set.</p>
-<ul>
-<li>
-<p>Target architecture:
-  ARCH= (eg. 'arm')</p>
-</li>
-<li>
-<p>Path to the cross toolchain:
-  CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')</p>
-</li>
-<li>
-<p>Path where <strong>embEDUx</strong> should store its files:
-  EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'</p>
-</li>
-</ul>
-<h2 id="usage-example">Usage example</h2>
-<p>In the following example a new 3.18.7 kernel and the raspberry-pi platform for
-that kernel will be added to the <em>linux</em> repository. </p>
-<h3 id="add-new-kernel">Add new kernel</h3>
-<p>The following steps are necessary before you can <a href="#add-new-platform">add</a> a
-<em>plaform</em> for the desired kernel version to the repository.</p>
+<h2 id="add-new-upstream-kernel">Add new upstream kernel</h2>
+<p>Before you can add <a href="#add-new-platform-for-a-linux-kernel">a new platfom</a>, for
+which you want to build a <strong>Linux</strong> kernel, you first need to add an <em>kernel</em>
+branch to the <em>linux</em> repository.</p>
 <ol>
 <li>
-<p>Clone the <em>linux</em> repository. The URL for that repository should have been
-   provided to you by your system administrator.
+<p>Clone the <em>linux</em> repository. The URL should have been provided to you by
+   your system administrator.
    <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>kernel</em> branch named <em>\&lt;Major>.\&lt;Minor>.\&lt;Subminor></em> to the <em>linux</em>
+<p>Add a <em>kernel</em> branch named <em>&lt;Major>.&lt;Minor>.&lt;Subminor></em> to the <em>linux</em>
    repository. 
    <code>$ git checkout master
 $ git branch 3.18.7
@@ -349,7 +301,8 @@ total 4.0K
 <p>Modify <em>KERNEL_URL</em>, <em>KERNEL_FILE</em> and <em>PATCH_VERSION</em> in the <strong><em>build</em></strong>
    script, to match the desired kernel version. Be careful with the <strong>Gentoo</strong>
    patch version, as the version number not necessarily needs to fit to the
-   resulting <strong>Linux</strong> kernel.
+   resulting <strong>Linux</strong> kernel. In this case <strong>Gentoo</strong> patches 3.18-9 result in
+   <strong>Linux</strong> kernel 3.18.7.
    <code>...
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
 KERNEL_FILE="linux-3.18.tar.xz"
@@ -358,19 +311,20 @@ PATCH_VERSION="3.18-9"
 ...</code></p>
 </li>
 <li>
-<p>Add the changed files, commit and push. 
+<p>Add the files, commit and push. 
    <code>$ git add build
 $ git commit -m "new kernel"
 $ git push</code></p>
 </li>
 <li>
-<p>Thats it. Now you have a <em>kernel</em> branch for your desired <strong>Linux</strong> kernel
-   version within your <em>linux</em> repository. The next step is to add <em>platform</em>
-   branches to the repository.</p>
+<p>Now you have a <em>kernel</em> branch for your desired <strong>Linux</strong> kernel version
+   within your <em>linux</em> repository. The next step is to add <em>platform</em> branches
+   to the repository.</p>
 </li>
 </ol>
-<h3 id="add-new-platform">Add new platform</h3>
-<p>This step requires an <a href="#add-new-kernel">existing</a> <em>kernel</em> branch.</p>
+<h2 id="add-new-platform-for-a-linux-kernel">Add new platform for a <strong>Linux</strong> kernel</h2>
+<p>This step requires an existing <a href="#add-new-upstream-kernel"><em>kernel</em> branch</a> for
+which you want to add a platform.</p>
 <ol>
 <li>
 <p>If not already done, clone the <em>linux</em> repository. The URL should have been
@@ -378,10 +332,10 @@ $ git push</code></p>
    <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>platform</em> branch named
-   <em>\&lt;Major>.\&lt;Minor>.\&lt;Subminor>_\&lt;platform></em> to the <em>linux</em> repository.
-   It is necessary that you push this initial branch, so <strong>embEDUx</strong> can start
-   building your kernel after the last step.
+<p>Add a <em>platform</em> branch following the naming schema
+   <em>&lt;Major>.&lt;Minor>.&lt;Subminor>_&lt;platform></em> to the <em>linux</em> repository.
+   It is necessary for that the <strong>Buildbot</strong> is able to detect the just created
+   branch, therefore this branch needs to be pushed to the remote repository
    <code>$ git checkout master
 $ git branch 3.18.7_raspberry-pi
 $ git checkout 3.18.7_raspberry-pi
@@ -391,8 +345,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/platform_build">template</a> as <strong><em>build</em></strong> to the repository
-   and make it executable. 
+<p>Add the <a href="../../usage/linux/template/platform_build">template</a> as <strong><em>build</em></strong> to the
+   repository and make it executable. 
    <code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
@@ -401,8 +355,10 @@ total 4.0K
 <li>
 <p>Modify <em>KERNEL_VERSION</em> in <strong><em>build</em></strong> to the desired version, which also
    has to be the name of the <em>kernel</em> branch. Finally modify <em>KERNEL_DTB</em> to
-   the desired device tree blobs name and make sure the device tree sources do
-   exist in the kernel sources.
+   the desired device tree blobs name. Make sure the device tree sources exist
+   in the <strong>Linux</strong> sources, which will be downloaded by the <em>kernel</em> branch. If
+   not, you need to add them by adding a patch to the <em>platform</em> branch. In this
+   case the desired device tree sources do exist, so nothing is left to do.
    <code>...
 KERNEL_VERSION="3.18.7"
 ...
@@ -412,7 +368,9 @@ KERNEL_IMG="zImage"
 ...</code></p>
 </li>
 <li>
-<p>Add a working kernel configuration <strong><em>.config</em></strong> to the repository.
+<p>Add a working kernel configuration <strong><em>.config</em></strong> to the repository. If you
+   aren't sure if your kernel configuration is working, you can test it locally
+   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html">toolchain</a>.
    <code>$ ls -hla
 total 76K
 drwxr-xr-x 1 user user  44 Mar  1 21:29 .
@@ -434,20 +392,20 @@ total 8.0K
 <p>Add all files, commit  and push branch upstream.
    <code>$ git add build
 $ git add .config
-$ git add \*.patch
-$ git commit -m "new platform"
+$ git add *.patch
+$ git commit -m "added raspberry-pi 3.18.7 kernel build"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>buildbot</strong> should start building your kernel now. You can follow the
-   build process on the <strong>buildbot</strong> website.
-   <img alt="Buildbot done" src="../../usage/linux/img/buildbot_done.png" /></p>
+<p>The <strong>Buildbot</strong> should start building your kernel now. For further
+   informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
+   guide</a>.</p>
 </li>
 <li>
-<p>Congratulations, you just built your first kernel for your first platform.
-   You can either use the <a href="../flashtool/index.html">flashtool</a> to flash the
-   kernel image to your platform device or simple do the flash process manually
-   with the archives from the <strong>Buildbot</strong> website.</p>
+<p>Congratulations, you just built your first kernel for your first platform. If
+   you have a <a href="../uboot/index.html">uboot</a>, a <a href="../rootfs/index.html">rootfs</a> and the
+   necessary <a href="../misc/index.html">misc</a> files, you can flash everything with the
+   <a href="../flashtool/index.html">flashtool</a>.</p>
 </li>
 </ol>
 </div>

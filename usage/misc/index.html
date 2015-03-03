@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../setup/uboot/index.html">Uboot</a>
                         </li>
                     
@@ -186,6 +190,14 @@
                             <a href="../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/eval/buildserver/index.html">Eval/Buildserver</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -217,12 +229,11 @@
     
         <li class="main active"><a href="#miscellaneous-files">Miscellaneous files</a></li>
         
-            <li><a href="#name-schema">Name schema</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a href="#name-scheme">Name scheme</a></li>
         
             <li><a href="#add-new-platform">Add new platform</a></li>
-        
-    
-        <li class="main "><a href="#edit-files">Edit files</a></li>
         
     
     </ul>
@@ -230,6 +241,15 @@
             <div class="col-md-9" role="main">
 
 <h1 id="miscellaneous-files">Miscellaneous files</h1>
+<p>This guide will help you through the steps to build archives, containing the
+files for your boot and root partition of your desired platform.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Git repository <em>misc</em></li>
+<li><strong>Buildbot</strong> setup for desired platform architecture</li>
+</ul>
 <p>The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the <em>rootfs</em>,
 <em>linux</em> or <em>uboot</em> repository.</p>
@@ -241,10 +261,12 @@ present in the root or boot partition, that don't belong in the <em>rootfs</em>,
 <p>The files have to be stored in the folder <strong><em>src_boot</em></strong> and <strong><em>src_root</em></strong> and
 <strong>within their folder structure</strong>, so that the <a href="../../usage/misc/files/build">build</a>
 script can pack them in the required archives.</p>
-<h2 id="name-schema">Name schema</h2>
-<p>The branches have to be named for the platform they are meant for.
-* \&lt;platform_name></p>
-<p><strong>Important: The \&lt;platform_name> can not contain any underscores, use dashes
+<h2 id="name-scheme">Name scheme</h2>
+<p>The branches have to be named for the platform they are meant for.</p>
+<ul>
+<li>&lt;platform_name></li>
+</ul>
+<p><strong>Important: The &lt;platform_name> can not contain any underscores, use dashes
 instead.</strong></p>
 <h2 id="add-new-platform">Add new platform</h2>
 <p>To add a new platform following steps are required. Don't forget the mandatory
@@ -257,8 +279,8 @@ files!</p>
 </li>
 <li>
 <p>Add new <em>platform</em> branch to the <em>misc</em> repository and push it upstream.
-This last step is required, so the <strong>Buildbot</strong> can pack and deploy the misc
-files at the end of this example.
+   This last step is required, so the <strong>Buildbot</strong> can pack and deploy the misc
+   files at the end of this example.
    <code>$ git checkout master
 $ git branch raspberry-pi
 $ git checkout raspberry-pi
@@ -268,8 +290,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/misc/files/build">build</a> script to your <em>platform</em> repository
-and make it executable.
+<p>Add the <a href="../../usage/misc/files/build">build</a> script to your <em>platform</em> branch and
+   make it executable.
    <code>$ ls -hl
 total 8.0K
 -rwxr-xr-x 1 user user 939 Mar  2 19:35 build
@@ -277,22 +299,16 @@ total 8.0K
 </li>
 <li>
 <p>Add at least these two files and modify them to fit to the platform.
-   ```
-$ mkdir src_boot
+   <code>$ mkdir src_boot
 $ touch src_boot/boot.scr.txt
 $ mkdir src_root
 $ mkdir src_root/etc/
-$ touch src_root/etc/inittab</p>
+$ touch src_root/etc/inittab</code></p>
 </li>
-</ol>
-<h1 id="edit-files">Edit files</h1>
-<p>```</p>
-<ol>
 <li>
-<p>The raspberry-pi also needs some firmware blobs, which need to be placed in
-the boot partition, so adding these files to the <em>misc</em> repository is a great
-idea.
-   <code>$ ls -hl src_boot/
+<p>The raspberry pi also needs some firmware blobs present at boot, so we simply
+   add these files to the <em>platform</em> branch in the <em>misc</em> repository.
+  <code>$ ls -hl src_boot/
 total 6.6M
 -rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
 -rw-r--r-- 1 user user  307 Mar  2 19:53 boot.scr.txt
@@ -315,7 +331,8 @@ $ git commit -m "new platform"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>Buildbot</strong> will now execute the build script and provide the output on the website. You can flash the output with the <a href="../flashtool/index.html">flashtool</a>.</p>
+<p>The <strong>Buildbot</strong> will now execute the build script and provide the output on
+   the website. You can flash the output with the <a href="../flashtool/index.html">flashtool</a>.</p>
 </li>
 </ol>
 </div>

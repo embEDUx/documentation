@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../uboot/index.html">Uboot</a>
                         </li>
                     
@@ -186,6 +190,14 @@
                             <a href="../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/eval/buildserver/index.html">Eval/Buildserver</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -201,7 +213,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../uboot/index.html">
+                    <a rel="prev" href="../common/buildserver/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -217,14 +229,18 @@
     
         <li class="main active"><a href="#repository-setup">Repository Setup</a></li>
         
+            <li><a href="#requirements">Requirements</a></li>
+        
+            <li><a href="#suggestions">Suggestions,</a></li>
+        
     
         <li class="main "><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#requirements_1">Requirements</a></li>
         
             <li><a href="#admin-machine-pre-requisites">Admin-Machine Pre-Requisites</a></li>
         
-            <li><a href="#suggestions">Suggestions</a></li>
+            <li><a href="#suggestions_1">Suggestions</a></li>
         
             <li><a href="#authentication-as-root-via-ssh-key">Authentication as root via SSH-key</a></li>
         
@@ -263,8 +279,18 @@ TODO Stefan</p>
 <p>TODO
 <em> Permisionss?
 </em> </p>
-<h2 id="prerequisites">Prerequisites</h2>
 <h3 id="requirements">Requirements</h3>
+<ul>
+<li>Ansible</li>
+<li>buildserver_setup repository</li>
+<li>SSH root-access to the docker host running the buildslave(s) in question</li>
+</ul>
+<h3 id="suggestions">Suggestions,</h3>
+<ul>
+<li>SSH root-access via key authentication</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="requirements_1">Requirements</h3>
 <h3 id="admin-machine-pre-requisites">Admin-Machine Pre-Requisites</h3>
 <h4 id="git">Git</h4>
 <ul>
@@ -275,7 +301,7 @@ TODO Stefan</p>
 <ul>
 <li>Executing the setuproutinel</li>
 </ul>
-<h3 id="suggestions">Suggestions</h3>
+<h3 id="suggestions_1">Suggestions</h3>
 <h3 id="authentication-as-root-via-ssh-key">Authentication as root via SSH-key</h3>
 <ul>
 <li>Allowing the setuproutine to access the target buildserver(s)</li>

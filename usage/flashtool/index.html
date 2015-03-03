@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../setup/uboot/index.html">Uboot</a>
                         </li>
                     
@@ -184,6 +188,14 @@
                     
                         <li >
                             <a href="../../background/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/eval/buildserver/index.html">Eval/Buildserver</a>
                         </li>
                     
                     </ul>
@@ -284,10 +296,15 @@ help:   Local path where flashtool should save downloaded products if option is 
 : |
 </code></pre>
 
+<p>You can change these settings by calling the comand:</p>
+<blockquote>
+<p><code>flashtool config</code></p>
+</blockquote>
+<p>The tool will ask for each setting if you want to change the value or not.</p>
 <h3 id="get-recipes-from-git-server">Get recipes from git server</h3>
 <p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declares how to deploy a
-system on a hardware (e.g. Raspberry Pi). If you want to write a new recipe for
-a hardware please read <a href="#How_to_write_a_recipe_file">How to write a recipe
+system on a hardware (e.g. Raspberry Pi) and how to setup the hardware. If
+you want to write a new recipe for a hardware please read <a href="#How_to_write_a_recipe_file">How to write a recipe
 file</a>. </p>
 <p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git</strong>
 there are provided some recipe files for different hardware.</p>
@@ -300,7 +317,29 @@ If there are new recipes on the repository you can get them with the command:</p
 <blockquote>
 <p><code>flashtool platform_recipes update</code></p>
 </blockquote>
-<h3></h3>
+<p>The given or created recipe files can be listed by flashtool. To do so type in:</p>
+<blockquote>
+<p><code>flashtool list_platforms</code></p>
+</blockquote>
+<p>This command will list all recipe files grouped by their prefix. The name of a
+recipe file should follow this naming scheme:</p>
+<blockquote>
+<p>{hardware-name}_{identifier}.yml</p>
+</blockquote>
+<p>The name and identifier must not contain underscores. The underscore is used to
+divide the recipe file name in the two parts hardware name and identifier. It is
+important, that the hardware name is also registered on the buildserver. The
+next example shows how to use this naming scheme for a Raspberry Pi.</p>
+<blockquote>
+<p>raspberry-pi.yml</p>
+<p>raspberry-pi_media_center.yml</p>
+</blockquote>
+<p>The name for a Rapsberry Pi in this embEDUx configuration is <em>"raspberry-pi"</em>.
+This name will be used in branches of the git repositories and on the buildbot
+server to identify a Raspberry Pi.</p>
+<h3 id="list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</h3>
+<p>The <strong>Buildbot</strong> server provides all needed products for an embEDUx system.
+These products can be </p>
 </div>
         </div>
 

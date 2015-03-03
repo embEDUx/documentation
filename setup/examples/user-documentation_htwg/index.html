@@ -114,6 +114,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../common/buildserver/index.html">Common/Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../uboot/index.html">Uboot</a>
                         </li>
                     
@@ -186,6 +190,14 @@
                             <a href="../../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/eval/buildserver/index.html">Eval/Buildserver</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -215,7 +227,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#platform-arch-mapping">Platform &lt;-&gt; ARCH Mapping</a></li>
+        <li class="main active"><a href="#platform-strings">Platform Strings</a></li>
         
     
         <li class="main "><a href="#repositories">Repositories</a></li>
@@ -223,15 +235,50 @@
     
         <li class="main "><a href="#buildbot">Buildbot</a></li>
         
-            <li><a href="#webinterface-url">Webinterface URL</a></li>
+            <li><a href="#buildmaster-webinterfaces">Buildmaster Webinterfaces</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="platform-arch-mapping">Platform &lt;-&gt; ARCH Mapping</h2>
-<p>TODO</p>
+<h2 id="platform-strings">Platform Strings</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Platform-String</th>
+<th>RootFS-String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi</td>
+<td>raspberry-pi</td>
+<td>armv6j_hardfp</td>
+</tr>
+<tr>
+<td>Banana Pi</td>
+<td>banana-pi</td>
+<td>armv7a_hardfp</td>
+</tr>
+<tr>
+<td>Utilite Pro</td>
+<td>utilite-pro</td>
+<td>armv7a_hardfp</td>
+</tr>
+<tr>
+<td>Qemu ARM</td>
+<td>qemu-virt-arm</td>
+<td>armv7a_hardfp</td>
+</tr>
+<tr>
+<td>Beaglebone Black</td>
+<td>beaglebone-black</td>
+<td>armv7a_hardfp</td>
+</tr>
+</tbody>
+</table>
 <h2 id="repositories">Repositories</h2>
 <table>
 <thead>
@@ -260,9 +307,21 @@
 </tbody>
 </table>
 <h2 id="buildbot">Buildbot</h2>
-<p>TODO</p>
-<h3 id="webinterface-url">Webinterface URL</h3>
-<p>TODO</p>
+<h3 id="buildmaster-webinterfaces">Buildmaster Webinterfaces</h3>
+<table>
+<thead>
+<tr>
+<th>Servername</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>moe</td>
+<td>http://moe.in.htwg-konstanz.de:8010</td>
+</tr>
+</tbody>
+</table>
 </div>
         </div>
 
