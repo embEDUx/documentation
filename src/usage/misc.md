@@ -23,7 +23,7 @@ The files have to be stored in the folder ***src_boot*** and ***src_root*** and
 **within their folder structure**, so that the [build](usage/misc/files/build)
 script can pack them in the required archives.
 
-## Name schema
+## Name scheme
 The branches have to be named for the platform they are meant for.
 
 * <platform\_name\>

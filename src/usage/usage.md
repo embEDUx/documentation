@@ -31,13 +31,12 @@ Triggering builds works by
 * [Toolchains](../usage/toolchains.md)
 
 ## Monitoring instructions
-While your builds are running, you might want to 
-[monitor the build system on the internal
-webserver](../usage/common/build-monitoring.md).
+While your builds are running, you might want to [monitor the build system on
+the internal webserver](../usage/common/build-monitoring.md).
 
 ## Hardware Deployment
-To deploy a complete system, successful of all components need to be available.
-This means, single components can be built and deployed if there exists
-previous successful builds for the target platform. After the required build
-have successfully completed you can finally 
-[deploy to hardware using the flashtool](../usage/flashtool.md)
+To deploy a complete system, successful builds of all components need to be
+available.  This means, single components can be built and deployed if there
+exists previous successful builds for the target platform. After the required
+build have successfully completed you can finally [deploy to hardware using the
+flashtool](../usage/flashtool.md)

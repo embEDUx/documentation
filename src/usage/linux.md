@@ -15,7 +15,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     A toolchain will allow you to test your platforms' kernel configuration
     locally.
 
-## Naming schema
+## Name scheme
 **Buildbot** can only build your images, if you follow this naming schema
 
 * Kernel branch: <kernel\_version\> (eg. 3.17.2)

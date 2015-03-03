@@ -15,7 +15,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     A toolchain will allow you to test your platforms' **U-Boot** configuration
     locally.
 
-## Naming schema
+## Name scheme
 To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 *platform* branch. The branches need to follow a certain name schema:
 
