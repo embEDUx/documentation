@@ -9,6 +9,25 @@ print(basepath)
 projecttile = 'embEDUx'
 pages = {}
 
+key_order = {
+    'front': [ 
+        'Overview',
+        'Common/',
+        'Uboot',
+        'Linux',
+        'Root',
+        'Misc',
+        'Flashtool',
+        'Toolchain',
+        ], 
+    'back': [ 
+        'Examples/'
+        ],
+}
+
+flatten = lambda *n: (e for a in n
+            for e in (flatten(*a) if isinstance(a, (tuple, list)) else (a,)))
+
 for dirpath, dirnames, filenames in os.walk(basepath):
     to_delete = []
     for d in dirnames:
@@ -56,15 +75,75 @@ with open('mkdocs.yml', 'w') as target, \
         entry_line = '- {}\n'.format(entry_list)
         print('Writing "{}"'.format(entry_line.replace('\n','')))
         target.write(entry_line)
+
+
+    frontcounter = 0
+    middlecounter = 0
+    backcounter = 0
     def write_category(category):
         pagelist = pages[category]
+        front = len(pagelist)
+        back = len(pagelist)
+        middle = len(pagelist)
+
+        global frontcounter
+        global middlecounter
+        global backcounter
+        frontcounter = 0
+        middlecounter = front
+        backcounter = front+middle
+
+        keys = key_order['front'] + key_order['back']
+
+        def mysort(entry):
+            global frontcounter
+            global middlecounter
+            global backcounter
+            sort_key = entry[1]
+            if len(entry) == 3:
+                sort_key = entry[2]
+#            print('--- Sorting {}'.format(sort_key))
+
+            def get_key(n, k):
+                return '{0:05d}{1}'.format(n, k)
+
+            ordered_key_provided = False
+            for k in keys:
+                if sort_key.startswith(k):
+#                    print('ordered key was provided!')
+                    ordered_key_provided = True
+                    break
+
+            if ordered_key_provided:
+                for n, ordered_key in enumerate(keys):
+#                    print('checking against {}'.format(ordered_key))
+                    if sort_key.startswith(ordered_key):
+                        if ordered_key in key_order['front']:
+                            sort_key = get_key(n, sort_key)
+#                            print('found front key {}'.format(sort_key))
+                            break
+                        elif ordered_key in key_order['back']:
+                            sort_key = get_key(n+backcounter, sort_key)
+#                            print('found back key {}'.format(sort_key))
+                            break
+                        else:
+                            assert(false)
+            else:
+                sort_key = get_key(middle, sort_key)
+                middlecounter += 1
+#                print('setting middle key {}'.format(sort_key))
+            return sort_key
+
+        pagelist.sort(key=mysort)
+
         for entry in pagelist:
             write_line(entry)
         del pages[category]
 
-    order = ['Index', 'Usage', 'Setup', 'Background',]
-    for cat in order:
-        write_category(cat)
+
+    category_order = ['Index', 'Usage', 'Setup', 'Background',]
+    for category in category_order:
+        write_category(category)
 
     for category in pages.copy().keys():
         write_category(category)

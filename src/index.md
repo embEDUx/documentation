@@ -17,12 +17,12 @@ for tasks concerning the preparation of soft- and hardware for these lab-courses
 offered at the HTWG, which is the reason why the embEDUx requirements will have
 a strong bias towards the requirements specific to the lab-courses.
 
-## Architectural Overview
-![](background/common/img/architectural_overview.png)
-
 ## Terminology
 Before you continue reading the different documentation snippets, please read 
-through [background/Terminology](background/terminology.md) for terms used within the documentation.
+through [Terminology](background/common/terminology.md) for terms used within the documentation.
+
+## Architectural Overview
+![](background/common/img/architectural_overview.png)
 
 
 ## Components
