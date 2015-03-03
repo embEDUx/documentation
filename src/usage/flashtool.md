@@ -59,11 +59,17 @@ help:   Local path where flashtool should save downloaded products if option is 
 : |
 ```
 
+You can change these settings by calling the comand:
+
+> `flashtool config`
+
+The tool will ask for each setting if you want to change the value or not.
+
 ### Get recipes from git server
 
 **Recipes** are *yaml* configuration files, which declares how to deploy a
-system on a hardware (e.g. Raspberry Pi). If you want to write a new recipe for
-a hardware please read [How to write a recipe
+system on a hardware (e.g. Raspberry Pi) and how to setup the hardware. If
+you want to write a new recipe for a hardware please read [How to write a recipe
 file](#How_to_write_a_recipe_file). 
 
 On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git**
@@ -73,9 +79,34 @@ To get the recipe files from the repository for the flashtool run the following 
 
 > `flashtool platform_recipes init`
 
-The recipe files will be stored at the directory ***{working_directory}/platforms***.
+The recipe files will be stored at the directory ***{working\_directory}/platforms***.
 If there are new recipes on the repository you can get them with the command:
 
 > `flashtool platform_recipes update`
 
-### 
+The given or created recipe files can be listed by flashtool. To do so type in:
+
+> `flashtool list_platforms`
+
+This command will list all recipe files grouped by their prefix. The name of a
+recipe file should follow this naming scheme:
+
+> {hardware-name}\_{identifier}.yml
+
+The name and identifier must not contain underscores. The underscore is used to
+divide the recipe file name in the two parts hardware name and identifier. It is
+important, that the hardware name is also registered on the buildserver. The
+next example shows how to use this naming scheme for a Raspberry Pi.
+
+> raspberry-pi.yml
+> raspberry-pi\_media_center.yml
+
+The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
+This name will be used in branches of the git repositories and on the buildbot
+server to identify a Raspberry Pi.
+
+### List finished builds from the configured **Buildbot** server
+
+The **Buildbot** server provides all needed products for an embEDUx system.
+These products can be 
+
