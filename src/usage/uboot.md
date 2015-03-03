@@ -63,10 +63,13 @@ define the function pre\_output() or post\_output().
 With a local installed cross toolchain and an exising *uboot* branch in the
 repository it is possible to test the *platform* build script locally. In order
 to work, following environment variables need to be set.
+
 * Target architecture:
   ARCH= (eg. 'arm')
+
 * Path to the cross toolchain:
   CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')
+
 * Path where **embEDUx** should store its files:
   EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
 

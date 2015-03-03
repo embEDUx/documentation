@@ -86,10 +86,13 @@ With a local installed cross toolchain and valid  *kernel* branch in the *linux*
 repository it is possible to test the *platform* build script locally. In order
 to be able to execute the ***build*** script, the following environment
 variables need to be set.
+
 * Target architecture:
   ARCH= (eg. 'arm')
+
 * Path to the cross toolchain:
   CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')
+
 * Path where **embEDUx** should store its files:
   EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
 
