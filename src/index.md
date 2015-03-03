@@ -25,7 +25,7 @@ inform us or even put up a pull-request.
 
 
 ## Architectural Overview
-![](background/common/img/architectural_overview.png)
+[![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
 
 
 ## Components
