@@ -1,14 +1,5 @@
 ## Platform Strings
 
-The following is directly taken from the *buildmaster*'s ***master.cfg***. It
-shows the responsible settings for the ARCH <-> Platform mapping.
-```
-arch_branch_res_map = {
-  "amd64": [".*-ctng-.*", ".*qemu-virt-amd64.*"],
-  "armv6j_hardfp": [".*raspberry-pi"],
-  "armv7a_hardfp": [".*beaglebone-black", ".*banana-pi", ".*irisboard", ".*utilite-pro", ".*qemu-virt-arm.*"]
-}
-```
 
 Platform | Platform-String | RootFS-String | Toolchain-Strings (target\_arch)
 --- | --- | ---

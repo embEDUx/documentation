@@ -1,4 +1,14 @@
 # Miscellaneous files
+This guide will help you through the steps to build archives, containing the
+files for your boot and root partition of your desired platform.
+
+## Prerequisites
+All of [the common prerequisites apply](usage.md#Prerequisites).
+
+### Requirements
+* Git repository *misc*
+* **Buildbot** setup for desired platform architecture
+
 The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
 *linux* or *uboot* repository.
@@ -13,7 +23,7 @@ The files have to be stored in the folder ***src_boot*** and ***src_root*** and
 **within their folder structure**, so that the [build](usage/misc/files/build)
 script can pack them in the required archives.
 
-## Name schema
+## Name scheme
 The branches have to be named for the platform they are meant for.
 
 * <platform\_name\>
@@ -32,8 +42,8 @@ $ git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
 
 1. Add new *platform* branch to the *misc* repository and push it upstream.
-This last step is required, so the **Buildbot** can pack and deploy the misc
-files at the end of this example.
+   This last step is required, so the **Buildbot** can pack and deploy the misc
+   files at the end of this example.
    ```
 $ git checkout master
 $ git branch raspberry-pi
@@ -44,8 +54,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin raspberry-pi 
    ```
 
-1. Add the [build](usage/misc/files/build) script to your *platform* repository
-and make it executable.
+1. Add the [build](usage/misc/files/build) script to your *platform* branch and
+   make it executable.
    ```
 $ ls -hl
 total 8.0K
@@ -62,9 +72,8 @@ $ mkdir src_root/etc/
 $ touch src_root/etc/inittab
    ```
 
-1. The raspberry pi also needs some firmware blobs to boot, which need to be
-   placed in the boot partition, so we simply add these files to the *misc*
-   repository.
+1. The raspberry pi also needs some firmware blobs present at boot, so we simply
+   add these files to the *platform* branch in the *misc* repository.
   ```
 $ ls -hl src_boot/
 total 6.6M

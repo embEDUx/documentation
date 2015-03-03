@@ -1,16 +1,16 @@
 # Toolchains
-This guide will help you through the steps to generate a toolchain kernel for
-the architecture of your desired platform.
+This guide will help you through the steps to build a toolchain for the
+architecture of your desired platform.
 
 ## Prerequisites
-All of the [...]() apply also to this guide.
+All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * Git Repository *toolchains*
 * **Buildbot** setup for your host architecture.
 * Crosstool NG [ct-ng](http://crosstool-ng.org/) locally installed.
 
-## Name schema
+## Name scheme 
 **Buildbot** can only build your toolchains, if you follow this naming schema
 
 * <host\_arch\>\_<target\_arch\>-ctng-linux-<abi\>

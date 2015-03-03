@@ -1,9 +1,9 @@
 # Linux
-This guide will help you through the steps to generate a **Linux** kernel for
+This guide will help you through the steps to build **Linux** kernel for
 your desired platform.
 
 ## Prerequisites
-All of the [...]() apply also to this guide.
+All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * Git Repository *linux*
@@ -15,7 +15,7 @@ All of the [...]() apply also to this guide.
     A toolchain will allow you to test your platforms' kernel configuration
     locally.
 
-## Naming schema
+## Name scheme
 **Buildbot** can only build your images, if you follow this naming schema
 
 * Kernel branch: <kernel\_version\> (eg. 3.17.2)

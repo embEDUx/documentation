@@ -1,9 +1,9 @@
 # U-Boot
-This guide will help you through the steps to generate a **U-Boot** image for
+This guide will help you through the steps to build a **U-Boot** image for
 your desired platform.
 
 ## Prerequisites
-All of the [...]() apply also to this guide.
+All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * Git Repository *uboot*
@@ -15,7 +15,7 @@ All of the [...]() apply also to this guide.
     A toolchain will allow you to test your platforms' **U-Boot** configuration
     locally.
 
-## Naming schema
+## Name scheme
 To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 *platform* branch. The branches need to follow a certain name schema:
 
