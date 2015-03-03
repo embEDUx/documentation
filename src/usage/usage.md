@@ -11,8 +11,8 @@ users to supply the build instructions to the *buildserver*.
 
 At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](../setup/user-documentation.md#Repositories).
-For an example see ([user-documentation_htwg]
-(../setup/examples/user-documentation_htwg.md))
+For an example see
+([user-documentation_htwg](../setup/examples/user-documentation_htwg.md))
 
 * [Determine repositories](common/checkout-repositories.md)
 * [Download repositories](common/checkout-repositories.md)
