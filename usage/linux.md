@@ -229,7 +229,7 @@ This step requires an [existing](#add-new-kernel) *kernel* branch.
 
 1. The **buildbot** should start building your kernel now. You can follow the
    build process on the **buildbot** website.
-   ![Buildbot done](img/buildbot_done.png)
+   ![Buildbot done](usage/linux/img/buildbot_done.png)
 
 1. Congratulations, you just built your first kernel for your first platform.
    You can either use the [flashtool](flashtool.md) to flash the
