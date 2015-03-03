@@ -1,4 +1,4 @@
-# Create Containers from RootFS'
+# Run RootFS' as Containers
 
 
 Once a RootFS has successfully been built and uploaded to the *buildmaster*, it

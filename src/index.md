@@ -21,7 +21,7 @@ a strong bias towards the requirements specific to the lab-courses.
 Before you continue reading the different documentation snippets, please check
 if you are familiar with the documented [Terminology](background/common/terminology.md).
 If you keep an eye open for crudities and you spot any, you are welcome to
-inform us or even put up a pull-request.
+inform us by either opening an issue or putting up a pull-request.
 
 
 ## Architectural Overview
