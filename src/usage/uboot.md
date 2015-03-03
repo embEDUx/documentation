@@ -2,6 +2,19 @@
 The *uboot* repository contains the scripts to build a **U-Boot** image for your
 desired platform.
 
+## Prerequisites
+All of the [...]() apply also to this guide.
+
+### Requirements
+* Git Repository *uboot*
+* **Buildbot** setup for desired platform architecture
+
+### Suggestions
+* Toolchain (Host architecture -> target architecture)
+
+    A toolchain will allow you to test your platforms' **U-Boot** configuration
+    locally.
+
 ## Naming schema
 To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 *platform* branch. The branches need to follow a certain name schema:
