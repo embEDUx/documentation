@@ -5,7 +5,7 @@ by your system administrator. The image should help you to understand the
 importance of the different repositories and branches for the **embEDUx**
 project. 
 
-![Repository structure](img/repositories.png)
+![Repository structure](usage/common/img/repositories.png)
 
 As you can see, there are 5 repositories. Each repository holds the data for the
 five outputs that **embEDUx** can build. Those are:
