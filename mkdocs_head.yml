@@ -1,6 +1,5 @@
 site_name: embEDUx Doc
-theme:
-  readthedocs
 use_directory_urls: false
 docs_dir: '.'
+theme: readthedocs
 pages:

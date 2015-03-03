@@ -4,8 +4,9 @@
 import os
 import glob
 basepath = os.path.abspath(os.getcwd())
-projecttitle = u'embEDUx'
+projecttitle = 'embEDUx'
 pages = []
+
 for dirpath, dirnames, filenames in os.walk(basepath):
     to_delete = []
     for d in dirnames:
@@ -28,11 +29,17 @@ for dirpath, dirnames, filenames in os.walk(basepath):
                 filename = f
                 title1 = os.path.basename(f).replace('.md','').replace('-', ' ').title()
             else:
-                filename = u'{}/{}'.format(reldirpath, f)
+                filename = '{}/{}'.format(reldirpath, f)
                 title1 = reldirpath.title().title()
                 title2 = os.path.basename(f).replace('.md','').replace('-', ' ').title()
-            entry = [filename, title1] if not title2 else [filename, title1, title2] 
-            pages.append(entry)
+            entry = [filename, title1, title2] 
+            if entry[0].startswith('home.md'):
+                entry[2] = 'Introduction'
+                pages.insert(0, entry)
+            elif entry[0].startswith('home'):
+                pages.insert(1, entry)
+            else:
+                pages.append(entry)
 
 with open('mkdocs.yml', 'w') as target, \
      open('mkdocs_head.yml','r') as head:
@@ -40,7 +47,7 @@ with open('mkdocs.yml', 'w') as target, \
         target.write(line)
 
     for entry in pages:
-        line = u'- {}\n'.format(entry)
+        line = '- {}\n'.format(entry)
         target.write(line)
 
 import subprocess
