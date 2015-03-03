@@ -1,10 +1,3 @@
-# Linux
-
-1. [Naming schema](#naming-schema)
-1. [Kernel branch](#kernel-branch)
-1. [Platform branch](#platform-branch)
-1. [Usage example](#usage-example)
-
 The *linux* repository contains the scripts to build a *Linux* kernel.
 
 ## Naming schema

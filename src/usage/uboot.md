@@ -1,10 +1,3 @@
-# U-Boot
-
-1. [Naming schema](#naming-schema)
-1. [Kernel branch](#kernel-branch)
-1. [Platform branch](#platform-branch)
-1. [Usage example](#usage-example)
-
 The *uboot* repository contains the scripts to build a **U-Boot** image for your
 desired platform.
 
