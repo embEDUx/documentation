@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Uboot - embEDUx Project</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../index.html">embEDUx Project</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../usage/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../common/build-monitoring/index.html">Common/Build Monitoring</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../common/checkout-repositories/index.html">Common/Checkout Repositories</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../common/repositories/index.html">Common/Repositories</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/run-as-container/index.html">Rootfs/Run As Container</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/use-flags/index.html">Rootfs/Use Flags</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../setup/setup/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/user-documentation/index.html">User Documentation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/examples/user-documentation/index.html">Examples/User Documentation</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Background <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../background/background/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/terminology/index.html">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/common/requirements/index.html">Common/Requirements</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../toolchains/index.html">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../common/build-monitoring/index.html">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#u-boot">U-Boot</a></li>
+        
+            <li><a href="#naming-schema">Naming schema</a></li>
+        
+            <li><a href="#uboot-branch">uboot branch</a></li>
+        
+            <li><a href="#platform-branch">Platform branch</a></li>
+        
+            <li><a href="#usage-example">Usage example</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="u-boot">U-Boot</h1>
+<ol>
+<li><a href="#naming-schema">Naming schema</a></li>
+<li><a href="#kernel-branch">Kernel branch</a></li>
+<li><a href="#platform-branch">Platform branch</a></li>
+<li><a href="#usage-example">Usage example</a></li>
+</ol>
+<p>The <em>uboot</em> repository contains the scripts to build a <strong>U-Boot</strong> image for your
+desired platform.</p>
+<h2 id="naming-schema">Naming schema</h2>
+<p>To create <strong>U-Boot</strong> <strong>embEDUx</strong> needs at least one <em>uboot</em> branch and a
+<em>platform</em> branch. The branches need to follow a certain name schema:</p>
+<ul>
+<li>U-Boot branch: \<uboot\_version> (eg. 2015.01-rc1)</li>
+<li>Platform branch: \<uboot\_version>_\&lt;platform_name> (eg. 2015.01-rc1_raspberry-pi)</li>
+</ul>
+<p><strong>Importan: The platform_name must not contain any underscores, use dashes
+instead!</strong></p>
+<h2 id="uboot-branch">uboot branch</h2>
+<p>The uboot branch will contain the platform independent files, which in this case
+are the uboot sources and the build script to build the uboot image.</p>
+<p>Use this <a href="../../uboot/template/uboot_build">template</a> to add a new <strong>U-Boot</strong>
+version to the <em>uboot</em> repository. Modify <em>UBOOT_FILE</em> to the desired uboot
+version archive (eg. u-boot-2015.01-rc1.tar.bz2). The archive name can be
+obtained from <a href="http://ftp.denx.de/pub/u-boot/">ftp.denx.de</a>.</p>
+<pre><code class="bash">...
+UBOOT_URL=&quot;http://ftp.denx.de/pub/u-boot&quot;
+UBOOT_FILE=&quot;&lt;uboot_filename&gt;&quot;
+...
+</code></pre>
+
+<h2 id="platform-branch">Platform branch</h2>
+<p>The <em>platform</em> branch only contains the build script <strong><em>build</em></strong>. This build
+script needs to be modified to build the desired uboot version. Use this
+<a href="../../uboot/template/platform_build">template</a> to add a new platform to the
+<em>uboot</em> repository.</p>
+<p>Only <em>UBOOT_VERSION</em>, <em>UBOOT_CONFIG</em> and eventually <em>FIRMWARE_IMG</em> need to be
+modified. </p>
+<pre><code>...
+UBOOT_VERSION=&quot;&lt;uboot_version&gt;&quot;
+UBOOT_CONFIG=&quot;&lt;def_config&gt;&quot;
+...
+FIRMWARE_IMG=&quot;u-boot.bin&quot;
+...
+</code></pre>
+
+<p>There are also some rare cases, where the user might want to proceed
+certain steps before or after the output is created. In this case the user can
+define the function pre_output() or post_output().</p>
+<ul>
+<li>pre_output(): Will be executed before the output is packed.</li>
+<li>post_output(): Will be executed after the output was packed.</li>
+</ul>
+<h3 id="environment-variables">Environment variables</h3>
+<p>With a local installed cross toolchain and an exising <em>uboot</em> branch in the
+repository it is possible to test the <em>platform</em> build script locally. In order
+to work, following environment variables need to be set.
+<em> Target architecture:
+  ARCH= (eg. 'arm')
+</em> Path to the cross toolchain:
+  CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')
+* Path where <strong>embEDUx</strong> should store its files:
+  EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'</p>
+<h2 id="usage-example">Usage example</h2>
+<p>In the following example a new 2015.01 <strong>U-Boot</strong> and the raspberry-pi platform
+for that <strong>U-Boot</strong> will be added to the <em>uboot</em> repository. </p>
+<h3 id="add-new-u-boot">Add new U-Boot</h3>
+<p>The following steps are necessary before you can <a href="#add-new-platform">add</a> a
+<em>plaform</em> for the desired <strong>U-Boot</strong> version to the repository.</p>
+<ol>
+<li>
+<p>Clone the <em>uboot</em> repository with the URL provided by your system
+   administrator.
+   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
+</li>
+<li>
+<p>Add a <em>uboot</em> branch named like the <strong>U-Boot</strong> version to the <em>uboot</em>
+   repository.
+   <code>$ git checkout master
+   $ git branch 2015.01
+   $ git checkout 2015.01
+   $ touch README.md
+   $ git add README.md
+   $ git commit -m "inital commit"
+   $ git push --set-upstream origin 2015.01</code></p>
+</li>
+<li>
+<p>Add the <a href="../../uboot/template/uboot_build">template</a> as <strong><em>build</em></strong> to the
+   repository and make it executable.
+   <code>$ ls -hl
+   total 4.0K
+   -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
+   -rw-r--r-- 1 user user    0 Mar  2 18:48 README</code></p>
+</li>
+<li>
+<p>Modify <em>UBOOT_FILE</em> in the <strong><em>build</em></strong> script, to match the desired
+   <strong>U-Boot</strong> version.
+   <code>...
+   UBOOT_FILE="u-boot-2015.01.tar.bz2"
+   ...</code></p>
+</li>
+<li>
+<p>Add the changed files, commit and push. 
+   <code>$ git add build
+   $ git commit -m "new uboot"
+   $ git push</code></p>
+</li>
+</ol>
+<p>The build script in the corresponding <em>platform</em> branch can now use the just
+created <em>uboot</em> branch.</p>
+<h3 id="add-new-platform">Add new platform</h3>
+<p>This step requires an <a href="#add-new-kernel">existing</a> <em>uboot</em> branch.</p>
+<ol>
+<li>
+<p>If not already done, clone the <em>uboot</em> repository with the URL provided by
+   your system administrator.
+   <code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
+</li>
+<li>
+<p>Add a <em>platform</em> branch named <em>\&lt;uboot-version>_\&lt;platform></em> to the
+   <em>uboot</em> repository.  It is necessary that you push this initial branch, so
+   <strong>embEDUx</strong> can start building your <strong>U-Boot</strong> image after the last step of
+   this example.
+   <code>$ git checkout master
+   $ git branch 2015.01_raspberry-pi
+   $ git checkout 2015.01_raspberry-pi
+   $ touch README.md
+   $ git add README.md
+   $ git commit -m "inital commit"
+   $ git push --set-upstream origin 2015.01_raspberry-pi</code></p>
+</li>
+<li>
+<p>Add the <a href="../../uboot/template/platform_build">template</a> as <strong><em>build</em></strong> to the
+   repository and make it executable. 
+   <code>$ ls -hl
+   total 4.0K
+   -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
+   -rw-r--r-- 1 user user   0 Mar  2 18:57 README</code></p>
+</li>
+<li>
+<p>Modify <em>UBOOT_VERSION</em> in <strong><em>build</em></strong> to the desired version, which is also
+   the name of the <em>uboot</em> branch. Also modify <em>UBOOT_CONFIG</em> to the platform
+   configuration for <strong>U-Boot</strong>. If needed also modify the <em>FIRMWARE_IMG</em>.
+   <code>UBOOT_VERSION="2015.01"
+   UBOOT_CONFIG="rpi_config"
+   ...
+   FIRMWARE_IMG="u-boot.bin"</code></p>
+</li>
+<li>
+<p>Optional: Add pre_output or post_output functions to the <strong><em>build</em></strong> script.</p>
+</li>
+<li>
+<p>Add all files, commit  and push branch upstream.
+   <code>$ git add build
+   $ git commit -m "new platform"
+   $ git push</code></p>
+</li>
+<li>
+<p>The <strong>buildbot</strong> should start building your <strong>U-Boot</strong> now. You can follow the
+   build process on the <strong>buildbot</strong> website.
+   <img alt="Buildbot done" src="../../img/buildbot_done.png" /></p>
+</li>
+<li>
+<p>Congratulations, you just built your first <strong>U-Boot</strong> for your first
+   platform.  You can use the <a href="../flashtool/index.html">flashtool</a> to flash
+   the <strong>U-Boot</strong> image to your platform device.</p>
+</li>
+</ol>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

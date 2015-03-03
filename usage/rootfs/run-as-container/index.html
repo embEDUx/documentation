@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+        <title>Rootfs/Run As Container - embEDUx Project</title>
+
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../../index.html">embEDUx Project</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../usage/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../common/build-monitoring/index.html">Common/Build Monitoring</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../common/checkout-repositories/index.html">Common/Checkout Repositories</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../common/repositories/index.html">Common/Repositories</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Rootfs/Run As Container</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../use-flags/index.html">Rootfs/Use Flags</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../../setup/setup/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/user-documentation/index.html">User Documentation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/examples/user-documentation/index.html">Examples/User Documentation</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Background <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../../background/background/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/terminology/index.html">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/common/requirements/index.html">Common/Requirements</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../../common/repositories/index.html">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../use-flags/index.html">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#docker">Docker</a></li>
+        
+            <li><a href="#downloadimport">Download/Import</a></li>
+        
+            <li><a href="#verify">Verify</a></li>
+        
+            <li><a href="#run-interactive-container">Run interactive container</a></li>
+        
+    
+        <li class="main "><a href="#systemd">systemd</a></li>
+        
+            <li><a href="#downloadimport_1">Download/Import</a></li>
+        
+            <li><a href="#set-a-root-password">Set a root password</a></li>
+        
+            <li><a href="#allow-login-via-machinectl">Allow login via machinectl</a></li>
+        
+            <li><a href="#start-in-background">Start in background</a></li>
+        
+            <li><a href="#login">Login</a></li>
+        
+            <li><a href="#notes">Notes</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<p>Once a RootFS has successfully been built and uploaded to the <em>buildmaster</em>, it
+can be imported into and run by various container management systems. As there are many of
+them and the number is growing, the examples cover the currently
+most and least popular ones: <strong>Docker</strong> and <strong>systemd</strong>.</p>
+<p>This page will include fully working examples, with the assumption that the
+container management systems are installed and ready for usage.</p>
+<p>The examples will use a RootFS called <em>amd64_factory_systemd</em>.</p>
+<h2 id="docker">Docker</h2>
+<h3 id="downloadimport">Download/Import</h3>
+<pre><code>$ docker import http://moe.in.htwg-konstanz.de:8010/rootfs/factory/amd64_factory_20150122184525_294b218_rootfs.tbz2 embedux/amd64_factory:20150122184525_294b218
+</code></pre>
+
+<h3 id="verify">Verify</h3>
+<pre><code> $ docker images
+REPOSITORY                     TAG                      IMAGE ID            CREATED             VIRTUAL SIZE
+embedux/amd64_factory          20150122184525_294b218   8d02c7806b47        5 minutes ago       1.156 GB
+</code></pre>
+
+<h3 id="run-interactive-container">Run interactive container</h3>
+<p>TODO</p>
+<h2 id="systemd">systemd</h2>
+<p>Starting with version 219 of <strong>systemd</strong>, the utility <code>machinectl</code> provides the
+functionality of downloading and importing a RootFS to the local machine.</p>
+<h3 id="downloadimport_1">Download/Import</h3>
+<p>This step is very easy, since <code>machinectl pull-tar</code> takes the URL as direct argument. For more information consult <code>man machinectl</code>.</p>
+<pre><code># machinectl pull-tar http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150 228172018_faa83f5_rootfs.tbz2 --verify=no
+Enqueued transfer job 2. Press C-c to continue download in background.
+Pulling 'http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2', saving as 'amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2'.
+Downloading 300.9M for http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2.
+Got 1% of http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2.
+ 2min 18s left at 2.1M/s.
+...
+...
+...
+Got 99% of http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2. 680ms left at 2.9M/s.
+Download of http://moe.in.htwg-konstanz.de:8010/rootfs/systemd/amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2 complete.
+Created new local image 'amd64_factory_systemd_20150228172018_faa83f5_rootfs.tbz2'.
+Operation completed successfully.
+Exiting.
+</code></pre>
+
+<p>The RootFS is imported as a container image to the local system and can be listed with
+<code>machinectl list-images</code>.</p>
+<h3 id="set-a-root-password">Set a root password</h3>
+<p>By default the build system does not set a passwort for <em>root</em>, therefore it
+needs to be set manually. It's possible to run the container's <code>passwd</code> command,
+as on a normal Linux system.</p>
+<pre><code># systemd-nspawn -M amd64_factory_systemd_20150228172018_faa83f5 passwd
+Spawning container amd64_factory_systemd_20150228172018_faa83f5 on /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5.
+Press ^] three times within 1s to kill container.
+/etc/localtime is not a symlink, not updating container timezone.
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
+
+</code></pre>
+
+<h3 id="allow-login-via-machinectl">Allow login via machinectl</h3>
+<p><code>machinectl</code> is connecting via <em>pts/0</em>, which is excluded from
+<strong><em>/etc/securetty</em></strong> on <strong>Gentoo</strong>. This prevents <em>root</em>-login via <code>machinectl
+login</code> and needs to be changed as follows.</p>
+<pre><code>echo &quot;pts/0&quot; &gt;&gt; /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
+</code></pre>
+
+<h3 id="start-in-background">Start in background</h3>
+<p>Starting the container happens with the <code>macinectl start</code> command. It should not
+take any longer than a couple of seconds.</p>
+<pre><code># machinectl start amd64_factory_systemd_20150228172018_faa83f5
+#
+</code></pre>
+
+<h3 id="login">Login</h3>
+<p><code>machinectl login</code> will provide access to a running container. Login should now
+be possible with the previously set root password.</p>
+<pre><code># machinectl login amd64_factory_systemd_20150228172018_faa83f5                                 
+Connected to machine amd64_factory_systemd_20150228172018_faa83f5. Press ^]
+three times within 1s to exit session.
+
+
+This is amd64_factory_systemd_20150228172018_faa83f5.unknown_domain (Linux x86_64 4.0.0-rc1) 15:50:56
+
+amd64_factory_systemd_20150228172018_faa83f5 login: root
+Password:
+Last login: Sun Mar  1 15:49:43  2015 on pts/0
+root@amd64_factory_systemd_20150228172018_faa83f5 ~ # 
+</code></pre>
+
+<p>We're in!</p>
+<h3 id="notes">Notes</h3>
+<p>The default setup of a container is heavily based on the 
+<strong><em><a href="https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service">systemd-nspawn@.service.in</a></em></strong>-Template installed in the system, which may
+differ between Linux distributions. This has an influence on many apsects of the
+containers, including but not limited to it's network connection. As an
+example, on <strong>Gentoo</strong> the default setup does not automatically setup an internet
+connection for containers.</p>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/prettify-1.0.min.js"></script>
+        <script src="../../../js/base.js"></script>
+    </body>
+</html>

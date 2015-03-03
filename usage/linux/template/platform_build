@@ -1,0 +1,22 @@
+#! /bin/bash -ex
+
+######################################
+# Configuration                      #                    
+######################################
+
+KERNEL_VERSION="<kernel_version"
+KERNEL_DTB="<platform_dtb>"
+KERNEL_CONFIG=".config"
+KERNEL_IMG="zImage"
+
+######################################
+# Script (modify only with caution!) #
+######################################
+SRC_DIR="linux"
+
+git clone -b ${KERNEL_VERSION} --depth 1 --single-branch $(git remote -v | sed -n '/.git/{p;q;}' | awk '{print $(NF-1)}') ${SRC_DIR} && . ${SRC_DIR}/build
+
+prepare
+build
+
+

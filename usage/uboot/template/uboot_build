@@ -1,0 +1,52 @@
+#! /bin/bash -ex
+
+#####################
+# Configuration     # 							     
+#####################
+
+UBOOT_URL="http://ftp.denx.de/pub/u-boot"
+UBOOT_FILE="<uboot_file>"
+
+#####################
+# Script            #
+#####################
+
+function dl_src {
+  
+  # Download: for bla in source url
+  wget -N ${UBOOT_URL}/${UBOOT_FILE} -P ${EMBEDUX_TMP}
+
+# Extract: for bla in source url
+  tar -xf ${EMBEDUX_TMP}/${UBOOT_FILE} --strip 1 -C ${SRC_DIR}
+}
+
+function make_defconfig {
+  make -C ${SRC_DIR} ${UBOOT_CONFIG}
+}
+
+function make_src {
+  make -C ${SRC_DIR} -j$(nproc)
+}
+
+function provide_output {
+  OUTPUT_DIR="output"
+  OUTPUT_PREFIX="$(git rev-parse --abbrev-ref HEAD)_$(date '+%Y%m%d%H%M%S')_$(git rev-parse --short HEAD)"
+  OUTPUT_SUFFIX="uboot.tar.gz"
+  OUTPUT_FILE="${OUTPUT_PREFIX}_${OUTPUT_SUFFIX}"
+
+  mkdir -p ${OUTPUT_DIR}
+  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG}
+}
+
+function build {
+  dl_src
+  make_defconfig
+  make_src
+  if [ "$(type -t pre_output)" == "function" ]
+    then pre_output
+  fi
+  provide_output
+  if [ "$(type -t post_output)" == "function" ]
+    then post_output
+  fi
+}
