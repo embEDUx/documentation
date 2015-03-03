@@ -27,7 +27,9 @@ instead!**
 
 ### Add new upstream U-Boot
 The following steps are necessary before you can add [a new
-platform](#add-new-platform-for-u-boot-version) to the repository.
+platform](#add-new-platform-for-u-boot-version) to the repository. The following
+example will add the **U-Boot** 2015.01 for the raspberry pi. The source code
+archive can be found at [U-Boot website](http://ftp.denx.de/pub/u-boot/).
 
 1. Clone the *uboot* repository with the URL provided by your system
    administrator.
@@ -56,8 +58,8 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  2 18:48 README
    ```
 
-1. Modify *UBOOT\_FILE* in the ***build*** script, to match the desired
-   **U-Boot** version.
+1. Modify *UBOOT\_FILE* in the ***build*** script, to match the **U-Boot**
+   archive for the desired version.
    ```
 ...
 UBOOT_FILE="u-boot-2015.01.tar.bz2"
@@ -108,8 +110,11 @@ total 4.0K
 
 1. Modify *UBOOT\_VERSION* in ***build*** to the desired version, which is also
    the name of the *uboot* branch. Also modify *UBOOT\_CONFIG* to the platform
-   configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG* to
-   the format that your platform expects, or add more files if needed.
+   configuration for **U-Boot**. In this case we expect a default configuration
+   for you platform within the **U-Boot** source. If this isn't the case, please
+     read furhter informations at [background/uboot](../background/uboot.md). If
+     needed also modify the *FIRMWARE\_IMG* to the format that your platform
+     expects, or add more files if needed.
    ```
 ...
 UBOOT_VERSION="2015.01"
@@ -119,9 +124,9 @@ FIRMWARE_IMG="u-boot.bin"
 ...
    ```
 
-1. Optional: Add pre_output or post_output functions to the ***build*** script.
-   The will be called before and after the output is packed. For further
-   information check [background/uboot](../background/uboot.md).
+1. Optional: Add pre\_output or post\_output functions to the ***build***
+   script. They will be called before and after the output is packed. For
+   further information check [background/uboot](../background/uboot.md).
 
 1. Add all files, commit  and push branch upstream.
    ```
