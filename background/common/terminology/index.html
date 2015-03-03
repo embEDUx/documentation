@@ -215,34 +215,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#common">Common</a></li>
+        <li class="main active"><a href="#terminology">Terminology</a></li>
         
-            <li><a href="#linux">Linux</a></li>
-        
-            <li><a href="#linux-kernel">(Linux) Kernel</a></li>
-        
-            <li><a href="#kernel-space">Kernel-Space</a></li>
-        
-            <li><a href="#user-space">User-Space</a></li>
-        
-            <li><a href="#bootloader">Bootloader</a></li>
-        
-            <li><a href="#root-filesystem-rootfs">Root-Filesystem (RootFS)</a></li>
-        
-            <li><a href="#platform">Platform</a></li>
-        
-            <li><a href="#architecture">Architecture</a></li>
-        
-            <li><a href="#sub-architecture">Sub-Architecture</a></li>
-        
-            <li><a href="#cross-toolchain">(Cross-)Toolchain</a></li>
-        
-            <li><a href="#elf">ELF</a></li>
-        
-    
-        <li class="main "><a href="#embedux">embEDUx</a></li>
-        
-            <li><a href="#buildserver">Buildserver</a></li>
+            <li><a href="#common">Common</a></li>
         
     
         <li class="main "><a href="#links">Links</a></li>
@@ -252,44 +227,45 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h3 id="common">Common</h3>
+<h1 id="terminology">Terminology</h1>
+<h2 id="common">Common</h2>
 <p>The introduction and the following sections contains terms that will be
 explained or respectively defined in this chapter. For the scope of the embEDUx
 project, these terms will be assumed as known by any reader or other participant
 in the project. As a reminder this section includes explanations to important
 terms and techniques used by Linux which are essential for this project.</p>
-<h4 id="linux">Linux</h4>
+<h3 id="linux">Linux</h3>
 <p>Linux is the operating system of choice for the embEDUx project. In order to
 work on or with embEDUx a fair knowledge about Linux is mandatory and assumed to
 be present on users and developers involved in the project.</p>
-<h4 id="linux-kernel">(Linux) Kernel</h4>
+<h3 id="linux-kernel">(Linux) Kernel</h3>
 <p>Kernel refers to the linux kernel which is the core application providing linux'
 main functionality. It is responsible for initializing and driving the system's
 hardware resources. </p>
-<h4 id="kernel-space">Kernel-Space</h4>
+<h3 id="kernel-space">Kernel-Space</h3>
 <p>Kernel-Space refers to software that is executed by the linux kernel inside it's
 own context This context is defined by memory space and provided permissions.
 Kernel-Space software is either compiled into the kernel and shipped with it, or
 it can be loaded at runtime from a kernel module file.</p>
-<h4 id="user-space">User-Space</h4>
+<h3 id="user-space">User-Space</h3>
 <p>The user-space context is defined by a memory space and provided permissions
 strictly separated by the kernel-space. An application running in the a
 user-space context is not able to access the kernel-space, or the user-space
 context of other applications</p>
-<h4 id="bootloader">Bootloader</h4>
+<h3 id="bootloader">Bootloader</h3>
 <p>TODO: </p>
-<h4 id="root-filesystem-rootfs">Root-Filesystem <em>(RootFS</em>)</h4>
+<h3 id="root-filesystem-rootfs">Root-Filesystem <em>(RootFS</em>)</h3>
 <p>The RootFS is a collection of software that is executable by a system running
 the linux kernel. It can stored on many different types of storage, from which
 it can be loaded by the linux kernel. The location and content of a RootFS is
 heavily dependent on the purpose of the system it is designed for.</p>
-<h4 id="platform">Platform</h4>
+<h3 id="platform">Platform</h3>
 <p>The platform specification refers to a system's hardware configuration. It is
 defined by the system's CPU architecture and peripherals that are connected to
 the CPU. The term platform is often interchanged with the term board, but it
 should be kept in mind that a system can consist of multiple boards that are
 stacked upon each other.</p>
-<h4 id="architecture">Architecture</h4>
+<h3 id="architecture">Architecture</h3>
 <p>Architecture refers to a CPU's type of architecture. The CPU architecture
 defines a set of CPU instructions that are known to the CPU. In the process of
 software development and compilation, the supported CPU instructions are a very
@@ -298,11 +274,11 @@ for one architecture type is likely to misbehave or fail to work on other
 architecture type, because the CPU will not be able to run the instructions
 given by application's binary code. The linux kernel supports a wide range of
 architectures and can therefore be run on many different systems.</p>
-<h4 id="sub-architecture">Sub-Architecture</h4>
+<h3 id="sub-architecture">Sub-Architecture</h3>
 <p>Architectures can be further specialized as sub-architectures. Sub-architectures
 are not necessarily compatible to other sub-architectures within their common
 architectures.</p>
-<h4 id="cross-toolchain">(Cross-)Toolchain</h4>
+<h3 id="cross-toolchain">(Cross-)Toolchain</h3>
 <p>A toolchain is a set of applications that are able to compile source code to
 executable binary files. The toolchain produces binary files executable by a
 specific architecture type, by translating the source code to CPU instructions
@@ -310,7 +286,7 @@ included in the architecture. The toolchain's own applications are, like any
 other application, compiled for a specific architecture type. If this
 architecture differs from the toolchain's target architecture it is considered a
 cross-toolchain and the process is called cross-compilation.</p>
-<h4 id="elf">ELF</h4>
+<h3 id="elf">ELF</h3>
 <p>ELF (Executable and Linkable Format) is a format for binary application files.
 If configured to, the linux kernel is able to execute these kind of files. It is
 a very common file format for applications compiled for linux but is also found
@@ -324,10 +300,6 @@ this are situations where the system is running on a sub-architecture that is
 not compatible with the sub-architecture that a binary has been compiled for. 
 Unfortunately this is very likely to happen nowadays when dealing with different
 sub-architectures of the ARM architecture.</p>
-<h3 id="embedux">embEDUx</h3>
-<h4 id="buildserver">Buildserver</h4>
-<p>The buildserver is defined to the logical unit that takes and executes build
-requests provided by the user. It does not imply implementation details.</p>
 <h1 id="links">Links</h1>
 <p>[1] http://www.sco.com/developers/gabi/2000-07-17/ch4.eheader.html</p>
 </div>
