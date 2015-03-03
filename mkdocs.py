@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os
@@ -48,4 +48,4 @@ with open('mkdocs.yml', 'w') as target, \
 
 import subprocess
 output = subprocess.check_output('mkdocs build --clean', shell=True)
-print(output)
+print(output.decode())

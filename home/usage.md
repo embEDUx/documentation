@@ -6,37 +6,37 @@ Before you can start heading over to the components sections, go through the
 list of requirements and fulfill them if needed.
 
 ### Successful Setup
-A successful [Setup of the buildserver](setup) is a strong requirement, since
+A successful [Setup of the buildserver](setup.md) is a strong requirement, since
 it includes setting up the repositories that are used by users to supply the
 build instructions to the *buildserver*.
 
 At the end of the setup, the Administrator is instructed to create the
-[User-Documentation](setup/user-documentation.md#Repositories). See the ([example setup @ HTWG](setup/examples/user-documentation.md))
+[User-Documentation](../setup/user-documentation.md#Repositories). See the ([example setup @ HTWG](../setup/examples/user-documentation.md))
 
 
-* [Download repositories](usage/common/checkout-repositories.md)
-* [Determine repositories](usage/common/checkout-repositories.md)
+* [Download repositories](../usage/common/checkout-repositories.md)
+* [Determine repositories](../usage/common/checkout-repositories.md)
 
 ## Build instructions
 Triggering builds works by 
 
-* [U-Boot](usage/uboot)
-* [Linux](usage/linux)
-* [RootFS](usage/roofs)
-* [Miscellaneous files](usage/misc)
-* [Toolchains](usage/toolchains)
+* [U-Boot](../usage/uboot.md)
+* [Linux](../usage/linux.md)
+* [RootFS](../usage/rootfs.md)
+* [Miscellaneous files](../usage/misc.md)
+* [Toolchains](../usage/toolchains.md)
 
 ## Monitoring instructions
 While your builds are running, you might want to 
 [monitor the build system on the internal
-webserver](usage/common/build-monitoring.md).
+webserver](../usage/common/build-monitoring.md).
 
 ## Hardware Deployment
 To deploy a complete system, successful of all components need to be available.
 This means, single components can be built and deployed if there exists
 previous successful builds for the target platform. After the required build
 have successfully completed you can finally 
-[deploy to hardware using the flashtool](flashtool)
+[deploy to hardware using the flashtool](../usage/flashtool.md)
 
 ### Change the root password
 

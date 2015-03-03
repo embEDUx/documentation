@@ -33,7 +33,7 @@ Currently the setup routine supports
 
 ## Maintenance
 ### Adding packages to buildslaves workspace
-* [Adding packages to buildslaves](setup/buildslaves-add-packages.md)
+* [Adding packages to buildslaves](../setup/buildslaves-add-packages.md)
 
 
 ## Buildmaster configuration
