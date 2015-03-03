@@ -13,6 +13,14 @@ TODO
 * Permisionss?
 * 
 
+### Requirements
+* Ansible
+* buildserver_setup repository
+* SSH root-access to the docker host running the buildslave(s) in question
+
+### Suggestions,
+* SSH root-access via key authentication
+
 ## Prerequisites
 ### Requirements
 
