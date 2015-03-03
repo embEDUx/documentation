@@ -1,5 +1,5 @@
 # U-Boot
-This guide will help you through the steps to generate a **U-Boot** image for
+This guide will help you through the steps to build a **U-Boot** image for
 your desired platform.
 
 ## Prerequisites

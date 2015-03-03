@@ -1,6 +1,6 @@
 # Toolchains
-This guide will help you through the steps to generate a toolchain kernel for
-the architecture of your desired platform.
+This guide will help you through the steps to build a toolchain for the
+architecture of your desired platform.
 
 ## Prerequisites
 All of [the common prerequisites apply](usage.md#Prerequisites).

@@ -1,5 +1,5 @@
 # Linux
-This guide will help you through the steps to generate a **Linux** kernel for
+This guide will help you through the steps to build **Linux** kernel for
 your desired platform.
 
 ## Prerequisites
