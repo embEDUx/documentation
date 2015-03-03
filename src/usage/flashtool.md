@@ -111,3 +111,8 @@ server to identify a Raspberry Pi.
 The **Buildbot** server provides all needed products for an embEDUx system.
 These products can be 
 
+
+### Setup Hardware and deploy system on Hardware
+
+
+### How to write a recipefile
