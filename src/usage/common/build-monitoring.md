@@ -1,10 +1,8 @@
 ## Requirements
 
-### Setup User-Documentaiton
-([example](../../setup/examples/user-documentation_htwg.md)
-* Buildbot Webinterface URL
-
-## Buildbot Webinterface
+## Buildbot buildmaster Webinterface
+The *buildmaster* provides a webinterface that can be used to control and
+monitor the buildmaster's behavior.
 
 ### Waterfall
 The **buildbot** waterfall-view gives an overview over all running and recent

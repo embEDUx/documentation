@@ -5,16 +5,17 @@ and deploying the various components for specific platform.
 ## Prerequisites
 ### Requirements
 #### Successful Setup
-A successful [Setup of the buildserver](../setup/setup.md) is a strong requirement, since
-it includes setting up the repositories that are used by users to supply the
-build instructions to the *buildserver*.
+A successful [Setup of the buildserver](../setup/setup.md) is a definite
+requirement, since it includes setting up the repositories that are used by
+users to supply the build instructions to the *buildserver*.
 
 At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](../setup/user-documentation.md#Repositories).
-For an example see ([user-documentation_htwg](../setup/examples/user-documentation_htwg.md))
+For an example see ([user-documentation_htwg]
+(../setup/examples/user-documentation_htwg.md))
 
-* [Determine repositories](../usage/common/checkout-repositories.md)
-* [Download repositories](../usage/common/checkout-repositories.md)
+* [Determine repositories](common/checkout-repositories.md)
+* [Download repositories](common/checkout-repositories.md)
 
 ### Suggestions
 

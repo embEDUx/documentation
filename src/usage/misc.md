@@ -1,4 +1,11 @@
 # Miscellaneous files
+
+## Prerequisites
+All of [the common prerequisites apply](usage.md#Prerequisites).
+
+### Requirements
+TODO
+
 The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
 *linux* or *uboot* repository.
@@ -44,8 +51,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin raspberry-pi 
    ```
 
-1. Add the [build](usage/misc/files/build) script to your *platform* repository
-and make it executable.
+1. Add the [build](usage/misc/files/build) script to your *platform* branch and
+   make it executable.
    ```
 $ ls -hl
 total 8.0K
@@ -63,8 +70,8 @@ $ touch src_root/etc/inittab
    ```
 
 1. The raspberry pi also needs some firmware blobs to boot, which need to be
-   placed in the boot partition, so we simply add these files to the *misc*
-   repository.
+   placed in the boot partition, so we simply add these files to the branch in
+   the *misc* repository.
   ```
 $ ls -hl src_boot/
 total 6.6M
