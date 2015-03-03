@@ -81,7 +81,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../usage/rootfs/run-as-container/index.html">Rootfs/Run As Container</a>
+                            <a href="../../usage/rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
                         </li>
                     
                         <li >
@@ -134,7 +134,7 @@
                         </li>
                     
                         <li >
-                            <a href="../buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
+                            <a href="../customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -142,7 +142,7 @@
                         </li>
                     
                         <li >
-                            <a href="../examples/user-documentation/index.html">Examples/User Documentation</a>
+                            <a href="../examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
                         </li>
                     
                     </ul>
@@ -218,9 +218,15 @@
         <li class="main active"><a href="#repository-setup">Repository Setup</a></li>
         
     
-        <li class="main "><a href="#installation">Installation</a></li>
+        <li class="main "><a href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a href="#requirements">Requirements</a></li>
         
             <li><a href="#admin-machine-pre-requisites">Admin-Machine Pre-Requisites</a></li>
+        
+            <li><a href="#suggestions">Suggestions</a></li>
+        
+            <li><a href="#authentication-as-root-via-ssh-key">Authentication as root via SSH-key</a></li>
         
             <li><a href="#buildserver-machine-pre-requisites">buildserver-Machine Pre-Requisites</a></li>
         
@@ -245,17 +251,36 @@
             <div class="col-md-9" role="main">
 
 <h2 id="repository-setup">Repository Setup</h2>
+<p>TODO Lars
+TODO Stefan</p>
+<p>Setup one repository for each of the components. </p>
 <ul>
 <li><a href="../../uboot">U-Boot</a></li>
 <li><a href="../../linux">Linux</a></li>
 <li><a href="../../roofs">RootFS</a></li>
 <li><a href="../../misc">Miscellaneous files</a></li>
 </ul>
-<h2 id="installation">Installation</h2>
+<p>TODO
+<em> Permisionss?
+</em> </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="requirements">Requirements</h3>
 <h3 id="admin-machine-pre-requisites">Admin-Machine Pre-Requisites</h3>
 <h4 id="git">Git</h4>
+<ul>
+<li>Initializing the aforementioned repositories</li>
+<li>Downloading the setup routine</li>
+</ul>
 <h4 id="ansible">Ansible</h4>
-<h4 id="authentication-via-ssh-key">Authentication via SSH-key</h4>
+<ul>
+<li>Executing the setuproutinel</li>
+</ul>
+<h3 id="suggestions">Suggestions</h3>
+<h3 id="authentication-as-root-via-ssh-key">Authentication as root via SSH-key</h3>
+<ul>
+<li>Allowing the setuproutine to access the target buildserver(s)</li>
+</ul>
+<p>This is not a strict</p>
 <h3 id="buildserver-machine-pre-requisites">buildserver-Machine Pre-Requisites</h3>
 <h4 id="operating-systems">Operating Systems</h4>
 <p>The buildserver machine must have a recent distribution of Linux installed.
@@ -278,11 +303,14 @@ Currently the setup routine supports
 <h2 id="maintenance">Maintenance</h2>
 <h3 id="adding-packages-to-buildslaves-workspace">Adding packages to buildslaves workspace</h3>
 <ul>
-<li><a href="../buildslaves-add-packages/index.html">Adding packages to buildslaves</a></li>
+<li><a href="../customization/buildslaves-add-packages/index.html">Adding packages to buildslaves</a></li>
 </ul>
 <h2 id="buildmaster-configuration">Buildmaster configuration</h2>
 <h2 id="create-user-documentation">Create User-Documentation</h2>
-<p>The last step is to </p>
+<p>The last step is to create the documentation that will be necessary for the
+usage of the setup buildserver.</p>
+<p>(<a href="../examples/user-documentation_htwg/index.html">example</a>
+* Buildbot Webinterface URL</p>
 </div>
         </div>
 

@@ -81,7 +81,7 @@
                         </li>
                     
                         <li >
-                            <a href="run-as-container/index.html">Rootfs/Run As Container</a>
+                            <a href="advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
                         </li>
                     
                         <li >
@@ -134,7 +134,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
+                            <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -142,7 +142,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation/index.html">Examples/User Documentation</a>
+                            <a href="../../setup/examples/user-documentation_htwg/index.html">Examples/User Documentation_Htwg</a>
                         </li>
                     
                     </ul>
@@ -201,7 +201,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="run-as-container/index.html">
+                    <a rel="prev" href="advanced/run-containers/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -215,7 +215,11 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#requirements">Requirements</a></li>
+        <li class="main active"><a href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a href="#requirements">Requirements</a></li>
+        
+            <li><a href="#suggestions">Suggestions</a></li>
         
             <li><a href="#rootfs-repository">rootfs-Repository</a></li>
         
@@ -245,23 +249,41 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="requirements">Requirements</h2>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a></p>
+<h3 id="requirements">Requirements</h3>
+<h3 id="suggestions">Suggestions</h3>
 <h3 id="rootfs-repository">rootfs-Repository</h3>
 <h2 id="branch-name-scheme">Branch name scheme</h2>
 <h2 id="rootfs-specification">RootFS specification</h2>
 <p>The RootFS specification is done in the <strong><em>configruation.yml</em></strong> in the root of
-the <em>rootfs</em>-Repository. The file is written in YAML-Syntax and the following is
-a fully working example, taken out of [the file from example]
-(rootfs/examples/systemd/configuration.md)</p>
-<p>The <em>global</em>-Section configures <a href="use-flags/index.html">use-Flags</a> and keywords</p>
+the <em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>.</p>
+<p>The main reason why anyone would want a customized RootFs is the selection of
+installed packages. For a categorized list of packages that are available, 
+please visit the following sites:</p>
+<ul>
+<li><a href="http://packages.gentoo.org/categories/">Gentoo Portage package list</a></li>
+</ul>
 <h3 id="example">Example</h3>
-<pre><code class="yaml">---
+<p>The follow is is a fully working example, taken from 
+<a href="../../rootfs/examples/systemd/configuration.yml">an example</a></p>
+<p>The <em>global</em>-Section configures the settings for global
+<a href="../../background/common/terminology/index.html#use-flags">use-Flags</a> and 
+<a href="../../background/common/terminology/index.html#keywords">keyywords</a>, which apply for every
+installed package. If you find yourself putting the same keywords or use-flags
+for every package, this is the place to put them instead. </p>
+<pre><code>---
 global:
     use:
-        +: &quot;vim-syntax systemd&quot;
-        -: &quot;X doc consolekit&quot;
+        +: &quot;python&quot;
+        -: &quot;X doc&quot;
+</code></pre>
 
-packages:
+<p>In this example, the USE-flags <strong>X</strong> and <strong>doc</strong> are disabled system-wide, causing all affected
+packages to build without X-support and without installed documentation.</p>
+<p>The global section is followed by the package list. It is a YAML-dictionary that
+defines the packages that are to be installed in the RootFS.</p>
+<pre><code>packages:
     sys-apps/util-linux:
         use:
             -: &quot;systemd&quot;
@@ -293,7 +315,7 @@ post_install_commands:
 <h3 id="prepost-install-overlays">Pre/Post-Install overlays</h3>
 <h2 id="advanced-use-cases">Advanced use cases</h2>
 <ul>
-<li><a href="run-as-container/index.html">Running containers based on a generated RootFS</a></li>
+<li><a href="advanced/run-containers/index.html">Running containers based on a generated RootFS</a></li>
 </ul>
 </div>
         </div>
