@@ -141,7 +141,7 @@ $ git push
 
 1. Congratulations, you just built your first **U-Boot** for your first
    platform. In order to work properly with your platform you might want to have
-   a look at the *miscellaneous files*. You can use the
+   a look at the [miscellaneous files](misc.md). You can use the
    [flashtool](flashtool.md) to flash the **U-Boot** image to your platform
    device.
 
