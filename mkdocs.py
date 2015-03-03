@@ -20,7 +20,6 @@ for dirpath, dirnames, filenames in os.walk(basepath):
         dirnames.remove(d)
     for f in filenames:
         if '.md' in f:
-            
             title1 = None
             title2 = None
             filename = None
@@ -40,8 +39,6 @@ with open('mkdocs.yml', 'w') as target, \
     for line in head.readlines():
         target.write(line)
 
-
-#    target.writelines(head.readlines()[0:-1])
     for entry in pages:
         line = u'- {}\n'.format(entry)
         target.write(line)
