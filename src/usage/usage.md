@@ -63,15 +63,21 @@ In the meantime of your build, and also to check if it has been scheduled
 correctly, you can [monitor the builds](../usage/common/build-monitoring.md).
 
 In case of a build failure please either
+
 1. contact the Administrator and provide the Link to your failed build job if
-you need support, or
-1. fix the specification and commit them again
+you need support,
+
+1. or fix the specification and commit them again
 
 
 ## Hardware Deployment
-To deploy a complete system, successful builds of all components need to be
-available.  This means, single components can be built and deployed if there
-exists previous successful builds for the target platform. After the required
-build have successfully completed you can finally [deploy to hardware using the
-flashtool](../usage/flashtool.md)
+If your build succeeded you can continue to 
+[deploy your builds to hardware using the flashtool](../usage/flashtool.md)
+
+Please note that to deploy a complete system, successful builds of all
+components need to be available.  This means, single components can be built and
+deployed if there exists previous successful builds for the target platform.
+After the required build have successfully completed you can finally 
+
+
 
