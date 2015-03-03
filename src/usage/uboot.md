@@ -6,8 +6,8 @@ desired platform.
 To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 *platform* branch. The branches need to follow a certain name schema:
 
-* U-Boot branch: \<uboot\_version> (eg. 2015.01-rc1)
-* Platform branch: \<uboot\_version>\_\<platform\_name\> (eg. 2015.01-rc1_raspberry-pi)
+* U-Boot branch: <uboot\_version\> (eg. 2015.01-rc1)
+* Platform branch: <uboot\_version\>\_<platform\_name\> (eg. 2015.01-rc1_raspberry-pi)
 
 **Importan: The platform\_name must not contain any underscores, use dashes
 instead!**
@@ -129,7 +129,7 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
 
-1. Add a *platform* branch named *\<uboot-version\>\_\<platform\>* to the
+1. Add a *platform* branch named *<uboot-version\>\_<platform\>* to the
    *uboot* repository.  It is necessary that you push this initial branch, so
    **embEDUx** can start building your **U-Boot** image after the last step of
    this example.
