@@ -27,9 +27,9 @@ please visit the following sites:
 
 
 ### Example
-The follow is is a fully working example, taken from 
-[an example](rootfs/examples/systemd/configuration.yml)
-
+To demonstrate a fully working example this guide provides you with a
+[systemd-rootfs specification](rootfs/examples/systemd/configuration.yml)
+taken from the actual setup at the HTWG.
 
 The *global*-Section configures the settings for global
 [USE-Flags](../background/common/terminology.md#USE-flags) and 
@@ -37,6 +37,8 @@ The *global*-Section configures the settings for global
 installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead. 
 
+
+#### Global Section
 ```yaml
 ---
 global:
@@ -44,15 +46,16 @@ global:
         +: "python"
         -: "X doc"
 ```
-
-In this example, the USE-flags **X** and **doc** are disabled system-wide, causing all affected
-packages to build without X-support and without installed documentation.
-
-The global section is followed by the package list. It is a YAML-dictionary that
-defines the packages that are to be installed in the RootFS.
+This way, USE-flags **X** and **doc** are disabled system-wide, causing all affected
+packages to build without X-support and without the installation of additional
+documentation.
 
 
-```
+#### Package-List Section
+The global section is followed by the package list. It is a YAML-dictionary
+which defines the packages that are to be installed in the RootFS. The syntax
+for every package is the same as for the global system.
+```yaml
 packages:
     sys-apps/util-linux:
         use:
@@ -67,6 +70,10 @@ packages:
             +: "importd gcrypt curl lz4 lzma"
     app-editors/vim: {}
 
+```
+
+#### Commands Section
+```
 pre_install_commands:
     - "emerge-webrsync"
     - "chown -R portage:portage /usr/portage"
