@@ -1,7 +1,12 @@
-## Requirements
 
-## Suggested
 
+## Prerequisites
+All of [the common prerequisites apply](usage.md#Prerequisites)
+
+### Requirements
+
+
+### Suggestions
 
 ### rootfs-Repository
 
