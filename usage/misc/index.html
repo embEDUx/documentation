@@ -57,30 +57,6 @@
                         </li>
                     
                         <li >
-                            <a href="../flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../linux/index.html">Linux</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="index.html">Misc</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../rootfs/index.html">Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../toolchains/index.html">Toolchains</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../uboot/index.html">Uboot</a>
-                        </li>
-                    
-                        <li >
                             <a href="../common/build-monitoring/index.html">Common/Build Monitoring</a>
                         </li>
                     
@@ -93,11 +69,35 @@
                         </li>
                     
                         <li >
+                            <a href="../uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
                             <a href="../rootfs/run-as-container/index.html">Rootfs/Run As Container</a>
                         </li>
                     
                         <li >
                             <a href="../rootfs/use-flags/index.html">Rootfs/Use Flags</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../toolchains/index.html">Toolchains</a>
                         </li>
                     
                     </ul>
@@ -114,11 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../setup/flashtool/index.html">Flashtool</a>
+                            <a href="../../setup/uboot/index.html">Uboot</a>
                         </li>
                     
                         <li >
@@ -126,15 +122,19 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/misc/index.html">Misc</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/rootfs/index.html">Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/uboot/index.html">Uboot</a>
+                            <a href="../../setup/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildslaves-add-packages/index.html">Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -159,23 +159,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../background/flashtool/index.html">Flashtool</a>
+                            <a href="../../background/common/requirements/index.html">Common/Requirements</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/linux/index.html">Linux</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../background/misc/index.html">Misc</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../background/rootfs/index.html">Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../background/terminology/index.html">Terminology</a>
+                            <a href="../../background/common/terminology/index.html">Common/Terminology</a>
                         </li>
                     
                         <li >
@@ -183,7 +171,19 @@
                         </li>
                     
                         <li >
-                            <a href="../../background/common/requirements/index.html">Common/Requirements</a>
+                            <a href="../../background/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/flashtool/index.html">Flashtool</a>
                         </li>
                     
                     </ul>
@@ -196,12 +196,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../linux/index.html">
+                    <a rel="next" href="../rootfs/use-flags/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../rootfs/index.html">
+                    <a rel="prev" href="../flashtool/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -215,18 +215,19 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#miscellaneous-files">Miscellaneous files</a></li>
+        <li class="main active"><a href="#name-schema">Name schema</a></li>
         
-            <li><a href="#name-schema">Name schema</a></li>
+    
+        <li class="main "><a href="#add-new-platform">Add new platform</a></li>
         
-            <li><a href="#add-new-platform">Add new platform</a></li>
+    
+        <li class="main "><a href="#edit-files">Edit files</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="miscellaneous-files">Miscellaneous files</h1>
 <p>The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the <em>rootfs</em>,
 <em>linux</em> or <em>uboot</em> repository.</p>
@@ -236,7 +237,7 @@ present in the root or boot partition, that don't belong in the <em>rootfs</em>,
 </em> inittab: This file is required by the operating system and needs to go on the
   root partition.</p>
 <p>The files have to be stored in the folder <strong><em>src_boot</em></strong> and <strong><em>src_root</em></strong> and
-<strong>within their folder structure</strong>, so that the <a href="../../misc/files/build">build</a>
+<strong>within their folder structure</strong>, so that the <a href="../../usage/misc/files/build">build</a>
 script can pack them in the required archives.</p>
 <h2 id="name-schema">Name schema</h2>
 <p>The branches have to be named for the platform they are meant for.
@@ -257,55 +258,59 @@ files!</p>
 This last step is required, so the <strong>Buildbot</strong> can pack and deploy the misc
 files at the end of this example.
    <code>$ git checkout master
-   $ git branch raspberry-pi
-   $ git checkout raspberry-pi
-   $ touch README.md
-   $ git add README.md
-   $ git commit -m "inital commit"
-   $ git push --set-upstream origin raspberry-pi</code></p>
+$ git branch raspberry-pi
+$ git checkout raspberry-pi
+$ touch README.md
+$ git add README.md
+$ git commit -m "inital commit"
+$ git push --set-upstream origin raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../misc/files/build">build</a> script to your <em>platform</em> repository
+<p>Add the <a href="../../usage/misc/files/build">build</a> script to your <em>platform</em> repository
 and make it executable.
    <code>$ ls -hl
-   total 8.0K
-   -rwxr-xr-x 1 user user 939 Mar  2 19:35 build
-   -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md</code></p>
+total 8.0K
+-rwxr-xr-x 1 user user 939 Mar  2 19:35 build
+-rw-r--r-- 1 user user   1 Mar  2 19:33 README.md</code></p>
 </li>
 <li>
 <p>Add at least these two files and modify them to fit to the platform.
-   <code>$ mkdir src_boot
-   $ touch src_boot/boot.scr.txt
-   $ mkdir src_root
-   $ mkdir src_root/etc/
-   $ touch src_root/etc/inittab
-   # Edit files</code></p>
+   ```
+$ mkdir src_boot
+$ touch src_boot/boot.scr.txt
+$ mkdir src_root
+$ mkdir src_root/etc/
+$ touch src_root/etc/inittab</p>
 </li>
+</ol>
+<h1 id="edit-files">Edit files</h1>
+<p>```</p>
+<ol>
 <li>
 <p>The raspberry-pi also needs some firmware blobs, which need to be placed in
 the boot partition, so adding these files to the <em>misc</em> repository is a great
 idea.
    <code>$ ls -hl src_boot/
-   total 6.6M
-   -rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
-   -rw-r--r-- 1 user user  307 Mar  2 19:53 boot.scr.txt
-   -rw-r--r-- 1 user user   18 Mar  2 19:53 config.txt
-   -rw-r--r-- 1 user user  19K Mar  2 19:53 COPYING.linux
-   -rw-r--r-- 1 user user 2.3K Mar  2 19:53 fixup_cd.dat
-   -rw-r--r-- 1 user user 6.0K Mar  2 19:53 fixup.dat
-   -rw-r--r-- 1 user user 9.0K Mar  2 19:53 fixup_x.dat
-   -rw-r--r-- 1 user user 1.5K Mar  2 19:53 LICENCE.broadcom
-   -rw-r--r-- 1 user user 525K Mar  2 19:53 start_cd.elf
-   -rw-r--r-- 1 user user 2.5M Mar  2 19:53 start.elf
-   -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf</code></p>
+total 6.6M
+-rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
+-rw-r--r-- 1 user user  307 Mar  2 19:53 boot.scr.txt
+-rw-r--r-- 1 user user   18 Mar  2 19:53 config.txt
+-rw-r--r-- 1 user user  19K Mar  2 19:53 COPYING.linux
+-rw-r--r-- 1 user user 2.3K Mar  2 19:53 fixup_cd.dat
+-rw-r--r-- 1 user user 6.0K Mar  2 19:53 fixup.dat
+-rw-r--r-- 1 user user 9.0K Mar  2 19:53 fixup_x.dat
+-rw-r--r-- 1 user user 1.5K Mar  2 19:53 LICENCE.broadcom
+-rw-r--r-- 1 user user 525K Mar  2 19:53 start_cd.elf
+-rw-r--r-- 1 user user 2.5M Mar  2 19:53 start.elf
+-rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf</code></p>
 </li>
 <li>
 <p>Add all files to the repository, commit and push.
    <code>$ git add build
-   $ git add src_boot
-   $ git add src_root
-   $ git commit -m "new platform"
-   $ git push</code></p>
+$ git add src_boot
+$ git add src_root
+$ git commit -m "new platform"
+$ git push</code></p>
 </li>
 <li>
 <p>The <strong>Buildbot</strong> will now execute the build script and provide the output on the website. You can flash the output with the <a href="../flashtool/index.html">flashtool</a>.</p>
