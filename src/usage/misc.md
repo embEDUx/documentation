@@ -15,9 +15,10 @@ script can pack them in the required archives.
 
 ## Name schema
 The branches have to be named for the platform they are meant for.
-* \<platform\_name\>
 
-**Important: The \<platform\_name\> can not contain any underscores, use dashes
+* <platform\_name\>
+
+**Important: The <platform\_name\> can not contain any underscores, use dashes
 instead.**
 
 ## Add new platform
@@ -59,13 +60,12 @@ $ touch src_boot/boot.scr.txt
 $ mkdir src_root
 $ mkdir src_root/etc/
 $ touch src_root/etc/inittab
-# Edit files
    ```
 
-1. The raspberry-pi also needs some firmware blobs, which need to be placed in
-the boot partition, so adding these files to the *misc* repository is a great
-idea.
-   ```
+1. The raspberry pi also needs some firmware blobs to boot, which need to be
+   placed in the boot partition, so we simply add these files to the *misc*
+   repository.
+  ```
 $ ls -hl src_boot/
 total 6.6M
 -rw-r--r-- 1 user user  18K Mar  2 19:53 bootcode.bin
@@ -90,4 +90,5 @@ $ git commit -m "new platform"
 $ git push
    ```
 
-1. The **Buildbot** will now execute the build script and provide the output on the website. You can flash the output with the [flashtool](flashtool.md).
+1. The **Buildbot** will now execute the build script and provide the output on
+   the website. You can flash the output with the [flashtool](flashtool.md).
