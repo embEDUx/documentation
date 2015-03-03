@@ -1,5 +1,5 @@
-site_name: embEDUx Doc
+site_name: embEDUx Project
 use_directory_urls: false
-docs_dir: '.'
-theme: readthedocs
+docs_dir: 'src'
+theme: cosmo
 pages:
