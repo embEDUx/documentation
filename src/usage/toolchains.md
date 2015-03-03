@@ -13,7 +13,7 @@ All of the [...]() apply also to this guide.
 ## Name schema
 **Buildbot** can only build your toolchains, if you follow this naming schema
 
-* <host\_arch\>\_<target\_arch\>-ctng-linux-<abii\>
+* <host\_arch\>\_<target\_arch\>-ctng-linux-<abi\>
 
 ## Add a new toolchain
 Following steps are necessary to add a toolchain to the *toolchains* repository.
