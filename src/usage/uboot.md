@@ -12,68 +12,9 @@ To create **U-Boot** **embEDUx** needs at least one *uboot* branch and a
 **Importan: The platform\_name must not contain any underscores, use dashes
 instead!**
 
-## uboot branch
-The uboot branch will contain the platform independent files, which in this case
-are the uboot sources and the build script to build the uboot image.
-
-Use this [template](usage/uboot/template/uboot_build) to add a new **U-Boot**
-version to the *uboot* repository. Modify *UBOOT\_FILE* to the desired uboot
-version archive (eg. u-boot-2015.01-rc1.tar.bz2). The archive name can be
-obtained from [ftp.denx.de](http://ftp.denx.de/pub/u-boot/).
-
-```bash
-...
-UBOOT_URL="http://ftp.denx.de/pub/u-boot"
-UBOOT_FILE="<uboot_filename>"
-...
-```
-
-## Platform branch 
-The *platform* branch only contains the build script ***build***. This build
-script needs to be modified to build the desired uboot version. Use this
-[template](usage/uboot/template/platform_build) to add a new platform to the
-*uboot* repository.
-
-Only *UBOOT\_VERSION*, *UBOOT\_CONFIG* and eventually *FIRMWARE\_IMG* need to be
-modified. 
-
-```
-...
-UBOOT_VERSION="<uboot_version>"
-UBOOT_CONFIG="<def_config>"
-...
-FIRMWARE_IMG="u-boot.bin"
-...
-```
-
-There are also some rare cases, where the user might want to proceed
-certain steps before or after the output is created. In this case the user can
-define the function pre\_output() or post\_output().
-
-* pre\_output(): Will be executed before the output is packed.
-* post\_output(): Will be executed after the output was packed.
-
-### Environment variables
-With a local installed cross toolchain and an exising *uboot* branch in the
-repository it is possible to test the *platform* build script locally. In order
-to work, following environment variables need to be set.
-
-* Target architecture:
-  ARCH= (eg. 'arm')
-
-* Path to the cross toolchain:
-  CROSS_COMPILE= (eg.'armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-')
-
-* Path where **embEDUx** should store its files:
-  EMBEDUX_TMP= (eg. '/var/tmp/embedux/download/'
-
-## Usage example 
-In the following example a new 2015.01 **U-Boot** and the raspberry-pi platform
-for that **U-Boot** will be added to the *uboot* repository. 
-
-### Add new U-Boot
-The following steps are necessary before you can [add](#add-new-platform) a
-*plaform* for the desired **U-Boot** version to the repository.
+### Add new upstream U-Boot
+The following steps are necessary before you can add [a new
+platform](#add-new-platform-for-u-boot-version) to the repository.
 
 1. Clone the *uboot* repository with the URL provided by your system
    administrator.
@@ -113,15 +54,15 @@ UBOOT_FILE="u-boot-2015.01.tar.bz2"
 1. Add the changed files, commit and push. 
    ```
 $ git add build
-$ git commit -m "new uboot"
+$ git commit -m "new uboot 2015.01"
 $ git push 
    ```
 
-The build script in the corresponding *platform* branch can now use the just
-created *uboot* branch.
+Now you can continue and add *platform* branches to the *uboot* repository.
 
-### Add new platform
-This step requires an [existing](#add-new-kernel) *uboot* branch.
+### Add new platform for U-Boot version
+This step requires an [existing](#add-new-upstream-u-boot) *uboot* branch for
+the desired **U-Boot** version.
 
 1. If not already done, clone the *uboot* repository with the URL provided by
    your system administrator.
@@ -129,10 +70,10 @@ This step requires an [existing](#add-new-kernel) *uboot* branch.
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
    ```
 
-1. Add a *platform* branch named *<uboot-version\>\_<platform\>* to the
-   *uboot* repository.  It is necessary that you push this initial branch, so
-   **embEDUx** can start building your **U-Boot** image after the last step of
-   this example.
+1. Add a *platform* branch named *<uboot-version\>\_<platform\>* to the *uboot*
+   repository.  It is necessary that you push this initial branch, so the
+   **Buildbot** can start building your **U-Boot** image after last step of this
+   example.
    ```
 $ git checkout master
 $ git branch 2015.01_raspberry-pi
@@ -154,7 +95,8 @@ total 4.0K
 
 1. Modify *UBOOT\_VERSION* in ***build*** to the desired version, which is also
    the name of the *uboot* branch. Also modify *UBOOT\_CONFIG* to the platform
-   configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG*.
+   configuration for **U-Boot**. If needed also modify the *FIRMWARE\_IMG* to
+   the format that your platform expects, or add more files if needed.
    ```
 ...
 UBOOT_VERSION="2015.01"
@@ -165,6 +107,8 @@ FIRMWARE_IMG="u-boot.bin"
    ```
 
 1. Optional: Add pre_output or post_output functions to the ***build*** script.
+   The will be called before and after the output is packed. For further
+   information check [background/uboot](../background/uboot.md).
 
 1. Add all files, commit  and push branch upstream.
    ```
@@ -173,11 +117,13 @@ $ git commit -m "new platform"
 $ git push
    ```
 
-1. The **buildbot** should start building your **U-Boot** now. You can follow the
-   build process on the **buildbot** website.
-   ![Buildbot done](img/buildbot_done.png)
+1. The **buildbot** should start building your **U-Boot** now. For further
+   informations on how to monitor the build check [monitoring
+   guide](common/build-monitoring.md) 
 
 1. Congratulations, you just built your first **U-Boot** for your first
-   platform.  You can use the [flashtool](flashtool.md) to flash
-   the **U-Boot** image to your platform device.
+   platform. In order to work properly with your platform you might want to have
+   a look at the *miscellaneous files*. You can use the
+   [flashtool](flashtool.md) to flash the **U-Boot** image to your platform
+   device.
 
