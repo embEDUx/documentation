@@ -14,6 +14,13 @@ Server-Name | URL
 --- | ---
 moe | http://moe.in.htwg-konstanz.de:8010
 
+Component | URL
+--- | ---
+U-Boot | http://moe.in.htwg-konstanz.de:8010/uboot/
+Linux | http://moe.in.htwg-konstanz.de:8010/linux/
+RootFS | http://moe.in.htwg-konstanz.de:8010/rootfs/
+Miscellaneous files | http://moe.in.htwg-konstanz.de:8010/misc/
+
 ### Platform Strings
 Platform | Platform-String | RootFS-String | Toolchain-Strings (target\_arch)
 --- | --- | --- | ---
