@@ -32,17 +32,19 @@ The follow is is a fully working example, taken from
 
 
 The *global*-Section configures the settings for global
-[use-Flags](../background/common/terminology.md#use-flags) and 
-[keyywords](../background/common/terminology.md#keywords), which apply for every
-installed package. If you find yourself putting the same keywords or use-flags
+[USE-Flags](../background/common/terminology.md#USE-flags) and 
+[keywords](../background/common/terminology.md#keywords), which apply for every
+installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead. 
-```
+
+```yaml
 ---
 global:
     use:
         +: "python"
         -: "X doc"
 ```
+
 In this example, the USE-flags **X** and **doc** are disabled system-wide, causing all affected
 packages to build without X-support and without installed documentation.
 
