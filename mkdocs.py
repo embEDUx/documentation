@@ -39,7 +39,6 @@ for dirpath, dirnames, filenames in os.walk(basepath):
                 pages[title1] = []
             if title2 == None:
                 del entry[2]
-#                entry[2] = 'Overview'
                 pages[title1].insert(0, entry)
             elif title1 == title2:
                 entry[2] = 'Overview'
@@ -53,16 +52,22 @@ with open('mkdocs.yml', 'w') as target, \
     for line in head.readlines():
         target.write(line)
 
-    def write_line(line):
-        line = '- {}\n'.format(entry)
-        target.write(line)
-
-    write_line(pages['Index'][0])
-    del(pages['Index'])
-
-    for category, pagelist in pages.items():
+    def write_line(entry_list):
+        entry_line = '- {}\n'.format(entry_list)
+        print('Writing "{}"'.format(entry_line.replace('\n','')))
+        target.write(entry_line)
+    def write_category(category):
+        pagelist = pages[category]
         for entry in pagelist:
             write_line(entry)
+        del pages[category]
+
+    order = ['Index', 'Usage', 'Setup', 'Background',]
+    for cat in order:
+        write_category(cat)
+
+    for category in pages.copy().keys():
+        write_category(category)
 
 import subprocess
 output = subprocess.check_output('mkdocs build --clean', shell=True)
