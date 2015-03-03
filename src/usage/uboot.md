@@ -1,6 +1,6 @@
 # U-Boot
-The *uboot* repository contains the scripts to build a **U-Boot** image for your
-desired platform.
+This guide will help you through the steps to generate a **U-Boot** image for
+your desired platform.
 
 ## Prerequisites
 All of the [...]() apply also to this guide.
