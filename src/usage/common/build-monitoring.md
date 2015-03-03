@@ -1,7 +1,7 @@
 ## Requirements
 
 ### Setup User-Documentaiton
-([example](../../setup/examples/user-documentation.md)
+([example](../../setup/examples/user-documentation_htwg.md)
 * Buildbot Webinterface URL
 
 ## Buildbot Webinterface

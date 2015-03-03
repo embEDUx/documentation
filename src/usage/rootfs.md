@@ -1,4 +1,13 @@
-## Requirements
+
+
+## Prerequisites
+All of [the common prerequisites apply](usage.md#Prerequisites)
+
+### Requirements
+
+
+### Suggestions
+
 ### rootfs-Repository
 
 
@@ -7,20 +16,40 @@
 
 ## RootFS specification
 The RootFS specification is done in the ***configruation.yml*** in the root of
-the *rootfs*-Repository. The file is written in YAML-Syntax and the following is
-a fully working example, taken out of [the file from example]
-(rootfs/examples/systemd/configuration.md)
+the *rootfs*-Repository. The file is written in [YAML-Syntax](http://yaml.org/).
 
-The *global*-Section configures [use-Flags](rootfs/use-flags.md) and keywords
+The main reason why anyone would want a customized RootFs is the selection of
+installed packages. For a categorized list of packages that are available, 
+please visit the following sites:
+
+* [Gentoo Portage package list](http://packages.gentoo.org/categories/)
+
 
 ### Example
-```yaml
+The follow is is a fully working example, taken from 
+[an example](rootfs/examples/systemd/configuration.yml)
+
+
+The *global*-Section configures the settings for global
+[use-Flags](../background/common/terminology.md#use-flags) and 
+[keyywords](../background/common/terminology.md#keywords), which apply for every
+installed package. If you find yourself putting the same keywords or use-flags
+for every package, this is the place to put them instead. 
+```
 ---
 global:
     use:
-        +: "vim-syntax systemd"
-        -: "X doc consolekit"
+        +: "python"
+        -: "X doc"
+```
+In this example, the USE-flags **X** and **doc** are disabled system-wide, causing all affected
+packages to build without X-support and without installed documentation.
 
+The global section is followed by the package list. It is a YAML-dictionary that
+defines the packages that are to be installed in the RootFS.
+
+
+```
 packages:
     sys-apps/util-linux:
         use:
@@ -55,4 +84,4 @@ post_install_commands:
 ### Pre/Post-Install overlays
 
 ## Advanced use cases
-* [Running containers based on a generated RootFS](rootfs/run-as-container.md)
+* [Running containers based on a generated RootFS](rootfs/advanced/run-containers.md)
