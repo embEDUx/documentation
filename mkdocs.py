@@ -62,7 +62,7 @@ with open('mkdocs.yml', 'w') as target, \
             write_line(entry)
         del pages[category]
 
-    order = ['Index','Usage','Background','Setup']
+    order = ['Index', 'Usage', 'Setup', 'Background',]
     for cat in order:
         write_category(cat)
 
