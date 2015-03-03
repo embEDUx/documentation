@@ -35,15 +35,15 @@ according to user-provided specifications:
 
 # Usage Information
 If you have access to a setup instance of the embEDUx build system and want to 
-start using it please goto [usage](usage/home.md). You will learn how to build the
+start using it please goto [usage](usage/usage.md). You will learn how to build the
 components offered by the system.
 
 
 # Setup Information
 If you want to run the embEDUx build system on your own machine(s), please
-consult [setup](setup/home.md)
+consult [setup](setup/setup.md)
 
 
 # Background Information
 For information on the development and the made decisions, please consult 
-[background](background/home.md)
+[background](background/background.md)

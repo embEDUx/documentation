@@ -35,9 +35,12 @@ for dirpath, dirnames, filenames in os.walk(basepath):
             entry = [filename, title1, title2] 
             if title2 == None:
                 del entry[2]
-            if entry[0] == ('home.md'):
-                pages.insert(0, entry)
-            elif entry[0].startswith('home'):
+                if entry[0] == ('home.md'):
+                    pages.insert(0, entry)
+                else:
+                    pages.insert(2, entry)
+            elif title1 == title2:
+                entry[2] = 'Overview'
                 pages.insert(1, entry)
             else:
                 pages.append(entry)

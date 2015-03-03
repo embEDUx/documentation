@@ -6,7 +6,7 @@ Before you can start heading over to the components sections, go through the
 list of requirements and fulfill them if needed.
 
 ### Successful Setup
-A successful [Setup of the buildserver](../setup/home.md) is a strong requirement, since
+A successful [Setup of the buildserver](../setup/setup.md) is a strong requirement, since
 it includes setting up the repositories that are used by users to supply the
 build instructions to the *buildserver*.
 
