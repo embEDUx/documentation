@@ -3,10 +3,12 @@ This document will give you pointers at anything you need to know for building
 and deploying the various components for specific platform.
 
 ## Prerequisites
-### Requirements
+The following requirements are common to the build procedures of all components.
+Please make sure that you and your systems fulfill the given requirements before
+proceeding to the actual build instructions.
 
 #### Local Software
-* Git
+* Git is needed to download and submit build specifications
 
 #### Successful Setup
 A successful [setup of the buildserver](../setup/setup.md) is a definite
@@ -17,17 +19,23 @@ users to supply the build instructions to the *buildserver*.
 At the end of the setup, the Administrator is instructed to create the
 [User-Documentation](../setup/user-documentation.md#Repositories).
 
-#### [User Documentation at the HTWG](../setup/examples/user-documentation-HTWG.md)
-If you want to see an example, or you're a user at the HTWG, follow the link in
-the headline to obtain the information you need for the components you want to build.
+If you want to see an example, or you're a user at the HTWG please go to [User
+Documentation at the HTWG](../setup/examples/user-documentation-HTWG.md) the
+headline to obtain the information you need for the components you want to
+build.
 
 #### Git-Repositories
 You need to retrieve the Git-repository for every component you want to build.
+The detailed component build instructions will guide you in finding the needed
+repository.
 
 
 ### Suggestions
-* Git skills. You will deal with and handful of repositories and branching will
-  be an important part of the work flow
+* Git practice! You will deal with and handful of repositories and different
+  on the way of managing builds for your systems.
+* Have a glimpse at the [background documentation](../background/background.md)
+  to understand why your are instructed to do so. In case you don't, you  might
+  miss potential functionality or potential to help yourself in case of problems.
 
 
 ## Build Instructions
@@ -78,6 +86,4 @@ Please note that to deploy a complete system, successful builds of all
 components need to be available.  This means, single components can be built and
 deployed if there exists previous successful builds for the target platform.
 After the required build have successfully completed you can finally 
-
-
 
