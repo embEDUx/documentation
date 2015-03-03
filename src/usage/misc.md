@@ -1,10 +1,10 @@
 # Miscellaneous files
 
 ## Prerequisites
-All of the [...]() apply also to this guide.
+All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
-
+TODO
 
 The misc repository was needed because in some situations we need some files
 present in the root or boot partition, that don't belong in the *rootfs*,
