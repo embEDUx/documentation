@@ -26,7 +26,7 @@ instead!**
 
 ## Add new upstream kernel
 Before you can add [a new platfom](#add-new-platform-for-a-linux-kernel), for
-which you want to build a **Linux** kernel, you first need to add an *kernel*
+which you want to build a **Linux** kernel, you first need to add a *kernel*
 branch to the *linux* repository.
 
 1. Clone the *linux* repository. The URL should have been provided to you by
