@@ -1,13 +1,19 @@
 # RootFS Specification
-The RootFS will be assembled from a **Gentoo**-stage3 archive.
+The RootFS will be assembled from a **Gentoo**-stage3 archive on the
+buildserver. This page will guide you through the steps of providing your own
+RootFS-specification to the buildserver.
 
 ## Prerequisites
 Please review [the common usage prerequisites](usage.md#Prerequisites), which
 are needed for the usage of every component.
 
 ### Requirements
+* User Documentation.
+  At the end of the setup, the Administrator is instructed to create the
+[User Documentation](../setup/user-documentation.md).
 * RootFS Git-Repository
-  The RootFS-specification is supplied to the buildserver via git.
+  The RootFS-specification is supplied to the buildserver via git. Consult your
+  User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Understand the [RootFS Background Information](../background/rootfs.md). The
