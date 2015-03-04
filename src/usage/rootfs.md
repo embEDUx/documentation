@@ -16,6 +16,7 @@ are needed for the usage of every component.
 The main reason why anyone would want a customized RootFS is the selection of
 installed packages. For a categorized list of packages that are available, 
 please visit the following sites:
+
 * [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
 ## Branch Name-Scheme
@@ -29,7 +30,7 @@ This file resides in the in the root directory of the
 YAML-files, and must not be removed.
 
 To demonstrate a **fully working example** this guide provides you with the
-[systemd-rootfs specification](rootfs/examples/systemd/configuration.yml)
+[systemd-rootfs specification](usage/rootfs/examples/systemd/configuration.yml)
 taken from the actual setup at the HTWG.
 
 ### Global Flags Section
