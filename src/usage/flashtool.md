@@ -116,10 +116,10 @@ the following command:
 
 There are several options available for this command:
 
- option | description 
- ------ | ----------- 
- platform | Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
- --limit N | Print top N entries for each selected product
+ option     | description 
+ ---------- | ----------- 
+ platform   | Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
+ --limit N  | Print top N entries for each selected product
  -l, --linux | List all linux kernel versions for the specified platform
  -u, --uboot | List all uboot versions for the specified platform
  -r, --rootfs | List all rootfs for the specified platform
