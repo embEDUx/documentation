@@ -1,42 +1,51 @@
 # Linux
-This guide will help you through the steps to build **Linux** kernel for
+This guide will help you through the steps to build a **Linux** kernel for
 your desired platform.
 
 ## Prerequisites
 All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
-* Git Repository *linux*
-* **Buildbot** setup for desired platform architecture
+* User Documentation.
+
+    At the end of the setup, the Administrator is instructed to create the [User
+    Documentation](../setup/user-documentation.md).
+
+* Git Repository
+* **Buildserver** setup for desired platform architecture
 
 ### Suggestions
-* Toolchain (Host architecture -> target architecture)
+* Build/download a toolchain. This will allow you to test your build
+  configuration before you push it upstream.
 
-    A toolchain will allow you to test your platforms' kernel configuration
-    locally.
+* Have a look at the default build scripts. As the **Buildserver** just executes
+  these scripts, you have no limits on what you want to do before, during and
+  after the build process.
 
 ## Name scheme
-**Buildbot** can only build your images, if you follow this naming schema
+The **Builserver** can only build your images, if you follow this name scheme
+for any of the branches:
 
-* Kernel branch: <kernel\_version\> (eg. 3.17.2)
-* Platform branch: <kernel\_version\>\_<platform\_name\> (eg. 3.17.2_raspberry-pi)
+* Kernel branch: <Major\>.<Minor\>.<Subminor\> (eg. 3.17.2)
+* Platform branch: <kernel-branch-name\>\_<platform-string\> (eg. 3.17.2_raspberry-pi)
 
-**Importan: The platform\_name must not contain any underscores, use dashes
-instead!**
+Please look up the Platform string in the [User
+Documentation](../setup/user-documentation) provided by your administrator. If
+your platform doesn't exist yet, please contact your administrator.
 
 ## Add new upstream kernel
 Before you can add [a new platfom](#add-new-platform-for-a-linux-kernel), for
 which you want to build a **Linux** kernel, you first need to add a *kernel*
-branch to the *linux* repository.
+branch to the *linux* repository. 
 
-1. Clone the *linux* repository. The URL should have been provided to you by
-   your system administrator.
-    
+In this case we will add a branch for 3.18.7 **Linux** kernel.
+
+1. Clone the *linux* repository with the URL provided in the user documentation.
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git 
     ```
 
-1. Add a *kernel* branch named *<Major\>.<Minor\>.<Subminor\>* to the *linux*
+1. Add a *kernel* branch *<Major\>.<Minor\>.<Subminor\>* to the *linux*
    repository. 
 
     ```
@@ -49,7 +58,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7
     ```
 
-1. Add the [template](usage/linux/template/kernel_build) as ***build*** to the
+1. Add the [default script](usage/linux/template/kernel_build) as ***build*** to the
    repository and make it executable.
 
     ```
@@ -59,11 +68,12 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
 
-1. Modify *KERNEL\_URL*, *KERNEL\_FILE* and *PATCH\_VERSION* in the ***build***
-   script, to match the desired kernel version. Be careful with the **Gentoo**
-   patch version, as the version number not necessarily needs to fit to the
-   resulting **Linux** kernel. In this case **Gentoo** patches 3.18-9 result in
-   **Linux** kernel 3.18.7.
+1. Modify *KERNEL\_URL*, *KERNEL\_FILE* in the ***build*** script, to match the
+   desired kernel version. You also need to modify *PATCH\_VERSION*, which is
+   the version of the **Gentoo** specific patches. Be careful with the version
+   number, as it doesn't necessarily fit to the resulting **Linux** kernel
+   version. In this case **Gentoo** patches 3.18-9 result in **Linux** kernel
+   3.18.7.
    
     ```
 ...
@@ -74,7 +84,7 @@ PATCH_VERSION="3.18-9"
 ...
     ```
 
-1. Add the files, commit and push. 
+1. Add the files, commit and push them upstream. 
    
     ```
 $ git add build
@@ -82,25 +92,25 @@ $ git commit -m "new kernel"
 $ git push 
     ```
 
-1. Now you have a *kernel* branch for your desired **Linux** kernel version
-   within your *linux* repository. The next step is to add *platform* branches
+1. Now that you have a *kernel* branch for your desired **Linux** kernel version
+   within your *linux* repository, the next step is to add *platform* branches
    to the repository.
 
 ## Add new platform for a **Linux** kernel
 This step requires an existing [*kernel* branch](#add-new-upstream-kernel) for
 which you want to add a platform.
 
-1. If not already done, clone the *linux* repository. The URL should have been
-   provided to you by your system administrator. 
+1. If not already done, clone the *linux* repository with the URL provided in
+   the user documentation.
    
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git
     ```
 
-1. Add a *platform* branch following the naming schema
-   *<Major\>.<Minor\>.<Subminor\>\_<platform\>* to the *linux* repository.
-   It is necessary for that the **Buildbot** is able to detect the just created
-   branch, therefore this branch needs to be pushed to the remote repository
+1. Add a *platform* branch following the name schema
+   *<kernel-branch\>\_<platform-string\>* to the *linux* repository. It is
+   necessary that you push this initial branch upstream, so the **Buildserver**
+   can find the new *platform* branch.
 
     ```
 $ git checkout master
@@ -112,8 +122,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi
     ```
 
-1. Add the [template](usage/linux/template/platform_build) as ***build*** to the
-   repository and make it executable. 
+1. Add the [default script](usage/linux/template/platform_build) as ***build***
+   to the repository and make it executable. 
    
     ```
 $ ls -hl
@@ -122,12 +132,10 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  1 21:19 README
     ```
 
-1. Modify *KERNEL\_VERSION* in ***build*** to the desired version, which also
-   has to be the name of the *kernel* branch. Finally modify *KERNEL\_DTB* to
-   the desired device tree blobs name. Make sure the device tree sources exist
-   in the **Linux** sources, which will be downloaded by the *kernel* branch. If
-   not, you need to add them by adding a patch to the *platform* branch. In this
-   case the desired device tree sources do exist, so nothing is left to do.
+1. Modify *KERNEL\_VERSION* in ***build*** to the desired *kernel* branch. Then
+   modify *KERNEL\_DTB* to the desired device tree blob. If your platforms
+   device tree sources aren't in the **Linux** kernel sources yet, you have to
+   add them with a patch, as described in a later step.
    
     ```
 ...
@@ -141,7 +149,7 @@ KERNEL_IMG="zImage"
 
 1. Add a working kernel configuration ***.config*** to the repository. If you
    aren't sure if your kernel configuration is working, you can test it locally
-   by executing ***build*** with the fitting [toolchain](toolchains.md).
+   by executing ***build*** with the fitting [toolchain](toolchains.md#Usage).
    
     ```
 $ ls -hla
@@ -154,7 +162,7 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
     ```
 
-1. Optional: Add needed patches to the repository.
+1. Optional: Add needed patches to the root of your *platform* branch.
    
     ```
 $ ls -hl
@@ -164,7 +172,7 @@ total 8.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
 
-1. Add all files, commit  and push branch upstream.
+1. Add all files, commit and push the  branch upstream.
    
     ```
 $ git add build
@@ -174,12 +182,12 @@ $ git commit -m "added raspberry-pi 3.18.7 kernel build"
 $ git push
     ```
 
-1. The **Buildbot** should start building your kernel now. For further
+1. The **Buildserver** should start building your kernel image now. For further
    informations on how to monitor the build check [monitoring
    guide](common/build-monitoring.md).
 
 1. Congratulations, you just built your first kernel for your first platform. If
-   you have a [uboot](uboot.md), a [rootfs](rootfs.md) and the
-   necessary [misc](misc.md) files, you can flash everything with the
+   you have a [uboot](uboot.md), a [rootfs](rootfs.md) and the necessary
+   [misc](misc.md) files, you can flash everything with the
    [flashtool](flashtool.md).
 
