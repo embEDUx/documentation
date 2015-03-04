@@ -1,4 +1,4 @@
-# Repositories and branches.
+# Repositories and branches
 
 The following image shows the structure how the **Git** repositories should be
 setup by your system administrator. The image should help you to understand the
