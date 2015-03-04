@@ -30,7 +30,7 @@ for any of the branches:
 * Platform branch: <kernel-branch-name\>\_<platform-string\> (eg. 3.17.2_raspberry-pi)
 
 Please look up the Platform string in the [User
-Documentation](../setup/user-documentation) provided by your administrator. If
+Documentation](../setup/user-documentation.md) provided by your administrator. If
 your platform doesn't exist yet, please contact your administrator.
 
 ## Add new upstream kernel

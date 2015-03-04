@@ -45,7 +45,7 @@ for any of the branches:
 * <platform-string\>
 
 Please look up the platform string in the [User
-Documentation](../setup/user-documentation) provided by your administrator. If
+Documentation](../setup/user-documentation.md) provided by your administrator. If
 your platform doesn't exist yet, please contact your administrator.
 
 ## Add new platform
