@@ -1,9 +1,9 @@
 # Flashtool
 
-1. [Getting started](#Getting_started)
-2. [Get **recipes** from git server](#Get_recipes_from_git_server)
-3. [List finished builds from the configured **Buildbot** server](List_finished_builds_from_the_configured_Buildbot_server)
-4. [recipe](#How_to_write_a_recipe_file)
+1. [Getting started](#getting-started)
+2. [Get **recipes** from git server](#get-recipes-from-git-server)
+3. [List finished builds from the configured **Buildbot** server](list-finished-builds-from-the-configured-Buildbot-server)
+4. [recipe](#how-to-write-a-recipe-file)
 5. Flashtool help page
 
 
