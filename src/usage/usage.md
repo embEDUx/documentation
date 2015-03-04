@@ -44,11 +44,10 @@ repository.
 
 1. Run `git clone` for a fresh start or `git pull` for an existing repository
 
-1. Run `git checkout` the branch of interest. This depends on the *component* and
-   the *platform* you want to build for. 
-   At this point you may re-use an existing branch, work on an existing branch,
-   or create a new branch. Further instructions are included on the detailed
-   component sections.
+1. Run `git checkout` for the the branch of interest. This depends on the
+   *component* and the *platform* you want to build for.  At this point you may
+   re-use an existing branch, work on an existing branch, or create a new
+   branch. Further instructions are included on the detailed component sections.
 
 1. **Specify your build.** Since the build specifications are very
    different from each other, it's necessary to separate the instructions into
@@ -69,9 +68,9 @@ repository.
        instructions are provided to quickly setup and test the builds locally.
 
 
-1. Run `git add` and `git commit` according to your changes. Please use **sane commit messages**
-   to improve collaboration. The buildserver will pick up your changes, schedule
-   a build and execute it as soon as it can.
+1. Run `git add` and `git commit` according to your changes. Please use **sane
+   commit messages** to improve collaboration. The buildserver will pick up your
+   changes, schedule a build and execute it as soon as it can.
 
 ## Monitor your builds
 In the meantime of your build, and also to check if it has been scheduled
