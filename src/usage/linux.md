@@ -162,9 +162,11 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
     ```
 
-1. Optional: Add needed patches to the root of your *platform* branch.
+1. Optional: Add needed patches to the root of your *platform* branch. The patch
+   needs to be in the standard patch format, as created wit `diff -Naur`.
    
     ```
+$ diff -Naur linux/.../smsc95xx.c.old linux/.../smsc95xxx.c > 9000-Smsc95xx_allow_mac_to_be_set.patch
 $ ls -hl
 total 8.0K
 -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
