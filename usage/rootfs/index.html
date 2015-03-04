@@ -241,14 +241,20 @@
             <div class="col-md-9" role="main">
 
 <h1 id="rootfs-specification">RootFS Specification</h1>
-<p>The RootFS will be assembled from a <strong>Gentoo</strong>-stage3 archive.</p>
+<p>The RootFS will be assembled from a <strong>Gentoo</strong>-stage3 archive on the
+buildserver. This page will guide you through the steps of providing your own
+RootFS-specification to the buildserver.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Please review <a href="../usage/index.html#Prerequisites">the common usage prerequisites</a>, which
 are needed for the usage of every component.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
+<li>User Documentation.
+  At the end of the setup, the Administrator is instructed to create the
+<a href="../../setup/user-documentation/index.html">User Documentation</a>.</li>
 <li>RootFS Git-Repository
-  The RootFS-specification is supplied to the buildserver via git.</li>
+  The RootFS-specification is supplied to the buildserver via git. Consult your
+  User Documentation for the repository URLs. (See previous link)</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>

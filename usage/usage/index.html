@@ -227,6 +227,8 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
+            <li><a href="#suggestions">Suggestions</a></li>
+        
             <li><a href="#build-instructions">Build Instructions</a></li>
         
             <li><a href="#monitor-your-builds">Monitor your builds</a></li>
@@ -245,48 +247,48 @@ and deploying the various components for specific platform.</p>
 <p>The following requirements are common to the build procedures of all components.
 Please make sure that you and your systems fulfill the given requirements before
 proceeding to the actual build instructions.</p>
-<h4 id="local-software">Local Software</h4>
+<h3 id="local-software">Local Software</h3>
 <ul>
 <li>Git is needed to download and submit build specifications.</li>
 <li>$EDITOR - to specify the builds you will need your favorite text editor.</li>
 </ul>
-<h4 id="successful-setup">Successful Setup</h4>
+<h3 id="successful-setup">Successful Setup</h3>
 <p>A successful <a href="../../setup/setup/index.html">setup of the buildserver</a> is a definite
 requirement, since it includes setting up the repositories that are used by
 users to supply the build instructions to the <em>buildserver</em>.</p>
-<h4 id="user-documentation">User Documentation</h4>
+<h3 id="user-documentation">User Documentation</h3>
 <p>At the end of the setup, the Administrator is instructed to create the
-<a href="../../setup/user-documentation/index.html#Repositories">User-Documentation</a>.</p>
-<p>If you want to see an example, or you're a user at the HTWG please go to <a href="../../setup/examples/user-documentation-HTWG/index.html">User
-Documentation at the HTWG</a> the
-headline to obtain the information you need for the components you want to
-build.</p>
+<a href="../../setup/user-documentation/index.html">User Documentation</a>. This information will be
+needed to use the buildserver.</p>
 <h4 id="git-repositories">Git-Repositories</h4>
 <p>You need to retrieve the Git-repository for every component you want to build.
 The detailed component build instructions will guide you in finding the needed
 repository.</p>
-<h3 id="suggestions">Suggestions</h3>
+<h2 id="suggestions">Suggestions</h2>
 <ul>
-<li>Git practice! You will deal with and handful of repositories and different
-  on the way of managing builds for your systems.</li>
+<li>Git practice! You will deal with and handful of repositories and their
+  branches on the way of managing builds for your systems.</li>
 <li>Have a glimpse at the <a href="../../background/background/index.html">background documentation</a>
   to understand why your are instructed to do so. In case you don't, you  might
-  miss potential functionality or potential to help yourself in case of problems.</li>
+  miss potential functionality or the potential to help yourself in case of
+  problems.</li>
 </ul>
 <h2 id="build-instructions">Build Instructions</h2>
 <ol>
 <li>
-<p>Open the <em>User Documentation</em>  (<a href="../../setup/examples/user-documentation-HTWG/index.html">example HTWG-userdocs</a>)</p>
+<p>Open <strong>your</strong> User Documentation</p>
 </li>
 <li>
-<p>Acquire the repository URL for the component(s)</p>
+<p>Acquire the repository URL for the component you want to build</p>
 </li>
 <li>
 <p>Run <code>git clone</code> for a fresh start or <code>git pull</code> for an existing repository</p>
 </li>
 <li>
-<p>Run <code>git checkout</code> the branch of interest. This depends on the <em>component</em> and
-   the <em>Platform</em> you want to build for</p>
+<p>Run <code>git checkout</code> for the the branch of interest. This depends on the
+   <em>component</em> and the <em>platform</em> you want to build for.  At this point you may
+   re-use an existing branch, work on an existing branch, or create a new
+   branch. Further instructions are included on the detailed component sections.</p>
 </li>
 <li>
 <p><strong>Specify your build.</strong> Since the build specifications are very
@@ -300,16 +302,18 @@ repository.</p>
 <li><a href="../misc/index.html">Miscellaneous files</a></li>
 <li><a href="../toolchains/index.html">Toolchains</a></li>
 </ul>
-<p>The work flow is basically the same for every component. The biggest
-   variation happens when building for this is the RootFS, which you will
-   not be able to test before you submit your specification to the
-   buildserver.  More information will follow in the detailed section for
-   building the RootFS.</p>
+<p>The work flow is basically the same for every component. One major
+   difference in workflow occurs when building a RootFS. You will not be
+   able to test the build locally before submitting your specification to
+   the buildserver. The reason is the complex system that is needed to
+   assemble a RootFS. More information will follow in the detailed section
+   for building the RootFS.  For every other component, toolchains and
+   instructions are provided to quickly setup and test the builds locally.</p>
 </li>
 <li>
-<p>Run <code>git add</code> and <code>git commit</code> according to your changes. Please use <strong>sane commit messages</strong>
-   to improve collaboration. The buildserver will pick up your changes, schedule
-   a build and execute it as soon as it can.</p>
+<p>Run <code>git add</code> and <code>git commit</code> according to your changes. Please use <strong>sane
+   commit messages</strong> to improve collaboration. The buildserver will pick up your
+   changes, schedule a build and execute it as soon as it can.</p>
 </li>
 </ol>
 <h2 id="monitor-your-builds">Monitor your builds</h2>
@@ -326,12 +330,22 @@ you need support,</p>
 </li>
 </ol>
 <h2 id="hardware-deployment">Hardware Deployment</h2>
+<h3 id="flashtool">Flashtool</h3>
 <p>If your build succeeded you can continue to 
 <a href="../flashtool/index.html">deploy your builds to hardware using the flashtool</a></p>
 <p>Please note that to deploy a complete system, successful builds of all
 components need to be available.  This means, single components can be built and
 deployed if there exists previous successful builds for the target platform.
 After the required build have successfully completed you can finally </p>
+<h3 id="manually">Manually</h3>
+<p>If for some reason the flashtool is not working for you, there is always the
+possibility to deploy the components manually. Retrieve the <em>Component Download
+URLs</em> from the <a href="#User Documentation">User Documentation</a>, or from the
+<em>Buildmaster Web-Interface</em>, where they are listed at the last build step for
+every successful job.  From there, you can download the files produced by the
+builds. The rest depends strongly on your platform, and it is not possible to
+provide a generic way that will possibly work for all platforms available on the
+free market.</p>
 </div>
         </div>
 

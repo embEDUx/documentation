@@ -234,12 +234,10 @@
 
 <h1 id="flashtool">Flashtool</h1>
 <ol>
-<li>
-<p>Getting started</p>
-</li>
-<li>
-<p>How to write a recipe file</p>
-</li>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#get-recipes-from-git-server">Get <strong>recipes</strong> from git server</a></li>
+<li><a href="#list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</a></li>
+<li><a href="#how-to-write-a-recipe-file">How to write a recipe file</a></li>
 <li>Flashtool help page</li>
 </ol>
 <h2 id="getting-started">Getting started</h2>
@@ -297,47 +295,89 @@ help:   Local path where flashtool should save downloaded products if option is 
 <p><code>flashtool config</code></p>
 </blockquote>
 <p>The tool will ask for each setting if you want to change the value or not.</p>
-<h3 id="get-recipes-from-git-server">Get recipes from git server</h3>
-<p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declares how to deploy a
-system on a hardware (e.g. Raspberry Pi) and how to setup the hardware. If
-you want to write a new recipe for a hardware please read <a href="#How_to_write_a_recipe_file">How to write a recipe
-file</a>. </p>
+<h3 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h3>
+<p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declare how to deploy a
+system on a platform (e.g. Raspberry Pi) and how to setup the platform. If
+you want to write a new <strong>recipe</strong> for a platform please read <a href="#How_to_write_a_recipe_file">How to write a
+recipe file</a>. </p>
 <p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git</strong>
-there are provided some recipe files for different hardware.</p>
-<p>To get the recipe files from the repository for the flashtool run the following command:</p>
+there are provided some <strong>recipe</strong> files for different hardware.</p>
+<p>To get the <strong>recipe</strong> files from the repository for the flashtool run the following command:</p>
 <blockquote>
 <p><code>flashtool platform_recipes init</code></p>
 </blockquote>
-<p>The recipe files will be stored at the directory <strong><em>{working_directory}/platforms</em></strong>.
-If there are new recipes on the repository you can get them with the command:</p>
+<p>The <strong>recipe</strong> files will be stored at the directory <strong><em>{working_directory}/platforms</em></strong>.
+If there are new <strong>recipes</strong> on the repository you can get them with the command:</p>
 <blockquote>
 <p><code>flashtool platform_recipes update</code></p>
 </blockquote>
-<p>The given or created recipe files can be listed by flashtool. To do so type in:</p>
+<p>The given or created <strong>recipe</strong> files can be listed by the <strong>flashtool</strong>.
+To do so type in:</p>
 <blockquote>
 <p><code>flashtool list_platforms</code></p>
 </blockquote>
-<p>This command will list all recipe files grouped by their prefix. The name of a
-recipe file should follow this naming scheme:</p>
+<p>This command will list all <strong>recipe</strong> files grouped by their prefix. The name of 
+a <strong>recipe</strong> file should follow this naming scheme:</p>
 <blockquote>
 <p>{hardware-name}_{identifier}.yml</p>
 </blockquote>
-<p>The name and identifier must not contain underscores. The underscore is used to
-divide the recipe file name in the two parts hardware name and identifier. It is
-important, that the hardware name is also registered on the buildserver. The
-next example shows how to use this naming scheme for a Raspberry Pi.</p>
+<p><strong>The name and identifier must not contain underscores, please use dashes instead.</strong>
+The <em>underscore</em> is used to divide the recipe file name in the two parts 
+hardware name and identifier. It is important, that the platform name is also 
+registered on the buildserver.</p>
+<p>The next example shows how to use this naming scheme for a Raspberry Pi.</p>
 <blockquote>
 <p>raspberry-pi.yml</p>
 <p>raspberry-pi_media_center.yml</p>
 </blockquote>
 <p>The name for a Rapsberry Pi in this embEDUx configuration is <em>"raspberry-pi"</em>.
-This name will be used in branches of the git repositories and on the buildbot
-server to identify a Raspberry Pi.</p>
+This name will be used in branches of the <strong>git repositories</strong> and on the
+<strong>buildbot</strong> server to identify a Raspberry Pi.</p>
 <h3 id="list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</h3>
-<p>The <strong>Buildbot</strong> server provides all needed products for an embEDUx system.
-These products can be </p>
+<p>The <strong>Buildbot</strong> server provides all needed products for an <strong>embEDUx</strong> system.
+All products for every configured platform can be listet by the <strong>flashtool</strong> with
+the following command:</p>
+<blockquote>
+<p><code>flashtool list_builds</code></p>
+</blockquote>
+<p>There are several options available for this command:</p>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platform</td>
+<td>Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.</td>
+</tr>
+<tr>
+<td>--limit N</td>
+<td>Print top N entries for each selected product</td>
+</tr>
+<tr>
+<td>-l, --linux</td>
+<td>List all linux kernel versions for the specified platform</td>
+</tr>
+<tr>
+<td>-u, --uboot</td>
+<td>List all uboot versions for the specified platform</td>
+</tr>
+<tr>
+<td>-r, --rootfs</td>
+<td>List all rootfs for the specified platform</td>
+</tr>
+<tr>
+<td>-m, --misc</td>
+<td>List all misc files for the specified platform</td>
+</tr>
+</tbody>
+</table>
 <h3 id="setup-hardware-and-deploy-system-on-hardware">Setup Hardware and deploy system on Hardware</h3>
-<h3 id="how-to-write-a-recipefile">How to write a recipefile</h3>
+<p>This step requires an exisitng <a href="#How_to_write_a_recipe_file">recipe</a> file</p>
+<h3 id="how-to-write-a-recipe-file">How to write a recipe file</h3>
 </div>
         </div>
 
