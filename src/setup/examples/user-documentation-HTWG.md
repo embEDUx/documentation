@@ -7,14 +7,14 @@ Linux | https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git
 RootFS | https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git
 Miscellaneous files | https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git
 
-## Buildbot
+## Buildmaster
 
-### Buildmaster Web-Interfaces
+### Web-Interfaces
 Server-Name | URL
 --- | ---
 moe | http://moe.in.htwg-konstanz.de:8010
 
-### Buildmaster File Storage
+### Component Download URLs
 Component | URL
 --- | ---
 U-Boot | http://moe.in.htwg-konstanz.de:8010/uboot/
