@@ -1,9 +1,10 @@
 # Flashtool
 
-1. Getting started
-
-3. How to write a recipe file
-4. Flashtool help page
+1. [Getting started](#Getting_started)
+2. [Get **recipes** from git server](#Get_recipes_from_git_server)
+3. [List finished builds from the configured **Buildbot** server](List_finished_builds_from_the_configured_Buildbot_server)
+4. [recipe](#How_to_write_a_recipe_file)
+5. Flashtool help page
 
 
 ## Getting started
@@ -65,51 +66,55 @@ You can change these settings by calling the comand:
 
 The tool will ask for each setting if you want to change the value or not.
 
-### Get recipes from git server
 
-**Recipes** are *yaml* configuration files, which declares how to deploy a
-system on a hardware (e.g. Raspberry Pi) and how to setup the hardware. If
-you want to write a new recipe for a hardware please read [How to write a recipe
-file](#How_to_write_a_recipe_file). 
+### Get **recipes** from git server
+
+**Recipes** are *yaml* configuration files, which declare how to deploy a
+system on a platform (e.g. Raspberry Pi) and how to setup the platform. If
+you want to write a new **recipe** for a platform please read [How to write a
+recipe file](#How_to_write_a_recipe_file). 
 
 On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git**
-there are provided some recipe files for different hardware.
+there are provided some **recipe** files for different hardware.
 
-To get the recipe files from the repository for the flashtool run the following command:
+To get the **recipe** files from the repository for the flashtool run the following command:
 
 > `flashtool platform_recipes init`
 
-The recipe files will be stored at the directory ***{working\_directory}/platforms***.
-If there are new recipes on the repository you can get them with the command:
+The **recipe** files will be stored at the directory ***{working\_directory}/platforms***.
+If there are new **recipes** on the repository you can get them with the command:
 
 > `flashtool platform_recipes update`
 
-The given or created recipe files can be listed by flashtool. To do so type in:
+The given or created **recipe** files can be listed by the **flashtool**.
+To do so type in:
 
 > `flashtool list_platforms`
 
-This command will list all recipe files grouped by their prefix. The name of a
-recipe file should follow this naming scheme:
+This command will list all **recipe** files grouped by their prefix. The name of 
+a **recipe** file should follow this naming scheme:
 
 > {hardware-name}\_{identifier}.yml
 
-The name and identifier must not contain underscores. The underscore is used to
-divide the recipe file name in the two parts hardware name and identifier. It is
-important, that the hardware name is also registered on the buildserver. The
-next example shows how to use this naming scheme for a Raspberry Pi.
+**The name and identifier must not contain underscores, please use dashes instead.**
+The *underscore* is used to divide the recipe file name in the two parts 
+hardware name and identifier. It is important, that the platform name is also 
+registered on the buildserver.
+
+The next example shows how to use this naming scheme for a Raspberry Pi.
 
 > raspberry-pi.yml
-
+>
 > raspberry-pi\_media_center.yml
 
 The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
-This name will be used in branches of the git repositories and on the buildbot
-server to identify a Raspberry Pi.
+This name will be used in branches of the **git repositories** and on the
+**buildbot** server to identify a Raspberry Pi.
 
 ### List finished builds from the configured **Buildbot** server
 
-The **Buildbot** server provides all needed products for an embEDUx system.
-All products for every configured platform can be listet by flashtool with
+The **Buildbot** server provides all needed products for an **embEDUx** system.
+All products for every configured platform can be listet by the **flashtool** with
 the following command:
 
 > `flashtool list_builds`
@@ -128,5 +133,7 @@ There are several options available for this command:
 
 ### Setup Hardware and deploy system on Hardware
 
+This step requires an exisitng [recipe](#How_to_write_a_recipe_file) file
 
-### How to write a recipefile
+
+### How to write a recipe file
