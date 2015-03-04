@@ -8,9 +8,8 @@ Please review [the common usage prerequisites](usage.md#Prerequisites), which
 are needed for the usage of every component.
 
 ### Requirements
-* User Documentation.
-  At the end of the setup, the Administrator is instructed to create the
-[User Documentation](../setup/user-documentation.md).
+* User Documentation.  At the end of the setup, the Administrator is instructed
+  to create the [User Documentation](../setup/user-documentation.md).
 * RootFS Git-Repository
   The RootFS-specification is supplied to the buildserver via git. Consult your
   User Documentation for the repository URLs. (See previous link)
@@ -30,7 +29,18 @@ please visit the following sites:
 * [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
 ## Branch Name-Scheme
-TODO
+The **buildserver** can only build your images, if you follow the correct name-scheme.
+
+The variables that are needed for your platform can be found in the [User
+Documentation](../setup/user-documentation.md).
+
+
+* Kernel branch: <kernel\_version\> (eg. 3.17.2)
+* Platform branch: <kernel\_version\>\_<platform\_name\> (eg. 3.17.2_raspberry-pi)
+
+**Importan: The platform\_name must not contain any underscores, use dashes
+instead!**
+
 
 
 ## The ***configuration.yml***-File
