@@ -8,11 +8,11 @@
 ## Requirements
 
 The flashtool must be installed on your system. Please read the [setup
-chapter](src/setup/flashtool.md) of the **flashtool**.
+chapter](../setup/flashtool.md) of the **flashtool**.
 
 ## Getting started
 
-After [installing](src/setup/flashtool.md) the **flashtool** on a linux system it
+After [installing](../setup/flashtool.md) the **flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
 > `flashtool init`
