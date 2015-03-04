@@ -11,7 +11,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/user-documentation.md).
 
-* Git Repository
+* Git Repository *linux*
 * **Buildserver** setup for desired platform architecture
 
 ### Suggestions
