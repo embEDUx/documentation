@@ -161,7 +161,13 @@ $ git push
    guide](common/build-monitoring.md).
 
 1. Congratulations, you just built your first **U-Boot** for your first
-   platform. If you have a [linux](linux.md), a [rootfs](rootfs.md) and the
+   platform.
+  
+   ** Be aware that you might still need some necessary files on your boot and
+   root partition to boot your system successfully. See [misc](misc.md) for the
+   necessary steps.**
+   
+   If you have a [linux](linux.md), a [rootfs](rootfs.md) and the
    necessary [misc](misc.md) files, you can flash everything with the
    **Flashtool** or deploy your files manually (see [Hardware
    Deployment](usage.md#hardware-deployment)).
