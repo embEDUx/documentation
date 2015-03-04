@@ -1,4 +1,5 @@
 # RootFS Specification
+The RootFS will be assembled from a **Gentoo**-stage3 archive.
 
 ## Prerequisites
 Please review [the common usage prerequisites](usage.md#Prerequisites), which
@@ -6,10 +7,13 @@ are needed for the usage of every component.
 
 ### Requirements
 * RootFS Git-Repository
-*
+  The RootFS-specification is supplied to the buildserver via git.
 
 ### Suggestions
-* Understand the [RootFS Background Information](../background/rootfs.md)
+* Understand the [RootFS Background Information](../background/rootfs.md). The
+  buldsystem itself and **Gentoo** as base distribution introduce a high level
+  of customization options. These come with complexity and must be
+  understood to be fully utilized.
 * Get familiar with the [YAML-Syntax](http://yaml.org/)
 
 ## Available Packages
@@ -23,7 +27,7 @@ please visit the following sites:
 TODO
 
 
-## The ***configruation.yml***-File
+## The ***configuration.yml***-File
 This file resides in the in the root directory of the 
 *rootfs*-Repository. The file is written in [YAML-Syntax](http://yaml.org/). The
 `---` in the first line of the file is necessary syntax which indicates
@@ -49,7 +53,9 @@ global:
 ```
 This way, USE-flags **X** and **doc** are disabled system-wide, causing all affected
 packages to build without X-support and without the installation of additional
-documentation.
+documentation. The **python**-flag will be enabled for every package that supports
+it. For example, this might cause packages to be built with bindings for
+*Python* activated.
 
 
 ### Package-List and Package-Flags Section
