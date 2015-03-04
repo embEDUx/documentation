@@ -85,10 +85,6 @@
                         </li>
                     
                         <li >
-                            <a href="use-flags/index.html">Rootfs/Use Flags</a>
-                        </li>
-                    
-                        <li >
                             <a href="../misc/index.html">Misc</a>
                         </li>
                     
@@ -227,60 +223,53 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#prerequisites">Prerequisites</a></li>
+        <li class="main active"><a href="#rootfs-specification">RootFS Specification</a></li>
         
-            <li><a href="#requirements">Requirements</a></li>
-        
-            <li><a href="#suggestions">Suggestions</a></li>
-        
-            <li><a href="#rootfs-repository">rootfs-Repository</a></li>
-        
-    
-        <li class="main "><a href="#branch-name-scheme">Branch name scheme</a></li>
-        
-    
-        <li class="main "><a href="#rootfs-specification">RootFS specification</a></li>
-        
-            <li><a href="#example">Example</a></li>
-        
-            <li><a href="#global-flags">Global flags</a></li>
-        
-            <li><a href="#packages-and-flags">Packages and flags</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
         
             <li><a href="#available-packages">Available Packages</a></li>
         
-            <li><a href="#prepost-install-commands">Pre/Post-Install commands</a></li>
+            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
         
-            <li><a href="#prepost-install-overlays">Pre/Post-Install overlays</a></li>
+            <li><a href="#the-configruationyml-file">The configruation.yml-File</a></li>
         
-    
-        <li class="main "><a href="#advanced-use-cases">Advanced use cases</a></li>
+            <li><a href="#advanced-use-cases">Advanced use cases</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="rootfs-specification">RootFS Specification</h1>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Please review <a href="../usage/index.html#Prerequisites">the common usage prerequisites</a>, which
 are needed for the usage of every component.</p>
 <h3 id="requirements">Requirements</h3>
-<h4 id="rootfs-git-repository">RootFS Git-Repository</h4>
-<h3 id="suggestions">Suggestions</h3>
-<h3 id="rootfs-repository">rootfs-Repository</h3>
-<h2 id="branch-name-scheme">Branch name scheme</h2>
-<h2 id="rootfs-specification">RootFS specification</h2>
-<p>The RootFS specification is done in the <strong><em>configruation.yml</em></strong> in the root of
-the <em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>.</p>
-<p>The main reason why anyone would want a customized RootFs is the selection of
-installed packages. For a categorized list of packages that are available, 
-please visit the following sites:</p>
 <ul>
-<li><a href="http://packages.gentoo.org/categories/">Gentoo Portage package list</a></li>
+<li>RootFS Git-Repository
+*</li>
 </ul>
-<h3 id="example">Example</h3>
-<p>The follow is is a fully working example, taken from 
-<a href="../../rootfs/examples/systemd/configuration.yml">an example</a></p>
+<h3 id="suggestions">Suggestions</h3>
+<ul>
+<li>Understand the <a href="../../background/rootfs/index.html">RootFS Background Information</a></li>
+<li>Get familiar with the <a href="http://yaml.org/">YAML-Syntax</a></li>
+</ul>
+<h2 id="available-packages">Available Packages</h2>
+<p>The main reason why anyone would want a customized RootFS is the selection of
+installed packages. For a categorized list of packages that are available, 
+please visit the following sites:
+* <a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></p>
+<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
+<p>TODO</p>
+<h2 id="the-configruationyml-file">The <strong><em>configruation.yml</em></strong>-File</h2>
+<p>This file resides in the in the root directory of the 
+<em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>. The
+<code>---</code> in the first line of the file is necessary syntax which indicates
+YAML-files, and must not be removed.</p>
+<p>To demonstrate a <strong>fully working example</strong> this guide provides you with the
+<a href="../../rootfs/examples/systemd/configuration.yml">systemd-rootfs specification</a>
+taken from the actual setup at the HTWG.</p>
+<h3 id="global-flags-section">Global Flags Section</h3>
 <p>The <em>global</em>-Section configures the settings for global
 <a href="../../background/common/terminology/index.html#USE-flags">USE-Flags</a> and 
 <a href="../../background/common/terminology/index.html#keywords">keywords</a>, which apply for every
@@ -293,11 +282,14 @@ global:
         -: &quot;X doc&quot;
 </code></pre>
 
-<p>In this example, the USE-flags <strong>X</strong> and <strong>doc</strong> are disabled system-wide, causing all affected
-packages to build without X-support and without installed documentation.</p>
-<p>The global section is followed by the package list. It is a YAML-dictionary that
-defines the packages that are to be installed in the RootFS.</p>
-<pre><code>packages:
+<p>This way, USE-flags <strong>X</strong> and <strong>doc</strong> are disabled system-wide, causing all affected
+packages to build without X-support and without the installation of additional
+documentation.</p>
+<h3 id="package-list-and-package-flags-section">Package-List and Package-Flags Section</h3>
+<p>The global section is followed by the package list. It is a YAML-dictionary
+which defines the packages that are to be installed in the RootFS. The syntax
+for every package is the same as for the global system.</p>
+<pre><code class="yaml">packages:
     sys-apps/util-linux:
         use:
             -: &quot;systemd&quot;
@@ -310,8 +302,11 @@ defines the packages that are to be installed in the RootFS.</p>
         use: 
             +: &quot;importd gcrypt curl lz4 lzma&quot;
     app-editors/vim: {}
+</code></pre>
 
-pre_install_commands:
+<h3 id="prepost-install-commands-section">Pre/Post-Install Commands Section</h3>
+<p>TODO</p>
+<pre><code>pre_install_commands:
     - &quot;emerge-webrsync&quot;
     - &quot;chown -R portage:portage /usr/portage&quot;
 
@@ -322,12 +317,11 @@ post_install_commands:
     - &quot;ln -sf /usr/lib/systemd/systemd /sbin/init&quot;
 </code></pre>
 
-<h3 id="global-flags">Global flags</h3>
-<h3 id="packages-and-flags">Packages and flags</h3>
-<h3 id="available-packages">Available Packages</h3>
-<h3 id="prepost-install-commands">Pre/Post-Install commands</h3>
-<h3 id="prepost-install-overlays">Pre/Post-Install overlays</h3>
+<h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
+<p>TODO</p>
 <h2 id="advanced-use-cases">Advanced use cases</h2>
+<p>This section will provide some interesting use-cases for the output of the
+RootFS-builds.</p>
 <ul>
 <li><a href="advanced/run-containers/index.html">Running containers based on a generated RootFS</a></li>
 </ul>

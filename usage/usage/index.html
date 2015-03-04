@@ -85,10 +85,6 @@
                         </li>
                     
                         <li >
-                            <a href="../rootfs/use-flags/index.html">Rootfs/Use Flags</a>
-                        </li>
-                    
-                        <li >
                             <a href="../misc/index.html">Misc</a>
                         </li>
                     
@@ -251,7 +247,8 @@ Please make sure that you and your systems fulfill the given requirements before
 proceeding to the actual build instructions.</p>
 <h4 id="local-software">Local Software</h4>
 <ul>
-<li>Git is needed to download and submit build specifications</li>
+<li>Git is needed to download and submit build specifications.</li>
+<li>$EDITOR - to specify the builds you will need your favorite text editor.</li>
 </ul>
 <h4 id="successful-setup">Successful Setup</h4>
 <p>A successful <a href="../../setup/setup/index.html">setup of the buildserver</a> is a definite
@@ -277,10 +274,6 @@ repository.</p>
   miss potential functionality or potential to help yourself in case of problems.</li>
 </ul>
 <h2 id="build-instructions">Build Instructions</h2>
-<h3 id="work-flow">Work flow</h3>
-<p>The work flow is basically all the same for every component. The only exception for
-this is the RootFS, more information will follow in the detailed section.</p>
-<p>You will basically always</p>
 <ol>
 <li>
 <p>Open the <em>User Documentation</em>  (<a href="../../setup/examples/user-documentation-HTWG/index.html">example HTWG-userdocs</a>)</p>
@@ -296,8 +289,10 @@ this is the RootFS, more information will follow in the detailed section.</p>
    the <em>Platform</em> you want to build for</p>
 </li>
 <li>
-<p><strong>Make changes. It is necessary to read the instructions for every
-   component you want to build</strong></p>
+<p><strong>Specify your build.</strong> Since the build specifications are very
+   different from each other, it's necessary to separate the instructions into
+   distinct sections. Please follow the instructions given in the detailed
+   sections:</p>
 <ul>
 <li><a href="../uboot/index.html">U-Boot</a></li>
 <li><a href="../linux/index.html">Linux</a></li>
@@ -305,6 +300,11 @@ this is the RootFS, more information will follow in the detailed section.</p>
 <li><a href="../misc/index.html">Miscellaneous files</a></li>
 <li><a href="../toolchains/index.html">Toolchains</a></li>
 </ul>
+<p>The work flow is basically the same for every component. The biggest
+   variation happens when building for this is the RootFS, which you will
+   not be able to test before you submit your specification to the
+   buildserver.  More information will follow in the detailed section for
+   building the RootFS.</p>
 </li>
 <li>
 <p>Run <code>git add</code> and <code>git commit</code> according to your changes. Please use <strong>sane commit messages</strong>
