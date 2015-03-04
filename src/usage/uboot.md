@@ -33,7 +33,7 @@ Please look up the Platform string in the [User
 Documentation](../setup/user-documentation.md) provided by your administrator. If
 your platform doesn't exist yet, please contact your administrator.
 
-### Add new upstream U-Boot
+## Add new upstream U-Boot
 The following steps are necessary before you can add [a new
 platform](#add-new-platform-for-u-boot-version) to the repository. The following
 example will add the **U-Boot** 2015.01 for the raspberry pi. The source code
@@ -89,7 +89,7 @@ $ git push
 
 Now you can continue and add *platform* branches to the *uboot* repository.
 
-### Add new platform for U-Boot version
+## Add new platform for U-Boot version
 This step requires an [existing](#add-new-upstream-u-boot) *uboot* branch for
 the desired **U-Boot** version.
 
