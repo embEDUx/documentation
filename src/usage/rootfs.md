@@ -38,9 +38,6 @@ Documentation](../setup/user-documentation.md).
 * Kernel branch: <kernel\_version\> (eg. 3.17.2)
 * Platform branch: <kernel\_version\>\_<platform\_name\> (eg. 3.17.2_raspberry-pi)
 
-**Importan: The platform\_name must not contain any underscores, use dashes
-instead!**
-
 
 
 ## The ***configuration.yml***-File

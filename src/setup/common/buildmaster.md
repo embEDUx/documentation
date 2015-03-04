@@ -1,4 +1,4 @@
-# Buildserver Setup - The Buildmaster
+# Buildmaster Setup
 
 ## Configuation File - **master.cfg** 
 TODO: where is the ***master.cfg***?
