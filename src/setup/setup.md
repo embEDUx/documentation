@@ -9,10 +9,7 @@ Setup one repository for each of the components.
 * [RootFS](roofs)
 * [Miscellaneous files](misc)
 
-TODO
-* Permisionss?
-* 
-
+## Prerequisites
 ### Requirements
 * Ansible
 * buildserver_setup repository
@@ -20,9 +17,8 @@ TODO
 
 ### Suggestions,
 * SSH root-access via key authentication
+* Understand the [Background Information](../background/background.md)
 
-## Prerequisites
-### Requirements
 
 ### Admin-Machine Pre-Requisites
 #### Git

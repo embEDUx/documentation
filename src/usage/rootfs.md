@@ -1,18 +1,16 @@
-
+# RootFS Specification
 
 ## Prerequisites
 Please review [the common usage prerequisites](usage.md#Prerequisites), which
 are needed for the usage of every component.
 
 ### Requirements
-#### RootFS Git-Repository
+* RootFS Git-Repository
+*
 
 ### Suggestions
-
-### rootfs-Repository
-
-
-## Branch name scheme
+* Understand the [RootFS Background Information](../background/rootfs.md)
+* Get familiar with the [YAML-Syntax](http://yaml.org/)
 
 ## Available Packages
 The main reason why anyone would want a customized RootFS is the selection of
@@ -20,22 +18,27 @@ installed packages. For a categorized list of packages that are available,
 please visit the following sites:
 * [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
-## RootFS specification
-The RootFS specification is done in the ***configruation.yml*** in the root of
-the *rootfs*-Repository. The file is written in [YAML-Syntax](http://yaml.org/).
+## Branch Name-Scheme
+TODO
 
-To demonstrate a fully working example this guide provides you with a
+
+## The ***configruation.yml***-File
+This file resides in the in the root directory of the 
+*rootfs*-Repository. The file is written in [YAML-Syntax](http://yaml.org/). The
+`---` in the first line of the file is necessary syntax which indicates
+YAML-files, and must not be removed.
+
+To demonstrate a **fully working example** this guide provides you with the
 [systemd-rootfs specification](rootfs/examples/systemd/configuration.yml)
 taken from the actual setup at the HTWG.
 
+### Global Flags Section
 The *global*-Section configures the settings for global
 [USE-Flags](../background/common/terminology.md#USE-flags) and 
 [keywords](../background/common/terminology.md#keywords), which apply for every
 installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead. 
 
-
-### Global Flags Section
 ```yaml
 ---
 global:
@@ -66,10 +69,10 @@ packages:
         use: 
             +: "importd gcrypt curl lz4 lzma"
     app-editors/vim: {}
-
 ```
 
 ### Pre/Post-Install Commands Section
+TODO
 ```
 pre_install_commands:
     - "emerge-webrsync"
@@ -83,6 +86,10 @@ post_install_commands:
 ```
 
 ### Pre/Post-Install File-Overlays
+TODO
 
 ## Advanced use cases
+This section will provide some interesting use-cases for the output of the
+RootFS-builds.
+
 * [Running containers based on a generated RootFS](rootfs/advanced/run-containers.md)
