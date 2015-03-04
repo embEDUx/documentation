@@ -6,6 +6,10 @@
 4. [Recipe files](#recipe-files)
 5. Flashtool help page
 
+## Requirements
+
+The flashtool must be installed on your system. Please read the (setup
+chapter)[setup/flashtool.md#Setup] of the **flashtool**.
 
 ## Getting started
 
@@ -210,11 +214,158 @@ with the setup procedure.
 ## Recipe files
 
 Recipe files are important for the setup procedure. The user can configure, how
-to setup a platform. There are different recipe types which can be used to
-configure a setup for a platform. The next section will describe these recipe
-types.
+to setup a platform. 
 
-- **Load recipe**:
+### General structure of a recipe file
 
+Each recipe file must be structured like the example below.
+
+   ```
+---
+type: # name of recipe type
+
+recipe: 
+    # specific configurations of the recipe
+    # ...
+
+---
+type: # next recipe
+
+recipe:
+    # ...
+   ```
+
+A recipe file must contain at least one recipe. 
+
+
+### Recipe Types
+
+The next section will describe the existing recipe types.
+
+**MMC**:
+
+This recipe type is used to configure platforms which use a mmc device as
+storage media. The template below shows, how to state this recipe in a recipe file.
+
+   ```
+type: mmc
+
+recipe:
+    partition_table: #partition table type
+    partitions: # list with partition information
+        -   name: # label
+            size: # size of partition (allowed %/b/kb/mb/gb/)
+            fs_type: # filesystem type (e.g. fat32, ext4)
+            mount_point: # Mount point in System
+            mount_opts:  # Mount options
+            flags: # flags for partition
+        -   #...
+    load:
+        Uboot:
+            # device: or command:
+        Linux_Boot:
+            # device: or command:
+        Linux_Root:
+            # device: or command:
+        Linux_Config:
+            # device: or command:
+        Rootfs:
+            # device: or command:
+        Misc_Boot:
+            # device: or command:
+        Misc_Root:
+            # device: or command:
+   ```
+
+* ***partition\_table***:
+  This section defines the partition table of the mmc device. The most embedded
+  devices use *msods* or *gpt* for the partition table.
+
+* ***partitions***:
+  This section is used to define partitions on the mmc device. Each partition
+  must be listed with a dash and must contain the subsections name, size,
+  fs\_type, mount\_point, mount\_opts and flags. If one of these section is not
+  needed, just leave the value after the colon blank.
+
+  * ***name***:
+    Name or label of the partition. The partition table type must support this
+    feature.
+
+  * ***size***:
+    Size of the partition. The used units are b (byte), kb (kilobyte), mb
+    (megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
+    *max* for the last stated partition. If you want to state the size of the
+    partion in percentage, please use the percentage notation for each
+    partition.
+
+  * ***fs_type***:
+    Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
+    fat32 and btrfs.
+
+  * ***mount_point***:
+    Specifies the mount point which will be written in the **fstab** of the linux
+    system.
+
+  * ***mount_opts***:
+    Specifies the mount options for the partition which will be written in the
+    **fstab** of the linux system.
+
+  * ***flags***:
+    Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
+    a comma.
+
+* ***load***:
+  This section defines on which partition a software product should be loaded.
+  The user can choose between the option *device* or *command* for every
+  subsection. If a software product should be loaded on a partition of the mmc
+  device, the user must use the option *device* and state the index of the
+  partition which is defined in the section **partitions**. The index starts
+  with zero.
+
+  If a product should be loaded with an external command to the mmc device, you
+  must use the option **command**. The value of the option is the external
+  command. For a command you can use the to template variables *${file}* and
+  *${device}*. The variable *${file}* will be replaced with the name of the
+  specific software product. The variable *${device}* will be replaced with the
+  */dev path* of the mmc device or the *dev path* of the mmc partition, if a
+  number is written at the end of the variable (e.g. *${device0}*).
+
+  The existing software products are Uboot, Linux\_Boot, Linux\_Root,
+  Linux\_Config, Rootfs, Misc\_Boot, Misc\_Root.
+
+
+**Example for a mmc recipe (utilite-pro.yml):**
+
+    ```
+---
+type: mmc
+
+recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point: /boot
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: btrfs
+            mount_point: /
+            mount_opts:
+            flags: 
+    load:
+        Uboot:
+            command: dd if=${file} of=${device} bs=1K skip=1 seek=1 oflag=dsync
+        Linux_Boot:
+            device: 0
+        Linux_Root:
+            device: 1
+        Linux_Config:
+            device: 1
+        Rootfs:
+            device: 1
+    ```
 
 
