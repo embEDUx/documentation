@@ -109,7 +109,21 @@ server to identify a Raspberry Pi.
 ### List finished builds from the configured **Buildbot** server
 
 The **Buildbot** server provides all needed products for an embEDUx system.
-These products can be 
+All products for every configured platform can be listet by flashtool with
+the following command:
+
+> `flashtool list_builds`
+
+There are several options available for this command:
+
+ option | description 
+ ------ | ----------- 
+ platform | Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
+ --limit N | Print top N entries for each selected product
+ -l, --linux | List all linux kernel versions for the specified platform
+ -u, --uboot | List all uboot versions for the specified platform
+ -r, --rootfs | List all rootfs for the specified platform
+ -m, --misc | List all misc files for the specified platform
 
 
 ### Setup Hardware and deploy system on Hardware
