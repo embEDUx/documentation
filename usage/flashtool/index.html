@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../common/repositories/index.html">Common/Repositories</a>
+                            <a href="../common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -225,7 +229,17 @@
     
         <li class="main active"><a href="#flashtool">Flashtool</a></li>
         
+            <li><a href="#requirements">Requirements</a></li>
+        
             <li><a href="#getting-started">Getting started</a></li>
+        
+            <li><a href="#get-recipes-from-git-server">Get recipes from git server</a></li>
+        
+            <li><a href="#setup-hardware-and-deploy-system-on-hardware">Setup Hardware and deploy system on Hardware</a></li>
+        
+            <li><a href="#recipe-files">Recipe files</a></li>
+        
+            <li><a href="#_1">```</a></li>
         
     
     </ul>
@@ -237,9 +251,11 @@
 <li><a href="#getting-started">Getting started</a></li>
 <li><a href="#get-recipes-from-git-server">Get <strong>recipes</strong> from git server</a></li>
 <li><a href="#list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</a></li>
-<li><a href="#how-to-write-a-recipe-file">How to write a recipe file</a></li>
-<li>Flashtool help page</li>
+<li><a href="#recipe-files">Recipe files</a></li>
 </ol>
+<h2 id="requirements">Requirements</h2>
+<p>The flashtool must be installed on your system. Please read the <a href="../../setup/flashtool/index.html">setup
+chapter</a> of the <strong>flashtool</strong>.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>After <a href="../../setup/flashtool/index.html">installing</a> the <strong>flashtool</strong> on a linux system it
 has to be configured first. To do so, type in the following command:</p>
@@ -295,11 +311,11 @@ help:   Local path where flashtool should save downloaded products if option is 
 <p><code>flashtool config</code></p>
 </blockquote>
 <p>The tool will ask for each setting if you want to change the value or not.</p>
-<h3 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h3>
+<h2 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h2>
 <p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declare how to deploy a
-system on a platform (e.g. Raspberry Pi) and how to setup the platform. If
-you want to write a new <strong>recipe</strong> for a platform please read <a href="#How_to_write_a_recipe_file">How to write a
-recipe file</a>. </p>
+system on a platform (e.g. Raspberry Pi) and how to setup the platform. You 
+find more information about <strong>recipe</strong> file in chapter 
+<a href="#recipe-files">Recipe files</a>.</p>
 <p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git</strong>
 there are provided some <strong>recipe</strong> files for different hardware.</p>
 <p>To get the <strong>recipe</strong> files from the repository for the flashtool run the following command:</p>
@@ -375,9 +391,272 @@ the following command:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="setup-hardware-and-deploy-system-on-hardware">Setup Hardware and deploy system on Hardware</h3>
-<p>This step requires an exisitng <a href="#How_to_write_a_recipe_file">recipe</a> file</p>
-<h3 id="how-to-write-a-recipe-file">How to write a recipe file</h3>
+<h2 id="setup-hardware-and-deploy-system-on-hardware">Setup Hardware and deploy system on Hardware</h2>
+<p><strong>Attention: the setup routine only allows to setup platforms which use a mmc
+device as storage media. Support for other storage media must be implemented.</strong>
+If you want to implement new features to the <strong>flashtool</strong>, please consider
+reading the development section for the <strong>flashtool</strong>. The new functionality
+must be triggered by a recipe file an must be explained in the <a href="#recipe-files">recipe
+files</a> chapter.</p>
+<p>This setup procedure requires an exisiting <a href="#How_to_write_a_recipe_file">recipe</a> 
+file. The basic command for this procedure is <code>flashtool setup</code>.</p>
+<p><strong>Important: You need access rights for reading and writing on a mmc device and
+mounting a mmc device</strong></p>
+<h3 id="parameters">Parameters</h3>
+<p>The setup command provides several optional and required parameter. The list
+below will explain all parameters:</p>
+<p><strong>Required parameter:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Argument[s]</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>platform</td>
+<td>-</td>
+<td>Specifies the platform which should be set up</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optional parameter:</strong></p>
+<ul>
+<li>General options:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Argument[s]</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a, --auto</td>
+<td>-</td>
+<td>If an argument for a product matches for multiple files, the system, will fetch the latest file of a product in lexicographical order. Otherwise the user will be prompted to select a specific file.</td>
+</tr>
+<tr>
+<td>-L, --Local</td>
+<td>-</td>
+<td>If set, all downloaded files will be stored at the directory which is configured in the <strong>flashtool</strong> configuration.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Product Group 1 [linux, uboot, misc]:</li>
+</ul>
+<p>The argument of an option will be interpreted as <em>Regex</em> string *{string}.*.
+If this string matches for multiple files the <strong>flashtool</strong> will handle this
+situation dependent to the -a/--auto flag (see description above). The default
+value for each option will match all files.</p>
+<p><strong>Important: All three options must be stated or none of them.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Argument[s]</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l, --linux</td>
+<td>version</td>
+<td>Select linux version.</td>
+</tr>
+<tr>
+<td>-u, --uboot</td>
+<td>version</td>
+<td>Select uboot version.</td>
+</tr>
+<tr>
+<td>-m, --misc</td>
+<td>version</td>
+<td>Select misc files version.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Product Group 2 [rootfs]</li>
+</ul>
+<p>If no rootfs is specified the system will choose a factory rootfs for the
+platform if exist. Otherwise the user will be prompted to choose a specific
+rootfs.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Argument[s]</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r, --rootfs</td>
+<td>name</td>
+<td>Select rootfs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="setup-procedure">setup procedure</h3>
+<p>The setup routine is triggered by the recipe file and will proceed different for
+each recipe file. But in general there is a preparation step and a load step for
+each recipe. These steps differ dependent on the type of recipe. The user will
+be guided through the setup steps. If the "auto" flag is set all steps which do
+not need an input from the user, will be selected with a default value.</p>
+<p>To avoid user mistakes the <strong>flashtool</strong> will prompt if the user want to proceed
+with the setup procedure.</p>
+<h2 id="recipe-files">Recipe files</h2>
+<p>Recipe files are important for the setup procedure. The user can configure, how
+to setup a platform. </p>
+<h3 id="general-structure-of-a-recipe-file">General structure of a recipe file</h3>
+<p>Each recipe file must be structured like the example below.</p>
+<h2 id="_1">```</h2>
+<p>type: # name of recipe type</p>
+<p>recipe: 
+    # specific configurations of the recipe
+    # ...</p>
+<hr />
+<p>type: # next recipe</p>
+<p>recipe:
+    # ...
+   ```</p>
+<p>A recipe file must contain at least one recipe. </p>
+<h3 id="recipe-types">Recipe Types</h3>
+<p>The next section will describe the existing recipe types.</p>
+<p><strong>MMC</strong>:</p>
+<p>This recipe type is used to configure platforms which use a mmc device as
+storage media. The template below shows, how to state this recipe in a recipe file.</p>
+<p>```
+type: mmc</p>
+<p>recipe:
+    partition_table: #partition table type
+    partitions: # list with partition information
+        -   name: # label
+            size: # size of partition (allowed %/b/kb/mb/gb/)
+            fs_type: # filesystem type (e.g. fat32, ext4)
+            mount_point: # Mount point in System
+            mount_opts:  # Mount options
+            flags: # flags for partition
+        -   #...
+    load:
+        Uboot:
+            # device: or command:
+        Linux_Boot:
+            # device: or command:
+        Linux_Root:
+            # device: or command:
+        Linux_Config:
+            # device: or command:
+        Rootfs:
+            # device: or command:
+        Misc_Boot:
+            # device: or command:
+        Misc_Root:
+            # device: or command:
+   ```</p>
+<ul>
+<li>
+<p><strong><em>partition_table</em></strong>:
+  This section defines the partition table of the mmc device. The most embedded
+  devices use <em>msods</em> or <em>gpt</em> for the partition table.</p>
+</li>
+<li>
+<p><strong><em>partitions</em></strong>:
+  This section is used to define partitions on the mmc device. Each partition
+  must be listed with a dash and must contain the subsections name, size,
+  fs_type, mount_point, mount_opts and flags. If one of these section is not
+  needed, just leave the value after the colon blank.</p>
+</li>
+<li>
+<p><strong><em>name</em></strong>:
+    Name or label of the partition. The partition table type must support this
+    feature.</p>
+</li>
+<li>
+<p><strong><em>size</em></strong>:
+    Size of the partition. The used units are b (byte), kb (kilobyte), mb
+    (megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
+    <em>max</em> for the last stated partition. If you want to state the size of the
+    partion in percentage, please use the percentage notation for each
+    partition.</p>
+</li>
+<li>
+<p><strong><em>fs_type</em></strong>:
+    Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
+    fat32 and btrfs.</p>
+</li>
+<li>
+<p><strong><em>mount_point</em></strong>:
+    Specifies the mount point which will be written in the <strong>fstab</strong> of the linux
+    system.</p>
+</li>
+<li>
+<p><strong><em>mount_opts</em></strong>:
+    Specifies the mount options for the partition which will be written in the
+    <strong>fstab</strong> of the linux system.</p>
+</li>
+<li>
+<p><strong><em>flags</em></strong>:
+    Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
+    a comma.</p>
+</li>
+<li>
+<p><strong><em>load</em></strong>:
+  This section defines on which partition a software product should be loaded.
+  The user can choose between the option <em>device</em> or <em>command</em> for every
+  subsection. If a software product should be loaded on a partition of the mmc
+  device, the user must use the option <em>device</em> and state the index of the
+  partition which is defined in the section <strong>partitions</strong>. The index starts
+  with zero.</p>
+</li>
+</ul>
+<p>If a product should be loaded with an external command to the mmc device, you
+  must use the option <strong>command</strong>. The value of the option is the external
+  command. For a command you can use the to template variables <em>${file}</em> and
+  <em>${device}</em>. The variable <em>${file}</em> will be replaced with the name of the
+  specific software product. The variable <em>${device}</em> will be replaced with the
+  <em>/dev path</em> of the mmc device or the <em>dev path</em> of the mmc partition, if a
+  number is written at the end of the variable (e.g. <em>${device0}</em>).</p>
+<p>The existing software products are Uboot, Linux_Boot, Linux_Root,
+  Linux_Config, Rootfs, Misc_Boot, Misc_Root.</p>
+<p><strong>Example for a mmc recipe (utilite-pro.yml):</strong></p>
+<pre><code>```
+</code></pre>
+<hr />
+<p>type: mmc</p>
+<p>recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point: /boot
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: btrfs
+            mount_point: /
+            mount_opts:
+            flags: 
+    load:
+        Uboot:
+            command: dd if=${file} of=${device} bs=1K skip=1 seek=1 oflag=dsync
+        Linux_Boot:
+            device: 0
+        Linux_Root:
+            device: 1
+        Linux_Config:
+            device: 1
+        Rootfs:
+            device: 1
+    ```</p>
 </div>
         </div>
 

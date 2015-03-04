@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Common/Repositories - embEDUx Project</title>
+        <title>Rootfs/Configuration.Yml - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -57,15 +57,15 @@
                         </li>
                     
                         <li >
-                            <a href="../build-monitoring/index.html">Common/Build Monitoring</a>
+                            <a href="../../common/build-monitoring/index.html">Common/Build Monitoring</a>
                         </li>
                     
                         <li >
-                            <a href="../checkout-repositories/index.html">Common/Checkout Repositories</a>
+                            <a href="../../common/checkout-repositories/index.html">Common/Checkout Repositories</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="index.html">Common/Repositories</a>
+                        <li >
+                            <a href="../../common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -77,11 +77,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../rootfs/index.html">Rootfs</a>
+                            <a href="../index.html">Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                            <a href="../advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -204,12 +208,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../checkout-repositories/index.html">
+                    <a rel="next" href="../advanced/run-containers/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../uboot/index.html">
+                    <a rel="prev" href="../../misc/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -223,52 +227,90 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#repository-structure">Repository structure</a></li>
+        <li class="main active"><a href="#the-rootfs-configurationyml-file">The RootFS configuration.yml file</a></li>
         
-            <li><a href="#1">1</a></li>
+            <li><a href="#global-flags-section">Global Flags Section</a></li>
         
-            <li><a href="#2">2</a></li>
+            <li><a href="#package-list-and-package-flags-section">Package-List and Package-Flags Section</a></li>
         
-            <li><a href="#3">3</a></li>
-        
-            <li><a href="#4">4</a></li>
+            <li><a href="#prepost-install-commands-section">Pre/Post-Install Commands Section</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="repository-structure">Repository structure</h2>
-<p>The following image shows the structure how it should have already been set up
-by your system administrator. The image should help you to understand the
-importance of the different repositories and branches for the <strong>embEDUx</strong>
-project. </p>
-<p><img alt="Repository structure" src="../../../usage/common/img/repositories.png" /></p>
-<p>As you can see, there are 5 repositories. Each repository holds the data for the
-five outputs that <strong>embEDUx</strong> can build. Those are:</p>
-<ul>
-<li>linux: kernel image and dtb</li>
-<li>uboot: uboot image and dtb</li>
-<li>toolchain: toolchain</li>
-<li>rootfs: rootfs</li>
-<li>misc: files</li>
-</ul>
-<h3 id="1">1</h3>
-<p>Each version of the <strong>Linux</strong> kernel needs to have exactly one <em>kernel</em> branch in
-the <em>linux</em> repository. Also for each version of <strong>U-Boot</strong>, exactly one <em>uboot</em>
-branch is needed in the <em>uboot</em> repository.</p>
-<h3 id="2">2</h3>
-<p>For each platform there needs to be one <em>platform</em> branch in the <em>linux</em>,
-<em>uboot</em> and <em>misc</em> repository.</p>
-<h3 id="3">3</h3>
-<p>For each architecture, which can be obtained from the desired platforms, there needs to
-be a rootfs. Furthermore as there are multiple courses that use the same arch,
-there has to be one branch for each course/arch combination.</p>
-<h3 id="4">4</h3>
-<p>For each arch, there needs to be a toolchain branch in the <em>toolchains</em>
-repository. These toolchains are statically linked, so that everyone can use
-them within their desired development platform. Theoretically also a canadian
-toolchain can be possible.</p>
+<h1 id="the-rootfs-configurationyml-file">The RootFS <strong><em>configuration.yml</em></strong> file</h1>
+<p>This file resides in the in the root directory of the 
+<em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>. The
+<code>---</code> in the first line of the file is necessary syntax which indicates
+YAML-files, and must not be removed.</p>
+<p>To demonstrate a <strong>minima working example</strong> this guide provides a slimmed down
+version of the <a href="../../../examples/systemd/configuration.yml">systemd-rootfs
+specification</a> taken from the actual setup
+at the HTWG.</p>
+<h3 id="global-flags-section">Global Flags Section</h3>
+<p>The <em>global</em>-Section configures the settings for global
+<a href="../../../background/common/terminology/index.html#USE-flags">USE-Flags</a> and 
+<a href="../../../background/common/terminology/index.html#keywords">keywords</a>, which apply for every
+installed package. If you find yourself putting the same keywords or USE-flags
+for every package, this is the place to put them instead.</p>
+<pre><code class="yaml">---
+global:
+    use:
+        +: &quot;python&quot;
+        -: &quot;X doc&quot;
+</code></pre>
+
+<p>The USE-flags <strong>X</strong> and <strong>doc</strong> are disabled system-wide, causing all affected
+packages to build without X-support and without the installation of additional
+documentation. The <strong>python</strong>-flag will be enabled for every package that
+supports it. For example, this might cause packages to be built with bindings
+for <em>Python</em> activated.</p>
+<h3 id="package-list-and-package-flags-section">Package-List and Package-Flags Section</h3>
+<p>The global section is followed by the package list. It is a YAML-dictionary
+which defines the packages that are to be installed in the RootFS. The syntax
+for every package is the same as for the global system.</p>
+<pre><code class="yaml">packages:
+    sys-apps/util-linux:
+        use:
+            -: &quot;systemd&quot;
+    virtual/udev:
+        kw:
+            +: &quot;~amd64 ~x86&quot;
+    sys-apps/systemd:
+        kw:
+            +: &quot;~amd64 ~x86&quot;
+        use: 
+            +: &quot;importd gcrypt curl lz4 lzma&quot;
+    app-editors/vim: {}
+</code></pre>
+
+<p>The example shows the packages <em>sys-apps/util-linux:</em>, <em>virtual/udev</em>,
+<em>sys-apps/systemd</em> and <em>app-editors/vim</em> to be installed, with different
+configuration. The brackets after the <em>vim</em>-line define an empty dictionary,
+which cause the package to be installed with the default options. Remember, that
+the default options are also influenced by the <em>global</em>-Section.</p>
+<h3 id="prepost-install-commands-section">Pre/Post-Install Commands Section</h3>
+<p>In order to not be limited to installing packages, or sometimes to work around
+problems that occur during package installation, you can also <strong>specifi
+commands that are run</strong> before and after the package installation. Both are
+specified as a list of strings, which could look like in the following example.</p>
+<pre><code>pre_install_commands:
+    - &quot;emerge-webrsync&quot;
+    - &quot;chown -R portage:portage /usr/portage&quot;
+
+post_install_commands:
+    - &quot;echo Europe/Berlin &gt; /etc/timezone&quot;
+    - &quot;emerge --config timezone-data&quot;
+    - &quot;mv /sbin/init /sbin/init-openrc&quot;
+    - &quot;ln -sf /usr/lib/systemd/systemd /sbin/init&quot;
+</code></pre>
+
+<p>You can specify any command here, which will be <strong>run as root</strong> in sequential
+order in the target RootFS. The changes you make with your commands are not
+persistent to your next build job, but are only taking effect for the current
+build.</p>
 </div>
         </div>
 

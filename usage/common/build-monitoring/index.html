@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../repositories/index.html">Common/Repositories</a>
+                            <a href="../repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -228,7 +232,9 @@
     
         <li class="main "><a href="#buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</a></li>
         
-            <li><a href="#waterfall">Waterfall</a></li>
+            <li><a href="#waterfall-view">Waterfall View</a></li>
+        
+            <li><a href="#builders-view">Builders View</a></li>
         
     
     </ul>
@@ -243,13 +249,22 @@
 </ul>
 <h2 id="buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</h2>
 <p>The <em>buildmaster</em> provides a webinterface that can be used to control and
-monitor the buildmaster's behavior.</p>
-<h3 id="waterfall">Waterfall</h3>
+monitor the buildmaster's behavior. The two most important views are the
+waterfall view and the builders view.</p>
+<h3 id="waterfall-view">Waterfall View</h3>
 <p>The <strong>buildbot</strong> waterfall-view gives an overview over all running and recent
 builds in one place. Colors indicate the state of the builds and links to
 detailed logs or general build information are provided.</p>
-<p><img alt="buildmaster at HTWG - Waterfall - two buildjobs
-running" src="../../../usage/common/img/buildmaster_waterfall_rootfs-builds.png" /></p>
+<h3 id="builders-view">Builders View</h3>
+<h4 id="builders-status">Builders Status</h4>
+<p>The builders view let's you quickly see the status of all buildslaves.
+On the following pictures, all are idle and have successfully finished their
+last builds.</p>
+<p><img alt="buildmaster at HTWG - Builders - all Idle" src="../../../usage/common/img/buildmaster_builders_view.png" /></p>
+<h4 id="force-builds">Force builds</h4>
+<p>Depending on the <a href="../../../setup/common/buildmaster/index.html#Scheduler">buildmaster's scheduler
+configuration</a>, it is also possible
+to schedule forced builds via the builders view.</p>
 </div>
         </div>
 

@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../common/repositories/index.html">Common/Repositories</a>
+                            <a href="../common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -243,26 +247,48 @@ architecture of your desired platform.</p>
 <p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>Git Repository <em>toolchains</em></li>
-<li><strong>Buildbot</strong> setup for your host architecture.</li>
+<li>
+<p>User Documentation.</p>
+<p>At the end of the setup, the Administrator is instructed to create the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
+</li>
+<li>
+<p>Git Repository <em>toolchains</em></p>
+</li>
+<li><strong>Buildserver</strong> setup for desired platform architecture</li>
 <li>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</li>
 </ul>
-<h2 id="name-scheme">Name scheme</h2>
-<p><strong>Buildbot</strong> can only build your toolchains, if you follow this naming schema</p>
+<h3 id="suggestions">Suggestions</h3>
 <ul>
-<li>&lt;host_arch>_&lt;target_arch>-ctng-linux-&lt;abi></li>
+<li>
+<p>Build/download a toolchain. This will allow you to test your build
+  configuration before you push it upstream.</p>
+</li>
+<li>
+<p>Have a look at the default build scripts. As the <strong>Buildserver</strong> just executes
+  these scripts, you have no limits on what you want to do before, during and
+  after the build process.</p>
+</li>
 </ul>
+<h2 id="name-scheme">Name scheme</h2>
+<p>The <strong>Builserver</strong> can only build your images, if you follow this name scheme
+for any of the branches:</p>
+<ul>
+<li>&lt;host-arch>_&lt;target-arch>-ctng-linux-&lt;abi></li>
+</ul>
+<p>Please look up the target-arch  string in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a> provided by your administrator. If
+your platform doesn't exist yet, please contact your administrator.</p>
 <h2 id="add-a-new-toolchain">Add a new toolchain</h2>
 <p>Following steps are necessary to add a toolchain to the <em>toolchains</em> repository.</p>
 <ol>
 <li>
-<p>Clone the <em>toolchains</em> repository. The URL should have been provided to you
-   by your system administrator.</p>
+<p>Clone the <em>linux</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
 </li>
 <li>
-<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. Follow the <a href="#name-schema">name
-   schema</a> carefully.</p>
+<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. Follow the <a href="#name-scheme">name
+   scheme</a> carefully.</p>
 <p><code>$ git checkout master
 $ git branch amd64_armv6j-ctng-linux-gnueabi
 $ git checkout amd64_armv6j-ctng-linux-gnueabi 
@@ -272,7 +298,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../toolchains/template/build">build script</a> as <strong><em>build</em></strong> to the repository
+<p>Add the <a href="../../usage/toolchains/template/build">default build script</a> as <strong><em>build</em></strong> to the repository
    and make it executable.</p>
 <p><code>$ ls -hl
 total 4.0K
@@ -281,7 +307,7 @@ total 4.0K
 </li>
 <li>
 <p>Configure your desired toolchain with <em>ct-ng</em> and add the <strong><em>.config</em></strong> to
-   the repository. In this case we will just use a default configuration, with
+   the branch. In this case we will just use a default configuration, with
    some mandatory modifications. For further information read
    <a href="../../background/toolchains/index.html">background/toolchains</a>.</p>
 </li>
@@ -290,15 +316,21 @@ total 4.0K
 <p><code>$ ct-ng build</code></p>
 </li>
 <li>
-<p>Add the files, commit and push. </p>
+<p>Add the files, commit and push upstream.</p>
 <p><code>$ git add build
 $ git commit -m "new toolchain for amd64 -&gt; armv6j"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>Buildbot</strong> should start building your toolchain now. For further
+<p>The <strong>Buildserver</strong> should start building your kernel image now. For further
    informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
    guide</a>.</p>
+</li>
+<li>
+<p>Congratulations, you just built your first toolchain. You can now download
+   the toolchain. Find the toolchain component URL in the <a href="../../setup/user-documentation/index.html">User
+   Documentation</a> (see <a href="../usage/index.html#hardware-deployment">Hardware
+   Deployment</a>).</p>
 </li>
 </ol>
 </div>

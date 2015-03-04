@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../usage/common/repositories/index.html">Common/Repositories</a>
+                            <a href="../../usage/common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../../usage/rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -223,11 +227,98 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#requirements">Requirements</a></li>
+        
+    
+        <li class="main "><a href="#installation">Installation</a></li>
+        
+            <li><a href="#required-packages">Required Packages</a></li>
+        
+    
+        <li class="main "><a href="#creating-an-virtual-environment-for-python-python-version-must-be-3">Creating an virtual environment for python (python version must be &gt;=3)</a></li>
+        
+    
+        <li class="main "><a href="#go-into-the-virtual-environment-all-packages-installed-via-pipwill-only">"go" into the virtual environment. All packages installed via pipwill only</a></li>
+        
+    
+        <li class="main "><a href="#be-installed-at-the-location-of-the-virtual-environment-pathforvirtual-env">be installed at the location of the virtual environment ({path/for/virtual-env})</a></li>
+        
+    
+        <li class="main "><a href="#all-python-related-packages-will-now-be-executed-from-virtual-environement-path">All python related packages will now be executed from virtual environement path</a></li>
+        
+    
+        <li class="main "><a href="#the-python-installation-of-the-system-will-be-untouched">The python installation of the system will be untouched.</a></li>
+        
+    
+        <li class="main "><a href="#working-in-virtual-environment">working in virtual environment ...</a></li>
+        
+    
+        <li class="main "><a href="#leave-virtual-environement">leave virtual environement</a></li>
+        
+    
+        <li class="main "><a href="#required-python-packages-which-can-be-installed-via-pypi">Required python packages which can be installed via PyPI</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>TODO</p>
+<h2 id="requirements">Requirements</h2>
+<p><strong>System:</strong></p>
+<ul>
+<li>python3</li>
+<li>python3-dev</li>
+<li>virtualenv</li>
+<li>libudev &gt;= 151</li>
+<li>libparted</li>
+<li>gcc</li>
+<li>git</li>
+</ul>
+<p><strong>Python packages:</strong></p>
+<ul>
+<li>colorama</li>
+<li>pyudev</li>
+<li>argcomplete</li>
+<li>PyYAML</li>
+<li>requests</li>
+<li>jinja2</li>
+<li>pyparted</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="required-packages">Required Packages</h3>
+<p><strong>Installation Ubuntu/Debian:</strong></p>
+<p><code>sh
+$ apt-get install gcc python3 python3-dev python-virtualenvironment libudev-dev libparted git</code></p>
+<p><strong>Installation Arch Linux:</strong></p>
+<p><code>sh
+$ pacman -S gcc python3 python-virtualenv libsystemd parted git</code></p>
+<p><strong>Installation Fedora Linux:</strong></p>
+<p><code>sh
+$ yum install gcc python3 python3-devel python-virtualenv udev parted git</code></p>
+<p><strong>Installation Python:</strong></p>
+<ul>
+<li>Virtualenv:</li>
+</ul>
+<p>```sh</p>
+<h1 id="creating-an-virtual-environment-for-python-python-version-must-be-3">Creating an virtual environment for python (python version must be &gt;=3)</h1>
+<p>$ virtualenv -p python3  {path/for/virtualenv}  # python3 can also be python3.x</p>
+<h1 id="go-into-the-virtual-environment-all-packages-installed-via-pipwill-only">"go" into the virtual environment. All packages installed via pipwill only</h1>
+<h1 id="be-installed-at-the-location-of-the-virtual-environment-pathforvirtual-env">be installed at the location of the virtual environment ({path/for/virtual-env})</h1>
+<p>$ source {path/for/virtualenv}/bin/activate</p>
+<h1 id="all-python-related-packages-will-now-be-executed-from-virtual-environement-path">All python related packages will now be executed from virtual environement path</h1>
+<h1 id="the-python-installation-of-the-system-will-be-untouched">The python installation of the system will be untouched.</h1>
+<h1 id="working-in-virtual-environment">working in virtual environment ...</h1>
+<h1 id="leave-virtual-environement">leave virtual environement</h1>
+<p>$ deactivate</p>
+<p>```</p>
+<ul>
+<li>Installation of python packages via pip</li>
+</ul>
+<p>```sh
+$ source {path/to/virtualenv}/bin/activate  # go into virtualenv</p>
+<h1 id="required-python-packages-which-can-be-installed-via-pypi">Required python packages which can be installed via PyPI</h1>
+<p>$ pip install -r https://apu.in.htwg-konstanz.de/labworks-embEDUx/flashtool/raw/master/requirements.txt
+  ```</p>
 </div>
         </div>
 

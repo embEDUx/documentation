@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Common/Buildserver - embEDUx Project</title>
+        <title>Common/Buildmaster - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../../usage/common/repositories/index.html">Common/Repositories</a>
+                            <a href="../../../usage/common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../../../usage/rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../usage/rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Common/Buildserver</a>
+                            <a href="index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -223,21 +227,29 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#buildserver-setup">Buildserver Setup</a></li>
+        <li class="main active"><a href="#buildmaster-setup">Buildmaster Setup</a></li>
         
-            <li><a href="#buildmaster">Buildmaster</a></li>
+            <li><a href="#configuation-file-mastercfg">Configuation File - master.cfg</a></li>
+        
+            <li><a href="#arch-62-platform-mapping">ARCH &lt;> Platform-Mapping</a></li>
+        
+            <li><a href="#scheduler">Scheduler</a></li>
+        
+            <li><a href="#buildjobs">Buildjobs</a></li>
+        
+            <li><a href="#webinterface">Webinterface</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="buildserver-setup">Buildserver Setup</h1>
-<h2 id="buildmaster">Buildmaster</h2>
-<h3 id="configuration-file">Configuration file</h3>
-<h4 id="arch-62-platform-mapping">ARCH &lt;> Platform-Mapping</h4>
-<p>The following is directly taken from the <strong><em>buildmaster master.cfg</em></strong>. 
-The algorithm for choosing the correct buildslave for the specific platforms
+<h1 id="buildmaster-setup">Buildmaster Setup</h1>
+<h2 id="configuation-file-mastercfg">Configuation File - <strong>master.cfg</strong></h2>
+<p>TODO: where is the <strong><em>master.cfg</em></strong>?</p>
+<p>The following is directly taken from the <strong><em>HTWG buildmaster master.cfg</em></strong>. </p>
+<h2 id="arch-62-platform-mapping">ARCH &lt;> Platform-Mapping</h2>
+<p>The algorithm for choosing the correct buildslave for the specific platforms
 uses this dictionary as the information source.</p>
 <pre><code>arch_branch_res_map = {
   &quot;amd64&quot;: [&quot;.*-ctng-.*&quot;, &quot;.*qemu-virt-amd64.*&quot;],
@@ -246,11 +258,14 @@ uses this dictionary as the information source.</p>
 }
 </code></pre>
 
-<h3 id="scheduler">Scheduler</h3>
+<h3 id="adding-a-new-platform-to-the-htwg-configuration">Adding a new platform to the HTWG configuration</h3>
+<p>If you add a new platform by modifying the dictionary, it is <em>important</em> that it
+must not contain any underscores, use dashes instead!</p>
+<h2 id="scheduler">Scheduler</h2>
 <p>TODO</p>
-<h3 id="buildjobs">Buildjobs</h3>
+<h2 id="buildjobs">Buildjobs</h2>
 <p>TODO</p>
-<h3 id="webinterface">Webinterface</h3>
+<h2 id="webinterface">Webinterface</h2>
 <p>TODO</p>
 </div>
         </div>

@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../common/repositories/index.html">Common/Repositories</a>
+                            <a href="../common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -227,11 +231,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#available-packages">Available Packages</a></li>
+            <li><a href="#repository-content">Repository content</a></li>
         
-            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
-        
-            <li><a href="#the-configurationyml-file">The configuration.yml-File</a></li>
+            <li><a href="#example-steps">Example Steps</a></li>
         
             <li><a href="#advanced-use-cases">Advanced use cases</a></li>
         
@@ -249,9 +251,8 @@ RootFS-specification to the buildserver.</p>
 are needed for the usage of every component.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>User Documentation.
-  At the end of the setup, the Administrator is instructed to create the
-<a href="../../setup/user-documentation/index.html">User Documentation</a>.</li>
+<li>User Documentation.  At the end of the setup, the Administrator is instructed
+  to create the <a href="../../setup/user-documentation/index.html">User Documentation</a>.</li>
 <li>RootFS Git-Repository
   The RootFS-specification is supplied to the buildserver via git. Consult your
   User Documentation for the repository URLs. (See previous link)</li>
@@ -264,75 +265,25 @@ are needed for the usage of every component.</p>
   understood to be fully utilized.</li>
 <li>Get familiar with the <a href="http://yaml.org/">YAML-Syntax</a></li>
 </ul>
-<h2 id="available-packages">Available Packages</h2>
+<h3 id="list-of-available-packages">List Of Available Packages</h3>
 <p>The main reason why anyone would want a customized RootFS is the selection of
 installed packages. For a categorized list of packages that are available, 
-please visit the following sites:</p>
+please visit the following sites:
+* <a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></p>
+<h2 id="repository-content">Repository content</h2>
+<h3 id="branch-name-scheme">Branch Name-Scheme</h3>
+<p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
+<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
 <ul>
-<li><a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></li>
+<li>Kernel branch: &lt;kernel_version> (eg. 3.17.2)</li>
+<li>Platform branch: &lt;kernel_version>_&lt;platform_name> (eg. 3.17.2_raspberry-pi)</li>
 </ul>
-<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
-<p>TODO</p>
-<h2 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong>-File</h2>
-<p>This file resides in the in the root directory of the 
-<em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>. The
-<code>---</code> in the first line of the file is necessary syntax which indicates
-YAML-files, and must not be removed.</p>
-<p>To demonstrate a <strong>fully working example</strong> this guide provides you with the
-<a href="../../usage/rootfs/examples/systemd/configuration.yml">systemd-rootfs specification</a>
-taken from the actual setup at the HTWG.</p>
-<h3 id="global-flags-section">Global Flags Section</h3>
-<p>The <em>global</em>-Section configures the settings for global
-<a href="../../background/common/terminology/index.html#USE-flags">USE-Flags</a> and 
-<a href="../../background/common/terminology/index.html#keywords">keywords</a>, which apply for every
-installed package. If you find yourself putting the same keywords or USE-flags
-for every package, this is the place to put them instead. </p>
-<pre><code class="yaml">---
-global:
-    use:
-        +: &quot;python&quot;
-        -: &quot;X doc&quot;
-</code></pre>
-
-<p>This way, USE-flags <strong>X</strong> and <strong>doc</strong> are disabled system-wide, causing all affected
-packages to build without X-support and without the installation of additional
-documentation. The <strong>python</strong>-flag will be enabled for every package that supports
-it. For example, this might cause packages to be built with bindings for
-<em>Python</em> activated.</p>
-<h3 id="package-list-and-package-flags-section">Package-List and Package-Flags Section</h3>
-<p>The global section is followed by the package list. It is a YAML-dictionary
-which defines the packages that are to be installed in the RootFS. The syntax
-for every package is the same as for the global system.</p>
-<pre><code class="yaml">packages:
-    sys-apps/util-linux:
-        use:
-            -: &quot;systemd&quot;
-    virtual/udev:
-        kw:
-            +: &quot;~amd64 ~x86&quot;
-    sys-apps/systemd:
-        kw:
-            +: &quot;~amd64 ~x86&quot;
-        use: 
-            +: &quot;importd gcrypt curl lz4 lzma&quot;
-    app-editors/vim: {}
-</code></pre>
-
-<h3 id="prepost-install-commands-section">Pre/Post-Install Commands Section</h3>
-<p>TODO</p>
-<pre><code>pre_install_commands:
-    - &quot;emerge-webrsync&quot;
-    - &quot;chown -R portage:portage /usr/portage&quot;
-
-post_install_commands:
-    - &quot;echo Europe/Berlin &gt; /etc/timezone&quot;
-    - &quot;emerge --config timezone-data&quot;
-    - &quot;mv /sbin/init /sbin/init-openrc&quot;
-    - &quot;ln -sf /usr/lib/systemd/systemd /sbin/init&quot;
-</code></pre>
-
+<h3 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h3>
+<p>TODO link</p>
 <h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
 <p>TODO</p>
+<h2 id="example-steps">Example Steps</h2>
 <h2 id="advanced-use-cases">Advanced use cases</h2>
 <p>This section will provide some interesting use-cases for the output of the
 RootFS-builds.</p>

@@ -65,7 +65,7 @@
                         </li>
                     
                         <li >
-                            <a href="../common/repositories/index.html">Common/Repositories</a>
+                            <a href="../common/repositories-and-branches/index.html">Common/Repositories And Branches</a>
                         </li>
                     
                         <li >
@@ -82,6 +82,10 @@
                     
                         <li >
                             <a href="../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
@@ -110,7 +114,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/common/buildserver/index.html">Common/Buildserver</a>
+                            <a href="../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
                         </li>
                     
                         <li >
@@ -239,43 +243,56 @@
             <div class="col-md-9" role="main">
 
 <h1 id="linux">Linux</h1>
-<p>This guide will help you through the steps to build <strong>Linux</strong> kernel for
+<p>This guide will help you through the steps to build a <strong>Linux</strong> kernel for
 your desired platform.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>Git Repository <em>linux</em></li>
-<li><strong>Buildbot</strong> setup for desired platform architecture</li>
+<li>
+<p>User Documentation.</p>
+<p>At the end of the setup, the Administrator is instructed to create the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
+</li>
+<li>
+<p>Git Repository <em>linux</em></p>
+</li>
+<li><strong>Buildserver</strong> setup for desired platform architecture</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
 <li>
-<p>Toolchain (Host architecture -&gt; target architecture)</p>
-<p>A toolchain will allow you to test your platforms' kernel configuration
-locally.</p>
+<p>Build/download a toolchain. This will allow you to test your build
+  configuration before you push it upstream.</p>
+</li>
+<li>
+<p>Have a look at the default build scripts. As the <strong>Buildserver</strong> just executes
+  these scripts, you have no limits on what you want to do before, during and
+  after the build process.</p>
 </li>
 </ul>
 <h2 id="name-scheme">Name scheme</h2>
-<p><strong>Buildbot</strong> can only build your images, if you follow this naming schema</p>
+<p>The <strong>Builserver</strong> can only build your images, if you follow this name scheme
+for any of the branches:</p>
 <ul>
-<li>Kernel branch: &lt;kernel_version> (eg. 3.17.2)</li>
-<li>Platform branch: &lt;kernel_version>_&lt;platform_name> (eg. 3.17.2_raspberry-pi)</li>
+<li>Kernel branch: &lt;Major>.&lt;Minor>.&lt;Subminor> (eg. 3.17.2)</li>
+<li>Platform branch: &lt;kernel-branch-name>_&lt;platform-string> (eg. 3.17.2_raspberry-pi)</li>
 </ul>
-<p><strong>Importan: The platform_name must not contain any underscores, use dashes
-instead!</strong></p>
+<p>Please look up the Platform string in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a> provided by your administrator. If
+your platform doesn't exist yet, please contact your administrator.</p>
 <h2 id="add-new-upstream-kernel">Add new upstream kernel</h2>
 <p>Before you can add <a href="#add-new-platform-for-a-linux-kernel">a new platfom</a>, for
 which you want to build a <strong>Linux</strong> kernel, you first need to add a <em>kernel</em>
-branch to the <em>linux</em> repository.</p>
+branch to the <em>linux</em> repository. </p>
+<p>In this case we will add a branch for 3.18.7 <strong>Linux</strong> kernel.</p>
 <ol>
 <li>
-<p>Clone the <em>linux</em> repository. The URL should have been provided to you by
-   your system administrator.</p>
+<p>Clone the <em>linux</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>kernel</em> branch named <em>&lt;Major>.&lt;Minor>.&lt;Subminor></em> to the <em>linux</em>
+<p>Add a <em>kernel</em> branch <em>&lt;Major>.&lt;Minor>.&lt;Subminor></em> to the <em>linux</em>
    repository. </p>
 <p><code>$ git checkout master
 $ git branch 3.18.7
@@ -286,7 +303,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/kernel_build">template</a> as <strong><em>build</em></strong> to the
+<p>Add the <a href="../../usage/linux/template/kernel_build">default script</a> as <strong><em>build</em></strong> to the
    repository and make it executable.</p>
 <p><code>$ ls -hl
 total 4.0K
@@ -294,11 +311,12 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Modify <em>KERNEL_URL</em>, <em>KERNEL_FILE</em> and <em>PATCH_VERSION</em> in the <strong><em>build</em></strong>
-   script, to match the desired kernel version. Be careful with the <strong>Gentoo</strong>
-   patch version, as the version number not necessarily needs to fit to the
-   resulting <strong>Linux</strong> kernel. In this case <strong>Gentoo</strong> patches 3.18-9 result in
-   <strong>Linux</strong> kernel 3.18.7.</p>
+<p>Modify <em>KERNEL_URL</em>, <em>KERNEL_FILE</em> in the <strong><em>build</em></strong> script, to match the
+   desired kernel version. You also need to modify <em>PATCH_VERSION</em>, which is
+   the version of the <strong>Gentoo</strong> specific patches. Be careful with the version
+   number, as it doesn't necessarily fit to the resulting <strong>Linux</strong> kernel
+   version. In this case <strong>Gentoo</strong> patches 3.18-9 result in <strong>Linux</strong> kernel
+   3.18.7.</p>
 <p><code>...
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
 KERNEL_FILE="linux-3.18.tar.xz"
@@ -307,14 +325,14 @@ PATCH_VERSION="3.18-9"
 ...</code></p>
 </li>
 <li>
-<p>Add the files, commit and push. </p>
+<p>Add the files, commit and push them upstream. </p>
 <p><code>$ git add build
 $ git commit -m "new kernel"
 $ git push</code></p>
 </li>
 <li>
-<p>Now you have a <em>kernel</em> branch for your desired <strong>Linux</strong> kernel version
-   within your <em>linux</em> repository. The next step is to add <em>platform</em> branches
+<p>Now that you have a <em>kernel</em> branch for your desired <strong>Linux</strong> kernel version
+   within your <em>linux</em> repository, the next step is to add <em>platform</em> branches
    to the repository.</p>
 </li>
 </ol>
@@ -323,15 +341,15 @@ $ git push</code></p>
 which you want to add a platform.</p>
 <ol>
 <li>
-<p>If not already done, clone the <em>linux</em> repository. The URL should have been
-   provided to you by your system administrator. </p>
+<p>If not already done, clone the <em>linux</em> repository with the URL provided in
+   the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>platform</em> branch following the naming schema
-   <em>&lt;Major>.&lt;Minor>.&lt;Subminor>_&lt;platform></em> to the <em>linux</em> repository.
-   It is necessary for that the <strong>Buildbot</strong> is able to detect the just created
-   branch, therefore this branch needs to be pushed to the remote repository</p>
+<p>Add a <em>platform</em> branch following the name schema
+   <em>&lt;kernel-branch>_&lt;platform-string></em> to the <em>linux</em> repository. It is
+   necessary that you push this initial branch upstream, so the <strong>Buildserver</strong>
+   can find the new <em>platform</em> branch.</p>
 <p><code>$ git checkout master
 $ git branch 3.18.7_raspberry-pi
 $ git checkout 3.18.7_raspberry-pi
@@ -341,20 +359,18 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/platform_build">template</a> as <strong><em>build</em></strong> to the
-   repository and make it executable. </p>
+<p>Add the <a href="../../usage/linux/template/platform_build">default script</a> as <strong><em>build</em></strong>
+   to the repository and make it executable. </p>
 <p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
 -rw-r--r-- 1 user user    0 Mar  1 21:19 README</code></p>
 </li>
 <li>
-<p>Modify <em>KERNEL_VERSION</em> in <strong><em>build</em></strong> to the desired version, which also
-   has to be the name of the <em>kernel</em> branch. Finally modify <em>KERNEL_DTB</em> to
-   the desired device tree blobs name. Make sure the device tree sources exist
-   in the <strong>Linux</strong> sources, which will be downloaded by the <em>kernel</em> branch. If
-   not, you need to add them by adding a patch to the <em>platform</em> branch. In this
-   case the desired device tree sources do exist, so nothing is left to do.</p>
+<p>Modify <em>KERNEL_VERSION</em> in <strong><em>build</em></strong> to the desired <em>kernel</em> branch. Then
+   modify <em>KERNEL_DTB</em> to the desired device tree blob. If your platforms
+   device tree sources aren't in the <strong>Linux</strong> kernel sources yet, you have to
+   add them with a patch, as described in a later step.</p>
 <p><code>...
 KERNEL_VERSION="3.18.7"
 ...
@@ -366,7 +382,7 @@ KERNEL_IMG="zImage"
 <li>
 <p>Add a working kernel configuration <strong><em>.config</em></strong> to the repository. If you
    aren't sure if your kernel configuration is working, you can test it locally
-   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html">toolchain</a>.</p>
+   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html#Usage">toolchain</a>.</p>
 <p><code>$ ls -hla
 total 76K
 drwxr-xr-x 1 user user  44 Mar  1 21:29 .
@@ -377,15 +393,17 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Optional: Add needed patches to the repository.</p>
-<p><code>$ ls -hl
+<p>Optional: Add needed patches to the root of your <em>platform</em> branch. The patch
+   needs to be in the standard patch format, as created wit <code>diff -Naur</code>.</p>
+<p><code>$ diff -Naur linux/.../smsc95xx.c.old linux/.../smsc95xxx.c &gt; 9000-Smsc95xx_allow_mac_to_be_set.patch
+$ ls -hl
 total 8.0K
 -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
 -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Add all files, commit  and push branch upstream.</p>
+<p>Add all files, commit and push the  branch upstream.</p>
 <p><code>$ git add build
 $ git add .config
 $ git add *.patch
@@ -393,15 +411,16 @@ $ git commit -m "added raspberry-pi 3.18.7 kernel build"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>Buildbot</strong> should start building your kernel now. For further
+<p>The <strong>Buildserver</strong> should start building your kernel image now. For further
    informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
    guide</a>.</p>
 </li>
 <li>
 <p>Congratulations, you just built your first kernel for your first platform. If
-   you have a <a href="../uboot/index.html">uboot</a>, a <a href="../rootfs/index.html">rootfs</a> and the
-   necessary <a href="../misc/index.html">misc</a> files, you can flash everything with the
-   <a href="../flashtool/index.html">flashtool</a>.</p>
+   you have a <a href="../uboot/index.html">uboot</a>, a <a href="../rootfs/index.html">rootfs</a> and the necessary
+   <a href="../misc/index.html">misc</a> files, you can flash everything with the <strong>Flashtool</strong> or
+   deploy your files manually (see <a href="../usage/index.html#hardware-deployment">Hardware
+   Deployment</a>).</p>
 </li>
 </ol>
 </div>
