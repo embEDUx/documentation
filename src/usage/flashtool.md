@@ -116,8 +116,8 @@ the following command:
 
 There are several options available for this command:
 
- option     | description 
- ---------- | ----------- 
+      option     | description 
+ --------------- | ----------- 
  platform   | Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
  --limit N  | Print top N entries for each selected product
  -l, --linux | List all linux kernel versions for the specified platform
