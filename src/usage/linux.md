@@ -188,6 +188,7 @@ $ git push
 
 1. Congratulations, you just built your first kernel for your first platform. If
    you have a [uboot](uboot.md), a [rootfs](rootfs.md) and the necessary
-   [misc](misc.md) files, you can flash everything with the
-   [flashtool](flashtool.md).
+   [misc](misc.md) files, you can flash everything with the **Flashtool** or
+   deploy your files manually (see [Hardware
+   Deployment](usage.md#hardware-deployment)).
 
