@@ -146,7 +146,7 @@ FIRMWARE_IMG="u-boot.bin"
 1. Optional: Add pre\_output or post\_output functions to the ***build***
    script. They will be called before and after the output is packed. For
    further information check [background/uboot](../background/uboot.md) or have
-   a look at the [default build script](template/platform_build).
+   a look at the [default build script](usage/uboot/template/platform_build).
 
 1. Add all files, commit and push the changes upstream.
    

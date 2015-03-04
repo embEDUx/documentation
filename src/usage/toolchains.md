@@ -55,7 +55,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi
     ```
 
-1. Add the [default build script](toolchains/template/build) as ***build*** to the repository
+1. Add the [default build script](usage/toolchains/template/build) as ***build*** to the repository
    and make it executable.
    
     ```
