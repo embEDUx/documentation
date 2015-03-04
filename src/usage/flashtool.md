@@ -3,7 +3,7 @@
 1. [Getting started](#getting-started)
 2. [Get **recipes** from git server](#get-recipes-from-git-server)
 3. [List finished builds from the configured **Buildbot** server](#list-finished-builds-from-the-configured-buildbot-server)
-4. [How to write a recipe file](#how-to-write-a-recipe-file)
+4. [Recipe files](#recipe-files)
 5. Flashtool help page
 
 
@@ -67,12 +67,12 @@ You can change these settings by calling the comand:
 The tool will ask for each setting if you want to change the value or not.
 
 
-### Get **recipes** from git server
+## Get **recipes** from git server
 
 **Recipes** are *yaml* configuration files, which declare how to deploy a
-system on a platform (e.g. Raspberry Pi) and how to setup the platform. If
-you want to write a new **recipe** for a platform please read [How to write a
-recipe file](#How_to_write_a_recipe_file). 
+system on a platform (e.g. Raspberry Pi) and how to setup the platform. You 
+find more information about **recipe** file in chapter 
+[Recipe files](#recipe-files).
 
 On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git**
 there are provided some **recipe** files for different hardware.
@@ -131,9 +131,90 @@ There are several options available for this command:
  -m, --misc | List all misc files for the specified platform
 
 
-### Setup Hardware and deploy system on Hardware
+## Setup Hardware and deploy system on Hardware
 
-This step requires an exisitng [recipe](#How_to_write_a_recipe_file) file
+**Attention: the setup routine only allows to setup platforms which use a mmc
+device as storage media. Support for other storage media must be implemented.**
+If you want to implement new features to the **flashtool**, please consider
+reading the development section for the **flashtool**. The new functionality
+must be triggered by a recipe file an must be explained in the [recipe
+files](#recipe-files) chapter.
+
+This setup procedure requires an exisiting [recipe](#How_to_write_a_recipe_file) 
+file. The basic command for this procedure is `flashtool setup`.
+
+**Important: You need access rights for reading and writing on a mmc device and
+mounting a mmc device**
+
+### Parameters
+
+The setup command provides several optional and required parameter. The list
+below will explain all parameters:
+
+**Required parameter:**
+
+ Parameter | Argument[s] | Description
+ --------- | ----------- | -----------
+ platform  |      -      | Specifies the platform which should be set up
 
 
-### How to write a recipe file
+**Optional parameter:**
+
+* General options:
+
+ Parameter | Argument[s] | Description
+ --------- | ----------- | -----------
+ -a, --auto |     -      | If an argument for a product matches for multiple files, the system, will fetch the latest file of a product in lexicographical order. Otherwise the user will be prompted to select a specific file.
+ -L, --Local |    -      | If set, all downloaded files will be stored at the directory which is configured in the **flashtool** configuration.
+
+
+* Product Group 1 [linux, uboot, misc]:
+
+The argument of an option will be interpreted as *Regex* string \*{string}.\*.
+If this string matches for multiple files the **flashtool** will handle this
+situation dependent to the -a/--auto flag (see description above). The default
+value for each option will match all files.
+
+**Important: All three options must be stated or none of them.**
+
+ Parameter | Argument[s] | Description
+ --------- | ----------- | -----------
+-l, --linux | version    | Select linux version.
+-u, --uboot | version    | Select uboot version.
+-m, --misc  | version    | Select misc files version.
+
+
+* Product Group 2 [rootfs]
+
+If no rootfs is specified the system will choose a factory rootfs for the
+platform if exist. Otherwise the user will be prompted to choose a specific
+rootfs.
+
+ Parameter | Argument[s] | Description
+ --------- | ----------- | -----------
+-r, --rootfs | name      | Select rootfs
+
+
+### setup procedure
+
+The setup routine is triggered by the recipe file and will proceed different for
+each recipe file. But in general there is a preparation step and a load step for
+each recipe. These steps differ dependent on the type of recipe. The user will
+be guided through the setup steps. If the "auto" flag is set all steps which do
+not need an input from the user, will be selected with a default value.
+
+To avoid user mistakes the **flashtool** will prompt if the user want to proceed
+with the setup procedure.
+
+
+## Recipe files
+
+Recipe files are important for the setup procedure. The user can configure, how
+to setup a platform. There are different recipe types which can be used to
+configure a setup for a platform. The next section will describe these recipe
+types.
+
+- **Load recipe**:
+
+
+
