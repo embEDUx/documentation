@@ -29,6 +29,8 @@ installed packages. For a categorized list of packages that are available,
 please visit the following sites:
 * [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
+
+## Repository content
 ### Branch Name-Scheme
 The **buildserver** can only build your images, if you follow the correct name-scheme.
 
@@ -37,6 +39,12 @@ Documentation](../setup/user-documentation.md).
 
 * Kernel branch: <kernel\_version\> (eg. 3.17.2)
 * Platform branch: <kernel\_version\>\_<platform\_name\> (eg. 3.17.2_raspberry-pi)
+
+### The ***configuration.yml*** file
+TODO link
+
+### Pre/Post-Install File-Overlays
+TODO
 
 ## Example Steps
 
