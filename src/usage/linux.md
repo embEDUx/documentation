@@ -41,6 +41,7 @@ branch to the *linux* repository.
 In this case we will add a branch for 3.18.7 **Linux** kernel.
 
 1. Clone the *linux* repository with the URL provided in the user documentation.
+
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git 
     ```
