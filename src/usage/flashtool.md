@@ -2,7 +2,7 @@
 
 1. [Getting started](#getting-started)
 2. [Get **recipes** from git server](#get-recipes-from-git-server)
-3. [List finished builds from the configured **Buildbot** server](list-finished-builds-from-the-configured-Buildbot-server)
+3. [List finished builds from the configured **Buildbot** server](#list-finished-builds-from-the-configured-Buildbot-server)
 4. [recipe](#how-to-write-a-recipe-file)
 5. Flashtool help page
 
