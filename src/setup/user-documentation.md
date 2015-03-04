@@ -1,7 +1,7 @@
 # Creating the User Documentation
 
 ## Gather information from the **buildmaster's configuration**
-TODO
+
 
 ## Example - HTWG User Documentation
 If you want to see an example, or you're a user at the HTWG please go to [User

@@ -102,4 +102,4 @@ URLs* from the [User Documentation](#User Documentation), or from the
 every successful job.  From there, you can download the files produced by the
 builds. The rest depends strongly on your platform, and it is not possible to
 provide a generic way that will possibly work for all platforms available on the
-free market.
+free market. 

@@ -7,6 +7,10 @@ Linux | https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git
 RootFS | https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git
 Miscellaneous files | https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git
 
+### Permissions
+If you need permissions to these repositories, please contact your
+Administrator.
+
 ## Buildmaster
 
 ### Web-Interfaces
