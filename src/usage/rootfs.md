@@ -14,19 +14,16 @@ are needed for the usage of every component.
 
 ## Branch name scheme
 
+## Available Packages
+The main reason why anyone would want a customized RootFS is the selection of
+installed packages. For a categorized list of packages that are available, 
+please visit the following sites:
+* [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
 ## RootFS specification
 The RootFS specification is done in the ***configruation.yml*** in the root of
 the *rootfs*-Repository. The file is written in [YAML-Syntax](http://yaml.org/).
 
-The main reason why anyone would want a customized RootFs is the selection of
-installed packages. For a categorized list of packages that are available, 
-please visit the following sites:
-
-* [Gentoo Portage package list](http://packages.gentoo.org/categories/)
-
-
-### Example
 To demonstrate a fully working example this guide provides you with a
 [systemd-rootfs specification](rootfs/examples/systemd/configuration.yml)
 taken from the actual setup at the HTWG.
@@ -38,7 +35,7 @@ installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead. 
 
 
-#### Global Section
+### Global Flags Section
 ```yaml
 ---
 global:
@@ -51,7 +48,7 @@ packages to build without X-support and without the installation of additional
 documentation.
 
 
-#### Package-List Section
+### Package-List and Package-Flags Section
 The global section is followed by the package list. It is a YAML-dictionary
 which defines the packages that are to be installed in the RootFS. The syntax
 for every package is the same as for the global system.
@@ -72,7 +69,7 @@ packages:
 
 ```
 
-#### Commands Section
+### Pre/Post-Install Commands Section
 ```
 pre_install_commands:
     - "emerge-webrsync"
@@ -85,13 +82,7 @@ post_install_commands:
     - "ln -sf /usr/lib/systemd/systemd /sbin/init"
 ```
 
-
-
-### Global flags
-### Packages and flags
-### Available Packages
-### Pre/Post-Install commands
-### Pre/Post-Install overlays
+### Pre/Post-Install File-Overlays
 
 ## Advanced use cases
 * [Running containers based on a generated RootFS](rootfs/advanced/run-containers.md)
