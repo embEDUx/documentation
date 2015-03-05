@@ -60,7 +60,7 @@ indicate user provided content.
 1. Execute the *post_install_commands* on the target system
 1. Pack RootFS and upload archive to buildmaster
 
-### Branch Name-Scheme
+## Branch Name-Scheme
 The **buildserver** can only build your images, if you follow the correct name-scheme.
 
 The variables that are needed for your platform can be found in the [User
@@ -68,27 +68,24 @@ Documentation](../setup/user-documentation.md).
 
 **< Platform-RootFS-String \>\_< RootFS-Name \>**
 
-#### Variables
+### Variables
 Variable | Notes
 --- | ---
 Platform-RootFS-String | Specified and mapped to the target platform by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
 RootFS-Name | Chosen by the user. **Must not contain the '\_' character**
 
-#### Valid Examples
+### Valid Examples
 * armv7a_hardfp\_factory-systemd
 * amd64\_-factory-systemd
 
-
-TODO
-
-### The ***configuration.yml*** file
+## The ***configuration.yml*** file
 This file will specify packages to install and allows you to define commands
 that will be run during the build routine. 
 
 Please read through the [explained systemd configuration.yml
 example](rootfs/configuration.yml.md)
 
-### Pre/Post-Install File-Overlays
+## Pre/Post-Install File-Overlays
 As seen in the [repository layout](#Repository File-Structure) and described
 outlined in [Quick Introduction](#Quick Introduction), it is possible to provide
 filesystem overlays that will be copied over the target RootFS at specified
