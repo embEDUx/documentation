@@ -129,7 +129,7 @@ total 4.0K
    the name of the *uboot* branch you created in the previous chapter. Also
    modify *UBOOT\_CONFIG* to the platform configuration for **U-Boot**. In this
    case we expect a default configuration for you platform within the **U-Boot**
-   source. If this isn't the case, please read furhter informations at
+   source. If this isn't the case, please read further informations at
    [background/uboot](../background/uboot.md). If needed also modify the
    *FIRMWARE\_IMG* to the format that your platform expects, or add more files
    if for example your platform needs also the second stage bootloader binary.
