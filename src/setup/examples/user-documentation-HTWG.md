@@ -35,7 +35,7 @@ Utilite Pro | utilite-pro | armv7a\_hardfp | armv7a
 Qemu ARM | qemu-virt-arm | armv7a\_hardfp | armv7a
 Beaglebone Black | beaglebone-black | armv7a\_hardfp | armv7a
 
-### Build commands
+### Build Commands
 Builders | Buildcommands
 --- | --- 
 Linux | './build'
@@ -43,3 +43,30 @@ Uboot | './build'
 Misc | './build'
 Toolchain | './build'
 RootFS | *special ansible buildroutine: TODO LINK*
+
+### Output Directories
+Builders | Buildcommands
+--- | --- 
+Linux | output
+Uboot | output 
+Misc | output
+Toolchain | output
+RootFS | *special ansible buildroutine: TODO LINK*
+
+### Output File-Scheme
+Builder | File-Scheme
+--- | --- 
+Linux | < branch-name \>\_< date&time \>\_< commit-hash \>\_< destination \>.tar.bz2
+Linux | < branch-name \>\_< date&time \>\_< commit-hash \>\_config.tar.bz2
+Uboot | < branch-name \>\_< date&time \>\_< commit-hash \>\_uboot.tar.bz2
+Misc | < branch-name \>\_< date&time \>\_< commit-hash \>\_< destination \>.tar.bz2
+Toolchain | < branch-name \>\_< date&time \>\_< commit-hash \>\_toolchain.tar.bz2
+Rootfs | < branch-name \>\_< date&time \>\_< commit-hash \>\_rootfs.tar.bz2
+
+Variable | Note
+--- | ---
+branch-name | The branch that triggered the build
+date&time | YYYYMMDDhhmmss
+commit-hash | Short version of the hash for the commit which triggered the build
+destination | 'boot' or 'root' partition
+
