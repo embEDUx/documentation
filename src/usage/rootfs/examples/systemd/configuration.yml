@@ -27,7 +27,7 @@ packages:
     sys-fs/btrfs-progs: {}
 
 pre_install_commands:
-    - "emerge-webrsync"
+    - "emerge --sync"
     - "chown -R portage:portage /usr/portage"
     - "emerge -1uvkb perl"
     - "perl-cleaner --reallyall -- -kb"
@@ -37,6 +37,3 @@ post_install_commands:
     - "emerge --config timezone-data"
     - "mv /sbin/init /sbin/init-openrc"
     - "ln -sf /usr/lib/systemd/systemd /sbin/init"
-    - "tar -C /usr/ -cjvf /usr/portage.tbz2 portage"
-    - "rm -Rf /usr/portage/*"
-

@@ -62,7 +62,7 @@ commands that are run** before and after the package installation. Both are
 specified as a list of strings, which could look like in the following example.
 ```
 pre_install_commands:
-    - "emerge-webrsync"
+    - "emerge --sync"
     - "chown -R portage:portage /usr/portage"
 
 post_install_commands:
