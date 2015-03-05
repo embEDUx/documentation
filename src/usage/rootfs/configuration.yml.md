@@ -9,7 +9,7 @@ version of the [systemd-rootfs
 specification](examples/systemd/configuration.yml) taken from the actual setup
 at the HTWG.
 
-### Global Flags Section
+## Global Flags Section
 The *global*-Section configures the settings for global
 [USE-Flags](../../background/common/terminology.md#USE-flags) and 
 [keywords](../../background/common/terminology.md#keywords), which apply for every
@@ -30,7 +30,7 @@ supports it. For example, this might cause packages to be built with bindings
 for *Python* activated.
 
 
-### Package-List and Package-Flags Section
+## Package-List and Package-Flags Section
 The global section is followed by the package list. It is a YAML-dictionary
 which defines the packages that are to be installed in the RootFS. The syntax
 for every package is the same as for the global system.
@@ -55,14 +55,14 @@ configuration. The brackets after the *vim*-line define an empty dictionary,
 which cause the package to be installed with the default options. Remember, that
 the default options are also influenced by the *global*-Section.
 
-### Pre/Post-Install Commands Section
+## Pre/Post-Install Commands Section
 In order to not be limited to installing packages, or sometimes to work around
 problems that occur during package installation, you can also **specifi
 commands that are run** before and after the package installation. Both are
 specified as a list of strings, which could look like in the following example.
 ```
 pre_install_commands:
-    - "emerge-webrsync"
+    - "emerge --sync"
     - "chown -R portage:portage /usr/portage"
 
 post_install_commands:
@@ -71,7 +71,7 @@ post_install_commands:
     - "mv /sbin/init /sbin/init-openrc"
     - "ln -sf /usr/lib/systemd/systemd /sbin/init"
 ```
-You can specify any command here, which will be **run as root** in sequential
+You can specify any command here. They will be **run as root** in sequential
 order in the target RootFS. The changes you make with your commands are not
 persistent to your next build job, but are only taking effect for the current
 build.

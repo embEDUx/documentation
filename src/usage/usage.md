@@ -40,24 +40,25 @@ repository.
 ## Build Instructions
 1. Open **your** User Documentation
 
-1. Acquire the repository URL for the component you want to build
+1. Acquire the repository URL for the component you want to build. Therefore,
+   see **your** user documentation.
 
-1. Run `git clone` for a fresh start or `git pull` for an existing repository
+1. Retrieve the latest repository content. Run `git clone` for a fresh start or
+   `git pull` for an existing repository
 
-1. Run `git checkout` for the the branch of interest. This depends on the
-   *component* and the *platform* you want to build for.  At this point you may
-   re-use an existing branch, work on an existing branch, or create a new
-   branch. Further instructions are included on the detailed component sections.
+1. At this point you may re-use an existing branch, work on an existing branch,
+   or create a new branch. Further instructions are included on the detailed
+   component sections.  Run `git checkout ` for the the branch of interest. This
+   depends on the *component* and the *platform* you want to build for.  
 
-1. **Specify your build.** Since the build specifications are very
-   different from each other, it's necessary to separate the instructions into
-   distinct sections. Please follow the instructions given in the detailed
-   sections:
+1. **Specify your build.** Since the build specifications are very different for
+   each component, it's necessary to separate the instructions into distinct
+   sections. Please follow the instructions given in the detailed sections:
     * [U-Boot](../usage/uboot.md)
+    * [Toolchains](../usage/toolchains.md)
     * [Linux](../usage/linux.md)
     * [RootFS](../usage/rootfs.md)
     * [Miscellaneous files](../usage/misc.md)
-    * [Toolchains](../usage/toolchains.md)
 
        The work flow is basically the same for every component. One major
        difference in workflow occurs when building a RootFS. You will not be

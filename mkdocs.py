@@ -15,11 +15,11 @@ key_order = {
         'Common/',
         'Eval/',
         'Uboot',
+        'Toolchain',
         'Linux',
         'Root',
         'Misc',
         'Flashtool',
-        'Toolchain',
         ], 
     'back': [ 
         'Examples/',
