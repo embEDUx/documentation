@@ -314,7 +314,7 @@ problems that occur during package installation, you can also <strong>specifi
 commands that are run</strong> before and after the package installation. Both are
 specified as a list of strings, which could look like in the following example.</p>
 <pre><code>pre_install_commands:
-    - &quot;emerge-webrsync&quot;
+    - &quot;emerge --sync&quot;
     - &quot;chown -R portage:portage /usr/portage&quot;
 
 post_install_commands:
