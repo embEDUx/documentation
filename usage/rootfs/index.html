@@ -248,11 +248,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#repository-content">Repository content</a></li>
+            <li><a href="#repository-file-structure">Repository File-Structure</a></li>
         
             <li><a href="#quick-introduction">Quick Introduction</a></li>
-        
-            <li><a href="#example-steps">Example Steps</a></li>
         
             <li><a href="#advanced-use-cases">Advanced use cases</a></li>
         
@@ -291,7 +289,7 @@ please visit the following sites:</p>
 <ul>
 <li><a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></li>
 </ul>
-<h2 id="repository-content">Repository content</h2>
+<h2 id="repository-file-structure">Repository File-Structure</h2>
 <p>This is an example content of a branch in the RootFS-repository that makes use
 of all the currently supported features.</p>
 <pre><code>├── configuration.yml
@@ -306,7 +304,7 @@ of all the currently supported features.</p>
 <h2 id="quick-introduction">Quick Introduction</h2>
 <p>For all who skipped reading the background, here's a quick introduction
 what happens during the build process on the buildserver. The <em>italic</em> words
-indicate user provided content</p>
+indicate user provided content.</p>
 <ol>
 <li>Reset the workspace to a clean state</li>
 <li>Parse <em>configuration.yml</em></li>
@@ -353,8 +351,15 @@ that will be run during the build routine. </p>
 <p>Please read through the <a href="configuration.yml/index.html">explained systemd configuration.yml
 example</a></p>
 <h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
-<h2 id="example-steps">Example Steps</h2>
-<p>TODO</p>
+<p>As seen in the <a href="#Repository File-Structure">repository layout</a> and described
+outlined in <a href="#Quick Introduction">Quick Introduction</a>, it is possible to provide
+filesystem overlays that will be copied over the target RootFS at specified
+times. </p>
+<p>Note that that file attributes cannot be preserved. If you need special
+attributes or permissions on files, you have the following possiblities:
+<em> set attributes in on the files of the install_commands.
+</em> <code>tar</code> your files in the overlay directories and <code>untar</code> them in one of the
+  install_commands </p>
 <h2 id="advanced-use-cases">Advanced use cases</h2>
 <p>This section will provide some interesting use-cases for the output of the
 RootFS-builds.</p>
