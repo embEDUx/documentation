@@ -71,7 +71,7 @@ post_install_commands:
     - "mv /sbin/init /sbin/init-openrc"
     - "ln -sf /usr/lib/systemd/systemd /sbin/init"
 ```
-You can specify any command here, which will be **run as root** in sequential
+You can specify any command here. They will be **run as root** in sequential
 order in the target RootFS. The changes you make with your commands are not
 persistent to your next build job, but are only taking effect for the current
 build.
