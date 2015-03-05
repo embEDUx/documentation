@@ -130,8 +130,8 @@ $ git push
    branch.
 
 ### Add new platform
-This step requires an existing [*version\_genereric* branch](#add-new-upstream-kernel) for
-which you want to add a platform.
+This step requires an existing [*version\_genereric*](#add-new-upstream-kernel)
+branch for the **Linux** kernel version you want to add a platform.
 
 1. If not already done, clone the *linux* repository with the URL provided in
    the user documentation.
@@ -154,7 +154,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi
     ```
 
-1. Add the [default build script](usage/linux/defaukt/platform_build) as ***build***
+1. Add the [default build script](usage/linux/default/platform_build) as ***build***
    to the branch and make it executable. 
    
     ```
