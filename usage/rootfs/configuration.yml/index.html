@@ -73,6 +73,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../linux/index.html">Linux</a>
                         </li>
                     
@@ -94,10 +98,6 @@
                     
                         <li >
                             <a href="../../flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../toolchains/index.html">Toolchains</a>
                         </li>
                     
                     </ul>
@@ -183,6 +183,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../background/linux/index.html">Linux</a>
                         </li>
                     
@@ -196,10 +200,6 @@
                     
                         <li >
                             <a href="../../../background/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../background/toolchains/index.html">Toolchains</a>
                         </li>
                     
                     </ul>
@@ -266,7 +266,7 @@ YAML-files, and must not be removed.</p>
 version of the <a href="../../../examples/systemd/configuration.yml">systemd-rootfs
 specification</a> taken from the actual setup
 at the HTWG.</p>
-<h3 id="global-flags-section">Global Flags Section</h3>
+<h2 id="global-flags-section">Global Flags Section</h2>
 <p>The <em>global</em>-Section configures the settings for global
 <a href="../../../background/common/terminology/index.html#USE-flags">USE-Flags</a> and 
 <a href="../../../background/common/terminology/index.html#keywords">keywords</a>, which apply for every
@@ -284,7 +284,7 @@ packages to build without X-support and without the installation of additional
 documentation. The <strong>python</strong>-flag will be enabled for every package that
 supports it. For example, this might cause packages to be built with bindings
 for <em>Python</em> activated.</p>
-<h3 id="package-list-and-package-flags-section">Package-List and Package-Flags Section</h3>
+<h2 id="package-list-and-package-flags-section">Package-List and Package-Flags Section</h2>
 <p>The global section is followed by the package list. It is a YAML-dictionary
 which defines the packages that are to be installed in the RootFS. The syntax
 for every package is the same as for the global system.</p>
@@ -308,7 +308,7 @@ for every package is the same as for the global system.</p>
 configuration. The brackets after the <em>vim</em>-line define an empty dictionary,
 which cause the package to be installed with the default options. Remember, that
 the default options are also influenced by the <em>global</em>-Section.</p>
-<h3 id="prepost-install-commands-section">Pre/Post-Install Commands Section</h3>
+<h2 id="prepost-install-commands-section">Pre/Post-Install Commands Section</h2>
 <p>In order to not be limited to installing packages, or sometimes to work around
 problems that occur during package installation, you can also <strong>specifi
 commands that are run</strong> before and after the package installation. Both are

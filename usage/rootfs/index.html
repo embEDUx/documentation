@@ -73,6 +73,10 @@
                         </li>
                     
                         <li >
+                            <a href="../toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
                             <a href="../linux/index.html">Linux</a>
                         </li>
                     
@@ -94,10 +98,6 @@
                     
                         <li >
                             <a href="../flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../toolchains/index.html">Toolchains</a>
                         </li>
                     
                     </ul>
@@ -183,6 +183,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/linux/index.html">Linux</a>
                         </li>
                     
@@ -196,10 +200,6 @@
                     
                         <li >
                             <a href="../../background/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../background/toolchains/index.html">Toolchains</a>
                         </li>
                     
                     </ul>
@@ -251,6 +251,12 @@
             <li><a href="#repository-file-structure">Repository File-Structure</a></li>
         
             <li><a href="#quick-introduction">Quick Introduction</a></li>
+        
+            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
+        
+            <li><a href="#the-configurationyml-file">The configuration.yml file</a></li>
+        
+            <li><a href="#prepost-install-file-overlays">Pre/Post-Install File-Overlays</a></li>
         
             <li><a href="#advanced-use-cases">Advanced use cases</a></li>
         
@@ -315,12 +321,12 @@ indicate user provided content.</p>
 <li>Execute the <em>post_install_commands</em> on the target system</li>
 <li>Pack RootFS and upload archive to buildmaster</li>
 </ol>
-<h3 id="branch-name-scheme">Branch Name-Scheme</h3>
+<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
 <p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
 <p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
 Documentation</a>.</p>
 <p><strong>&lt; Platform-RootFS-String >_&lt; RootFS-Name ></strong></p>
-<h4 id="variables">Variables</h4>
+<h3 id="variables">Variables</h3>
 <table>
 <thead>
 <tr>
@@ -339,18 +345,17 @@ Documentation</a>.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="valid-examples">Valid Examples</h4>
+<h3 id="valid-examples">Valid Examples</h3>
 <ul>
 <li>armv7a_hardfp_factory-systemd</li>
 <li>amd64_-factory-systemd</li>
 </ul>
-<p>TODO</p>
-<h3 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h3>
+<h2 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h2>
 <p>This file will specify packages to install and allows you to define commands
 that will be run during the build routine. </p>
 <p>Please read through the <a href="configuration.yml/index.html">explained systemd configuration.yml
 example</a></p>
-<h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
+<h2 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h2>
 <p>As seen in the <a href="#Repository File-Structure">repository layout</a> and described
 outlined in <a href="#Quick Introduction">Quick Introduction</a>, it is possible to provide
 filesystem overlays that will be copied over the target RootFS at specified
