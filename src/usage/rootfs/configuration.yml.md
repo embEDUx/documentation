@@ -49,7 +49,7 @@ packages:
             +: "importd gcrypt curl lz4 lzma"
     app-editors/vim: {}
 ```
-The example shows the packages *sys-apps/util-linux:*, *virtual/udev*,
+The example shows the packages *sys-apps/util-linux*, *virtual/udev*,
 *sys-apps/systemd* and *app-editors/vim* to be installed, with different
 configuration. The brackets after the *vim*-line define an empty dictionary,
 which cause the package to be installed with the default options. Remember, that

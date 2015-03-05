@@ -1,8 +1,8 @@
 # RootFS Specification
-The RootFS will be assembled from a **Gentoo**-stage3 archive on the
-buildserver. This page will guide you through the steps of providing your own
-RootFS-specification to the buildserver.
+***work in progress (TODO)***
 
+ This page will guide you through the steps of providing your own
+RootFS-specification to the buildserver.
 
 ## Prerequisites
 Please review [the common usage prerequisites](usage.md#Prerequisites), which
@@ -15,7 +15,6 @@ are needed for the usage of every component.
   The RootFS-specification is supplied to the buildserver via git. Consult your
   User Documentation for the repository URLs. (See previous link)
 
-
 ### Suggestions
 * Understand the [RootFS Background Information](../background/rootfs.md). The
   buldsystem itself and **Gentoo** as base distribution introduce a high level
@@ -23,30 +22,65 @@ are needed for the usage of every component.
   understood to be fully utilized.
 * Get familiar with the [YAML-Syntax](http://yaml.org/)
 
+
 ### List Of Available Packages
 The main reason why anyone would want a customized RootFS is the selection of
 installed packages. For a categorized list of packages that are available, 
 please visit the following sites:
+
 * [Gentoo Portage category list](http://packages.gentoo.org/categories/)
 
 
 ## Repository content
+
+This is an example content of a branch in the RootFS-repository that makes use
+of all the currently supported features.
+
+```
+├── configuration.yml
+├── post_install_overlay
+│   ├── local.d
+│   │   └── alive.start
+│   └── post_install_copied
+└── pre_install_overlay
+    └── pre_install_copied
+```
+
+## Quick Introduction
+For all who skipped reading the background, here's a quick introduction
+what happens during the build process on the buildserver. The *italic* words
+indicate user provided content
+
+1. Reset the workspace to a clean state
+1. Parse *configuration.yml*
+1. Copy *pre_install_overlay* content to the target system
+1. Execute the *pre_install_commands* on the target system
+1. Install the specified packages
+1. Copy *post_install_overlay* content to the target system
+1. Execute the *post_install_commands* on the target system
+1. Pack RootFS and upload archive to buildmaster
+
 ### Branch Name-Scheme
 The **buildserver** can only build your images, if you follow the correct name-scheme.
 
 The variables that are needed for your platform can be found in the [User
 Documentation](../setup/user-documentation.md).
 
-* Kernel branch: <kernel\_version\> (eg. 3.17.2)
-* Platform branch: <kernel\_version\>\_<platform\_name\> (eg. 3.17.2_raspberry-pi)
-
-### The ***configuration.yml*** file
-TODO link
-
-### Pre/Post-Install File-Overlays
 TODO
 
+### The ***configuration.yml*** file
+This file will specify packages to install and allows you to define commands
+that will be run during the build routine. 
+
+Please read through the [explained systemd configuration.yml
+example](rootfs/configuration.yml.md)
+
+### Pre/Post-Install File-Overlays
+
+
+
 ## Example Steps
+TODO
 
 ## Advanced use cases
 This section will provide some interesting use-cases for the output of the
