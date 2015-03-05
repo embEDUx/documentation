@@ -321,6 +321,35 @@ indicate user provided content</p>
 <p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
 <p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
 Documentation</a>.</p>
+<h4 id="variables">Variables</h4>
+<p><ARCH-String>_<ROOTFS-NAME> </p>
+<table>
+<thead>
+<tr>
+<th>Variables</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARCH-String</td>
+<td>Specified and mapped to the target platform. Found in the [User</td>
+</tr>
+<tr>
+<td>Documentation](../setup/user-documentation.md)</td>
+<td></td>
+</tr>
+<tr>
+<td>ROOTFS-NAME</td>
+<td>Chosen by the user. <strong>Must not contain the '_' character</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="valid-examples">Valid Examples</h4>
+<ul>
+<li>armv7a_hardfp_factory-systemd</li>
+<li>amd54_-factory-systemd</li>
+</ul>
 <p>TODO</p>
 <h3 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h3>
 <p>This file will specify packages to install and allows you to define commands
