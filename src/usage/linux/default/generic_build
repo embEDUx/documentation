@@ -6,12 +6,12 @@
 
 ### Sources
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
-KERNEL_FILE="linux-<Major>.<Minor>.tar.gz"
+KERNEL_FILE="linux-< major >.< minor >.tar.gz"
 KERNEL_SHA="sha256sums.asc"
 
 ### Patches
 PATCH_DIR="genpatches"
-PATCH_VERSION="<Major>.<Minor>-<Subminor>"
+PATCH_VERSION="< major >.< minor >-< subminor >"
 PATCH_URL="http://dev.gentoo.org/~mpagano/genpatches/tarballs"
 PATCH_PART="base extras experimental"
 

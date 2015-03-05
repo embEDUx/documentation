@@ -4,8 +4,8 @@
 # Configuration                      #                    
 ######################################
 
-KERNEL_VERSION="<kernel_version"
-KERNEL_DTB="<platform_dtb>"
+KERNEL_VERSION="< kernel-version >"
+KERNEL_DTB="< platform-dtb >"
 KERNEL_CONFIG=".config"
 KERNEL_IMG="zImage"
 
