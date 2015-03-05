@@ -198,6 +198,10 @@
                             <a href="../../../background/eval/buildserver/index.html">Eval/Buildserver</a>
                         </li>
                     
+                        <li >
+                            <a href="../../../background/eval/yocto-project/index.html">Eval/Yocto Project</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -320,7 +324,7 @@ post_install_commands:
     - &quot;ln -sf /usr/lib/systemd/systemd /sbin/init&quot;
 </code></pre>
 
-<p>You can specify any command here, which will be <strong>run as root</strong> in sequential
+<p>You can specify any command here. They will be <strong>run as root</strong> in sequential
 order in the target RootFS. The changes you make with your commands are not
 persistent to your next build job, but are only taking effect for the current
 build.</p>
