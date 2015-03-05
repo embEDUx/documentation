@@ -202,6 +202,19 @@
                 </li>
             
             
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Troubleshooting <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -233,6 +246,8 @@
         
             <li><a href="#repository-content">Repository content</a></li>
         
+            <li><a href="#quick-introduction">Quick Introduction</a></li>
+        
             <li><a href="#example-steps">Example Steps</a></li>
         
             <li><a href="#advanced-use-cases">Advanced use cases</a></li>
@@ -243,8 +258,8 @@
             <div class="col-md-9" role="main">
 
 <h1 id="rootfs-specification">RootFS Specification</h1>
-<p>The RootFS will be assembled from a <strong>Gentoo</strong>-stage3 archive on the
-buildserver. This page will guide you through the steps of providing your own
+<p><strong><em>work in progress (TODO)</em></strong></p>
+<p>This page will guide you through the steps of providing your own
 RootFS-specification to the buildserver.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Please review <a href="../usage/index.html#Prerequisites">the common usage prerequisites</a>, which
@@ -268,22 +283,49 @@ are needed for the usage of every component.</p>
 <h3 id="list-of-available-packages">List Of Available Packages</h3>
 <p>The main reason why anyone would want a customized RootFS is the selection of
 installed packages. For a categorized list of packages that are available, 
-please visit the following sites:
-* <a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></p>
+please visit the following sites:</p>
+<ul>
+<li><a href="http://packages.gentoo.org/categories/">Gentoo Portage category list</a></li>
+</ul>
 <h2 id="repository-content">Repository content</h2>
+<p>This is an example content of a branch in the RootFS-repository that makes use
+of all the currently supported features.</p>
+<pre><code>├── configuration.yml
+├── post_install_overlay
+│   ├── local.d
+│   │   └── alive.start
+│   └── post_install_copied
+└── pre_install_overlay
+    └── pre_install_copied
+</code></pre>
+
+<h2 id="quick-introduction">Quick Introduction</h2>
+<p>For all who skipped reading the background, here's a quick introduction
+what happens during the build process on the buildserver. The <em>italic</em> words
+indicate user provided content</p>
+<ol>
+<li>Reset the workspace to a clean state</li>
+<li>Parse <em>configuration.yml</em></li>
+<li>Copy <em>pre_install_overlay</em> content to the target system</li>
+<li>Execute the <em>pre_install_commands</em> on the target system</li>
+<li>Install the specified packages</li>
+<li>Copy <em>post_install_overlay</em> content to the target system</li>
+<li>Execute the <em>post_install_commands</em> on the target system</li>
+<li>Pack RootFS and upload archive to buildmaster</li>
+</ol>
 <h3 id="branch-name-scheme">Branch Name-Scheme</h3>
 <p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
 <p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
 Documentation</a>.</p>
-<ul>
-<li>Kernel branch: &lt;kernel_version> (eg. 3.17.2)</li>
-<li>Platform branch: &lt;kernel_version>_&lt;platform_name> (eg. 3.17.2_raspberry-pi)</li>
-</ul>
-<h3 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h3>
-<p>TODO link</p>
-<h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
 <p>TODO</p>
+<h3 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h3>
+<p>This file will specify packages to install and allows you to define commands
+that will be run during the build routine. </p>
+<p>Please read through the <a href="configuration.yml/index.html">explained systemd configuration.yml
+example</a></p>
+<h3 id="prepost-install-file-overlays">Pre/Post-Install File-Overlays</h3>
 <h2 id="example-steps">Example Steps</h2>
+<p>TODO</p>
 <h2 id="advanced-use-cases">Advanced use cases</h2>
 <p>This section will provide some interesting use-cases for the output of the
 RootFS-builds.</p>
