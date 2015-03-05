@@ -100,8 +100,10 @@ total 4.0K
     ```
 
 1. Modify *< kernel-url \>*, *< kernel-file \>* in the ***build*** script, to
-   match the desired kernel version. You also need to modify *< patch-version
-   \>*, which is the version of the **Gentoo** specific patches. Be careful as
+   match the desired [kernel version](https://www.kernel.org/pub/linux/kernel/).
+   You also need to modify *< patch-version \>*, which is the version of the
+   **Gentoo** specific
+   [patches](http://dev.gentoo.org/~mpagano/genpatches/tarballs). Be careful as
    the version number of the **Gentoo** patches doesn't follow the version
    number of the **Linux** kernel. In this case **Gentoo** patches 3.18-9 result
    in **Linux** kernel 3.18.7.
@@ -138,9 +140,9 @@ which you want to add a platform.
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git
     ```
 
-1. Add a *platform* branch to the *linux* repository. It is necessary that you
+1. Add a *version\_platform* branch to the *linux* repository. It is necessary that you
    push the branch at this point upstream, so the **buildserver** can find the
-   new *platform* branch.
+   new *version\_platform* branch.
 
     ```
 $ git checkout master
@@ -177,7 +179,7 @@ KERNEL_CONFIG=".config"
     ```
 
 1. Add a working kernel configuration ***.config*** to the branch. If you aren't
-   sure weather your kernel configuration is working, you can run the build
+   sure weather your kernel configuration is working or not, you can run the build
    script locally with a proper [toolchain](toolchains.md#Usage).
    
     ```
@@ -191,7 +193,7 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
     ```
 
-1. Optional: Add needed patches to the root of your *platform* branch. The patch
+1. Optional: Add needed patches to the root directory of your branch. The patch
    needs to be in the standard patch format, eg. created with `diff -Naur`.
    
     ```
