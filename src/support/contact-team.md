@@ -5,8 +5,7 @@
 Member | Main responsibilities
 --- | --- 
 [Stefan Junker](mailto:code@stefanjunker.de) | Buildserver, RootFS
-[Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Evaluation with U-Boot and
-Linux
+[Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Evaluation with U-Boot and Linux
 Manuel Hieke | Flashtool
 
 ## IRC

@@ -39,7 +39,7 @@ last builds.
 
 #### Force builds
 Depending on the [buildmaster's scheduler
-configuration](../../setup/common/buildmaster.md#Scheduler), it is also possible
+configuration](../../setup/buildserver/buildmaster.md#Scheduler), it is also possible
 to schedule forced builds via the builders view.
 
 ## Troubleshooting

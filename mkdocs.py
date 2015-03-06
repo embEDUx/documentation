@@ -20,7 +20,11 @@ category_order = [
 key_order = {
     'front': [ 
         'Overview',
-        'Terminiology',
+        'Repositories',
+        'Adminstation',
+        'Buildserver',
+        'Workstation',
+        'Terminilogy',
         'Requirements',
         'Requirements/',
         'Design/',
@@ -34,8 +38,8 @@ key_order = {
         'Flashtool',
         ], 
     'back': [ 
-        'Examples/',
         'Customization/',
+        'Examples/',
         ],
 }
 
