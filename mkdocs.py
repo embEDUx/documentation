@@ -20,6 +20,7 @@ category_order = [
 key_order = {
     'front': [ 
         'Overview',
+        'Terminiology',
         'Requirements/',
         'Design/',
         'Eval/',
