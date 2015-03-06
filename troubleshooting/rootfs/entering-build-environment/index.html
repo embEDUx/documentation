@@ -211,6 +211,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Troubleshooting <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
+                        <li >
+                            <a href="../../troubleshooting/index.html">Overview</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="index.html">Rootfs/Entering Build Environment</a>
                         </li>
@@ -225,7 +229,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../../../background/flashtool/index.html">
+                    <a rel="next" href="../../troubleshooting/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -246,6 +250,10 @@
     
         <li class="main active"><a href="#entering-rootfs-build-environment">Entering RootFS Build Environment</a></li>
         
+            <li><a href="#requirements">Requirements</a></li>
+        
+            <li><a href="#step-by-step-example">Step-By-Step Example</a></li>
+        
     
     </ul>
 </div></div>
@@ -256,23 +264,42 @@
 build environment. The following example shows entering the VM that is used to
 build RootFS for the armv7a_hardfp Architecture. In this example, the host <em>buildserver</em> is
 running the container that runs the respective buildslave.</p>
-<pre><code>$ ssh root@buildserver
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>SSH-Access to the host the buildslave containers are running on</li>
+<li>Permissions for to run <code>docker</code> on the buildslave container host</li>
+</ul>
+<h2 id="step-by-step-example">Step-By-Step Example</h2>
+<p>This example demonstrates how to enter a running instance of a build
+environment of a rootfs_armv7a_hardfp buildslave running on an amd64 host.</p>
+<ol>
+<li>
+<p>SSH into the host</p>
+<p><code>$ ssh root@buildserver
 buildserver ~ # arch
-x86_64
-buildserver ~ # docker exec -it buildslave_rootfs_amd64.armv7a_hardfp bash
-buildbot@1355a15e64aa / $ ssh root@localhost -p 2222 -i /var/tmp/embedux/
-.done_crossdev_run    .done_target_prepare  qemu.pid              target_prepare/       
-.done_image_setup     distccd.log           rootfs.btrfs.img      zImage                
-.done_qemu_prepare    download/             rootfs.btrfs.mnt/     
-buildbot@1355a15e64aa / $ ssh root@localhost -p 2222 -i /var/tmp/embedux/target_prepare/ssh_creds/target.id
+x86_64</code></p>
+</li>
+<li>
+<p>Execute an interactive <code>bash</code>-shell inside the buildslave container</p>
+<p><code>buildserver ~ # docker exec -it buildslave_rootfs_amd64.armv7a_hardfp bash
+buildbot@1355a15e64aa / $</code></p>
+</li>
+<li>
+<p>SSH into the buildslave's instance of the build environment, using the
+   SSH-key that has been generated during the build process</p>
+<p><code>buildbot@1355a15e64aa / $ ssh root@localhost -p 2222 -i /var/tmp/embedux/target_prepare/ssh_creds/target.id
 The authenticity of host '[localhost]:2222 ([127.0.0.1]:2222)' can't be established.
 ED25519 key fingerprint is 11:b6:d6:73:40:ba:92:42:c9:d8:cc:a2:bb:b2:73:3a.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '[localhost]:2222' (ED25519) to the list of known hosts.
 root@localhost ~ # arch
-armv7l
-</code></pre>
-
+armv7l</code></p>
+</li>
+<li>
+<p>If no other build happened in since your failed build, you are exactly
+   where the failed build left off, good luck!</p>
+</li>
+</ol>
 </div>
         </div>
 

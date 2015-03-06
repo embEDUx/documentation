@@ -212,6 +212,10 @@
                     <ul class="dropdown-menu">
                     
                         <li >
+                            <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -300,18 +304,26 @@ repository.</p>
 <p>Open <strong>your</strong> User Documentation</p>
 </li>
 <li>
-<p>Acquire the repository URL for the component you want to build. Therefore,
-   see <strong>your</strong> user documentation.</p>
+<p>Acquire the repository URL for the component you want to build.</p>
 </li>
 <li>
-<p>Retrieve the latest repository content. Run <code>git clone</code> for a fresh start or
-   <code>git pull</code> for an existing repository</p>
+<p>Make sure you have the latest repository content. Run <code>git clone</code> for a fresh
+   start or <code>git pull</code> for an existing repository</p>
 </li>
 <li>
 <p>At this point you may re-use an existing branch, work on an existing branch,
-   or create a new branch. Further instructions are included on the detailed
-   component sections.  Run <code>git checkout</code> for the the branch of interest. This
-   depends on the <em>component</em> and the <em>platform</em> you want to build for.  </p>
+   or create a new branch. Now, there are at least these two cases:</p>
+<ul>
+<li>Creating a new <strong>new branch</strong>: Run <code>git checkout &lt; template_branch &gt;</code>,
+  where &lt; template_branch >* is the branch you want yours to base on. Right
+  away run <code>git checkout -b &lt; new_branch &gt;</code> and <code>git push --set-upstream
+  origin &lt; new_branch \&gt;</code>. Afterwards, the buildserver will watch for
+  changes on the new branch.</li>
+<li>Modifying an <strong>existing branch</strong>:
+    simply <code>git checkout &lt; existing_branch &gt;</code></li>
+</ul>
+<p>When needed, you can find more detailed instructions in the component
+  sections.</p>
 </li>
 <li>
 <p><strong>Specify your build.</strong> Since the build specifications are very different for
@@ -337,10 +349,14 @@ repository.</p>
    commit messages</strong> to improve collaboration. The buildserver will pick up your
    changes, schedule a build and execute it as soon as it can.</p>
 </li>
+<li>
+<p>Finally, run <code>git push</code> to upload your specification to the buildserver!</p>
+</li>
 </ol>
 <h2 id="monitor-your-builds">Monitor your builds</h2>
-<p>In the meantime of your build, and also to check if it has been scheduled
-correctly, you can <a href="../common/build-monitoring/index.html">monitor the builds</a>.</p>
+<p>In order to see the state of your running build, and also to check if it has
+been scheduled correctly, you can <a href="../common/build-monitoring/index.html">monitor the builds using the
+web-interface</a>.</p>
 <p>In case of a build failure please either</p>
 <ol>
 <li>
@@ -357,7 +373,7 @@ you need support,</p>
 <a href="../flashtool/index.html">deploy your builds to hardware using the flashtool</a></p>
 <p>Please note that to deploy a complete system, successful builds of all
 components need to be available.  This means, single components can be built and
-deployed if there exists previous successful builds for the target platform.
+deployed if there are previous successful builds for the target platform.
 After the required build have successfully completed you can finally </p>
 <h3 id="manually">Manually</h3>
 <p>If for some reason the flashtool is not working for you, there is always the

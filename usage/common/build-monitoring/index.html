@@ -212,6 +212,10 @@
                     <ul class="dropdown-menu">
                     
                         <li >
+                            <a href="../../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -244,34 +248,42 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#requirements">Requirements</a></li>
+        <li class="main active"><a href="#build-monitoring">Build Monitoring</a></li>
         
-    
-        <li class="main "><a href="#buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</a></li>
+            <li><a href="#buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</a></li>
         
-            <li><a href="#waterfall-view">Waterfall View</a></li>
-        
-            <li><a href="#builders-view">Builders View</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="requirements">Requirements</h2>
+<h1 id="build-monitoring">Build Monitoring</h1>
+<h2 id="buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</h2>
+<p>The <em>buildmaster</em> provides a webinterface that can be used to control and
+monitor the buildmaster's behavior. The two most important views are the
+waterfall view and the builders view.</p>
+<h3 id="requirements">Requirements</h3>
 <ul>
 <li>A graphical Web-Browser :-)</li>
 <li>Buildserver Web-Interface URL. Find this in <strong>your</strong> <a href="../../../setup/user-documentation/index.html">User
   Documentation</a></li>
 </ul>
-<h2 id="buildbot-buildmaster-webinterface">Buildbot buildmaster Webinterface</h2>
-<p>The <em>buildmaster</em> provides a webinterface that can be used to control and
-monitor the buildmaster's behavior. The two most important views are the
-waterfall view and the builders view.</p>
 <h3 id="waterfall-view">Waterfall View</h3>
 <p>The <strong>buildbot</strong> waterfall-view gives an overview over all running and recent
 builds in one place. Colors indicate the state of the builds and links to
 detailed logs or general build information are provided.</p>
+<p><img alt="buildmaster at HTWG - Builders - all
+Idle" src="../../../usage/common/img/buildmaster_waterfall_rootfs-builds.png" /></p>
+<p>As you can see, each buildstep offers a link to its' <em>stdio</em>, which let's you
+see in detail what has been going on during the build.</p>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>The RootFS buildroutine sends its' output <strong>after the command has finished</strong>.
+  For RootFS with many packages this can lead to long periods in between changes
+  of the <em>stdio</em>.</li>
+</ul>
 <h3 id="builders-view">Builders View</h3>
 <h4 id="builders-status">Builders Status</h4>
 <p>The builders view let's you quickly see the status of all buildslaves.
@@ -282,6 +294,9 @@ last builds.</p>
 <p>Depending on the <a href="../../../setup/common/buildmaster/index.html#Scheduler">buildmaster's scheduler
 configuration</a>, it is also possible
 to schedule forced builds via the builders view.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you need a more insight of what is going on, please visit the
+<a href="../../../troubleshooting/troubleshooting/index.html">Troubleshooting Section</a></p>
 </div>
         </div>
 

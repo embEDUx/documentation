@@ -212,6 +212,10 @@
                     <ul class="dropdown-menu">
                     
                         <li >
+                            <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -248,11 +252,13 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#name-scheme">Name scheme</a></li>
+            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
+        
+            <li><a href="#step-by-step-example">Step-by-Step Example</a></li>
         
             <li><a href="#add-new-upstream-u-boot">Add new upstream U-Boot</a></li>
         
-            <li><a href="#add-new-platform-for-u-boot-version">Add new platform for U-Boot version</a></li>
+            <li><a href="#add-new-platform">Add new platform</a></li>
         
     
     </ul>
@@ -283,35 +289,103 @@ Documentation</a>.</p>
   configuration before you push it upstream.</p>
 </li>
 <li>
-<p>Have a look at the default build scripts. As the <strong>Buildserver</strong> just executes
-  these scripts, you have no limits on what you want to do before, during and
-  after the build process.</p>
+<p>Have a look at the default build scripts
+  (<a href="../../usage/uboot/default/generic_build">generic</a>,
+  <a href="../../usage/uboot/default/platform_build">platform</a>). As the <strong>buildserver</strong> just
+  executes these scripts, you have no limits on what you want to do before,
+  during and after the build process.</p>
 </li>
 </ul>
-<h2 id="name-scheme">Name scheme</h2>
-<p>The <strong>Builserver</strong> can only build your images, if you follow this name scheme
-for any of the branches:</p>
-<ul>
-<li>U-Boot branch: &lt;uboot-version> (eg. 2015.01-rc1)</li>
-<li>Platform branch: &lt;uboot-version>_&lt;platform-name> (eg. 2015.01-rc1_raspberry-pi)</li>
-</ul>
-<p>Please look up the Platform string in the <a href="../../setup/user-documentation/index.html">User
-Documentation</a> provided by your administrator. If
-your platform doesn't exist yet, please contact your administrator.</p>
+<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
+<p>The <strong>builserver</strong> can only build your images, if you follow the correct
+name-scheme for the branches.</p>
+<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
+<h3 id="variables">Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform-String</td>
+<td>Specified and mapped to the target architecture by the Administrator. Found in the <a href="../../setup/user-documentation/index.html">User Documentation</a></td>
+</tr>
+<tr>
+<td>Uboot-Version</td>
+<td>The <strong>U-Boot</strong> version</td>
+</tr>
+</tbody>
+</table>
+<h3 id="branches">Branches</h3>
+<p>To avoid unnecessary redundancy, which will naturally occur if you build
+multiple platforms for the same kernel version, following branch structure is
+necessary. The default build scripts
+(<a href="../../usage/uboot/default/generic_build">generic</a>,
+<a href="../../usage/uboot/default/platform_build">platform</a>) follow exactly this idea.</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Dependency</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version_generic</td>
+<td>platform independent</td>
+<td>Provide <strong>U-Boot</strong> sources</td>
+</tr>
+<tr>
+<td>version_platform</td>
+<td>platform dependent</td>
+<td>Call build script in version_generic branch</td>
+</tr>
+</tbody>
+</table>
+<p>For each <strong>U-Boot</strong> version, there will be exactly one <em>version_generic</em> branch,
+where for each platform there will be one <em>version_platform</em> branch. Following
+name-scheme has to be followed.</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Scheme</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version_generic</td>
+<td>&lt; uboot-version ></td>
+<td>2015.01</td>
+</tr>
+<tr>
+<td>version_platform</td>
+<td>&lt; uboot-version >_&lt; platform-string ></td>
+<td>2015.01_raspberry-pi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-by-step-example">Step-by-Step Example</h2>
+<p>The following example will give you a detailed overview of the necessary steps
+to build <strong>U-Boot</strong> 2015.01 for the raspberry pi. We assume that at this point the
+<em>uboot</em> repository is empty.</p>
 <h2 id="add-new-upstream-u-boot">Add new upstream U-Boot</h2>
-<p>The following steps are necessary before you can add <a href="#add-new-platform-for-u-boot-version">a new
-platform</a> to the repository. The following
-example will add the <strong>U-Boot</strong> 2015.01 for the raspberry pi. The source code
-archive can be found at the <a href="http://ftp.denx.de/pub/u-boot/">U-Boot website</a>.</p>
+<p>Before you can add <a href="#add-new-platform">a new platform</a>, for which you want to
+build a <strong>U-Boot</strong> image, you first need to add a <em>version_generic</em> branch to
+the <em>uboot</em> repository.</p>
 <ol>
 <li>
-<p>Clone the <em>linux</em> repository with the URL provided in the user documentation.
-   administrator.</p>
+<p>Clone the <em>uboot</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
-<p>Add a <em>uboot</em> branch named like the <strong>U-Boot</strong> version to the <em>uboot</em>
-   repository.</p>
+<p>Add a <em>version_platform</em> branch to the <em>uboot</em> repository.</p>
 <p><code>$ git checkout master
 $ git branch 2015.01
 $ git checkout 2015.01
@@ -321,43 +395,44 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 2015.01</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/uboot/template/uboot_build">default script</a> as <strong><em>build</em></strong> to the
-   repository and make it executable.</p>
+<p>Add the <a href="../../usage/uboot/default/generic_build">default script</a> as <strong><em>build</em></strong> to the
+   branch and make it executable.</p>
 <p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
 -rw-r--r-- 1 user user    0 Mar  2 18:48 README</code></p>
 </li>
 <li>
-<p>Modify <em>UBOOT_FILE</em> in the <strong><em>build</em></strong> script, to match the <strong>U-Boot</strong>
+<p>Modify <em>&lt;uboot-file ></em> in the <strong><em>build</em></strong> script, to match the <strong>U-Boot</strong>
    archive for the desired version. If you use the default build script, make
-   sure the file exists on the <a href="http://ftp.denx.de/pub/u-boot/">webserver</a>.</p>
+   sure the file exists on the <a href="http://ftp.denx.de/pub/u-boot/">ftp server</a>.</p>
 <p><code>...
 UBOOT_FILE="u-boot-2015.01.tar.bz2"
 ...</code></p>
 </li>
 <li>
-<p>Add the changed files, commit and push upstream.</p>
+<p>Add your changes, commit and push them upstream.</p>
 <p><code>$ git add build
 $ git commit -m "new uboot 2015.01"
 $ git push</code></p>
 </li>
 </ol>
-<p>Now you can continue and add <em>platform</em> branches to the <em>uboot</em> repository.</p>
-<h2 id="add-new-platform-for-u-boot-version">Add new platform for U-Boot version</h2>
-<p>This step requires an <a href="#add-new-upstream-u-boot">existing</a> <em>uboot</em> branch for
-the desired <strong>U-Boot</strong> version.</p>
+<p>Now that you have a <em>version_generic</em> branch for your desired <strong>U-Boot</strong>
+version within your <em>uboot</em> repository, the next step is to add a
+<em>version_platform</em> branch.</p>
+<h2 id="add-new-platform">Add new platform</h2>
+<p>This step requires an existing <a href="#add-new-upstream-u-boot"><em>version_generic</em></a> branch for
+the desired <strong>U-Boot</strong> version, you want to add a platform.</p>
 <ol>
 <li>
-<p>If not already done, clone the <em>linux</em> repository with the URL provided in
+<p>If not already done, clone the <em>uboot</em> repository with the URL provided in
    the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
-<p>Add a <em>platform</em> branch named <em>&lt;uboot-version>_&lt;platform-string></em> to the <em>uboot</em>
-   repository.  It is necessary that you push this initial branch, so the
-   <strong>Buildbot</strong> can start building your <strong>U-Boot</strong> image after last step of this
-   example.</p>
+<p>Add a <em>version_platform</em> branch to the <em>uboot</em> repository.  It is necessary
+   that you push the branch at this point upstream, so the <strong>buildserver</strong> can
+   find this new <em>version_platform</em> branch.</p>
 <p><code>$ git checkout master
 $ git branch 2015.01_raspberry-pi
 $ git checkout 2015.01_raspberry-pi
@@ -367,7 +442,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 2015.01_raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/uboot/template/platform_build">default build script</a> as
+<p>Add the <a href="../../usage/uboot/default/platform_build">default build script</a> as
    <strong><em>build</em></strong> to the branch and make it executable. </p>
 <p><code>$ ls -hl
 total 4.0K
@@ -375,15 +450,12 @@ total 4.0K
 -rw-r--r-- 1 user user   0 Mar  2 18:57 README</code></p>
 </li>
 <li>
-<p>Modify <em>UBOOT_VERSION</em> in <strong><em>build</em></strong> to the desired version, which is also
-   the name of the <em>uboot</em> branch you created in the previous chapter. Also
-   modify <em>UBOOT_CONFIG</em> to the platform configuration for <strong>U-Boot</strong>. In this
-   case we expect a default configuration for you platform within the <strong>U-Boot</strong>
-   source. If this isn't the case, please read furhter informations at
-   <a href="../../background/uboot/index.html">background/uboot</a>. If needed also modify the
-   <em>FIRMWARE_IMG</em> to the format that your platform expects, or add more files
-   if for example your platform needs also the second stage bootloader binary.</p>
-<p><code>...
+<p>Modify <em>&lt; uboot-version ></em> to thhe desired <em>version_generic</em> branch. Then
+   modify <em>&lt; def-config ></em> to the platform configuration for <strong>U-Boot</strong>. In
+   this case we expect a default configuration for you platform within the
+   <strong>U-Boot</strong> source. If this isn't the case, please read further informations
+   at <a href="../../background/uboot/index.html">background/uboot</a>.  <br />
+<code>...
 UBOOT_VERSION="2015.01"
 UBOOT_CONFIG="rpi_config"
 ...
@@ -394,10 +466,10 @@ FIRMWARE_IMG="u-boot.bin"
 <p>Optional: Add pre_output or post_output functions to the <strong><em>build</em></strong>
    script. They will be called before and after the output is packed. For
    further information check <a href="../../background/uboot/index.html">background/uboot</a> or have
-   a look at the <a href="../../usage/uboot/template/platform_build">default build script</a>.</p>
+   a look at the <a href="../../usage/uboot/default/platform_build">default build script</a>.</p>
 </li>
 <li>
-<p>Add all files, commit and push the changes upstream.</p>
+<p>Add all changes, commit and push them upstream.</p>
 <p><code>$ git add build
 $ git commit -m "new platform"
 $ git push</code></p>
@@ -412,7 +484,7 @@ $ git push</code></p>
    platform.</p>
 </li>
 </ol>
-<p><strong> Be aware that you might still need some necessary files on your boot and
+<p><strong>Be aware that you might still need some necessary files on your boot and
    root partition to boot your system successfully. See <a href="../misc/index.html">misc</a> for the
    necessary steps.</strong></p>
 <p>If you have a <a href="../linux/index.html">linux</a>, a <a href="../rootfs/index.html">rootfs</a> and the

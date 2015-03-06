@@ -212,6 +212,10 @@
                     <ul class="dropdown-menu">
                     
                         <li >
+                            <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -248,11 +252,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#name-scheme">Name scheme</a></li>
+            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
         
-            <li><a href="#add-new-upstream-kernel">Add new upstream kernel</a></li>
-        
-            <li><a href="#add-new-platform-for-a-linux-kernel">Add new platform for a Linux kernel</a></li>
+            <li><a href="#step-by-step-example">Step-by-Step Example</a></li>
         
     
     </ul>
@@ -274,43 +276,120 @@ Documentation</a>.</p>
 <li>
 <p>Git Repository <em>linux</em></p>
 </li>
-<li><strong>Buildserver</strong> setup for desired platform architecture</li>
+<li><strong>buildserver</strong> setup for desired platform architecture</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
 <li>
 <p>Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.</p>
+  configuration locally before you push it upstream.</p>
 </li>
 <li>
-<p>Have a look at the default build scripts. As the <strong>Buildserver</strong> just executes
-  these scripts, you have no limits on what you want to do before, during and
-  after the build process.</p>
+<p>Have a look at the default build scripts
+  (<a href="../../usage/linux/default/generic_build">generic</a>,
+  <a href="../../usage/linux/default/platform_build">platform</a>). As the <strong>buildserver</strong>
+  just executes these scripts, you have no limits on what you want to do before,
+  during and after the build process.</p>
 </li>
 </ul>
-<h2 id="name-scheme">Name scheme</h2>
-<p>The <strong>Builserver</strong> can only build your images, if you follow this name scheme
-for any of the branches:</p>
-<ul>
-<li>Kernel branch: &lt;Major>.&lt;Minor>.&lt;Subminor> (eg. 3.17.2)</li>
-<li>Platform branch: &lt;kernel-branch-name>_&lt;platform-string> (eg. 3.17.2_raspberry-pi)</li>
-</ul>
-<p>Please look up the Platform string in the <a href="../../setup/user-documentation/index.html">User
-Documentation</a> provided by your administrator. If
-your platform doesn't exist yet, please contact your administrator.</p>
-<h2 id="add-new-upstream-kernel">Add new upstream kernel</h2>
-<p>Before you can add <a href="#add-new-platform-for-a-linux-kernel">a new platfom</a>, for
-which you want to build a <strong>Linux</strong> kernel, you first need to add a <em>kernel</em>
-branch to the <em>linux</em> repository. </p>
-<p>In this case we will add a branch for 3.18.7 <strong>Linux</strong> kernel.</p>
+<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
+<p>The <strong>builserver</strong> can only build your images, if you follow the correct
+name-scheme for the branches.</p>
+<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
+<h3 id="variables">Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform-String</td>
+<td>Specified and mapped to the target architecture by the Administrator. Found in the <a href="../../setup/user-documentation/index.html">User Documentation</a></td>
+</tr>
+<tr>
+<td>Major</td>
+<td>Kernel major version number (<strong>X</strong>.2.3)</td>
+</tr>
+<tr>
+<td>Minor</td>
+<td>Kernel minor version number (1.<strong>X</strong>.3)</td>
+</tr>
+<tr>
+<td>Subminor</td>
+<td>Kernel subminor version number (1.2.<strong>X</strong>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="branches">Branches</h3>
+<p>To avoid unnecessary redundancy, which will naturally occur if you build
+multiple platforms for the same kernel version, following branch structure is
+necessary. The default build scripts
+(<a href="../../usage/linux/default/generic_build">generic</a>,
+<a href="../../usage/linux/default/platform_build">platform</a>) follow exactly this idea.</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Dependency</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version_generic</td>
+<td>platform independent</td>
+<td>Provide <strong>Linux</strong> sources with <strong>Gentoo</strong> patches</td>
+</tr>
+<tr>
+<td>version_platform</td>
+<td>platform dependent</td>
+<td>Store .config, user patches, call build script in version_generic branch</td>
+</tr>
+</tbody>
+</table>
+<p>For each kernel version, there will be exactly one <em>version_generic</em> branch,
+where for each platform there will be one <em>version_platform</em> branch. Following
+name-scheme has to be followed.</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Scheme</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version_generic</td>
+<td>&lt; major >.&lt; minor >.&lt; subminor ></td>
+<td>3.17.2</td>
+</tr>
+<tr>
+<td>version_platform</td>
+<td>&lt; major >.&lt; minor >.&lt; subminor >_&lt; platform-string ></td>
+<td>3.17.2_raspberry-pi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-by-step-example">Step-by-Step Example</h2>
+<p>The following example will give you a detailed overview of the necessary steps
+to build kernel 3.18.7 for the raspberry pi. We assume that at this point the
+<em>linux</em> repository is empty.</p>
+<h3 id="add-new-upstream-kernel">Add new upstream kernel</h3>
+<p>Before you can add <a href="#add-new-platform">a new platfom</a>, for which you want to
+build a <strong>Linux</strong> kernel, you first need to add a <em>version_generic</em> branch to
+the <em>linux</em> repository. </p>
 <ol>
 <li>
 <p>Clone the <em>linux</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>kernel</em> branch <em>&lt;Major>.&lt;Minor>.&lt;Subminor></em> to the <em>linux</em>
-   repository. </p>
+<p>Add a <em>version_generic</em> branch to the <em>linux</em> repository. </p>
 <p><code>$ git checkout master
 $ git branch 3.18.7
 $ git checkout 3.18.7
@@ -320,20 +399,22 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/kernel_build">default script</a> as <strong><em>build</em></strong> to the
-   repository and make it executable.</p>
+<p>Add the <a href="../../usage/linux/default/generic_build">default script</a> as <strong><em>build</em></strong> to the
+   branch and make it executable.</p>
 <p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Modify <em>KERNEL_URL</em>, <em>KERNEL_FILE</em> in the <strong><em>build</em></strong> script, to match the
-   desired kernel version. You also need to modify <em>PATCH_VERSION</em>, which is
-   the version of the <strong>Gentoo</strong> specific patches. Be careful with the version
-   number, as it doesn't necessarily fit to the resulting <strong>Linux</strong> kernel
-   version. In this case <strong>Gentoo</strong> patches 3.18-9 result in <strong>Linux</strong> kernel
-   3.18.7.</p>
+<p>Modify <em>&lt; kernel-url ></em>, <em>&lt; kernel-file ></em> in the <strong><em>build</em></strong> script, to
+   match the desired <a href="https://www.kernel.org/pub/linux/kernel/">kernel version</a>.
+   You also need to modify <em>&lt; patch-version ></em>, which is the version of the
+   <strong>Gentoo</strong> specific
+   <a href="http://dev.gentoo.org/~mpagano/genpatches/tarballs">patches</a>. Be careful as
+   the version number of the <strong>Gentoo</strong> patches doesn't follow the version
+   number of the <strong>Linux</strong> kernel. In this case <strong>Gentoo</strong> patches 3.18-9 result
+   in <strong>Linux</strong> kernel 3.18.7.</p>
 <p><code>...
 KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
 KERNEL_FILE="linux-3.18.tar.xz"
@@ -342,20 +423,20 @@ PATCH_VERSION="3.18-9"
 ...</code></p>
 </li>
 <li>
-<p>Add the files, commit and push them upstream. </p>
+<p>Add your changes, commit and push them upstream.</p>
 <p><code>$ git add build
 $ git commit -m "new kernel"
 $ git push</code></p>
 </li>
 <li>
-<p>Now that you have a <em>kernel</em> branch for your desired <strong>Linux</strong> kernel version
-   within your <em>linux</em> repository, the next step is to add <em>platform</em> branches
-   to the repository.</p>
+<p>Now that you have a <em>version_generic</em> branch for your desired <strong>Linux</strong> kernel
+   version within your <em>linux</em> repository, the next step is to add a <em>version_platform</em>
+   branch.</p>
 </li>
 </ol>
-<h2 id="add-new-platform-for-a-linux-kernel">Add new platform for a <strong>Linux</strong> kernel</h2>
-<p>This step requires an existing <a href="#add-new-upstream-kernel"><em>kernel</em> branch</a> for
-which you want to add a platform.</p>
+<h3 id="add-new-platform">Add new platform</h3>
+<p>This step requires an existing <a href="#add-new-upstream-kernel"><em>version_genereric</em></a>
+branch for the <strong>Linux</strong> kernel version you want to add a platform.</p>
 <ol>
 <li>
 <p>If not already done, clone the <em>linux</em> repository with the URL provided in
@@ -363,10 +444,9 @@ which you want to add a platform.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git</code></p>
 </li>
 <li>
-<p>Add a <em>platform</em> branch following the name schema
-   <em>&lt;kernel-branch>_&lt;platform-string></em> to the <em>linux</em> repository. It is
-   necessary that you push this initial branch upstream, so the <strong>Buildserver</strong>
-   can find the new <em>platform</em> branch.</p>
+<p>Add a <em>version_platform</em> branch to the <em>linux</em> repository. It is necessary that you
+   push the branch at this point upstream, so the <strong>buildserver</strong> can find the
+   new <em>version_platform</em> branch.</p>
 <p><code>$ git checkout master
 $ git branch 3.18.7_raspberry-pi
 $ git checkout 3.18.7_raspberry-pi
@@ -376,30 +456,29 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/linux/template/platform_build">default script</a> as <strong><em>build</em></strong>
-   to the repository and make it executable. </p>
+<p>Add the <a href="../../usage/linux/default/platform_build">default build script</a> as <strong><em>build</em></strong>
+   to the branch and make it executable. </p>
 <p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
 -rw-r--r-- 1 user user    0 Mar  1 21:19 README</code></p>
 </li>
 <li>
-<p>Modify <em>KERNEL_VERSION</em> in <strong><em>build</em></strong> to the desired <em>kernel</em> branch. Then
-   modify <em>KERNEL_DTB</em> to the desired device tree blob. If your platforms
-   device tree sources aren't in the <strong>Linux</strong> kernel sources yet, you have to
-   add them with a patch, as described in a later step.</p>
+<p>Modify <em>&lt; kernel-version ></em> in <strong><em>build</em></strong> to the desired <em>version_generic</em>
+   branch. Then modify <em>&lt; kernel-dtb ></em> to the desired device tree blob. If
+   your platforms device tree sources aren't in the <strong>Linux</strong> kernel sources
+   yet, you have to add them with a patch, as described in a later step.</p>
 <p><code>...
 KERNEL_VERSION="3.18.7"
 ...
 KERNEL_DTB="bcm2835-rpi-b.dtb"
 KERNEL_CONFIG=".config"
-KERNEL_IMG="zImage"
 ...</code></p>
 </li>
 <li>
-<p>Add a working kernel configuration <strong><em>.config</em></strong> to the repository. If you
-   aren't sure if your kernel configuration is working, you can test it locally
-   by executing <strong><em>build</em></strong> with the fitting <a href="../toolchains/index.html#Usage">toolchain</a>.</p>
+<p>Add a working kernel configuration <strong><em>.config</em></strong> to the branch. If you aren't
+   sure weather your kernel configuration is working or not, you can run the build
+   script locally with a proper <a href="../toolchains/index.html#Usage">toolchain</a>.</p>
 <p><code>$ ls -hla
 total 76K
 drwxr-xr-x 1 user user  44 Mar  1 21:29 .
@@ -410,8 +489,8 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Optional: Add needed patches to the root of your <em>platform</em> branch. The patch
-   needs to be in the standard patch format, as created wit <code>diff -Naur</code>.</p>
+<p>Optional: Add needed patches to the root directory of your branch. The patch
+   needs to be in the standard patch format, eg. created with <code>diff -Naur</code>.</p>
 <p><code>$ diff -Naur linux/.../smsc95xx.c.old linux/.../smsc95xxx.c &gt; 9000-Smsc95xx_allow_mac_to_be_set.patch
 $ ls -hl
 total 8.0K
@@ -420,7 +499,7 @@ total 8.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README</code></p>
 </li>
 <li>
-<p>Add all files, commit and push the  branch upstream.</p>
+<p>Add all changes, commit and push them upstream.</p>
 <p><code>$ git add build
 $ git add .config
 $ git add *.patch
@@ -428,7 +507,7 @@ $ git commit -m "added raspberry-pi 3.18.7 kernel build"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>Buildserver</strong> should start building your kernel image now. For further
+<p>The <strong>buildserver</strong> should start building your kernel image now. For further
    informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
    guide</a>.</p>
 </li>

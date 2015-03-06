@@ -212,6 +212,10 @@
                     <ul class="dropdown-menu">
                     
                         <li >
+                            <a href="../../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -244,12 +248,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#repositories">Repositories</a></li>
+        <li class="main active"><a href="#user-documentation-htwg">User Documentation HTWG</a></li>
         
-            <li><a href="#permissions">Permissions</a></li>
-        
-    
-        <li class="main "><a href="#buildmaster">Buildmaster</a></li>
+            <li><a href="#repositories">Repositories</a></li>
         
             <li><a href="#web-interfaces">Web-Interfaces</a></li>
         
@@ -257,13 +258,20 @@
         
             <li><a href="#platform-strings">Platform Strings</a></li>
         
-            <li><a href="#build-commands">Build commands</a></li>
+            <li><a href="#build-commands">Build Commands</a></li>
+        
+            <li><a href="#output-directories">Output Directories</a></li>
+        
+            <li><a href="#output-file-scheme">Output File-Scheme</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="user-documentation-htwg">User Documentation HTWG</h1>
+<p>This is the User Documentation for the HTWG. Others may use it as an orientation
+and overview of the contents they have to put in their User Documentation.</p>
 <h2 id="repositories">Repositories</h2>
 <table>
 <thead>
@@ -291,11 +299,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="permissions">Permissions</h3>
+<h4 id="permissions">Permissions</h4>
 <p>If you need permissions to these repositories, please contact your
 Administrator.</p>
-<h2 id="buildmaster">Buildmaster</h2>
-<h3 id="web-interfaces">Web-Interfaces</h3>
+<h2 id="web-interfaces">Web-Interfaces</h2>
 <table>
 <thead>
 <tr>
@@ -310,7 +317,7 @@ Administrator.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="component-download-urls">Component Download URLs</h3>
+<h2 id="component-download-urls">Component Download URLs</h2>
 <table>
 <thead>
 <tr>
@@ -337,14 +344,14 @@ Administrator.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="platform-strings">Platform Strings</h3>
+<h2 id="platform-strings">Platform Strings</h2>
 <table>
 <thead>
 <tr>
 <th>Platform</th>
 <th>Platform-String</th>
 <th>RootFS-String</th>
-<th>Toolchain-Strings (target_arch)</th>
+<th>Toolchain-String (target_arch)</th>
 </tr>
 </thead>
 <tbody>
@@ -380,11 +387,11 @@ Administrator.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="build-commands">Build commands</h3>
+<h2 id="build-commands">Build Commands</h2>
 <table>
 <thead>
 <tr>
-<th>Builders</th>
+<th>Component</th>
 <th>Buildcommands</th>
 </tr>
 </thead>
@@ -408,6 +415,127 @@ Administrator.</p>
 <tr>
 <td>RootFS</td>
 <td><em>special ansible buildroutine: TODO LINK</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-directories">Output Directories</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Buildcommands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>output</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>special ansible buildroutine: TODO LINK</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-file-scheme">Output File-Scheme</h2>
+<table>
+<thead>
+<tr>
+<th>Component / Description</th>
+<th>Nr of Files / File-Scheme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>Linux Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Modules+Sources</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td>Linux config</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_config.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Uboot</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Uboot Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_uboot.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Misc</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Additional Boot Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Additonal Root Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Toolchain</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_toolchain.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>RootFS</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Rootfs Archive</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_rootfs.tar.bz2</td>
+</tr>
+<tr>
+<td>Portage Snapshot</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_portage.tar.bz2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="variable-descriptions">Variable Descriptions</h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>branch-name</td>
+<td>The branch that triggered the build</td>
+</tr>
+<tr>
+<td>date&amp;time</td>
+<td>YYYYMMDDhhmmss</td>
+</tr>
+<tr>
+<td>commit-hash</td>
+<td>Short version of the hash for the commit which triggered the build</td>
 </tr>
 </tbody>
 </table>
