@@ -1,3 +1,2 @@
-# U-Boot - Background Informatoin
-
-This page will soon contain an introduction and usage of the U-Boot bootloader.
+# Specification for building U-Boot
+**(work in progress)**

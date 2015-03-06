@@ -5,19 +5,24 @@ from the *buildserver* to hardware.
 
 ## Prerequisites
 
-The **flashtool** must be installed on your system. Please read the [setup
-chapter](../setup/flashtool.md) of the **flashtool**.
+The flashtool must be installed on your system. Please read the [setup
+chapter](../setup/workstation/flashtool.md) of the **flashtool**.
 
 Also a successful [setup of the buildserver](../setup/setup.md) is required to
 use the **flashtool**.
 
 ### Requirements
 
+* User Documentation
+
+    At the end of the setup, the Administrator is instructed to create the [User
+    Documentation](../setup/user-documentation.md).
+
 * Git Repository with valid **recipe files**
 
 ## Getting started
 
-After [installing](../setup/flashtool.md) the **flashtool** on a linux system it
+After [installing](../setup/workstation/flashtool.md) the **flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
 `$ flashtool init`
@@ -106,7 +111,7 @@ The **Buildbot** server provides all needed products for an **embEDUx** system.
 All products for every configured platform can be listet by the **flashtool** with
 the following command:
 
-> `flashtool list_builds`
+`$ flashtool list_builds`
 
 There are several options available for this command:
 

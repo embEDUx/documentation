@@ -1,5 +1,7 @@
 # Specification - Repositories and Branches
 
+**(work in progress)**
+
 This is the specification that has been worked out according to the [design on
 repositories and branches](../design/repositories-and-branches.md).
 

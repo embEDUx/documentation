@@ -1,3 +1,6 @@
+# Projectd Requirements 
+**(work in progress)**
+
 The generic and automated approach that needs to be found
 by this project must meet the sum of the requirements for
 every single lab-course. The determination for this set of
@@ -14,7 +17,6 @@ respecting changes that will happen in the near future.
 
 
 ## Criteria
-
 Before any requirements can be acquired it is necessary to
 determine which criteria matter. This section eventually
 be updated during the process of requirements gathering.
@@ -33,7 +35,6 @@ Other | Uncategorized requirements
 
 ## Platforms
 ### Hardware overview
-
 Platform | CPU | STAGE3 ARCH | CHOST | CFLAGS | qemu-arm cpu model
 --- | --- | --- | --- | --- | ---
 Raspberry Pi |  700 MHz ARM11 ARM1176JZF-S core [[S]](http://elinux.org/RPi_Hardware)  | armv6j_hardfp |  armv6j-hardfloat-linux-gnueabi **TODO CHECK** | -O2 -march=armv6j -mfpu=vfp -mfloat-abi=hard [[S]](http://wiki.gentoo.org /wiki/Raspberry_Pi) | arm1176

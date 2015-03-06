@@ -1,14 +1,16 @@
-# Buildmaster Setup
+# Adding new platforms to the buildserver
+
+**(work in progress)**
 
 ## Configuation File - **master.cfg** 
 TODO: where is the ***master.cfg***?
-
 
 The following is directly taken from the ***HTWG buildmaster master.cfg***. 
 
 ## ARCH <\> Platform-Mapping
 The algorithm for choosing the correct buildslave for the specific platforms
 uses this dictionary as the information source.
+
 ```
 arch_branch_res_map = {
   "amd64": [".*-ctng-.*", ".*qemu-virt-amd64.*"],
@@ -20,12 +22,3 @@ arch_branch_res_map = {
 ### Adding a new platform to the HTWG configuration
 If you add a new platform by modifying the dictionary, it is *important* that it
 must not contain any underscores, use dashes instead!
-
-## Scheduler
-TODO
-
-## Buildjobs
-TODO
-
-## Webinterface
-TODO

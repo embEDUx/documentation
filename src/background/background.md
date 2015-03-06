@@ -1,3 +1,5 @@
+# Background
+**(work in progress)**
 
 ## The Beginning
 The name **embEDUx** includes hints for the words *embedded linux* and
