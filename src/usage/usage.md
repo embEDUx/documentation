@@ -28,7 +28,6 @@ correspdonding Git-repository. The URLs are available in the aforementioned User
 Documentation. The detailed product build instructions will guide you in finding
 the needed repository.
 
-
 ## Suggestions
 * Git practice! You will deal with and handful of repositories and their
   branches on the way of managing builds for your systems.
@@ -72,9 +71,10 @@ the needed repository.
        difference in workflow occurs when building a RootFS. You will not be
        able to test the build locally before submitting your specification to
        the buildserver. The reason is the complex system that is needed to
-       assemble a RootFS. More information will follow in the detailed section
-       for building the RootFS.  For every other product, toolchains and
-       instructions are provided to quickly setup and test the builds locally.
+       assemble a RootFS. More information will follow in the [detailed section
+       for building the RootFS](../usage/rootfs.md).  For every other product,
+       toolchains and instructions are provided to quickly setup and test the
+       builds locally.
 
 
 1. Run `git add` and `git commit` according to your changes. Please use **sane
@@ -97,14 +97,15 @@ you need support,
 
 
 ## Hardware Deployment
-### Flashtool
-If your build succeeded you can continue to 
-[deploy your builds to hardware using the flashtool](../usage/flashtool.md)
+After the required build have successfully completed you can finally deploy the
+products to your hardware.
 
-Please note that to deploy a complete system, successful builds of all
-products need to be available.  This means, single products can be built and
-deployed if there are previous successful builds for the target platform.
-After the required build have successfully completed you can finally 
+### Flashtool 
+You can [deploy your builds to hardware in a semi-automated manner using the
+flashtool](../usage/flashtool.md). Please note that to deploy a complete system,
+successful builds of all products need to be available.  This means, single
+products can be built and deployed if there are previous successful builds for
+the target platform.
 
 ### Manually
 If for some reason the flashtool is not working for you, there is always the
