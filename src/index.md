@@ -1,6 +1,5 @@
-
 # The **embEDUx** Project
-The *embEDUx* project aims to deliver an **solution for building and deploying customimized
+The *embEDUx* project aims to deliver a **solution for building and deploying customimized
 linux distrubitions for educational purposes**.
 
 The origin lays at a university of applied sciences called
@@ -19,15 +18,18 @@ up a pull-request.
 
 ## The Core
 embEDUx is completely based on Open Source software. The biggest projects that
-have been integrated into the core of the solution are
+were chosen for the core of the solution are
 
-* The GNU Toolchain
+* GNU Toolchain
 * Gentoo Linux
 * Buildbot
 * Ansible
 * Qemu
 * Das U-Boot Bootloader
 * Git.
+
+If you are interested in why these choice were made, please head over to the
+[background section](background/background.md)
 
 ## Delivered Components
 The embEDUx build system has been designed to build the following components
@@ -38,7 +40,7 @@ according to user-provided specifications.
 * [Linux](background/linux.md)-Kernel images and modules
 * [RootFS](background/rootfs.md)-archives based on Gentoo
 
-In addition there is a [Flashtool](background/flashtool.md) for easy deployment!
+In addition there is a [Flashtool](background/flashtool.md) for easy hardware deployment!
 
 *(links goto background information pages)*
 
