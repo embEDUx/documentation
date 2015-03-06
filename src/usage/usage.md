@@ -40,16 +40,23 @@ repository.
 ## Build Instructions
 1. Open **your** User Documentation
 
-1. Acquire the repository URL for the component you want to build. Therefore,
-   see **your** user documentation.
+1. Acquire the repository URL for the component you want to build.
 
-1. Retrieve the latest repository content. Run `git clone` for a fresh start or
-   `git pull` for an existing repository
+1. Make sure you have the latest repository content. Run `git clone` for a fresh
+   start or `git pull` for an existing repository
 
 1. At this point you may re-use an existing branch, work on an existing branch,
-   or create a new branch. Further instructions are included on the detailed
-   component sections.  Run `git checkout ` for the the branch of interest. This
-   depends on the *component* and the *platform* you want to build for.  
+   or create a new branch. Now, there are at least these two cases:
+    * Creating a new **new branch**: Run `git checkout < template_branch >`,
+      where < template_branch \>* is the branch you want yours to base on. Right
+      away run `git checkout -b < new_branch >` and `git push --set-upstream
+      origin < new_branch \>`. Afterwards, the buildserver will watch for
+      changes on the new branch.
+    * Modifying an **existing branch**:
+        simply `git checkout < existing_branch >`
+      
+      When needed, you can find more detailed instructions in the component
+      sections.
 
 1. **Specify your build.** Since the build specifications are very different for
    each component, it's necessary to separate the instructions into distinct
@@ -73,9 +80,12 @@ repository.
    commit messages** to improve collaboration. The buildserver will pick up your
    changes, schedule a build and execute it as soon as it can.
 
+1. Finally, run `git push` to upload your specification to the buildserver!
+
 ## Monitor your builds
-In the meantime of your build, and also to check if it has been scheduled
-correctly, you can [monitor the builds](../usage/common/build-monitoring.md).
+In order to see the state of your running build, and also to check if it has
+been scheduled correctly, you can [monitor the builds using the
+web-interface](../usage/common/build-monitoring.md).
 
 In case of a build failure please either
 
@@ -92,7 +102,7 @@ If your build succeeded you can continue to
 
 Please note that to deploy a complete system, successful builds of all
 components need to be available.  This means, single components can be built and
-deployed if there exists previous successful builds for the target platform.
+deployed if there are previous successful builds for the target platform.
 After the required build have successfully completed you can finally 
 
 ### Manually
