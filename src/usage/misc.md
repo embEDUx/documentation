@@ -2,21 +2,8 @@
 This guide will help you through the steps to build archives, containing the
 files for your boot and root partition of your desired platform.
 
-The misc repository is necessary because in platforms require some files that
-need to be present in the root or boot partition. However these file cant be
-strictly assigned logically  to the *rootfs*,*linux* or *uboot* repository.
-
-Two mandatory files are, which are always needed are:
-
-* boot.scr: This boot script is required for **U-Boot** and needs to go on the
-  boot partition.
-* inittab: This file is required by the operating system and needs to go on the
-  root partition.
-
-The files have to be stored within the folder ***src_boot*** and ***src_root***
-and **within their folder structure**, so that the [default build
-script](usage/misc/files/build) can pack them in the required structure within
-an archive.
+If you wonder why you would even need this repository, please consider having a
+look at [background/misc](../background/misc.md).
 
 ## Prerequisites
 All of [the common prerequisites apply](usage.md#Prerequisites).
@@ -28,39 +15,62 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     Documentation](../setup/user-documentation.md).
 
 * Git Repository *misc*
-* **Buildserver** setup for desired platform architecture
+* **buildserver** setup for desired platform architecture
 
 ### Suggestions
-* Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.
+* Have a look at the default [build script](usage/misc/default/platform_build). As the
+  **buildserver** just executes this script, you have no limits on what you want
+  to do before, during and after the build process.
 
-* Have a look at the default build scripts. As the **Buildserver** just executes
-  these scripts, you have no limits on what you want to do before, during and
-  after the build process.
+## Branch Name-Scheme
+The **builserver** can only build your images, if you follow the correct
+name-scheme for the branches.
 
-## Name scheme
-The **Builserver** can only build your images, if you follow this name scheme
-for any of the branches:
+The variables that are needed for your platform can be found in the [User
+Documentation](../setup/user-documentation.md).
 
-* <platform-string\>
+### Variables
 
-Please look up the platform string in the [User
-Documentation](../setup/user-documentation.md) provided by your administrator. If
-your platform doesn't exist yet, please contact your administrator.
+Variable | Notes
+--- | ---
+Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+
+### Branches
+
+Branch | Scheme | Example
+--- | --- | ---
+platform | < platform-string \> |  raspberry-pi
+
+### Side note
+Two mandatory files, which are always needed are:
+
+File | Folder | Notes
+--- | --- | ---
+boot.scr.txt | src\_boot | Script for **U-Boot** boot sequence ([source](http://www.denx.de/wiki/view/DULG/UBootScripts))
+inittab | src\_root/etc | Describes which processes are started at boot ([source](http://unixhelp.ed.ac.uk/CGI/man-cgi?inittab+5))
+
+**Store the files within their desired folder structure. Eg. *inittab* has to be
+in */etc* at the root partition**
+
+For deeper insight have a look at the [default build
+script](usage/misc/default/platform_build).
+
+### Step-by-Step Example
+The following example will give you a detailed overview of the necessary steps
+to build the misc files for the raspberry pi. We assume that at this point the
+*misc* repository is empty.
 
 ## Add new platform
-To add a new platform following steps are required. As an example we will add
-the raspberry pi platform to the *misc* repository.
 
-1. Clone the *linux* repository with the URL provided in the user documentation.
+1. Clone the *misc* repository with the URL provided in the user documentation.
 
     ```
 $ git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
     ```
 
-1. Add a new *platform* branch to the *misc* repository and push it upstream.
-   This last step is required, so the **Buildbot** can start the build process
-   at the end of this example.
+1. Add a *platform* branch to the *misc* repository. It is necessary that you
+   push the branch at this point upstream, so the **buildserver** can find the
+   new *platform* branch.
    
     ```
 $ git checkout master
@@ -72,8 +82,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin raspberry-pi 
     ```
 
-1. Add the [default build script](usage/misc/files/build) to your *platform* branch and
-   make it executable.
+1. Add the [default build script](usage/misc/default/platform_build) as
+   ***build*** to the branch and make it executable.
    
     ```
 $ ls -hl
@@ -82,20 +92,25 @@ total 8.0K
 -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md
     ```
 
-1. Add at least these two files and modify them to fit to to your platform.
+1. As described in [background/misc](../background/misc.md) we need at least
+   *boot.scr.txt* and *inittab* in this repository. So we prepare these files
+   for the raspberry pi (example:
+     [boot.scr.txt](usage/misc/default/boot.scr.txt),
+     [inittab](usage/misc/default/inittab) and add them to the branch. 
    
     ```
 $ mkdir src_boot
 $ touch src_boot/boot.scr.txt
+$ vim src_boot/boot.scr.txt
 $ mkdir src_root
 $ mkdir src_root/etc/
 $ touch src_root/etc/inittab
+$ vim src_root/inittab
     ```
 
 1. The raspberry pi also needs some
-   [firmware](https://github.com/raspberrypi/firmware) blobs, present at boot,
-   so we simply add these files to the *platform* branch in the *misc*
-   repository.
+   [firmware](https://github.com/raspberrypi/firmware/tree/master/boot) files present at boot,
+   so we simply add these files to the *src_boot* folder.
     
     ```
 $ ls -hl src_boot/
@@ -113,7 +128,7 @@ total 6.6M
 -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf
     ```
 
-1. Add all files to the repository, commit and push upstream.
+1. Add the changes, commit and push them upstream. 
    
     ```
 $ git add build
@@ -123,12 +138,13 @@ $ git commit -m "new platform"
 $ git push
     ```
 
-1. The **Buildserver** should start building your misc image now. For further
+1. The **buildserver** should start building your misc files now. For further
    informations on how to monitor the build check [monitoring
    guide](common/build-monitoring.md).
 
-1. Congratulations, you just built your first kernel for your first platform. If
-   you have a [linux](linux.md), a [uboot](uboot.md) and a [rootfs](rootfs.md)
-   you can flash everything with the **Flashtool** or deploy your files manually
-   (see [Hardware Deployment](usage.md#hardware-deployment)).
+1. Congratulations, you just built your first misc files for your first
+   platform. If you have a [linux](linux.md), a [uboot](uboot.md) and a
+   [rootfs](rootfs.md), you can flash everything with the **Flashtool** or
+   deploy your files manually (see [Hardware
+   Deployment](usage.md#hardware-deployment)).
 

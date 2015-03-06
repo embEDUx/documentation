@@ -1,3 +1,5 @@
+# Setup of the Flashtool
+
 ## Requirements
 
 __System:__
@@ -25,54 +27,61 @@ __Python packages:__
 
 ### Required Packages
 
-__Installation Ubuntu/Debian:__
+#### Installation Ubuntu/Debian:
 
-  ```sh
+```sh
 $ apt-get install gcc python3 python3-dev python-virtualenvironment libudev-dev libparted git
-  ```
+```
 
-__Installation Arch Linux:__
+#### Installation Arch Linux:
 
-  ```sh
+```sh
 $ pacman -S gcc python3 python-virtualenv libsystemd parted git
-  ```
+```
 
-__Installation Fedora Linux:__
+#### Installation Fedora Linux:
 
-  ```sh
+```sh
 $ yum install gcc python3 python3-devel python-virtualenv udev parted git
-  ```
+```
 
-__Installation Python:__
+#### Installation Python:
 
 
-* Virtualenv:
+**Virtualenv:**
 
-  ```sh
-# Creating an virtual environment for python (python version must be >=3)
+Creating an virtual environment for python (python version must be >=3)
+
+```sh
 $ virtualenv -p python3  {path/for/virtualenv}  # python3 can also be python3.x
+```
 
-# "go" into the virtual environment. All packages installed via pipwill only
-# be installed at the location of the virtual environment ({path/for/virtual-env})
+Go into the virtual environment. All packages installed via pip will only be
+installed at the location of the virtual environment ({path/for/virtual-env})
 
+```sh
 $ source {path/for/virtualenv}/bin/activate
+```
 
-# All python related packages will now be executed from virtual environement path
-# The python installation of the system will be untouched.
+All python related packages will now be executed from virtual environment path 
+The python installation of the system will be untouched.
 
+After working with the virtual environment you can leave the virtual 
+environment with the following command.
 
-# working in virtual environment ...
-
-
-# leave virtual environement
+```sh
 $ deactivate
+```
 
-  ```
 
-* Installation of python packages via pip
+**Installation of python packages via pip:**
 
-  ```sh
+```sh
 $ source {path/to/virtualenv}/bin/activate  # go into virtualenv
-# Required python packages which can be installed via PyPI
+```
+
+Required python packages which can be installed via PyPI:
+
+```sh
 $ pip install -r https://apu.in.htwg-konstanz.de/labworks-embEDUx/flashtool/raw/master/requirements.txt
-  ```
+```
