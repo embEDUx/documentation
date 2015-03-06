@@ -6,8 +6,8 @@ build RootFS for the armv7a\_hardfp Architecture. In this example, the host *bui
 running the container that runs the respective buildslave.
 
 ## Requirements
-* SSH-Access to the host the buildslave containers are running on
-* Permissions for to run `docker` on the buildslave container host
+* SSH-Access to the host on which the buildslave containers are running
+* Permissions to run `docker` on the buildslave container host
 
 ## Step-By-Step Example
 This example demonstrates how to enter a running instance of a build
