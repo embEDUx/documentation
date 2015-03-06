@@ -246,7 +246,7 @@ The next section will describe the existing recipe types.
 This recipe type is used to configure platforms which use a mmc device as
 storage media. The template below shows, how to state this recipe in a recipe file.
 
-   ```
+```
 type: mmc
 
 recipe:
@@ -274,7 +274,7 @@ recipe:
             # device: or command:
         Misc_Root:
             # device: or command:
-   ```
+```
 
 * ***partition\_table***:
   This section defines the partition table of the mmc device. The most embedded
@@ -335,7 +335,8 @@ recipe:
 
 **Example for a mmc recipe (utilite-pro.yml):**
 
-    ```
+```
+
 ---
 type: mmc
 
@@ -365,6 +366,6 @@ recipe:
             device: 1
         Rootfs:
             device: 1
-    ```
+```
 
 
