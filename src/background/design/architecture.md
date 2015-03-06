@@ -2,6 +2,6 @@
 ***(work in progress)***
 
 ## Big Picture
-[![](img/design.png)](img/design.png)
+[![](background/design/img/design.png)](background/design/img/design.png)
 
 ## Components
