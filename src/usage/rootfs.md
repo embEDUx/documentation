@@ -90,8 +90,8 @@ Please read through the [explained systemd configuration.yml
 example](rootfs/configuration.yml.md)
 
 ## Pre/Post-Install File-Overlays
-As seen in the [repository layout](#Repository File-Structure) and described
-outlined in [Quick Introduction](#Quick Introduction), it is possible to provide
+As seen in the [repository layout](#Repository-File-Structure) and described
+outlined in [Quick Introduction](#Quick-Introduction), it is possible to provide
 filesystem overlays that will be copied over the target RootFS at specified
 times. 
 
