@@ -12,33 +12,64 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     Documentation](../setup/user-documentation.md).
 
 * Git Repository *linux*
-* **Buildserver** setup for desired platform architecture
+* **buildserver** setup for desired platform architecture
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.
+  configuration locally before you push it upstream.
 
-* Have a look at the default build scripts. As the **Buildserver** just executes
-  these scripts, you have no limits on what you want to do before, during and
-  after the build process.
+* Have a look at the default build scripts
+  ([generic](usage/linux/default/generic_build),
+  [platform](usage/linux/default/platform_build)). As the **buildserver**
+  just executes these scripts, you have no limits on what you want to do before,
+  during and after the build process.
 
-## Name scheme
-The **Builserver** can only build your images, if you follow this name scheme
-for any of the branches:
+## Branch Name-Scheme
+The **builserver** can only build your images, if you follow the correct
+name-scheme for the branches.
 
-* Kernel branch: <Major\>.<Minor\>.<Subminor\> (eg. 3.17.2)
-* Platform branch: <kernel-branch-name\>\_<platform-string\> (eg. 3.17.2_raspberry-pi)
+The variables that are needed for your platform can be found in the [User
+Documentation](../setup/user-documentation.md).
 
-Please look up the Platform string in the [User
-Documentation](../setup/user-documentation.md) provided by your administrator. If
-your platform doesn't exist yet, please contact your administrator.
+### Variables
 
-## Add new upstream kernel
-Before you can add [a new platfom](#add-new-platform-for-a-linux-kernel), for
-which you want to build a **Linux** kernel, you first need to add a *kernel*
-branch to the *linux* repository. 
+Variable | Notes
+--- | ---
+Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+Major | Kernel major version number (**X**.2.3)
+Minor | Kernel minor version number (1.**X**.3)
+Subminor | Kernel subminor version number (1.2.**X**)
 
-In this case we will add a branch for 3.18.7 **Linux** kernel.
+### Branches
+To avoid unnecessary redundancy, which will naturally occur if you build
+multiple platforms for the same kernel version, following branch structure is
+necessary. The default build scripts
+([generic](usage/linux/default/generic_build),
+[platform](usage/linux/default/platform_build)) follow exactly this idea.
+
+Branch | Dependency | Task
+--- | --- | ---
+version\_generic | platform independent | Provide **Linux** sources with **Gentoo** patches
+version\_platform | platform dependent | Store .config, user patches, call build script in version\_generic branch
+
+For each kernel version, there will be exactly one *version\_generic* branch,
+where for each platform there will be one *version\_platform* branch. Following
+name-scheme has to be followed.
+
+Branch | Scheme | Example
+--- | --- | ---
+version\_generic | < major \>.< minor \>.< subminor \> | 3.17.2
+version\_platform | < major \>.< minor \>.< subminor \>\_< platform-string \> |  3.17.2\_raspberry-pi
+
+## Step-by-Step Example
+The following example will give you a detailed overview of the necessary steps
+to build kernel 3.18.7 for the raspberry pi. We assume that at this point the
+*linux* repository is empty.
+
+### Add new upstream kernel
+Before you can add [a new platfom](#add-new-platform), for which you want to
+build a **Linux** kernel, you first need to add a *version\_generic* branch to
+the *linux* repository. 
 
 1. Clone the *linux* repository with the URL provided in the user documentation.
 
@@ -46,8 +77,7 @@ In this case we will add a branch for 3.18.7 **Linux** kernel.
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git 
     ```
 
-1. Add a *kernel* branch *<Major\>.<Minor\>.<Subminor\>* to the *linux*
-   repository. 
+1. Add a *version\_generic* branch to the *linux* repository. 
 
     ```
 $ git checkout master
@@ -59,8 +89,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7
     ```
 
-1. Add the [default script](usage/linux/template/kernel_build) as ***build*** to the
-   repository and make it executable.
+1. Add the [default script](usage/linux/default/generic_build) as ***build*** to the
+   branch and make it executable.
 
     ```
 $ ls -hl
@@ -69,12 +99,14 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
 
-1. Modify *KERNEL\_URL*, *KERNEL\_FILE* in the ***build*** script, to match the
-   desired kernel version. You also need to modify *PATCH\_VERSION*, which is
-   the version of the **Gentoo** specific patches. Be careful with the version
-   number, as it doesn't necessarily fit to the resulting **Linux** kernel
-   version. In this case **Gentoo** patches 3.18-9 result in **Linux** kernel
-   3.18.7.
+1. Modify *< kernel-url \>*, *< kernel-file \>* in the ***build*** script, to
+   match the desired [kernel version](https://www.kernel.org/pub/linux/kernel/).
+   You also need to modify *< patch-version \>*, which is the version of the
+   **Gentoo** specific
+   [patches](http://dev.gentoo.org/~mpagano/genpatches/tarballs). Be careful as
+   the version number of the **Gentoo** patches doesn't follow the version
+   number of the **Linux** kernel. In this case **Gentoo** patches 3.18-9 result
+   in **Linux** kernel 3.18.7.
    
     ```
 ...
@@ -85,7 +117,7 @@ PATCH_VERSION="3.18-9"
 ...
     ```
 
-1. Add the files, commit and push them upstream. 
+1. Add your changes, commit and push them upstream.
    
     ```
 $ git add build
@@ -93,13 +125,13 @@ $ git commit -m "new kernel"
 $ git push 
     ```
 
-1. Now that you have a *kernel* branch for your desired **Linux** kernel version
-   within your *linux* repository, the next step is to add *platform* branches
-   to the repository.
+1. Now that you have a *version\_generic* branch for your desired **Linux** kernel
+   version within your *linux* repository, the next step is to add a *version\_platform*
+   branch.
 
-## Add new platform for a **Linux** kernel
-This step requires an existing [*kernel* branch](#add-new-upstream-kernel) for
-which you want to add a platform.
+### Add new platform
+This step requires an existing [*version\_genereric*](#add-new-upstream-kernel)
+branch for the **Linux** kernel version you want to add a platform.
 
 1. If not already done, clone the *linux* repository with the URL provided in
    the user documentation.
@@ -108,10 +140,9 @@ which you want to add a platform.
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git
     ```
 
-1. Add a *platform* branch following the name schema
-   *<kernel-branch\>\_<platform-string\>* to the *linux* repository. It is
-   necessary that you push this initial branch upstream, so the **Buildserver**
-   can find the new *platform* branch.
+1. Add a *version\_platform* branch to the *linux* repository. It is necessary that you
+   push the branch at this point upstream, so the **buildserver** can find the
+   new *version\_platform* branch.
 
     ```
 $ git checkout master
@@ -123,8 +154,8 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin 3.18.7_raspberry-pi
     ```
 
-1. Add the [default script](usage/linux/template/platform_build) as ***build***
-   to the repository and make it executable. 
+1. Add the [default build script](usage/linux/default/platform_build) as ***build***
+   to the branch and make it executable. 
    
     ```
 $ ls -hl
@@ -133,10 +164,10 @@ total 4.0K
 -rw-r--r-- 1 user user    0 Mar  1 21:19 README
     ```
 
-1. Modify *KERNEL\_VERSION* in ***build*** to the desired *kernel* branch. Then
-   modify *KERNEL\_DTB* to the desired device tree blob. If your platforms
-   device tree sources aren't in the **Linux** kernel sources yet, you have to
-   add them with a patch, as described in a later step.
+1. Modify *< kernel-version \>* in ***build*** to the desired *version\_generic*
+   branch. Then modify *< kernel-dtb \>* to the desired device tree blob. If
+   your platforms device tree sources aren't in the **Linux** kernel sources
+   yet, you have to add them with a patch, as described in a later step.
    
     ```
 ...
@@ -144,13 +175,12 @@ KERNEL_VERSION="3.18.7"
 ...
 KERNEL_DTB="bcm2835-rpi-b.dtb"
 KERNEL_CONFIG=".config"
-KERNEL_IMG="zImage"
 ...
     ```
 
-1. Add a working kernel configuration ***.config*** to the repository. If you
-   aren't sure if your kernel configuration is working, you can test it locally
-   by executing ***build*** with the fitting [toolchain](toolchains.md#Usage).
+1. Add a working kernel configuration ***.config*** to the branch. If you aren't
+   sure weather your kernel configuration is working or not, you can run the build
+   script locally with a proper [toolchain](toolchains.md#Usage).
    
     ```
 $ ls -hla
@@ -163,8 +193,8 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
 -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
     ```
 
-1. Optional: Add needed patches to the root of your *platform* branch. The patch
-   needs to be in the standard patch format, as created wit `diff -Naur`.
+1. Optional: Add needed patches to the root directory of your branch. The patch
+   needs to be in the standard patch format, eg. created with `diff -Naur`.
    
     ```
 $ diff -Naur linux/.../smsc95xx.c.old linux/.../smsc95xxx.c > 9000-Smsc95xx_allow_mac_to_be_set.patch
@@ -175,7 +205,7 @@ total 8.0K
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
 
-1. Add all files, commit and push the  branch upstream.
+1. Add all changes, commit and push them upstream.
    
     ```
 $ git add build
@@ -185,7 +215,7 @@ $ git commit -m "added raspberry-pi 3.18.7 kernel build"
 $ git push
     ```
 
-1. The **Buildserver** should start building your kernel image now. For further
+1. The **buildserver** should start building your kernel image now. For further
    informations on how to monitor the build check [monitoring
    guide](common/build-monitoring.md).
 
