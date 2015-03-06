@@ -3,7 +3,7 @@ This guide will help you through the steps to build archives, containing the
 files for your boot and root partition of your desired platform.
 
 If you wonder why you would even need this repository, please consider having a
-look at [background misc](../background/misc.md).
+look at [background/misc](../background/misc.md).
 
 ## Prerequisites
 All of [the common prerequisites apply](usage.md#Prerequisites).
@@ -44,22 +44,23 @@ platform | < platform-string \> |  raspberry-pi
 ### Side note
 Two mandatory files, which are always needed are:
 
-* boot.scr.txt: This boot script source is required for **U-Boot** and needs to go on the
-  boot partition.
-* inittab: This file is required by the operating system and needs to go on the
-  root partition.
+File | Folder | Notes
+--- | --- | ---
+boot.scr.txt | src\_boot | Script for **U-Boot** boot sequence ([source](http://www.denx.de/wiki/view/DULG/UBootScripts))
+inittab | src\_root/etc | Describes which processes are started at boot ([source](http://unixhelp.ed.ac.uk/CGI/man-cgi?inittab+5))
 
-The files have to be stored within the folder ***src_boot*** and ***src_root***
-and **within their folder structure**, so that the [default build
-script](usage/misc/default/platform_build) can pack them in the required structure within
-an archive.
+**Store the files within their desired folder structure. Eg. *inittab* has to be
+in */etc* at the root partition**
+
+For deeper insight have a look at the [default build
+script](usage/misc/default/platform_build).
 
 ### Step-by-Step Example
-
-## Add new platform
 The following example will give you a detailed overview of the necessary steps
 to build the misc files for the raspberry pi. We assume that at this point the
 *misc* repository is empty.
+
+## Add new platform
 
 1. Clone the *misc* repository with the URL provided in the user documentation.
 
@@ -91,7 +92,7 @@ total 8.0K
 -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md
     ```
 
-1. As described in [background/mis](../background/misc.md) we need at least
+1. As described in [background/misc](../background/misc.md) we need at least
    *boot.scr.txt* and *inittab* in this repository. So we prepare these files
    for the raspberry pi (example:
      [boot.scr.txt](usage/misc/default/boot.scr.txt),
@@ -108,7 +109,7 @@ $ vim src_root/inittab
     ```
 
 1. The raspberry pi also needs some
-   [firmware](https://github.com/raspberrypi/firmware) files present at boot,
+   [firmware](https://github.com/raspberrypi/firmware/tree/master/boot) files present at boot,
    so we simply add these files to the *src_boot* folder.
     
     ```
