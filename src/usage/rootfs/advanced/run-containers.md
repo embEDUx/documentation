@@ -75,8 +75,9 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 ### Allow login via machinectl
 `machinectl` is connecting via *pts/0*, which is excluded from
-***/etc/securetty*** on **Gentoo**. This prevents *root*-login via `machinectl
-login` and needs to be changed as follows.
+***/etc/securetty*** on **Gentoo**. This prevents *root*-login via `machinectl login`
+and needs to be changed as follows.
+
 ```
 echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
 ```
@@ -85,6 +86,7 @@ echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/e
 
 Starting the container happens with the `macinectl start` command. It should not
 take any longer than a couple of seconds.
+
 ```
 # machinectl start amd64_factory_systemd_20150228172018_faa83f5
 #
@@ -113,7 +115,7 @@ We're in!
 
 The default setup of a container is heavily based on the 
 ***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
-differ between Linux distributions. This has an influence on many apsects of the
+differ between Linux distributions. This has an influence on many aspects of the
 containers, including but not limited to it's network connection. As an
 example, on **Gentoo** the default setup does not automatically setup an internet
 connection for containers.
