@@ -28,23 +28,22 @@ different repositories and branches for the **embEDUx** project.
 
 
 ### Footnotes
-TODO LARS
 1. Source branch
 
-    Each version of the **Linux** kernel needs to have exactly one *kernel*
-    branch in the *linux* repository. Also for each version of **U-Boot**,
-    exactly one *uboot* branch is needed in the *uboot* repository.
+    Each version of the **Linux** kernel needs to have exactly one
+    *version\_generic* branch in the *linux* repository. Also for each version
+    of **U-Boot**, exactly one *version\_generic* branch is needed in the
+    *uboot* repository.
 
 1. Platform branch
 
-    For each platform there needs to be one *platform* branch in the *linux*,
+    For each platform there needs to be one *version\_platform* branch in the *linux*,
     *uboot* and *misc* repository.
 
 1. RootFS repository
 
-    As multiple Platforms have the same architecture, there is only one RootFS
-    needed for each architecture. But as there are multiple courses offered,
-    which need different RootFS, each RootFS is build for each architecture.
+    For each RootFS -> architekture dependency (which can be directly inherited
+    from the platform) there needs to be one branch.
 
 1. Toolchain repository
 
