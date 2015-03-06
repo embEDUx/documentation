@@ -8,6 +8,6 @@ Product | Repository
 U-Boot | uboot
 Linux | linux
 RootFS | rootfs
-Miscellaneous files | mix
+Miscellaneous files | misc
 Toolchain | toolchains
 
