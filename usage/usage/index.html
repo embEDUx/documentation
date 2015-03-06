@@ -263,9 +263,9 @@
 
 <h1 id="usage-documentation">Usage Documentation</h1>
 <p>This document will give you pointers at anything you need to know for building
-and deploying the various components for specific platform.</p>
+and deploying the various products for specific platform.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>The following requirements are common to the build procedures of all components.
+<p>The following requirements are common to the build procedures of all products.
 Please make sure that you and your systems fulfill the given requirements before
 proceeding to the actual build instructions.</p>
 <h3 id="local-software">Local Software</h3>
@@ -282,8 +282,8 @@ users to supply the build instructions to the <em>buildserver</em>.</p>
 <a href="../../setup/user-documentation/index.html">User Documentation</a>. This information will be
 needed to use the buildserver.</p>
 <h4 id="git-repositories">Git-Repositories</h4>
-<p>You need to retrieve the Git-repository for every component you want to build.
-The detailed component build instructions will guide you in finding the needed
+<p>You need to retrieve the Git-repository for every product you want to build.
+The detailed product build instructions will guide you in finding the needed
 repository.</p>
 <h2 id="suggestions">Suggestions</h2>
 <ul>
@@ -300,7 +300,7 @@ repository.</p>
 <p>Open <strong>your</strong> User Documentation</p>
 </li>
 <li>
-<p>Acquire the repository URL for the component you want to build.</p>
+<p>Acquire the repository URL for the product you want to build.</p>
 </li>
 <li>
 <p>Make sure you have the latest repository content. Run <code>git clone</code> for a fresh
@@ -318,12 +318,12 @@ repository.</p>
 <li>Modifying an <strong>existing branch</strong>:
     simply <code>git checkout &lt; existing_branch &gt;</code></li>
 </ul>
-<p>When needed, you can find more detailed instructions in the component
+<p>When needed, you can find more detailed instructions in the product
   sections.</p>
 </li>
 <li>
 <p><strong>Specify your build.</strong> Since the build specifications are very different for
-   each component, it's necessary to separate the instructions into distinct
+   each product, it's necessary to separate the instructions into distinct
    sections. Please follow the instructions given in the detailed sections:</p>
 <ul>
 <li><a href="../uboot/index.html">U-Boot</a></li>
@@ -332,12 +332,12 @@ repository.</p>
 <li><a href="../rootfs/index.html">RootFS</a></li>
 <li><a href="../misc/index.html">Miscellaneous files</a></li>
 </ul>
-<p>The work flow is basically the same for every component. One major
+<p>The work flow is basically the same for every product. One major
    difference in workflow occurs when building a RootFS. You will not be
    able to test the build locally before submitting your specification to
    the buildserver. The reason is the complex system that is needed to
    assemble a RootFS. More information will follow in the detailed section
-   for building the RootFS.  For every other component, toolchains and
+   for building the RootFS.  For every other product, toolchains and
    instructions are provided to quickly setup and test the builds locally.</p>
 </li>
 <li>
@@ -368,12 +368,12 @@ you need support,</p>
 <p>If your build succeeded you can continue to 
 <a href="../flashtool/index.html">deploy your builds to hardware using the flashtool</a></p>
 <p>Please note that to deploy a complete system, successful builds of all
-components need to be available.  This means, single components can be built and
+products need to be available.  This means, single products can be built and
 deployed if there are previous successful builds for the target platform.
 After the required build have successfully completed you can finally </p>
 <h3 id="manually">Manually</h3>
 <p>If for some reason the flashtool is not working for you, there is always the
-possibility to deploy the components manually. Retrieve the <em>Component Download
+possibility to deploy the products manually. Retrieve the <em>Component Download
 URLs</em> from the <a href="#User Documentation">User Documentation</a>, or from the
 <em>Buildmaster Web-Interface</em>, where they are listed at the last build step for
 every successful job.  From there, you can download the files produced by the
