@@ -68,7 +68,7 @@ total 4.0K
 1. Configure your desired toolchain with *ct-ng* and add the ***.config*** to
    the branch. In this case we will just use a default configuration, with
    some mandatory modifications. For further information read
-   [background/toolchains](../background/toolchains.md).
+   [background/specs/toolchains](../background/specs/toolchains.md).
 
 1. Test your toolchain configuration
   

@@ -158,7 +158,7 @@ total 4.0K
    modify *< def-config \>* to the platform configuration for **U-Boot**. In
    this case we expect a default configuration for you platform within the
    **U-Boot** source. If this isn't the case, please read further informations
-   at [background/uboot](../background/uboot.md).    
+   at [background/uboot](../background/specs/uboot.md).    
     ```
 ...
 UBOOT_VERSION="2015.01"
@@ -170,7 +170,7 @@ FIRMWARE_IMG="u-boot.bin"
 
 1. Optional: Add pre\_output or post\_output functions to the ***build***
    script. They will be called before and after the output is packed. For
-   further information check [background/uboot](../background/uboot.md) or have
+   further information check [background/specs/uboot](../background/specs/uboot.md) or have
    a look at the [default build script](usage/uboot/default/platform_build).
 
 1. Add all changes, commit and push them upstream.

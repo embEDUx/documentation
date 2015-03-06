@@ -3,7 +3,7 @@ This guide will help you through the steps to build archives, containing the
 files for your boot and root partition of your desired platform.
 
 If you wonder why you would even need this repository, please consider having a
-look at [background/misc](../background/misc.md).
+look at [background/misc](../background/specs/misc.md).
 
 ## Prerequisites
 All of [the common prerequisites apply](usage.md#Prerequisites).
@@ -92,7 +92,7 @@ total 8.0K
 -rw-r--r-- 1 user user   1 Mar  2 19:33 README.md
     ```
 
-1. As described in [background/misc](../background/misc.md) we need at least
+1. As described in [background/misc](../background/specs/misc.md) we need at least
    *boot.scr.txt* and *inittab* in this repository. So we prepare these files
    for the raspberry pi (example:
      [boot.scr.txt](usage/misc/default/boot.scr.txt),
