@@ -85,7 +85,7 @@ total 4.0K
    the branch. In this case we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)
    and modify the [configuration](usage/toolchains/default/.config), to build a
    static toolchain. For further information read
-   [background/toolchains](../background/toolchains.md).
+   [background/toolchains](../background/specs/toolchains.md).
 
 1. Test your toolchain configuration
   
