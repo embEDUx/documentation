@@ -314,26 +314,28 @@ recipe:
     a comma.
 
 * ***load***:
-  This section defines on which partition a software product should be loaded.
-  The user can choose between the option *device* or *command* for every
-  subsection. If a software product should be loaded on a partition of the mmc
-  device, the user must use the option *device* and state the index of the
-  partition which is defined in the section **partitions**. The index starts
-  with zero.
 
-  If a product should be loaded with an external command to the mmc device, you
-  must use the option **command**. The value of the option is the external
-  command. For a command you can use the to template variables *${file}* and
-  *${device}*. The variable *${file}* will be replaced with the name of the
-  specific software product. The variable *${device}* will be replaced with the
-  */dev path* of the mmc device or the *dev path* of the mmc partition, if a
-  number is written at the end of the variable (e.g. *${device0}*).
+      This section defines on which partition a software product should be loaded.
+      The user can choose between the option *device* or *command* for every
+      subsection. If a software product should be loaded on a partition of the mmc
+      device, the user must use the option *device* and state the index of the
+      partition which is defined in the section **partitions**. The index starts
+      with zero.
 
-  The existing software products are Uboot, Linux\_Boot, Linux\_Root,
-  Linux\_Config, Rootfs, Misc\_Boot, Misc\_Root.
+      If a product should be loaded with an external command to the mmc device, you
+      must use the option **command**. The value of the option is the external
+      command. For a command you can use the to template variables *${file}* and
+      *${device}*. The variable *${file}* will be replaced with the name of the
+      specific software product. The variable *${device}* will be replaced with the
+      */dev path* of the mmc device or the *dev path* of the mmc partition, if a
+      number is written at the end of the variable (e.g. *${device0}*).
+
+      The existing software products are Uboot, Linux\_Boot, Linux\_Root,
+      Linux\_Config, Rootfs, Misc\_Boot, Misc\_Root.
 
 
 **Example for a mmc recipe (utilite-pro.yml):**
+
 
 ```
 
