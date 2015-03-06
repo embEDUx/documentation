@@ -11,8 +11,8 @@ at the HTWG.
 
 ## Global Flags Section
 The *global*-Section configures the settings for global
-[USE-Flags](../../background/common/terminology.md#USE-flags) and 
-[keywords](../../background/common/terminology.md#keywords), which apply for every
+[USE-Flags](../../background/terminology.md#USE-flags) and 
+[keywords](../../background/terminology.md#keywords), which apply for every
 installed package. If you find yourself putting the same keywords or USE-flags
 for every package, this is the place to put them instead.
 

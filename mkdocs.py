@@ -20,9 +20,10 @@ category_order = [
 key_order = {
     'front': [ 
         'Overview',
-        'Common/',
+        'Requirements/',
         'Design/',
         'Eval/',
+        'Specs/',
         'Uboot',
         'Toolchain',
         'Linux',
