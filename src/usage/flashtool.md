@@ -124,14 +124,14 @@ the following command:
 
 There are several options available for this command:
 
- option | description 
- ------ | ----------- 
- platform | Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
- --limit N | Print top N entries for each selected product
- -l, --linux | List all linux kernel versions for the specified platform
- -u, --uboot | List all uboot versions for the specified platform
- -r, --rootfs | List all rootfs for the specified platform
- -m, --misc | List all misc files for the specified platform
+ option | Argument[s] | Description
+ ------ | ----------- | ----------- 
+ platform | -  |Specify a platform name. Only products for this platform will be listed. If none is selected, information for all platforms will be printed.
+ --limit | N |Print top N entries for each selected product
+ -l, --linux | - | List all linux kernel versions for the specified platform
+ -u, --uboot | - | List all uboot versions for the specified platform
+ -r, --rootfs | - | List all rootfs for the specified platform
+ -m, --misc | - | List all misc files for the specified platform
 
 
 ## Setup Hardware and deploy system on Hardware
@@ -219,7 +219,7 @@ to setup a platform.
 
 Each recipe file must be structured like the example below.
 
-   ```
+```
 ---
 type: # name of recipe type
 
@@ -232,7 +232,7 @@ type: # next recipe
 
 recipe:
     # ...
-   ```
+```
 
 A recipe file must contain at least one recipe. 
 
@@ -245,6 +245,7 @@ The next section will describe the existing recipe types.
 
 This recipe type is used to configure platforms which use a mmc device as
 storage media. The template below shows, how to state this recipe in a recipe file.
+
 
 ```
 type: mmc
@@ -346,7 +347,6 @@ recipe:
 
 
 ```
-
 ---
 type: mmc
 
