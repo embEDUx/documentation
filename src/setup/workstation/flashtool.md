@@ -15,6 +15,10 @@ __System:__
 
 __Python packages:__
 
+These package will be automatically installed when the [installation
+instruction](#installation-python)
+below is followed.
+
 - colorama
 - pyudev
 - argcomplete
