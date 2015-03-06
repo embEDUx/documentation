@@ -4,14 +4,11 @@
 ## Build Debugging
 
 ### Linux/Uboot
-Test locally! (TODO Lars)
+* Test locally! (TODO Lars)
+* Entering the build enviornment! (TODO Lars)
 
 ### RootFS
-
-#### Requirements
-* SSH-Access to the host the buildslave containers are running on
-
-#### Options
-* [Manually enter a RootFS Build Environment](rootfs/entering-build-environment)
+* [Manually enter a RootFS Build
+  Environment](rootfs/entering-build-environment.md)
 
 

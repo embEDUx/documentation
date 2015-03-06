@@ -13,6 +13,7 @@ key_order = {
     'front': [ 
         'Overview',
         'Common/',
+        'Design/',
         'Eval/',
         'Uboot',
         'Toolchain',
