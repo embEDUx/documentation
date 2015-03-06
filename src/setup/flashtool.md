@@ -27,28 +27,28 @@ __Python packages:__
 
 __Installation Ubuntu/Debian:__
 
-  ```sh
+```sh
 $ apt-get install gcc python3 python3-dev python-virtualenvironment libudev-dev libparted git
-  ```
+```
 
 __Installation Arch Linux:__
 
-  ```sh
+```sh
 $ pacman -S gcc python3 python-virtualenv libsystemd parted git
-  ```
+```
 
 __Installation Fedora Linux:__
 
-  ```sh
+```sh
 $ yum install gcc python3 python3-devel python-virtualenv udev parted git
-  ```
+```
 
 __Installation Python:__
 
 
 * Virtualenv:
 
-  ```sh
+```sh
 # Creating an virtual environment for python (python version must be >=3)
 $ virtualenv -p python3  {path/for/virtualenv}  # python3 can also be python3.x
 
@@ -66,13 +66,12 @@ $ source {path/for/virtualenv}/bin/activate
 
 # leave virtual environement
 $ deactivate
-
-  ```
+```
 
 * Installation of python packages via pip
 
-  ```sh
+```sh
 $ source {path/to/virtualenv}/bin/activate  # go into virtualenv
 # Required python packages which can be installed via PyPI
 $ pip install -r https://apu.in.htwg-konstanz.de/labworks-embEDUx/flashtool/raw/master/requirements.txt
-  ```
+```
