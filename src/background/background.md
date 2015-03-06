@@ -18,4 +18,16 @@ for tasks concerning the preparation of soft- and hardware for these lab-courses
 offered at the HTWG, which is the reason why the embEDUx requirements will have
 a strong bias towards the requirements specific to the lab-courses.
 
-## [Project Requirements](Common/Requirements)
+## Initial contributors
+The project started off with three master students of computer science working
+on a team-project, supervised by a professor. Namely, these are
+
+* Prof. Dr. Michael Mächtel
+* Lars Eckervogt
+* Manuel Hieke 
+* Stefan Junker
+
+Head over to the [contacts and support page](../support/contact-team.md) if you
+want to contact any of these people.
+
+## [Project Requirements](requirements.md)

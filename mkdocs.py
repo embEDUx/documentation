@@ -9,12 +9,23 @@ print(basepath)
 projecttile = 'embEDUx'
 pages = {}
 
+category_order = [
+    'Index',
+    'Usage',
+    'Setup',
+    'Background',
+    'Troubleshooting',
+    'Support',
+    ]
 key_order = {
     'front': [ 
         'Overview',
-        'Common/',
+        'Terminiology',
+        'Requirements',
+        'Requirements/',
         'Design/',
         'Eval/',
+        'Specs/',
         'Uboot',
         'Toolchain',
         'Linux',
@@ -143,7 +154,6 @@ with open('mkdocs.yml', 'w') as target, \
         del pages[category]
 
 
-    category_order = ['Index', 'Usage', 'Setup', 'Background',]
     for category in category_order:
         write_category(category)
 

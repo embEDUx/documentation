@@ -14,7 +14,7 @@ are needed for the usage of every product.
   User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
-* Understand the [RootFS Background Information](../background/rootfs.md). The
+* Understand the [RootFS Background Information](../background/specs/rootfs.md). The
   buldsystem itself and **Gentoo** as base distribution introduce a high level
   of customization options. These come with complexity and must be
   understood to be fully utilized.

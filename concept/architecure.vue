@@ -1,18 +1,18 @@
-<!-- Tufts VUE 3.2.2 concept-map (concept.vue) 2015-03-04 -->
+<!-- Tufts VUE 3.2.2 concept-map (architecure.vue) 2015-03-06 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Wed Mar 04 14:09:02 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Fri Mar 06 13:24:59 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="none" ID="0" label="concept.vue"
+    xsi:noNamespaceSchemaLocation="none" ID="0" label="architecure.vue"
     created="1412766514800" x="0.0" y="0.0" width="1154.5984"
     height="796.53516" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425474543128" size="50979"
-        spec="/home/lars/Documents/embedux/embedux_private/doc/concept.vue"
+    <resource referenceCreated="1425644699933" size="51033"
+        spec="/home/lars/Documents/embedux/documentation/conept/architecure.vue"
         type="1" xsi:type="URLResource">
-        <title>concept.vue</title>
-        <property key="File" value="/home/lars/Documents/embedux/embedux_private/doc/concept.vue"/>
+        <title>architecure.vue</title>
+        <property key="File" value="/home/lars/Documents/embedux/documentation/conept/architecure.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -35,9 +35,9 @@
             <textColor>#000000</textColor>
             <font>Arial-plain-24</font>
             <URIString>http://vue.tufts.edu/rdf/resource/da9b5fde7f0000017d478a7f453d1a16</URIString>
-            <child ID="81" label="uboot-branch" created="1425299798795"
-                x="34.0" y="37.0" width="197.0" height="118.5625"
-                strokeWidth="1.0" autoSized="true" xsi:type="node">
+            <child ID="81" label="version_generic"
+                created="1425299798795" x="34.0" y="37.0" width="226.0"
+                height="118.5625" strokeWidth="1.0" autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
                 <textColor>#000000</textColor>
@@ -77,7 +77,7 @@
                 </child>
                 <shape xsi:type="rectangle"/>
             </child>
-            <child ID="75" label="platform-branch"
+            <child ID="75" label="version_platform"
                 created="1425299798795" x="34.0" y="128.17188"
                 width="257.0" height="171.8125" strokeWidth="1.0"
                 autoSized="false" xsi:type="node">
@@ -151,9 +151,9 @@
             <textColor>#000000</textColor>
             <font>Arial-plain-24</font>
             <URIString>http://vue.tufts.edu/rdf/resource/efa82b946fa2ecae25261a84e2f40626</URIString>
-            <child ID="65" label="kernel-branch" created="1425299381811"
-                x="34.0" y="37.0" width="203.0" height="141.0625"
-                strokeWidth="1.0" autoSized="true" xsi:type="node">
+            <child ID="65" label="version_generic"
+                created="1425299381811" x="34.0" y="37.0" width="226.0"
+                height="141.0625" strokeWidth="1.0" autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
                 <textColor>#000000</textColor>
@@ -204,9 +204,9 @@
                 </child>
                 <shape xsi:type="rectangle"/>
             </child>
-            <child ID="66" label="platform-branch"
+            <child ID="66" label="version_platform"
                 created="1425299443516" x="34.0" y="145.04688"
-                width="230.0" height="201.0625" strokeWidth="1.0"
+                width="238.0" height="201.0625" strokeWidth="1.0"
                 autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
@@ -288,9 +288,9 @@
             <textColor>#000000</textColor>
             <font>Arial-plain-24</font>
             <URIString>http://vue.tufts.edu/rdf/resource/da9b60077f0000017d478a7f19b4da47</URIString>
-            <child ID="101" label="platform-branch"
-                created="1425300443109" x="34.0" y="37.0" width="230.0"
-                height="130.75" strokeWidth="1.0" autoSized="true" xsi:type="node">
+            <child ID="101" label="platform" created="1425300443109"
+                x="34.0" y="37.0" width="140.25" height="130.75"
+                strokeWidth="1.0" autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
                 <textColor>#000000</textColor>
@@ -340,8 +340,8 @@
             <textColor>#000000</textColor>
             <font>Arial-plain-24</font>
             <URIString>http://vue.tufts.edu/rdf/resource/da9b600d7f0000017d478a7ffdd6dabe</URIString>
-            <child ID="91" label="arch-course-branch"
-                created="1425300128703" x="34.0" y="37.0" width="269.0"
+            <child ID="91" label="arch-rootfs-name"
+                created="1425300128703" x="34.0" y="37.0" width="243.0"
                 height="70.75" strokeWidth="1.0" autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
@@ -371,8 +371,8 @@
             <textColor>#000000</textColor>
             <font>Arial-plain-24</font>
             <URIString>http://vue.tufts.edu/rdf/resource/da9b60117f0000017d478a7f2441288e</URIString>
-            <child ID="106" label="arch-course-branch"
-                created="1425300639556" x="34.0" y="37.0" width="269.0"
+            <child ID="106" label="host-arch_target-arch"
+                created="1425300639556" x="34.0" y="37.0" width="294.0"
                 height="100.75" strokeWidth="1.0" autoSized="true" xsi:type="node">
                 <fillColor>#0877C0</fillColor>
                 <strokeColor>#000000</strokeColor>
@@ -407,7 +407,7 @@
     </child>
     <child ID="136" label="Buildserver" layerID="1"
         created="1425462911725" x="-543.6337" y="-2276.9487"
-        width="354.0" height="450.125" strokeWidth="1.0"
+        width="275.25" height="432.4375" strokeWidth="1.0"
         autoSized="true" xsi:type="node">
         <fillColor>#FC938D</fillColor>
         <strokeColor>#000000</strokeColor>
@@ -862,7 +862,7 @@
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/efa82bc56fa2ecae25261a8429b49efe</URIString>
     </layer>
-    <userZoom>1.1072957584852363</userZoom>
+    <userZoom>0.9989112619307253</userZoom>
     <userOrigin x="-1277.0101" y="-2862.6672"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
@@ -915,6 +915,6 @@
     </PathwayList>
     <date>2014-10-08</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/home/lars/Documents/embedux/embedux_private/doc</saveLocation>
-    <saveFile>/home/lars/Documents/embedux/embedux_private/doc/concept.vue</saveFile>
+    <saveLocation>/home/lars/Documents/embedux/documentation/conept</saveLocation>
+    <saveFile>/home/lars/Documents/embedux/documentation/conept/architecure.vue</saveFile>
 </LW-MAP>

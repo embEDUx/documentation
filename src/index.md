@@ -12,7 +12,7 @@ upload the build specification files that allow you to reproduce our builds!
 
 #### Terminology
 Before continuing, please make sure that you are familiar with the
-[Terminology](background/common/terminology.md). If you keep an open eye for
+[Terminology](background/terminology.md). If you keep an open eye for
 crudities, you are encouraged to inform us by either opening an issue or putting
 up a pull-request.
 
@@ -31,16 +31,15 @@ were chosen for the core of the solution are
 If you are interested in why these choice were made, please head over to the
 [background section](background/background.md)
 
-## Delivered Components
+## Delivered Products
 The embEDUx build system has been designed to build the following products
 according to user-provided specifications. 
 
+* [U-Boot](background/specs/uboot.md) images
+* [Linux](background/specs/.md)-Kernel images and modules
+* [RootFS](background/specs/rootfs.md)-archives based on Gentoo
 
-* [U-Boot](background/uboot.md) images
-* [Linux](background/linux.md)-Kernel images and modules
-* [RootFS](background/rootfs.md)-archives based on Gentoo
-
-In addition there is a [Flashtool](background/flashtool.md) for easy hardware deployment!
+In addition there is a [Flashtool](background/specs/flashtool.md) for easy hardware deployment!
 
 *(links goto background information pages)*
 
@@ -53,5 +52,5 @@ and development of the project. Successful builds have been produced for
 * Beaglebone Black
 * Utilite Pro
 
-## Architectural Overview
+## [Architectural Design](background/design/architecture.md)
 [![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)

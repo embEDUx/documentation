@@ -3,7 +3,7 @@ This is the User Documentation for the HTWG. Others may use it as an orientation
 and overview of the contents they have to put in their User Documentation.
 
 ## Repositories
-Component | Repository URL
+Product | Repository URL
 --- | ---
 U-Boot | https://apu.in.htwg-konstanz.de/labworks-embEDUx/uboot.git
 Linux | https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git
@@ -20,8 +20,8 @@ Server-Name | URL
 --- | ---
 moe | http://moe.in.htwg-konstanz.de:8010
 
-## Component Download URLs
-Component | URL
+## Product Download URLs
+Product | URL
 --- | ---
 U-Boot | http://moe.in.htwg-konstanz.de:8010/uboot/
 Linux | http://moe.in.htwg-konstanz.de:8010/linux/
@@ -38,7 +38,7 @@ Qemu ARM | qemu-virt-arm | armv7a\_hardfp | armv7a
 Beaglebone Black | beaglebone-black | armv7a\_hardfp | armv7a
 
 ## Build Commands
-Component | Buildcommands
+Product | Buildcommands
 --- | --- 
 Linux | './build'
 Uboot | './build'
@@ -47,7 +47,7 @@ Toolchain | './build'
 RootFS | *special ansible buildroutine: TODO LINK*
 
 ## Output Directories
-Component | Buildcommands
+Product | Buildcommands
 --- | --- 
 Linux | output
 Uboot | output 
@@ -56,7 +56,7 @@ Toolchain | output
 RootFS | *special ansible buildroutine: TODO LINK*
 
 ## Output File-Scheme
-Component / Description | Nr of Files / File-Scheme
+Product / Description | Nr of Files / File-Scheme
 --- | ---
 **Linux** | 3
 Linux Blob | < branch-name \>\_< date&time \>\_< commit-hash \>\_boot.tar.bz2
