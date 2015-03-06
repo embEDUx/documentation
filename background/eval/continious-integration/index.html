@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Eval/Buildserver - embEDUx Project</title>
+        <title>Eval/Continious Integration - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -171,7 +171,7 @@
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Eval/Buildserver</a>
+                            <a href="index.html">Eval/Continious Integration</a>
                         </li>
                     
                         <li >
@@ -261,7 +261,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#continuous-integration">Continuous Integration</a></li>
+        <li class="main active"><a href="#continuous-integration-ci">Continuous Integration (CI)</a></li>
+        
+            <li><a href="#ci-tasks">CI Tasks</a></li>
         
             <li><a href="#gitlab-ci">Gitlab-CI</a></li>
         
@@ -274,10 +276,25 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="continuous-integration">Continuous Integration</h2>
-<p>The continuous integration system </p>
+<h2 id="continuous-integration-ci">Continuous Integration (CI)</h2>
+<p>The continuous integration system is responsible for scheduling the builds
+according the changes in the product repositories. It delegates scheduled builds
+to builders that are prepared with build environments specific to their mapped
+platform or the platform's architecture.</p>
+<h3 id="ci-tasks">CI Tasks</h3>
+<ul>
+<li>provide an overview of recent and running builds</li>
+<li>View Log-files or recent and running builds</li>
+<li>Allow to manually manage build jobs<ul>
+<li>(re-) Schedule builds</li>
+<li>Cancel builds</li>
+</ul>
+</li>
+</ul>
 <h3 id="gitlab-ci">Gitlab-CI</h3>
+<p>Here go the pros and cons of the Gitlab-CI</p>
 <h3 id="buildbot">buildbot</h3>
+<p>Here go the pros and cons of the buildbot</p>
 <h3 id="scheduler-configuratoin">Scheduler configuratoin</h3>
 <p>A suitable scheduler for our purpose could be the
 <a href="http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler">anybranchscheduler</a>.</p>

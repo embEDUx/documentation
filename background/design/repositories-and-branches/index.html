@@ -171,7 +171,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../eval/buildserver/index.html">Eval/Buildserver</a>
+                            <a href="../../eval/continious-integration/index.html">Eval/Continious Integration</a>
                         </li>
                     
                         <li >
@@ -247,7 +247,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../eval/buildserver/index.html">
+                    <a rel="prev" href="../../eval/continious-integration/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -318,23 +318,23 @@ should be setup, and the User should be able to understand the importance of the
 different repositories and branches for the <strong>embEDUx</strong> project. </p>
 <p><a href="../../../usage/common/img/repositories.png"><img alt="Repository structure" src="../../../usage/common/img/repositories.png" /></a></p>
 <h3 id="footnotes">Footnotes</h3>
-<p>TODO LARS
-1. Source branch</p>
-<pre><code>Each version of the **Linux** kernel needs to have exactly one *kernel*
-branch in the *linux* repository. Also for each version of **U-Boot**,
-exactly one *uboot* branch is needed in the *uboot* repository.
-</code></pre>
 <ol>
 <li>
+<p>Source branch</p>
+<p>Each version of the <strong>Linux</strong> kernel needs to have exactly one
+<em>version_generic</em> branch in the <em>linux</em> repository. Also for each version
+of <strong>U-Boot</strong>, exactly one <em>version_generic</em> branch is needed in the
+<em>uboot</em> repository.</p>
+</li>
+<li>
 <p>Platform branch</p>
-<p>For each platform there needs to be one <em>platform</em> branch in the <em>linux</em>,
+<p>For each platform there needs to be one <em>version_platform</em> branch in the <em>linux</em>,
 <em>uboot</em> and <em>misc</em> repository.</p>
 </li>
 <li>
 <p>RootFS repository</p>
-<p>As multiple Platforms have the same architecture, there is only one RootFS
-needed for each architecture. But as there are multiple courses offered,
-which need different RootFS, each RootFS is build for each architecture.</p>
+<p>For each RootFS -&gt; architekture dependency (which can be directly inherited
+from the platform) there needs to be one branch.</p>
 </li>
 <li>
 <p>Toolchain repository</p>
