@@ -106,27 +106,35 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/common/buildmaster/index.html">Common/Buildmaster</a>
+                            <a href="../../setup/repositories/index.html">Repositories</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/uboot/index.html">Uboot</a>
+                            <a href="../../setup/adminstation/adminstation/index.html">Adminstation/Adminstation</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/linux/index.html">Linux</a>
+                            <a href="../../setup/adminstation/buildserver-setuproutine/index.html">Adminstation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/rootfs/index.html">Rootfs</a>
+                            <a href="../../setup/buildserver/buildmaster/index.html">Buildserver/Buildmaster</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/misc/index.html">Misc</a>
+                            <a href="../../setup/buildserver/buildserver/index.html">Buildserver/Buildserver</a>
                         </li>
                     
                         <li >
-                            <a href="../../setup/flashtool/index.html">Flashtool</a>
+                            <a href="../../setup/buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/rootfs-routine/index.html">Buildserver/Rootfs Routine</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
                         </li>
                     
                         <li >
@@ -134,11 +142,15 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                            <a href="../../setup/customization/adding-new-platforms/index.html">Customization/Adding New Platforms</a>
                         </li>
                     
                         <li >
                             <a href="../../setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
                         </li>
                     
                     </ul>
@@ -155,11 +167,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../background/common/requirements/index.html">Common/Requirements</a>
+                            <a href="../../background/requirements/index.html">Requirements</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/common/terminology/index.html">Common/Terminology</a>
+                            <a href="../../background/requirements/platforms/index.html">Requirements/Platforms</a>
                         </li>
                     
                         <li >
@@ -167,7 +179,35 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/design/continuous-integration/index.html">Design/Continuous Integration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/flashtool/index.html">Design/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/linux/index.html">Design/Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/misc/index.html">Design/Misc</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/design/repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/toolchains/index.html">Design/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/uboot/index.html">Design/Uboot</a>
                         </li>
                     
                         <li >
@@ -179,27 +219,35 @@
                         </li>
                     
                         <li >
-                            <a href="../../background/uboot/index.html">Uboot</a>
+                            <a href="../../background/specs/flashtool/index.html">Specs/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/toolchains/index.html">Toolchains</a>
+                            <a href="../../background/specs/linux/index.html">Specs/Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/linux/index.html">Linux</a>
+                            <a href="../../background/specs/misc/index.html">Specs/Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/rootfs/index.html">Rootfs</a>
+                            <a href="../../background/specs/repositories-and-branches/index.html">Specs/Repositories And Branches</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/misc/index.html">Misc</a>
+                            <a href="../../background/specs/rootfs/index.html">Specs/Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../../background/flashtool/index.html">Flashtool</a>
+                            <a href="../../background/specs/toolchains/index.html">Specs/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/specs/uboot/index.html">Specs/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/terminology/index.html">Terminology</a>
                         </li>
                     
                     </ul>
@@ -265,7 +313,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#name-scheme">Name scheme</a></li>
+            <li><a href="#branch-name-scheme">Branch Name-Scheme</a></li>
+        
+            <li><a href="#step-by-step-example">Step-by-Step Example</a></li>
         
             <li><a href="#add-a-new-toolchain">Add a new toolchain</a></li>
         
@@ -289,7 +339,7 @@ Documentation</a>.</p>
 <li>
 <p>Git Repository <em>toolchains</em></p>
 </li>
-<li><strong>Buildserver</strong> setup for desired platform architecture</li>
+<li><strong>buildserver</strong> setup for desired platform architecture</li>
 <li>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
@@ -299,30 +349,70 @@ Documentation</a>.</p>
   configuration before you push it upstream.</p>
 </li>
 <li>
-<p>Have a look at the default build scripts. As the <strong>Buildserver</strong> just executes
-  these scripts, you have no limits on what you want to do before, during and
-  after the build process.</p>
+<p>Have a look at the default <a href="../../usage/toolchains/default/toolchain_build">build script</a>. As
+  the <strong>buildserver</strong> just executes these scripts, you have no limits on what
+  you want to do before, during and after the build process.</p>
 </li>
 </ul>
-<h2 id="name-scheme">Name scheme</h2>
-<p>The <strong>Builserver</strong> can only build your images, if you follow this name scheme
-for any of the branches:</p>
-<ul>
-<li>&lt;host-arch>_&lt;target-arch>-ctng-linux-&lt;abi></li>
-</ul>
-<p>Please look up the target-arch  string in the <a href="../../setup/user-documentation/index.html">User
-Documentation</a> provided by your administrator. If
-your platform doesn't exist yet, please contact your administrator.</p>
+<h2 id="branch-name-scheme">Branch Name-Scheme</h2>
+<p>The <strong>builserver</strong> can only build your images, if you follow the correct
+name-scheme for the branches.</p>
+<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>.</p>
+<h3 id="variables">Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host-arch</td>
+<td>Architecture of the host system (where the toolchain is used)</td>
+</tr>
+<tr>
+<td>taget-arch</td>
+<td>Specified and mapped to the target architecture by the Administrator. Found in the <a href="../../setup/user-documentation/index.html">User Documentation</a></td>
+</tr>
+<tr>
+<td>abi</td>
+<td>Application Binary Interface (selected by toolchain configuration)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="branches">Branches</h3>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Scheme</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>toolchain</td>
+<td>&lt; host-arch >_&lt; target-arch >-ctng-linux-&lt; abi ></td>
+<td>armv6j-ctng-linux-gnueabi</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-by-step-example">Step-by-Step Example</h2>
+<p>The following example will give you a detailed overview of the necessary steps
+to build the toolchain for the raspberry pi (armv6j). We assume that at this point the
+<em>toolchains</em> repository is empty.</p>
 <h2 id="add-a-new-toolchain">Add a new toolchain</h2>
-<p>Following steps are necessary to add a toolchain to the <em>toolchains</em> repository.</p>
 <ol>
 <li>
-<p>Clone the <em>linux</em> repository with the URL provided in the user documentation.</p>
+<p>Clone the <em>toolchains</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
 </li>
 <li>
-<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. Follow the <a href="#name-scheme">name
-   scheme</a> carefully.</p>
+<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. It is necessary that you
+   push the branch at this point upstream, so the <strong>buildserver</strong> can find the
+   new <em>toolchain</em> branch.</p>
 <p><code>$ git checkout master
 $ git branch amd64_armv6j-ctng-linux-gnueabi
 $ git checkout amd64_armv6j-ctng-linux-gnueabi 
@@ -332,37 +422,38 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi</code></p>
 </li>
 <li>
-<p>Add the <a href="../../usage/toolchains/template/build">default build script</a> as <strong><em>build</em></strong> to the repository
-   and make it executable.</p>
+<p>Add the <a href="../../usage/toolchains/default/toolchain_build">default build script</a> as
+   <strong><em>build</em></strong> to the branch and make it executable.</p>
 <p><code>$ ls -hl
 total 4.0K
 -rwxr-xr-x 1 user user 470 Mar  3 20:52 build
 -rw-r--r-- 1 user user   0 Mar  3 20:51 README</code></p>
 </li>
 <li>
-<p>Configure your desired toolchain with <em>ct-ng</em> and add the <strong><em>.config</em></strong> to
-   the branch. In this case we will just use a default configuration, with
-   some mandatory modifications. For further information read
-   <a href="../../background/toolchains/index.html">background/toolchains</a>.</p>
+<p>Configure your desired toolchain with <strong>ct-ng</strong> and add the <strong><em>.config</em></strong> to
+   the branch. In this example we will just use a sample configuration (<code>ct-ng armv6-rpi-linux-gnueabi</code>)
+   and modify the <a href="../../usage/toolchains/default/.config">configuration</a>, to build a
+   static toolchain. For further information read
+   <a href="../../background/specs/toolchains/index.html">background/toolchains</a>.</p>
 </li>
 <li>
 <p>Test your toolchain configuration</p>
 <p><code>$ ct-ng build</code></p>
 </li>
 <li>
-<p>Add the files, commit and push upstream.</p>
+<p>Add changes, commit and push them upstream. </p>
 <p><code>$ git add build
 $ git commit -m "new toolchain for amd64 -&gt; armv6j"
 $ git push</code></p>
 </li>
 <li>
-<p>The <strong>Buildserver</strong> should start building your kernel image now. For further
+<p>The <strong>buildserver</strong> should start building your toolchain now. For further
    informations on how to monitor the build check <a href="../common/build-monitoring/index.html">monitoring
    guide</a>.</p>
 </li>
 <li>
-<p>Congratulations, you just built your first toolchain. You can now download
-   the toolchain. Find the toolchain product URL in the <a href="../../setup/user-documentation/index.html">User
+<p>Congratulations, you just built your first toolchain for the platform
+   architecture. Find the toolchain product download URL in the <a href="../../setup/user-documentation/index.html">User
    Documentation</a> (see <a href="../usage/index.html#hardware-deployment">Hardware
    Deployment</a>).</p>
 </li>
