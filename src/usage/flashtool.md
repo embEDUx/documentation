@@ -1,33 +1,38 @@
 # Flashtool
 
-1. [Getting started](#getting-started)
-2. [Get **recipes** from git server](#get-recipes-from-git-server)
-3. [List finished builds from the configured **Buildbot** server](#list-finished-builds-from-the-configured-buildbot-server)
-4. [Recipe files](#recipe-files)
+This guide will help you through the several commands you need to deploy builds
+from the *buildserver* to hardware.
 
-## Requirements
+## Prerequisites
 
-The flashtool must be installed on your system. Please read the [setup
+The **flashtool** must be installed on your system. Please read the [setup
 chapter](../setup/flashtool.md) of the **flashtool**.
+
+Also a successful [setup of the buildserver](../setup/setup.md) is required to
+use the **flashtool**.
+
+### Requirements
+
+* Git Repository with valid **recipe files**
 
 ## Getting started
 
 After [installing](../setup/flashtool.md) the **flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
-> `flashtool init`
+`$ flashtool init`
 
 The tool needs a *working directory* which is set at the home directory
 by default. (***${HOME}/.flashtool***) It can be set by the user with the option
 *-w | --working-dir*.
 
-> `flashtool -w /path/to/own/working_dir`
+`$ flashtool -w /path/to/own/working_dir`
 
 The tool will ask the user for some parameter to set, the next example shows
 this procedure:
 
 ```bash
-> flashtool init
+$ flashtool init
 Type in a value for
     [Buildbot]->server
 help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
@@ -65,7 +70,7 @@ help:   Local path where flashtool should save downloaded products if option is 
 
 You can change these settings by calling the comand:
 
-> `flashtool config`
+`$ flashtool config`
 
 The tool will ask for each setting if you want to change the value or not.
 
@@ -82,38 +87,19 @@ there are provided some **recipe** files for different hardware.
 
 To get the **recipe** files from the repository for the flashtool run the following command:
 
-> `flashtool platform_recipes init`
+`$ flashtool platform_recipes init`
 
 The **recipe** files will be stored at the directory ***{working\_directory}/platforms***.
 If there are new **recipes** on the repository you can get them with the command:
 
-> `flashtool platform_recipes update`
+`$ flashtool platform_recipes update`
 
 The given or created **recipe** files can be listed by the **flashtool**.
 To do so type in:
 
-> `flashtool list_platforms`
+`$ flashtool list_platforms`
 
-This command will list all **recipe** files grouped by their prefix. The name of 
-a **recipe** file should follow this naming scheme:
-
-> {hardware-name}\_{identifier}.yml
-
-**The name and identifier must not contain underscores, please use dashes instead.**
-The *underscore* is used to divide the recipe file name in the two parts 
-hardware name and identifier. It is important, that the platform name is also 
-registered on the buildserver.
-
-The next example shows how to use this naming scheme for a Raspberry Pi.
-
-> raspberry-pi.yml
->
-> raspberry-pi\_media_center.yml
-
-The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
-This name will be used in branches of the **git repositories** and on the
-**buildbot** server to identify a Raspberry Pi.
-
+This command will list all **recipe** files grouped by their prefix.
 ### List finished builds from the configured **Buildbot** server
 
 The **Buildbot** server provides all needed products for an **embEDUx** system.
@@ -213,7 +199,32 @@ with the setup procedure.
 ## Recipe files
 
 Recipe files are important for the setup procedure. The user can configure, how
-to setup a platform. 
+to setup a platform.
+
+### Recipe files Name-Scheme
+
+The name of a **recipe** file should follow this naming scheme:
+
+{hardware-name}\_{identifier}.yml
+
+**The name and identifier must not contain underscores, please use dashes instead.**
+The *underscore* is used to divide the recipe file name in the two parts 
+hardware name and identifier. It is important, that the platform name is also 
+registered on the buildserver.
+
+The next example shows how to use this naming scheme for a Raspberry Pi.
+
+> raspberry-pi.yml
+>
+> raspberry-pi\_media_center.yml
+
+The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
+This name will be used in branches of the **git repositories** and on the
+**buildbot** server to identify a Raspberry Pi.
+
+The right name for the configured platforms can be found in the [User
+Documentation](../setup/user-documentation.md). 
+
 
 ### General structure of a recipe file
 
