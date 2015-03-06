@@ -248,9 +248,13 @@
         
             <li><a href="#terminology">Terminology</a></li>
         
-            <li><a href="#architectural-overview">Architectural Overview</a></li>
+            <li><a href="#the-core">The Core</a></li>
         
-            <li><a href="#components">Components</a></li>
+            <li><a href="#delivered-components">Delivered Components</a></li>
+        
+            <li><a href="#focus-on-hardware">Focus on Hardware</a></li>
+        
+            <li><a href="#architectural-overview">Architectural Overview</a></li>
         
     
     </ul>
@@ -258,36 +262,52 @@
             <div class="col-md-9" role="main">
 
 <h1 id="the-embedux-project">The <strong>embEDUx</strong> Project</h1>
-<p>The name <strong>embEDUx</strong> includes hints for the words <em>embedded linux</em> and
-<em>education</em>. The goal to deliver an environment that eases the effort of creating various
-embedded linux distributions depending on the educational purpose that they are
-specifically aiming for. </p>
-<p>The idea has its origin at the IT-faculty at the HTWG Constance, where embEDUx will
-have the use-case of preparing and maintaining linux distributions for the
-different lab-courses taken by students. All of these lab-courses evolve around
-the linux operating system, software applications for linux and hardware
-components that are capable of running linux. Over time, the diversity in soft-
-and hardware utilized in these lab-courses has increased and so has the
-complexity and effort to prepare and maintain the systems in use.  </p>
-<p>The embEDUx project has been created to find a generic and automated approach
-for tasks concerning the preparation of soft- and hardware for these lab-courses
-offered at the HTWG, which is the reason why the embEDUx requirements will have
-a strong bias towards the requirements specific to the lab-courses.</p>
-<h2 id="terminology">Terminology</h2>
-<p>Before you continue reading the different documentation snippets, please check
-if you are familiar with the documented <a href="background/common/terminology/index.html">Terminology</a>.
-If you keep an eye open for crudities and you spot any, you are welcome to
-inform us by either opening an issue or putting up a pull-request.</p>
+<p>The <em>embEDUx</em> project aims to deliver an <strong>solution for building and deploying customimized
+linux distrubitions for educational purposes</strong>.</p>
+<p>The origin lays at a university of applied sciences called
+<a href="http://www.htwg-konstanz.de/English.20.0.html">HTWG</a> located in Constance,
+Germany.  For the complete story have a look at the <a href="background/background/index.html#The Beginning">the
+beginning</a>.</p>
+<p>We are working on making the current state publicly available.  We will also
+upload the build specification files that allow you to reproduce our builds!</p>
+<h4 id="terminology">Terminology</h4>
+<p>Before continuing, please make sure that you are familiar with the
+<a href="background/common/terminology/index.html">Terminology</a>. If you keep an open eye for
+crudities, you are encouraged to inform us by either opening an issue or putting
+up a pull-request.</p>
+<h2 id="the-core">The Core</h2>
+<p>embEDUx is completely based on Open Source software. The biggest projects that
+have been integrated into the core of the solution are</p>
+<ul>
+<li>The GNU Toolchain</li>
+<li>Gentoo Linux</li>
+<li>Buildbot</li>
+<li>Ansible</li>
+<li>Qemu</li>
+<li>Das U-Boot Bootloader</li>
+<li>Git.</li>
+</ul>
+<h2 id="delivered-components">Delivered Components</h2>
+<p>The embEDUx build system has been designed to build the following components
+according to user-provided specifications. </p>
+<ul>
+<li><a href="background/uboot/index.html">U-Boot</a> images</li>
+<li><a href="background/linux/index.html">Linux</a>-Kernel images and modules</li>
+<li><a href="background/rootfs/index.html">RootFS</a>-archives based on Gentoo</li>
+</ul>
+<p>In addition there is a <a href="background/flashtool/index.html">Flashtool</a> for easy deployment!</p>
+<p><em>(links goto background information pages)</em></p>
+<h2 id="focus-on-hardware">Focus on Hardware</h2>
+<p>A variety from low up to high end ARM-boards were available during the design
+and development of the project. Successful builds have been produced for</p>
+<ul>
+<li>Raspberry Pi</li>
+<li>Banana Pi</li>
+<li>Beaglebone Black</li>
+<li>Utilite Pro</li>
+</ul>
 <h2 id="architectural-overview">Architectural Overview</h2>
 <p><a href="./background/common/img/architectural_overview.png"><img alt="" src="./background/common/img/architectural_overview.png" /></a></p>
-<h2 id="components">Components</h2>
-<p>The embEDUx build system has been designed to build the following components
-according to user-provided specifications:</p>
-<ul>
-<li>Das U-Boot Bootloader</li>
-<li>Linux Kernel images and modules</li>
-<li>RootFS-archives based on Gentoo</li>
-</ul>
 </div>
         </div>
 
