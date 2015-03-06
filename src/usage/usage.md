@@ -1,6 +1,6 @@
 # Usage Documentation
 This document will give you pointers at anything you need to know for building
-and deploying the various products for specific platform.
+and deploying the various products for a specific platform.
 
 ## Prerequisites
 The following requirements are common to the build procedures of all products.
@@ -23,9 +23,10 @@ needed to use the buildserver.
 
 
 #### Git-Repositories
-You need to retrieve the Git-repository for every product you want to build.
-The detailed product build instructions will guide you in finding the needed
-repository.
+For every product you want to build, it's necessary to have a local copy of the
+correspdonding Git-repository. The URLs are available in the aforementioned User
+Documentation. The detailed product build instructions will guide you in finding
+the needed repository.
 
 
 ## Suggestions
