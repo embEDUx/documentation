@@ -2,7 +2,7 @@
 TODO Lars
 TODO Stefan
 
-Setup one repository for each of the components. 
+Setup one repository for each of the products. 
 
 * [U-Boot](uboot)
 * [Linux](linux)

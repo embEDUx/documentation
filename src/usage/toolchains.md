@@ -89,7 +89,7 @@ $ git push
    guide](common/build-monitoring.md).
 
 1. Congratulations, you just built your first toolchain. You can now download
-   the toolchain. Find the toolchain component URL in the [User
+   the toolchain. Find the toolchain product URL in the [User
    Documentation](../setup/user-documentation.md) (see [Hardware
    Deployment](usage.md#hardware-deployment)).
 

@@ -5,8 +5,8 @@ requirements](../common/requirements.md).
 
 ## Textual Design
 The five repositories form the base structure which allows an independent
-management for the different components. Each repository holds the content
-necessary for building the component. The content will be processed by a central
+management for the different products. Each repository holds the content
+necessary for building the product. The content will be processed by a central
 buildserver. 
 
 Repository Name | Desired build output
@@ -18,7 +18,7 @@ rootfs |  RootFS content archives
 misc |  Miscellaneous files archives (needed on boot and root partitions)
 
 ## Visualization
-This is a visualization of the relations between the different components and
+This is a visualization of the relations between the different products and
 their corresponding repositories. It shall be used by Administrators and Users
 to understand the structure. The Administrator can learn how the repositories
 should be setup, and the User should be able to understand the importance of the

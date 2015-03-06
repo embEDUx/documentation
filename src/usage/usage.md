@@ -1,9 +1,9 @@
 # Usage Documentation
 This document will give you pointers at anything you need to know for building
-and deploying the various components for specific platform.
+and deploying the various products for specific platform.
 
 ## Prerequisites
-The following requirements are common to the build procedures of all components.
+The following requirements are common to the build procedures of all products.
 Please make sure that you and your systems fulfill the given requirements before
 proceeding to the actual build instructions.
 
@@ -23,8 +23,8 @@ needed to use the buildserver.
 
 
 #### Git-Repositories
-You need to retrieve the Git-repository for every component you want to build.
-The detailed component build instructions will guide you in finding the needed
+You need to retrieve the Git-repository for every product you want to build.
+The detailed product build instructions will guide you in finding the needed
 repository.
 
 
@@ -40,7 +40,7 @@ repository.
 ## Build Instructions
 1. Open **your** User Documentation
 
-1. Acquire the repository URL for the component you want to build.
+1. Acquire the repository URL for the product you want to build.
 
 1. Make sure you have the latest repository content. Run `git clone` for a fresh
    start or `git pull` for an existing repository
@@ -55,11 +55,11 @@ repository.
     * Modifying an **existing branch**:
         simply `git checkout < existing_branch >`
       
-      When needed, you can find more detailed instructions in the component
+      When needed, you can find more detailed instructions in the product
       sections.
 
 1. **Specify your build.** Since the build specifications are very different for
-   each component, it's necessary to separate the instructions into distinct
+   each product, it's necessary to separate the instructions into distinct
    sections. Please follow the instructions given in the detailed sections:
     * [U-Boot](../usage/uboot.md)
     * [Toolchains](../usage/toolchains.md)
@@ -67,12 +67,12 @@ repository.
     * [RootFS](../usage/rootfs.md)
     * [Miscellaneous files](../usage/misc.md)
 
-       The work flow is basically the same for every component. One major
+       The work flow is basically the same for every product. One major
        difference in workflow occurs when building a RootFS. You will not be
        able to test the build locally before submitting your specification to
        the buildserver. The reason is the complex system that is needed to
        assemble a RootFS. More information will follow in the detailed section
-       for building the RootFS.  For every other component, toolchains and
+       for building the RootFS.  For every other product, toolchains and
        instructions are provided to quickly setup and test the builds locally.
 
 
@@ -101,13 +101,13 @@ If your build succeeded you can continue to
 [deploy your builds to hardware using the flashtool](../usage/flashtool.md)
 
 Please note that to deploy a complete system, successful builds of all
-components need to be available.  This means, single components can be built and
+products need to be available.  This means, single products can be built and
 deployed if there are previous successful builds for the target platform.
 After the required build have successfully completed you can finally 
 
 ### Manually
 If for some reason the flashtool is not working for you, there is always the
-possibility to deploy the components manually. Retrieve the *Component Download
+possibility to deploy the products manually. Retrieve the *Component Download
 URLs* from the [User Documentation](#User Documentation), or from the
 *Buildmaster Web-Interface*, where they are listed at the last build step for
 every successful job.  From there, you can download the files produced by the
