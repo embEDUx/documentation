@@ -52,5 +52,5 @@ and development of the project. Successful builds have been produced for
 * Beaglebone Black
 * Utilite Pro
 
-## Architectural Overview
+## [Architectural Design](background/design/architecture.md)
 [![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
