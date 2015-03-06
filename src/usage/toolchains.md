@@ -82,7 +82,7 @@ total 4.0K
     ```
 
 1. Configure your desired toolchain with **ct-ng** and add the ***.config*** to
-   the branch. In this case we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)
+   the branch. In this example we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)
    and modify the [configuration](usage/toolchains/default/.config), to build a
    static toolchain. For further information read
    [background/toolchains](../background/specs/toolchains.md).
