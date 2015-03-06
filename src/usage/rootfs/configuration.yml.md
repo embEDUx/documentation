@@ -4,7 +4,7 @@ This file resides in the in the root directory of the
 `---` in the first line of the file is necessary syntax which indicates
 YAML-files, and must not be removed.
 
-To demonstrate a **minima working example** this guide provides a slimmed down
+To demonstrate a **minimal working example** this guide provides a slimmed down
 version of the [systemd-rootfs
 specification](examples/systemd/configuration.yml) taken from the actual setup
 at the HTWG.
@@ -73,6 +73,6 @@ post_install_commands:
 ```
 You can specify any command here. They will be **run as root** in sequential
 order in the target RootFS. The changes you make with your commands are not
-persistent to your next build job, but are only taking effect for the current
-build.
+persistent to your next build job and will therefore only take effect for the
+current build.
 
