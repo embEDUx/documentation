@@ -1,37 +1,53 @@
+
 # The **embEDUx** Project
-The name **embEDUx** includes hints for the words *embedded linux* and
-*education*. The goal to deliver an environment that eases the effort of creating various
-embedded linux distributions depending on the educational purpose that they are
-specifically aiming for. 
+The *embEDUx* project aims to deliver an **solution for building and deploying customimized
+linux distrubitions for educational purposes**.
 
-The idea has its origin at the IT-faculty at the HTWG Constance, where embEDUx will
-have the use-case of preparing and maintaining linux distributions for the
-different lab-courses taken by students. All of these lab-courses evolve around
-the linux operating system, software applications for linux and hardware
-components that are capable of running linux. Over time, the diversity in soft-
-and hardware utilized in these lab-courses has increased and so has the
-complexity and effort to prepare and maintain the systems in use.  
+The origin lays at an applied university of science called HTWG, in Constance, Germany.
+For the complete story please see [The Beginning](background/background.md).
 
-The embEDUx project has been created to find a generic and automated approach
-for tasks concerning the preparation of soft- and hardware for these lab-courses
-offered at the HTWG, which is the reason why the embEDUx requirements will have
-a strong bias towards the requirements specific to the lab-courses.
+We are working on making the current state publicly available.  We will also
+upload the build specification files that allow you to reproduce our builds!
 
-## Terminology
-Before you continue reading the different documentation snippets, please check
-if you are familiar with the documented [Terminology](background/common/terminology.md).
-If you keep an eye open for crudities and you spot any, you are welcome to
-inform us by either opening an issue or putting up a pull-request.
+#### Terminology
+Before continuing, please make sure that you are familiar with the
+[Terminology](background/common/terminology.md). If you keep an open eye for
+crudities, you are encouraged to inform us by either opening an issue or putting
+up a pull-request.
 
+## The Core
+embEDUx is completely based on Open Source software. The biggest projects that
+have been integrated into the core of the solution are
+
+* The GNU Toolchain
+* Gentoo Linux
+* Buildbot
+* Ansible
+* Qemu
+* Das U-Boot Bootloader
+* Git.
+
+## Delivered Components
+The embEDUx build system has been designed to build the following components
+according to user-provided specifications. 
+
+
+* [U-Boot](background/uboot.md) images
+* [Linux](background/linux.md)-Kernel images and modules
+* [RootFS](background/rootfs.md)-archives based on Gentoo
+
+In addition there is a [Flashtool](background/flashtool.md) for easy deployment!
+
+*(links goto background information pages)*
+
+## Focus on Hardware
+A variety from low up to high end ARM-boards were available during the design
+and development of the project. Successful builds have been produced for
+
+* Raspberry Pi
+* Banana Pi
+* Beaglebone Black
+* Utilite Pro
 
 ## Architectural Overview
 [![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
-
-
-## Components
-The embEDUx build system has been designed to build the following components
-according to user-provided specifications:
-
-- Das U-Boot Bootloader
-- Linux Kernel images and modules
-- RootFS-archives based on Gentoo
