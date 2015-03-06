@@ -5,8 +5,8 @@
 #####################
 
 ### Sources
-UBOOT_VERSION="<uboot-version>"
-UBOOT_CONFIG="<def-config>"
+UBOOT_VERSION="< uboot-version >"
+UBOOT_CONFIG="< def-config >"
 SRC_DIR="src"
 FIRMWARE_IMG="u-boot.bin"
 

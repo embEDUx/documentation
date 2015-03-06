@@ -20,7 +20,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 * Have a look at the default build scripts
   ([generic](usage/linux/default/generic_build),
-  [platform](usage/linux/default/platform_build)).  As the **buildserver**
+  [platform](usage/linux/default/platform_build)). As the **buildserver**
   just executes these scripts, you have no limits on what you want to do before,
   during and after the build process.
 
@@ -90,7 +90,7 @@ $ git push --set-upstream origin 3.18.7
     ```
 
 1. Add the [default script](usage/linux/default/generic_build) as ***build*** to the
-   repository and make it executable.
+   branch and make it executable.
 
     ```
 $ ls -hl
@@ -126,7 +126,7 @@ $ git push
     ```
 
 1. Now that you have a *version\_generic* branch for your desired **Linux** kernel
-   version within your *linux* repository, the next step is to add a *platform*
+   version within your *linux* repository, the next step is to add a *version\_platform*
    branch.
 
 ### Add new platform
