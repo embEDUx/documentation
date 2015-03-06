@@ -32,7 +32,7 @@ If you are interested in why these choice were made, please head over to the
 [background section](background/background.md)
 
 ## Delivered Components
-The embEDUx build system has been designed to build the following components
+The embEDUx build system has been designed to build the following products
 according to user-provided specifications. 
 
 

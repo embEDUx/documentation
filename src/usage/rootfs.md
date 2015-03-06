@@ -4,7 +4,7 @@ RootFS-specification to the buildserver.
 
 ## Prerequisites
 Please review [the common usage prerequisites](usage.md#Prerequisites), which
-are needed for the usage of every component.
+are needed for the usage of every product.
 
 ### Requirements
 * User Documentation.  At the end of the setup, the Administrator is instructed
