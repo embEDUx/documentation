@@ -1,7 +1,5 @@
 # RootFS Specification
-***work in progress (TODO)***
-
- This page will guide you through the steps of providing your own
+This page will guide you through the steps of providing your own
 RootFS-specification to the buildserver.
 
 ## Prerequisites
@@ -37,38 +35,44 @@ This is an example content of a branch in the RootFS-repository that makes use
 of all the currently supported features.
 
 ```
+.
 ├── configuration.yml
-├── post_install_overlay
-│   ├── local.d
-│   │   └── alive.start
-│   └── post_install_copied
+├── pre_install_overlay
+│   └── etc
+│       └── portage
+│           ├── env
+│           │   ├── no-distcc.conf
+│           │   └── no-parallel.conf
+│           └── package.env
 └── pre_install_overlay
     └── pre_install_copied
 ```
 
 ## Quick Introduction
 For all who skipped reading the background, here's a quick introduction
-what happens during the build process on the buildserver. The *italic* words
+what happens during the build process on the buildserver. The **bold** words
 indicate user provided content.
 
 1. Reset the workspace to a clean state
-1. Parse *configuration.yml*
-1. Copy *pre_install_overlay* content to the target system
-1. Execute the *pre_install_commands* on the target system
+1. Parse **configuration.yml**
+1. Copy **pre_install_overlay** content to the target system
+1. Execute the **pre_install_commands** on the target system
 1. Install the specified packages
-1. Copy *post_install_overlay* content to the target system
-1. Execute the *post_install_commands* on the target system
+1. Copy **post_install_overlay** content to the target system
+1. Execute the **post_install_commands** on the target system
 1. Pack RootFS and upload archive to buildmaster
 
 ## Branch Name-Scheme
-The **buildserver** can only build your images, if you follow the correct name-scheme.
-
-The variables that are needed for your platform can be found in the [User
-Documentation](../setup/user-documentation.md).
 
 **< Platform-RootFS-String \>\_< RootFS-Name \>**
 
+The **buildserver** can only build your images, if you follow the correct name-scheme.
+
 ### Variables
+The variables that are needed for your platform can be found in the [User
+Documentation](../setup/user-documentation.md). Please make sure to respect the
+following criteria as well.
+
 Variable | Notes
 --- | ---
 Platform-RootFS-String | Specified and mapped to the target platform by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
@@ -76,7 +80,7 @@ RootFS-Name | Chosen by the user. **Must not contain the '\_' character**
 
 ### Valid Examples
 * armv7a_hardfp\_factory-systemd
-* amd64\_-factory-systemd
+* amd64\_factory-systemd
 
 ## The ***configuration.yml*** file
 This file will specify packages to install and allows you to define commands
