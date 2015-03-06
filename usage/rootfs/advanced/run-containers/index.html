@@ -381,8 +381,8 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 <h3 id="allow-login-via-machinectl">Allow login via machinectl</h3>
 <p><code>machinectl</code> is connecting via <em>pts/0</em>, which is excluded from
-<strong><em>/etc/securetty</em></strong> on <strong>Gentoo</strong>. This prevents <em>root</em>-login via <code>machinectl
-login</code> and needs to be changed as follows.</p>
+<strong><em>/etc/securetty</em></strong> on <strong>Gentoo</strong>. This prevents <em>root</em>-login via <code>machinectl login</code>
+and needs to be changed as follows.</p>
 <pre><code>echo &quot;pts/0&quot; &gt;&gt; /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
 </code></pre>
 
@@ -413,7 +413,7 @@ root@amd64_factory_systemd_20150228172018_faa83f5 ~ #
 <h3 id="notes">Notes</h3>
 <p>The default setup of a container is heavily based on the 
 <strong><em><a href="https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service">systemd-nspawn@.service.in</a></em></strong>-Template installed in the system, which may
-differ between Linux distributions. This has an influence on many apsects of the
+differ between Linux distributions. This has an influence on many aspects of the
 containers, including but not limited to it's network connection. As an
 example, on <strong>Gentoo</strong> the default setup does not automatically setup an internet
 connection for containers.</p>

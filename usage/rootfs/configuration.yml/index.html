@@ -327,7 +327,7 @@
 <em>rootfs</em>-Repository. The file is written in <a href="http://yaml.org/">YAML-Syntax</a>. The
 <code>---</code> in the first line of the file is necessary syntax which indicates
 YAML-files, and must not be removed.</p>
-<p>To demonstrate a <strong>minima working example</strong> this guide provides a slimmed down
+<p>To demonstrate a <strong>minimal working example</strong> this guide provides a slimmed down
 version of the <a href="../../../examples/systemd/configuration.yml">systemd-rootfs
 specification</a> taken from the actual setup
 at the HTWG.</p>
@@ -391,8 +391,8 @@ post_install_commands:
 
 <p>You can specify any command here. They will be <strong>run as root</strong> in sequential
 order in the target RootFS. The changes you make with your commands are not
-persistent to your next build job, but are only taking effect for the current
-build.</p>
+persistent to your next build job and will therefore only take effect for the
+current build.</p>
 </div>
         </div>
 
