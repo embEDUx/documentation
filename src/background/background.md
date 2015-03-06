@@ -30,4 +30,4 @@ on a team-project, supervised by a professor. Namely, these are
 Head over to the [contacts and support page](../support/contact-team.md) if you
 want to contact any of these people.
 
-## [Project Requirements](Common/Requirements)
+## [Project Requirements](common/requirements.md)
