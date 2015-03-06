@@ -266,7 +266,6 @@
             <div class="col-md-9" role="main">
 
 <h1 id="rootfs-specification">RootFS Specification</h1>
-<p><strong><em>work in progress (TODO)</em></strong></p>
 <p>This page will guide you through the steps of providing your own
 RootFS-specification to the buildserver.</p>
 <h2 id="prerequisites">Prerequisites</h2>
@@ -298,35 +297,40 @@ please visit the following sites:</p>
 <h2 id="repository-file-structure">Repository File-Structure</h2>
 <p>This is an example content of a branch in the RootFS-repository that makes use
 of all the currently supported features.</p>
-<pre><code>├── configuration.yml
-├── post_install_overlay
-│   ├── local.d
-│   │   └── alive.start
-│   └── post_install_copied
+<pre><code>.
+├── configuration.yml
+├── pre_install_overlay
+│   └── etc
+│       └── portage
+│           ├── env
+│           │   ├── no-distcc.conf
+│           │   └── no-parallel.conf
+│           └── package.env
 └── pre_install_overlay
     └── pre_install_copied
 </code></pre>
 
 <h2 id="quick-introduction">Quick Introduction</h2>
 <p>For all who skipped reading the background, here's a quick introduction
-what happens during the build process on the buildserver. The <em>italic</em> words
+what happens during the build process on the buildserver. The <strong>bold</strong> words
 indicate user provided content.</p>
 <ol>
 <li>Reset the workspace to a clean state</li>
-<li>Parse <em>configuration.yml</em></li>
-<li>Copy <em>pre_install_overlay</em> content to the target system</li>
-<li>Execute the <em>pre_install_commands</em> on the target system</li>
+<li>Parse <strong>configuration.yml</strong></li>
+<li>Copy <strong>pre_install_overlay</strong> content to the target system</li>
+<li>Execute the <strong>pre_install_commands</strong> on the target system</li>
 <li>Install the specified packages</li>
-<li>Copy <em>post_install_overlay</em> content to the target system</li>
-<li>Execute the <em>post_install_commands</em> on the target system</li>
+<li>Copy <strong>post_install_overlay</strong> content to the target system</li>
+<li>Execute the <strong>post_install_commands</strong> on the target system</li>
 <li>Pack RootFS and upload archive to buildmaster</li>
 </ol>
 <h2 id="branch-name-scheme">Branch Name-Scheme</h2>
-<p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
-<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
-Documentation</a>.</p>
 <p><strong>&lt; Platform-RootFS-String >_&lt; RootFS-Name ></strong></p>
+<p>The <strong>buildserver</strong> can only build your images, if you follow the correct name-scheme.</p>
 <h3 id="variables">Variables</h3>
+<p>The variables that are needed for your platform can be found in the <a href="../../setup/user-documentation/index.html">User
+Documentation</a>. Please make sure to respect the
+following criteria as well.</p>
 <table>
 <thead>
 <tr>
@@ -348,7 +352,7 @@ Documentation</a>.</p>
 <h3 id="valid-examples">Valid Examples</h3>
 <ul>
 <li>armv7a_hardfp_factory-systemd</li>
-<li>amd64_-factory-systemd</li>
+<li>amd64_factory-systemd</li>
 </ul>
 <h2 id="the-configurationyml-file">The <strong><em>configuration.yml</em></strong> file</h2>
 <p>This file will specify packages to install and allows you to define commands
