@@ -277,41 +277,49 @@ recipe:
 ```
 
 * ***partition\_table***:
-  This section defines the partition table of the mmc device. The most embedded
-  devices use *msods* or *gpt* for the partition table.
+
+      This section defines the partition table of the mmc device. The most embedded
+      devices use *msods* or *gpt* for the partition table.
 
 * ***partitions***:
-  This section is used to define partitions on the mmc device. Each partition
-  must be listed with a dash and must contain the subsections name, size,
-  fs\_type, mount\_point, mount\_opts and flags. If one of these section is not
-  needed, just leave the value after the colon blank.
 
-  * ***name***:
-    Name or label of the partition. The partition table type must support this
-    feature.
+      This section is used to define partitions on the mmc device. Each partition
+      must be listed with a dash and must contain the subsections name, size,
+      fs\_type, mount\_point, mount\_opts and flags. If one of these section is not
+      needed, just leave the value after the colon blank.
 
-  * ***size***:
-    Size of the partition. The used units are b (byte), kb (kilobyte), mb
-    (megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
-    *max* for the last stated partition. If you want to state the size of the
-    partion in percentage, please use the percentage notation for each
-    partition.
+      * ***name***:
 
-  * ***fs_type***:
-    Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
-    fat32 and btrfs.
+        Name or label of the partition. The partition table type must support this
+        feature.
 
-  * ***mount_point***:
-    Specifies the mount point which will be written in the **fstab** of the linux
-    system.
+      * ***size***:
 
-  * ***mount_opts***:
-    Specifies the mount options for the partition which will be written in the
-    **fstab** of the linux system.
+        Size of the partition. The used units are b (byte), kb (kilobyte), mb
+        (megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
+        *max* for the last stated partition. If you want to state the size of the
+        partion in percentage, please use the percentage notation for each
+        partition.
 
-  * ***flags***:
-    Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
-    a comma.
+      * ***fs_type***:
+
+        Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
+        fat32 and btrfs.
+
+      * ***mount_point***:
+
+        Specifies the mount point which will be written in the **fstab** of the linux
+        system.
+
+      * ***mount_opts***:
+
+        Specifies the mount options for the partition which will be written in the
+        **fstab** of the linux system.
+
+      * ***flags***:
+
+        Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
+        a comma.
 
 * ***load***:
 
