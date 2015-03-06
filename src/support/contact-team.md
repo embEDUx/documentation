@@ -2,11 +2,11 @@
 
 ## Team members
 
-Member | Main responsibilities
+Member | Responsibilities
 --- | --- 
-[Stefan Junker](mailto:code@stefanjunker.de) | Buildserver, RootFS
-[Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Evaluation, U-Boot, Linux, Toolchain
+[Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Builds/Evaluation: U-Boot, Linux, Toolchain
 Manuel Hieke | Flashtool
+[Stefan Junker](mailto:code@stefanjunker.de) | Buildserver, RootFS
 
 ## IRC
 The project does not have an own IRC channel yet, but you're welcomed to join us
