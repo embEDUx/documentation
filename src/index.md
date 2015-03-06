@@ -3,8 +3,10 @@
 The *embEDUx* project aims to deliver an **solution for building and deploying customimized
 linux distrubitions for educational purposes**.
 
-The origin lays at an applied university of science called HTWG, in Constance, Germany.
-For the complete story please see [The Beginning](background/background.md).
+The origin lays at a university of applied sciences called
+[HTWG](http://www.htwg-konstanz.de/English.20.0.html) located in Constance,
+Germany.  For the complete story have a look at the [the
+beginning](background/background.md#The Beginning).
 
 We are working on making the current state publicly available.  We will also
 upload the build specification files that allow you to reproduce our builds!
