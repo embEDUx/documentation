@@ -107,7 +107,7 @@ After the required build have successfully completed you can finally
 
 ### Manually
 If for some reason the flashtool is not working for you, there is always the
-possibility to deploy the products manually. Retrieve the *Component Download
+possibility to deploy the products manually. Retrieve the *Product Download
 URLs* from the [User Documentation](#User Documentation), or from the
 *Buildmaster Web-Interface*, where they are listed at the last build step for
 every successful job.  From there, you can download the files produced by the
