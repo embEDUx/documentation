@@ -91,41 +91,5 @@ complete system for your target platform!
 
 In addition there is a [Flashtool](background/specs/flashtool.md) for easy deployment to hardware!
 
-    
-## Roles
-The **embEDUx** build system consists of many components and there is a very big
-difference in setting up the system or just using it. The different roles
-
-Role | Responsibilities
---- | ---
-Administrator | [Setup](setup/setup.md), [Create User Documentation](setup/post-install/user-documentation.md)
-Distribution Architect | Building [U-Boot](usage/uboot.md), [Linux-Kernel](usage/linux.md), [RootFS](usage/rootfs.md)
-
-
-## Principal/Administrator
-You are probably that tough guy, that needs to setup his servers for this
-awesome **EmbEDUx** build system.
-
-blablablabla
-
-**Don't forget to provide your users with the [User
-Documentation](setup/post-install/user-documentation.md)** for your setup.
-
-## Student/Board Owner
-You are the guy with the hardware. The guy that wants to run his really own configured
-**Linux** distribution on his nice and shine hardware.
-
-As you probably already know, for running your hardware you need a bootloader, a
-**Linux** kernel and a RootFS. Luckily thats exactly what **EmbEDUx** will build
-for you, as long as you provide the rules for the build process.
-
-First start with the bootloader, **U-Boot**. Blablabla
-
-When you done with your bootloader, continue with the **Linux** kernel. 
-
-Once those two components are done, finally configure your fully personalized
-RootFS.
-
-
 ## [Architectural Design](background/design/architecture.md)
 [![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
