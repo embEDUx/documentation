@@ -73,6 +73,7 @@ its usage, here we go!
 
 ### Installation
 1. [setup embEDUx](setup/setup.md)
+
     If you already have access to a fully setup instance of the build system,
     you can skip this step. Otherwise, please follow the link!
 
