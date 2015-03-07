@@ -9,7 +9,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 * User Documentation.
 
     At the end of the setup, the Administrator is instructed to create the [User
-    Documentation](../setup/user-documentation.md).
+    Documentation](../setup/post-install/user-documentation.md).
 
 * Git Repository *uboot*
 * **Buildserver** setup for desired platform architecture
@@ -29,13 +29,13 @@ The **builserver** can only build your images, if you follow the correct
 name-scheme for the branches.
 
 The variables that are needed for your platform can be found in the [User
-Documentation](../setup/user-documentation.md).
+Documentation](../setup/post-install/user-documentation.md).
 
 ### Variables
 
 Variable | Notes
 --- | ---
-Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/post-install/user-documentation.md)
 Uboot-Version | The **U-Boot** version
 
 ### Branches

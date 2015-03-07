@@ -8,7 +8,7 @@ are needed for the usage of every product.
 
 ### Requirements
 * User Documentation.  At the end of the setup, the Administrator is instructed
-  to create the [User Documentation](../setup/user-documentation.md).
+  to create the [User Documentation](../setup/post-install/user-documentation.md).
 * RootFS Git-Repository
   The RootFS-specification is supplied to the buildserver via git. Consult your
   User Documentation for the repository URLs. (See previous link)
@@ -70,12 +70,12 @@ The **buildserver** can only build your images, if you follow the correct name-s
 
 ### Variables
 The variables that are needed for your platform can be found in the [User
-Documentation](../setup/user-documentation.md). Please make sure to respect the
+Documentation](../setup/post-install/user-documentation.md). Please make sure to respect the
 following criteria as well.
 
 Variable | Notes
 --- | ---
-Platform-RootFS-String | Specified and mapped to the target platform by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+Platform-RootFS-String | Specified and mapped to the target platform by the Administrator. Found in the [User Documentation](../setup/post-install/user-documentation.md)
 RootFS-Name | Chosen by the user. **Must not contain the '\_' character**
 
 ### Valid Examples

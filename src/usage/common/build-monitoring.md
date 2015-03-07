@@ -9,7 +9,7 @@ waterfall view and the builders view.
 ### Requirements
 * A graphical Web-Browser :-)
 * Buildserver Web-Interface URL. Find this in **your** [User
-  Documentation](../../setup/user-documentation.md)
+  Documentation](../../setup/post-install/user-documentation.md)
 
 ### Waterfall View
 The **buildbot** waterfall-view gives an overview over all running and recent

@@ -9,7 +9,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 * User Documentation.
 
     At the end of the setup, the Administrator is instructed to create the [User
-    Documentation](../setup/user-documentation.md).
+    Documentation](../setup/post-install/user-documentation.md).
 
 * Git Repository *linux*
 * **buildserver** setup for desired platform architecture
@@ -29,13 +29,13 @@ The **builserver** can only build your images, if you follow the correct
 name-scheme for the branches.
 
 The variables that are needed for your platform can be found in the [User
-Documentation](../setup/user-documentation.md).
+Documentation](../setup/post-install/user-documentation.md).
 
 ### Variables
 
 Variable | Notes
 --- | ---
-Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+Platform-String | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/post-install/user-documentation.md)
 Major | Kernel major version number (**X**.2.3)
 Minor | Kernel minor version number (1.**X**.3)
 Subminor | Kernel subminor version number (1.2.**X**)
@@ -180,7 +180,7 @@ KERNEL_CONFIG=".config"
 
 1. Add a working kernel configuration ***.config*** to the branch. If you aren't
    sure weather your kernel configuration is working or not, you can run the build
-   script locally with a proper [toolchain](toolchains.md#Usage).
+   script locally with a proper [toolchain](../setup/post-install/toolchains.md#Usage).
    
     ```
 $ ls -hla

@@ -16,7 +16,7 @@ use the **flashtool**.
 * User Documentation
 
     At the end of the setup, the Administrator is instructed to create the [User
-    Documentation](../setup/user-documentation.md).
+    Documentation](../setup/post-install/user-documentation.md).
 
 * Git Repository with valid **recipe files**
 
@@ -228,7 +228,7 @@ This name will be used in branches of the **git repositories** and on the
 **buildbot** server to identify a Raspberry Pi.
 
 The right name for the configured platforms can be found in the [User
-Documentation](../setup/user-documentation.md). 
+Documentation](../setup/post-install/user-documentation.md). 
 
 
 ### General structure of a recipe file

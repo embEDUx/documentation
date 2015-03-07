@@ -18,7 +18,7 @@ users to supply the build instructions to the *buildserver*.
 
 ### User Documentation
 At the end of the setup, the Administrator is instructed to create the
-[User Documentation](../setup/user-documentation.md). This information will be
+[User Documentation](../setup/post-install/user-documentation.md). This information will be
 needed to use the buildserver.
 
 
@@ -62,7 +62,7 @@ the needed repository.
    each product, it's necessary to separate the instructions into distinct
    sections. Please follow the instructions given in the detailed sections:
     * [U-Boot](../usage/uboot.md)
-    * [Toolchains](../usage/toolchains.md)
+    * [Toolchains](../setup/post-install/toolchains.md)
     * [Linux](../usage/linux.md)
     * [RootFS](../usage/rootfs.md)
     * [Miscellaneous files](../usage/misc.md)

@@ -3,13 +3,13 @@ This guide will help you through the steps to build a toolchain for the
 architecture of your desired platform.
 
 ## Prerequisites
-All of [the common prerequisites apply](usage.md#Prerequisites).
+All of [the common prerequisites apply](../../usage/usage.md#Prerequisites).
 
 ### Requirements
 * User Documentation.
 
     At the end of the setup, the Administrator is instructed to create the [User
-    Documentation](../setup/user-documentation.md).
+    Documentation](user-documentation.md).
 
 * Git Repository *toolchains*
 * **buildserver** setup for desired platform architecture
@@ -28,14 +28,14 @@ The **builserver** can only build your images, if you follow the correct
 name-scheme for the branches.
 
 The variables that are needed for your platform can be found in the [User
-Documentation](../setup/user-documentation.md).
+Documentation](user-documentation.md).
 
 ### Variables
 
 Variable | Notes
 --- | ---
 host-arch | Architecture of the host system (where the toolchain is used)
-taget-arch | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](../setup/user-documentation.md)
+taget-arch | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](user-documentation.md)
 abi | Application Binary Interface (selected by toolchain configuration)
 
 ### Branches
@@ -85,7 +85,7 @@ total 4.0K
    the branch. In this example we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)
    and modify the [configuration](usage/toolchains/default/.config), to build a
    static toolchain. For further information read
-   [background/toolchains](../background/specs/toolchains.md).
+   [background/toolchains](../../background/specs/toolchains.md).
 
 1. Test your toolchain configuration
   
@@ -103,10 +103,10 @@ $ git push
 
 1. The **buildserver** should start building your toolchain now. For further
    informations on how to monitor the build check [monitoring
-   guide](common/build-monitoring.md).
+   guide](../../usage/common/build-monitoring.md).
 
 1. Congratulations, you just built your first toolchain for the platform
    architecture. Find the toolchain product download URL in the [User
-   Documentation](../setup/user-documentation.md) (see [Hardware
-   Deployment](usage.md#hardware-deployment)).
+   Documentation](user-documentation.md) (see [Hardware
+   Deployment](../../usage/usage.md#hardware-deployment)).
 
