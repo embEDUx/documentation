@@ -71,26 +71,32 @@ not possible to provide you with a static instruction list.
 Like every software system, the very basic topics are about its installation and
 its usage, here we go!
 
-### Installation
+### Setup = Installation + Post-Install
+
+#### Installation
 1. [setup embEDUx](setup/setup.md)
 
     If you already have access to a fully setup instance of the build system,
     you can skip this step. Otherwise, please follow the link!
 
-### Post-Installation
+#### Post-Installation
 * [Toolchain](setup/post-install/toolchains.md)
 * [User Documentation](setup/post-install/user-documentation.md)
 
-### Usage
+### Usage = Build + Deploy
 The distribution will consist of the aforementioned products, of which
 you will have to build ***all*** in order to achieve the ultimate glory of a
 complete system for your target platform!
 
+### Build
 * [U-Boot](usage/uboot.md) images
 * [Linux](usage/linux.md)-Kernel images and modules
 * [RootFS](usage/rootfs.md)-archives based on Gentoo
 
+#### Deploy
 In addition there is a [Flashtool](background/specs/flashtool.md) for easy deployment to hardware!
+More information on the deployment will be found at the end of the [usage
+overview](usage/usage.md#hardware-deployment)
 
 ## [Architectural Design](background/design/architecture.md)
 [![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
