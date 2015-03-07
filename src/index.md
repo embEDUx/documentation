@@ -3,7 +3,7 @@ The *embEDUx* project aims to deliver a **solution for building and deploying cu
 linux distrubitions for educational purposes**.
 
 The origin lays at a university of applied sciences called
-[HTWG](http://www.htwg-konstanz.de/English.20.0.html) located in Constance,
+[HTWG Konstanz](http://www.htwg-konstanz.de/English.20.0.html) located in Constance,
 Germany.  For the complete story have a look at the [the
 beginning](background/background.md#The Beginning).
 
