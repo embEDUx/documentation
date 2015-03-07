@@ -83,6 +83,29 @@ your own distribution
     If you already have your user documentation, you can skip this step.
     Otherwise 
 
+## Principal/Administrator
+You are probably that tough guy, that needs to setup his servers for this
+awesome **EmbEDUx** build system.
+
+blablablabla
+
+**Don't forget to provide your users with the [User
+Documentation](setup/user-documentation.md)** for your setup.
+
+## Student/Board Owner
+You are the guy with the hardware. The guy that wants to run his really own configured
+**Linux** distribution on his nice and shine hardware.
+
+As you probably already know, for running your hardware you need a bootloader, a
+**Linux** kernel and a RootFS. Luckily thats exactly what **EmbEDUx** will build
+for you, as long as you provide the rules for the build process.
+
+First start with the bootloader, **U-Boot**. Blablabla
+
+When you done with your bootloader, continue with the **Linux** kernel. 
+
+Once those two components are done, finally configure your fully personalized
+RootFS.
 
 
 ## [Architectural Design](background/design/architecture.md)
