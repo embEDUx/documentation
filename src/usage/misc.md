@@ -16,9 +16,6 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 * Git Repository *misc*
 * **buildserver** setup for desired platform architecture
-* Required Software
-    * wget
-    * tar
 
 ### Suggestions
 * Have a look at the default [build script](usage/misc/default/platform_build). As the
