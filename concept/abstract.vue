@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (abstract.vue) 2015-03-08 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Sun Mar 08 18:19:18 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Sun Mar 08 18:22:44 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="abstract.vue"
     created="1425815200920" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425835158677" size="36874"
+    <resource referenceCreated="1425835364776" size="36875"
         spec="/home/lars/Documents/embedux/documentation/concept/abstract.vue"
         type="1" xsi:type="URLResource">
         <title>abstract.vue</title>
@@ -19,24 +19,14 @@
     <textColor>#000000</textColor>
     <font>SansSerif-plain-14</font>
     <URIString>http://vue.tufts.edu/rdf/resource/f96373657f00000103c474b61c8075e6</URIString>
-    <child ID="97" label="embEDUx" layerID="1" created="1425818011514"
-        x="-403.0" y="-240.4632" width="964.0" height="273.0"
-        strokeWidth="1.0" autoSized="false" xsi:type="node">
+    <child ID="97" layerID="1" created="1425818011514" x="-403.0"
+        y="-225.4632" width="964.0" height="273.0" strokeWidth="1.0"
+        autoSized="false" xsi:type="node">
         <fillColor>#83CEFF</fillColor>
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-24</font>
         <URIString>http://vue.tufts.edu/rdf/resource/f96373677f00000103c474b6974a9214</URIString>
-        <child ID="98" label="Build System" created="1425818030386"
-            x="34.0" y="37.0" width="167.0" height="37.0"
-            strokeWidth="1.0" autoSized="true" xsi:type="node">
-            <fillColor>#83CEFF</fillColor>
-            <strokeColor>#000000</strokeColor>
-            <textColor>#000000</textColor>
-            <font>Arial-plain-24</font>
-            <URIString>http://vue.tufts.edu/rdf/resource/f96373687f00000103c474b63b79188d</URIString>
-            <shape xsi:type="rectangle"/>
-        </child>
         <shape xsi:type="rectangle"/>
     </child>
     <child ID="6" label="Platform" layerID="1" created="1425815206989"
@@ -637,6 +627,34 @@
         <ID1 xsi:type="node">49</ID1>
         <ID2 xsi:type="node">73</ID2>
         <ctrlPoint0 x="-82.5" y="79.53677" xsi:type="point"/>
+    </child>
+    <child ID="106" label="embEDUx" layerID="1" created="1425835319329"
+        x="-384.0" y="-213.4632" width="150.0" height="34.0"
+        strokeWidth="0.0" autoSized="false" xsi:type="text">
+        <strokeColor>#404040</strokeColor>
+        <textColor>#000000</textColor>
+        <font>-plain-24</font>
+        <URIString>http://vue.tufts.edu/rdf/resource/fa6911c77f00000155c91e8d7cf0c69e</URIString>
+        <richText>&lt;html&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
+    &lt;style type="text/css"&gt;
+      &lt;!--
+        body { margin-left: 0px; margin-bottom: 0px; font-size: 24; font-family: Arial; margin-top: 0px; color: #000000; margin-right: 0px }
+        ol { vertical-align: middle; margin-left: 30; list-style-position: outside; font-family: Arial; margin-top: 6; font-size: 24 }
+        p { margin-left: 0; margin-bottom: 0; margin-top: 0; color: #000000; margin-right: 0 }
+        ul { vertical-align: middle; margin-left: 30; font-family: Arial; margin-top: 6; font-size: 24; list-style-position: outside }
+      --&gt;
+    &lt;/style&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p style="text-align: left; color: #000000" color="#000000"&gt;
+      &lt;font style="font-size:24;"&gt;embEDUx&lt;/font&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</richText>
+        <label>embEDUx</label>
     </child>
     <layer ID="1" label="Layer 1" created="1425815200926" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
