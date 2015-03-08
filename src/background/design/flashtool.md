@@ -52,7 +52,5 @@ section](../../usage/flashtool.md) of the **Flashtool**
  check\_mmc | Does a filesystem check on every partition on a mmc media
 
 
- ## Structure of the **Flashtool**
-
  
 
