@@ -39,6 +39,8 @@ key_order = {
         'Root',
         'Misc',
         'Flashtool',
+        'Workstation/Flashtool',
+        'Workstation/Development',
         ], 
     'back': [ 
         'Customization/',

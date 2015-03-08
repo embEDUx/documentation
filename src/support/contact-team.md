@@ -5,7 +5,7 @@
 Member | Responsibilities
 --- | --- 
 [Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Builds/Evaluation: U-Boot, Linux, Toolchain
-Manuel Hieke | Flashtool
+[Manuel Hieke](mailto:mahieke90@googlemail.com) | Flashtool
 [Stefan Junker](mailto:code@stefanjunker.de) | Buildserver, RootFS
 
 ## IRC
