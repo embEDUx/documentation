@@ -15,11 +15,6 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       **embEDUx** build system.
 * Git Repository *uboot*
 * **Buildserver** setup for desired platform architecture
-* Required Software
-    * wget
-    * diff
-    * patch
-    * tar
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build

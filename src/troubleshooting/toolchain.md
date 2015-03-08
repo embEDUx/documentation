@@ -13,7 +13,7 @@ toolchain in this chapter.
     * wget
     * diff
     * patch
-
+    * tar
 
 ## Run the build script
 
