@@ -7,10 +7,12 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * User Documentation.
-
-    At the end of the setup, the Administrator is instructed to create the [User
+    * At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
-
+    * Your platform needs to be included in the [User
+      Documentation](../setup/post-install/user-documentation.md), if that isn't
+      the case, please contact an Administrator to add your platform to the
+      **embEDUx** build system.
 * Git Repository *uboot*
 * **Buildserver** setup for desired platform architecture
 * Required Software
@@ -21,7 +23,8 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.
+  configuration locally before you push it upstream. For further information
+  have a look at [Troubleshooting/Toolchain](../troubleshooting/toolchain.md).
 
 * Have a look at the default build scripts
   ([generic](usage/uboot/default/generic_build),
