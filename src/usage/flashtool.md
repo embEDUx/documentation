@@ -214,26 +214,28 @@ The name of a **recipe** file should follow this naming scheme:
 
 **The name and identifier must not contain underscores, please use dashes instead.**
 The *underscore* is used to divide the recipe file name in the two parts 
-hardware name and identifier. It is important, that the platform name is also 
-registered on the buildserver.
+*hardware name* and *identifier*. It is important, that the platform name is also 
+registered on the **buildserver**. You will find the valid platform-strings for
+your **embEDUx** system in the [User Documentation](../setup/post-install/user-documentation.md).
 
-The next example shows how to use this naming scheme for a Raspberry Pi.
+The next example shows how to use this name scheme for a Raspberry Pi. This
+name scheme is also used in the 
+[HTWG setup](../setup/examples/user-documentation-HTWG.md#platform-strings) of **embEDUx**.
 
 > raspberry-pi.yml
 >
 > raspberry-pi\_media_center.yml
 
-The name for a Rapsberry Pi in this embEDUx configuration is *"raspberry-pi"*.
+The name for a Rapsberry Pi in this **embEDUx** configuration is *"raspberry-pi"*.
 This name will be used in branches of the **git repositories** and on the
 **buildbot** server to identify a Raspberry Pi.
-
-The right name for the configured platforms can be found in the [User
-Documentation](../setup/post-install/user-documentation.md). 
 
 
 ### General structure of a recipe file
 
-Each recipe file must be structured like the example below.
+The recipe files for the **flashtool** are written in 
+[YAML-Syntax](http://yaml.org/). The next example shows the general structure
+of a recipe file.
 
 ```
 ---
@@ -250,12 +252,22 @@ recipe:
     # ...
 ```
 
-A recipe file must contain at least one recipe. 
+The `---` is necessary to indicate a *YAML-document*. The example shows that a
+recipe file can contain multiple *YAML-documents*. The must be at least one of
+it.
+Every *YAML-document* must contain a *type* keyword and a *recipe* keyword. The
+content of the *recipe* section depends on the selected type. This is shown
+in the next chapter.
 
 
 ### Recipe Types
 
-The next section will describe the existing recipe types.
+For the extensibility of the **flashtool**, we provide the possibility to define
+different recipe types. Each type must have its counterpart implemented in the
+python code of the **flashtool**. By now we support the *mmc* recipe type. This
+recipe type can handle the most deployment procedures for a wide range of
+embedded hardware. If you need to implement a new recipe type, please read the 
+development section for the **flashtool**.
 
 **MMC**:
 
