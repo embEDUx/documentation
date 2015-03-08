@@ -25,19 +25,19 @@ use the **Flashtool**.
 After [installing](../setup/workstation/flashtool.md) the **Flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
-`$ Flashtool init`
+`$ flashtool init`
 
 The tool needs a *working directory* which is set at the home directory
 by default. (***${HOME}/.Flashtool***) It can be set by the user with the option
 *-w | --working-dir*.
 
-`$ Flashtool -w /path/to/own/working_dir`
+`$ flashtool -w /path/to/own/working_dir`
 
 The tool will ask the user for some parameter to set, the next example shows
 this procedure:
 
 ```bash
-$ Flashtool init
+$ flashtool init
 Type in a value for
     [Buildbot]->server
 help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
@@ -75,7 +75,7 @@ help:   Local path where Flashtool should save downloaded products if option is 
 
 You can change these settings by calling the comand:
 
-`$ Flashtool config`
+`$ flashtool config`
 
 The tool will ask for each setting if you want to change the value or not.
 
@@ -92,17 +92,17 @@ there are provided some **recipe** files for different hardware.
 
 To get the **recipe** files from the repository for the Flashtool run the following command:
 
-`$ Flashtool platform_recipes init`
+`$ flashtool platform_recipes init`
 
 The **recipe** files will be stored at the directory ***{working\_directory}/platforms***.
 If there are new **recipes** on the repository you can get them with the command:
 
-`$ Flashtool platform_recipes update`
+`$ flashtool platform_recipes update`
 
 The given or created **recipe** files can be listed by the **Flashtool**.
 To do so type in:
 
-`$ Flashtool list_platforms`
+`$ flashtool list_platforms`
 
 This command will list all **recipe** files grouped by their prefix.
 ### List finished builds from the configured **Buildbot** server
@@ -111,7 +111,7 @@ The **Buildbot** server provides all needed products for an **embEDUx** system.
 All products for every configured platform can be listet by the **Flashtool** with
 the following command:
 
-`$ Flashtool list_builds`
+`$ flashtool list_builds`
 
 There are several options available for this command:
 
