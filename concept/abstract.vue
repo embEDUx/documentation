@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (abstract.vue) 2015-03-08 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Sun Mar 08 13:36:59 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Sun Mar 08 13:40:22 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="abstract.vue"
     created="1425815200920" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425818219358"
+    <resource referenceCreated="1425818422956" size="38441"
         spec="/home/lars/Documents/embedux/documentation/concept/abstract.vue"
         type="1" xsi:type="URLResource">
         <title>abstract.vue</title>
@@ -472,9 +472,9 @@
         <textColor>#000000</textColor>
         <font>Arial-plain-24</font>
         <URIString>http://vue.tufts.edu/rdf/resource/f96373a37f00000103c474b656deb35f</URIString>
-        <child ID="29" label="Distribution" created="1425815712912"
-            x="34.0" y="37.0" width="216.0" height="190.75"
-            strokeWidth="1.0" autoSized="true" xsi:type="node">
+        <child ID="29" label="Product" created="1425815712912" x="34.0"
+            y="37.0" width="216.0" height="190.75" strokeWidth="1.0"
+            autoSized="true" xsi:type="node">
             <fillColor>#FFC63B</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
