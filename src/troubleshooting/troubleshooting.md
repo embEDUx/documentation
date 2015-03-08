@@ -4,7 +4,7 @@
 ## Build Debugging
 
 ### Linux/Uboot
-* Test locally! (TODO Lars)
+* [Troubleshooting/Local Testing](local-testing.md)
 * Entering the build enviornment! (TODO Lars)
 
 ### RootFS
