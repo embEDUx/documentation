@@ -50,9 +50,9 @@ order to produce you own customized builds.
 The embEDUx build system been designed to build customized Linux distributions.
 These systems consist of distinct products, namely
 
-* **Linux**-Kernel
-* **Das U-Boot** Bootloader
-* **Root Filesystem**
+* Linux-Kernel
+* Das U-Boot Bootloader
+* Root Filesystem
 
 and finally some miscellaneous files and a toolchain to support the build
 process.
@@ -68,35 +68,48 @@ and the **embEDUx** tries to not take away flexibility with the provided
 solution. Therefore, a good understanding of the matter is needed and it is
 not possible to provide you with a static instruction list.
 
-Like every software system, the very basic topics are about its installation and
+Like every software system, the very basic topics are about its setup and
 its usage, here we go!
 
-### Setup = Installation + Post-Install
+### Setup
+If you already have access to a fully setup instance of the build system, you
+can skip this chapter. Otherwise, please follow the [Setup
+Instructions](setup/setup.md)
 
-#### Installation
-1. [setup embEDUx](setup/setup.md)
+### Post Install
+The post installation procedures will guide the Administrator trough creating
+toolchains and the user documentation. These are very important steps, because
+the objects are required by the user to use the buildsystem.
 
-    If you already have access to a fully setup instance of the build system,
-    you can skip this step. Otherwise, please follow the link!
-
-#### Post-Installation
-* [Toolchain](setup/post-install/toolchains.md)
+* [Toolchains](setup/post-install/toolchains.md)
 * [User Documentation](setup/post-install/user-documentation.md)
 
-### Usage = Build + Deploy
-The distribution will consist of the aforementioned products, of which
-you will have to build ***all*** in order to achieve the ultimate glory of a
-complete system for your target platform!
+### Usage
+The customized Linux distribution will consist of the aforementioned products,
+of which you will have to build ***all*** in order to achieve ultimate glory
+with a complete system for your target platform!
+
+#### Overview
+We strongly suggest that you have a look at the [usage
+overview](usage/usage.md). The overview will give you an idea of how the process
+of building a product looks like in a general sense.
 
 #### Build
+If you feel ready, please begin to **build your products**!
+
 * [U-Boot](usage/uboot.md) images
 * [Linux](usage/linux.md)-Kernel images and modules
 * [RootFS](usage/rootfs.md)-archives based on Gentoo
 
-#### Deploy
-In addition there is a [Flashtool](background/specs/flashtool.md) for easy deployment to hardware!
-More information on the deployment will be found at the end of the [usage
-overview](usage/usage.md#hardware-deployment)
 
-## [Architectural Design](background/design/architecture.md)
-[![](background/common/img/architectural_overview.png)](background/common/img/architectural_overview.png)
+Some platforms, e.g. the Raspberry Pi, require additional files that do not
+strictly belong to any of the three products from above. These miscellaneous
+files are stored in their very own repository which is handled separately.
+
+* [Misc](usage/misc.md)-archives based on Gentoo
+
+#### Deploy
+**embEDUx** ships a CLI-style [Flashtool](background/specs/flashtool.md) for
+easy deployment to your hardware!  More information and instructions for manual
+deployment shall be found at the end of the [usage
+overview](usage/usage.md#hardware-deployment)

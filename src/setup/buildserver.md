@@ -1,4 +1,4 @@
-# Buildserver Setup Installations
+# Buildserver Setup
 **(work in progress)**
 
 ## Hardware Requirements
@@ -23,7 +23,11 @@ Currently the setup routine supports
 * SSH Server
 * Docker (in case of Gentoo)
 
-
-## Suggestions
+### Suggestions
 * Allow SSH root-access via key authentication
-* Understand the [Background Information](../../background/background.md)
+* Understand the [Background Information](../background/background.md)
+
+## Setup parameters
+* hosts inventory
+* *buildmaster* configuration
+* *buildslave* mapping

@@ -20,3 +20,6 @@
 * SSH root-access to the docker host running the buildslave(s) in question
     * Allows the setup routine to access the target buildserver(s) without
       password
+
+## Installation of the Buildserver Setup Routine
+**(work in progress)**

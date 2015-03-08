@@ -4,7 +4,7 @@
 
 ## Maintenance
 ### Adding packages to buildslaves workspace
-* [Adding packages to buildslaves](customization/buildslaves-add-packages.md)
+* [Adding packages to buildslaves](buildserver/customize-buildslaves.md)
 
 ## Create The User-Documentation
 The last step is to create the documentation that will be necessary for the
