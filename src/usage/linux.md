@@ -15,11 +15,6 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       **embEDUx** build system.
 * Git Repository *linux*
 * **buildserver** setup for desired platform architecture
-* Required Software
-    * wget
-    * diff
-    * patch
-    * tar
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
@@ -125,6 +120,10 @@ PATCH_VERSION="3.18-9"
 ...
     ```
 
+1. Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
+
 1. Add your changes, commit and push them upstream.
    
     ```
@@ -212,6 +211,10 @@ total 8.0K
 -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
 -rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
+
+1. Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
 
 1. Add all changes, commit and push them upstream.
    

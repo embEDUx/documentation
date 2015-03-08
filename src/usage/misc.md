@@ -131,6 +131,9 @@ total 6.6M
 -rw-r--r-- 1 user user 3.5M Mar  2 19:53 start_x.elf
     ```
 
+1. Before you push your changes upstream, make sure your build script is running
+   without any errors!
+
 1. Add the changes, commit and push them upstream. 
    
     ```
