@@ -61,10 +61,6 @@
                         </li>
                     
                         <li >
-                            <a href="../guide/index.html">Guide</a>
-                        </li>
-                    
-                        <li >
                             <a href="../uboot/index.html">Uboot</a>
                         </li>
                     
@@ -260,6 +256,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../troubleshooting/toolchain/index.html">Toolchain</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
@@ -325,21 +325,31 @@ your desired platform.</p>
 <p>All of <a href="../usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>
-<p>User Documentation.</p>
-<p>At the end of the setup, the Administrator is instructed to create the <a href="../../setup/post-install/user-documentation/index.html">User
-Documentation</a>.</p>
+<li>User Documentation.<ul>
+<li>At the end of the setup, the Administrator is instructed to create the <a href="../../setup/post-install/user-documentation/index.html">User
+Documentation</a>.</li>
+<li>Your platform needs to be included in the <a href="../../setup/post-install/user-documentation/index.html">User
+  Documentation</a>, if that isn't
+  the case, please contact an Administrator to add your platform to the
+  <strong>embEDUx</strong> build system.</li>
+</ul>
 </li>
-<li>
-<p>Git Repository <em>linux</em></p>
-</li>
+<li>Git Repository <em>linux</em></li>
 <li><strong>buildserver</strong> setup for desired platform architecture</li>
+<li>Required Software<ul>
+<li>wget</li>
+<li>diff</li>
+<li>patch</li>
+<li>tar</li>
+</ul>
+</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
 <li>
 <p>Build/download a toolchain. This will allow you to test your build
-  configuration locally before you push it upstream.</p>
+  configuration locally before you push it upstream. For further information
+  have a look at <a href="../../troubleshooting/toolchain/index.html">Troubleshooting/Toolchain</a>.</p>
 </li>
 <li>
 <p>Have a look at the default build scripts

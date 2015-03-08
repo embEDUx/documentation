@@ -61,10 +61,6 @@
                         </li>
                     
                         <li >
-                            <a href="../guide/index.html">Guide</a>
-                        </li>
-                    
-                        <li >
                             <a href="../uboot/index.html">Uboot</a>
                         </li>
                     
@@ -257,6 +253,10 @@
                     
                         <li >
                             <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../troubleshooting/toolchain/index.html">Toolchain</a>
                         </li>
                     
                         <li >
@@ -581,20 +581,23 @@ to setup a platform.</p>
 <p>{hardware-name}_{identifier}.yml</p>
 <p><strong>The name and identifier must not contain underscores, please use dashes instead.</strong>
 The <em>underscore</em> is used to divide the recipe file name in the two parts 
-hardware name and identifier. It is important, that the platform name is also 
-registered on the buildserver.</p>
-<p>The next example shows how to use this naming scheme for a Raspberry Pi.</p>
+<em>hardware name</em> and <em>identifier</em>. It is important, that the platform name is also 
+registered on the <strong>buildserver</strong>. You will find the valid platform-strings for
+your <strong>embEDUx</strong> system in the <a href="../../setup/post-install/user-documentation/index.html">User Documentation</a>.</p>
+<p>The next example shows how to use this name scheme for a Raspberry Pi. This
+name scheme is also used in the 
+<a href="../../setup/examples/user-documentation-HTWG/index.html#platform-strings">HTWG setup</a> of <strong>embEDUx</strong>.</p>
 <blockquote>
 <p>raspberry-pi.yml</p>
 <p>raspberry-pi_media_center.yml</p>
 </blockquote>
-<p>The name for a Rapsberry Pi in this embEDUx configuration is <em>"raspberry-pi"</em>.
+<p>The name for a Rapsberry Pi in this <strong>embEDUx</strong> configuration is <em>"raspberry-pi"</em>.
 This name will be used in branches of the <strong>git repositories</strong> and on the
 <strong>buildbot</strong> server to identify a Raspberry Pi.</p>
-<p>The right name for the configured platforms can be found in the <a href="../../setup/post-install/user-documentation/index.html">User
-Documentation</a>. </p>
 <h3 id="general-structure-of-a-recipe-file">General structure of a recipe file</h3>
-<p>Each recipe file must be structured like the example below.</p>
+<p>The recipe files for the <strong>flashtool</strong> are written in 
+<a href="http://yaml.org/">YAML-Syntax</a>. The next example shows the general structure
+of a recipe file.</p>
 <pre><code>---
 type: # name of recipe type
 
@@ -609,9 +612,19 @@ recipe:
     # ...
 </code></pre>
 
-<p>A recipe file must contain at least one recipe. </p>
+<p>The <code>---</code> is necessary to indicate a <em>YAML-document</em>. The example shows that a
+recipe file can contain multiple <em>YAML-documents</em>. The must be at least one of
+it.
+Every <em>YAML-document</em> must contain a <em>type</em> keyword and a <em>recipe</em> keyword. The
+content of the <em>recipe</em> section depends on the selected type. This is shown
+in the next chapter.</p>
 <h3 id="recipe-types">Recipe Types</h3>
-<p>The next section will describe the existing recipe types.</p>
+<p>For the extensibility of the <strong>flashtool</strong>, we provide the possibility to define
+different recipe types. Each type must have its counterpart implemented in the
+python code of the <strong>flashtool</strong>. By now we support the <em>mmc</em> recipe type. This
+recipe type can handle the most deployment procedures for a wide range of
+embedded hardware. If you need to implement a new recipe type, please read the 
+development section for the <strong>flashtool</strong>.</p>
 <p><strong>MMC</strong>:</p>
 <p>This recipe type is used to configure platforms which use a mmc device as
 storage media. The template below shows, how to state this recipe in a recipe file.</p>

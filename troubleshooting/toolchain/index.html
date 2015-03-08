@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-        <title>Guide - embEDUx Project</title>
+        <title>Toolchain - embEDUx Project</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -48,48 +48,44 @@
             <ul class="nav navbar-nav">
             
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         <li >
-                            <a href="../usage/index.html">Overview</a>
+                            <a href="../../usage/usage/index.html">Overview</a>
                         </li>
                     
                         <li >
-                            <a href="../common/build-monitoring/index.html">Common/Build Monitoring</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="index.html">Guide</a>
+                            <a href="../../usage/common/build-monitoring/index.html">Common/Build Monitoring</a>
                         </li>
                     
                         <li >
-                            <a href="../uboot/index.html">Uboot</a>
+                            <a href="../../usage/uboot/index.html">Uboot</a>
                         </li>
                     
                         <li >
-                            <a href="../linux/index.html">Linux</a>
+                            <a href="../../usage/linux/index.html">Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../rootfs/index.html">Rootfs</a>
+                            <a href="../../usage/rootfs/index.html">Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                            <a href="../../usage/rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
                         </li>
                     
                         <li >
-                            <a href="../rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
+                            <a href="../../usage/rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
                         </li>
                     
                         <li >
-                            <a href="../misc/index.html">Misc</a>
+                            <a href="../../usage/misc/index.html">Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../flashtool/index.html">Flashtool</a>
+                            <a href="../../usage/flashtool/index.html">Flashtool</a>
                         </li>
                     
                     </ul>
@@ -251,16 +247,20 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Troubleshooting <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         <li >
-                            <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                            <a href="../troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Toolchain</a>
                         </li>
                     
                         <li >
-                            <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
+                            <a href="../rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
                         </li>
                     
                     </ul>
@@ -286,12 +286,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../common/build-monitoring/index.html">
+                    <a rel="next" href="../troubleshooting/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../uboot/index.html">
+                    <a rel="prev" href="../rootfs/entering-build-environment/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -305,90 +305,10 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#setup-embedux">Setup embEDUx</a></li>
-        
-    
-        <li class="main "><a href="#build-customized-linux-distribution">Build customized Linux distribution</a></li>
-        
-            <li><a href="#requirements">Requirements</a></li>
-        
-            <li><a href="#add-u-boot-for-platform">Add U-Boot for platform</a></li>
-        
-            <li><a href="#add-linux-kernel-for-platform">Add Linux kernel for platform</a></li>
-        
-            <li><a href="#add-rootfs-for-platform">Add RootFS for platform</a></li>
-        
-    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>You came here, because you probably just want to start to use the <strong>embEDUx</strong>
-build system. Unfortunately the system is so complex, we cannot provide you with
-a simple <em>quick start</em> guide.</p>
-<p>The following tree will guide you through all necessary steps. Once you reach
-the end of this page, you will have full customized linux distribution. That
-means you built your own <strong>U-Boot</strong>, <strong>Linux</strong> kernel and RootFS.</p>
-<p>Before you can actually start configuring and building, you need to setup the
-<strong>embEDUx</strong> build system.</p>
-<h2 id="setup-embedux">Setup embEDUx</h2>
-<p>... setup blablabla
-... user docu</p>
-<p>Congratulations, you or your Administrator did successfully setup the
-<strong>embEDUx</strong> build system.</p>
-<h2 id="build-customized-linux-distribution">Build customized Linux distribution</h2>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>
-<p>Installed <strong>embEDUx</strong> build system</p>
-<ul>
-<li>Did your Administrator provide you with the User Documentation?<ul>
-<li>Do you know the URL of your repositories</li>
-<li>Do you know the URL of the web interface for the <strong>Buildserver</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>User Documentation includes your platform</p>
-<ul>
-<li>Contact Administrator if not!</li>
-</ul>
-</li>
-</ul>
-<p>Great, you are ready to configure your customized <strong>Linux</strong> distribution. The
-first step is to configure and build a bootloader. We recommend and will for now
-officially only support <strong>U-Boot</strong>.</p>
-<h3 id="add-u-boot-for-platform">Add U-Boot for platform</h3>
-<p>There are two situations, that can ran into.</p>
-<ol>
-<li>
-<p>You are the first one building version 'abc' of <strong>U-Boot</strong> with <strong>embEDUx</strong></p>
-<p>GOTO Add upstream <strong>U-Boot</strong> version 'abc' </p>
-</li>
-<li>
-<p>Someone already built version 'abc' of <strong>U-Boot</strong> with <strong>embEDUx</strong>, but for a different
-  platform.</p>
-<p>GOTO Add platform for <strong>U-Boot</strong> version 'abc'</p>
-</li>
-</ol>
-<h3 id="add-linux-kernel-for-platform">Add Linux kernel for platform</h3>
-<p>There are two situations, that can ran into.</p>
-<ol>
-<li>
-<p>You are the first one building version 'abc' of <strong>Linux</strong> kernel with <strong>embEDUx</strong></p>
-<p>GOTO Add upstream <strong>Linux</strong> kernel version 'abc' </p>
-</li>
-<li>
-<p>Someone already built version 'abc' of <strong>Linux</strong> kernel with <strong>embEDUx</strong>, but for a different
-  platform.</p>
-<p>GOTO Add platform for <strong>Linux</strong> kernel version 'abc'</p>
-</li>
-</ol>
-<h3 id="add-rootfs-for-platform">Add RootFS for platform</h3>
-<p>As the RootFS is not dependent on the platforms hardware, but on the platforms
-architecture, adding a RootFS is quiet different, than adding <strong>U-Boot</strong> or
-<strong>Linux</strong> kernel.</p>
 </div>
         </div>
 
