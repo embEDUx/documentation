@@ -38,8 +38,17 @@ the needed repository.
   miss potential functionality or the potential to help yourself in case of
   problems.
 
-## Build Instructions
-1. Open **your** User Documentation
+## Submitting Build Instructions - Generic Overview
+These build instructions are an attempt to give a generic overview what
+the process of specifying build instructions to the buildserver looks like.
+
+Most of the steps in the work flow are basically the same for every product.
+However, a difference in occurs when building a RootFS: you will not be able to
+test the build locally before submitting your specification to the buildserver.
+In the context of these documents, the case of a locally installed build server
+is not understood as local testing.
+
+1. Locate and open **your** User Documentation
 
 1. Acquire the repository URL for the product you want to build.
 
@@ -68,21 +77,17 @@ the needed repository.
     * [Miscellaneous files](../usage/misc.md)
     * [Toolchains](../setup/post-install/toolchains.md)
 
-       The work flow is basically the same for every product. One major
-       difference in workflow occurs when building a RootFS. You will not be
-       able to test the build locally before submitting your specification to
-       the buildserver. The reason is the complex system that is needed to
-       assemble a RootFS. More information will follow in the [detailed section
-       for building the RootFS](../usage/rootfs.md).  For every other product,
-       toolchains and instructions are provided to quickly setup and test the
-       builds locally.
-
 
 1. Run `git add` and `git commit` according to your changes. Please use **sane
-   commit messages** to improve collaboration. The buildserver will pick up your
-   changes, schedule a build and execute it as soon as it can.
+   commit messages** to improve collaboration.
 
-1. Finally, run `git push` to upload your specification to the buildserver!
+1. Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   [Troubleshooting/Local Testing](../troubleshooting/local-testing.md)
+
+1. Finally, run `git push` to upload your specification to the buildserver!  The
+   buildserver will pick up your changes, schedule a build and execute it as
+   soon as it can.
 
 ## Monitor your builds
 In order to see the state of your running build, and also to check if it has
