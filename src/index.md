@@ -88,7 +88,7 @@ The distribution will consist of the aforementioned products, of which
 you will have to build ***all*** in order to achieve the ultimate glory of a
 complete system for your target platform!
 
-### Build
+#### Build
 * [U-Boot](usage/uboot.md) images
 * [Linux](usage/linux.md)-Kernel images and modules
 * [RootFS](usage/rootfs.md)-archives based on Gentoo
