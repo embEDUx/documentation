@@ -327,7 +327,7 @@ recipe:
       * ***size***:
 
         Size of the partition. The used units are b (byte), kb (kilobyte), mb
-        (megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
+        (megabyte), gb (gigabyte) and %. It is also possible to use the keyword
         *max* for the last stated partition. If you want to state the size of the
         partion in percentage, please use the percentage notation for each
         partition.
