@@ -2,6 +2,8 @@
 This document will give you pointers at anything you need to know for building
 and deploying the various products for a specific platform.
 
+[![Abstract](img/abstract.png)](img/abstract.png)
+
 ## Prerequisites
 The following requirements are common to the build procedures of all products.
 Please make sure that you and your systems fulfill the given requirements before
@@ -36,7 +38,6 @@ the needed repository.
   miss potential functionality or the potential to help yourself in case of
   problems.
 
-
 ## Build Instructions
 1. Open **your** User Documentation
 
@@ -62,10 +63,10 @@ the needed repository.
    each product, it's necessary to separate the instructions into distinct
    sections. Please follow the instructions given in the detailed sections:
     * [U-Boot](../usage/uboot.md)
-    * [Toolchains](../setup/post-install/toolchains.md)
     * [Linux](../usage/linux.md)
     * [RootFS](../usage/rootfs.md)
     * [Miscellaneous files](../usage/misc.md)
+    * [Toolchains](../setup/post-install/toolchains.md)
 
        The work flow is basically the same for every product. One major
        difference in workflow occurs when building a RootFS. You will not be

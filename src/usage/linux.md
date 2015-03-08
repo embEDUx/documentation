@@ -13,6 +13,11 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 * Git Repository *linux*
 * **buildserver** setup for desired platform architecture
+* Required Software
+    * wget
+    * diff
+    * patch
+    * tar
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
