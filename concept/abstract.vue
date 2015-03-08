@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (abstract.vue) 2015-03-08 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Sun Mar 08 18:17:45 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Sun Mar 08 18:19:18 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="abstract.vue"
     created="1425815200920" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425835066062" size="36906"
+    <resource referenceCreated="1425835158677" size="36874"
         spec="/home/lars/Documents/embedux/documentation/concept/abstract.vue"
         type="1" xsi:type="URLResource">
         <title>abstract.vue</title>
@@ -455,7 +455,7 @@
         <ctrlPoint0 x="598.5" y="103.53677" xsi:type="point"/>
     </child>
     <child ID="89" label="Flashtool" layerID="1" created="1425817900924"
-        x="-388.0" y="-169.4632" width="204.0" height="186.0625"
+        x="-388.0" y="-169.4632" width="204.0" height="163.5625"
         strokeWidth="1.0" autoSized="false" xsi:type="node">
         <fillColor>#C1F780</fillColor>
         <strokeColor>#000000</strokeColor>
@@ -563,7 +563,7 @@
         <ID2 xsi:type="node">8</ID2>
     </child>
     <child ID="91" label="uses" layerID="1" created="1425817948381"
-        x="-301.79413" y="16.099365" width="121.29413" height="77.25694"
+        x="-299.5498" y="-6.400635" width="119.049805" height="99.75694"
         strokeWidth="1.0" autoSized="false" controlCount="1"
         arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
@@ -571,7 +571,7 @@
         <font>Arial-plain-11</font>
         <URIString>http://vue.tufts.edu/rdf/resource/f96373b57f00000103c474b6c1512a5f</URIString>
         <point1 x="-181.0" y="92.85631"/>
-        <point2 x="-300.468" y="16.599365"/>
+        <point2 x="-297.9018" y="-5.900635"/>
         <ID1 xsi:type="node">73</ID1>
         <ID2 xsi:type="node">89</ID2>
         <ctrlPoint0 x="-311.5" y="87.53677" xsi:type="point"/>
