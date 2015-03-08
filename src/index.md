@@ -108,7 +108,7 @@ Some platforms, e.g. the Raspberry Pi, require additional files that do not
 strictly belong to any of the three products from above. These miscellaneous
 files are stored in their very own repository which is handled separately.
 
-* [Misc](usage/misc.md)-archives based on Gentoo
+* [Misc](usage/misc.md)-archives
 
 #### Deploy
 **embEDUx** ships a CLI-style [Flashtool](background/specs/flashtool.md) for
