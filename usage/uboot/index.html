@@ -256,7 +256,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../troubleshooting/toolchain/index.html">Toolchain</a>
+                            <a href="../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
                         <li >
@@ -340,20 +340,13 @@ Documentation</a>.</li>
 </li>
 <li>Git Repository <em>uboot</em></li>
 <li><strong>Buildserver</strong> setup for desired platform architecture</li>
-<li>Required Software<ul>
-<li>wget</li>
-<li>diff</li>
-<li>patch</li>
-<li>tar</li>
-</ul>
-</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
 <li>
 <p>Build/download a toolchain. This will allow you to test your build
   configuration locally before you push it upstream. For further information
-  have a look at <a href="../../troubleshooting/toolchain/index.html">Troubleshooting/Toolchain</a>.</p>
+  have a look at <a href="../../troubleshooting/local-testing/index.html">Troubleshooting/Toolchain</a>.</p>
 </li>
 <li>
 <p>Have a look at the default build scripts
@@ -478,6 +471,11 @@ UBOOT_FILE="u-boot-2015.01.tar.bz2"
 ...</code></p>
 </li>
 <li>
+<p>Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   <a href="../../troubleshooting/local-testing/index.html">Troubleshooting/Toolchain</a></p>
+</li>
+<li>
 <p>Add your changes, commit and push them upstream.</p>
 <p><code>$ git add build
 $ git commit -m "new uboot 2015.01"
@@ -534,6 +532,11 @@ FIRMWARE_IMG="u-boot.bin"
    script. They will be called before and after the output is packed. For
    further information check <a href="../../background/specs/uboot/index.html">background/specs/uboot</a> or have
    a look at the <a href="../../usage/uboot/default/platform_build">default build script</a>.</p>
+</li>
+<li>
+<p>Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   <a href="../../troubleshooting/local-testing/index.html">Troubleshooting/Toolchain</a></p>
 </li>
 <li>
 <p>Add all changes, commit and push them upstream.</p>

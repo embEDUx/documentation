@@ -256,7 +256,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../troubleshooting/toolchain/index.html">Toolchain</a>
+                            <a href="../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
                         <li >
@@ -311,7 +311,7 @@
         
             <li><a href="#suggestions">Suggestions</a></li>
         
-            <li><a href="#build-instructions">Build Instructions</a></li>
+            <li><a href="#submitting-build-instructions">Submitting Build Instructions</a></li>
         
             <li><a href="#monitor-your-builds">Monitor your builds</a></li>
         
@@ -357,10 +357,19 @@ the needed repository.</p>
   miss potential functionality or the potential to help yourself in case of
   problems.</li>
 </ul>
-<h2 id="build-instructions">Build Instructions</h2>
+<h2 id="submitting-build-instructions">Submitting Build Instructions</h2>
+<p>These build instructions are an attempt to give a generic overview for
+submitting build instructions to the buildserver. </p>
+<h3 id="local-testing-notes">Local Testing Notes</h3>
+<p>Most of the steps in the work flow are basically the same for every product.
+However, a difference occurs when building the RootFS: you will not be able to
+test the build locally before submitting your specification to the buildserver.
+In this context, a locally installed build server is not understood as local
+testing.</p>
+<h3 id="generic-overview">Generic Overview</h3>
 <ol>
 <li>
-<p>Open <strong>your</strong> User Documentation</p>
+<p>Locate and open <strong>your</strong> User Documentation</p>
 </li>
 <li>
 <p>Acquire the repository URL for the product you want to build.</p>
@@ -395,22 +404,21 @@ the needed repository.</p>
 <li><a href="../misc/index.html">Miscellaneous files</a></li>
 <li><a href="../../setup/post-install/toolchains/index.html">Toolchains</a></li>
 </ul>
-<p>The work flow is basically the same for every product. One major
-   difference in workflow occurs when building a RootFS. You will not be
-   able to test the build locally before submitting your specification to
-   the buildserver. The reason is the complex system that is needed to
-   assemble a RootFS. More information will follow in the <a href="../rootfs/index.html">detailed section
-   for building the RootFS</a>.  For every other product,
-   toolchains and instructions are provided to quickly setup and test the
-   builds locally.</p>
 </li>
 <li>
 <p>Run <code>git add</code> and <code>git commit</code> according to your changes. Please use <strong>sane
-   commit messages</strong> to improve collaboration. The buildserver will pick up your
-   changes, schedule a build and execute it as soon as it can.</p>
+   commit messages</strong> to improve collaboration.</p>
 </li>
 <li>
-<p>Finally, run <code>git push</code> to upload your specification to the buildserver!</p>
+<p>Local Testing <em>(this step does not apply for the RootFS)</em></p>
+<p>Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   <a href="../../troubleshooting/local-testing/index.html">Troubleshooting/Local Testing</a></p>
+</li>
+<li>
+<p>Finally, run <code>git push</code> to upload your specification to the buildserver!  The
+   buildserver will pick up your changes, schedule a build and execute it as
+   soon as it can.</p>
 </li>
 </ol>
 <h2 id="monitor-your-builds">Monitor your builds</h2>

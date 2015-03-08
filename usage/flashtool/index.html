@@ -256,7 +256,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../troubleshooting/toolchain/index.html">Toolchain</a>
+                            <a href="../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
                         <li >
@@ -326,10 +326,10 @@
 <p>This guide will help you through the several commands you need to deploy builds
 from the <em>buildserver</em> to hardware.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>The flashtool must be installed on your system. Please read the <a href="../../setup/workstation/flashtool/index.html">setup
-chapter</a> of the <strong>flashtool</strong>.</p>
+<p>The Flashtool must be installed on your system. Please read the <a href="../../setup/workstation/flashtool/index.html">setup
+chapter</a> of the <strong>Flashtool</strong>.</p>
 <p>Also a successful <a href="../../setup/setup/index.html">setup of the buildserver</a> is required to
-use the <strong>flashtool</strong>.</p>
+use the <strong>Flashtool</strong>.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li>
@@ -342,16 +342,16 @@ Documentation</a>.</p>
 </li>
 </ul>
 <h2 id="getting-started">Getting started</h2>
-<p>After <a href="../../setup/workstation/flashtool/index.html">installing</a> the <strong>flashtool</strong> on a linux system it
+<p>After <a href="../../setup/workstation/flashtool/index.html">installing</a> the <strong>Flashtool</strong> on a linux system it
 has to be configured first. To do so, type in the following command:</p>
-<p><code>$ flashtool init</code></p>
+<p><code>$ Flashtool init</code></p>
 <p>The tool needs a <em>working directory</em> which is set at the home directory
-by default. (<strong><em>${HOME}/.flashtool</em></strong>) It can be set by the user with the option
+by default. (<strong><em>${HOME}/.Flashtool</em></strong>) It can be set by the user with the option
 <em>-w | --working-dir</em>.</p>
-<p><code>$ flashtool -w /path/to/own/working_dir</code></p>
+<p><code>$ Flashtool -w /path/to/own/working_dir</code></p>
 <p>The tool will ask the user for some parameter to set, the next example shows
 this procedure:</p>
-<pre><code class="bash">$ flashtool init
+<pre><code class="bash">$ Flashtool init
 Type in a value for
     [Buildbot]-&gt;server
 help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
@@ -383,34 +383,34 @@ help:   Directory where the user can save own recipe files.
 
 Type in a value for
     [Local]-&gt;products
-help:   Local path where flashtool should save downloaded products if option is selected.
+help:   Local path where Flashtool should save downloaded products if option is selected.
 : |
 </code></pre>
 
 <p>You can change these settings by calling the comand:</p>
-<p><code>$ flashtool config</code></p>
+<p><code>$ Flashtool config</code></p>
 <p>The tool will ask for each setting if you want to change the value or not.</p>
 <h2 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h2>
 <p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declare how to deploy a
 system on a platform (e.g. Raspberry Pi) and how to setup the platform. You 
 find more information about <strong>recipe</strong> file in chapter 
 <a href="#recipe-files">Recipe files</a>.</p>
-<p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git</strong>
+<p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git</strong>
 there are provided some <strong>recipe</strong> files for different hardware.</p>
-<p>To get the <strong>recipe</strong> files from the repository for the flashtool run the following command:</p>
-<p><code>$ flashtool platform_recipes init</code></p>
+<p>To get the <strong>recipe</strong> files from the repository for the Flashtool run the following command:</p>
+<p><code>$ Flashtool platform_recipes init</code></p>
 <p>The <strong>recipe</strong> files will be stored at the directory <strong><em>{working_directory}/platforms</em></strong>.
 If there are new <strong>recipes</strong> on the repository you can get them with the command:</p>
-<p><code>$ flashtool platform_recipes update</code></p>
-<p>The given or created <strong>recipe</strong> files can be listed by the <strong>flashtool</strong>.
+<p><code>$ Flashtool platform_recipes update</code></p>
+<p>The given or created <strong>recipe</strong> files can be listed by the <strong>Flashtool</strong>.
 To do so type in:</p>
-<p><code>$ flashtool list_platforms</code></p>
+<p><code>$ Flashtool list_platforms</code></p>
 <p>This command will list all <strong>recipe</strong> files grouped by their prefix.</p>
 <h3 id="list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</h3>
 <p>The <strong>Buildbot</strong> server provides all needed products for an <strong>embEDUx</strong> system.
-All products for every configured platform can be listet by the <strong>flashtool</strong> with
+All products for every configured platform can be listet by the <strong>Flashtool</strong> with
 the following command:</p>
-<p><code>$ flashtool list_builds</code></p>
+<p><code>$ Flashtool list_builds</code></p>
 <p>There are several options available for this command:</p>
 <table>
 <thead>
@@ -456,12 +456,12 @@ the following command:</p>
 <h2 id="setup-hardware-and-deploy-system-on-hardware">Setup Hardware and deploy system on Hardware</h2>
 <p><strong>Attention: the setup routine only allows to setup platforms which use a mmc
 device as storage media. Support for other storage media must be implemented.</strong>
-If you want to implement new features to the <strong>flashtool</strong>, please consider
-reading the development section for the <strong>flashtool</strong>. The new functionality
+If you want to implement new features to the <strong>Flashtool</strong>, please consider
+reading the development section for the <strong>Flashtool</strong>. The new functionality
 must be triggered by a recipe file an must be explained in the <a href="#recipe-files">recipe
 files</a> chapter.</p>
 <p>This setup procedure requires an exisiting <a href="#How_to_write_a_recipe_file">recipe</a> 
-file. The basic command for this procedure is <code>flashtool setup</code>.</p>
+file. The basic command for this procedure is <code>Flashtool setup</code>.</p>
 <p><strong>Important: You need access rights for reading and writing on a mmc device and
 mounting a mmc device</strong></p>
 <h3 id="parameters">Parameters</h3>
@@ -505,7 +505,7 @@ below will explain all parameters:</p>
 <tr>
 <td>-L, --Local</td>
 <td>-</td>
-<td>If set, all downloaded files will be stored at the directory which is configured in the <strong>flashtool</strong> configuration.</td>
+<td>If set, all downloaded files will be stored at the directory which is configured in the <strong>Flashtool</strong> configuration.</td>
 </tr>
 </tbody>
 </table>
@@ -513,7 +513,7 @@ below will explain all parameters:</p>
 <li>Product Group 1 [linux, uboot, misc]:</li>
 </ul>
 <p>The argument of an option will be interpreted as <em>Regex</em> string *{string}.*.
-If this string matches for multiple files the <strong>flashtool</strong> will handle this
+If this string matches for multiple files the <strong>Flashtool</strong> will handle this
 situation dependent to the -a/--auto flag (see description above). The default
 value for each option will match all files.</p>
 <p><strong>Important: All three options must be stated or none of them.</strong></p>
@@ -571,7 +571,7 @@ each recipe file. But in general there is a preparation step and a load step for
 each recipe. These steps differ dependent on the type of recipe. The user will
 be guided through the setup steps. If the "auto" flag is set all steps which do
 not need an input from the user, will be selected with a default value.</p>
-<p>To avoid user mistakes the <strong>flashtool</strong> will prompt if the user want to proceed
+<p>To avoid user mistakes the <strong>Flashtool</strong> will prompt if the user want to proceed
 with the setup procedure.</p>
 <h2 id="recipe-files">Recipe files</h2>
 <p>Recipe files are important for the setup procedure. The user can configure, how
@@ -595,10 +595,10 @@ name scheme is also used in the
 This name will be used in branches of the <strong>git repositories</strong> and on the
 <strong>buildbot</strong> server to identify a Raspberry Pi.</p>
 <h3 id="general-structure-of-a-recipe-file">General structure of a recipe file</h3>
-<p>The recipe files for the <strong>flashtool</strong> are written in 
+<p>The recipe files for the <strong>Flashtool</strong> are written in 
 <a href="http://yaml.org/">YAML-Syntax</a>. The next example shows the general structure
 of a recipe file.</p>
-<pre><code>---
+<pre><code class="yaml">---
 type: # name of recipe type
 
 recipe: 
@@ -619,16 +619,18 @@ Every <em>YAML-document</em> must contain a <em>type</em> keyword and a <em>reci
 content of the <em>recipe</em> section depends on the selected type. This is shown
 in the next chapter.</p>
 <h3 id="recipe-types">Recipe Types</h3>
-<p>For the extensibility of the <strong>flashtool</strong>, we provide the possibility to define
+<p>For the extensibility of the <strong>Flashtool</strong>, we provide the possibility to define
 different recipe types. Each type must have its counterpart implemented in the
-python code of the <strong>flashtool</strong>. By now we support the <em>mmc</em> recipe type. This
+python code of the <strong>Flashtool</strong>. By now we support the <em>mmc</em> recipe type. This
 recipe type can handle the most deployment procedures for a wide range of
 embedded hardware. If you need to implement a new recipe type, please read the 
-development section for the <strong>flashtool</strong>.</p>
+development section for the <strong>Flashtool</strong>.</p>
 <p><strong>MMC</strong>:</p>
 <p>This recipe type is used to configure platforms which use a mmc device as
 storage media. The template below shows, how to state this recipe in a recipe file.</p>
-<pre><code>type: mmc
+<pre><code class="yaml">---
+
+type: mmc
 
 recipe:
     partition_table: #partition table type
@@ -685,7 +687,7 @@ partition.</p>
 </li>
 <li>
 <p><strong><em>fs_type</em></strong>:</p>
-<p>Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
+<p>Filesystem type of the system. The <strong>Flashtool</strong> supports ext2, ext3, ext4,
 fat32 and btrfs.</p>
 </li>
 <li>
@@ -700,8 +702,8 @@ system.</p>
 </li>
 <li>
 <p><strong><em>flags</em></strong>:</p>
-<p>Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
-a comma.</p>
+<p>Flag for the partition. e.g. <em>boot</em>, <em>lba</em>. Multiple flags must be seperated 
+with a comma.</p>
 </li>
 </ul>
 </li>

@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-        <title>Toolchain - embEDUx Project</title>
+        <title>Local Testing - embEDUx Project</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -256,7 +256,7 @@
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Toolchain</a>
+                            <a href="index.html">Local Testing</a>
                         </li>
                     
                         <li >
@@ -305,10 +305,56 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#local-testing">Local Testing</a></li>
+        
+            <li><a href="#requirements">Requirements</a></li>
+        
+            <li><a href="#run-the-build-script">Run the build script</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="local-testing">Local Testing</h1>
+<p>Sometimes it is necessary to test your build scripts locally on your machine. As
+most of the time your target platform is a different platform than your host
+machine, you need to use a cross toolchain. You will learn how to use the
+toolchain in this chapter.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Toolchain Download URL from User Documentation</li>
+<li>Necessary software to run the build script<ul>
+<li>Git</li>
+<li>wget</li>
+<li>diff</li>
+<li>patch</li>
+<li>tar</li>
+</ul>
+</li>
+</ul>
+<h2 id="run-the-build-script">Run the build script</h2>
+<p>There are a couple of steps required to execute your script with the toolchain.</p>
+<ol>
+<li>
+<p>Download the proper toolchain for your platform with the URL provided in the
+   User Documentation.</p>
+</li>
+<li>
+<p>Following environment variables are needed</p>
+<p><code>$ export ARCH=&lt; architecture \&gt;
+$ export CROSS_COMPILE=&lt; paht to toolchain/bin/xxx- \&gt;
+$ export EMBEDUX_TMP=&lt; tmp-path-to-store-files \&gt;</code></p>
+</li>
+<li>
+<p>Execute the build script</p>
+<p><code>$ ./build</code></p>
+</li>
+</ol>
+<p>Any errors that occur during the build process should be fixed before you push
+the build script upstream! If you build script runs locally, it should also run
+on the buildserver. Please test the script locally, and confirm it works, before
+you contact an Administrator.</p>
 </div>
         </div>
 
