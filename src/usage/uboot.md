@@ -7,16 +7,19 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
 * User Documentation.
-
-    At the end of the setup, the Administrator is instructed to create the [User
+    * At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
-
+    * Your platform needs to be included in the [User
+      Documentation](../setup/post-install/user-documentation.md), if that isn't
+      the case, please contact an Administrator to add your platform to the
+      **embEDUx** build system.
 * Git Repository *uboot*
 * **Buildserver** setup for desired platform architecture
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.
+  configuration locally before you push it upstream. For further information
+  have a look at [Troubleshooting/Toolchain](../troubleshooting/toolchain.md).
 
 * Have a look at the default build scripts
   ([generic](usage/uboot/default/generic_build),
@@ -107,6 +110,10 @@ UBOOT_FILE="u-boot-2015.01.tar.bz2"
 ...
     ```
 
+1. Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
+
 1. Add your changes, commit and push them upstream.
    
     ```
@@ -172,6 +179,10 @@ FIRMWARE_IMG="u-boot.bin"
    script. They will be called before and after the output is packed. For
    further information check [background/specs/uboot](../background/specs/uboot.md) or have
    a look at the [default build script](usage/uboot/default/platform_build).
+
+1. Before you push your changes upstream, make sure the build script is running
+   without any errors. If you need help, have a look at
+   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
 
 1. Add all changes, commit and push them upstream.
    
