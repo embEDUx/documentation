@@ -5,11 +5,11 @@ from the *buildserver* to hardware.
 
 ## Prerequisites
 
-The flashtool must be installed on your system. Please read the [setup
-chapter](../setup/workstation/flashtool.md) of the **flashtool**.
+The Flashtool must be installed on your system. Please read the [setup
+chapter](../setup/workstation/Flashtool.md) of the **Flashtool**.
 
 Also a successful [setup of the buildserver](../setup/setup.md) is required to
-use the **flashtool**.
+use the **Flashtool**.
 
 ### Requirements
 
@@ -22,22 +22,22 @@ use the **flashtool**.
 
 ## Getting started
 
-After [installing](../setup/workstation/flashtool.md) the **flashtool** on a linux system it
+After [installing](../setup/workstation/Flashtool.md) the **Flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
-`$ flashtool init`
+`$ Flashtool init`
 
 The tool needs a *working directory* which is set at the home directory
-by default. (***${HOME}/.flashtool***) It can be set by the user with the option
+by default. (***${HOME}/.Flashtool***) It can be set by the user with the option
 *-w | --working-dir*.
 
-`$ flashtool -w /path/to/own/working_dir`
+`$ Flashtool -w /path/to/own/working_dir`
 
 The tool will ask the user for some parameter to set, the next example shows
 this procedure:
 
 ```bash
-$ flashtool init
+$ Flashtool init
 Type in a value for
     [Buildbot]->server
 help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
@@ -69,13 +69,13 @@ help:   Directory where the user can save own recipe files.
 
 Type in a value for
     [Local]->products
-help:   Local path where flashtool should save downloaded products if option is selected.
+help:   Local path where Flashtool should save downloaded products if option is selected.
 : |
 ```
 
 You can change these settings by calling the comand:
 
-`$ flashtool config`
+`$ Flashtool config`
 
 The tool will ask for each setting if you want to change the value or not.
 
@@ -87,31 +87,31 @@ system on a platform (e.g. Raspberry Pi) and how to setup the platform. You
 find more information about **recipe** file in chapter 
 [Recipe files](#recipe-files).
 
-On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/flashtool_config.git**
+On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git**
 there are provided some **recipe** files for different hardware.
 
-To get the **recipe** files from the repository for the flashtool run the following command:
+To get the **recipe** files from the repository for the Flashtool run the following command:
 
-`$ flashtool platform_recipes init`
+`$ Flashtool platform_recipes init`
 
 The **recipe** files will be stored at the directory ***{working\_directory}/platforms***.
 If there are new **recipes** on the repository you can get them with the command:
 
-`$ flashtool platform_recipes update`
+`$ Flashtool platform_recipes update`
 
-The given or created **recipe** files can be listed by the **flashtool**.
+The given or created **recipe** files can be listed by the **Flashtool**.
 To do so type in:
 
-`$ flashtool list_platforms`
+`$ Flashtool list_platforms`
 
 This command will list all **recipe** files grouped by their prefix.
 ### List finished builds from the configured **Buildbot** server
 
 The **Buildbot** server provides all needed products for an **embEDUx** system.
-All products for every configured platform can be listet by the **flashtool** with
+All products for every configured platform can be listet by the **Flashtool** with
 the following command:
 
-`$ flashtool list_builds`
+`$ Flashtool list_builds`
 
 There are several options available for this command:
 
@@ -129,13 +129,13 @@ There are several options available for this command:
 
 **Attention: the setup routine only allows to setup platforms which use a mmc
 device as storage media. Support for other storage media must be implemented.**
-If you want to implement new features to the **flashtool**, please consider
-reading the development section for the **flashtool**. The new functionality
+If you want to implement new features to the **Flashtool**, please consider
+reading the development section for the **Flashtool**. The new functionality
 must be triggered by a recipe file an must be explained in the [recipe
 files](#recipe-files) chapter.
 
 This setup procedure requires an exisiting [recipe](#How_to_write_a_recipe_file) 
-file. The basic command for this procedure is `flashtool setup`.
+file. The basic command for this procedure is `Flashtool setup`.
 
 **Important: You need access rights for reading and writing on a mmc device and
 mounting a mmc device**
@@ -159,13 +159,13 @@ below will explain all parameters:
  Parameter | Argument[s] | Description
  --------- | ----------- | -----------
  -a, --auto |     -      | If an argument for a product matches for multiple files, the system, will fetch the latest file of a product in lexicographical order. Otherwise the user will be prompted to select a specific file.
- -L, --Local |    -      | If set, all downloaded files will be stored at the directory which is configured in the **flashtool** configuration.
+ -L, --Local |    -      | If set, all downloaded files will be stored at the directory which is configured in the **Flashtool** configuration.
 
 
 * Product Group 1 [linux, uboot, misc]:
 
 The argument of an option will be interpreted as *Regex* string \*{string}.\*.
-If this string matches for multiple files the **flashtool** will handle this
+If this string matches for multiple files the **Flashtool** will handle this
 situation dependent to the -a/--auto flag (see description above). The default
 value for each option will match all files.
 
@@ -197,7 +197,7 @@ each recipe. These steps differ dependent on the type of recipe. The user will
 be guided through the setup steps. If the "auto" flag is set all steps which do
 not need an input from the user, will be selected with a default value.
 
-To avoid user mistakes the **flashtool** will prompt if the user want to proceed
+To avoid user mistakes the **Flashtool** will prompt if the user want to proceed
 with the setup procedure.
 
 
@@ -233,11 +233,11 @@ This name will be used in branches of the **git repositories** and on the
 
 ### General structure of a recipe file
 
-The recipe files for the **flashtool** are written in 
+The recipe files for the **Flashtool** are written in 
 [YAML-Syntax](http://yaml.org/). The next example shows the general structure
 of a recipe file.
 
-```
+```yaml
 ---
 type: # name of recipe type
 
@@ -262,12 +262,12 @@ in the next chapter.
 
 ### Recipe Types
 
-For the extensibility of the **flashtool**, we provide the possibility to define
+For the extensibility of the **Flashtool**, we provide the possibility to define
 different recipe types. Each type must have its counterpart implemented in the
-python code of the **flashtool**. By now we support the *mmc* recipe type. This
+python code of the **Flashtool**. By now we support the *mmc* recipe type. This
 recipe type can handle the most deployment procedures for a wide range of
 embedded hardware. If you need to implement a new recipe type, please read the 
-development section for the **flashtool**.
+development section for the **Flashtool**.
 
 **MMC**:
 
@@ -275,7 +275,9 @@ This recipe type is used to configure platforms which use a mmc device as
 storage media. The template below shows, how to state this recipe in a recipe file.
 
 
-```
+```yaml
+---
+
 type: mmc
 
 recipe:
@@ -332,7 +334,7 @@ recipe:
 
       * ***fs_type***:
 
-        Filesystem type of the system. The flashtool supports ext2, ext3, ext4,
+        Filesystem type of the system. The **Flashtool** supports ext2, ext3, ext4,
         fat32 and btrfs.
 
       * ***mount_point***:
@@ -347,8 +349,8 @@ recipe:
 
       * ***flags***:
 
-        Flag for the partition. e.g. boot, lba. Multiple flags mus be seperated with
-        a comma.
+        Flag for the partition. e.g. *boot*, *lba*. Multiple flags must be seperated 
+        with a comma.
 
 * ***load***:
 
