@@ -305,11 +305,94 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#design-of-a-deployment-tool-flashtool">Design of a deployment tool - Flashtool</a></li>
+        
+            <li><a href="#programming-language">Programming language</a></li>
+        
+            <li><a href="#requirements-of-the-flashtool">Requirements of the Flashtool</a></li>
+        
+            <li><a href="#features">Features</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>TODO</p>
+<h1 id="design-of-a-deployment-tool-flashtool">Design of a deployment tool - <strong>Flashtool</strong></h1>
+<p>Deploying systems built with the <strong>embEDUx</strong> system should be done really easy for
+the user. Therefore a tool should be developed which automates the several steps
+of the deployment procedure. It seemed obvious to call this tool "<strong>Flashtool</strong>"
+due to the fact that most of the embedded devices uses flash memories to store
+their operating system and files.</p>
+<h2 id="programming-language">Programming language</h2>
+<p>One of the first decisions which were made for the tool was to choose <em>python</em>
+as programming language. Python is a script language which is easy to learn,
+highly productive, has a nice syntax and provides plenty of packages and 
+libraries. It is also an often used language and will run on every Linux system.</p>
+<h2 id="requirements-of-the-flashtool">Requirements of the <strong>Flashtool</strong></h2>
+<p>There are basic tasks which must be fulfilled by the <strong>Flashtool</strong>:</p>
+<ol>
+<li>set and change url to <em>buildserver</em> web interface</li>
+<li>easy configuration setup for the <em>Flashtool</em></li>
+<li>provide easy configuration of a platform deployment routine (recipes)</li>
+<li>
+<p>retrieve software components form the <em>buildserver</em></p>
+<ul>
+<li>list software components for a platform</li>
+<li>filter or select specific software versions</li>
+</ul>
+</li>
+<li>
+<p>extensibility of the <em>Flashtool</em></p>
+<ul>
+<li>adding deployment routines</li>
+<li>adding new configuration options</li>
+</ul>
+</li>
+<li>
+<p>recognition of plugged in hardware</p>
+</li>
+<li>easy to use</li>
+</ol>
+<h2 id="features">Features</h2>
+<p>The table below shows a quick overview of the features of the <strong>Flashtool</strong>.
+A detailed description of the command can be found in the <a href="../../../usage/flashtool/index.html">usage
+section</a> of the <strong>Flashtool</strong></p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init / config</td>
+<td>Configure needed options for the <strong>Flashtool</strong>. Must be done as first step (init) and can be changed any time (config)</td>
+</tr>
+<tr>
+<td>platform_recipes</td>
+<td>Get or update platform recipes from git repository</td>
+</tr>
+<tr>
+<td>list_platforms</td>
+<td>Shows which platforms have a recipe file and can be set up</td>
+</tr>
+<tr>
+<td>list_builds</td>
+<td>List all versions of software components on the platform, grouped by platform and product type</td>
+</tr>
+<tr>
+<td>setup</td>
+<td>runs a deployment procedure for the specified platform</td>
+</tr>
+<tr>
+<td>check_mmc</td>
+<td>Does a filesystem check on every partition on a mmc media</td>
+</tr>
+</tbody>
+</table>
+<p>## Structure of the <strong>Flashtool</strong></p>
 </div>
         </div>
 

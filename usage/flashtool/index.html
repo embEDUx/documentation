@@ -344,14 +344,14 @@ Documentation</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>After <a href="../../setup/workstation/flashtool/index.html">installing</a> the <strong>Flashtool</strong> on a linux system it
 has to be configured first. To do so, type in the following command:</p>
-<p><code>$ Flashtool init</code></p>
+<p><code>$ flashtool init</code></p>
 <p>The tool needs a <em>working directory</em> which is set at the home directory
 by default. (<strong><em>${HOME}/.Flashtool</em></strong>) It can be set by the user with the option
 <em>-w | --working-dir</em>.</p>
-<p><code>$ Flashtool -w /path/to/own/working_dir</code></p>
+<p><code>$ flashtool -w /path/to/own/working_dir</code></p>
 <p>The tool will ask the user for some parameter to set, the next example shows
 this procedure:</p>
-<pre><code class="bash">$ Flashtool init
+<pre><code class="bash">$ flashtool init
 Type in a value for
     [Buildbot]-&gt;server
 help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
@@ -388,7 +388,7 @@ help:   Local path where Flashtool should save downloaded products if option is 
 </code></pre>
 
 <p>You can change these settings by calling the comand:</p>
-<p><code>$ Flashtool config</code></p>
+<p><code>$ flashtool config</code></p>
 <p>The tool will ask for each setting if you want to change the value or not.</p>
 <h2 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h2>
 <p><strong>Recipes</strong> are <em>yaml</em> configuration files, which declare how to deploy a
@@ -398,19 +398,19 @@ find more information about <strong>recipe</strong> file in chapter
 <p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git</strong>
 there are provided some <strong>recipe</strong> files for different hardware.</p>
 <p>To get the <strong>recipe</strong> files from the repository for the Flashtool run the following command:</p>
-<p><code>$ Flashtool platform_recipes init</code></p>
+<p><code>$ flashtool platform_recipes init</code></p>
 <p>The <strong>recipe</strong> files will be stored at the directory <strong><em>{working_directory}/platforms</em></strong>.
 If there are new <strong>recipes</strong> on the repository you can get them with the command:</p>
-<p><code>$ Flashtool platform_recipes update</code></p>
+<p><code>$ flashtool platform_recipes update</code></p>
 <p>The given or created <strong>recipe</strong> files can be listed by the <strong>Flashtool</strong>.
 To do so type in:</p>
-<p><code>$ Flashtool list_platforms</code></p>
+<p><code>$ flashtool list_platforms</code></p>
 <p>This command will list all <strong>recipe</strong> files grouped by their prefix.</p>
 <h3 id="list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</h3>
 <p>The <strong>Buildbot</strong> server provides all needed products for an <strong>embEDUx</strong> system.
 All products for every configured platform can be listet by the <strong>Flashtool</strong> with
 the following command:</p>
-<p><code>$ Flashtool list_builds</code></p>
+<p><code>$ flashtool list_builds</code></p>
 <p>There are several options available for this command:</p>
 <table>
 <thead>
@@ -680,7 +680,7 @@ feature.</p>
 <li>
 <p><strong><em>size</em></strong>:</p>
 <p>Size of the partition. The used units are b (byte), kb (kilobyte), mb
-(megabyte), gb (gigabyte) and \%. It is also possible to use the keyword
+(megabyte), gb (gigabyte) and %. It is also possible to use the keyword
 <em>max</em> for the last stated partition. If you want to state the size of the
 partion in percentage, please use the percentage notation for each
 partition.</p>
