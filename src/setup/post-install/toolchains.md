@@ -19,7 +19,7 @@ All of [the common prerequisites apply](../../usage/usage.md#Prerequisites).
 * Build/download a toolchain. This will allow you to test your build
   configuration before you push it upstream.
 
-* Have a look at the default [build script](usage/toolchains/default/toolchain_build). As
+* Have a look at the default [build script](setup/post-install/toolchains/default/toolchain_build). As
   the **buildserver** just executes these scripts, you have no limits on what
   you want to do before, during and after the build process.
 
@@ -71,7 +71,7 @@ $ git commit -m "inital commit"
 $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi
     ```
 
-1. Add the [default build script](usage/toolchains/default/toolchain_build) as
+1. Add the [default build script](setup/post-install/toolchains/default/toolchain_build) as
    ***build*** to the branch and make it executable.
    
     ```
