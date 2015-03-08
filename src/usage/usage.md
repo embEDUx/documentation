@@ -38,16 +38,18 @@ the needed repository.
   miss potential functionality or the potential to help yourself in case of
   problems.
 
-## Submitting Build Instructions - Generic Overview
-These build instructions are an attempt to give a generic overview what
-the process of specifying build instructions to the buildserver looks like.
+## Submitting Build Instructions
+These build instructions are an attempt to give a generic overview for
+submitting build instructions to the buildserver. 
 
+### Local Testing Notes
 Most of the steps in the work flow are basically the same for every product.
-However, a difference in occurs when building a RootFS: you will not be able to
+However, a difference occurs when building the RootFS: you will not be able to
 test the build locally before submitting your specification to the buildserver.
-In the context of these documents, the case of a locally installed build server
-is not understood as local testing.
+In this context, a locally installed build server is not understood as local
+testing.
 
+### Generic Overview
 1. Locate and open **your** User Documentation
 
 1. Acquire the repository URL for the product you want to build.
@@ -81,9 +83,12 @@ is not understood as local testing.
 1. Run `git add` and `git commit` according to your changes. Please use **sane
    commit messages** to improve collaboration.
 
-1. Before you push your changes upstream, make sure the build script is running
-   without any errors. If you need help, have a look at
-   [Troubleshooting/Local Testing](../troubleshooting/local-testing.md)
+1. Local Testing *(this step does not apply for the RootFS)*
+
+       Before you push your changes upstream, make sure the build script is running
+       without any errors. If you need help, have a look at
+       [Troubleshooting/Local Testing](../troubleshooting/local-testing.md)
+
 
 1. Finally, run `git push` to upload your specification to the buildserver!  The
    buildserver will pick up your changes, schedule a build and execute it as
