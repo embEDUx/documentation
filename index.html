@@ -61,11 +61,11 @@
                         </li>
                     
                         <li >
-                            <a href="usage/uboot/index.html">Uboot</a>
+                            <a href="usage/guide/index.html">Guide</a>
                         </li>
                     
                         <li >
-                            <a href="usage/toolchains/index.html">Toolchains</a>
+                            <a href="usage/uboot/index.html">Uboot</a>
                         </li>
                     
                         <li >
@@ -110,11 +110,11 @@
                         </li>
                     
                         <li >
-                            <a href="setup/adminstation/adminstation/index.html">Adminstation/Adminstation</a>
+                            <a href="setup/adminstation/index.html">Adminstation</a>
                         </li>
                     
                         <li >
-                            <a href="setup/adminstation/buildserver-setuproutine/index.html">Adminstation/Buildserver Setuproutine</a>
+                            <a href="setup/buildserver/index.html">Buildserver</a>
                         </li>
                     
                         <li >
@@ -122,31 +122,27 @@
                         </li>
                     
                         <li >
-                            <a href="setup/buildserver/buildserver/index.html">Buildserver/Buildserver</a>
-                        </li>
-                    
-                        <li >
                             <a href="setup/buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="setup/buildserver/rootfs-routine/index.html">Buildserver/Rootfs Routine</a>
+                            <a href="setup/buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="setup/buildserver/customize-supported-platforms/index.html">Buildserver/Customize Supported Platforms</a>
+                        </li>
+                    
+                        <li >
+                            <a href="setup/post-install/toolchains/index.html">Post Install/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="setup/post-install/user-documentation/index.html">Post Install/User Documentation</a>
                         </li>
                     
                         <li >
                             <a href="setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="setup/user-documentation/index.html">User Documentation</a>
-                        </li>
-                    
-                        <li >
-                            <a href="setup/customization/adding-new-platforms/index.html">Customization/Adding New Platforms</a>
-                        </li>
-                    
-                        <li >
-                            <a href="setup/customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -315,11 +311,11 @@
         
             <li><a href="#the-core">The Core</a></li>
         
-            <li><a href="#delivered-products">Delivered Products</a></li>
-        
             <li><a href="#focus-on-hardware">Focus on Hardware</a></li>
         
-            <li><a href="#architectural-design">Architectural Design</a></li>
+            <li><a href="#building-customized-linux-distributions">Building Customized Linux Distributions</a></li>
+        
+            <li><a href="#getting-started-with-your-distribution">Getting Started with your Distribution</a></li>
         
     
     </ul>
@@ -328,16 +324,16 @@
 
 <h1 id="the-embedux-project">The <strong>embEDUx</strong> Project</h1>
 <p>The <em>embEDUx</em> project aims to deliver a <strong>solution for building and deploying customimized
-linux distrubitions for educational purposes</strong>.</p>
+linux distributions for educational purposes</strong>.</p>
 <p>The origin lays at a university of applied sciences called
-<a href="http://www.htwg-konstanz.de/English.20.0.html">HTWG</a> located in Constance,
+<a href="http://www.htwg-konstanz.de/English.20.0.html">HTWG Konstanz</a> located in Constance,
 Germany.  For the complete story have a look at the <a href="background/background/index.html#The Beginning">the
 beginning</a>.</p>
 <p>We are working on making the current state publicly available.  We will also
 upload the build specification files that allow you to reproduce our builds!</p>
 <h4 id="terminology">Terminology</h4>
 <p>Before continuing, please make sure that you are familiar with the
-<a href="background/terminology/index.html">Terminology</a>. If you keep an open eye for
+<a href="background/terminology/index.html">terminology</a>. If you keep an open eye for
 crudities, you are encouraged to inform us by either opening an issue or putting
 up a pull-request.</p>
 <h2 id="the-core">The Core</h2>
@@ -345,6 +341,7 @@ up a pull-request.</p>
 were chosen for the core of the solution are</p>
 <ul>
 <li>GNU Toolchain</li>
+<li>Crosstool-NG</li>
 <li>Gentoo Linux</li>
 <li>Buildbot</li>
 <li>Ansible</li>
@@ -354,16 +351,6 @@ were chosen for the core of the solution are</p>
 </ul>
 <p>If you are interested in why these choice were made, please head over to the
 <a href="background/background/index.html">background section</a></p>
-<h2 id="delivered-products">Delivered Products</h2>
-<p>The embEDUx build system has been designed to build the following products
-according to user-provided specifications. </p>
-<ul>
-<li><a href="background/specs/uboot/index.html">U-Boot</a> images</li>
-<li><a href="./background/specs/.md">Linux</a>-Kernel images and modules</li>
-<li><a href="background/specs/rootfs/index.html">RootFS</a>-archives based on Gentoo</li>
-</ul>
-<p>In addition there is a <a href="background/specs/flashtool/index.html">Flashtool</a> for easy hardware deployment!</p>
-<p><em>(links goto background information pages)</em></p>
 <h2 id="focus-on-hardware">Focus on Hardware</h2>
 <p>A variety from low up to high end ARM-boards were available during the design
 and development of the project. Successful builds have been produced for</p>
@@ -373,8 +360,68 @@ and development of the project. Successful builds have been produced for</p>
 <li>Beaglebone Black</li>
 <li>Utilite Pro</li>
 </ul>
-<h2 id="architectural-design"><a href="background/design/architecture/index.html">Architectural Design</a></h2>
-<p><a href="./background/common/img/architectural_overview.png"><img alt="" src="./background/common/img/architectural_overview.png" /></a></p>
+<p>While we were able build, deploy to and run systems on these platforms, this
+project is not meant to provide the builds them self. Instead, you will find
+instructions how to setup or use an existing instance of the build system in
+order to produce you own customized builds.</p>
+<h2 id="building-customized-linux-distributions">Building Customized Linux Distributions</h2>
+<p>The embEDUx build system been designed to build customized Linux distributions.
+These systems consist of distinct products, namely</p>
+<ul>
+<li>Linux-Kernel</li>
+<li>Das U-Boot Bootloader</li>
+<li>Root Filesystem</li>
+</ul>
+<p>and finally some miscellaneous files and a toolchain to support the build
+process.</p>
+<p>If you are not familiar with any of these terms, please consider reading through
+the <a href="background/terminology/index.html">terminology</a>, and if necessary study other
+subject related literature.</p>
+<h2 id="getting-started-with-your-distribution">Getting Started with <strong><em>your</em></strong> Distribution</h2>
+<p>The task of building a customized Linux distribution is rather complex, 
+and the <strong>embEDUx</strong> tries to not take away flexibility with the provided
+solution. Therefore, a good understanding of the matter is needed and it is
+not possible to provide you with a static instruction list.</p>
+<p>Like every software system, the very basic topics are about its setup and
+its usage, here we go!</p>
+<h3 id="setup">Setup</h3>
+<p>If you already have access to a fully setup instance of the build system, you
+can skip this chapter. Otherwise, please follow the <a href="setup/setup/index.html">Setup
+Instructions</a></p>
+<h3 id="post-install">Post Install</h3>
+<p>The post installation procedures will guide the Administrator trough creating
+toolchains and the user documentation. These are very important steps, because
+the objects are required by the user to use the buildsystem.</p>
+<ul>
+<li><a href="setup/post-install/toolchains/index.html">Toolchains</a></li>
+<li><a href="setup/post-install/user-documentation/index.html">User Documentation</a></li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p>The customized Linux distribution will consist of the aforementioned products,
+of which you will have to build <strong><em>all</em></strong> in order to achieve ultimate glory
+with a complete system for your target platform!</p>
+<h4 id="overview">Overview</h4>
+<p>We strongly suggest that you have a look at the <a href="usage/usage/index.html">usage
+overview</a>. The overview will give you an idea of how the process
+of building a product looks like in a general sense.</p>
+<h4 id="build">Build</h4>
+<p>If you feel ready, please begin to <strong>build your products</strong>!</p>
+<ul>
+<li><a href="usage/uboot/index.html">U-Boot</a> images</li>
+<li><a href="usage/linux/index.html">Linux</a>-Kernel images and modules</li>
+<li><a href="usage/rootfs/index.html">RootFS</a>-archives based on Gentoo</li>
+</ul>
+<p>Some platforms, e.g. the Raspberry Pi, require additional files that do not
+strictly belong to any of the three products from above. These miscellaneous
+files are stored in their very own repository which is handled separately.</p>
+<ul>
+<li><a href="usage/misc/index.html">Misc</a>-archives based on Gentoo</li>
+</ul>
+<h4 id="deploy">Deploy</h4>
+<p><strong>embEDUx</strong> ships a CLI-style <a href="background/specs/flashtool/index.html">Flashtool</a> for
+easy deployment to your hardware!  More information and instructions for manual
+deployment shall be found at the end of the <a href="usage/usage/index.html#hardware-deployment">usage
+overview</a></p>
 </div>
         </div>
 

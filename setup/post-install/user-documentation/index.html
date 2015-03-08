@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Customization/Buildslaves Add Packages - embEDUx Project</title>
+        <title>Post Install/User Documentation - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -61,11 +61,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../../usage/uboot/index.html">Uboot</a>
+                            <a href="../../../usage/guide/index.html">Guide</a>
                         </li>
                     
                         <li >
-                            <a href="../../../usage/toolchains/index.html">Toolchains</a>
+                            <a href="../../../usage/uboot/index.html">Uboot</a>
                         </li>
                     
                         <li >
@@ -110,11 +110,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../adminstation/adminstation/index.html">Adminstation/Adminstation</a>
+                            <a href="../../adminstation/index.html">Adminstation</a>
                         </li>
                     
                         <li >
-                            <a href="../../adminstation/buildserver-setuproutine/index.html">Adminstation/Buildserver Setuproutine</a>
+                            <a href="../../buildserver/index.html">Buildserver</a>
                         </li>
                     
                         <li >
@@ -122,31 +122,27 @@
                         </li>
                     
                         <li >
-                            <a href="../../buildserver/buildserver/index.html">Buildserver/Buildserver</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="../../buildserver/rootfs-routine/index.html">Buildserver/Rootfs Routine</a>
+                            <a href="../../buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../buildserver/customize-supported-platforms/index.html">Buildserver/Customize Supported Platforms</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../toolchains/index.html">Post Install/Toolchains</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Post Install/User Documentation</a>
                         </li>
                     
                         <li >
                             <a href="../../workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../user-documentation/index.html">User Documentation</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../adding-new-platforms/index.html">Customization/Adding New Platforms</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -290,12 +286,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../adding-new-platforms/index.html">
+                    <a rel="next" href="../toolchains/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../examples/user-documentation-HTWG/index.html">
+                    <a rel="prev" href="../../workstation/flashtool/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -309,77 +305,24 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#adding-packages-to-buildslaves">Adding packages to buildslaves</a></li>
+        <li class="main active"><a href="#creating-the-user-documentation">Creating the User Documentation</a></li>
         
-            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#gather-information-from-the-buildmasters-configuration">Gather information from the buildmaster's configuration</a></li>
         
-            <li><a href="#example-adding-sys-appsdtc">Example - Adding 'sys-apps/dtc'</a></li>
+            <li><a href="#example-htwg-user-documentation">Example - HTWG User Documentation</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="adding-packages-to-buildslaves">Adding packages to buildslaves</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>Ansible</li>
-<li>buildserver_setup repository</li>
-<li>SSH root-access to the docker host running the buildslave(s) in question</li>
-</ul>
-<h3 id="suggestions">Suggestions</h3>
-<ul>
-<li>Read and understand TODO: Add link to background page</li>
-<li>SSH root-access via key authentication</li>
-</ul>
-<h2 id="example-adding-sys-appsdtc">Example - Adding 'sys-apps/dtc'</h2>
-<ol>
-<li>
-<p>Gain access to the buildserver_setup repository</p>
-</li>
-<li>
-<p>Edit <strong><em>roles/docker_buildslave/templates/Dockerfile.j2</em></strong></p>
-</li>
-<li>
-<p>Add a RUN instruction per package that should be added
-    <code>29 RUN \
-30   {% set package="sys-apps/dtc" %}
-31   emerge --autounmask-write=y {{ package }}; \
-32   etc-update --automode -5 &amp;&amp; \
-33   emerge -u {{ package }} &amp;&amp; \
-34   rm -Rf /usr/portage/distfiles/*</code></p>
-</li>
-<li>
-<p>Connect to the docker host running the buildslave</p>
-</li>
-<li>
-<p>Identify and verify the buildslave containers that have to be rebuilt
-    <code>$ docker ps -f name=".*buildslave_[^_]*\..*" -f status=running</code></p>
-</li>
-<li>
-<p>Stop the buildslave containers
-    <code>$ docker ps -f name=".*buildslave_[^_]*\..*" -f status=running -q | xargs docker stop | xargs docker rm</code></p>
-</li>
-<li>
-<p>Delete the buildslaves images, without their history
-    <code>$ docker images | grep -e ".*buildslave-[^-]*\..*" | grep -oE "[[:alnum:]]{12}" | xargs docker rmi --no-prune</code></p>
-</li>
-<li>
-<p>Comment the rootfs roles in the <strong><em>buildslaves.yml</em></strong> playbook for every architecture
-    <code>23   - role: docker_buildslave
-24 #  - role: docker_buildslave_rootfs</code></p>
-</li>
-<li>
-<p>Run ansible-playbook
-    <code>$ ansible-playbook -i hosts buildslaves.yml --tags all</code></p>
-</li>
-<li>
-<p>Uncomment the rootfs roles in the <strong><em>buildslaves.yml</em></strong> playbook for every architecture
-    <code>23   - role: docker_buildslave
-24   - role: docker_buildslave_rootfs</code></p>
-</li>
-</ol>
+<h1 id="creating-the-user-documentation">Creating the User Documentation</h1>
+<h2 id="gather-information-from-the-buildmasters-configuration">Gather information from the <strong>buildmaster's configuration</strong></h2>
+<h2 id="example-htwg-user-documentation">Example - HTWG User Documentation</h2>
+<p>If you want to see an example, or you're a user at the HTWG please go to <a href="../../examples/user-documentation-HTWG/index.html">User
+Documentation at the HTWG</a> the
+headline to obtain the information you need for the products you want to
+build.</p>
 </div>
         </div>
 

@@ -61,11 +61,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../usage/uboot/index.html">Uboot</a>
+                            <a href="../../usage/guide/index.html">Guide</a>
                         </li>
                     
                         <li >
-                            <a href="../../usage/toolchains/index.html">Toolchains</a>
+                            <a href="../../usage/uboot/index.html">Uboot</a>
                         </li>
                     
                         <li >
@@ -110,11 +110,11 @@
                         </li>
                     
                         <li >
-                            <a href="../adminstation/adminstation/index.html">Adminstation/Adminstation</a>
+                            <a href="../adminstation/index.html">Adminstation</a>
                         </li>
                     
                         <li >
-                            <a href="../adminstation/buildserver-setuproutine/index.html">Adminstation/Buildserver Setuproutine</a>
+                            <a href="../buildserver/index.html">Buildserver</a>
                         </li>
                     
                         <li >
@@ -122,31 +122,27 @@
                         </li>
                     
                         <li >
-                            <a href="../buildserver/buildserver/index.html">Buildserver/Buildserver</a>
-                        </li>
-                    
-                        <li >
                             <a href="../buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="../buildserver/rootfs-routine/index.html">Buildserver/Rootfs Routine</a>
+                            <a href="../buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../buildserver/customize-supported-platforms/index.html">Buildserver/Customize Supported Platforms</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../post-install/toolchains/index.html">Post Install/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../post-install/user-documentation/index.html">Post Install/User Documentation</a>
                         </li>
                     
                         <li >
                             <a href="../workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../user-documentation/index.html">User Documentation</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../customization/adding-new-platforms/index.html">Customization/Adding New Platforms</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../customization/buildslaves-add-packages/index.html">Customization/Buildslaves Add Packages</a>
                         </li>
                     
                         <li >
@@ -295,7 +291,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../adminstation/adminstation/index.html">
+                    <a rel="prev" href="../adminstation/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -311,6 +307,10 @@
     
         <li class="main active"><a href="#repository-setup">Repository Setup</a></li>
         
+            <li><a href="#backend-repositories">Backend Repositories</a></li>
+        
+            <li><a href="#product-repositories">Product Repositories</a></li>
+        
     
     </ul>
 </div></div>
@@ -318,7 +318,14 @@
 
 <h1 id="repository-setup">Repository Setup</h1>
 <p><strong>(work in progress)</strong></p>
-<p>Setup one repository for each of the products. </p>
+<h2 id="backend-repositories">Backend Repositories</h2>
+<p>The buildserver needs these two repositories in order to operate. They must be
+cloned from the repositories found on <a href="../../TODO">GitHub</a>.</p>
+<h3 id="buildserver-setup">Buildserver Setup</h3>
+<h3 id="rootfs-buildroutine">RootFS Buildroutine</h3>
+<h2 id="product-repositories">Product Repositories</h2>
+<p>Setup an empty repository for each of the products. They will be used by the
+users to provide their build specifications to the buildserver.</p>
 <table>
 <thead>
 <tr>
