@@ -89,6 +89,8 @@ The customized Linux distribution will consist of the aforementioned products,
 of which you will have to build ***all*** in order to achieve ultimate glory
 with a complete system for your target platform!
 
+[![Abstract](img/abstract.png)](img/abstract.png)
+
 #### Overview
 We strongly suggest that you have a look at the [usage
 overview](usage/usage.md). The overview will give you an idea of how the process
@@ -113,3 +115,4 @@ files are stored in their very own repository which is handled separately.
 easy deployment to your hardware!  More information and instructions for manual
 deployment shall be found at the end of the [usage
 overview](usage/usage.md#hardware-deployment)
+
