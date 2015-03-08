@@ -6,7 +6,7 @@ from the *buildserver* to hardware.
 ## Prerequisites
 
 The Flashtool must be installed on your system. Please read the [setup
-chapter](../setup/workstation/Flashtool.md) of the **Flashtool**.
+chapter](../setup/workstation/flashtool.md) of the **Flashtool**.
 
 Also a successful [setup of the buildserver](../setup/setup.md) is required to
 use the **Flashtool**.
@@ -22,7 +22,7 @@ use the **Flashtool**.
 
 ## Getting started
 
-After [installing](../setup/workstation/Flashtool.md) the **Flashtool** on a linux system it
+After [installing](../setup/workstation/flashtool.md) the **Flashtool** on a linux system it
 has to be configured first. To do so, type in the following command:
 
 `$ Flashtool init`

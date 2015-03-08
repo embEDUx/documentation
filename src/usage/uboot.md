@@ -19,7 +19,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build
   configuration locally before you push it upstream. For further information
-  have a look at [Troubleshooting/Toolchain](../troubleshooting/toolchain.md).
+  have a look at [Troubleshooting/Toolchain](../troubleshooting/local-testing.md).
 
 * Have a look at the default build scripts
   ([generic](usage/uboot/default/generic_build),
@@ -112,7 +112,7 @@ UBOOT_FILE="u-boot-2015.01.tar.bz2"
 
 1. Before you push your changes upstream, make sure the build script is running
    without any errors. If you need help, have a look at
-   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
+   [Troubleshooting/Toolchain](../troubleshooting/local-testing.md)
 
 1. Add your changes, commit and push them upstream.
    
@@ -182,7 +182,7 @@ FIRMWARE_IMG="u-boot.bin"
 
 1. Before you push your changes upstream, make sure the build script is running
    without any errors. If you need help, have a look at
-   [Troubleshooting/Toolchain](../troubleshooting/toolchain.md)
+   [Troubleshooting/Toolchain](../troubleshooting/local-testing.md)
 
 1. Add all changes, commit and push them upstream.
    
