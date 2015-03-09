@@ -3,9 +3,9 @@
 
 ## Build Debugging
 
-### Linux/Uboot
-* [Troubleshooting/Local Testing](local-testing.md)
-* Entering the build enviornment! (TODO Lars)
+### Linux/Uboot/Misc/Toolchain
+* [Local Testing](local-testing.md)
+* [Entering the build enviornment](default/entering-build-environment.md)
 
 ### RootFS
 * [Manually enter a RootFS Build
