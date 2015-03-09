@@ -33,14 +33,3 @@ Extensibility | New hardware platforms can be added to the software solution wit
 Roles | There are different user roles which use the software solution. (e.g. Administrator, who sets up the software solution. User, who wants to set up a platform. etc. 
 Other | Uncategorized requirements
 
-## Platforms Hardware Overview
-
-Platform | CPU | ARCH 
---- | --- | --- 
-Raspberry Pi |  700 MHz ARM11 ARM1176JZF-S  | armv6j_hardfp
-Iris Board w/ Colobri T20 | 1.0 GHz ARM Cortex-A9 | armv7a_hardfp 
-Beaglebone Black | 1.0 GHz AM335X Cortex-A8 | armv7a_hardfp 
-Banana Pi | 1.0  GHz ARM Cortex-A7 | armv7a_hardfp 
-Utilite Pro | 1.2 GHz i.MX6 Cortex-A9 | armv7a_hardfp
-
-
