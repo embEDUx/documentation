@@ -61,9 +61,8 @@ testing.
    or create a new branch. Now, there are at least these two cases:
     * Creating a new **new branch**: Run `git checkout < template_branch >`,
       where < template_branch \>* is the branch you want yours to base on. Right
-      away run `git checkout -b < new_branch >` and `git push --set-upstream
-      origin < new_branch \>`. Afterwards, the buildserver will watch for
-      changes on the new branch.
+      away run `git checkout -b < new_branch >` and `git push --set-upstream origin < new_branch \>`.
+      Afterwards, the buildserver will watch for changes on the new branch.
     * Modifying an **existing branch**:
         simply `git checkout < existing_branch >`
       
