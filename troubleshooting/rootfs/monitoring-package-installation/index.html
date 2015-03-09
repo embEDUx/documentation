@@ -409,17 +409,19 @@ emerged.</p>
    who are familiar with the <a href="../../../TODO">portage package manager</a> already know what
    to do. The example uses <code>tail</code> to continuously read the <strong><em>build.log</em></strong> and
    to initially display the most current line in in the <strong><em>build.log</em></strong>.</p>
-<p><code>root@localhost ~ # tail -n1 -f</code></p>
-<pre><code>/var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 
-... first line of the file appears right after the command has been fired...
+<p><code>root@localhost ~ # tail -n1 -f /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log</code></p>
+<pre><code>... first line of the file appears right after the command has been fired...
 ... second line appears eventually if the build is still running ...
 ... many more to follow if you wait long enough
 </code></pre>
 <p>The important information is not the output itself, but that the output is
 changing after the command has been started. If the build process hung,
-there would be no more output after the first line. This is not
-the case in the example since there's a second line of output after a
-couple of seconds, which showactivity of the ongoing build process. </p>
+there would be no more output after the first line. This is not the case in
+the example since there's a second line of output after a couple of seconds,
+which showactivity of the ongoing build process. Keep in mind that the build
+is proceeding very slowly when running inside a Virtual Machine. This means,
+the time until the next line is emitted by the build process can easily
+reach 30 seconds ore more.</p>
 </li>
 </ol>
 </div>
