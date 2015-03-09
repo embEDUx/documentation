@@ -23,9 +23,9 @@ There are a couple of steps required to execute your script with the toolchain.
 1. Following environment variables are needed
 
     ```
-    $ export ARCH=< architecture \>
-    $ export CROSS_COMPILE=< paht to toolchain/bin/xxx- \>
-    $ export EMBEDUX_TMP=< tmp-path-to-store-files \>
+    $ export ARCH=< architecture >
+    $ export CROSS_COMPILE=< path to toolchain/bin/xxx- >
+    $ export EMBEDUX_TMP=< tmp-path-to-store-files >
     ```
 
 1. Execute the build script
