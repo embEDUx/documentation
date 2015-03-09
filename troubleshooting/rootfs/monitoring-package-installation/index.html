@@ -260,6 +260,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../default/entering-build-environment/index.html">Default/Entering Build Environment</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../local-testing/index.html">Local Testing</a>
                         </li>
                     
@@ -403,15 +407,13 @@ emerged.</p>
 <li>
 <p>The next step shows how to monitor the output of the package build log. Those
    who are familiar with the <a href="../../../TODO">portage package manager</a> already know what
-   to do. The examples follows the <strong><em>build.log</em></strong> and initially displays the
-   currently last line in the file.</p>
+   to do. The examples uses <code>tail</code> to continuously read the <strong><em>build.log</em></strong> and
+   to initially display the most current line in in the <strong><em>build.log</em></strong>.</p>
 <p><code>root@localhost ~ # tail -n1 -f</code></p>
 <pre><code>/var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 
-cd
-/var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/work/gnuradio-3.7.6.1_build/gr-blocks/lib
-... LOTS OF STUFF HERE
-[ 42%] Building CXX object
-... LOGS OF STUFF THERE
+... first line of the file appears right after the command has been fired...
+... second line appears eventually if the build is still running ...
+... many more to follow if you wait long enough
 </code></pre>
 <p>The important information is not the output itself, but that the output is
 changing after the command has been started. If the build process hung,
