@@ -17,22 +17,24 @@ environment of a amd64 buildslave running on an amd64 host.
 1. SSH into the host
 
     ```
-    $ ssh root@buildserver
-    buildserver ~ # arch
-    x86_64
+$ ssh root@buildserver
+buildserver ~ # arch
     ```
+
+        x86_64
 
 1. Execute an interactive `bash`-shell inside the buildslave container
 
     ```
-    buildserver ~ # docker exec -it buildslave_amd64.amd64 bash
-    buildbot@52e612976b16 / $
+buildserver ~ # docker exec -it buildslave_amd64.amd64 bash
     ```
+
+        buildbot@52e612976b16 / $
 
 1. Switch to the working directory, where the build slave is processing the
    ***build*** script.
 
     ```
-    buildbot@52e612976b16 / $ cd /var/lib/buildslave/amd64/build
+buildbot@52e612976b16 / $ cd /var/lib/buildslave/amd64/build
     ```
 

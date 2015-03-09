@@ -100,10 +100,11 @@ $ git push --set-upstream origin 3.18.7
 
     ```
 $ ls -hl
-total 4.0K
--rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
--rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
+
+        total 4.0K
+        -rwxr-xr-x 1 user user 2.9K Mar  1 20:52 build
+        -rw-r--r-- 1 user user    0 Mar  1 20:51 README
 
 1. Modify *< kernel-url \>*, *< kernel-file \>* in the ***build*** script, to
    match the desired [kernel version](https://www.kernel.org/pub/linux/kernel/).
@@ -114,14 +115,12 @@ total 4.0K
    number of the **Linux** kernel. In this case **Gentoo** patches 3.18-9 result
    in **Linux** kernel 3.18.7.
    
-    ```
-...
-KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
-KERNEL_FILE="linux-3.18.tar.xz"
-...
-PATCH_VERSION="3.18-9"
-...
-    ```
+        ...
+        KERNEL_URL="http://www.kernel.org/pub/linux/kernel/v3.x"
+        KERNEL_FILE="linux-3.18.tar.xz"
+        ...
+        PATCH_VERSION="3.18-9"
+        ...
 
 1. Before you push your changes upstream, make sure the build script is running
    without any errors. If you need help, have a look at
@@ -169,24 +168,23 @@ $ git push --set-upstream origin 3.18.7_raspberry-pi
    
     ```
 $ ls -hl
-total 4.0K
--rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
--rw-r--r-- 1 user user    0 Mar  1 21:19 README
     ```
+
+        total 4.0K
+        -rwxr-xr-x 1 user user 2.9K Mar  1 21:20 build
+        -rw-r--r-- 1 user user    0 Mar  1 21:19 README
 
 1. Modify *< kernel-version \>* in ***build*** to the desired *version\_generic*
    branch. Then modify *< kernel-dtb \>* to the desired device tree blob. If
    your platforms device tree sources aren't in the **Linux** kernel sources
    yet, you have to add them with a patch, as described in a later step.
    
-    ```
-...
-KERNEL_VERSION="3.18.7"
-...
-KERNEL_DTB="bcm2835-rpi-b.dtb"
-KERNEL_CONFIG=".config"
-...
-    ```
+        ...
+        KERNEL_VERSION="3.18.7"
+        ...
+        KERNEL_DTB="bcm2835-rpi-b.dtb"
+        KERNEL_CONFIG=".config"
+        ...
 
 1. Add a working kernel configuration ***.config*** to the branch. If you aren't
    sure weather your kernel configuration is working or not, you can run the build
@@ -194,14 +192,15 @@ KERNEL_CONFIG=".config"
    
     ```
 $ ls -hla
-total 76K
-drwxr-xr-x 1 user user  44 Mar  1 21:29 .
-drwxr-xr-x 1 user user 650 Mar  1 15:04 ..
--rwxr-xr-x 1 user user 562 Mar  1 21:25 build
--rw-r--r-- 1 user user 69K Mar  1 21:29 .config
-drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
--rw-r--r-- 1 user user   0 Mar  1 20:51 README 
     ```
+
+        total 76K
+        drwxr-xr-x 1 user user  44 Mar  1 21:29 .
+        drwxr-xr-x 1 user user 650 Mar  1 15:04 ..
+        -rwxr-xr-x 1 user user 562 Mar  1 21:25 build
+        -rw-r--r-- 1 user user 69K Mar  1 21:29 .config
+        drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
+        -rw-r--r-- 1 user user   0 Mar  1 20:51 README 
 
 1. Optional: Add needed patches to the root directory of your branch. The patch
    needs to be in the standard patch format, eg. created with `diff -Naur`.
@@ -209,11 +208,12 @@ drwxr-xr-x 1 user user 188 Mar  1 21:29 .git
     ```
 $ diff -Naur linux/.../smsc95xx.c.old linux/.../smsc95xxx.c > 9000-Smsc95xx_allow_mac_to_be_set.patch
 $ ls -hl
-total 8.0K
--rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
--rwxr-xr-x 1 user user  562 Mar  1 21:25 build
--rw-r--r-- 1 user user    0 Mar  1 20:51 README
     ```
+
+        total 8.0K
+        -rw-r--r-- 1 user user 2.8K Mar  1 21:38 9000-Smsc95xx_allow_mac_to_be_set.patch
+        -rwxr-xr-x 1 user user  562 Mar  1 21:25 build
+        -rw-r--r-- 1 user user    0 Mar  1 20:51 README
 
 1. Before you push your changes upstream, make sure the build script is running
    without any errors. If you need help, have a look at
