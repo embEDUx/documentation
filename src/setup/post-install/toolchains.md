@@ -76,10 +76,11 @@ $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi
    
     ```
 $ ls -hl
-total 4.0K
--rwxr-xr-x 1 user user 470 Mar  3 20:52 build
--rw-r--r-- 1 user user   0 Mar  3 20:51 README
     ```
+
+        total 4.0K
+        -rwxr-xr-x 1 user user 470 Mar  3 20:52 build
+        -rw-r--r-- 1 user user   0 Mar  3 20:51 README
 
 1. Configure your desired toolchain with **ct-ng** and add the ***.config*** to
    the branch. In this example we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)

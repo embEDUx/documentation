@@ -98,20 +98,19 @@ $ git push --set-upstream origin 2015.01
    
     ```
 $ ls -hl
-total 4.0K
--rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
--rw-r--r-- 1 user user    0 Mar  2 18:48 README
     ```
+
+        total 4.0K
+        -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
+        -rw-r--r-- 1 user user    0 Mar  2 18:48 README
 
 1. Modify *<uboot-file \>* in the ***build*** script, to match the **U-Boot**
    archive for the desired version. If you use the default build script, make
    sure the file exists on the [ftp server](http://ftp.denx.de/pub/u-boot/).
    
-    ```
-...
-UBOOT_FILE="u-boot-2015.01.tar.bz2"
-...
-    ```
+        ...
+        UBOOT_FILE="u-boot-2015.01.tar.bz2"
+        ...
 
 1. Before you push your changes upstream, make sure the build script is running
    without any errors. If you need help, have a look at
@@ -159,24 +158,24 @@ $ git push --set-upstream origin 2015.01_raspberry-pi
     
     ```
 $ ls -hl
-total 4.0K
--rwxr-xr-x 1 user user 431 Mar  2 18:59 build
--rw-r--r-- 1 user user   0 Mar  2 18:57 README
     ```
+
+        total 4.0K
+        -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
+        -rw-r--r-- 1 user user   0 Mar  2 18:57 README
 
 1. Modify *< uboot-version \>* to thhe desired *version\_generic* branch. Then
    modify *< def-config \>* to the platform configuration for **U-Boot**. In
    this case we expect a default configuration for you platform within the
    **U-Boot** source. If this isn't the case, please read further informations
    at [background/uboot](../background/specs/uboot.md).    
-    ```
-...
-UBOOT_VERSION="2015.01"
-UBOOT_CONFIG="rpi_config"
-...
-FIRMWARE_IMG="u-boot.bin"
-...
-    ```
+
+        ...
+        UBOOT_VERSION="2015.01"
+        UBOOT_CONFIG="rpi_config"
+        ...
+        FIRMWARE_IMG="u-boot.bin"
+        ...
 
 1. Optional: Add pre\_output or post\_output functions to the ***build***
    script. They will be called before and after the output is packed. For
