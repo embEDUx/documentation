@@ -84,19 +84,17 @@ root@localhost ~ # genlop -ct
 
 1. The next step shows how to monitor the output of the package build log. Those
    who are familiar with the [portage package manager](TODO) already know what
-   to do. The examples follows the ***build.log*** and initially displays the
-   currently last line in the file.
+   to do. The examples uses `tail` to continuously read the ***build.log*** and
+   to initially display the most current line in in the ***build.log***.
 
     ```
 root@localhost ~ # tail -n1 -f
     ```
 
         /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 
-        cd
-        /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/work/gnuradio-3.7.6.1_build/gr-blocks/lib
-        ... LOTS OF STUFF HERE
-        [ 42%] Building CXX object
-        ... LOGS OF STUFF THERE
+        ... first line of the file appears right after the command has been fired...
+        ... second line appears eventually if the build is still running ...
+        ... many more to follow if you wait long enough
 
     The important information is not the output itself, but that the output is
     changing after the command has been started. If the build process hung,
