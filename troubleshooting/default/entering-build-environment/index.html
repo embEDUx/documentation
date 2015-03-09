@@ -346,13 +346,15 @@ environment of a amd64 buildslave running on an amd64 host.</p>
 <li>
 <p>SSH into the host</p>
 <p><code>$ ssh root@buildserver
-buildserver ~ # arch
-x86_64</code></p>
+buildserver ~ # arch</code></p>
+<pre><code>x86_64
+</code></pre>
 </li>
 <li>
 <p>Execute an interactive <code>bash</code>-shell inside the buildslave container</p>
-<p><code>buildserver ~ # docker exec -it buildslave_amd64.amd64 bash
-buildbot@52e612976b16 / $</code></p>
+<p><code>buildserver ~ # docker exec -it buildslave_amd64.amd64 bash</code></p>
+<pre><code>buildbot@52e612976b16 / $
+</code></pre>
 </li>
 <li>
 <p>Switch to the working directory, where the build slave is processing the

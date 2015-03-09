@@ -471,18 +471,20 @@ $ git push --set-upstream origin 2015.01</code></p>
 <li>
 <p>Add the <a href="../../usage/uboot/default/generic_build">default script</a> as <strong><em>build</em></strong> to the
    branch and make it executable.</p>
-<p><code>$ ls -hl
-total 4.0K
+<p><code>$ ls -hl</code></p>
+<pre><code>total 4.0K
 -rwxr-xr-x 1 user user 1.1K Mar  2 18:49 build
--rw-r--r-- 1 user user    0 Mar  2 18:48 README</code></p>
+-rw-r--r-- 1 user user    0 Mar  2 18:48 README
+</code></pre>
 </li>
 <li>
 <p>Modify <em>&lt;uboot-file ></em> in the <strong><em>build</em></strong> script, to match the <strong>U-Boot</strong>
    archive for the desired version. If you use the default build script, make
    sure the file exists on the <a href="http://ftp.denx.de/pub/u-boot/">ftp server</a>.</p>
-<p><code>...
+<pre><code>...
 UBOOT_FILE="u-boot-2015.01.tar.bz2"
-...</code></p>
+...
+</code></pre>
 </li>
 <li>
 <p>Before you push your changes upstream, make sure the build script is running
@@ -523,23 +525,25 @@ $ git push --set-upstream origin 2015.01_raspberry-pi</code></p>
 <li>
 <p>Add the <a href="../../usage/uboot/default/platform_build">default build script</a> as
    <strong><em>build</em></strong> to the branch and make it executable. </p>
-<p><code>$ ls -hl
-total 4.0K
+<p><code>$ ls -hl</code></p>
+<pre><code>total 4.0K
 -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
--rw-r--r-- 1 user user   0 Mar  2 18:57 README</code></p>
+-rw-r--r-- 1 user user   0 Mar  2 18:57 README
+</code></pre>
 </li>
 <li>
 <p>Modify <em>&lt; uboot-version ></em> to thhe desired <em>version_generic</em> branch. Then
    modify <em>&lt; def-config ></em> to the platform configuration for <strong>U-Boot</strong>. In
    this case we expect a default configuration for you platform within the
    <strong>U-Boot</strong> source. If this isn't the case, please read further informations
-   at <a href="../../background/specs/uboot/index.html">background/uboot</a>.  <br />
-<code>...
+   at <a href="../../background/specs/uboot/index.html">background/uboot</a>.    </p>
+<pre><code>...
 UBOOT_VERSION="2015.01"
 UBOOT_CONFIG="rpi_config"
 ...
 FIRMWARE_IMG="u-boot.bin"
-...</code></p>
+...
+</code></pre>
 </li>
 <li>
 <p>Optional: Add pre_output or post_output functions to the <strong><em>build</em></strong>
