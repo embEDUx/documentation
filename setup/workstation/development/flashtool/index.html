@@ -167,6 +167,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../../background/design/index.html">Design</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../../background/design/architecture/index.html">Design/Architecture</a>
                         </li>
                     
@@ -236,10 +240,6 @@
                     
                         <li >
                             <a href="../../../../background/specs/uboot/index.html">Specs/Uboot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../../background/design/index.html">Design</a>
                         </li>
                     
                         <li >
@@ -319,6 +319,8 @@
     
         <li class="main active"><a href="#adding-new-recipe-types">Adding new recipe types</a></li>
         
+            <li><a href="#python-representation-of-a-recipe-type">Python representation of a recipe type</a></li>
+        
     
     </ul>
 </div></div>
@@ -346,7 +348,113 @@ setup part of the <strong>Flashtool</strong>.</p>
 ...
 </code></pre>
 
-<p>The setup procedure reads in the recipe file first.</p>
+<p>The <strong>Flashtool</strong> will read in the recipe file from top to bottom. Each <em>YAML 
+document</em> in the recipe file represents a recipe. The type of the recipe 
+is given by the key <code>type</code>. Only values are allowed which are mapped as python 
+file in the deploy and recipe section. In this example the user can only state 
+the recipe type <code>type: mmc</code>.</p>
+<h3 id="python-representation-of-a-recipe-type">Python representation of a recipe type</h3>
+<p>The next example will show you how to implement a python representation for a 
+recipe type. Let's call the new recipe type <em>hdd</em>. </p>
+<ol>
+<li>
+<p>Specify a <em>YAML document</em> with all keywords which the recipe type <em>hdd</em> should
+    have. The keywords for the recipe must be stated in the <code>recipe:</code> section. 
+    If you do not know how the <em>YAML</em> syntax look like, please have a closer look 
+    <a href="http://www.yaml.org/spec/1.2/spec.html#id2759963">here</a>.</p>
+<pre><code>---
+type: hdd
+
+recipe:
+    partition_type:
+    partition:
+        - name: 
+          fs_type:
+          size:
+          flags:
+</code></pre>
+<p>The python representation must check the <em>YAML document</em> for the keywords 
+<em>partition_type</em>, <em>paritition</em> and for every partition the keywords 
+<em>name</em>, <em>fs_type</em>, <em>size</em> and <em>flags</em>.</p>
+<p>The recipe file will be parsed with the <a href="http://pyyaml.org/">PyYaml</a> module.
+The <em>YAML document</em> above will be represented in python as the following
+structure.</p>
+<pre><code>{
+    'type' : 'HDD',
+    'recipe' : {
+        partition_type : None,
+        partitions : [
+            {
+                name : None
+                fs_type : None,
+                size : None,
+                flags : None,
+            }
+        ],
+    },
+}
+</code></pre>
+<p>The setup routine will read the value of <em>type</em> and search for a python
+representation in the recipe directory (In this case the file <em>flashtool
+/setup/recipe/hdd.py</em>). When found it will pass the values of <em>recipe</em> into
+the constructor of the python class (In this case <em>HDD</em>). Of course there is
+no class defined at <em>flashtool/setup/recipe/hdd.py</em>, this brings us to step
+2.</p>
+</li>
+<li>
+<p>Implement python representation for the recipe. The python representation of 
+    the recipe type is a python class and must have the same name written in 
+    <em>CAPITAL</em> letters and inherits from the class <em>YAML</em>. </p>
+<pre><code>from flashtool.setup.recipe import YAML
+
+class HDD(YAML):
+    ...
+</code></pre>
+<p>The valid keywords for the recipe must be added in a class attribute named
+<em>attr</em>. In this case we will provide a second class for the keyword
+<em>partition</em>. The constructor must also provide a parameter called
+<em>attributes</em>.</p>
+<pre><code>...
+class HDD(YAML):
+    attr = ['partition_type', 'partitions']
+
+    def __init__(self, attributes):
+        self.check_attributes(attributes)
+        ... # DO SOME VALUE CHECKS HERE
+        parts = []
+        for part_attr in attributes['partitions']:
+            part = Partition(part_attr)
+            parts.append(part)
+        attributes['partitions'] = parts
+        YAML.__init__(self, attributes)
+
+class Partition(YAML):
+    attr = ['name', 'fs_type', 'size', 'flags']
+
+    def __init__(self, attributes):
+        self.check_attributes(attributes)
+        ... # DO SOME VALUE CHECKS HERE
+        YAML.__init__(self, attributes)
+</code></pre>
+<p>The classes inherit the method <code>check_attributes(self, attributes)</code> from the
+super class <em>YAML</em>. It will check if the given attributes contains all
+keywords given in the class member <em>attr</em>. If not a exception will be
+raised.</p>
+<p>The last statement of the constructor is the call of the constructor of the
+super class <em>YAML</em>. It will save the attributes as attributes of the created
+object. It is now pssible to access the values of the attributes vith the
+dot <code>.</code> operator.</p>
+<pre><code>hdd_obj.partition_type  # get partition types
+hdd_obj.partitions      # get list of partitions
+</code></pre>
+</li>
+<li>
+<p>Load attributes: (TODO: Describe <em>Load</em> class)</p>
+</li>
+<li>
+<p>Now we can add a deploy class for the <em>hdd</em> recipe type.</p>
+</li>
+</ol>
 </div>
         </div>
 
