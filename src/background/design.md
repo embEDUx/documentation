@@ -1,5 +1,10 @@
-# Requirements
-- define requirements
+# Design
+From the given [Requirements](requirements.md) the key elements of the software
+solution can already be defined.
+
+The solution has to provide a **Linux** kernel, a **U-Boot** and a RootFS, which
+will be referred as *products* within this documentation. 
+
 
 # Evaluate Suggestion: Yocto Project
 - evaluate: => not for our purpose
