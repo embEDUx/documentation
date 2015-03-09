@@ -373,7 +373,8 @@ recipe:
       Linux\_Config, Rootfs, Misc\_Boot, Misc\_Root.
 
 
-**Example for a mmc recipe (utilite-pro.yml):**
+**Example for a mmc recipe (utilite-pro.yml):** - Also available in the  HTWG
+configuration.
 
 
 ```
