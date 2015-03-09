@@ -62,6 +62,9 @@ Branch | Scheme | Example
 version\_generic | < uboot-version \> | 2015.01
 version\_platform | < uboot-version \>\_< platform-string \> |  2015.01\_raspberry-pi
 
+[![Example U-Boot
+Repository](usage/uboot/img/example_uboot_repository.png)](usage/uboot/img/example_uboot_repository.png)
+
 ## Step-by-Step Example
 The following example will give you a detailed overview of the necessary steps
 to build **U-Boot** 2015.01 for the raspberry pi. We assume that at this point the

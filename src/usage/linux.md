@@ -64,6 +64,9 @@ Branch | Scheme | Example
 version\_generic | < major \>.< minor \>.< subminor \> | 3.17.2
 version\_platform | < major \>.< minor \>.< subminor \>\_< platform-string \> |  3.17.2\_raspberry-pi
 
+[![Example Linux
+Repository](usage/linux/img/example_linux_repository.png)](usage/linux/img/example_linux_repository.png)
+
 ## Step-by-Step Example
 The following example will give you a detailed overview of the necessary steps
 to build kernel 3.18.7 for the raspberry pi. We assume that at this point the
