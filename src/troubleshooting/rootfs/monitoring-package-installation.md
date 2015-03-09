@@ -10,7 +10,7 @@ committing a failure.
 * SSH-Access to the host on which the buildslave containers are running
 * Permissions to run `docker` on the buildslave container host
 * Completed the steps of [entering the RootFS build
-  environment](entering-build-environment).
+  environment](entering-build-environment.md).
 
 ## Step-By-Step Example
 This example demonstrates how to check the system load and the logs of the
@@ -84,20 +84,22 @@ root@localhost ~ # genlop -ct
 
 1. The next step shows how to monitor the output of the package build log. Those
    who are familiar with the [portage package manager](TODO) already know what
-   to do. The examples uses `tail` to continuously read the ***build.log*** and
+   to do. The example uses `tail` to continuously read the ***build.log*** and
    to initially display the most current line in in the ***build.log***.
 
     ```
-root@localhost ~ # tail -n1 -f
+root@localhost ~ # tail -n1 -f /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 
     ```
 
-        /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 
         ... first line of the file appears right after the command has been fired...
         ... second line appears eventually if the build is still running ...
         ... many more to follow if you wait long enough
 
     The important information is not the output itself, but that the output is
     changing after the command has been started. If the build process hung,
-    there would be no more output after the first line. This is not
-    the case in the example since there's a second line of output after a
-    couple of seconds, which showactivity of the ongoing build process. 
+    there would be no more output after the first line. This is not the case in
+    the example since there's a second line of output after a couple of seconds,
+    which showactivity of the ongoing build process. Keep in mind that the build
+    is proceeding very slowly when running inside a Virtual Machine. This means,
+    the time until the next line is emitted by the build process can easily
+    reach 30 seconds ore more.
