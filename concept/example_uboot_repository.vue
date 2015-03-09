@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (example_uboot_repository.vue) 2015-03-09 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Mon Mar 09 11:24:44 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Mon Mar 09 11:53:54 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="example_uboot_repository.vue" created="1425894548930" x="0.0"
     y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425896684664" size="21695"
+    <resource referenceCreated="1425898434533" size="24103"
         spec="/home/lars/Documents/embedux/documentation/concept/example_uboot_repository.vue"
         type="1" xsi:type="URLResource">
         <title>example_uboot_repository.vue</title>
@@ -386,7 +386,7 @@
         <textColor>#000000</textColor>
         <font>SansSerif-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/fe10bc897f00000133ff5ccdbb1aa0b9</URIString>
-        <child ID="39" label="Legende" created="1425896254067" x="1.0"
+        <child ID="39" label="Legend" created="1425896254067" x="1.0"
             y="1.0" width="130.27835" height="23.0" strokeWidth="2.0"
             autoSized="false" xsi:type="node">
             <fillColor>#FFFFFF</fillColor>
@@ -421,8 +421,8 @@
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/fdf37c7c7f00000133ff5ccdd9f24426</URIString>
     </layer>
-    <userZoom>0.9578022110519715</userZoom>
-    <userOrigin x="-33.416336" y="-159.73221"/>
+    <userZoom>8.746707172712313</userZoom>
+    <userOrigin x="1056.4054" y="234.12912"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1425894548930"
