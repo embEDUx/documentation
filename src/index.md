@@ -77,7 +77,7 @@ can skip this chapter. Otherwise, please follow the [Setup
 Instructions](setup/setup.md)
 
 ### Post Install
-The post installation procedures will guide the Administrator trough creating
+The post installation procedures will guide the Administrator through creating
 toolchains and the user documentation. These are very important steps, because
 the objects are required by the user to use the buildsystem.
 
