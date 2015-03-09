@@ -69,7 +69,7 @@ root@localhost ~ # tail -n5 /var/log/emerge.log
         The ***emerge.log*** shows that the package *net-wireless/gnuradio* is being
         emerged.
 
-       - Using the `genlop` utility. This also showas the runtime of the current
+       - Using the `genlop` utility. This also shows the runtime of the current
          build.
 
         ```
