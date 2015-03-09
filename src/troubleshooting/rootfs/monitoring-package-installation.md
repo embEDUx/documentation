@@ -59,20 +59,9 @@ root@localhost ~ # tail -n5 /var/log/emerge.log
 1425868259:  === (114 of 122) Compiling/Packaging
 (net-wireless/gnuradio-3.7.6.1-r2::/usr/portage/net-wireless/gnuradi
 o/gnuradio-3.7.6.1-r2.ebuild)
-root@localhost ~ # tail -n5 -f /var/log/emerge.log                                                                    
-1425868251:  === (113 of 122) Post-Build Cleaning
-(app-editors/vim-7.4.273::/mnt/pkgdir/app-editors/vim-7.4.273.tbz2)
-1425868251:  ::: completed emerge (113 of 122) app-editors/vim-7.4.273 to /
-1425868252:  >>> emerge (114 of 122) net-wireless/gnuradio-3.7.6.1-r2 to /
-1425868252:  === (114 of 122) Cleaning
-(net-wireless/gnuradio-3.7.6.1-r2::/usr/portage/net-wireless/gnuradio/gnuradio-
-3.7.6.1-r2.ebuild)
-1425868259:  === (114 of 122) Compiling/Packaging
-(net-wireless/gnuradio-3.7.6.1-r2::/usr/portage/net-wireless/gnuradi
-o/gnuradio-3.7.6.1-r2.ebuild)
     ```
 
-    The ***emerge.log*** shows that the package *net/wireless/gnuradio* is being
+    The ***emerge.log*** shows that the package *net-wireless/gnuradio* is being
     emerged.
 
 1. The next step shows how to monitor the output of the package build log. Those
@@ -94,4 +83,4 @@ cd
     changing after the command has been started. If the build process hung,
     there would be no more output after the first line. This is not
     the case in the example since there's a second line of output after a
-    couple of seconds, which shows activity of the ongoing build process. 
+    couple of seconds, which showactivity of the ongoing build process. 
