@@ -18,7 +18,7 @@ toolchain in this chapter.
 There are a couple of steps required to execute your script with the toolchain.
 
 1. Download the proper toolchain for your platform with the URL provided in the
-   User Documentation.
+   [User Documentation](../setup/post-install/user-documentation.md)
 
 1. Following environment variables are needed
 
