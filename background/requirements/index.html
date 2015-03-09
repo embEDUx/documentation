@@ -167,10 +167,6 @@
                         </li>
                     
                         <li >
-                            <a href="platforms/index.html">Requirements/Platforms</a>
-                        </li>
-                    
-                        <li >
                             <a href="../design/architecture/index.html">Design/Architecture</a>
                         </li>
                     
@@ -243,6 +239,10 @@
                         </li>
                     
                         <li >
+                            <a href="../design/index.html">Design</a>
+                        </li>
+                    
+                        <li >
                             <a href="../terminology/index.html">Terminology</a>
                         </li>
                     
@@ -303,7 +303,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="platforms/index.html">
+                    <a rel="prev" href="../design/architecture/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -317,123 +317,141 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#projectd-requirements">Projectd Requirements</a></li>
+        <li class="main active"><a href="#project-requirements-htwg-context">Project Requirements (HTWG context)</a></li>
         
-            <li><a href="#criteria">Criteria</a></li>
+            <li><a href="#phase-1">Phase 1</a></li>
         
-            <li><a href="#platforms">Platforms</a></li>
+            <li><a href="#phase-2">Phase 2</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="projectd-requirements">Projectd Requirements</h1>
+<h1 id="project-requirements-htwg-context">Project Requirements (HTWG context)</h1>
 <p><strong>(work in progress)</strong></p>
-<p>The generic and automated approach that needs to be found
-by this project must meet the sum of the requirements for
-every single lab-course. The determination for this set of
-requirements has to be done in three phases.  In the first
-phase, lab-course specific requirements need to be
-expressed, while the second phase consists of breaking
-them down to their elements. Phase three is to extract
-similarities and form requirements that are generic enough
-to meet every lab-course's requirements. An additional
-phase of finding requirements will take place in an early
-phase of implementation, adding requirements by analyzing
-the feature road-maps for the chosen technologies and by
-respecting changes that will happen in the near future.</p>
-<h2 id="criteria">Criteria</h2>
-<p>Before any requirements can be acquired it is necessary to
-determine which criteria matter. This section eventually
-be updated during the process of requirements gathering.</p>
-<p>The criteria will be collected per <em>lab-course</em>.</p>
+<p>The generic and automated approach that needs to be found by this project must
+meet the sum of the requirements for every single lab-course. The determination
+for this set of requirements has to be done in two phases.</p>
+<p>In the first phase, lab-course specific requirements need to be expressed, while
+the second phase consists of breaking them down to their elements to extract
+similarities and form requirements that are generic enough to meet every
+lab-course's requirements. An additional phase of finding requirements
+will take place in an early phase of implementation, adding requirements by
+analyzing the feature road-maps for the chosen technologies and by respecting
+changes that will happen in the near future.</p>
+<h2 id="phase-1">Phase 1</h2>
+<h3 id="lab-course-overview">Lab-Course Overview</h3>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Description (+ examples)</th>
+<th>Lab-Course</th>
+<th>HW-Requirements</th>
+<th>SW-Requirements</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Hardware Platforms</td>
-<td>The hardware platforms that will be used by the lab-course.</td>
+<td>System-Software</td>
+<td>RPi</td>
+<td>Linux w/ GPIO support, C-(Cross)-Compiler, Bootloader with Netboot support, Webserver, SSH-Daemon</td>
 </tr>
 <tr>
-<td>Kernel</td>
-<td>Kernel specific requirements like a minimum kernel-version, available drivers</td>
+<td>Realtime-Systems</td>
+<td>RPi</td>
+<td>Linux w/ GPIO, C-(Cross)-Compiler, Bootloader with Netboot support, Various Dev. Applications</td>
 </tr>
 <tr>
-<td>User-Space</td>
-<td>Available applications or libraries, applied configuration, package management, Debugging Symbols, ...</td>
+<td>ARMrider Project</td>
+<td>Iris Board</td>
+<td>Linux w/ PWM, GPIO, 802.11s WiFi MESH, UART, Avahi Daemon, C++11-(Cross)-Compiler</td>
 </tr>
 <tr>
-<td>Portability</td>
-<td>Software solution must be easy to setup on various architectures</td>
+<td>Software-Defined-Radio Project</td>
+<td>Utilite Pro, Beaglebone Black, RPi, Banana Pi</td>
+<td>Linux w/ USB-debugging and Tracing support, GNUradio Application, USB-Monitoring Userspace-Tools</td>
 </tr>
 <tr>
-<td>Extensibility</td>
-<td>New hardware platforms can be added to the software solution with minimal effort</td>
-</tr>
-<tr>
-<td>Roles</td>
-<td>There are different user roles which use the software solution. (e.g. Administrator, who sets up the software solution. User, who wants to set up a platform. etc.</td>
-</tr>
-<tr>
-<td>Other</td>
-<td>Uncategorized requirements</td>
+<td>Operating-Systems</td>
+<td>RPi</td>
+<td>Linux w/ GPIO, C-(Cross)-Compiler, Python 3.4, various Debugging Tools like valgrind, gdb, etc..: might vary</td>
 </tr>
 </tbody>
 </table>
-<h2 id="platforms">Platforms</h2>
-<h3 id="hardware-overview">Hardware overview</h3>
+<h3 id="hardware-platforms">Hardware Platforms</h3>
+<p>The following hardware platforms will be used by the lab-courses</p>
 <table>
 <thead>
 <tr>
 <th>Platform</th>
 <th>CPU</th>
-<th>STAGE3 ARCH</th>
-<th>CHOST</th>
-<th>CFLAGS</th>
-<th>qemu-arm cpu model</th>
+<th>ARCH</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Raspberry Pi</td>
-<td>700 MHz ARM11 ARM1176JZF-S core <a href="http://elinux.org/RPi_Hardware">[S]</a></td>
+<td>700 MHz ARM11 ARM1176JZF-S</td>
 <td>armv6j_hardfp</td>
-<td>armv6j-hardfloat-linux-gnueabi <strong>TODO CHECK</strong></td>
-<td>-O2 -march=armv6j -mfpu=vfp -mfloat-abi=hard <a href="http://wiki.gentoo.org /wiki/Raspberry_Pi">[S]</a></td>
-<td>arm1176</td>
 </tr>
 <tr>
-<td>IRIS Board</td>
-<td>NVIDIA Tegra2: 1.0 GHz ARM Cortex-A9</td>
+<td>Iris Board w/ Colobri T20</td>
+<td>1.0 GHz ARM Cortex-A9</td>
 <td>armv7a_hardfp</td>
-<td>??? <a href="http://dev.gentoo.org/~armin76/arm/tegra2/install.xml">[S]</a></td>
-<td><strong>NO NEON SUPPORT</strong></td>
-<td>---</td>
 </tr>
 <tr>
 <td>Beaglebone Black</td>
 <td>1.0 GHz AM335X Cortex-A8</td>
 <td>armv7a_hardfp</td>
-<td>---</td>
-<td>---</td>
-<td>---</td>
 </tr>
 <tr>
-<td><strong>Overview: Information for building software per platform</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Banana Pi</td>
+<td>1.0  GHz ARM Cortex-A7</td>
+<td>armv7a_hardfp</td>
+</tr>
+<tr>
+<td>Utilite Pro</td>
+<td>1.2 GHz i.MX6 Cortex-A9</td>
+<td>armv7a_hardfp</td>
 </tr>
 </tbody>
 </table>
+<h2 id="phase-2">Phase 2</h2>
+<h3 id="linux-kernel">Linux-Kernel</h3>
+<ul>
+<li>Support for<ul>
+<li>Raspberr Pi</li>
+<li>Iris Board (Tegra 2 w/ changed pins)</li>
+<li>Beaglebone Black</li>
+<li>Banana Pi</li>
+<li>Utilite Pro</li>
+</ul>
+</li>
+<li>GPIO</li>
+<li>UART</li>
+<li>802.11s WiFi MESH</li>
+<li>USB Debugging</li>
+<li>Tracing</li>
+</ul>
+<h3 id="user-space-applications">User-Space applications</h3>
+<ul>
+<li>C-(Cross)-Compiler</li>
+<li>C++11-(Cross)-Compiler</li>
+<li>Webserver</li>
+<li>SSH-Daemon</li>
+<li>Avahi Daemon</li>
+<li>iw-utility for configuring 802.11s MESH</li>
+<li>Generic Python Support<ul>
+<li>Python2.7 for a wide choice of modules</li>
+<li>Python3.4 </li>
+</ul>
+</li>
+<li>Support for arbitrary packages</li>
+</ul>
+<h3 id="bootloader">Bootloader</h3>
+<ul>
+<li>TFTP/BootP Support</li>
+</ul>
 </div>
         </div>
 

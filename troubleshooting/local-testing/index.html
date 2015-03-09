@@ -167,10 +167,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../background/requirements/platforms/index.html">Requirements/Platforms</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../background/design/architecture/index.html">Design/Architecture</a>
                         </li>
                     
@@ -240,6 +236,10 @@
                     
                         <li >
                             <a href="../../background/specs/uboot/index.html">Specs/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/design/index.html">Design</a>
                         </li>
                     
                         <li >
@@ -321,7 +321,7 @@
         
             <li><a href="#requirements">Requirements</a></li>
         
-            <li><a href="#run-the-build-script">Run the build script</a></li>
+            <li><a href="#step-by-step-example">Step-by-Step Example</a></li>
         
     
     </ul>
@@ -345,22 +345,50 @@ toolchain in this chapter.</p>
 </ul>
 </li>
 </ul>
-<h2 id="run-the-build-script">Run the build script</h2>
-<p>There are a couple of steps required to execute your script with the toolchain.</p>
+<h2 id="step-by-step-example">Step-by-Step Example</h2>
+<p>The following example is based on modifying the <strong><em>build</em></strong> script for the
+<strong>Linux</strong> kernel for the raspberry-pi. We assume that you already have your
+files according to <a href="../../usage/linux/index.html">Usage/Linux</a>.</p>
 <ol>
 <li>
-<p>Download the proper toolchain for your platform with the URL provided in the
-   <a href="../../setup/post-install/user-documentation/index.html">User Documentation</a></p>
+<p>Get the the toolchain product download URL from your <a href="../../setup/post-install/user-documentation/index.html">User
+Documentation</a> then download and
+extract the toolchain archive <em>amd64_armv6j-ct-ng-linux-gnueabi</em> to
+<em>/opt/toolchain/amd64_armv6j-ct-ng-linux-gnueabi/</em></p>
+<p><code>$ wget http://moe.in.htwg-konstanz.de:8010/toolchains/armv6j-ctng-linux-gnueabi/amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2</code></p>
+<pre><code>--2015-03-09 13:00:34--  http://moe.in.htwg-konstanz.de:8010/toolchains/armv6j-ctng-linux-gnueabi/amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2
+Resolving moe.in.htwg-konstanz.de... 141.37.31.240
+Connecting to moe.in.htwg-konstanz.de|141.37.31.240|:8010... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 80099059 (76M) [application/x-tar]
+Saving to: ‘amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2’
+
+amd64_armv6j-ctng-l 100%[=====================&gt;]  76.39M  3.48MB/s   in 20s
+
+2015-03-09 13:00:54 (3.88 MB/s) - ‘amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2’ saved [80099059/80099059]
+</code></pre>
 </li>
 <li>
-<p>Following environment variables are needed</p>
-<p><code>$ export ARCH=&lt; architecture &gt;
-$ export CROSS_COMPILE=&lt; path to toolchain/bin/xxx- &gt;
-$ export EMBEDUX_TMP=&lt; tmp-path-to-store-files &gt;</code></p>
+<p>Set the necessary environment variables</p>
+<p><code>$ export ARCH=arm
+$ export CROSS_COMPILE=/opt/toolchain/amd64_armv6j-ctng-linux-gnueabi/armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-
+$ export EMBEDUX_TMP=/var/tmp</code></p>
 </li>
 <li>
-<p>Execute the build script</p>
+<p>Now you can execute the build script.</p>
 <p><code>$ ./build</code></p>
+<pre><code>+ KERNEL_VERSION=4.18.1
++ KERNEL_DTB=
++ KERNEL_CONFIG=.config
++ KERNEL_IMG=zImage
++ SRC_DIR=linux
+++ git remote -v
+++ sed -n '/.git/{p;q;}'
+++ awk '{print $(NF-1)}'
++ git clone -b 3.18.1 --depth 1 --single-branch git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git linux
+Cloning into 'linux'...
+...
+</code></pre>
 </li>
 </ol>
 <p>Any errors that occur during the build process should be fixed before you push
