@@ -320,7 +320,7 @@
         <li class="main active"><a href="#design">Design</a></li>
         
     
-        <li class="main "><a href="#product-specification">Product specification</a></li>
+        <li class="main "><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
             <li><a href="#bootloader">Bootloader</a></li>
         
@@ -356,29 +356,92 @@
 <h1 id="design">Design</h1>
 <p><strong>(work in progress)</strong></p>
 <p>The design for the <strong>embEDUx</strong> system can now be derived from the given
-<a href="../requirements/index.html">requirements</a>. </p>
-<p>Without specifying any details, the following software must be handled by the
-system.:</p>
+<a href="../requirements/index.html">requirements</a>. The requirements include a wide variety of
+configuration options, which in turn requires a configurable build system.
+The build system must be able to build the following software according to a
+provided configuration:</p>
 <ul>
-<li><strong>Linux</strong> Kernel</li>
+<li>Linux Kernel</li>
 <li>Bootloader</li>
 <li>RootFS containing the system and user-space application</li>
 </ul>
-<p>These parts will be referred as <strong><em>products</em></strong> within this documentation. </p>
-<h1 id="product-specification">Product specification</h1>
+<p>These parts will be referred as <strong><em>products</em></strong> within the further documentation.</p>
+<h1 id="product-requirement-analysis">Product Requirement Analysis</h1>
 <h2 id="bootloader">Bootloader</h2>
-<p>As some platforms at the HTWG are already running with <strong>Das U-Boot</strong> as
-bootloader, a soft requirement is <strong>U-Boot</strong>. However the software solution must
-not be restricted to a specific <strong>U-Boot</strong> version.</p>
+<p>As some platforms at the HTWG already run <strong>Das U-Boot</strong> as bootloader, a soft
+requirement is <strong>U-Boot</strong>. However the software solution must not be restricted
+to a specific <strong>U-Boot</strong> version. <strong>U-Boot</strong> also has TFTP/BootP support in
+general, but it has to be evaluated if it's supported for all required
+platforms.</p>
 <h2 id="kernel">Kernel</h2>
 <p>No specific <strong>Linux</strong> kernel version is required and the software solution must
-not be restricted to a specific kernel version.</p>
+not be restricted to a specific kernel version. It would be reasonable to have
+the same kernel sources for all of the platforms, and only provide platform
+specific patches to the common base where necessary. In addition to these
+patches, it should be able to provide a specific configuration for a build.</p>
 <h2 id="rootfs">RootFS</h2>
-<p>The software solution must not restrict the user in his choice of available
-applications or libraries, although the common distribution restrictions (eg.
-Application is not available/updated in package manager) can still apply.</p>
+<p>The requirements include the need for various packages. Combined with the
+requirement for simple extension, the only sane design choice is to include a
+package management system. There are basically two types of package management
+systems.</p>
+<h3 id="package-management-system">Package Management System</h3>
+<ul>
+<li>Binary Based Package Installation
+    Binary packages are built and hosted by a distributor. The distributor
+    choses which packages are built, for which platform these packages are
+    built and naturally the configuration and compiler flags that are chosen.
+    Binary packages install fast, and are only limitted by the download and disk
+    speed.</li>
+<li>Source Based Package Installation
+    Building packages from source gives the highest possibility of being able to
+    install the package on a specific platforms. Source files are downloaded to
+    the local computer and are then compiled to binary files, which are
+    installed into the local system. Configuration and compiler flags can be
+    adjusted locally. Source packages install slowly, since they are compiled
+    locally which might be very slow depending on the available CPU and RAM
+    resources.</li>
+</ul>
+<p>For the <strong>embEDUx</strong> use-case, availability and compatibility are preferred over
+installation speed. This leads to the choice of a source based package
+installation based on the above comparison </p>
 <h2 id="portability">Portability</h2>
-<p>Software solutions must be easy to setup on various architectures. </p>
+<p>In order to have a portable build system, all components should live and run in
+systems that are separated from the buildserver's host system. Possible
+technologies for this are either Virtual Machines or Linux Containers.</p>
+<h3 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h3>
+<ul>
+<li>
+<p>Virtual Machines are completely abstracted from the host system's hardware.
+  They run on a so-called Hypervisor, which simulates a complete machine for the
+  target system. The target system runs it's own kernel, and needs to boot and
+  initialize an Operating System from scratch. Security is considered very high,
+  since the Hypervisor has full control over soft- and hardware-resources that
+  are passed to the guest system.   The architecture of an operating system
+  inside a virtual machine can be completely different to the host architecture,
+  and thus is highly portable.  Depending on available acceleration
+  technologies, the performance of the virtual CPU, RAM and disk can suffer
+  significantly.</p>
+</li>
+<li>
+<p>Linux Containers utilize a feature in recent Linux Kernels which allow
+  separating processes from each other. This includes the separation of host and
+  contained processes, as well as different contained processes from each other.
+  These contained processes can be an initialization processes to boot a
+  different Linux System on the running host Linux kernel, or simply any other
+  application available. Recently there has been a lot of development and
+  activity on Linux Containers in the community, namely because of a software
+  called Docker.  Security is highly dependent on the implementation of the
+  process separating that happens in the host kernel.   The host kernel must
+  obviously be able to run the contained application.  Therefore, the
+  application must either be in the host's native or compatible executable
+  format, or the system needs an emulator to run the foreign architecture. The
+  performance for contained processes does not differ significantly compared to
+  a regular running process. This is not entirely true for executables that
+  require emulation because the CPU instructions must be translated before they
+  can be run.</p>
+</li>
+</ul>
+<p>In favor of speed, container technologies are chosen. </p>
 <h2 id="extensibility">Extensibility</h2>
 <p>Adding support for additional hardware platforms must be simple. </p>
 <h2 id="other">Other</h2>
