@@ -320,17 +320,32 @@
         <li class="main active"><a href="#design">Design</a></li>
         
     
+        <li class="main "><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
+        
+    
+        <li class="main "><a href="#product-specification-storage-units">Product-Specification Storage Units</a></li>
+        
+            <li><a href="#repository-format">Repository Format</a></li>
+        
+    
         <li class="main "><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
             <li><a href="#bootloader">Bootloader</a></li>
         
-            <li><a href="#kernel">Kernel</a></li>
+            <li><a href="#linux-kernel">Linux-Kernel</a></li>
+        
+            <li><a href="#toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</a></li>
         
             <li><a href="#rootfs">RootFS</a></li>
         
+    
+        <li class="main "><a href="#design-decisions">Design Decisions</a></li>
+        
             <li><a href="#portability">Portability</a></li>
         
-            <li><a href="#extensibility">Extensibility</a></li>
+            <li><a href="#setup">Setup</a></li>
+        
+            <li><a href="#maintenance">Maintenance</a></li>
         
             <li><a href="#other">Other</a></li>
         
@@ -366,6 +381,25 @@ provided configuration:</p>
 <li>RootFS containing the system and user-space application</li>
 </ul>
 <p>These parts will be referred as <strong><em>products</em></strong> within the further documentation.</p>
+<h1 id="comparison-with-similar-projects">Comparison With Similar Projects</h1>
+<p>At the time of designing <strong>embEDUx</strong>, there are several open source projects
+that need to be considered as a base for <strong>embEDUx</strong>.
+These projects will be examined throughout the design in the different
+sections.</p>
+<ul>
+<li>Embedian - unfortunately, the project was officially retired as of July 2014 </li>
+<li>Buildroot</li>
+<li>YOCTO Project</li>
+</ul>
+<h1 id="product-specification-storage-units">Product-Specification Storage Units</h1>
+<p>It must be possible to build the products independently from each other.
+Therefore, each product should be managed in a separate storage unit which will be
+referred as a <em>repository</em> from this point on.</p>
+<h2 id="repository-format">Repository Format</h2>
+<p>Configuration files and specification files are most certainly provided by the
+user as text files. For this purpose, a version control system should be used in
+order to have a history of build changes and allow easier handling of the
+repositories.</p>
 <h1 id="product-requirement-analysis">Product Requirement Analysis</h1>
 <h2 id="bootloader">Bootloader</h2>
 <p>As some platforms at the HTWG already run <strong>Das U-Boot</strong> as bootloader, a soft
@@ -373,16 +407,40 @@ requirement is <strong>U-Boot</strong>. However the software solution must not b
 to a specific <strong>U-Boot</strong> version. <strong>U-Boot</strong> also has TFTP/BootP support in
 general, but it has to be evaluated if it's supported for all required
 platforms.</p>
-<h2 id="kernel">Kernel</h2>
+<h3 id="build-process">Build process</h3>
+<p>The build process must include the following steps.</p>
+<ol>
+<li>Retrieve the build specifications from the RootFS-repository
+TODO Lars</li>
+</ol>
+<h2 id="linux-kernel">Linux-Kernel</h2>
 <p>No specific <strong>Linux</strong> kernel version is required and the software solution must
 not be restricted to a specific kernel version. It would be reasonable to have
 the same kernel sources for all of the platforms, and only provide platform
 specific patches to the common base where necessary. In addition to these
 patches, it should be able to provide a specific configuration for a build.</p>
+<h2 id="toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</h2>
+<p>The Linux-Kernel and the Bootloader must be compiled from their sources,
+otherwise the user is not able to provide the configuration for these.
+In oder to build these products for the different platforms it will require a
+Toolchain with the respective build targets. The toolchain should also be user
+configurable, which leaves the following projects for the evaluation of
+toolchain creation.</p>
+<ul>
+<li>Crosstool-NG</li>
+<li>Buildroot</li>
+</ul>
+<h3 id="build-process_1">Build process</h3>
+<p>The build process must include the following steps.</p>
+<ol>
+<li>Retrieve the build specifications from the RootFS-repository
+TODO Lars</li>
+</ol>
 <h2 id="rootfs">RootFS</h2>
 <p>The requirements include the need for various packages. Combined with the
 requirement for simple extension, the only sane design choice is to include a
-package management system. There are basically two types of package management
+package management system. 
+There are basically two types of package management
 systems.</p>
 <h3 id="package-management-system">Package Management System</h3>
 <ul>
@@ -403,7 +461,36 @@ systems.</p>
 </ul>
 <p>For the <strong>embEDUx</strong> use-case, availability and compatibility are preferred over
 installation speed. This leads to the choice of a source based package
-installation based on the above comparison </p>
+installation based on the above comparison.</p>
+<p>The choice of the source package management system should be evaluated
+carefully. Candidates shall be
+<em> Gentoo Portage
+</em> Buildroot
+* YOCTO</p>
+<h3 id="package-lists">Package Lists</h3>
+<p>The list and configuration of the desired packages
+must be configurable for each build.</p>
+<h3 id="build-process_2">Build process</h3>
+<p>The software that is used to assemble the RootFS according to the provided
+package list must be chosen wisely. There are many projects to consider for this
+part. The following of them will be evaluated:
+- YOCTO
+- Buildroot
+- Gentoo crossdev
+- cross-boss
+- Gentoo catalyst</p>
+<p>The main evaluation criteria is cross-platform support.</p>
+<h4 id="steps">Steps</h4>
+<p>The build process must include the following steps.</p>
+<ol>
+<li>Retrieve the build specifications from the RootFS-repository</li>
+<li>Parse the package list provided by the user</li>
+<li>Translate the package list into a format that is accepted by the package
+   manager</li>
+<li>Cleanup the build files</li>
+<li>Create an archive from the RootFS</li>
+</ol>
+<h1 id="design-decisions">Design Decisions</h1>
 <h2 id="portability">Portability</h2>
 <p>In order to have a portable build system, all components should live and run in
 systems that are separated from the buildserver's host system. Possible
@@ -441,8 +528,41 @@ technologies for this are either Virtual Machines or Linux Containers.</p>
   can be run.</p>
 </li>
 </ul>
-<p>In favor of speed, container technologies are chosen. </p>
-<h2 id="extensibility">Extensibility</h2>
+<p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
+Containers</a>,)
+container technologies should be chosen as the base for the buildsystem. In
+environments where security is a high requirement, the containers can live
+inside a virtual machine, but that is beyond the design for the buildsystem
+itself.</p>
+<h3 id="split-functionality-into-containers">Split Functionality Into Containers</h3>
+<p>Containers are relatively cheap entities for the system. This allows the
+buildsystem to be split into several containers for the different parts of the
+buildsystem.</p>
+<h3 id="container-management-software">Container Management Software</h3>
+<p>The choice of the container management software still needs to be evaluated, but in favor
+of popularity Docker should be the main candidate.</p>
+<h2 id="setup">Setup</h2>
+<p>The buildserver will undoubtedly be a complex structure of software components.
+To make the setup as easy as possible it should be automated as far as possible.</p>
+<h3 id="setup-parameters">Setup Parameters</h3>
+<p>Setup parameters are essential to the configuration of the buildserver.</p>
+<ul>
+<li>
+<p>Buildserver Target Machine</p>
+<p>The target machine shall by default run all containers that belong to the
+buildsystem</p>
+</li>
+<li>
+<p>Target Platform and Architectures</p>
+<p>The platform names and their corresponding architecture.
+The architectures will be supported as build targets. </p>
+</li>
+</ul>
+<h3 id="automation">Automation</h3>
+<p>Any scripting language can be used and there's no chosen preference as of this
+point.</p>
+<h2 id="maintenance">Maintenance</h2>
+<h3 id="extensibility">Extensibility</h3>
 <p>Adding support for additional hardware platforms must be simple. </p>
 <h2 id="other">Other</h2>
 <p>Platform specific source code must be avoided as far as possible. </p>
@@ -456,7 +576,7 @@ technologies for this are either Virtual Machines or Linux Containers.</p>
 <ul>
 <li>realize we need files which better not be assigned to the product</li>
 </ul>
-<h3 id="kernel_1">Kernel</h3>
+<h3 id="kernel">Kernel</h3>
 <ul>
 <li>realize we need files which better not be assigned to the product</li>
 </ul>
