@@ -21,7 +21,7 @@ sections.
 
 * Embedian - unfortunately, the project was officially retired as of July 2014 
 * Buildroot
-* YOCTO Project
+* Yocto Project
 
 # Product-Specification Storage Units
 It must be possible to build the products independently from each other.
@@ -44,10 +44,23 @@ general, but it has to be evaluated if it's supported for all required
 platforms.
 
 ### Build process
+To retrieve the **U-Boot** sources, the following possibilities exist
+
+* User has to provide sources within the **U-Boot** repository
+* Download sources from official website during build process
+
+Storing the sources within the **U-Boot** repository will lead to huge
+redundancy, when different platforms use the same source. Therefore we will
+implement a solution to retrieve the sources during the build process.
+
+#### Steps
 The build process must include the following steps.
 
-1. Retrieve the build specifications from the RootFS-repository
-TODO Lars
+1. Retrieve the build specifications from the **U-Boot**-repository
+1. Retrieve the **U-Boot** sources
+1. (Cross-)Compile **U-Boot** for target architecture with config provided by
+   the specifications
+1. Create an archive from the necessary files.
 
 ## Linux-Kernel
 No specific **Linux** kernel version is required and the software solution must
@@ -55,6 +68,32 @@ not be restricted to a specific kernel version. It would be reasonable to have
 the same kernel sources for all of the platforms, and only provide platform
 specific patches to the common base where necessary. In addition to these
 patches, it should be able to provide a specific configuration for a build.
+
+### Build process
+To retrieve the **Linux** kernel sources, there are the following possibilities.
+
+* User has to provide sources within the **Linux** repository
+* Emerge **Gentoo** kernel sources ebuild during build process
+* Download and patch kernel sources manually from
+  [www.kernel.org](https://kernel.org) during build process
+
+Due to keeping the possibility to build the kernel locally, emerging the kernel
+sources with OS dependent tool is not viable. Also keeping the sources within
+the **Linux** repository, will produce redundancy when different platforms use
+the same sources. Therefore we will implement a way of retrieving and patching
+the sources during the build process.
+
+#### Steps
+The build process must include the following steps.
+
+1. Retrieve the build specifications from the **Linux**-repository
+1. Retrieve **Linux** kernel sources
+1. Apply required patches provided from the **Linux**-repository
+1. (Cross-)Compile kernel for target architecture with kernel config provided by
+   the specifications
+1. Create two archives from the necessary files.
+    * target boot partition (kernel image, device tree blob)
+    * target root partition (e.g. modules)
 
 ## Toolchains for Building Kernel and Bootloader
 The Linux-Kernel and the Bootloader must be compiled from their sources,
@@ -68,10 +107,11 @@ toolchain creation.
 * Buildroot
 
 ### Build process
-The build process must include the following steps.
+1. Retrieve the build specifications from the **Toolchains**-repository
+1. Translate the toolchain specifications
+1. Build toolchain
+1. Create an archive with the toolchain
 
-1. Retrieve the build specifications from the RootFS-repository
-TODO Lars
 
 ## RootFS 
 The requirements include the need for various packages. Combined with the
@@ -79,6 +119,7 @@ requirement for simple extension, the only sane design choice is to include a
 package management system. 
 There are basically two types of package management
 systems.
+
 ### Package Management System
 * Binary Based Package Installation
     Binary packages are built and hosted by a distributor. The distributor
@@ -101,9 +142,10 @@ installation based on the above comparison.
 
 The choice of the source package management system should be evaluated
 carefully. Candidates shall be
+
 * Gentoo Portage
 * Buildroot
-* YOCTO
+* Yocto Project
 
 ### Package Lists
 The list and configuration of the desired packages
@@ -113,7 +155,8 @@ must be configurable for each build.
 The software that is used to assemble the RootFS according to the provided
 package list must be chosen wisely. There are many projects to consider for this
 part. The following of them will be evaluated:
-- YOCTO
+
+- Yocto Project
 - Buildroot
 - Gentoo crossdev
 - cross-boss
@@ -252,13 +295,6 @@ Platform specific source code must be avoided as far as possible.
 - prepare output for boot partition 
 
 ### Linux
-- download sources
-- apply gentoo patches
-- apply user patches
-- apply config
-- build
-- prepare output for boot partition
-- prepare output for root partition
 
 ### Misc
 - contains files for root / boot
