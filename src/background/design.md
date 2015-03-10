@@ -13,6 +13,27 @@ provided configuration:
 
 These parts will be referred as ***products*** within the further documentation.
 
+# Comparison With Similar Projects
+At the time of designing **embEDUx**, there are several open source projects
+that need to be considered as a base for **embEDUx**.
+These projects will be examined throughout the design in the different
+sections.
+
+* Embedian - unfortunately, the project was officially retired as of July 2014 
+* Buildroot
+* YOCTO Project
+
+# Product-Specification Storage Units
+It must be possible to build the products independently from each other.
+Therefore, each product should be managed in a separate storage unit which will be
+referred as a *repository* from this point on.
+
+## Repository Format
+Configuration files and specification files are most certainly provided by the
+user as text files. For this purpose, a version control system should be used in
+order to have a history of build changes and allow easier handling of the
+repositories.
+
 # Product Requirement Analysis
 
 ## Bootloader
@@ -22,12 +43,35 @@ to a specific **U-Boot** version. **U-Boot** also has TFTP/BootP support in
 general, but it has to be evaluated if it's supported for all required
 platforms.
 
-## Kernel
+### Build process
+The build process must include the following steps.
+
+1. Retrieve the build specifications from the RootFS-repository
+TODO Lars
+
+## Linux-Kernel
 No specific **Linux** kernel version is required and the software solution must
 not be restricted to a specific kernel version. It would be reasonable to have
 the same kernel sources for all of the platforms, and only provide platform
 specific patches to the common base where necessary. In addition to these
 patches, it should be able to provide a specific configuration for a build.
+
+## Toolchains for Building Kernel and Bootloader
+The Linux-Kernel and the Bootloader must be compiled from their sources,
+otherwise the user is not able to provide the configuration for these.
+In oder to build these products for the different platforms it will require a
+Toolchain with the respective build targets. The toolchain should also be user
+configurable, which leaves the following projects for the evaluation of
+toolchain creation.
+
+* Crosstool-NG
+* Buildroot
+
+### Build process
+The build process must include the following steps.
+
+1. Retrieve the build specifications from the RootFS-repository
+TODO Lars
 
 ## RootFS 
 The requirements include the need for various packages. Combined with the
@@ -57,27 +101,38 @@ installation based on the above comparison.
 
 The choice of the source package management system should be evaluated
 carefully. Candidates shall be
-* Buildroot
-* YOCTO Project
 * Gentoo Portage
+* Buildroot
+* YOCTO
 
 ### Package Lists
 The list and configuration of the desired packages
 must be configurable for each build.
 
+### Build process
+The software that is used to assemble the RootFS according to the provided
+package list must be chosen wisely. There are many projects to consider for this
+part. The following of them will be evaluated:
+- YOCTO
+- Buildroot
+- Gentoo crossdev
+- cross-boss
+- Gentoo catalyst
 
-# Further Decisions
+The main evaluation criteria is cross-platform support.
 
-## One Repository Per Product
-It must be possible to build the products independently from each other.
-Therefore, each product needs a separate storage unit which will be
-referred as *repository* from this point on.
+#### Steps
+The build process must include the following steps.
 
-### Repository Format
-Configuration files and specification files are most certainly provided by the
-user as text files. For this purpose, a version control system should be used in
-order to have a history of build changes and allow easier handling of the
-repositories.
+1. Retrieve the build specifications from the RootFS-repository
+1. Parse the package list provided by the user
+1. Translate the package list into a format that is accepted by the package
+   manager
+1. Cleanup the build files
+1. Create an archive from the RootFS
+
+# Design Decisions
+
 
 ## Portability 
 In order to have a portable build system, all components should live and run in
@@ -129,6 +184,7 @@ buildsystem.
 The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.
 
+
 ## Setup
 The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.
@@ -145,6 +201,10 @@ Setup parameters are essential to the configuration of the buildserver.
     
     The platform names and their corresponding architecture.
     The architectures will be supported as build targets. 
+
+### Automation
+Any scripting language can be used and there's no chosen preference as of this
+point.
 
 
 ## Maintenance
@@ -171,8 +231,7 @@ Platform specific source code must be avoided as far as possible.
 ### Miscellaneous Files
 => directly derived from U-Boot/Kernel 
 
-### Toolchain
-
+### Toolchain 
 ### RootFS
 
 ## How can we configure and build the products automatically (different platforms/architectures)
