@@ -227,7 +227,6 @@ buildsystem.
 The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.
 
-
 ## Setup
 The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.
@@ -251,16 +250,30 @@ point.
 
 
 ## Maintenance
+The way we handle the maintenance scenarios is a key factor in how well users
+will accept the **embEDUx** build system.
 
 ### Extensibility 
-Adding support for additional hardware platforms must be simple. 
+Adding support for additional hardware platforms must be simple. The user should
+not be forced to have a complete understanding of the **embEDUx** build system
+to be able to add his platform. However the complexity of the system, requires
+the user to have a minimal understanding of the used software components and the
+structure of **embEDUx**. 
 
-## Other 
-Platform specific source code must be avoided as far as possible. 
+### Workflow 
+Platform specific source code must be avoided as far as possible. This results
+in using mainline sources, wherever it is possible. Differences in the platform
+architecture are adapted by patches, which are applied during the build process.
+As the base sources, for each product and platform are the same, this will lead to
+the same workflow for each platform and each product.
 
 
-# Evaluate Suggestion: Yocto Project
-- evaluate: => not for our purpose
+# Evaluation
+
+- | Buildroot | Yocto
+--- | --- | ---
+Setup | git clone git://git.buildroot.net/buildroot | git clone -b dizzy git://git.yoctoproject.org/poky.git
+Configuration | | 
 
 # DIY
 
