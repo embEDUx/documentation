@@ -88,14 +88,15 @@ technologies for this are either Virtual Machines or Linux Containers.
   require emulation because the CPU instructions must be translated before they
   can be run.
 
-In favor of speed, container technologies should be chosen as the base for the
-buildsystem. In environments where security is a high requirement, the
-containers can live inside a virtual machine, but that is beyond the design for
-the buildsystem itself.
+In favor of speed (see [Comparison of VM and Linux
+Containers](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf),)
+container technologies should be chosen as the base for the buildsystem. In
+environments where security is a high requirement, the containers can live
+inside a virtual machine, but that is beyond the design for the buildsystem
+itself.
 
-The choice of container technology still needs to be evaluated, but in favor of
-popularity Docker should be the main candidate.
-
+The choice of the container technology still needs to be evaluated, but in favor
+of popularity Docker should be the main candidate.
 
 ## Extensibility 
 Adding support for additional hardware platforms must be simple. 
