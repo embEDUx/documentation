@@ -32,7 +32,8 @@ patches, it should be able to provide a specific configuration for a build.
 ## RootFS 
 The requirements include the need for various packages. Combined with the
 requirement for simple extension, the only sane design choice is to include a
-package management system. There are basically two types of package management
+package management system. 
+There are basically two types of package management
 systems.
 ### Package Management System
 * Binary Based Package Installation
@@ -55,9 +56,28 @@ installation speed. This leads to the choice of a source based package
 installation based on the above comparison.
 
 The choice of the source package management system should be evaluated
-carefully. Candidates shall
-* Portage - Gentoo's Package Manager
-* YOCTO - A complete system generation tool
+carefully. Candidates shall be
+* Buildroot
+* YOCTO Project
+* Gentoo Portage
+
+### Package Lists
+The list and configuration of the desired packages
+must be configurable for each build.
+
+
+# Further Decisions
+
+## One Repository Per Product
+It must be possible to build the products independently from each other.
+Therefore, each product needs a separate storage unit which will be
+referred as *repository* from this point on.
+
+### Repository Format
+Configuration files and specification files are most certainly provided by the
+user as text files. For this purpose, a version control system should be used in
+order to have a history of build changes and allow easier handling of the
+repositories.
 
 ## Portability 
 In order to have a portable build system, all components should live and run in
@@ -100,10 +120,36 @@ environments where security is a high requirement, the containers can live
 inside a virtual machine, but that is beyond the design for the buildsystem
 itself.
 
-The choice of the container technology still needs to be evaluated, but in favor
+### Split Functionality Into Containers
+Containers are relatively cheap entities for the system. This allows the
+buildsystem to be split into several containers for the different parts of the
+buildsystem.
+
+### Container Management Software
+The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.
 
-## Extensibility 
+## Setup
+The buildserver will undoubtedly be a complex structure of software components.
+To make the setup as easy as possible it should be automated as far as possible.
+
+### Setup Parameters
+Setup parameters are essential to the configuration of the buildserver.
+
+* Buildserver Target Machine
+
+    The target machine shall by default run all containers that belong to the
+    buildsystem
+
+* Target Platform and Architectures
+    
+    The platform names and their corresponding architecture.
+    The architectures will be supported as build targets. 
+
+
+## Maintenance
+
+### Extensibility 
 Adding support for additional hardware platforms must be simple. 
 
 ## Other 
