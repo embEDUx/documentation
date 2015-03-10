@@ -14,43 +14,44 @@ highly productive, has a nice syntax and provides plenty of packages and
 libraries. It is also an often used language and will run on every Linux system.
 
 
-## Requirements of the **Flashtool**
+## Design decision 
 
 There are basic tasks which must be fulfilled by the **Flashtool**:
 
-1. set and change url to *buildserver* web interface
-2. easy configuration setup for the *Flashtool*
-3. provide easy configuration of a platform deployment routine (recipes)
-4. retrieve software components form the *buildserver*
+First of all the **Flashtool** must be usable for different *embEDUx*
+environments. Therefore URLs to the *buildserver* or to repositories should not
+be hard coded. 
 
-    * list software components for a platform
-    * filter or select specific software versions
+- User must be able to configure several settings for the **Flashtool**, these
+    settings should be saved in a configuration file.
 
-5. extensibility of the *Flashtool*
-    
-    * adding deployment routines
-    * adding new configuration options
+The **Flashtool** should be able to setup several platforms. For the platforms
+this includes partition a MMC device and load the software components to the
+partitions. It must be possible to configure this setup process for the needs of
+the user. And this configuration should be reusable, to setup several platforms
+with the same configuration.
 
-6. recognition of plugged in hardware
-7. easy to use
+- User can create different configuration files for a platform to configure the
+    setup/deploy process. (recipes)
+- The configuration language should be easy to use.
 
+Each software components will have several versions. These versions are
+available on the *buildserver*.
 
-## Features 
+- User should be able to list all available software components versions for a
+    platform. 
+- User should be able to select a specific version for a setup procedure.
+- **Flashtool** must be able to reach all built software components on the
+    *buildserver*
 
-The table below shows a quick overview of the features of the **Flashtool**.
-A detailed description of the command can be found in the [usage
-section](../../usage/flashtool.md) of the **Flashtool**
+To make the setup process as easy as possible for the user, the **Flashtool**
+should be able to recognize plugged in MMC media. 
 
+- Automatic recognition of plugged in MMC devices.
 
- command | description
- ------- | -----------
- init / config | Configure needed options for the **Flashtool**. Must be done as first step (init) and can be changed any time (config)
- platform\_recipes | Get or update platform recipes from git repository
- list\_platforms   | Shows which platforms have a recipe file and can be set up
- list\_builds  | List all versions of software components on the platform, grouped by platform and product type
- setup  | runs a deployment procedure for the specified platform
- check\_mmc | Does a filesystem check on every partition on a mmc media
+The **Flashtool** should be extensible for future features.
 
+- adding new setup routines for new platforms if needed.
+- adding new commands for the **Flashtool**. 
 
- 
 
