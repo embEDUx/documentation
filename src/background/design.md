@@ -52,7 +52,12 @@ systems.
 
 For the **embEDUx** use-case, availability and compatibility are preferred over
 installation speed. This leads to the choice of a source based package
-installation based on the above comparison 
+installation based on the above comparison.
+
+The choice of the source package management system should be evaluated
+carefully. Candidates shall
+* Portage - Gentoo's Package Manager
+* YOCTO - A complete system generation tool
 
 ## Portability 
 In order to have a portable build system, all components should live and run in
