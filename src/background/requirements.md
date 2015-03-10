@@ -1,5 +1,4 @@
 # Project Requirements (HTWG context)
-**(work in progress)**
 
 The generic and automated approach that needs to be found by this project must
 meet the sum of the requirements for every single lab-course. The determination
