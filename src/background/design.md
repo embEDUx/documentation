@@ -88,7 +88,9 @@ technologies for this are either Virtual Machines or Linux Containers.
   require emulation because the CPU instructions must be translated before they
   can be run.
 
-In favor of speed, container technologies are chosen. 
+In favor of speed, container technologies are chosen.
+[Comparison of VM and Linux
+Containers](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf)
 
 
 ## Extensibility 
