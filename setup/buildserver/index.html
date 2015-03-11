@@ -441,9 +441,7 @@ Once the dependencies were installed the actual buildserver infrastructure will
 be installed. The <strong><em>buildserver.yml</em></strong> playbook will take care of both.
 Depending on your configured architectures and the speed of your internet
 connection and system components, this might take a couple of hours.</p>
-<pre><code>$ ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
-</code></pre>
-
+<p><code>$ ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all</code></p>
 </div>
         </div>
 
