@@ -224,7 +224,7 @@ name scheme is also used in the
 
 > raspberry-pi.yml
 >
-> raspberry-pi\_media_center.yml
+> raspberry-pi\_media-center.yml
 
 The name for a Rapsberry Pi in this **embEDUx** configuration is *"raspberry-pi"*.
 This name will be used in branches of the **git repositories** and on the

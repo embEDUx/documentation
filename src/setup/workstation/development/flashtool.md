@@ -134,8 +134,76 @@ recipe type. Let's call the new recipe type *hdd*.
         hdd_obj.partitions      # get list of partitions
 
 
-3. Load attributes: (TODO: Describe *Load* class)
+3. Load attribute:
+    The load structure can be used to map the software components to the defined
+    partitions. To add this structure to your recipe type you have to do the
+    following steps:
+    1. Add the keyword *load* to the *attr* class member of your python class
+        first (In this example HDD).
 
+            attr = ['paritions', 'partition_table', 'load']
+
+    2. Pass the value of the attribute *load* to the constructor of the class
+       *Load* and save the *Load* object as new value of the *load* attribute.
+
+            from flashtool.setup.recipe import Load
+            ...
+                attributes['load'] = Load(attributes['load'])
+                YAML.__init__(self, attributes)
+
+    Now the user can use the *load* structure in the *hdd* recipe 
+        ---
+        type: hdd
+        
+        recipe:
+            partition_type:
+            partition:
+                - name: 
+                  fs_type:
+                  size:
+                  flags:
+
+            load: 
+                Uboot:
+                    device: 
+                Linux_Boot:
+                    device: 
+                Linux_Root:
+                    device: 
+                    ...
     
 
-4. Now we can add a deploy class for the *hdd* recipe type.
+4. Now we can add a deploy class for the *hdd* recipe type. This class must be
+    stated in the file *hdd.py* and inherit from the super class Deploy. The 
+    following constructor and methods must be implemented for this class.
+
+        `def __init__(self, recipe, actions, builds, platform, auto)`
+        `def prepare(self)`
+        `def load(self)`
+
+    The setup routine will search for a python file with the name *hdd.py* in
+    the directory *deploy*. The module variable `__entry__` must be set with the 
+    class name of the implemented deploy class. Let's call this class
+    `HddDeploy`. The following example will show the structure of the python
+    file.
+
+        from flashtool.setup.deploy import Deploy
+        # other imports
+
+        class HddDeploy(Deploy):
+
+            def __init__(self, recipe, actions, builds, platforms, auto):
+                # do initialization steps for the class ...
+
+            def prepare(self):
+                # code for preparation steps of the hardware, like partition
+                # the device
+
+            def load(self):
+                # loading products to the device.
+
+        __entry__ = HddDeploy
+
+
+    The setup routine will call first all `prepare()` methods of all objects
+    which were specified in the *YAML* file and then all `load()` methods.

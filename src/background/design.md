@@ -25,8 +25,10 @@ sections.
 
 # Product-Specification Storage Units
 It must be possible to build the products independently from each other.
-Therefore, each product should be managed in a separate storage unit which will be
-referred as a *repository* from this point on.
+Therefore, each product should be managed in a separate storage unit which will
+be referred as a *repository* from this point on. Additionally each platform
+needs to have its own identifiable storage unit within the *respository*. This
+storage unit will be referred as *branch* from this point on.
 
 ## Repository Format
 Configuration files and specification files are most certainly provided by the
@@ -49,10 +51,6 @@ To retrieve the **U-Boot** sources, the following possibilities exist
 * User has to provide sources within the **U-Boot** repository
 * Download sources from official website during build process
 
-Storing the sources within the **U-Boot** repository will lead to huge
-redundancy, when different platforms use the same source. Therefore we will
-implement a solution to retrieve the sources during the build process.
-
 #### Steps
 The build process must include the following steps.
 
@@ -72,16 +70,10 @@ patches, it should be able to provide a specific configuration for a build.
 ### Build process
 To retrieve the **Linux** kernel sources, there are the following possibilities.
 
-* User has to provide sources within the **Linux** repository
+* User has to provide the sources within the **Linux** repository
 * Emerge **Gentoo** kernel sources ebuild during build process
 * Download and patch kernel sources manually from
   [www.kernel.org](https://kernel.org) during build process
-
-Due to keeping the possibility to build the kernel locally, emerging the kernel
-sources with OS dependent tool is not viable. Also keeping the sources within
-the **Linux** repository, will produce redundancy when different platforms use
-the same sources. Therefore we will implement a way of retrieving and patching
-the sources during the build process.
 
 #### Steps
 The build process must include the following steps.
@@ -156,11 +148,11 @@ The software that is used to assemble the RootFS according to the provided
 package list must be chosen wisely. There are many projects to consider for this
 part. The following of them will be evaluated:
 
-- Yocto Project
-- Buildroot
-- Gentoo crossdev
-- cross-boss
-- Gentoo catalyst
+* Yocto Project
+* Buildroot
+* Gentoo crossdev
+* cross-boss
+* Gentoo catalyst
 
 The main evaluation criteria is cross-platform support.
 
@@ -227,7 +219,6 @@ buildsystem.
 The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.
 
-
 ## Setup
 The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.
@@ -251,16 +242,60 @@ point.
 
 
 ## Maintenance
+The way we handle the maintenance scenarios is a key factor in how well users
+will accept the **embEDUx** build system.
 
 ### Extensibility 
-Adding support for additional hardware platforms must be simple. 
+Adding support for additional hardware platforms must be simple. The user should
+not be forced to have a complete understanding of the **embEDUx** build system
+to be able to add his platform. However the complexity of the system, requires
+the user to have a minimal understanding of the used software components and the
+structure of **embEDUx**. 
 
-## Other 
-Platform specific source code must be avoided as far as possible. 
+### Workflow 
+Platform specific source code must be avoided as far as possible. This results
+in using mainline sources, wherever it is possible. Differences in the platform
+architecture are adapted by patches, which are applied during the build process.
+As the base sources, for each product and platform are the same, this will lead to
+the same workflow for each platform and each product.
+
+# Evaluation
+
+## Comparison With Similar Projects
+- | Buildroot | Yocto
+--- | --- | ---
+Setup | `git clone git://git.buildroot.net/buildroot` | `git clone -b dizzy git://git.yoctoproject.org/poky.git`
+Configuration | `make menuconfig` | Configuration is happening in conf files, although there is also a GUI 
+Output | Bootloader, Kernel, RootFS, Toolchain | SD Card Image
 
 
-# Evaluate Suggestion: Yocto Project
-- evaluate: => not for our purpose
+## Bootloader
+Different platforms use the same source code, when the same version of
+**U-Boot** should be build. That also means storing the source code within the
+**U-Boot** repository within each *branch* will lead to a huge overhead of
+source code file within the repository.
+
+Another option would be to download the source code during build by specifying
+the whole build process within a build script, which will be executed by the
+build server. With this solution only that build script would be redundant
+within the **U-Boot** repository.
+
+The final solution is to not just add *branches* for each platform and
+**U-Boot** version, but also add a source code branch for the **U-Boot**
+version. This branch contains a script for downloading the source code of that
+certain **U-Boot** version. All the other platform branches can execute that
+script and retrieve the source code at runtime.
+
+## Linux Kernel
+
+(work in progress Lars)
+
+Due to keeping the possibility to build the kernel locally, emerging the kernel
+sources with OS dependent tool is not viable. Also keeping the sources within
+the **Linux** repository, will produce redundancy when different platforms use
+the same sources. Therefore we will implement a way of retrieving and patching
+the sources during the build process.
+
 
 # DIY
 
