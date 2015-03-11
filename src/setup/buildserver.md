@@ -12,12 +12,11 @@ Connectivity | **TODO: estimate**
 
 
 ## Software Requirements
-### Operating Systems
+### Tested Operating Systems
 The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
-* Debian Wheezy and upwards
-* Ubuntu 14.04 and upwards
-* Gentoo *(will be specified in more detail)*
+* Ubuntu 14.04 Linux and upwards
+* Gentoo Linux *(will be specified in more detail)*
 
 ### Installed Packages
 * SSH Server
