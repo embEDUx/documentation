@@ -287,15 +287,13 @@ certain **U-Boot** version. All the other platform branches can execute that
 script and retrieve the source code at runtime.
 
 ## Linux Kernel
-
-(work in progress Lars)
-
 Due to keeping the possibility to build the kernel locally, emerging the kernel
 sources with OS dependent tool is not viable. Also keeping the sources within
-the **Linux** repository, will produce redundancy when different platforms use
-the same sources. Therefore we will implement a way of retrieving and patching
-the sources during the build process.
-
+the **Linux** repository, will as already mentioned in the Bootloader chapter,
+lead to a lot of redundancy when different platforms use the same sources.
+Therefore a promising solution is to add a branch that contains a script to
+download the sources at runtime. The other branches for each platform can then
+execute that script and retrieve the source at runtime.
 
 # DIY
 
