@@ -396,11 +396,13 @@ GitHub. It is suggested to use the latest version of the default branch, which
 can be retrieved as follows.</p>
 <pre><code>$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
 </code></pre>
+
 <h3 id="configure-the-hosts-details">Configure the hosts details</h3>
 <p>After <code>cd</code>ing into the buildserver-setuproutine directory, the first step is to
 set the IP of the buildserver machine.</p>
 <pre><code>$ $EDITOR host_vars/master
 </code></pre>
+
 <p>Change the value of the variable <em>ansible_ssh_host</em> to the address of the
 machine where you want to have the buildserver running on.</p>
 <h3 id="creating-the-password-vault">Creating the password vault</h3>
@@ -410,9 +412,8 @@ and can be created using the <code>ansible-vault</code>-utility.</p>
 <li>
 <p>Starting in the buildserver-setuproutine repository directory, the password
    file can be created using the <code>ansible-vault</code> utility.</p>
-<pre><code>$ cd ${BULDSERVER-SETUP-REPO}
-$ ansible-vault create group_vars/vault.yml
-</code></pre>
+<p><code>$ cd ${BULDSERVER-SETUP-REPO}
+$ ansible-vault create group_vars/vault.yml</code></p>
 </li>
 <li>
 <p>Either $EDITOR or vim as fallback will open and present you with an empty
@@ -429,8 +430,9 @@ users:
 <li>
 <p>Save and exit the file. That's it!</p>
 </li>
-<li>Whenever you want to change something inside the vault file, use<pre><code>$ ansible-vault edit group_vars/vault.yml
-</code></pre>
+<li>
+<p>Whenever you want to change something inside the vault file, use</p>
+<p><code>$ ansible-vault edit group_vars/vault.yml</code></p>
 </li>
 </ol>
 <h3 id="install-the-dependencies-and-the-buildserver-components">Install the dependencies and the buildserver components</h3>
@@ -441,6 +443,7 @@ Depending on your configured architectures and the speed of your internet
 connection and system components, this might take a couple of hours.</p>
 <pre><code>$ ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
 </code></pre>
+
 </div>
         </div>
 
