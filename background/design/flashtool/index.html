@@ -211,6 +211,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../eval/flashtool/index.html">Eval/Flashtool</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../eval/yocto-project/index.html">Eval/Yocto Project</a>
                         </li>
                     
@@ -321,9 +325,7 @@
         
             <li><a href="#programming-language">Programming language</a></li>
         
-            <li><a href="#requirements-of-the-flashtool">Requirements of the Flashtool</a></li>
-        
-            <li><a href="#features">Features</a></li>
+            <li><a href="#design-decisions">Design decisions</a></li>
         
     
     </ul>
@@ -341,69 +343,44 @@ their operating system and files.</p>
 as programming language. Python is a script language which is easy to learn,
 highly productive, has a nice syntax and provides plenty of packages and 
 libraries. It is also an often used language and will run on every Linux system.</p>
-<h2 id="requirements-of-the-flashtool">Requirements of the <strong>Flashtool</strong></h2>
+<h2 id="design-decisions">Design decisions</h2>
 <p>There are basic tasks which must be fulfilled by the <strong>Flashtool</strong>:</p>
-<ol>
-<li>set and change url to <em>buildserver</em> web interface</li>
-<li>easy configuration setup for the <em>Flashtool</em></li>
-<li>provide easy configuration of a platform deployment routine (recipes)</li>
-<li>
-<p>retrieve software components form the <em>buildserver</em></p>
+<p>First of all the <strong>Flashtool</strong> must be usable for different <em>embEDUx</em>
+environments. Therefore URLs to the <em>buildserver</em> or to repositories should not
+be hard coded. </p>
 <ul>
-<li>list software components for a platform</li>
-<li>filter or select specific software versions</li>
+<li>User must be able to configure several settings for the <strong>Flashtool</strong>, these
+    settings should be saved in a configuration file.</li>
 </ul>
-</li>
-<li>
-<p>extensibility of the <em>Flashtool</em></p>
+<p>The <strong>Flashtool</strong> should be able to setup several platforms. For the platforms
+this includes partition a MMC device and load the software components to the
+partitions. It must be possible to configure this setup process for the needs of
+the user. And this configuration should be reusable, to setup several platforms
+with the same configuration.</p>
 <ul>
-<li>adding deployment routines</li>
-<li>adding new configuration options</li>
+<li>User can create different configuration files for a platform to configure the
+    setup/deploy process. (recipes)</li>
+<li>The configuration language should be easy to use.</li>
 </ul>
-</li>
-<li>
-<p>recognition of plugged in hardware</p>
-</li>
-<li>easy to use</li>
-</ol>
-<h2 id="features">Features</h2>
-<p>The table below shows a quick overview of the features of the <strong>Flashtool</strong>.
-A detailed description of the command can be found in the <a href="../../../usage/flashtool/index.html">usage
-section</a> of the <strong>Flashtool</strong></p>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>init / config</td>
-<td>Configure needed options for the <strong>Flashtool</strong>. Must be done as first step (init) and can be changed any time (config)</td>
-</tr>
-<tr>
-<td>platform_recipes</td>
-<td>Get or update platform recipes from git repository</td>
-</tr>
-<tr>
-<td>list_platforms</td>
-<td>Shows which platforms have a recipe file and can be set up</td>
-</tr>
-<tr>
-<td>list_builds</td>
-<td>List all versions of software components on the platform, grouped by platform and product type</td>
-</tr>
-<tr>
-<td>setup</td>
-<td>runs a deployment procedure for the specified platform</td>
-</tr>
-<tr>
-<td>check_mmc</td>
-<td>Does a filesystem check on every partition on a mmc media</td>
-</tr>
-</tbody>
-</table>
+<p>Each software components will have several versions. These versions are
+available on the <em>buildserver</em>.</p>
+<ul>
+<li>User should be able to list all available software components versions for a
+    platform. </li>
+<li>User should be able to select a specific version for a setup procedure.</li>
+<li><strong>Flashtool</strong> must be able to reach all built software components on the
+    <em>buildserver</em></li>
+</ul>
+<p>To make the setup process as easy as possible for the user, the <strong>Flashtool</strong>
+should be able to recognize plugged in MMC media. </p>
+<ul>
+<li>Automatic recognition of plugged in MMC devices.</li>
+</ul>
+<p>The <strong>Flashtool</strong> should be extensible for future features.</p>
+<ul>
+<li>adding new setup routines for new platforms if needed.</li>
+<li>adding new commands for the <strong>Flashtool</strong>. </li>
+</ul>
 </div>
         </div>
 

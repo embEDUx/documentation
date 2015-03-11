@@ -211,6 +211,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../eval/flashtool/index.html">Eval/Flashtool</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../eval/yocto-project/index.html">Eval/Yocto Project</a>
                         </li>
                     
@@ -319,12 +323,145 @@
     
         <li class="main active"><a href="#specification-for-a-deployment-tool">Specification for a deployment tool</a></li>
         
+            <li><a href="#flashtool-configuration-file-and-working-directory">Flashtool configuration file and working directory</a></li>
+        
+            <li><a href="#recipe-file-for-platforms">Recipe file for platforms</a></li>
+        
+            <li><a href="#retrieving-software-products">Retrieving software products</a></li>
+        
+            <li><a href="#list-of-feature">List of feature</a></li>
+        
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
 <h1 id="specification-for-a-deployment-tool">Specification for a deployment tool</h1>
+<p>This is the specification that has been worked out according to the <a href="../../design/flashtool/index.html">design of
+the Flashtool</a>. </p>
+<h2 id="flashtool-configuration-file-and-working-directory"><strong>Flashtool</strong> configuration file and working directory</h2>
+<p>The configuration file for the <strong>Flashtool</strong> should be saved in a own working
+directory for the <strong>Flashtool</strong>. This working directory can be set by the user
+when the tool is initialized. When the user does not specify the working
+directory it will be created in the <em>home</em> directory with the folder name
+"<em>.flashtool</em>.</p>
+<p>This working directory is used to save the configuration files for the
+platforms and logging files of the <strong>Flashtool</strong>.</p>
+<h2 id="recipe-file-for-platforms">Recipe file for platforms</h2>
+<p>The configuration file for the platform act as recipe for the setup procedure.
+The user should be able to define how to partition the storage device of the
+platform and where the software packages should be loaded. </p>
+<h3 id="language">Language</h3>
+<p>The language of the recipe file is <em>YAML</em>. A recipe file must contain at least
+one <em>YAML document</em>. Each <em>YAML document</em> specifies a recipe. So a recipe file
+contains one or more recipes. Each recipe must have a python counterpart, which
+ensures if all required settings are given and checks the values of the
+settings.</p>
+<pre><code>---
+type : ${recipe type}
+
+recipe:
+    ${settings for recipe}
+</code></pre>
+<p>This example shows the basic structure of a recipe. Multiple recipes in a recipe
+file must be divided by <code>---</code>.</p>
+<h3 id="name-scheme">Name Scheme</h3>
+<p>The name scheme of a recipe file must be as follows:</p>
+<p><code>{platform name}.yml}</code>
+or
+<code>{platform name}_{identifier}.yml</code></p>
+<p>The <em>platform name</em> and the <em>identifier</em> must not contain underscores. The
+platform name must also exist on the buildserver configuration for the specific
+platform. With the <em>identifier</em> it is possible to set multiple recipe files for
+a platform.</p>
+<h3 id="availability-of-predefined-recipe-files">Availability of predefined recipe files</h3>
+<p>There must be a repository for recipe files which are set by the administrator.
+This repository is a git repository and the URL to it must be configured in the
+<strong>Flashtool</strong> configuration.</p>
+<h3 id="user-defined-recipe-files">User defined recipe files</h3>
+<p>It is also required to add a directory for the <strong>Flashtool</strong> where the user can
+add own recipe files. This directory must be configured in the <strong>Flashtool</strong>
+configuration.</p>
+<h2 id="retrieving-software-products">Retrieving software products</h2>
+<p>The built software product must be retrieved from the <strong>builbot</strong> web server.
+The web server provides a <em>JSON api</em> to get all information about every built
+which was made. This <em>JSON</em> information must be parsed by the <strong>Flashtool</strong> to get
+all valid builds. The next list shows the paths which provide different
+information about the <strong>buildbot master</strong> and which data is useful for the
+<strong>Flashtool</strong>.</p>
+<ul>
+<li>
+<p><code>/json</code></p>
+<p>Get all supported platforms and which architecture the platform has. It also
+gets the name of the builder for a specific architecture.</p>
+<p><em>useful values</em> in json string ([i]: for each entry):</p>
+<ul>
+<li>builders[i]-&gt;basedir: builder name and architecture</li>
+<li>builders[i]-&gt;schedulers: branch filter and platform name</li>
+</ul>
+</li>
+<li>
+<p><code>/json/builders/{builder name}/builds/-1</code></p>
+<p>Get the last build of the builder.</p>
+<p><em>useful values</em> in json string:</p>
+<ul>
+<li>number: build number</li>
+</ul>
+</li>
+<li>
+<p><code>/json/builders/{builder name}/builds/{build id}</code></p>
+<p>Get information about a specific build. Check if build was successful and
+save the following values for each successful build.</p>
+<p><em>useful values</em> in json string:</p>
+<ul>
+<li>text: check for value <em>build</em> and <em>successful</em></li>
+<li>properties-&gt;urls: path to the built files and product</li>
+<li>properties-&gt;upload_files: Created files of the build</li>
+</ul>
+<p>With this information it is possible to create a download link for each
+software product. The path is created by the following patterns:</p>
+<pre><code>/{url}/{file name}
+</code></pre>
+</li>
+</ul>
+<h2 id="list-of-feature">List of feature</h2>
+<p>The table below shows a quick overview of the features of the <strong>Flashtool</strong>.
+A detailed description of the command can be found in the <a href="../../../usage/flashtool/index.html">usage
+section</a> of the <strong>Flashtool</strong></p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init / config</td>
+<td>Configure needed options for the <strong>Flashtool</strong>. Must be done as first step (init) and can be changed any time (config)</td>
+</tr>
+<tr>
+<td>platform_recipes</td>
+<td>Get or update platform recipes from git repository</td>
+</tr>
+<tr>
+<td>list_platforms</td>
+<td>Shows which platforms have a recipe file and can be set up</td>
+</tr>
+<tr>
+<td>list_builds</td>
+<td>List all versions of software components on the platform, grouped by platform and product type</td>
+</tr>
+<tr>
+<td>setup</td>
+<td>runs a deployment procedure for the specified platform</td>
+</tr>
+<tr>
+<td>check_mmc</td>
+<td>Does a filesystem check on every partition on a mmc media</td>
+</tr>
+</tbody>
+</table>
 </div>
         </div>
 

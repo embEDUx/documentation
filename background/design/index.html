@@ -211,6 +211,10 @@
                         </li>
                     
                         <li >
+                            <a href="../eval/flashtool/index.html">Eval/Flashtool</a>
+                        </li>
+                    
+                        <li >
                             <a href="../eval/yocto-project/index.html">Eval/Yocto Project</a>
                         </li>
                     
@@ -339,7 +343,7 @@
             <li><a href="#rootfs">RootFS</a></li>
         
     
-        <li class="main "><a href="#design-decisions">Design Decisions</a></li>
+        <li class="main "><a href="#further-goals">Further Goals</a></li>
         
             <li><a href="#portability">Portability</a></li>
         
@@ -347,10 +351,14 @@
         
             <li><a href="#maintenance">Maintenance</a></li>
         
-            <li><a href="#other">Other</a></li>
-        
     
-        <li class="main "><a href="#evaluate-suggestion-yocto-project">Evaluate Suggestion: Yocto Project</a></li>
+        <li class="main "><a href="#evaluation">Evaluation</a></li>
+        
+            <li><a href="#comparison-with-similar-projects_1">Comparison With Similar Projects</a></li>
+        
+            <li><a href="#bootloader_1">Bootloader</a></li>
+        
+            <li><a href="#linux-kernel_1">Linux Kernel</a></li>
         
     
         <li class="main "><a href="#diy">DIY</a></li>
@@ -389,12 +397,14 @@ sections.</p>
 <ul>
 <li>Embedian - unfortunately, the project was officially retired as of July 2014 </li>
 <li>Buildroot</li>
-<li>YOCTO Project</li>
+<li>Yocto Project</li>
 </ul>
 <h1 id="product-specification-storage-units">Product-Specification Storage Units</h1>
 <p>It must be possible to build the products independently from each other.
-Therefore, each product should be managed in a separate storage unit which will be
-referred as a <em>repository</em> from this point on.</p>
+Therefore, each product should be managed in a separate storage unit which will
+be referred as a <em>repository</em> from this point on. Additionally each platform
+needs to have its own identifiable storage unit within the <em>respository</em>. This
+storage unit will be referred as <em>branch</em> from this point on.</p>
 <h2 id="repository-format">Repository Format</h2>
 <p>Configuration files and specification files are most certainly provided by the
 user as text files. For this purpose, a version control system should be used in
@@ -408,10 +418,19 @@ to a specific <strong>U-Boot</strong> version. <strong>U-Boot</strong> also has 
 general, but it has to be evaluated if it's supported for all required
 platforms.</p>
 <h3 id="build-process">Build process</h3>
+<p>To retrieve the <strong>U-Boot</strong> sources, the following possibilities exist</p>
+<ul>
+<li>User has to provide sources within the <strong>U-Boot</strong> repository</li>
+<li>Download sources from official website during build process</li>
+</ul>
+<h4 id="steps">Steps</h4>
 <p>The build process must include the following steps.</p>
 <ol>
-<li>Retrieve the build specifications from the RootFS-repository
-TODO Lars</li>
+<li>Retrieve the build specifications from the <strong>U-Boot</strong>-repository</li>
+<li>Retrieve the <strong>U-Boot</strong> sources</li>
+<li>(Cross-)Compile <strong>U-Boot</strong> for target architecture with config provided by
+   the specifications</li>
+<li>Create an archive from the necessary files.</li>
 </ol>
 <h2 id="linux-kernel">Linux-Kernel</h2>
 <p>No specific <strong>Linux</strong> kernel version is required and the software solution must
@@ -419,6 +438,28 @@ not be restricted to a specific kernel version. It would be reasonable to have
 the same kernel sources for all of the platforms, and only provide platform
 specific patches to the common base where necessary. In addition to these
 patches, it should be able to provide a specific configuration for a build.</p>
+<h3 id="build-process_1">Build process</h3>
+<p>To retrieve the <strong>Linux</strong> kernel sources, there are the following possibilities.</p>
+<ul>
+<li>User has to provide the sources within the <strong>Linux</strong> repository</li>
+<li>Emerge <strong>Gentoo</strong> kernel sources ebuild during build process</li>
+<li>Download and patch kernel sources manually from
+  <a href="https://kernel.org">www.kernel.org</a> during build process</li>
+</ul>
+<h4 id="steps_1">Steps</h4>
+<p>The build process must include the following steps.</p>
+<ol>
+<li>Retrieve the build specifications from the <strong>Linux</strong>-repository</li>
+<li>Retrieve <strong>Linux</strong> kernel sources</li>
+<li>Apply required patches provided from the <strong>Linux</strong>-repository</li>
+<li>(Cross-)Compile kernel for target architecture with kernel config provided by
+   the specifications</li>
+<li>Create two archives from the necessary files.<ul>
+<li>target boot partition (kernel image, device tree blob)</li>
+<li>target root partition (e.g. modules)</li>
+</ul>
+</li>
+</ol>
 <h2 id="toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</h2>
 <p>The Linux-Kernel and the Bootloader must be compiled from their sources,
 otherwise the user is not able to provide the configuration for these.
@@ -430,11 +471,12 @@ toolchain creation.</p>
 <li>Crosstool-NG</li>
 <li>Buildroot</li>
 </ul>
-<h3 id="build-process_1">Build process</h3>
-<p>The build process must include the following steps.</p>
+<h3 id="build-process_2">Build process</h3>
 <ol>
-<li>Retrieve the build specifications from the RootFS-repository
-TODO Lars</li>
+<li>Retrieve the build specifications from the <strong>Toolchains</strong>-repository</li>
+<li>Translate the toolchain specifications</li>
+<li>Build toolchain</li>
+<li>Create an archive with the toolchain</li>
 </ol>
 <h2 id="rootfs">RootFS</h2>
 <p>The requirements include the need for various packages. Combined with the
@@ -463,24 +505,28 @@ systems.</p>
 installation speed. This leads to the choice of a source based package
 installation based on the above comparison.</p>
 <p>The choice of the source package management system should be evaluated
-carefully. Candidates shall be
-<em> Gentoo Portage
-</em> Buildroot
-* YOCTO</p>
+carefully. Candidates shall be</p>
+<ul>
+<li>Gentoo Portage</li>
+<li>Buildroot</li>
+<li>Yocto Project</li>
+</ul>
 <h3 id="package-lists">Package Lists</h3>
 <p>The list and configuration of the desired packages
-must be configurable for each build.</p>
-<h3 id="build-process_2">Build process</h3>
+must be configurable for each build. There</p>
+<h3 id="build-process_3">Build process</h3>
 <p>The software that is used to assemble the RootFS according to the provided
 package list must be chosen wisely. There are many projects to consider for this
-part. The following of them will be evaluated:
-- YOCTO
-- Buildroot
-- Gentoo crossdev
-- cross-boss
-- Gentoo catalyst</p>
+part. The following of them will be evaluated:</p>
+<ul>
+<li>Yocto Project</li>
+<li>Buildroot</li>
+<li>Gentoo crossdev</li>
+<li>cross-boss</li>
+<li>Gentoo catalyst</li>
+</ul>
 <p>The main evaluation criteria is cross-platform support.</p>
-<h4 id="steps">Steps</h4>
+<h4 id="steps_2">Steps</h4>
 <p>The build process must include the following steps.</p>
 <ol>
 <li>Retrieve the build specifications from the RootFS-repository</li>
@@ -490,7 +536,7 @@ part. The following of them will be evaluated:
 <li>Cleanup the build files</li>
 <li>Create an archive from the RootFS</li>
 </ol>
-<h1 id="design-decisions">Design Decisions</h1>
+<h1 id="further-goals">Further Goals</h1>
 <h2 id="portability">Portability</h2>
 <p>In order to have a portable build system, all components should live and run in
 systems that are separated from the buildserver's host system. Possible
@@ -562,14 +608,70 @@ The architectures will be supported as build targets. </p>
 <p>Any scripting language can be used and there's no chosen preference as of this
 point.</p>
 <h2 id="maintenance">Maintenance</h2>
+<p>The way we handle the maintenance scenarios is a key factor in how well users
+will accept the <strong>embEDUx</strong> build system.</p>
 <h3 id="extensibility">Extensibility</h3>
-<p>Adding support for additional hardware platforms must be simple. </p>
-<h2 id="other">Other</h2>
-<p>Platform specific source code must be avoided as far as possible. </p>
-<h1 id="evaluate-suggestion-yocto-project">Evaluate Suggestion: Yocto Project</h1>
-<ul>
-<li>evaluate: =&gt; not for our purpose</li>
-</ul>
+<p>Adding support for additional hardware platforms must be simple. The user should
+not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
+to be able to add his platform. However the complexity of the system, requires
+the user to have a minimal understanding of the used software components and the
+structure of <strong>embEDUx</strong>. </p>
+<h3 id="workflow">Workflow</h3>
+<p>Platform specific source code must be avoided as far as possible. This results
+in using mainline sources, wherever it is possible. Differences in the platform
+architecture are adapted by patches, which are applied during the build process.
+As the base sources, for each product and platform are the same, this will lead to
+the same workflow for each platform and each product.</p>
+<h1 id="evaluation">Evaluation</h1>
+<h2 id="comparison-with-similar-projects_1">Comparison With Similar Projects</h2>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Buildroot</th>
+<th>Yocto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup</td>
+<td><code>git clone git://git.buildroot.net/buildroot</code></td>
+<td><code>git clone -b dizzy git://git.yoctoproject.org/poky.git</code></td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><code>make menuconfig</code></td>
+<td>Configuration is happening in conf files, although there is also a GUI</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Bootloader, Kernel, RootFS, Toolchain</td>
+<td>SD Card Image</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bootloader_1">Bootloader</h2>
+<p>Different platforms use the same source code, when the same version of
+<strong>U-Boot</strong> should be build. That also means storing the source code within the
+<strong>U-Boot</strong> repository within each <em>branch</em> will lead to a huge overhead of
+source code file within the repository.</p>
+<p>Another option would be to download the source code during build by specifying
+the whole build process within a build script, which will be executed by the
+build server. With this solution only that build script would be redundant
+within the <strong>U-Boot</strong> repository.</p>
+<p>The final solution is to not just add <em>branches</em> for each platform and
+<strong>U-Boot</strong> version, but also add a source code branch for the <strong>U-Boot</strong>
+version. This branch contains a script for downloading the source code of that
+certain <strong>U-Boot</strong> version. All the other platform branches can execute that
+script and retrieve the source code at runtime.</p>
+<h2 id="linux-kernel_1">Linux Kernel</h2>
+<p>Due to keeping the possibility to build the kernel locally, emerging the kernel
+sources with OS dependent tool is not viable. Also keeping the sources within
+the <strong>Linux</strong> repository, will as already mentioned in the Bootloader chapter,
+lead to a lot of redundancy when different platforms use the same sources.
+Therefore a promising solution is to add a branch that contains a script to
+download the sources at runtime. The other branches for each platform can then
+execute that script and retrieve the source at runtime.</p>
 <h1 id="diy">DIY</h1>
 <h2 id="products">Products</h2>
 <h3 id="u-boot">U-Boot</h3>
@@ -600,15 +702,6 @@ point.</p>
 <li>prepare output for boot partition </li>
 </ul>
 <h3 id="linux">Linux</h3>
-<ul>
-<li>download sources</li>
-<li>apply gentoo patches</li>
-<li>apply user patches</li>
-<li>apply config</li>
-<li>build</li>
-<li>prepare output for boot partition</li>
-<li>prepare output for root partition</li>
-</ul>
 <h3 id="misc">Misc</h3>
 <ul>
 <li>contains files for root / boot</li>

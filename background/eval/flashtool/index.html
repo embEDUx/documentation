@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Design/Rootfs - embEDUx Project</title>
+        <title>Eval/Flashtool - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -167,55 +167,55 @@
                         </li>
                     
                         <li >
-                            <a href="../index.html">Design</a>
+                            <a href="../../design/index.html">Design</a>
                         </li>
                     
                         <li >
-                            <a href="../architecture/index.html">Design/Architecture</a>
+                            <a href="../../design/architecture/index.html">Design/Architecture</a>
                         </li>
                     
                         <li >
-                            <a href="../continuous-integration/index.html">Design/Continuous Integration</a>
+                            <a href="../../design/continuous-integration/index.html">Design/Continuous Integration</a>
                         </li>
                     
                         <li >
-                            <a href="../flashtool/index.html">Design/Flashtool</a>
+                            <a href="../../design/flashtool/index.html">Design/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../linux/index.html">Design/Linux</a>
+                            <a href="../../design/linux/index.html">Design/Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../misc/index.html">Design/Misc</a>
+                            <a href="../../design/misc/index.html">Design/Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                            <a href="../../design/repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../design/rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../design/toolchains/index.html">Design/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../design/uboot/index.html">Design/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../continious-integration/index.html">Eval/Continious Integration</a>
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Design/Rootfs</a>
+                            <a href="index.html">Eval/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../toolchains/index.html">Design/Toolchains</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../uboot/index.html">Design/Uboot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../eval/continious-integration/index.html">Eval/Continious Integration</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../eval/flashtool/index.html">Eval/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../eval/yocto-project/index.html">Eval/Yocto Project</a>
+                            <a href="../yocto-project/index.html">Eval/Yocto Project</a>
                         </li>
                     
                         <li >
@@ -302,12 +302,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../repositories-and-branches/index.html">
+                    <a rel="next" href="../continious-integration/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../toolchains/index.html">
+                    <a rel="prev" href="../yocto-project/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -321,15 +321,49 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#rootfs-buildprocess-design">RootFS Buildprocess Design</a></li>
+        <li class="main active"><a href="#evaluation-of-software-components-for-the-flashtool">Evaluation of software components for the Flashtool</a></li>
+        
+            <li><a href="#user-interface">User interface</a></li>
+        
+            <li><a href="#partition-a-block-device">Partition a block device</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="rootfs-buildprocess-design">RootFS Buildprocess Design</h1>
-<p><strong>(work in progress)</strong></p>
+<h1 id="evaluation-of-software-components-for-the-flashtool">Evaluation of software components for the <strong>Flashtool</strong></h1>
+<p>For several tasks of the <strong>Flashtool</strong> there are multiple python packages to do
+the job.</p>
+<h2 id="user-interface">User interface</h2>
+<p>The <strong>Flashtool</strong> should be used in a command line interface and therefore it
+has to provide several program parameter to trigger the different tasks. </p>
+<p>To implement command line options we considered using <em>getopt</em> or <em>argparse</em>.
+The package <a href="https://docs.python.org/3.3/library/getopt.html">getopt</a> is a 
+C-style parser and is recommend for users of the C <em>getopt()</em> function. The
+documentation for the <em>getopt</em> package recommend the package <a href="https://docs.python.org/dev/library/argparse.html">argparse</a> 
+for users who want to write less code (who doesn't?) and get better help and 
+error messages. </p>
+<p>The decision to take the <em>argparse</em> package was easy, because a implementation
+of the various command line parameter, which each of them will have own options,
+will lead to a vast number of code with the <em>getopt</em> package. The <em>argparse</em>
+package is easy to use and leads to clean code. Extending the parser with new
+arguments is really easy.</p>
+<h2 id="partition-a-block-device">Partition a block device</h2>
+<p>For this purpose we had to choose between <a href="https://github.com/rhinstaller/blivet">blivet</a> and <a href="https://github.com/rhinstaller/pyparted">pyparted</a>.
+The <em>blivet</em> package is used by the fedora project and according to the
+<a href="http://blivet.readthedocs.org/en/latest/">documentation</a> it is easy to create
+partitions. A big disadvantage of the <em>blivet</em> package is, that it has many
+dependencies to other package, which must be installed by hand and are not
+automatically installed by the <em>setup.py</em> script of the package. There were also
+some difficulties to install some of the dependencies, because they only work
+with python 2.7 and not python 3 or above. 
+After failing to use the <em>blivet</em> package we decided to use the <em>pyparted</em>
+package. This package uses the <em>libparted</em> package. <em>libparted</em> is the library 
+of the GNU parted project. The <em>pyparted</em> is a good solution for the
+<strong>Flashtool</strong> to partition block devices. It supports all features which are
+given by the C library <em>libparted</em>. It took about 80 lines of code to implement
+the functionality for the <strong>Flashtool</strong>.</p>
 </div>
         </div>
 

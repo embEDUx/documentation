@@ -211,6 +211,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/eval/flashtool/index.html">Eval/Flashtool</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/eval/yocto-project/index.html">Eval/Yocto Project</a>
                         </li>
                     
@@ -332,7 +336,12 @@
 
 <h1 id="buildserver-setup">Buildserver Setup</h1>
 <p><strong>(work in progress)</strong></p>
+<p>This page holds the instructions of setting up your very own instance of the
+<strong>embEDUx</strong> buildserver. For advanced users, these instructions may be
+considered a mere suggestions. We'd be happy to receive suggestions and feedback
+about this!</p>
 <h2 id="hardware-requirements">Hardware Requirements</h2>
+<h3 id="master">Master</h3>
 <table>
 <thead>
 <tr>
@@ -343,29 +352,28 @@
 <tbody>
 <tr>
 <td>CPU</td>
-<td>min. 1 Core per Container</td>
+<td>x86_64 - more is better!</td>
 </tr>
 <tr>
 <td>RAM</td>
-<td><strong>TODO: estimate</strong></td>
+<td>4GB+</td>
 </tr>
 <tr>
 <td>Storage</td>
-<td><strong>TODO: estimate</strong></td>
+<td>10GB+ for initial full builds</td>
 </tr>
 <tr>
 <td>Connectivity</td>
-<td><strong>TODO: estimate</strong></td>
+<td>Downloads of ~800-1000MiB</td>
 </tr>
 </tbody>
 </table>
 <h2 id="software-requirements">Software Requirements</h2>
-<h3 id="operating-systems">Operating Systems</h3>
+<h3 id="tested-operating-systems">Tested Operating Systems</h3>
 <p>The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
-<em> Debian Wheezy and upwards
-</em> Ubuntu 14.04 and upwards
-<em> Gentoo </em>(will be specified in more detail)*</p>
+<em> Ubuntu 14.04 Linux and upwards
+</em> Gentoo Linux <em>(will be specified in more detail)</em></p>
 <h3 id="installed-packages">Installed Packages</h3>
 <ul>
 <li>SSH Server</li>
@@ -382,6 +390,57 @@ Currently the setup routine supports
 <li><em>buildmaster</em> configuration</li>
 <li><em>buildslave</em> mapping</li>
 </ul>
+<h3 id="clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</h3>
+<p>The setuproutine for the buildserver is currently stored in a Git repository on
+GitHub. It is suggested to use the latest version of the default branch, which
+can be retrieved as follows.</p>
+<pre><code>$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
+</code></pre>
+<h3 id="configure-the-hosts-details">Configure the hosts details</h3>
+<p>After <code>cd</code>ing into the buildserver-setuproutine directory, the first step is to
+set the IP of the buildserver machine.</p>
+<pre><code>$ $EDITOR host_vars/master
+</code></pre>
+<p>Change the value of the variable <em>ansible_ssh_host</em> to the address of the
+machine where you want to have the buildserver running on.</p>
+<h3 id="creating-the-password-vault">Creating the password vault</h3>
+<p>Credentials will be stored in a so called vault file. It takes only a few steps
+and can be created using the <code>ansible-vault</code>-utility.</p>
+<ol>
+<li>
+<p>Starting in the buildserver-setuproutine repository directory, the password
+   file can be created using the <code>ansible-vault</code> utility.</p>
+<pre><code>$ cd ${BULDSERVER-SETUP-REPO}
+$ ansible-vault create group_vars/vault.yml
+</code></pre>
+</li>
+<li>
+<p>Either $EDITOR or vim as fallback will open and present you with an empty
+   file. Now create a simple YAML variable named <em>buildbot_psk</em> and assign it
+   your desired password. In addition, create a YAML dictionary called users,
+   which contains a <em>user: password</em> mapping for allowed logins on the
+   buildmaster's webinterface. Here's an example:</p>
+<pre><code>---
+buildbot_psk: your_secret_psk
+users:
+    embedux: embedux
+</code></pre>
+</li>
+<li>
+<p>Save and exit the file. That's it!</p>
+</li>
+<li>Whenever you want to change something inside the vault file, use<pre><code>$ ansible-vault edit group_vars/vault.yml
+</code></pre>
+</li>
+</ol>
+<h3 id="install-the-dependencies-and-the-buildserver-components">Install the dependencies and the buildserver components</h3>
+<p>The next step is to install the needed dependencies on the configured hosts.
+Once the dependencies were installed the actual buildserver infrastructure will
+be installed. The <strong><em>buildserver.yml</em></strong> playbook will take care of both.
+Depending on your configured architectures and the speed of your internet
+connection and system components, this might take a couple of hours.</p>
+<pre><code>$ ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
+</code></pre>
 </div>
         </div>
 
