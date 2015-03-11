@@ -14,7 +14,7 @@ highly productive, has a nice syntax and provides plenty of packages and
 libraries. It is also an often used language and will run on every Linux system.
 
 
-## Design decision 
+## Design decisions
 
 There are basic tasks which must be fulfilled by the **Flashtool**:
 
