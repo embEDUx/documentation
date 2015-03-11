@@ -72,3 +72,8 @@ ansible-playbook -i hosts dependencies.yml --ask-sudo-pass --tags all
 ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
 ```
 
+### Install additional buildslaves
+
+```
+ansible-playbook -i hosts buildslaves.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
+```
