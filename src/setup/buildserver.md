@@ -69,6 +69,6 @@ ansible-playbook -i hosts dependencies.yml --ask-sudo-pass --tags all
 ### Install the buildserver components
 
 ```
-ansible-playbook -i hosts buildserver.yml --ask-vault-pass -e @group_vars/vault.yml --tags all
+ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
 ```
 
