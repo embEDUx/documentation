@@ -3,17 +3,17 @@
 
 This page holds the instructions of setting up your very own instance of the
 **embEDUx** buildserver. For advanced users, these instructions may be
-considered a mere suggestions. We'd be happy to receive suggestions and feedback
+considered mere suggestions. We'd be happy to receive suggestions and feedback
 about this!
 
 
-Please execute the commands in the instructions on your [previously prepared
-adminstation](adminstation.md).
 
 
 ## Prerequisites
-### Requirements
 
+### Requirements
+* Adminstation setup completed - If you haven't already setup your adminstation,
+  please follow [these instructions](adminstation.md).
 
 ## Buildserver Machine requirements
 ### Hardware
