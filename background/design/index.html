@@ -343,7 +343,7 @@
             <li><a href="#rootfs">RootFS</a></li>
         
     
-        <li class="main "><a href="#design-decisions">Design Decisions</a></li>
+        <li class="main "><a href="#further-goals">Further Goals</a></li>
         
             <li><a href="#portability">Portability</a></li>
         
@@ -360,17 +360,16 @@
         
             <li><a href="#linux-kernel_1">Linux Kernel</a></li>
         
-            <li><a href="#toolchain">Toolchain</a></li>
+    
+        <li class="main "><a href="#diy">DIY</a></li>
         
-            <li><a href="#rootfs_1">RootFS</a></li>
-        
-            <li><a href="#buildserver">Buildserver</a></li>
+            <li><a href="#products">Products</a></li>
         
             <li><a href="#how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</a></li>
         
             <li><a href="#how-can-we-setup-the-ci">How can we setup the CI?</a></li>
         
-            <li><a href="#visualization">Visualization</a></li>
+            <li><a href="#what-does-the-build-script-need-to-do-for-the-different-products">What does the build script need to do for the different products</a></li>
         
     
     </ul>
@@ -456,16 +455,16 @@ patches, it should be able to provide a specific configuration for a build.</p>
 <li>(Cross-)Compile kernel for target architecture with kernel config provided by
    the specifications</li>
 <li>Create two archives from the necessary files.<ul>
-<li>destination boot partition (kernel image, device tree blob)</li>
-<li>destination root partition (e.g. modules)</li>
+<li>target boot partition (kernel image, device tree blob)</li>
+<li>target root partition (e.g. modules)</li>
 </ul>
 </li>
 </ol>
 <h2 id="toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</h2>
 <p>The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these.  In oder
-to build these products for the different platforms a Toolchain wit the
-respective build targets is required. The toolchain should also be user
+otherwise the user is not able to provide the configuration for these.
+In oder to build these products for the different platforms it will require a
+Toolchain with the respective build targets. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of
 toolchain creation.</p>
 <ul>
@@ -514,7 +513,7 @@ carefully. Candidates shall be</p>
 </ul>
 <h3 id="package-lists">Package Lists</h3>
 <p>The list and configuration of the desired packages
-must be configurable for each build.</p>
+must be configurable for each build. There</p>
 <h3 id="build-process_3">Build process</h3>
 <p>The software that is used to assemble the RootFS according to the provided
 package list must be chosen wisely. There are many projects to consider for this
@@ -537,7 +536,7 @@ part. The following of them will be evaluated:</p>
 <li>Cleanup the build files</li>
 <li>Create an archive from the RootFS</li>
 </ol>
-<h1 id="design-decisions">Design Decisions</h1>
+<h1 id="further-goals">Further Goals</h1>
 <h2 id="portability">Portability</h2>
 <p>In order to have a portable build system, all components should live and run in
 systems that are separated from the buildserver's host system. Possible
@@ -649,55 +648,44 @@ the same workflow for each platform and each product.</p>
 <td>Bootloader, Kernel, RootFS, Toolchain</td>
 <td>SD Card Image</td>
 </tr>
-<tr>
-<td>Platform Support</td>
-<td>-</td>
-<td>Common platforms are supported or available through so called <em>Board Support Packages (BSP)</em>, otherwise manual configuration can be done</td>
-</tr>
-<tr>
-<td>Software Support</td>
-<td>-</td>
-<td>Common software is available, otherwise can be added by creating own recipes</td>
-</tr>
 </tbody>
 </table>
-<h3 id="conclusion">Conclusion:</h3>
-<p>As we want to have a highly dynamic system, where we still offer up-to date
-products, non of the aforementioned projects offer a satisfying solution.
-Therefore developing our own projects is necessary.</p>
 <h2 id="bootloader_1">Bootloader</h2>
 <p>Different platforms use the same source code, when the same version of
-<strong>U-Boot</strong> should be build. This also means storing the source code within the
+<strong>U-Boot</strong> should be build. That also means storing the source code within the
 <strong>U-Boot</strong> repository within each <em>branch</em> will lead to a huge overhead of
 source code file within the repository.</p>
 <p>Another option would be to download the source code during build by specifying
 the whole build process within a build script, which will be executed by the
-build server. With this solution only the required build script will be
-redundant within the <strong>U-Boot</strong> repository.</p>
+build server. With this solution only that build script would be redundant
+within the <strong>U-Boot</strong> repository.</p>
 <p>The final solution is to not just add <em>branches</em> for each platform and
-<strong>U-Boot</strong> version, but also add a source code branch for each <strong>U-Boot</strong>
+<strong>U-Boot</strong> version, but also add a source code branch for the <strong>U-Boot</strong>
 version. This branch contains a script for downloading the source code of that
 certain <strong>U-Boot</strong> version. All the other platform branches can execute that
 script and retrieve the source code at runtime.</p>
 <h2 id="linux-kernel_1">Linux Kernel</h2>
 <p>Due to keeping the possibility to build the kernel locally, emerging the kernel
-sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the
-sources within the <strong>Linux</strong> repository, will as already mentioned in the
-bootloader chapter, lead to a lot of redundancy when different platforms use the
-same sources. Therefore a promising solution is to add for each <strong>Linux</strong> kernel
-version, which should be build, a branch that contains a script to download the
-sources at runtime. The other branches for each platform can then execute that
-script and retrieve the sources at runtime.</p>
-<h2 id="toolchain">Toolchain</h2>
-<p>Toolchains built with buildroot have absolute symbolic links compiled within the
-binaries.  As we want to have a portable toolchain, this fact disqualifies
-buildroot for our needs. Fortunately, Crosstool-NG offers the possibility to
-build static toolchains. Even toolchains, that are built on host with
-architecture X, compiled for architecture Y, which cross-compile for
-architecture Z are possible with Crosstool-NG. These kind of toolchains are
-called <em>canadian</em> toolchain.</p>
-<h2 id="rootfs_1">RootFS</h2>
-<h2 id="buildserver">Buildserver</h2>
+sources with OS dependent tool is not viable. Also keeping the sources within
+the <strong>Linux</strong> repository, will as already mentioned in the Bootloader chapter,
+lead to a lot of redundancy when different platforms use the same sources.
+Therefore a promising solution is to add a branch that contains a script to
+download the sources at runtime. The other branches for each platform can then
+execute that script and retrieve the source at runtime.</p>
+<h1 id="diy">DIY</h1>
+<h2 id="products">Products</h2>
+<h3 id="u-boot">U-Boot</h3>
+<ul>
+<li>realize we need files which better not be assigned to the product</li>
+</ul>
+<h3 id="kernel">Kernel</h3>
+<ul>
+<li>realize we need files which better not be assigned to the product</li>
+</ul>
+<h3 id="miscellaneous-files">Miscellaneous Files</h3>
+<p>=&gt; directly derived from U-Boot/Kernel </p>
+<h3 id="toolchain">Toolchain</h3>
+<h3 id="rootfs_1">RootFS</h3>
 <h2 id="how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</h2>
 <p>=&gt; Design Continuous Integration
 =&gt; call user build script within a repository
@@ -705,9 +693,33 @@ called <em>canadian</em> toolchain.</p>
 =&gt; find solution for rootfs</p>
 <h2 id="how-can-we-setup-the-ci">How can we setup the CI?</h2>
 <p>=&gt; ansible</p>
-<h2 id="visualization">Visualization</h2>
-<p>The following graphic shows the aforementioned design decisions.</p>
-<p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
+<h2 id="what-does-the-build-script-need-to-do-for-the-different-products">What does the build script need to do for the different products</h2>
+<h3 id="u-boot_1">U-Boot</h3>
+<ul>
+<li>download sources</li>
+<li>apply config</li>
+<li>build</li>
+<li>prepare output for boot partition </li>
+</ul>
+<h3 id="linux">Linux</h3>
+<h3 id="misc">Misc</h3>
+<ul>
+<li>contains files for root / boot</li>
+<li>prepare output for boot partition</li>
+<li>prepare output for root partition</li>
+</ul>
+<h3 id="toolchain_1">Toolchain</h3>
+<ul>
+<li>apply config</li>
+<li>build</li>
+<li>prepare output</li>
+</ul>
+<h3 id="rootfs_2">RootFS</h3>
+<ul>
+<li>config </li>
+<li>prepare output for root partition</li>
+</ul>
+<hr />
 </div>
         </div>
 
