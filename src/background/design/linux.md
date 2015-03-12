@@ -27,3 +27,9 @@ The build process must include the following steps.
 1. Create two archives from the necessary files.
     * destination boot partition (kernel image, device tree blob)
     * destination root partition (e.g. modules)
+
+# Build Process Generalization
+Platform specific source code must be avoided as far as possible. This leads to
+to using the mainline sources whenever it is possible. Differences in the
+platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
+will lead to the same workflow for each platform and each product.

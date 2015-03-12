@@ -1,4 +1,14 @@
 # Project Requirements (HTWG context)
+The first action towards implementing the **embEDUx** project is to collect the
+necessary requirements. While requirements were exchanged and discussed between
+the team members and Prof. Dr. Mächtel, others were identified by analyzing the
+lab-specific scenarios.
+
+Hence the resulting set of requirements is a compound of generic requirements to
+the nature of the resulting system and requirements that are necessary due to
+technicalities.
+
+## Generic Requirements
 The generic and automated approach that needs to be found by this project must
 meet the sum of the requirements for every single lab-course. The determination
 for this set of requirements has to be done in two phases.
@@ -6,7 +16,7 @@ for this set of requirements has to be done in two phases.
 ## Lab-Course Specific Requirements
 In the first phase, lab-course specific requirements need to be collected.
 
-### Lab-Course Overview
+#### Lab-Course Overview
 Lab-Course | HW-Requirements | SW-Requirements
 --- | --- | ---
 System-Software | RPi | Linux w/ GPIO support, C-(Cross)-Compiler, Bootloader with Netboot support, Webserver, SSH-Daemon
@@ -58,3 +68,5 @@ product requirements.
 
 ### Bootloader
 * TFTP/BootP Support
+
+

@@ -22,3 +22,9 @@ The build process must include the following steps.
 1. (Cross-)Compile **U-Boot** for target architecture with config provided by
    the specifications
 1. Create an archive from the necessary files.
+
+# Build Process Generalization
+Platform specific source code must be avoided as far as possible. This leads to
+to using the mainline sources whenever it is possible. Differences in the
+platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
+will lead to the same workflow for each platform and each product.
