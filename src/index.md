@@ -111,7 +111,7 @@ files are stored in their very own repository which is handled separately.
 * [Misc](usage/misc.md)-archives
 
 #### Deploy
-**embEDUx** ships a CLI-style [Flashtool](background/specs/flashtool.md) for
+**embEDUx** ships a CLI-style [Flashtool](background/implementation/flashtool.md) for
 easy deployment to your hardware!  More information and instructions for manual
 deployment shall be found at the end of the [usage
 overview](usage/usage.md#hardware-deployment)
