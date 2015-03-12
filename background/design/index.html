@@ -179,10 +179,6 @@
                         </li>
                     
                         <li >
-                            <a href="architecture/index.html">Design/Architecture</a>
-                        </li>
-                    
-                        <li >
                             <a href="bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -275,6 +271,10 @@
                         </li>
                     
                         <li >
+                            <a href="../setup/index.html">Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../terminology/index.html">Terminology</a>
                         </li>
                     
@@ -335,7 +335,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="architecture/index.html">
+                    <a rel="prev" href="bootloader/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -370,13 +370,6 @@
             <li><a href="#split-functionality-into-containers">Split Functionality Into Containers</a></li>
         
             <li><a href="#container-management-software">Container Management Software</a></li>
-        
-    
-        <li class="main "><a href="#setup-process">Setup Process</a></li>
-        
-            <li><a href="#setup-parameters">Setup Parameters</a></li>
-        
-            <li><a href="#automation">Automation</a></li>
         
     
         <li class="main "><a href="#extensibility">Extensibility</a></li>
@@ -496,33 +489,14 @@ buildsystem.</p>
 <h2 id="container-management-software">Container Management Software</h2>
 <p>The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.</p>
-<h1 id="setup-process">Setup Process</h1>
-<p>The buildserver will undoubtedly be a complex structure of software components.
-To make the setup as easy as possible it should be automated as far as possible.</p>
-<h2 id="setup-parameters">Setup Parameters</h2>
-<p>Setup parameters are essential to the configuration of the buildserver.</p>
-<ul>
-<li>
-<p>Buildserver Target Machine</p>
-<p>The target machine shall by default run all containers that belong to the
-buildsystem</p>
-</li>
-<li>
-<p>Target Platform and Architectures</p>
-<p>The platform names and their corresponding architecture.
-The architectures will be supported as build targets. </p>
-</li>
-</ul>
-<h2 id="automation">Automation</h2>
-<p>Any scripting language can be used and there's no chosen preference as of this
-point.
-TODO Stefan</p>
 <h1 id="extensibility">Extensibility</h1>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
-to be able to add his platform. However the complexity of the system, requires
-the user to have a fair overview of the <strong>embEDUx</strong> components and how these
-work together in order to build the products.</p>
+to be able to add his platform. One way to look at extensibility is to already
+take the initial setup into account, where the hardware platforms are
+practically added too, just to a zero-base. Designing this step to be as easy as
+possible, will allow to extend the system as easy as possible. Therefore, this
+criteria is moved over to the <a href="../../setup-process">setup process</a>.</p>
 <h1 id="overall-system-design">Overall System Design</h1>
 <p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
 </div>

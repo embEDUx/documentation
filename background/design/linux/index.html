@@ -179,10 +179,6 @@
                         </li>
                     
                         <li >
-                            <a href="../architecture/index.html">Design/Architecture</a>
-                        </li>
-                    
-                        <li >
                             <a href="../bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -275,6 +271,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../setup/index.html">Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../terminology/index.html">Terminology</a>
                         </li>
                     
@@ -349,7 +349,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#linux-design">Linux Design</a></li>
+        <li class="main active"><a href="#linux-buildprocess-design">Linux Buildprocess Design</a></li>
         
             <li><a href="#linux-version">Linux-Version</a></li>
         
@@ -358,11 +358,14 @@
             <li><a href="#build-steps">Build Steps</a></li>
         
     
+        <li class="main "><a href="#build-process-generalization">Build Process Generalization</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="linux-design">Linux Design</h1>
+<h1 id="linux-buildprocess-design">Linux Buildprocess Design</h1>
 <p><strong>(work in progress)</strong></p>
 <h2 id="linux-version">Linux-Version</h2>
 <p>No specific <strong>Linux</strong> kernel version is required and the software solution must
@@ -392,6 +395,11 @@ patches, it should be able to provide a specific configuration for a build.</p>
 </ul>
 </li>
 </ol>
+<h1 id="build-process-generalization">Build Process Generalization</h1>
+<p>Platform specific source code must be avoided as far as possible. This leads to
+to using the mainline sources whenever it is possible. Differences in the
+platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
+will lead to the same workflow for each platform and each product.</p>
 </div>
         </div>
 
