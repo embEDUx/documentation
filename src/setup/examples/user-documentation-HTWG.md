@@ -5,11 +5,11 @@ and overview of the contents they have to put in their User Documentation.
 ## Repositories
 Product | Repository URL
 --- | ---
-U-Boot | [https://github.com/embEDUx/uboot.git](https://github.com/embEDUx/uboot-specs.git)
-Linux | [https://github.com/embEDUx/linux.git](https://github.com/embEDUx/linux-specs.git)
-RootFS | [https://github.com/embEDUx/rootfs.git](https://github.com/embEDUx/rootfs-specs.git)
-Miscellaneous files | [https://github.com/embEDUx/misc.git](https://github.com/embEDUx/misc-specs.git)
-Toolchains | [https://github.com/embEDUx/toolchains.git](https://github.com/embEDUx/toolchain-specs.git)
+U-Boot | [https://github.com/embEDUx/uboot-specs.git](https://github.com/embEDUx/uboot-specs.git)
+Linux | [https://github.com/embEDUx/linux-specs.git](https://github.com/embEDUx/linux-specs.git)
+RootFS | [https://github.com/embEDUx/rootfs-specs.git](https://github.com/embEDUx/rootfs-specs.git)
+Miscellaneous files | [https://github.com/embEDUx/misc-specs.git](https://github.com/embEDUx/misc-specs.git)
+Toolchains | [https://github.com/embEDUx/toolchain-specs.git](https://github.com/embEDUx/toolchain-specs.git)
 
 #### Permissions
 If you need permissions to these repositories, please contact your
