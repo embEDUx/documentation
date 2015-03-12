@@ -27,7 +27,7 @@ were chosen for the core of the solution are
 * Ansible
 * Qemu
 * Das U-Boot Bootloader
-* Git.
+* Git
 
 If you are interested in why these choice were made, please head over to the
 [background section](background/background.md)
