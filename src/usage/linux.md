@@ -6,6 +6,7 @@ your desired platform.
 All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
+* Access to an **embEDUx** buildserver system
 * User Documentation.
     * At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
@@ -14,7 +15,9 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       the case, please contact an Administrator to add your platform to the
       **embEDUx** build system.
 * Git Repository *linux-specs*
-* **buildserver** setup for desired platform architecture
+* **linux-specs** Git-Repository
+  The Linux-specification is supplied to the buildserver via git. Consult your
+  User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build

@@ -1,22 +1,15 @@
 # Buildserver Setup Instructions
-**(work in progress)**
-
 This page holds the instructions of setting up your very own instance of the
 **embEDUx** buildserver. For advanced users, these instructions may be
 considered mere suggestions. We'd be happy to receive suggestions and feedback
 about this!
 
-
-
-
-## Prerequisites
-
-### Requirements
+## Requirements
 * Adminstation setup completed - If you haven't already setup your adminstation,
   please follow [these instructions](adminstation.md).
 
-## Buildserver Machine requirements
-### Hardware
+### Buildserver Machine requirements
+#### Hardware
 HW-Component | Requirement
 --- | ---
 CPU | x86\_64 multicore - the more cores the better ;)
@@ -24,8 +17,8 @@ RAM | 1GB per supported target architecture
 Storage | 10GB for initial full builds - min. 20GB suggested
 Connectivity | Initial downloads of ~800-1000MiB
 
-### Software
-#### Tested Operating Systems
+#### Software
+##### Tested Operating Systems
 The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
 * Ubuntu Linux 14.04
@@ -52,14 +45,6 @@ permissions to run arbitrary commands with sudo**.
 ## Suggestions
 * Understand the [Background Information](../background/background.md)
 
-## Clone the buildserver-setuproutine repository
-The setuproutine for the buildserver is currently stored in a Git repository on
-GitHub. It is suggested to use the latest version of the default branch, which
-can be retrieved as follows.
-
-`
-$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
-`
 
 ## Configure the hosts details
 After `cd`-ing into the buildserver-setuproutine directory, please set the
