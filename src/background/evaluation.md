@@ -11,7 +11,7 @@ Output | Bootloader, Kernel, RootFS, Toolchain | SD Card Image
 Platform Support | - | Common platforms are supported or available through so called *Board Support Packages (BSP)*, otherwise manual configuration can be done
 Software Support | - | Common software is available, otherwise can be added by creating own recipes
 
-### Conclusion:
+### Conclusion
 As we want to have a highly dynamic system, where we still offer up-to date
 products, non of the aforementioned projects offer a satisfying solution.
 Therefore developing our own projects is necessary.
