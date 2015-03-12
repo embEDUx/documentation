@@ -354,7 +354,7 @@ Documentation</a>.</li>
   <strong>embEDUx</strong> build system.</li>
 </ul>
 </li>
-<li>Git Repository <em>uboot</em></li>
+<li>Git Repository <em>uboot-specs</em></li>
 <li><strong>Buildserver</strong> setup for desired platform architecture</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
@@ -452,18 +452,18 @@ Repository" src="../../usage/uboot/img/example_uboot_repository.png" /></a></p>
 <h2 id="step-by-step-example">Step-by-Step Example</h2>
 <p>The following example will give you a detailed overview of the necessary steps
 to build <strong>U-Boot</strong> 2015.01 for the raspberry pi. We assume that at this point the
-<em>uboot</em> repository is empty.</p>
+<em>uboot-specs</em> repository is empty.</p>
 <h2 id="add-new-upstream-u-boot">Add new upstream U-Boot</h2>
 <p>Before you can add <a href="#add-new-platform">a new platform</a>, for which you want to
 build a <strong>U-Boot</strong> image, you first need to add a <em>version_generic</em> branch to
-the <em>uboot</em> repository.</p>
+the <em>uboot-specs</em> repository.</p>
 <ol>
 <li>
-<p>Clone the <em>uboot</em> repository with the URL provided in the user documentation.</p>
+<p>Clone the <em>uboot-specs</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
-<p>Add a <em>version_platform</em> branch to the <em>uboot</em> repository.</p>
+<p>Add a <em>version_platform</em> branch to the <em>uboot-specs</em> repository.</p>
 <p><code>$ git checkout master
 $ git branch 2015.01
 $ git checkout 2015.01
@@ -503,19 +503,19 @@ $ git push</code></p>
 </li>
 </ol>
 <p>Now that you have a <em>version_generic</em> branch for your desired <strong>U-Boot</strong>
-version within your <em>uboot</em> repository, the next step is to add a
+version within your <em>uboot-specs</em> repository, the next step is to add a
 <em>version_platform</em> branch.</p>
 <h2 id="add-new-platform">Add new platform</h2>
 <p>This step requires an existing <a href="#add-new-upstream-u-boot"><em>version_generic</em></a> branch for
 the desired <strong>U-Boot</strong> version, you want to add a platform.</p>
 <ol>
 <li>
-<p>If not already done, clone the <em>uboot</em> repository with the URL provided in
+<p>If not already done, clone the <em>uboot-specs</em> repository with the URL provided in
    the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git</code></p>
 </li>
 <li>
-<p>Add a <em>version_platform</em> branch to the <em>uboot</em> repository.  It is necessary
+<p>Add a <em>version_platform</em> branch to the <em>uboot-specs</em> repository.  It is necessary
    that you push the branch at this point upstream, so the <strong>buildserver</strong> can
    find this new <em>version_platform</em> branch.</p>
 <p><code>$ git checkout master

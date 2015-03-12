@@ -349,7 +349,7 @@ architecture of your desired platform.</p>
 Documentation</a>.</p>
 </li>
 <li>
-<p>Git Repository <em>toolchains</em></p>
+<p>Git Repository <em>toolchains-specs</em></p>
 </li>
 <li><strong>buildserver</strong> setup for desired platform architecture</li>
 <li>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</li>
@@ -414,15 +414,15 @@ Documentation</a>.</p>
 <h2 id="step-by-step-example">Step-by-Step Example</h2>
 <p>The following example will give you a detailed overview of the necessary steps
 to build the toolchain for the raspberry pi (armv6j). We assume that at this point the
-<em>toolchains</em> repository is empty.</p>
+<em>toolchains-specs</em> repository is empty.</p>
 <h2 id="add-a-new-toolchain">Add a new toolchain</h2>
 <ol>
 <li>
-<p>Clone the <em>toolchains</em> repository with the URL provided in the user documentation.</p>
+<p>Clone the <em>toolchains-specs</em> repository with the URL provided in the user documentation.</p>
 <p><code>$ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git</code></p>
 </li>
 <li>
-<p>Add a <em>toolchain</em> branch to the <em>toolchains</em> repository. It is necessary that you
+<p>Add a <em>toolchain</em> branch to the <em>toolchains-specs</em> repository. It is necessary that you
    push the branch at this point upstream, so the <strong>buildserver</strong> can find the
    new <em>toolchain</em> branch.</p>
 <p><code>$ git checkout master
