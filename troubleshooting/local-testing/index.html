@@ -371,11 +371,13 @@ amd64_armv6j-ctng-l 100%[=====================&gt;]  76.39M  3.48MB/s   in 20s
 
 2015-03-09 13:00:54 (3.88 MB/s) - ‘amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2’ saved [80099059/80099059]
 </code></pre>
+<p><code>$ sudo mkdir /opt/toolchain
+$ tar -xf amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2 -C /opt/toolchain</code></p>
 </li>
 <li>
 <p>Set the necessary environment variables</p>
 <p><code>$ export ARCH=arm
-$ export CROSS_COMPILE=/opt/toolchain/amd64_armv6j-ctng-linux-gnueabi/armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-
+$ export CROSS_COMPILE=/opt/toolchain/armv6j-ctng-linux-gnueabihf/bin/armv6j-ctng-linux-gnueabihf-
 $ export EMBEDUX_TMP=/var/tmp</code></p>
 </li>
 <li>
