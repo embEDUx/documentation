@@ -321,45 +321,21 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#hardware-requirements">Hardware Requirements</a></li>
+        <li class="main active"><a href="#buildserver-setup">Buildserver Setup</a></li>
         
-    
-        <li class="main "><a href="#software-requirements">Software Requirements</a></li>
+            <li><a href="#hardware-requirements">Hardware Requirements</a></li>
         
-            <li><a href="#tested-operating-systems">Tested Operating Systems</a></li>
+            <li><a href="#software-requirements">Software Requirements</a></li>
         
-            <li><a href="#installed-packages">Installed Packages</a></li>
-        
-            <li><a href="#suggestions">Suggestions</a></li>
-        
-            <li><a href="#software-configuration">Software Configuration</a></li>
-        
-    
-        <li class="main "><a href="#setup-parameters">Setup parameters</a></li>
-        
-            <li><a href="#clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</a></li>
-        
-            <li><a href="#configure-the-hosts-details">Configure the hosts details</a></li>
-        
-            <li><a href="#creating-the-password-vault">Creating the password vault</a></li>
-        
-            <li><a href="#install-the-dependencies-and-the-buildserver-components">Install the dependencies and the buildserver components</a></li>
-        
-            <li><a href="#check-the-webinterface">Check the Webinterface</a></li>
+            <li><a href="#setup-parameters">Setup parameters</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>j Buildserver Setup
-<strong>(work in progress)</strong></p>
-<p>This page holds the instructions of setting up your very own instance of the
-<strong>embEDUx</strong> buildserver. For advanced users, these instructions may be
-considered a mere suggestions. We'd be happy to receive suggestions and feedback
-about this!</p>
-<p>Please execute the commands in the instructions on your <a href="../adminstation/index.html">previously prepared
-adminstation</a>.</p>
+<h1 id="buildserver-setup">Buildserver Setup</h1>
+<p><strong>(work in progress)</strong></p>
 <h2 id="hardware-requirements">Hardware Requirements</h2>
 <table>
 <thead>
@@ -371,19 +347,19 @@ adminstation</a>.</p>
 <tbody>
 <tr>
 <td>CPU</td>
-<td>x86_64 multicore - the more cores the better ;)</td>
+<td>min. 1 Core per Container</td>
 </tr>
 <tr>
 <td>RAM</td>
-<td>1GB per supported target architecture</td>
+<td><strong>TODO: estimate</strong></td>
 </tr>
 <tr>
 <td>Storage</td>
-<td>10GB for initial full builds - min. 20GB suggested</td>
+<td><strong>TODO: estimate</strong></td>
 </tr>
 <tr>
 <td>Connectivity</td>
-<td>Initial downloads of ~800-1000MiB</td>
+<td><strong>TODO: estimate</strong></td>
 </tr>
 </tbody>
 </table>
@@ -391,65 +367,39 @@ adminstation</a>.</p>
 <h3 id="tested-operating-systems">Tested Operating Systems</h3>
 <p>The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
-<em> Ubuntu 14.04 Linux
-</em> Ubuntu 14.10 Linux
-<em> Gentoo Linux with a Docker compatible Kernel Configuration </em>TODO: link to options*</p>
+<em> Ubuntu 14.04 Linux and upwards
+</em> Gentoo Linux <em>(will be specified in more detail)</em></p>
 <h3 id="installed-packages">Installed Packages</h3>
 <ul>
 <li>SSH Server</li>
+<li>Docker (in case of Gentoo)</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
-<li>Allow SSH access via key authentication</li>
+<li>Allow SSH root-access via key authentication</li>
 <li>Understand the <a href="../../background/background/index.html">Background Information</a></li>
 </ul>
-<h3 id="software-configuration">Software Configuration</h3>
-<p>There are a few steps to prepare on the buildserver before you can continue
-installing the components onto it.</p>
-<h4 id="user-permissions">User Permissions</h4>
-<p>You either need <strong>root</strong>-access on the buildserver, or a <strong>user that has
-permissions to run arbitrary commands with sudo</strong>.</p>
 <h2 id="setup-parameters">Setup parameters</h2>
 <ul>
-<li>Hosts details</li>
-<li>Optional: supported architecture and platform mapping</li>
+<li>hosts inventory</li>
+<li><em>buildmaster</em> configuration</li>
+<li><em>buildslave</em> mapping</li>
 </ul>
-<h3 id="clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</h3>
-<p>The setuproutine for the buildserver is currently stored in a Git repository on
-GitHub. It is suggested to use the latest version of the default branch, which
-can be retrieved as follows.</p>
-<pre><code>$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
-</code></pre>
-
-<h3 id="configure-the-hosts-details">Configure the hosts details</h3>
-<p>After <code>cd</code>-ing into the buildserver-setuproutine directory, please set the IP
-and the SSH login.</p>
-<p><code>$ $EDITOR host_vars/master</code></p>
-<ul>
-<li>IP - Change the value of the variable <em>ansible_ssh_host</em> to the address of the
-machine where you want to have the buildserver running on.</li>
-<li>SSH Login - Change the value of <em>ansible_ssh_user</em> to either <strong>root</strong> or to a <strong>user that
-  can use sudo</strong>. This is necessary for the installation of dependencies, and in
-  case you have apparmor installed, set it to complain mode for docker before
-  the container builds are started.</li>
-</ul>
+<h3 id="configure-the-buildserver-ip">Configure the buildserver IP</h3>
+<p><strong>(work in progress)</strong></p>
 <h3 id="creating-the-password-vault">Creating the password vault</h3>
-<p>Authentication details that will be used between the buildserver components and
-for accessing the web-interface will be stored in a so called vault file. It
-takes only a few steps to created the vault using the <code>ansible-vault</code>-utility.</p>
 <ol>
-<li>Starting in the buildserver-setuproutine repository directory, the password
-   file can be created using the <code>ansible-vault</code> utility.</li>
-</ol>
-<p><code>$ cd ${BULDSERVER-SETUP-REPO}
-$ ansible-vault create group_vars/vault.yml</code></p>
-<ol>
+<li>
+<p>Starting in the ansible-setup repository directory, the password file can be
+   created using the <code>ansible-vault</code> utility.</p>
+<pre><code>$ cd ${BULDSERVER-SETUP-REPO}
+$ ansible-vault create group_vars/vault.yml
+</code></pre>
+</li>
 <li>
 <p>Either $EDITOR or vim as fallback will open and present you with an empty
    file. Now create a simple YAML variable named <em>buildbot_psk</em> and assign it
-   your desired password. In addition, create a YAML dictionary called users,
-   which contains a <em>user: password</em> mapping for allowed logins on the
-   buildmaster's webinterface. Here's an example:</p>
+   your desired password.</p>
 <pre><code>---
 buildbot_psk: your_secret_psk
 users:
@@ -457,24 +407,24 @@ users:
 </code></pre>
 </li>
 <li>
-<p>Save and exit the file. Excellent!</p>
+<p>Save and exit the file. That's it!</p>
+</li>
+<li>Whenever you want to change something inside the vault file, use<pre><code>$ ansible-vault edit group_vars/vault.yml
+</code></pre>
 </li>
 </ol>
-<p>You can come back and make changes to the vault file at any time using the
-following command.</p>
-<p><code>$ ansible-vault edit group_vars/vault.yml</code></p>
-<h3 id="install-the-dependencies-and-the-buildserver-components">Install the dependencies and the buildserver components</h3>
-<p>The next step is to install the needed dependencies on the configured hosts.
-Once the dependencies were installed the actual buildserver infrastructure is
-ready to be installed. The <strong><em>buildserver.yml</em></strong> playbook will take care of
-both.  Depending on your configured architectures and the speed of your internet
-connection and system components, this might take a couple of hours.</p>
-<p><code>$ ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all</code></p>
-<h3 id="check-the-webinterface">Check the Webinterface</h3>
-<p>After the installation has completed, you should be able to reach the
-Webinterface at <strong><em>http://&lt;buildserver-IP>:8010</em></strong>. Additionally, you should be
-able to login with the user-password combinations you've stored in the vault
-file.</p>
+<h3 id="install-dependencies">Install dependencies</h3>
+<pre><code>ansible-playbook -i hosts dependencies.yml --ask-sudo-pass --tags all 
+</code></pre>
+
+<h3 id="install-the-buildserver-components">Install the buildserver components</h3>
+<pre><code>ansible-playbook -i hosts buildserver.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
+</code></pre>
+
+<h3 id="install-additional-buildslaves">Install additional buildslaves</h3>
+<pre><code>ansible-playbook -i hosts buildslaves.yml --ask-sudo-pass --ask-vault-pass -e @group_vars/vault.yml --tags all
+</code></pre>
+
 </div>
         </div>
 
