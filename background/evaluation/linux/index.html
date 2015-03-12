@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Evaluation/Rootfs - embEDUx Project</title>
+        <title>Evaluation/Linux - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -222,12 +222,12 @@
                             <a href="../flashtool/index.html">Evaluation/Flashtool</a>
                         </li>
                     
-                        <li >
-                            <a href="../linux/index.html">Evaluation/Linux</a>
+                        <li class="active">
+                            <a href="index.html">Evaluation/Linux</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="index.html">Evaluation/Rootfs</a>
+                        <li >
+                            <a href="../rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
                         <li >
@@ -334,12 +334,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../linux/index.html">
+                    <a rel="next" href="../flashtool/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../uboot/index.html">
+                    <a rel="prev" href="../rootfs/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -353,26 +353,43 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#comparable-rootfs-buildsystems">Comparable RootFS buildsystems</a></li>
+        <li class="main active"><a href="#evaluation-linux">Evaluation Linux</a></li>
+        
+            <li><a href="#repository">Repository</a></li>
+        
+            <li><a href="#build-process">Build process</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p><strong>(work in progress)</strong></p>
-<h3 id="comparable-rootfs-buildsystems">Comparable RootFS buildsystems</h3>
-<p>The software that is used to assemble the RootFS according to the provided
-package list must be chosen wisely. There are many projects to consider for this
-part. The following of them will be evaluated:</p>
-<ul>
-<li>Yocto Project</li>
-<li>Buildroot</li>
-<li>Gentoo crossdev</li>
-<li>Gentoo catalyst</li>
-</ul>
-<p>Because <strong>embEDUx</strong> is mainly targeted at ARM systems, the main evaluation
-criteria is cross-platform support.</p>
+<h1 id="evaluation-linux">Evaluation Linux</h1>
+<p>The considerations from the <a href="../../design/linux/index.html">design</a> will be evaluated
+within this chapter.</p>
+<h2 id="repository">Repository</h2>
+<p>The branch system of <strong>Git</strong> to fulfills our needs to keep distinct versions of
+the specifications for each platform and <strong>Linux</strong> version within one
+repository. </p>
+<h3 id="content">Content</h3>
+<p>The repository has to contain the kernel configuration, the build script, and
+all the required patches. The build script has to apply the provided patches
+during the build process.</p>
+<h2 id="build-process">Build process</h2>
+<p>Due to keeping the possibility to build the kernel locally, emerging the kernel
+sources with OS dependent tools (e.g. emerge with <strong>Gentoo</strong>) is not a viable
+solution. As already mentioned in the <a href="../uboot/index.html">u-boot evaluation</a>, keeping the
+sources within the <strong>Linux</strong> repository will lead to a lot of overhead when the
+same <strong>Linux</strong> versions should be build for different platforms, as they use the
+same kernel sources. The same solution as already described in the <a href="../uboot/index.html">u-boot
+evaluation</a> will be used.</p>
+<p>Together with abusing the branch structure of <strong>Git</strong> the following structure of
+the repository can be achieved.</p>
+<p>Each <strong>Linux</strong> version has a branch, which contains a script that downloads the
+specific sources. Each platform has a branch for each <strong>Linux</strong> version that
+should be build, containing a script, that executes the download script from the
+<strong>Linux</strong> version branch.</p>
+<p><img alt="Structure" src="../../../background/evaluation/img/eval_linux.png" /></p>
 </div>
         </div>
 

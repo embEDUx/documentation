@@ -223,6 +223,10 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/linux/index.html">Evaluation/Linux</a>
+                        </li>
+                    
+                        <li >
                             <a href="../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
@@ -351,31 +355,17 @@
     
         <li class="main active"><a href="#design">Design</a></li>
         
-    
-        <li class="main "><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
+            <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
-    
-        <li class="main "><a href="#product-specification-storage-units">Product-Specification Storage Units</a></li>
+            <li><a href="#product-specification-storage-units">Product-Specification Storage Units</a></li>
         
-            <li><a href="#repository-format">Repository Format</a></li>
+            <li><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
-    
-        <li class="main "><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
+            <li><a href="#portability">Portability</a></li>
         
-    
-        <li class="main "><a href="#portability">Portability</a></li>
+            <li><a href="#extensibility">Extensibility</a></li>
         
-            <li><a href="#virtualization-and-container-technologies">Virtualization and Container Technologies</a></li>
-        
-            <li><a href="#split-functionality-into-containers">Split Functionality Into Containers</a></li>
-        
-            <li><a href="#container-management-software">Container Management Software</a></li>
-        
-    
-        <li class="main "><a href="#extensibility">Extensibility</a></li>
-        
-    
-        <li class="main "><a href="#overall-system-design">Overall System Design</a></li>
+            <li><a href="#overall-system-design">Overall System Design</a></li>
         
     
     </ul>
@@ -391,12 +381,12 @@ system. The build system must be able to build the following software</p>
 <ul>
 <li>Linux Kernel</li>
 <li>Bootloader</li>
-<li>RootFS containing the system and user-space application, while the</li>
+<li>RootFS containing the system and user-space application</li>
 </ul>
-<p>while build configuration must be user providable for each build.  These
-software that is built by the build system will be referred as <strong><em>products</em></strong>
-within the further documentation.</p>
-<h1 id="comparison-with-similar-projects">Comparison With Similar Projects</h1>
+<p>while build configuration must be user providable for each build.</p>
+<p>The software that is built by the build system will be referred as
+<strong><em>products</em></strong> within the further documentation.</p>
+<h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
 <p>The idea of building a complete Linux-based system for a specific platform is
 not new. Therefore it is of no surprise, that by the time of designing
 <strong>embEDUx</strong>, there are several open source projects that need to be considered
@@ -423,27 +413,27 @@ menu.</p>
     TODO lars</p>
 </li>
 </ul>
-<h1 id="product-specification-storage-units">Product-Specification Storage Units</h1>
+<h2 id="product-specification-storage-units">Product-Specification Storage Units</h2>
 <p>It must be possible to build the products independently from each other.
 Therefore, each product should be managed in a separate storage unit which will
 be referred as a <em>repository</em> from this point on. Additionally each platform
 needs to have its own identifiable storage unit within the <em>respository</em>. This
 storage unit will be referred as <em>branch</em> from this point on.</p>
-<h2 id="repository-format">Repository Format</h2>
+<h3 id="repository-format">Repository Format</h3>
 <p>Configuration files and specification files are most certainly provided by the
 user as text files. For this purpose, a version control system should be used in
 order to have a history of build changes and allow easier handling of the
 repositories.</p>
-<h1 id="product-requirement-analysis">Product Requirement Analysis</h1>
+<h2 id="product-requirement-analysis">Product Requirement Analysis</h2>
 <p>The build process and the configuration options of each product must fulfill the
 requirements of the corresponding product. The requirements chapter lists
 different requirements for each product, which must therefore be analyzed
 separately.</p>
-<h1 id="portability">Portability</h1>
+<h2 id="portability">Portability</h2>
 <p>In order to have a portable build system, all components should live and run in
 systems that are separated from the buildserver's host system. Possible
 technologies for this are either Virtual Machines or Linux Containers.</p>
-<h2 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h2>
+<h3 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h3>
 <ul>
 <li>
 <p>Virtual Machines are completely abstracted from the host system's hardware.
@@ -482,14 +472,14 @@ container technologies should be chosen as the base for the buildsystem. In
 environments where security is a high requirement, the containers can live
 inside a virtual machine, but that is beyond the design for the buildsystem
 itself.</p>
-<h2 id="split-functionality-into-containers">Split Functionality Into Containers</h2>
+<h3 id="split-functionality-into-containers">Split Functionality Into Containers</h3>
 <p>Containers are relatively cheap entities for the system. This allows the
 buildsystem to be split into several containers for the different parts of the
 buildsystem.</p>
-<h2 id="container-management-software">Container Management Software</h2>
+<h3 id="container-management-software">Container Management Software</h3>
 <p>The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.</p>
-<h1 id="extensibility">Extensibility</h1>
+<h2 id="extensibility">Extensibility</h2>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
 to be able to add his platform. One way to look at extensibility is to already
@@ -497,7 +487,7 @@ take the initial setup into account, where the hardware platforms are
 practically added too, just to a zero-base. Designing this step to be as easy as
 possible, will allow to extend the system as easy as possible. Therefore, this
 criteria is moved over to the <a href="../../setup-process">setup process</a>.</p>
-<h1 id="overall-system-design">Overall System Design</h1>
+<h2 id="overall-system-design">Overall System Design</h2>
 <p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
 </div>
         </div>

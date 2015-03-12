@@ -223,6 +223,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../evaluation/linux/index.html">Evaluation/Linux</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
@@ -349,37 +353,45 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#linux-buildprocess-design">Linux Buildprocess Design</a></li>
+        <li class="main active"><a href="#linux-design">Linux Design</a></li>
         
-            <li><a href="#linux-version">Linux-Version</a></li>
+            <li><a href="#sources">Sources</a></li>
+        
+            <li><a href="#repository">Repository</a></li>
         
             <li><a href="#build-process">Build Process</a></li>
         
             <li><a href="#build-steps">Build Steps</a></li>
         
     
-        <li class="main "><a href="#build-process-generalization">Build Process Generalization</a></li>
-        
-    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="linux-buildprocess-design">Linux Buildprocess Design</h1>
+<h1 id="linux-design">Linux Design</h1>
 <p><strong>(work in progress)</strong></p>
-<h2 id="linux-version">Linux-Version</h2>
-<p>No specific <strong>Linux</strong> kernel version is required and the software solution must
-not be restricted to a specific kernel version. It would be reasonable to have
-the same kernel sources for all of the platforms, and only provide platform
-specific patches to the common base where necessary. In addition to these
-patches, it should be able to provide a specific configuration for a build.</p>
+<h2 id="sources">Sources</h2>
+<p>As directly derived from the <a href="../../requirements/index.html">requirements</a> the mainline
+sources of <strong>Linux</strong> must be used. However there can't be any restriction to a
+specify version. To be able to run any platform with the mainline sources of
+<strong>Linux</strong> the possibility of applying user patches during build has to be
+considered.</p>
+<h2 id="repository">Repository</h2>
+<p>A repository for each platform is needed. It might also be necessary to build
+different <strong>Linux</strong> versions for the same platform. Therefore one repository
+has to exist for each platform for the desired <strong>Linux</strong> version. That means
+two repositories have to exist if <strong>Linux</strong> version 1.0 and 1.2 should be build
+for platform A. A possible solution might be abusing the branch system of
+  <strong>Git</strong>.</p>
 <h2 id="build-process">Build Process</h2>
-<p>To retrieve the <strong>Linux</strong> kernel sources, there are the following possibilities.</p>
+<p>As mainline sources have to be used, those sources need to be retrieved somehow
+before the build process. Also the user has to provide the configuration or at
+least define the config, that should be applied for the build process. Two
+possible options to retrieve the sources are:</p>
 <ul>
-<li>User has to provide the sources within the <strong>Linux</strong> repository</li>
-<li>Emerge <strong>Gentoo</strong> kernel sources ebuild during build process</li>
-<li>Download and patch kernel sources manually from
-  <a href="https://kernel.org">www.kernel.org</a> during build process</li>
+<li>The User has to provide sources within the repository</li>
+<li>The sources are downloaded before each build process</li>
+<li>Gentoo sources ebuild from with <strong>Gentoo</strong> is used</li>
 </ul>
 <h2 id="build-steps">Build Steps</h2>
 <p>The build process must include the following steps.</p>
@@ -395,11 +407,6 @@ patches, it should be able to provide a specific configuration for a build.</p>
 </ul>
 </li>
 </ol>
-<h1 id="build-process-generalization">Build Process Generalization</h1>
-<p>Platform specific source code must be avoided as far as possible. This leads to
-to using the mainline sources whenever it is possible. Differences in the
-platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
-will lead to the same workflow for each platform and each product.</p>
 </div>
         </div>
 
