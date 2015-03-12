@@ -24,7 +24,8 @@ Toolchain | toolchain-specs
 If you don't know how to setup empty repositories, have a look at
 [https://guides.github.com](https://guides.github.com/activities/hello-world/#repository).
 For the **embEDUx** build system you need the https version of the URL, which
-can be obtained on the lower right side on the **Github** website.
+can be obtained on the lower right side on the [Github](https://github.com)
+website of the repository.
 
 ![Repository URL](setup/img/github_url.png)
 
