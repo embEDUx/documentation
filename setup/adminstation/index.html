@@ -325,9 +325,9 @@
         
             <li><a href="#prerequisites">Prerequisites</a></li>
         
-            <li><a href="#suggestions">Suggestions</a></li>
+            <li><a href="#clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</a></li>
         
-            <li><a href="#installation-of-the-buildserver-setup-routine">Installation of the Buildserver Setup Routine</a></li>
+            <li><a href="#install-the-shipped-ansible">Install the shipped Ansible</a></li>
         
     
     </ul>
@@ -337,35 +337,66 @@
 <h1 id="adminstation-setup">Adminstation Setup</h1>
 <p><strong>(work in progress)</strong></p>
 <h2 id="prerequisites">Prerequisites</h2>
-<h3 id="repositories">Repositories</h3>
+<h3 id="requirements">Requirements</h3>
 <ul>
-<li>buildserver_setup repository</li>
-</ul>
-<h3 id="installed-packages">Installed Packages</h3>
-<ul>
-<li>Git<ul>
-<li>Initializing the aforementioned repositories</li>
-<li>Downloading the setup routine</li>
-</ul>
-</li>
-<li>Ansible<ul>
-<li>Executing the setup routine</li>
-<li><strong>TODO: explain known bugs with docker-ansible and provide the fixed
-  fork</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="suggestions">Suggestions</h2>
-<h3 id="authentication-as-root-via-ssh-key">Authentication as root via SSH-key</h3>
-<ul>
+<li>In order to setup the adminstation, you need access to the following
+buildserver-setuproutine repository. Please consult your <a href="../post-install/user-documentation/index.html">user
+documnetation</a> for the URLs.</li>
 <li>SSH root-access to the docker host running the buildslave(s) in question<ul>
 <li>Allows the setup routine to access the target buildserver(s) without
   password</li>
 </ul>
 </li>
 </ul>
-<h2 id="installation-of-the-buildserver-setup-routine">Installation of the Buildserver Setup Routine</h2>
-<p><strong>(work in progress)</strong></p>
+<h4 id="installed-packages">Installed Packages</h4>
+<p>The follow list of packages are required to be installed on the adminstation.
+The list also contains short explanations what they're needed for.</p>
+<ul>
+<li>Git<ul>
+<li>Initializing the aforementioned repositories</li>
+<li>Downloading the setup routine</li>
+</ul>
+</li>
+<li>Python 2.7</li>
+<li>Ansible - <strong>ATTENTION: until the merge of <a href="https://github.com/ansible/ansible-modules-core/pull/547">this pull request for
+      ansible</a>
+      you need to use our provided ansible version.</strong><ul>
+<li>Executing the setup routine</li>
+</ul>
+</li>
+<li>virtualenv</li>
+</ul>
+<h3 id="suggestions">Suggestions</h3>
+<ul>
+<li>Authentication as root via SSH-key - this is a comfort suggestion!</li>
+</ul>
+<h2 id="clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</h2>
+<p>The setuproutine for the buildserver is currently stored in a Git repository on
+GitHub. It is suggested to use the latest version of the default (currently
+named <em>ansible</em>) branch, which can be retrieved as follows.</p>
+<p><code>$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1</code></p>
+<h2 id="install-the-shipped-ansible">Install the shipped Ansible</h2>
+<h3 id="prepare-the-virtual-python-environment">Prepare the virtual python environment</h3>
+<p>You can either reuse an existing virtual python environment, or create a new
+one. The following steps assume you chose the latter.</p>
+<p>Create the virtual environment</p>
+<p><code>$ virtualenv -p python2.7 venv-27-ansible</code></p>
+<p>Install our distributed ansible wheel</p>
+<p><code>$ ./venv-27-ansible/bin/pip install buildserver-setuproutine/dist/ansible-1.8.4-py2-none-any.whl</code></p>
+<p>Now, you should be able to use <code>ansible</code> from the virtual environment, like so</p>
+<p><code>$ ./venv-27-ansible/bin/ansible --version</code></p>
+<pre><code>ansible 1.8.4
+  configured module search path = None
+</code></pre>
+
+<p>or by activating the virtual environment:</p>
+<p><code>$ . ./venv-27-ansible/bin/activate</code></p>
+<p>Checking the whereabouts of the <code>ansbile</code>-command should yield a path inside the
+virtual environment.</p>
+<p><code>(venv-27-ansible) $ which ansible</code></p>
+<pre><code>( ... )/venv-27-ansible/bin/ansible
+</code></pre>
+
 </div>
         </div>
 
