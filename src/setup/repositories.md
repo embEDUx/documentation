@@ -15,9 +15,9 @@ users to provide their build specifications to the buildserver.
 
 Product | Repository
 --- | ---
-U-Boot | uboot
-Linux | linux
-RootFS | rootfs
-Miscellaneous files | misc
-Toolchain | toolchains
+U-Boot | uboot-specs
+Linux | linux-specs
+RootFS | rootfs-specs
+Miscellaneous files | misc-specs
+Toolchain | toolchain-specs
 

@@ -14,7 +14,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
     At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
 
-* Git Repository *misc*
+* Git Repository *misc-specs*
 * **buildserver** setup for desired platform architecture
 
 ### Suggestions
@@ -58,17 +58,17 @@ script](usage/misc/default/platform_build).
 ### Step-by-Step Example
 The following example will give you a detailed overview of the necessary steps
 to build the misc files for the raspberry pi. We assume that at this point the
-*misc* repository is empty.
+*misc-specs* repository is empty.
 
 ## Add new platform
 
-1. Clone the *misc* repository with the URL provided in the user documentation.
+1. Clone the *misc-specs* repository with the URL provided in the user documentation.
 
     ```
 $ git@apu.in.htwg-konstanz.de:labworks-embEDUx/uboot.git
     ```
 
-1. Add a *platform* branch to the *misc* repository. It is necessary that you
+1. Add a *platform* branch to the *misc-specs* repository. It is necessary that you
    push the branch at this point upstream, so the **buildserver** can find the
    new *platform* branch.
    

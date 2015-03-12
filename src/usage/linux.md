@@ -13,7 +13,7 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       Documentation](../setup/post-install/user-documentation.md), if that isn't
       the case, please contact an Administrator to add your platform to the
       **embEDUx** build system.
-* Git Repository *linux*
+* Git Repository *linux-specs*
 * **buildserver** setup for desired platform architecture
 
 ### Suggestions
@@ -70,20 +70,20 @@ Repository](usage/linux/img/example_linux_repository.png)](usage/linux/img/examp
 ## Step-by-Step Example
 The following example will give you a detailed overview of the necessary steps
 to build kernel 3.18.7 for the raspberry pi. We assume that at this point the
-*linux* repository is empty.
+*linux-specs* repository is empty.
 
 ### Add new upstream kernel
 Before you can add [a new platfom](#add-new-platform), for which you want to
 build a **Linux** kernel, you first need to add a *version\_generic* branch to
-the *linux* repository. 
+the *linux-specs* repository. 
 
-1. Clone the *linux* repository with the URL provided in the user documentation.
+1. Clone the *linux-specs* repository with the URL provided in the user documentation.
 
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git 
     ```
 
-1. Add a *version\_generic* branch to the *linux* repository. 
+1. Add a *version\_generic* branch to the *linux-specs* repository. 
 
     ```
 $ git checkout master
@@ -135,21 +135,21 @@ $ git push
     ```
 
 1. Now that you have a *version\_generic* branch for your desired **Linux** kernel
-   version within your *linux* repository, the next step is to add a *version\_platform*
+   version within your *linux-specs* repository, the next step is to add a *version\_platform*
    branch.
 
 ### Add new platform
 This step requires an existing [*version\_genereric*](#add-new-upstream-kernel)
 branch for the **Linux** kernel version you want to add a platform.
 
-1. If not already done, clone the *linux* repository with the URL provided in
+1. If not already done, clone the *linux-specs* repository with the URL provided in
    the user documentation.
    
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/linux.git
     ```
 
-1. Add a *version\_platform* branch to the *linux* repository. It is necessary that you
+1. Add a *version\_platform* branch to the *linux-specs* repository. It is necessary that you
    push the branch at this point upstream, so the **buildserver** can find the
    new *version\_platform* branch.
 
