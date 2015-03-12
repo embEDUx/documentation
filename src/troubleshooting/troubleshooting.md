@@ -10,5 +10,6 @@
 ### RootFS
 * [Manually enter a RootFS Build
   Environment](rootfs/entering-build-environment.md)
+* [Monitoring Package Installation](rootfs/monitoring-package-installation.md)
 
 
