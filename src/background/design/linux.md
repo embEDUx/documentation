@@ -1,12 +1,12 @@
 # Linux Design
-**(work in progress)**
+From the [requirements](../requirements.md) we can derive the following design
+criteria. 
 
 ## Sources 
-As directly derived from the [requirements](../requirements.md) the mainline
-sources of **Linux** must be used. However there can't be any restriction to a
-specify version. To be able to run any platform with the mainline sources of
-**Linux** the possibility of applying user patches during build has to be
-considered.
+The mainline sources of **Linux** must be used. However there can't be any
+restriction to a specify version. To be able to run any platform with the
+mainline sources of **Linux** the possibility of applying user patches during
+build has to be considered.
 
 ## Repository
 A repository for each platform is needed. It might also be necessary to build
