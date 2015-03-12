@@ -26,8 +26,8 @@ the repository can be achieved.
 
 Each **Linux** version has a branch, which contains a script that downloads the
 specific sources. Each platform has a branch for each **Linux** version that
-should be build, containing a script, that executes the download script from the
-**Linux** version branch.
+should be build. This branch contains a script which executes the download
+script from the **Linux** version branch.
 
 ![Structure](background/evaluation/img/eval_linux.png)
 
