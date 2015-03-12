@@ -321,21 +321,39 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#buildserver-setup">Buildserver Setup</a></li>
+        <li class="main active"><a href="#hardware-requirements">Hardware Requirements</a></li>
         
-            <li><a href="#hardware-requirements">Hardware Requirements</a></li>
+    
+        <li class="main "><a href="#software-requirements">Software Requirements</a></li>
         
-            <li><a href="#software-requirements">Software Requirements</a></li>
+            <li><a href="#tested-operating-systems">Tested Operating Systems</a></li>
         
-            <li><a href="#setup-parameters">Setup parameters</a></li>
+            <li><a href="#installed-packages">Installed Packages</a></li>
+        
+            <li><a href="#suggestions">Suggestions</a></li>
+        
+            <li><a href="#software-configuration">Software Configuration</a></li>
+        
+    
+        <li class="main "><a href="#setup-parameters">Setup parameters</a></li>
+        
+            <li><a href="#clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</a></li>
+        
+            <li><a href="#configure-the-hosts-details">Configure the hosts details</a></li>
+        
+            <li><a href="#creating-the-password-vault">Creating the password vault</a></li>
+        
+            <li><a href="#install-the-dependencies-and-the-buildserver-components">Install the dependencies and the buildserver components</a></li>
+        
+            <li><a href="#check-the-webinterface">Check the Webinterface</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="buildserver-setup">Buildserver Setup</h1>
-<p><strong>(work in progress)</strong></p>
+<p>j Buildserver Setup
+<strong>(work in progress)</strong></p>
 <p>This page holds the instructions of setting up your very own instance of the
 <strong>embEDUx</strong> buildserver. For advanced users, these instructions may be
 considered a mere suggestions. We'd be happy to receive suggestions and feedback
@@ -375,7 +393,7 @@ adminstation</a>.</p>
 Currently the setup routine supports
 <em> Ubuntu 14.04 Linux
 </em> Ubuntu 14.10 Linux
-<em> Gentoo Linux with a Docker compatible Kernel Configuration </em>TIDO: link to options*</p>
+<em> Gentoo Linux with a Docker compatible Kernel Configuration </em>TODO: link to options*</p>
 <h3 id="installed-packages">Installed Packages</h3>
 <ul>
 <li>SSH Server</li>
@@ -389,7 +407,8 @@ Currently the setup routine supports
 <p>There are a few steps to prepare on the buildserver before you can continue
 installing the components onto it.</p>
 <h4 id="user-permissions">User Permissions</h4>
-<p>The user you </p>
+<p>You either need <strong>root</strong>-access on the buildserver, or a <strong>user that has
+permissions to run arbitrary commands with sudo</strong>.</p>
 <h2 id="setup-parameters">Setup parameters</h2>
 <ul>
 <li>Hosts details</li>
