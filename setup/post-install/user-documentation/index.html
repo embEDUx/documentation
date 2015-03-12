@@ -327,9 +327,23 @@
     
         <li class="main active"><a href="#creating-the-user-documentation">Creating the User Documentation</a></li>
         
-            <li><a href="#gather-information-from-the-buildmasters-configuration">Gather information from the buildmaster's configuration</a></li>
-        
             <li><a href="#example-htwg-user-documentation">Example - HTWG User Documentation</a></li>
+        
+            <li><a href="#gather-information-from-the-mastercfg-configuration">Gather information from the master.cfg configuration</a></li>
+        
+            <li><a href="#product-repository-urls">Product Repository URLs</a></li>
+        
+            <li><a href="#web-interfaces">Web-Interfaces</a></li>
+        
+            <li><a href="#product-download-urls">Product Download URLs</a></li>
+        
+            <li><a href="#platform-strings">Platform Strings</a></li>
+        
+            <li><a href="#build-commands">Build Commands</a></li>
+        
+            <li><a href="#output-directories">Output Directories</a></li>
+        
+            <li><a href="#output-file-scheme">Output File-Scheme</a></li>
         
     
     </ul>
@@ -337,12 +351,211 @@
             <div class="col-md-9" role="main">
 
 <h1 id="creating-the-user-documentation">Creating the User Documentation</h1>
-<h2 id="gather-information-from-the-buildmasters-configuration">Gather information from the <strong>buildmaster's configuration</strong></h2>
+<p>The user documentation is essential to the usage of the buildserver that has
+been setup. You are encouraged to create the documentation carefully, and
+double-check any information you put in. </p>
 <h2 id="example-htwg-user-documentation">Example - HTWG User Documentation</h2>
-<p>If you want to see an example, or you're a user at the HTWG please go to <a href="../../examples/user-documentation-HTWG/index.html">User
-Documentation at the HTWG</a> the
-headline to obtain the information you need for the products you want to
-build.</p>
+<p>If you want to see an example, you can take a look at one of these:</p>
+<ul>
+<li><a href="../../examples/user-documentation-DEMO/index.html">Demo User Documentation</a>.  </li>
+<li><a href="../../examples/user-documentation-HTWG/index.html">HTWG User Documentation</a>.  </li>
+</ul>
+<h2 id="gather-information-from-the-mastercfg-configuration">Gather information from the <strong>master.cfg configuration</strong></h2>
+<p>Most of the information that is provided to the user derives from the
+buildserver setup. By default, the only information provided by the
+Administrator were the credentials and the address of the buildserver. Therefore
+it should be straight forward to put the user documentation together, and can in
+most cases be very similar to the provided examples.</p>
+<p>In general <strong>nobody is asking you to include any passwords in here</strong>.</p>
+<h2 id="product-repository-urls">Product Repository URLs</h2>
+<p>The http(s) URLs for the Git-repositories of all products must be included.</p>
+<ul>
+<li>U-Boot</li>
+<li>Linux</li>
+<li>RootFS</li>
+<li>Miscellaneous files</li>
+<li>Toolchains</li>
+</ul>
+<h2 id="web-interfaces">Web-Interfaces</h2>
+<p>The Web-Interfaces for the buildserver(s) must be included.</p>
+<h2 id="product-download-urls">Product Download URLs</h2>
+<p>The download URLs for all products must be included. These are usually based on
+the Web-Interface URL(s) from the previous chapter.</p>
+<ul>
+<li>U-Boot</li>
+<li>Linux</li>
+<li>RootFS</li>
+<li>Miscellaneous files</li>
+<li>Toolchains</li>
+</ul>
+<h2 id="platform-strings">Platform Strings</h2>
+<p>For each of your platforms, you need to provide 
+<em> Platform-String 
+</em> RootFS-String 
+* Toolchain-String</p>
+<h2 id="build-commands">Build Commands</h2>
+<p>For every product, the build command needs to be included. The command's will
+be run in the spec-repositories.  These are the defaults if you haven't changed
+any buildsteps in the <strong>master.cfg</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Buildcommands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>does not apply</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-directories">Output Directories</h2>
+<p>For every product, the output directory needs to be included.  The content of
+this directory will be available for download on the buildserver's
+web-interface.  These are the defaults if you haven't changed any buildsteps in
+the <strong>master.cfg</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Output Folder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>output</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>does not apply</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-file-scheme">Output File-Scheme</h2>
+<p>For every product, the output file-scheme needs to be included.
+These are the defaults if you haven't changed any buildsteps in the
+<strong>master.cfg</strong>. <strong>WARNING:</strong> if your setup differs from these defaults, the
+<a href="../../../../../background/design/flashtoolmd">Flashtool</a> will not work as expected.</p>
+<table>
+<thead>
+<tr>
+<th>Product / Description</th>
+<th>Nr of Files / File-Scheme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>Linux Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Modules+Sources</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td>Linux config</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_config.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Uboot</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Uboot Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_uboot.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Misc</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Additional Boot Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Additonal Root Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Toolchain</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_toolchain.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>RootFS</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Rootfs Archive</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_rootfs.tar.bz2</td>
+</tr>
+<tr>
+<td>Portage Snapshot</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_portage.tar.bz2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variable-descriptions">Variable Descriptions</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>branch-name</td>
+<td>The branch that triggered the build</td>
+</tr>
+<tr>
+<td>date&amp;time</td>
+<td>YYYYMMDDhhmmss</td>
+</tr>
+<tr>
+<td>commit-hash</td>
+<td>Short version of the hash for the commit which triggered the build</td>
+</tr>
+</tbody>
+</table>
 </div>
         </div>
 
