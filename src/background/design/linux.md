@@ -1,20 +1,30 @@
-# Linux Buildprocess Design
-**(work in progress)**
+# Linux Design
+From the [requirements](../requirements.md) we can derive the following design
+criteria. 
 
-## Linux-Version 
-No specific **Linux** kernel version is required and the software solution must
-not be restricted to a specific kernel version. It would be reasonable to have
-the same kernel sources for all of the platforms, and only provide platform
-specific patches to the common base where necessary. In addition to these
-patches, it should be able to provide a specific configuration for a build.
+## Sources 
+The mainline sources of **Linux** must be used. However there can't be any
+restriction to a specify version. To be able to run any platform with the
+mainline sources of **Linux** the possibility of applying user patches during
+build has to be considered.
+
+## Repository
+A repository for each platform is needed. It might also be necessary to build
+different **Linux** versions for the same platform. Therefore one repository
+has to exist for each platform for the desired **Linux** version. That means
+two repositories have to exist if **Linux** version 1.0 and 1.2 should be build
+for platform A. A possible solution might be abusing the branch system of
+  **Git**.
 
 ## Build Process
-To retrieve the **Linux** kernel sources, there are the following possibilities.
+As mainline sources have to be used, those sources need to be retrieved somehow
+before the build process. Also the user has to provide the configuration or at
+least define the config, that should be applied for the build process. Two
+possible options to retrieve the sources are:
 
-* User has to provide the sources within the **Linux** repository
-* Emerge **Gentoo** kernel sources ebuild during build process
-* Download and patch kernel sources manually from
-  [www.kernel.org](https://kernel.org) during build process
+* The User has to provide sources within the repository
+* The sources are downloaded before each build process
+* Gentoo sources ebuild from with **Gentoo** is used
 
 ## Build Steps
 The build process must include the following steps.
@@ -28,8 +38,3 @@ The build process must include the following steps.
     * destination boot partition (kernel image, device tree blob)
     * destination root partition (e.g. modules)
 
-# Build Process Generalization
-Platform specific source code must be avoided as far as possible. This leads to
-to using the mainline sources whenever it is possible. Differences in the
-platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
-will lead to the same workflow for each platform and each product.

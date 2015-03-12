@@ -14,32 +14,6 @@ As we want to have a highly dynamic system, where we still offer up-to date
 products, non of the aforementioned projects offer a satisfying solution.
 Therefore developing our own projects is necessary.
 
-## Bootloader
-Different platforms use the same source code, when the same version of
-**U-Boot** should be build. This also means storing the source code within the
-**U-Boot** repository within each *branch* will lead to a huge overhead of
-source code file within the repository.
-
-Another option would be to download the source code during build by specifying
-the whole build process within a build script, which will be executed by the
-build server. With this solution only the required build script will be
-redundant within the **U-Boot** repository.
-
-The final solution is to not just add *branches* for each platform and
-**U-Boot** version, but also add a source code branch for each **U-Boot**
-version. This branch contains a script for downloading the source code of that
-certain **U-Boot** version. All the other platform branches can execute that
-script and retrieve the source code at runtime.
-
-## Linux Kernel
-Due to keeping the possibility to build the kernel locally, emerging the kernel
-sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the
-sources within the **Linux** repository, will as already mentioned in the
-bootloader chapter, lead to a lot of redundancy when different platforms use the
-same sources. Therefore a promising solution is to add for each **Linux** kernel
-version, which should be build, a branch that contains a script to download the
-sources at runtime. The other branches for each platform can then execute that
-script and retrieve the sources at runtime.
 
 ## Toolchain
 Toolchains built with buildroot have absolute symbolic links compiled within the
