@@ -9,10 +9,11 @@ the nature of the resulting system and requirements that are necessary due to
 technicalities.
 
 ## Generic Requirements
+* Simple to setup and use
+* Simple to extend with new hardware platforms
 * Usage of mainline sources whenever possible
 * User-provided configuration for builds
-* Build automation
-* Simple extensibility
+* Automated processes
 
 ## Lab-Course Specific Requirements
 In order to estimate the requirements list for all lab-courses we need to look
