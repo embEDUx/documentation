@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Examples/User Documentation Github - embEDUx Project</title>
+        <title>Examples/User Documentation Demo - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -146,7 +146,7 @@
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Examples/User Documentation Github</a>
+                            <a href="index.html">Examples/User Documentation Demo</a>
                         </li>
                     
                         <li >
@@ -335,6 +335,12 @@
         
             <li><a href="#platform-strings">Platform Strings</a></li>
         
+            <li><a href="#build-commands">Build Commands</a></li>
+        
+            <li><a href="#output-directories">Output Directories</a></li>
+        
+            <li><a href="#output-file-scheme">Output File-Scheme</a></li>
+        
     
     </ul>
 </div></div>
@@ -463,6 +469,158 @@ Administrator.</p>
 <td>beaglebone-black</td>
 <td>armv7a_hardfp</td>
 <td>armv7a</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-commands">Build Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Buildcommands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>'./build'</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>special ansible buildroutine: TODO LINK</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-directories">Output Directories</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Output Folder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Uboot</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>output</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>output</td>
+</tr>
+<tr>
+<td>RootFS</td>
+<td><em>special ansible buildroutine: TODO LINK</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-file-scheme">Output File-Scheme</h2>
+<table>
+<thead>
+<tr>
+<th>Product / Description</th>
+<th>Nr of Files / File-Scheme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>Linux Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Modules+Sources</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td>Linux config</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_config.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Uboot</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Uboot Blob</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_uboot.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Misc</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Additional Boot Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
+</tr>
+<tr>
+<td>Additonal Root Files</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>Toolchain</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Toolchain</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_toolchain.tar.bz2</td>
+</tr>
+<tr>
+<td><strong>RootFS</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Rootfs Archive</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_rootfs.tar.bz2</td>
+</tr>
+<tr>
+<td>Portage Snapshot</td>
+<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_portage.tar.bz2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="variable-descriptions">Variable Descriptions</h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>branch-name</td>
+<td>The branch that triggered the build</td>
+</tr>
+<tr>
+<td>date&amp;time</td>
+<td>YYYYMMDDhhmmss</td>
+</tr>
+<tr>
+<td>commit-hash</td>
+<td>Short version of the hash for the commit which triggered the build</td>
 </tr>
 </tbody>
 </table>
