@@ -141,7 +141,7 @@ carefully. Candidates shall be
 
 ### Package Lists
 The list and configuration of the desired packages
-must be configurable for each build.
+must be configurable for each build. There
 
 ### Build process
 The software that is used to assemble the RootFS according to the provided
@@ -166,8 +166,7 @@ The build process must include the following steps.
 1. Cleanup the build files
 1. Create an archive from the RootFS
 
-# Design Decisions
-
+# Further Goals
 
 ## Portability 
 In order to have a portable build system, all components should live and run in
