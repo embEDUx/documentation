@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.2.2 concept-map (example_uboot_repository.vue) 2015-03-09 -->
+<!-- Tufts VUE 3.2.2 concept-map (example_uboot_repository.vue) 2015-03-12 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Mon Mar 09 11:53:54 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Thu Mar 12 14:04:19 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="example_uboot_repository.vue" created="1425894548930" x="0.0"
     y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425898434533" size="24103"
+    <resource referenceCreated="1426165459591" size="24099"
         spec="/home/lars/Documents/embedux/documentation/concept/example_uboot_repository.vue"
         type="1" xsi:type="URLResource">
         <title>example_uboot_repository.vue</title>
@@ -67,19 +67,19 @@
         <font>SansSerif-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/fdf37c4c7f00000133ff5ccdb6218790</URIString>
         <richText>&lt;html&gt;
-  &lt;head color="#000000" style="color: #000000"&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { margin-top: 0px; margin-bottom: 0px; font-size: 12; font-family: Arial; color: #000000; margin-left: 0px; margin-right: 0px }
-        ol { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
-        p { margin-top: 0; margin-bottom: 0; color: #000000; margin-left: 0; margin-right: 0 }
-        ul { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
+        body { font-size: 12; margin-left: 0px; margin-top: 0px; font-family: Arial; margin-bottom: 0px; color: #000000; margin-right: 0px }
+        ol { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
+        p { margin-left: 0; margin-top: 0; margin-bottom: 0; color: #000000; margin-right: 0 }
+        ul { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p color="#000000" style="color: #000000"&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
       version_generic
     &lt;/p&gt;
   &lt;/body&gt;
@@ -87,33 +87,33 @@
 </richText>
         <label>version_generic</label>
     </child>
-    <child ID="34" label="uboot" layerID="1" created="1425894549962"
-        x="146.28737" y="43.003582" width="70.0" height="35.0"
-        strokeWidth="0.0" autoSized="false" xsi:type="text">
+    <child ID="34" label="uboot-specs" layerID="1"
+        created="1425894549962" x="146.28737" y="43.003582"
+        width="145.0" height="35.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
         <textColor>#000000</textColor>
         <font>SansSerif-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/fdf37c507f00000133ff5ccd6f74f9f3</URIString>
         <richText>&lt;html&gt;
-  &lt;head color="#000000" style="color: #000000"&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { margin-top: 0px; margin-bottom: 0px; font-size: 24; font-family: Arial; color: #000000; margin-left: 0px; margin-right: 0px }
-        ol { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 24; font-family: Arial; margin-left: 30 }
-        p { margin-top: 0; margin-bottom: 0; color: #000000; margin-left: 0; margin-right: 0 }
-        ul { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 24; font-family: Arial; margin-left: 30 }
+        body { font-size: 24; margin-left: 0px; margin-top: 0px; font-family: Arial; margin-bottom: 0px; color: #000000; margin-right: 0px }
+        ol { font-size: 24; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
+        p { margin-left: 0; margin-top: 0; margin-bottom: 0; color: #000000; margin-right: 0 }
+        ul { font-size: 24; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p color="#000000" style="color: #000000"&gt;
-      uboot
+    &lt;p style="color: #000000" color="#000000"&gt;
+      uboot-specs
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-        <label>uboot</label>
+        <label>uboot-specs</label>
     </child>
     <child ID="35" layerID="1" created="1425894692120" x="442.13034"
         y="45.402405" width="178.49448" height="96.49002"
@@ -154,41 +154,37 @@
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c587f00000133ff5ccddb303041</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="17"
-            label="version_platform&#xa;    &#xa;    &#xa;      (raspberry-pi)"
+        <child ID="17" label="version_platform (raspberry-pi)"
             created="1425894549964" x="29.290241" y="4.5430756"
-            width="105.0" height="32.0" strokeWidth="0.0"
+            width="106.0" height="33.0" strokeWidth="0.0"
             autoSized="false" xsi:type="text">
             <strokeColor>#404040</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c5b7f00000133ff5ccd72adfcc3</URIString>
             <richText>&lt;html&gt;
-  &lt;head color="#000000" style="color: #000000"&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { margin-top: 0px; margin-bottom: 0px; font-size: 12; font-family: Arial; color: #000000; margin-left: 0px; margin-right: 0px }
-        ol { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
-        p { margin-top: 0; margin-bottom: 0; color: #000000; margin-left: 0; margin-right: 0 }
-        ul { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
+        body { font-size: 12; margin-left: 0px; margin-top: 0px; font-family: Arial; margin-bottom: 0px; color: #000000; margin-right: 0px }
+        ol { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
+        p { margin-left: 0; margin-top: 0; margin-bottom: 0; color: #000000; margin-right: 0 }
+        ul { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p color="#000000" style="color: #000000"&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
       version_platform
     &lt;/p&gt;
-    &lt;p color="#000000" style="text-align: center; color: #000000"&gt;
+    &lt;p style="text-align: center; color: #000000" color="#000000"&gt;
       (raspberry-pi)
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-            <label>version_platform
-    
-    
-      (raspberry-pi)</label>
+            <label>version_platform (raspberry-pi)</label>
         </child>
     </child>
     <child ID="19" layerID="1" created="1425894549962" x="278.46872"
@@ -247,8 +243,7 @@
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c697f00000133ff5ccd0ff08f26</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="25"
-            label="version_platform&#xa;    &#xa;    &#xa;      (banana-pi)"
+        <child ID="25" label="version_platform (banana-pi)"
             created="1425894549964" x="17.13388" y="4.81308"
             width="106.0" height="33.0" strokeWidth="0.0"
             autoSized="false" xsi:type="text">
@@ -257,31 +252,28 @@
             <font>SansSerif-plain-14</font>
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c6b7f00000133ff5ccd46e2cd58</URIString>
             <richText>&lt;html&gt;
-  &lt;head color="#000000" style="color: #000000"&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { margin-top: 0px; margin-bottom: 0px; font-size: 12; font-family: Arial; color: #000000; margin-left: 0px; margin-right: 0px }
-        ol { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
-        p { margin-top: 0; margin-bottom: 0; color: #000000; margin-left: 0; margin-right: 0 }
-        ul { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
+        body { font-size: 12; margin-left: 0px; margin-top: 0px; font-family: Arial; margin-bottom: 0px; color: #000000; margin-right: 0px }
+        ol { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
+        p { margin-left: 0; margin-top: 0; margin-bottom: 0; color: #000000; margin-right: 0 }
+        ul { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p color="#000000" style="color: #000000"&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
       version_platform
     &lt;/p&gt;
-    &lt;p color="#000000" style="text-align: center; color: #000000"&gt;
+    &lt;p style="text-align: center; color: #000000" color="#000000"&gt;
       (banana-pi)
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-            <label>version_platform
-    
-    
-      (banana-pi)</label>
+            <label>version_platform (banana-pi)</label>
         </child>
     </child>
     <child ID="27" layerID="1" created="1425894549962" x="278.46872"
@@ -327,8 +319,7 @@
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c787f00000133ff5ccd126fda19</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="33"
-            label="version_platform&#xa;    &#xa;    &#xa;      (beaglebone-black)"
+        <child ID="33" label="version_platform (beaglebone-black)"
             created="1425894549962" x="46.579124" y="5.2104177"
             width="125.0" height="34.0" strokeWidth="0.0"
             autoSized="false" xsi:type="text">
@@ -337,31 +328,28 @@
             <font>SansSerif-plain-14</font>
             <URIString>http://vue.tufts.edu/rdf/resource/fdf37c7a7f00000133ff5ccde631bdf3</URIString>
             <richText>&lt;html&gt;
-  &lt;head color="#000000" style="color: #000000"&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { margin-top: 0px; margin-bottom: 0px; font-size: 12; font-family: Arial; color: #000000; margin-left: 0px; margin-right: 0px }
-        ol { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
-        p { margin-top: 0; margin-bottom: 0; color: #000000; margin-left: 0; margin-right: 0 }
-        ul { margin-top: 6; vertical-align: middle; list-style-position: outside; font-size: 12; font-family: Arial; margin-left: 30 }
+        body { font-size: 12; margin-left: 0px; margin-top: 0px; font-family: Arial; margin-bottom: 0px; color: #000000; margin-right: 0px }
+        ol { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
+        p { margin-left: 0; margin-top: 0; margin-bottom: 0; color: #000000; margin-right: 0 }
+        ul { font-size: 12; vertical-align: middle; margin-left: 30; list-style-position: outside; margin-top: 6; font-family: Arial }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p color="#000000" style="color: #000000"&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
       version_platform
     &lt;/p&gt;
-    &lt;p color="#000000" style="text-align: center; color: #000000"&gt;
+    &lt;p style="text-align: center; color: #000000" color="#000000"&gt;
       (beaglebone-black)
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-            <label>version_platform
-    
-    
-      (beaglebone-black)</label>
+            <label>version_platform (beaglebone-black)</label>
         </child>
     </child>
     <child ID="28" layerID="1" created="1425894549962" x="278.46872"
@@ -421,13 +409,13 @@
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/fdf37c7c7f00000133ff5ccdd9f24426</URIString>
     </layer>
-    <userZoom>8.746707172712313</userZoom>
+    <userZoom>0.10132988730153625</userZoom>
     <userOrigin x="1056.4054" y="234.12912"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1425894548930"
             x="0.0" y="0.0" width="1.4E-45" height="1.4E-45"
-            strokeWidth="0.0" autoSized="false" currentIndex="-1" open="true">
+            strokeWidth="0.0" autoSized="false" currentIndex="0" open="true">
             <strokeColor>#B3CC33CC</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>

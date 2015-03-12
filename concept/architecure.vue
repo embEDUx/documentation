@@ -1,18 +1,18 @@
-<!-- Tufts VUE 3.2.2 concept-map (architecure.vue) 2015-03-06 -->
+<!-- Tufts VUE 3.2.2 concept-map (architecure.vue) 2015-03-12 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 06 13:24:59 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Thu Mar 12 13:58:55 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="architecure.vue"
     created="1412766514800" x="0.0" y="0.0" width="1154.5984"
     height="796.53516" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425644699933" size="51033"
-        spec="/home/lars/Documents/embedux/documentation/conept/architecure.vue"
+    <resource referenceCreated="1426165135511" size="51065"
+        spec="/home/lars/Documents/embedux/documentation/concept/architecure.vue"
         type="1" xsi:type="URLResource">
         <title>architecure.vue</title>
-        <property key="File" value="/home/lars/Documents/embedux/documentation/conept/architecure.vue"/>
+        <property key="File" value="/home/lars/Documents/embedux/documentation/concept/architecure.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -27,8 +27,8 @@
         <textColor>#000000</textColor>
         <font>Arial-plain-24</font>
         <URIString>http://vue.tufts.edu/rdf/resource/da9b5fdd7f0000017d478a7f89d56de3</URIString>
-        <child ID="74" label="uboot" created="1425299798795" x="34.0"
-            y="37.0" width="290.97156" height="282.35944"
+        <child ID="74" label="uboot-specs" created="1425299798795"
+            x="34.0" y="37.0" width="290.97156" height="282.35944"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -143,8 +143,8 @@
             </child>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="7" label="linux" created="1412766722613" x="34.0"
-            y="251.76958" width="290.97156" height="302.59375"
+        <child ID="7" label="linux-specs" created="1412766722613"
+            x="34.0" y="251.76958" width="290.97156" height="302.59375"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -280,8 +280,8 @@
             </child>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="100" label="misc" created="1425300443109" x="34.0"
-            y="481.7149" width="290.97156" height="141.0625"
+        <child ID="100" label="misc-specs" created="1425300443109"
+            x="34.0" y="481.7149" width="290.97156" height="141.0625"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -332,8 +332,8 @@
             </child>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="86" label="rootfs" created="1425300128702" x="34.0"
-            y="590.5118" width="290.97156" height="118.890594"
+        <child ID="86" label="rootfs-specs" created="1425300128702"
+            x="34.0" y="590.5118" width="290.97156" height="118.890594"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -363,7 +363,7 @@
             </child>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="105" label="toolchains" created="1425300639555"
+        <child ID="105" label="toolchain-specs" created="1425300639555"
             x="34.0" y="682.67975" width="289.27975" height="118.890594"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
@@ -915,6 +915,6 @@
     </PathwayList>
     <date>2014-10-08</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/home/lars/Documents/embedux/documentation/conept</saveLocation>
-    <saveFile>/home/lars/Documents/embedux/documentation/conept/architecure.vue</saveFile>
+    <saveLocation>/home/lars/Documents/embedux/documentation/concept</saveLocation>
+    <saveFile>/home/lars/Documents/embedux/documentation/concept/architecure.vue</saveFile>
 </LW-MAP>

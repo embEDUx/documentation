@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.2.2 concept-map (design.vue) 2015-03-06 -->
+<!-- Tufts VUE 3.2.2 concept-map (design.vue) 2015-03-12 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 06 14:35:02 CET 2015 by lars on platform Linux 3.19.0-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Thu Mar 12 14:02:33 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="design.vue"
     created="1412766514800" x="0.0" y="0.0" width="1154.5984"
     height="796.53516" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1425648902389" size="26509"
+    <resource referenceCreated="1426165353601" size="26509"
         spec="/home/lars/Documents/embedux/documentation/concept/design.vue"
         type="1" xsi:type="URLResource">
         <title>design.vue</title>
@@ -28,9 +28,9 @@
         <textColor>#000000</textColor>
         <font>Arial-plain-24</font>
         <URIString>http://vue.tufts.edu/rdf/resource/da9b5fdd7f0000017d478a7f89d56de3</URIString>
-        <child ID="74" label="uboot" created="1425299798795" x="34.0"
-            y="37.0" width="290.97156" height="37.0" strokeWidth="1.0"
-            autoSized="false" xsi:type="node">
+        <child ID="74" label="uboot-specs" created="1425299798795"
+            x="34.0" y="37.0" width="290.97156" height="37.0"
+            strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
@@ -38,9 +38,9 @@
             <URIString>http://vue.tufts.edu/rdf/resource/da9b5fde7f0000017d478a7f453d1a16</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="7" label="linux" created="1412766722613" x="34.0"
-            y="67.75" width="290.97156" height="37.0" strokeWidth="1.0"
-            autoSized="false" xsi:type="node">
+        <child ID="7" label="linux-specs" created="1412766722613"
+            x="34.0" y="67.75" width="290.97156" height="37.0"
+            strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
@@ -48,9 +48,9 @@
             <URIString>http://vue.tufts.edu/rdf/resource/efa82b946fa2ecae25261a84e2f40626</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="100" label="misc" created="1425300443109" x="34.0"
-            y="98.5" width="290.97156" height="37.0" strokeWidth="1.0"
-            autoSized="false" xsi:type="node">
+        <child ID="100" label="misc-specs" created="1425300443109"
+            x="34.0" y="98.5" width="290.97156" height="37.0"
+            strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
@@ -58,9 +58,9 @@
             <URIString>http://vue.tufts.edu/rdf/resource/da9b60077f0000017d478a7f19b4da47</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="86" label="rootfs" created="1425300128702" x="34.0"
-            y="129.25" width="290.97156" height="37.0" strokeWidth="1.0"
-            autoSized="false" xsi:type="node">
+        <child ID="86" label="rootfs-specs" created="1425300128702"
+            x="34.0" y="129.25" width="290.97156" height="37.0"
+            strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
@@ -68,7 +68,7 @@
             <URIString>http://vue.tufts.edu/rdf/resource/da9b600d7f0000017d478a7ffdd6dabe</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="105" label="toolchains" created="1425300639555"
+        <child ID="105" label="toolchain-specs" created="1425300639555"
             x="34.0" y="160.0" width="289.27975" height="37.0"
             strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#83CEFF</fillColor>
@@ -439,7 +439,7 @@
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/efa82bc56fa2ecae25261a8429b49efe</URIString>
     </layer>
-    <userZoom>0.039329988784069264</userZoom>
+    <userZoom>0.05563326300150937</userZoom>
     <userOrigin x="-2709.83" y="-3858.335"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
