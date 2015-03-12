@@ -6,7 +6,12 @@ in the project. As a reminder this section includes explanations to important
 terms and techniques used by Linux which are essential for this project.
 
 ## ABI (application binary interface)
-TODO:
+In computer software, an application binary interface (ABI) is the interface
+between two program modules, one of which is often a library or operating
+system, at the level of machine code. An ABI determines such details as how
+functions are called and in which binary format information should be passed
+from one program component to the next, or to the operating system in the case
+of a system call. ([Source](http://en.wikipedia.org/wiki/Application_binary_interface))
 
 ## Architecture
 Architecture refers to a CPU's type of architecture. The CPU architecture
@@ -19,7 +24,10 @@ given by application's binary code. The linux kernel supports a wide range of
 architectures and can therefore be run on many different systems.
 
 ## Bootloader
-TODO: 
+The boot loader is the first piece of software started by the BIOS or UEFI. It
+is responsible for loading the kernel with the wanted kernel parameters, and
+initial RAM disk before initiating the boot process.
+([Source](https://wiki.archlinux.org/index.php/Boot_loaders))
 
 ## ELF
 ELF (Executable and Linkable Format) is a format for binary application files.

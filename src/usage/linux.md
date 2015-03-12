@@ -14,10 +14,10 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       Documentation](../setup/post-install/user-documentation.md), if that isn't
       the case, please contact an Administrator to add your platform to the
       **embEDUx** build system.
-* Git Repository *linux-specs*
 * **linux-specs** Git-Repository
-  The Linux-specification is supplied to the buildserver via git. Consult your
-  User Documentation for the repository URLs. (See previous link)
+
+    The Linux-specification is supplied to the buildserver via git. Consult your
+    User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build

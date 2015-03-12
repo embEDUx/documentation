@@ -9,13 +9,18 @@ look at [background/misc](../background/specs/misc.md).
 All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
+* Access to an **embEDUx** buildserver system
 * User Documentation.
-
-    At the end of the setup, the Administrator is instructed to create the [User
+    * At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
+    * Your platform needs to be included in the [User
+      Documentation](../setup/post-install/user-documentation.md), if that isn't
+      the case, please contact an Administrator to add your platform to the
+      **embEDUx** build system.
+* **misc-specs** Git-Repository
 
-* Git Repository *misc-specs*
-* **buildserver** setup for desired platform architecture
+    The Miscellaneous-File-specification is supplied to the buildserver via git. Consult your
+    User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Have a look at the default [build script](usage/misc/default/platform_build). As the

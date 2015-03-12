@@ -1,27 +1,30 @@
 # Toolchains
 This guide will help you through the steps to build a toolchain for the
-architecture of your desired platform.
+architectures of the platforms you want to use.
 
 ## Prerequisites
 All of [the common prerequisites apply](../../usage/usage.md#Prerequisites).
 
 ### Requirements
+* Access to an **embEDUx** buildserver system
 * User Documentation.
+    * At the end of the setup, the Administrator is instructed to create the
+      [User Documentation](user-documentation.md).
 
-    At the end of the setup, the Administrator is instructed to create the [User
-    Documentation](user-documentation.md).
+* **toolchain-specs** Git-Repository
+  
+    The toolchain-specification is supplied to the buildserver via git. Consult
+    your User Documentation for the repository URLs. (See previous link)
 
-* Git Repository *toolchains-specs*
-* **buildserver** setup for desired platform architecture
 * Crosstool NG [ct-ng](http://crosstool-ng.org/) locally installed.
 
 ### Suggestions
-* Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.
-
 * Have a look at the default [build script](setup/post-install/toolchains/default/toolchain_build). As
   the **buildserver** just executes these scripts, you have no limits on what
   you want to do before, during and after the build process.
+* As you will use or at least configure **Crosstool-NG**, you should make
+  yourself comfortable in [using](http://crosstool-ng.org/#download_and_usage)
+  it.
 
 ## Branch Name-Scheme
 The **builserver** can only build your images, if you follow the correct
