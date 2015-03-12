@@ -5,7 +5,7 @@
 
 ### Linux/Uboot/Misc/Toolchain
 * [Local Testing](local-testing.md)
-* [Entering the build enviornment](default/entering-build-environment.md)
+* [Entering the build enviornment](entering-build-environment.md)
 
 ### RootFS
 * [Manually enter a RootFS Build
