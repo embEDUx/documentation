@@ -6,8 +6,8 @@ respective build targets is required. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of
 toolchain creation.
 
-* Crosstool-NG
-* Buildroot
+* [Crosstool-NG](http://crosstool-ng.org/)
+* [Buildroot](http://buildroot.uclibc.org/)
 
 ### Build process
 1. Retrieve the build specifications from the **Toolchains**-repository
