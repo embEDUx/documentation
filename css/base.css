@@ -53,7 +53,7 @@ div.source-links {
 .bs-sidebar .nav > .active:hover > a,
 .bs-sidebar .nav > .active:focus > a {
     font-weight: bold;
-    background-color: transparent;
+    background-color: lightgray;
     border-right: 1px solid;
 }
 
