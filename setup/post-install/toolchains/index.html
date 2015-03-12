@@ -342,33 +342,36 @@
 
 <h1 id="toolchains">Toolchains</h1>
 <p>This guide will help you through the steps to build a toolchain for the
-architecture of your desired platform.</p>
+architectures of the platforms you want to use.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>All of <a href="../../../usage/usage/index.html#Prerequisites">the common prerequisites apply</a>.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
+<li>Access to an <strong>embEDUx</strong> buildserver system</li>
 <li>
 <p>User Documentation.</p>
-<p>At the end of the setup, the Administrator is instructed to create the <a href="../user-documentation/index.html">User
-Documentation</a>.</p>
+<ul>
+<li>At the end of the setup, the Administrator is instructed to create the
+  <a href="../user-documentation/index.html">User Documentation</a>.</li>
+</ul>
 </li>
 <li>
-<p>Git Repository <em>toolchains-specs</em></p>
+<p><strong>toolchain-specs</strong> Git-Repository</p>
+<p>The toolchain-specification is supplied to the buildserver via git. Consult
+your User Documentation for the repository URLs. (See previous link)</p>
 </li>
-<li><strong>buildserver</strong> setup for desired platform architecture</li>
-<li>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</li>
+<li>
+<p>Crosstool NG <a href="http://crosstool-ng.org/">ct-ng</a> locally installed.</p>
+</li>
 </ul>
 <h3 id="suggestions">Suggestions</h3>
 <ul>
-<li>
-<p>Build/download a toolchain. This will allow you to test your build
-  configuration before you push it upstream.</p>
-</li>
-<li>
-<p>Have a look at the default <a href="../../../setup/post-install/toolchains/default/toolchain_build">build script</a>. As
+<li>Have a look at the default <a href="../../../setup/post-install/toolchains/default/toolchain_build">build script</a>. As
   the <strong>buildserver</strong> just executes these scripts, you have no limits on what
-  you want to do before, during and after the build process.</p>
-</li>
+  you want to do before, during and after the build process.</li>
+<li>As you will use or at least configure <strong>Crosstool-NG</strong>, you should make
+  yourself comfortable in <a href="http://crosstool-ng.org/#download_and_usage">using</a>
+  it.</li>
 </ul>
 <h2 id="branch-name-scheme">Branch Name-Scheme</h2>
 <p>The <strong>builserver</strong> can only build your images, if you follow the correct
