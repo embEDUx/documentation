@@ -24,7 +24,10 @@ given by application's binary code. The linux kernel supports a wide range of
 architectures and can therefore be run on many different systems.
 
 ## Bootloader
-TODO: 
+The boot loader is the first piece of software started by the BIOS or UEFI. It
+is responsible for loading the kernel with the wanted kernel parameters, and
+initial RAM disk before initiating the boot process.
+[S](https://wiki.archlinux.org/index.php/Boot_loaders)
 
 ## ELF
 ELF (Executable and Linkable Format) is a format for binary application files.
