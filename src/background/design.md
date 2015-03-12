@@ -84,8 +84,8 @@ The build process must include the following steps.
 1. (Cross-)Compile kernel for target architecture with kernel config provided by
    the specifications
 1. Create two archives from the necessary files.
-    * target boot partition (kernel image, device tree blob)
-    * target root partition (e.g. modules)
+    * destination boot partition (kernel image, device tree blob)
+    * destination root partition (e.g. modules)
 
 ## Toolchains for Building Kernel and Bootloader
 The Linux-Kernel and the Bootloader must be compiled from their sources,
