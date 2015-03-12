@@ -1,5 +1,5 @@
 # Evaluation
-The considerations from the [design](../design.md) will be evaluated within this
+The considerations from the [design](design.md) will be evaluated within this
 chapter.
 
 ## Comparison With Similar Projects
