@@ -146,6 +146,10 @@
                         </li>
                     
                         <li >
+                            <a href="../examples/user-documentation-Github/index.html">Examples/User Documentation Github</a>
+                        </li>
+                    
+                        <li >
                             <a href="../examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
                         </li>
                     
@@ -323,11 +327,13 @@
     
         <li class="main active"><a href="#adminstation-setup">Adminstation Setup</a></li>
         
-            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+        
+            <li><a href="#suggestions">Suggestions</a></li>
         
             <li><a href="#clone-the-buildserver-setuproutine-repository">Clone the buildserver-setuproutine repository</a></li>
         
-            <li><a href="#install-the-shipped-ansible">Install the shipped Ansible</a></li>
+            <li><a href="#install-the-shipped-ansible-into-a-virtual-environment">Install the shipped Ansible into a virtual environment</a></li>
         
     
     </ul>
@@ -336,8 +342,7 @@
 
 <h1 id="adminstation-setup">Adminstation Setup</h1>
 <p><strong>(work in progress)</strong></p>
-<h2 id="prerequisites">Prerequisites</h2>
-<h3 id="requirements">Requirements</h3>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>In order to setup the adminstation, you need access to the following
 buildserver-setuproutine repository. Please consult your <a href="../post-install/user-documentation/index.html">user
@@ -348,7 +353,7 @@ documnetation</a> for the URLs.</li>
 </ul>
 </li>
 </ul>
-<h4 id="installed-packages">Installed Packages</h4>
+<h3 id="installed-packages">Installed Packages</h3>
 <p>The follow list of packages are required to be installed on the adminstation.
 The list also contains short explanations what they're needed for.</p>
 <ul>
@@ -366,7 +371,7 @@ The list also contains short explanations what they're needed for.</p>
 </li>
 <li>virtualenv</li>
 </ul>
-<h3 id="suggestions">Suggestions</h3>
+<h2 id="suggestions">Suggestions</h2>
 <ul>
 <li>Authentication as root via SSH-key - this is a comfort suggestion!</li>
 </ul>
@@ -375,28 +380,33 @@ The list also contains short explanations what they're needed for.</p>
 GitHub. It is suggested to use the latest version of the default (currently
 named <em>ansible</em>) branch, which can be retrieved as follows.</p>
 <p><code>$ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1</code></p>
-<h2 id="install-the-shipped-ansible">Install the shipped Ansible</h2>
-<h3 id="prepare-the-virtual-python-environment">Prepare the virtual python environment</h3>
+<h2 id="install-the-shipped-ansible-into-a-virtual-environment">Install the shipped Ansible into a virtual environment</h2>
 <p>You can either reuse an existing virtual python environment, or create a new
 one. The following steps assume you chose the latter.</p>
+<ol>
+<li>
 <p>Create the virtual environment</p>
 <p><code>$ virtualenv -p python2.7 venv-27-ansible</code></p>
+</li>
+<li>
 <p>Install our distributed ansible wheel</p>
 <p><code>$ ./venv-27-ansible/bin/pip install buildserver-setuproutine/dist/ansible-1.8.4-py2-none-any.whl</code></p>
+</li>
+<li>
 <p>Now, you should be able to use <code>ansible</code> from the virtual environment, like so</p>
-<p><code>$ ./venv-27-ansible/bin/ansible --version</code></p>
-<pre><code>ansible 1.8.4
-  configured module search path = None
-</code></pre>
-
+<p><code>$ ./venv-27-ansible/bin/ansible --version</code>
+<code>ansible 1.8.4
+  configured module search path = None</code></p>
 <p>or by activating the virtual environment:</p>
 <p><code>$ . ./venv-27-ansible/bin/activate</code></p>
+</li>
+<li>
 <p>Checking the whereabouts of the <code>ansbile</code>-command should yield a path inside the
 virtual environment.</p>
 <p><code>(venv-27-ansible) $ which ansible</code></p>
-<pre><code>( ... )/venv-27-ansible/bin/ansible
-</code></pre>
-
+<p><code>( ... )/venv-27-ansible/bin/ansible</code></p>
+</li>
+</ol>
 </div>
         </div>
 

@@ -145,6 +145,10 @@
                             <a href="../../workstation/development/flashtool/index.html">Workstation/Development/Flashtool</a>
                         </li>
                     
+                        <li >
+                            <a href="../user-documentation-Github/index.html">Examples/User Documentation Github</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="index.html">Examples/User Documentation Htwg</a>
                         </li>
@@ -302,7 +306,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../../workstation/development/flashtool/index.html">
+                    <a rel="next" href="../user-documentation-Github/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -331,12 +335,6 @@
         
             <li><a href="#platform-strings">Platform Strings</a></li>
         
-            <li><a href="#build-commands">Build Commands</a></li>
-        
-            <li><a href="#output-directories">Output Directories</a></li>
-        
-            <li><a href="#output-file-scheme">Output File-Scheme</a></li>
-        
     
     </ul>
 </div></div>
@@ -356,23 +354,23 @@ and overview of the contents they have to put in their User Documentation.</p>
 <tbody>
 <tr>
 <td>U-Boot</td>
-<td><a href="https://github.com/embEDUx/uboot-specs.git">https://github.com/embEDUx/uboot-specs.git</a></td>
+<td><a href="https://apu.in.htwg-konstanz.de/labworks-embEDUx/uboot.git">https://apu.in.htwg-konstanz.de/labworks-embEDUx/uboot.git</a></td>
 </tr>
 <tr>
 <td>Linux</td>
-<td><a href="https://github.com/embEDUx/linux-specs.git">https://github.com/embEDUx/linux-specs.git</a></td>
+<td><a href="https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git">https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git</a></td>
 </tr>
 <tr>
 <td>RootFS</td>
-<td><a href="https://github.com/embEDUx/rootfs-specs.git">https://github.com/embEDUx/rootfs-specs.git</a></td>
+<td><a href="https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git">https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git</a></td>
 </tr>
 <tr>
 <td>Miscellaneous files</td>
-<td><a href="https://github.com/embEDUx/misc-specs.git">https://github.com/embEDUx/misc-specs.git</a></td>
+<td><a href="https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git">https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git</a></td>
 </tr>
 <tr>
 <td>Toolchains</td>
-<td><a href="https://github.com/embEDUx/toolchain-specs.git">https://github.com/embEDUx/toolchain-specs.git</a></td>
+<td><a href="https://apu.in.htwg-konstanz.de/labworks-embEDUx/toolchains.git">https://apu.in.htwg-konstanz.de/labworks-embEDUx/toolchains.git</a></td>
 </tr>
 </tbody>
 </table>
@@ -465,158 +463,6 @@ Administrator.</p>
 <td>beaglebone-black</td>
 <td>armv7a_hardfp</td>
 <td>armv7a</td>
-</tr>
-</tbody>
-</table>
-<h2 id="build-commands">Build Commands</h2>
-<table>
-<thead>
-<tr>
-<th>Product</th>
-<th>Buildcommands</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux</td>
-<td>'./build'</td>
-</tr>
-<tr>
-<td>Uboot</td>
-<td>'./build'</td>
-</tr>
-<tr>
-<td>Misc</td>
-<td>'./build'</td>
-</tr>
-<tr>
-<td>Toolchain</td>
-<td>'./build'</td>
-</tr>
-<tr>
-<td>RootFS</td>
-<td><em>special ansible buildroutine: TODO LINK</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="output-directories">Output Directories</h2>
-<table>
-<thead>
-<tr>
-<th>Product</th>
-<th>Output Folder</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux</td>
-<td>output</td>
-</tr>
-<tr>
-<td>Uboot</td>
-<td>output</td>
-</tr>
-<tr>
-<td>Misc</td>
-<td>output</td>
-</tr>
-<tr>
-<td>Toolchain</td>
-<td>output</td>
-</tr>
-<tr>
-<td>RootFS</td>
-<td><em>special ansible buildroutine: TODO LINK</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="output-file-scheme">Output File-Scheme</h2>
-<table>
-<thead>
-<tr>
-<th>Product / Description</th>
-<th>Nr of Files / File-Scheme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Linux</strong></td>
-<td>3</td>
-</tr>
-<tr>
-<td>Linux Blob</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
-</tr>
-<tr>
-<td>Modules+Sources</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
-</tr>
-<tr>
-<td>Linux config</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_config.tar.bz2</td>
-</tr>
-<tr>
-<td><strong>Uboot</strong></td>
-<td>1</td>
-</tr>
-<tr>
-<td>Uboot Blob</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_uboot.tar.bz2</td>
-</tr>
-<tr>
-<td><strong>Misc</strong></td>
-<td>2</td>
-</tr>
-<tr>
-<td>Additional Boot Files</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_boot.tar.bz2</td>
-</tr>
-<tr>
-<td>Additonal Root Files</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_root.tar.bz2</td>
-</tr>
-<tr>
-<td><strong>Toolchain</strong></td>
-<td>1</td>
-</tr>
-<tr>
-<td>Toolchain</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_toolchain.tar.bz2</td>
-</tr>
-<tr>
-<td><strong>RootFS</strong></td>
-<td>2</td>
-</tr>
-<tr>
-<td>Rootfs Archive</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_rootfs.tar.bz2</td>
-</tr>
-<tr>
-<td>Portage Snapshot</td>
-<td>&lt; branch-name >_&lt; date&amp;time >_&lt; commit-hash >_portage.tar.bz2</td>
-</tr>
-</tbody>
-</table>
-<h4 id="variable-descriptions">Variable Descriptions</h4>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>branch-name</td>
-<td>The branch that triggered the build</td>
-</tr>
-<tr>
-<td>date&amp;time</td>
-<td>YYYYMMDDhhmmss</td>
-</tr>
-<tr>
-<td>commit-hash</td>
-<td>Short version of the hash for the commit which triggered the build</td>
 </tr>
 </tbody>
 </table>
