@@ -6,6 +6,7 @@ your desired platform.
 All of [the common prerequisites apply](usage.md#Prerequisites).
 
 ### Requirements
+* Access to an **embEDUx** buildserver system
 * User Documentation.
     * At the end of the setup, the Administrator is instructed to create the [User
     Documentation](../setup/post-install/user-documentation.md).
@@ -13,8 +14,10 @@ All of [the common prerequisites apply](usage.md#Prerequisites).
       Documentation](../setup/post-install/user-documentation.md), if that isn't
       the case, please contact an Administrator to add your platform to the
       **embEDUx** build system.
-* Git Repository *uboot-specs*
-* **Buildserver** setup for desired platform architecture
+* **uboot-specs** Git-Repository
+
+    The U-Boot-specification is supplied to the buildserver via git. Consult your
+    User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Build/download a toolchain. This will allow you to test your build

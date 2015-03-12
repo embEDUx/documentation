@@ -16,8 +16,9 @@ are needed for the usage of every product.
       the case, please contact an Administrator to add your platform to the
       **embEDUx** build system.
 * **rootfs-specs** Git-Repository
-  The RootFS-specification is supplied to the buildserver via git. Consult your
-  User Documentation for the repository URLs. (See previous link)
+
+    The RootFS-specification is supplied to the buildserver via git. Consult
+    your User Documentation for the repository URLs. (See previous link)
 
 ### Suggestions
 * Understand the [RootFS Background Information](../background/specs/rootfs.md). The
