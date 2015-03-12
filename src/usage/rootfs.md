@@ -7,9 +7,15 @@ Please review [the common usage prerequisites](usage.md#Prerequisites), which
 are needed for the usage of every product.
 
 ### Requirements
-* User Documentation.  At the end of the setup, the Administrator is instructed
-  to create the [User Documentation](../setup/post-install/user-documentation.md).
-* RootFS Git-Repository
+* Access to an **embEDUx** buildserver system
+* User Documentation.
+    * At the end of the setup, the Administrator is instructed to create the [User
+    Documentation](../setup/post-install/user-documentation.md).
+    * Your platform needs to be included in the [User
+      Documentation](../setup/post-install/user-documentation.md), if that isn't
+      the case, please contact an Administrator to add your platform to the
+      **embEDUx** build system.
+* **rootfs-specs** Git-Repository
   The RootFS-specification is supplied to the buildserver via git. Consult your
   User Documentation for the repository URLs. (See previous link)
 
