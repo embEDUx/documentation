@@ -8,8 +8,9 @@ chapter.
 Setup | `git clone git://git.buildroot.net/buildroot` | `git clone -b dizzy git://git.yoctoproject.org/poky.git`
 Configuration | `make menuconfig` | Configuration is happening in conf files, although there is also a GUI 
 Output | Bootloader, Kernel, RootFS, Toolchain | SD Card Image
-Platform Support | - | Common platforms are supported or available through so called *Board Support Packages (BSP)*, otherwise manual configuration can be done
-Software Support | - | Common software is available, otherwise can be added by creating own recipes
+Platform Support | - | Common platforms are supported or available through so called *Board Support Packages (BSP)* or can be added manually.
+Software Support | - | Common software is available or otherwise can be added by creating own recipes
+Up-to-dateness, compared to consumer distributions | - | Poor
 
 ### Conclusion
 As we want to have a highly dynamic system, where we still offer up-to date
