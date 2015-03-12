@@ -195,15 +195,15 @@
                         </li>
                     
                         <li >
-                            <a href="../design/misc/index.html">Design/Misc</a>
-                        </li>
-                    
-                        <li >
                             <a href="../design/repositories-and-branches/index.html">Design/Repositories And Branches</a>
                         </li>
                     
                         <li >
                             <a href="../design/rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -228,6 +228,10 @@
                     
                         <li >
                             <a href="rootfs/index.html">Evaluation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="toolchain/index.html">Evaluation/Toolchain</a>
                         </li>
                     
                         <li >
@@ -272,10 +276,6 @@
                     
                         <li >
                             <a href="../implementation/uboot/index.html">Implementation/Uboot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../setup/index.html">Setup</a>
                         </li>
                     
                         <li >
@@ -357,8 +357,6 @@
         
             <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
-            <li><a href="#toolchain">Toolchain</a></li>
-        
             <li><a href="#rootfs">RootFS</a></li>
         
             <li><a href="#buildserver">Buildserver</a></li>
@@ -414,14 +412,6 @@
 <p>As we want to have a highly dynamic system, where we still offer up-to date
 products, non of the aforementioned projects offer a satisfying solution.
 Therefore developing our own projects is necessary.</p>
-<h2 id="toolchain">Toolchain</h2>
-<p>Toolchains built with buildroot have absolute symbolic links compiled within the
-binaries.  As we want to have a portable toolchain, this fact disqualifies
-buildroot for our needs. Fortunately, Crosstool-NG offers the possibility to
-build static toolchains. Even toolchains, that are built on host with
-architecture X, compiled for architecture Y, which cross-compile for
-architecture Z are possible with Crosstool-NG. These kind of toolchains are
-called <em>canadian</em> toolchain.</p>
 <h2 id="rootfs">RootFS</h2>
 <h2 id="buildserver">Buildserver</h2>
 <h2 id="how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</h2>

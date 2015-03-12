@@ -195,15 +195,15 @@
                         </li>
                     
                         <li >
-                            <a href="../misc/index.html">Design/Misc</a>
-                        </li>
-                    
-                        <li >
                             <a href="../repositories-and-branches/index.html">Design/Repositories And Branches</a>
                         </li>
                     
                         <li >
                             <a href="../rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li class="active">
@@ -228,6 +228,10 @@
                     
                         <li >
                             <a href="../../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../evaluation/toolchain/index.html">Evaluation/Toolchain</a>
                         </li>
                     
                         <li >
@@ -272,10 +276,6 @@
                     
                         <li >
                             <a href="../../implementation/uboot/index.html">Implementation/Uboot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../setup/index.html">Setup</a>
                         </li>
                     
                         <li >
@@ -334,7 +334,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../rootfs/index.html">
+                    <a rel="next" href="../setup/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -353,7 +353,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</a></li>
+        <li class="main active"><a href="#design-toolchain">Design Toolchain</a></li>
         
             <li><a href="#build-process">Build process</a></li>
         
@@ -362,10 +362,9 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<p><strong>(work in progress)</strong></p>
-<h2 id="toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</h2>
+<h1 id="design-toolchain">Design Toolchain</h1>
 <p>The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these.  In oder
+otherwise the user is not able to provide the configuration for these. In order
 to build these products for the different platforms a Toolchain wit the
 respective build targets is required. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of

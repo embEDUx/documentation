@@ -195,15 +195,15 @@
                         </li>
                     
                         <li >
-                            <a href="misc/index.html">Design/Misc</a>
-                        </li>
-                    
-                        <li >
                             <a href="repositories-and-branches/index.html">Design/Repositories And Branches</a>
                         </li>
                     
                         <li >
                             <a href="rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -228,6 +228,10 @@
                     
                         <li >
                             <a href="../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../evaluation/toolchain/index.html">Evaluation/Toolchain</a>
                         </li>
                     
                         <li >
@@ -272,10 +276,6 @@
                     
                         <li >
                             <a href="../implementation/uboot/index.html">Implementation/Uboot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../setup/index.html">Setup</a>
                         </li>
                     
                         <li >
@@ -363,7 +363,7 @@
         
             <li><a href="#portability">Portability</a></li>
         
-            <li><a href="#extensibility">Extensibility</a></li>
+            <li><a href="#platform-support-extensibility">Platform Support Extensibility</a></li>
         
             <li><a href="#overall-system-design">Overall System Design</a></li>
         
@@ -408,17 +408,16 @@ menu.</p>
 <li>
 <p>OpenEmbedded</p>
 </li>
-<li>
-<p>Yocto Project
-    TODO lars</p>
-</li>
+<li>Yocto Project
+    TODO lars</li>
 </ul>
 <h2 id="product-specification-storage-units">Product-Specification Storage Units</h2>
 <p>It must be possible to build the products independently from each other.
-Therefore, each product should be managed in a separate storage unit which will
-be referred as a <em>repository</em> from this point on. Additionally each platform
-needs to have its own identifiable storage unit within the <em>respository</em>. This
-storage unit will be referred as <em>branch</em> from this point on.</p>
+Therefore, each product specification should be managed in a separate storage
+unit which will be referred as a <em>repository</em> from this point on. Additionally
+each platform needs to have its own identifiable storage subunit within the
+<em>respository</em>. The storage subunits will be referred as <em>branches</em> from this
+point on.</p>
 <h3 id="repository-format">Repository Format</h3>
 <p>Configuration files and specification files are most certainly provided by the
 user as text files. For this purpose, a version control system should be used in
@@ -467,19 +466,39 @@ technologies for this are either Virtual Machines or Linux Containers.</p>
 </li>
 </ul>
 <p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
-Containers</a>,)
+Containers</a>)
 container technologies should be chosen as the base for the buildsystem. In
 environments where security is a high requirement, the containers can live
 inside a virtual machine, but that is beyond the design for the buildsystem
 itself.</p>
-<h3 id="split-functionality-into-containers">Split Functionality Into Containers</h3>
-<p>Containers are relatively cheap entities for the system. This allows the
-buildsystem to be split into several containers for the different parts of the
-buildsystem.</p>
+<h3 id="splitting-functionality-into-containers">Splitting Functionality Into Containers</h3>
+<p>Performance wise, containers are relatively cheap entities for the system. This
+allows the buildsystem to be split into several containers for the different
+parts of the buildsystem, without losing performance over a flat installation on
+the system. The container infrastructure could split the following
+functionalities</p>
+<ul>
+<li>Build process manager<ul>
+<li>Watch repository for changes</li>
+<li>Delegate build processes to other containers</li>
+</ul>
+</li>
+<li>Architecture specific build tools<ul>
+<li>toolchains</li>
+<li>compiler flags</li>
+<li>base system archives</li>
+</ul>
+</li>
+</ul>
 <h3 id="container-management-software">Container Management Software</h3>
 <p>The choice of the container management software still needs to be evaluated, but in favor
-of popularity Docker should be the main candidate.</p>
-<h2 id="extensibility">Extensibility</h2>
+of popularity Docker should be the main candidate. Candidates:</p>
+<ul>
+<li>Docker</li>
+<li>LXC</li>
+<li>OpenVZ</li>
+</ul>
+<h2 id="platform-support-extensibility">Platform Support Extensibility</h2>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
 to be able to add his platform. One way to look at extensibility is to already
