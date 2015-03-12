@@ -649,8 +649,22 @@ the same workflow for each platform and each product.</p>
 <td>Bootloader, Kernel, RootFS, Toolchain</td>
 <td>SD Card Image</td>
 </tr>
+<tr>
+<td>Platform Support</td>
+<td>-</td>
+<td>Common platforms are supported or available through so called <em>Board Support Packages (BSP)</em>, otherwise manual configuration can be done</td>
+</tr>
+<tr>
+<td>Software Support</td>
+<td>-</td>
+<td>Common software is available, otherwise can be added by creating own recipes</td>
+</tr>
 </tbody>
 </table>
+<h3 id="conclusion">Conclusion:</h3>
+<p>As we want to have a highly dynamic system, where we still offer up-to date
+products, non of the aforementioned projects offer a satisfying solution.
+Therefore developing our own projects is necessary.</p>
 <h2 id="bootloader_1">Bootloader</h2>
 <p>Different platforms use the same source code, when the same version of
 <strong>U-Boot</strong> should be build. This also means storing the source code within the
