@@ -1,16 +1,6 @@
 # Repository Setup
 **(work in progress)**
 
-
-
-## Backend Repositories
-The buildserver needs these two repositories in order to operate. They must be
-cloned from the repositories found on [GitHub](https://github.com/embEDUx)
-
-### Buildserver Setup
-### RootFS Buildroutine
-
-
 ## Product Repositories
 Setup an empty repository for each of the products. They will be used by the
 users to provide their build specifications to the buildserver.
@@ -31,6 +21,3 @@ system you need the *https* version of the URL, which can be obtained on the
 lower right side on the [Github](https://github.com) website of the repository.
 
 ![Repository URL](setup/img/github_url.png)
-
-
-
