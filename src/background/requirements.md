@@ -9,14 +9,15 @@ the nature of the resulting system and requirements that are necessary due to
 technicalities.
 
 ## Generic Requirements
-The generic and automated approach that needs to be found by this project must
-meet the sum of the requirements for every single lab-course. The determination
-for this set of requirements has to be done in two phases.
+* Usage of mainline sources whenever possible
+* User-provided configuration for builds
+* Build automation
+* Simple extensibility
 
 ## Lab-Course Specific Requirements
-In the first phase, lab-course specific requirements need to be collected.
+In order to estimate the requirements list for all lab-courses we need to look
+at the lab-courses in detail. 
 
-#### Lab-Course Overview
 Lab-Course | HW-Requirements | SW-Requirements
 --- | --- | ---
 System-Software | RPi | Linux w/ GPIO support, C-(Cross)-Compiler, Bootloader with Netboot support, Webserver, SSH-Daemon
@@ -25,7 +26,7 @@ ARMrider Project | Iris Board | Linux w/ PWM, GPIO, 802.11s WiFi MESH, UART, Ava
 Software-Defined-Radio Project | Utilite Pro, Beaglebone Black, RPi, Banana Pi | Linux w/ USB-debugging and Tracing support, GNUradio Application, USB-Monitoring Userspace-Tools
 Operating-Systems | RPi | Linux w/ GPIO, C-(Cross)-Compiler, Python 3.4, various Debugging Tools like valgrind, gdb, etc..: might vary
 
-### Hardware Platforms
+## Hardware Platforms
 The following hardware platforms will be used by the lab-courses
 
 Platform | CPU | ARCH 
@@ -43,7 +44,7 @@ product requirements.
 
 ### Linux-Kernel
 * Support for
-    * Raspberr Pi
+    * Raspberry Pi
     * Iris Board (Tegra 2 w/ changed pins)
     * Beaglebone Black
     * Banana Pi
@@ -68,5 +69,3 @@ product requirements.
 
 ### Bootloader
 * TFTP/BootP Support
-
-
