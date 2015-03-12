@@ -111,34 +111,73 @@ buildsystem.
 The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.
 
+# Extensibility 
+Adding support for additional hardware platforms must be simple. The user should
+not be forced to have a complete understanding of the **embEDUx** build system
+to be able to add his platform. One way to look at extensibility is to already
+take the initial setup into account, where the hardware platforms are
+practically added too, just to a zero-base. Designing this step to be as easy as
+possible, will allow to extend the system as easy as possible. Therefore, this
+criteria is moved over to the [setup process](setup-process).
+
 # Setup Process
 The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.
 
-## Setup Parameters
-Setup parameters are essential to the configuration of the buildserver.
+## Required Setup Parameters
+The administrator should only have to configure the parameters that can't
+possibly be known upfront, or are not convenient to be predefined. At this
+point, these parameters include
 
-* Buildserver Target Machine
+* Buildserver Machine Address
 
     The target machine shall by default run all containers that belong to the
     buildsystem
 
+* Authentication credentials between system components
+
+    While this could in general be generated randomly, it is chosen to let the
+    user set the credentials for system internal communication.
+
+* Authentication credentials between the system components and the users
+
+    Default usernames and passwords are possible security holes, and should not
+    be provided by the setuproutine.
+
+
+## Default Setup Parameters
+All other setup parameters should be provided as defaults by the setuproutine.
+
 * Target Platform and Architectures
     
-    The platform names and their corresponding architecture.
-    The architectures will be supported as build targets. 
+    The platform names and their corresponding architecture.  The architectures
+    will be supported as build targets. By default, all tested platforms
+    will be available as supported. The user is not forced to use them, but it
+    is useful to already have working examples in the local installation.
 
-## Automation
-Any scripting language can be used and there's no chosen preference as of this
-point.
-TODO Stefan
 
-# Extensibility 
-Adding support for additional hardware platforms must be simple. The user should
-not be forced to have a complete understanding of the **embEDUx** build system
-to be able to add his platform. However the complexity of the system, requires
-the user to have a fair overview of the **embEDUx** components and how these
-work together in order to build the products.
+## Configuration Generation From Templates
+The user-provided and default setup parameters should be used to generate the
+configuration files for the buildsystem. For commonly used changes, the
+generator can be extended and can be utilized by beginners immediately.
+Advanced users will still be able to modify the template if necessary.
+
+
+
+## Language Choice
+The setuproutine should be automated using an appropriate programming or
+scripting language. The candidates for the task are:
+
+* Shell
+* Python
+* Ansible
+
+The criteria must include:
+
+* Reusable components availability
+* Code readability
+* Extensibility
+* Templating features
 
 # Overall System Design
 [![](background/design/img/design.png)](background/design/img/design.png)
