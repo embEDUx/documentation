@@ -35,17 +35,16 @@ projects.
     menu.
 
 * OpenEmbedded
-
 * Yocto Project
     TODO lars
     
-
 ## Product-Specification Storage Units
 It must be possible to build the products independently from each other.
-Therefore, each product should be managed in a separate storage unit which will
-be referred as a *repository* from this point on. Additionally each platform
-needs to have its own identifiable storage unit within the *respository*. This
-storage unit will be referred as *branch* from this point on.
+Therefore, each product specification should be managed in a separate storage
+unit which will be referred as a *repository* from this point on. Additionally
+each platform needs to have its own identifiable storage subunit within the
+*respository*. The storage subunits will be referred as *branches* from this
+point on.
 
 ### Repository Format
 Configuration files and specification files are most certainly provided by the
@@ -96,22 +95,36 @@ technologies for this are either Virtual Machines or Linux Containers.
   can be run.
 
 In favor of speed (see [Comparison of VM and Linux
-Containers](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf),)
+Containers](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf))
 container technologies should be chosen as the base for the buildsystem. In
 environments where security is a high requirement, the containers can live
 inside a virtual machine, but that is beyond the design for the buildsystem
 itself.
 
-### Split Functionality Into Containers
-Containers are relatively cheap entities for the system. This allows the
-buildsystem to be split into several containers for the different parts of the
-buildsystem.
+### Splitting Functionality Into Containers
+Performance wise, containers are relatively cheap entities for the system. This
+allows the buildsystem to be split into several containers for the different
+parts of the buildsystem, without losing performance over a flat installation on
+the system. The container infrastructure could split the following
+functionalities
+
+* Build process manager
+    * Watch repository for changes
+    * Delegate build processes to other containers
+* Architecture specific build tools
+    * toolchains
+    * compiler flags
+    * base system archives
 
 ### Container Management Software
 The choice of the container management software still needs to be evaluated, but in favor
-of popularity Docker should be the main candidate.
+of popularity Docker should be the main candidate. Candidates:
 
-## Extensibility 
+* Docker
+* LXC
+* OpenVZ
+
+## Platform Support Extensibility 
 Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the **embEDUx** build system
 to be able to add his platform. One way to look at extensibility is to already
