@@ -167,6 +167,10 @@
                         </li>
                     
                         <li >
+                            <a href="../buildserver/index.html">Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../requirements/index.html">Requirements</a>
                         </li>
                     
@@ -176,6 +180,10 @@
                     
                         <li >
                             <a href="architecture/index.html">Design/Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
                         <li >
@@ -203,51 +211,63 @@
                         </li>
                     
                         <li >
-                            <a href="toolchains/index.html">Design/Toolchains</a>
+                            <a href="toolchain/index.html">Design/Toolchain</a>
                         </li>
                     
                         <li >
-                            <a href="uboot/index.html">Design/Uboot</a>
+                            <a href="../evaluation/index.html">Evaluation</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/continuous-integration/index.html">Eval/Continuous Integration</a>
+                            <a href="../evaluation/continuous-integration/index.html">Evaluation/Continuous Integration</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/flashtool/index.html">Eval/Flashtool</a>
+                            <a href="../evaluation/flashtool/index.html">Evaluation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/yocto-project/index.html">Eval/Yocto Project</a>
+                            <a href="../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/flashtool/index.html">Specs/Flashtool</a>
+                            <a href="../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/linux/index.html">Specs/Linux</a>
+                            <a href="../buildmaster/index.html">Buildmaster</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/misc/index.html">Specs/Misc</a>
+                            <a href="../buildslaves/index.html">Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/repositories-and-branches/index.html">Specs/Repositories And Branches</a>
+                            <a href="../implementation/flashtool/index.html">Implementation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/rootfs/index.html">Specs/Rootfs</a>
+                            <a href="../implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/toolchains/index.html">Specs/Toolchains</a>
+                            <a href="../implementation/misc/index.html">Implementation/Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/uboot/index.html">Specs/Uboot</a>
+                            <a href="../implementation/repositories-and-branches/index.html">Implementation/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/rootfs/index.html">Implementation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/toolchains/index.html">Implementation/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/uboot/index.html">Implementation/Uboot</a>
                         </li>
                     
                         <li >
@@ -338,43 +358,27 @@
     
         <li class="main "><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
-            <li><a href="#bootloader">Bootloader</a></li>
+    
+        <li class="main "><a href="#portability">Portability</a></li>
         
-            <li><a href="#linux-kernel">Linux-Kernel</a></li>
+            <li><a href="#virtualization-and-container-technologies">Virtualization and Container Technologies</a></li>
         
-            <li><a href="#toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</a></li>
+            <li><a href="#split-functionality-into-containers">Split Functionality Into Containers</a></li>
         
-            <li><a href="#rootfs">RootFS</a></li>
+            <li><a href="#container-management-software">Container Management Software</a></li>
         
     
-        <li class="main "><a href="#further-goals">Further Goals</a></li>
+        <li class="main "><a href="#setup-process">Setup Process</a></li>
         
-            <li><a href="#portability">Portability</a></li>
+            <li><a href="#setup-parameters">Setup Parameters</a></li>
         
-            <li><a href="#setup">Setup</a></li>
-        
-            <li><a href="#maintenance">Maintenance</a></li>
+            <li><a href="#automation">Automation</a></li>
         
     
-        <li class="main "><a href="#evaluation">Evaluation</a></li>
+        <li class="main "><a href="#extensibility">Extensibility</a></li>
         
-            <li><a href="#comparison-with-similar-projects_1">Comparison With Similar Projects</a></li>
-        
-            <li><a href="#bootloader_1">Bootloader</a></li>
-        
-            <li><a href="#linux-kernel_1">Linux Kernel</a></li>
-        
-            <li><a href="#toolchain">Toolchain</a></li>
-        
-            <li><a href="#rootfs_1">RootFS</a></li>
-        
-            <li><a href="#buildserver">Buildserver</a></li>
-        
-            <li><a href="#how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</a></li>
-        
-            <li><a href="#how-can-we-setup-the-ci">How can we setup the CI?</a></li>
-        
-            <li><a href="#visualization">Visualization</a></li>
+    
+        <li class="main "><a href="#overall-system-design">Overall System Design</a></li>
         
     
     </ul>
@@ -383,26 +387,44 @@
 
 <h1 id="design">Design</h1>
 <p><strong>(work in progress)</strong></p>
-<p>The design for the <strong>embEDUx</strong> system can now be derived from the given
-<a href="../requirements/index.html">requirements</a>. The requirements include a wide variety of
-configuration options, which in turn requires a configurable build system.
-The build system must be able to build the following software according to a
-provided configuration:</p>
+<p>The design for the <strong>embEDUx</strong> system must be created by carefully analyzing the
+<a href="../requirements/index.html">project requirements</a>. These include a wide variety of
+necessary configuration options, which in turn requires a configurable build
+system. The build system must be able to build the following software</p>
 <ul>
 <li>Linux Kernel</li>
 <li>Bootloader</li>
-<li>RootFS containing the system and user-space application</li>
+<li>RootFS containing the system and user-space application, while the</li>
 </ul>
-<p>These parts will be referred as <strong><em>products</em></strong> within the further documentation.</p>
+<p>while build configuration must be user providable for each build.  These
+software that is built by the build system will be referred as <strong><em>products</em></strong>
+within the further documentation.</p>
 <h1 id="comparison-with-similar-projects">Comparison With Similar Projects</h1>
-<p>At the time of designing <strong>embEDUx</strong>, there are several open source projects
-that need to be considered as a base for <strong>embEDUx</strong>.
-These projects will be examined throughout the design in the different
-sections.</p>
+<p>The idea of building a complete Linux-based system for a specific platform is
+not new. Therefore it is of no surprise, that by the time of designing
+<strong>embEDUx</strong>, there are several open source projects that need to be considered
+as a base for <strong>embEDUx</strong>. The following projects have feature specifications
+could possibly fulfill the requirements that were previously defined. The
+projects will be evaluated in order to find out if they suitable as base
+projects.</p>
 <ul>
-<li>Embedian - unfortunately, the project was officially retired as of July 2014 </li>
-<li>Buildroot</li>
-<li>Yocto Project</li>
+<li>
+<p>Embedian - unfortunately, the project was officially retired as of July 2014 </p>
+<p>A debian based distribution targetted for embedded systems</p>
+</li>
+<li>
+<p>Buildroot</p>
+<p>A collection of bash scripts in order to build toolchains, Linux-kernels,
+bootloaders and root filesystems. It can be configured via an ncurses-based
+menu.</p>
+</li>
+<li>
+<p>OpenEmbedded</p>
+</li>
+<li>
+<p>Yocto Project
+    TODO lars</p>
+</li>
 </ul>
 <h1 id="product-specification-storage-units">Product-Specification Storage Units</h1>
 <p>It must be possible to build the products independently from each other.
@@ -416,137 +438,15 @@ user as text files. For this purpose, a version control system should be used in
 order to have a history of build changes and allow easier handling of the
 repositories.</p>
 <h1 id="product-requirement-analysis">Product Requirement Analysis</h1>
-<h2 id="bootloader">Bootloader</h2>
-<p>As some platforms at the HTWG already run <strong>Das U-Boot</strong> as bootloader, a soft
-requirement is <strong>U-Boot</strong>. However the software solution must not be restricted
-to a specific <strong>U-Boot</strong> version. <strong>U-Boot</strong> also has TFTP/BootP support in
-general, but it has to be evaluated if it's supported for all required
-platforms.</p>
-<h3 id="build-process">Build process</h3>
-<p>To retrieve the <strong>U-Boot</strong> sources, the following possibilities exist</p>
-<ul>
-<li>User has to provide sources within the <strong>U-Boot</strong> repository</li>
-<li>Download sources from official website during build process</li>
-</ul>
-<h4 id="steps">Steps</h4>
-<p>The build process must include the following steps.</p>
-<ol>
-<li>Retrieve the build specifications from the <strong>U-Boot</strong>-repository</li>
-<li>Retrieve the <strong>U-Boot</strong> sources</li>
-<li>(Cross-)Compile <strong>U-Boot</strong> for target architecture with config provided by
-   the specifications</li>
-<li>Create an archive from the necessary files.</li>
-</ol>
-<h2 id="linux-kernel">Linux-Kernel</h2>
-<p>No specific <strong>Linux</strong> kernel version is required and the software solution must
-not be restricted to a specific kernel version. It would be reasonable to have
-the same kernel sources for all of the platforms, and only provide platform
-specific patches to the common base where necessary. In addition to these
-patches, it should be able to provide a specific configuration for a build.</p>
-<h3 id="build-process_1">Build process</h3>
-<p>To retrieve the <strong>Linux</strong> kernel sources, there are the following possibilities.</p>
-<ul>
-<li>User has to provide the sources within the <strong>Linux</strong> repository</li>
-<li>Emerge <strong>Gentoo</strong> kernel sources ebuild during build process</li>
-<li>Download and patch kernel sources manually from
-  <a href="https://kernel.org">www.kernel.org</a> during build process</li>
-</ul>
-<h4 id="steps_1">Steps</h4>
-<p>The build process must include the following steps.</p>
-<ol>
-<li>Retrieve the build specifications from the <strong>Linux</strong>-repository</li>
-<li>Retrieve <strong>Linux</strong> kernel sources</li>
-<li>Apply required patches provided from the <strong>Linux</strong>-repository</li>
-<li>(Cross-)Compile kernel for target architecture with kernel config provided by
-   the specifications</li>
-<li>Create two archives from the necessary files.<ul>
-<li>destination boot partition (kernel image, device tree blob)</li>
-<li>destination root partition (e.g. modules)</li>
-</ul>
-</li>
-</ol>
-<h2 id="toolchains-for-building-kernel-and-bootloader">Toolchains for Building Kernel and Bootloader</h2>
-<p>The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these.  In oder
-to build these products for the different platforms a Toolchain wit the
-respective build targets is required. The toolchain should also be user
-configurable, which leaves the following projects for the evaluation of
-toolchain creation.</p>
-<ul>
-<li>Crosstool-NG</li>
-<li>Buildroot</li>
-</ul>
-<h3 id="build-process_2">Build process</h3>
-<ol>
-<li>Retrieve the build specifications from the <strong>Toolchains</strong>-repository</li>
-<li>Translate the toolchain specifications</li>
-<li>Build toolchain</li>
-<li>Create an archive with the toolchain</li>
-</ol>
-<h2 id="rootfs">RootFS</h2>
-<p>The requirements include the need for various packages. Combined with the
-requirement for simple extension, the only sane design choice is to include a
-package management system. 
-There are basically two types of package management
-systems.</p>
-<h3 id="package-management-system">Package Management System</h3>
-<ul>
-<li>Binary Based Package Installation
-    Binary packages are built and hosted by a distributor. The distributor
-    choses which packages are built, for which platform these packages are
-    built and naturally the configuration and compiler flags that are chosen.
-    Binary packages install fast, and are only limitted by the download and disk
-    speed.</li>
-<li>Source Based Package Installation
-    Building packages from source gives the highest possibility of being able to
-    install the package on a specific platforms. Source files are downloaded to
-    the local computer and are then compiled to binary files, which are
-    installed into the local system. Configuration and compiler flags can be
-    adjusted locally. Source packages install slowly, since they are compiled
-    locally which might be very slow depending on the available CPU and RAM
-    resources.</li>
-</ul>
-<p>For the <strong>embEDUx</strong> use-case, availability and compatibility are preferred over
-installation speed. This leads to the choice of a source based package
-installation based on the above comparison.</p>
-<p>The choice of the source package management system should be evaluated
-carefully. Candidates shall be</p>
-<ul>
-<li>Gentoo Portage</li>
-<li>Buildroot</li>
-<li>Yocto Project</li>
-</ul>
-<h3 id="package-lists">Package Lists</h3>
-<p>The list and configuration of the desired packages
-must be configurable for each build. There</p>
-<h3 id="build-process_3">Build process</h3>
-<p>The software that is used to assemble the RootFS according to the provided
-package list must be chosen wisely. There are many projects to consider for this
-part. The following of them will be evaluated:</p>
-<ul>
-<li>Yocto Project</li>
-<li>Buildroot</li>
-<li>Gentoo crossdev</li>
-<li>cross-boss</li>
-<li>Gentoo catalyst</li>
-</ul>
-<p>The main evaluation criteria is cross-platform support.</p>
-<h4 id="steps_2">Steps</h4>
-<p>The build process must include the following steps.</p>
-<ol>
-<li>Retrieve the build specifications from the RootFS-repository</li>
-<li>Parse the package list provided by the user</li>
-<li>Translate the package list into a format that is accepted by the package
-   manager</li>
-<li>Cleanup the build files</li>
-<li>Create an archive from the RootFS</li>
-</ol>
-<h1 id="further-goals">Further Goals</h1>
-<h2 id="portability">Portability</h2>
+<p>The build process and the configuration options of each product must fulfill the
+requirements of the corresponding product. The requirements chapter lists
+different requirements for each product, which must therefore be analyzed
+separately.</p>
+<h1 id="portability">Portability</h1>
 <p>In order to have a portable build system, all components should live and run in
 systems that are separated from the buildserver's host system. Possible
 technologies for this are either Virtual Machines or Linux Containers.</p>
-<h3 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h3>
+<h2 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h2>
 <ul>
 <li>
 <p>Virtual Machines are completely abstracted from the host system's hardware.
@@ -585,17 +485,17 @@ container technologies should be chosen as the base for the buildsystem. In
 environments where security is a high requirement, the containers can live
 inside a virtual machine, but that is beyond the design for the buildsystem
 itself.</p>
-<h3 id="split-functionality-into-containers">Split Functionality Into Containers</h3>
+<h2 id="split-functionality-into-containers">Split Functionality Into Containers</h2>
 <p>Containers are relatively cheap entities for the system. This allows the
 buildsystem to be split into several containers for the different parts of the
 buildsystem.</p>
-<h3 id="container-management-software">Container Management Software</h3>
+<h2 id="container-management-software">Container Management Software</h2>
 <p>The choice of the container management software still needs to be evaluated, but in favor
 of popularity Docker should be the main candidate.</p>
-<h2 id="setup">Setup</h2>
+<h1 id="setup-process">Setup Process</h1>
 <p>The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.</p>
-<h3 id="setup-parameters">Setup Parameters</h3>
+<h2 id="setup-parameters">Setup Parameters</h2>
 <p>Setup parameters are essential to the configuration of the buildserver.</p>
 <ul>
 <li>
@@ -609,108 +509,17 @@ buildsystem</p>
 The architectures will be supported as build targets. </p>
 </li>
 </ul>
-<h3 id="automation">Automation</h3>
+<h2 id="automation">Automation</h2>
 <p>Any scripting language can be used and there's no chosen preference as of this
-point.</p>
-<h2 id="maintenance">Maintenance</h2>
-<p>The way we handle the maintenance scenarios is a key factor in how well users
-will accept the <strong>embEDUx</strong> build system.</p>
-<h3 id="extensibility">Extensibility</h3>
+point.
+TODO Stefan</p>
+<h1 id="extensibility">Extensibility</h1>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
 to be able to add his platform. However the complexity of the system, requires
-the user to have a minimal understanding of the used software components and the
-structure of <strong>embEDUx</strong>. </p>
-<h3 id="workflow">Workflow</h3>
-<p>Platform specific source code must be avoided as far as possible. This results
-in using mainline sources, wherever it is possible. Differences in the platform
-architecture are adapted by patches, which are applied during the build process.
-As the base sources, for each product and platform are the same, this will lead to
-the same workflow for each platform and each product.</p>
-<h1 id="evaluation">Evaluation</h1>
-<h2 id="comparison-with-similar-projects_1">Comparison With Similar Projects</h2>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>Buildroot</th>
-<th>Yocto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Setup</td>
-<td><code>git clone git://git.buildroot.net/buildroot</code></td>
-<td><code>git clone -b dizzy git://git.yoctoproject.org/poky.git</code></td>
-</tr>
-<tr>
-<td>Configuration</td>
-<td><code>make menuconfig</code></td>
-<td>Configuration is happening in conf files, although there is also a GUI</td>
-</tr>
-<tr>
-<td>Output</td>
-<td>Bootloader, Kernel, RootFS, Toolchain</td>
-<td>SD Card Image</td>
-</tr>
-<tr>
-<td>Platform Support</td>
-<td>-</td>
-<td>Common platforms are supported or available through so called <em>Board Support Packages (BSP)</em>, otherwise manual configuration can be done</td>
-</tr>
-<tr>
-<td>Software Support</td>
-<td>-</td>
-<td>Common software is available, otherwise can be added by creating own recipes</td>
-</tr>
-</tbody>
-</table>
-<h3 id="conclusion">Conclusion:</h3>
-<p>As we want to have a highly dynamic system, where we still offer up-to date
-products, non of the aforementioned projects offer a satisfying solution.
-Therefore developing our own projects is necessary.</p>
-<h2 id="bootloader_1">Bootloader</h2>
-<p>Different platforms use the same source code, when the same version of
-<strong>U-Boot</strong> should be build. This also means storing the source code within the
-<strong>U-Boot</strong> repository within each <em>branch</em> will lead to a huge overhead of
-source code file within the repository.</p>
-<p>Another option would be to download the source code during build by specifying
-the whole build process within a build script, which will be executed by the
-build server. With this solution only the required build script will be
-redundant within the <strong>U-Boot</strong> repository.</p>
-<p>The final solution is to not just add <em>branches</em> for each platform and
-<strong>U-Boot</strong> version, but also add a source code branch for each <strong>U-Boot</strong>
-version. This branch contains a script for downloading the source code of that
-certain <strong>U-Boot</strong> version. All the other platform branches can execute that
-script and retrieve the source code at runtime.</p>
-<h2 id="linux-kernel_1">Linux Kernel</h2>
-<p>Due to keeping the possibility to build the kernel locally, emerging the kernel
-sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the
-sources within the <strong>Linux</strong> repository, will as already mentioned in the
-bootloader chapter, lead to a lot of redundancy when different platforms use the
-same sources. Therefore a promising solution is to add for each <strong>Linux</strong> kernel
-version, which should be build, a branch that contains a script to download the
-sources at runtime. The other branches for each platform can then execute that
-script and retrieve the sources at runtime.</p>
-<h2 id="toolchain">Toolchain</h2>
-<p>Toolchains built with buildroot have absolute symbolic links compiled within the
-binaries.  As we want to have a portable toolchain, this fact disqualifies
-buildroot for our needs. Fortunately, Crosstool-NG offers the possibility to
-build static toolchains. Even toolchains, that are built on host with
-architecture X, compiled for architecture Y, which cross-compile for
-architecture Z are possible with Crosstool-NG. These kind of toolchains are
-called <em>canadian</em> toolchain.</p>
-<h2 id="rootfs_1">RootFS</h2>
-<h2 id="buildserver">Buildserver</h2>
-<h2 id="how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</h2>
-<p>=&gt; Design Continuous Integration
-=&gt; call user build script within a repository
-=&gt; cross compilation for kernel/uboot
-=&gt; find solution for rootfs</p>
-<h2 id="how-can-we-setup-the-ci">How can we setup the CI?</h2>
-<p>=&gt; ansible</p>
-<h2 id="visualization">Visualization</h2>
-<p>The following graphic shows the aforementioned design decisions.</p>
+the user to have a fair overview of the <strong>embEDUx</strong> components and how these
+work together in order to build the products.</p>
+<h1 id="overall-system-design">Overall System Design</h1>
 <p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
 </div>
         </div>

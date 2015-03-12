@@ -166,6 +166,10 @@
                             <a href="../background/index.html">Overview</a>
                         </li>
                     
+                        <li >
+                            <a href="../buildserver/index.html">Buildserver</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="index.html">Requirements</a>
                         </li>
@@ -176,6 +180,10 @@
                     
                         <li >
                             <a href="../design/architecture/index.html">Design/Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
                         <li >
@@ -203,51 +211,63 @@
                         </li>
                     
                         <li >
-                            <a href="../design/toolchains/index.html">Design/Toolchains</a>
+                            <a href="../design/toolchain/index.html">Design/Toolchain</a>
                         </li>
                     
                         <li >
-                            <a href="../design/uboot/index.html">Design/Uboot</a>
+                            <a href="../evaluation/index.html">Evaluation</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/continuous-integration/index.html">Eval/Continuous Integration</a>
+                            <a href="../evaluation/continuous-integration/index.html">Evaluation/Continuous Integration</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/flashtool/index.html">Eval/Flashtool</a>
+                            <a href="../evaluation/flashtool/index.html">Evaluation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../eval/yocto-project/index.html">Eval/Yocto Project</a>
+                            <a href="../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/flashtool/index.html">Specs/Flashtool</a>
+                            <a href="../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/linux/index.html">Specs/Linux</a>
+                            <a href="../buildmaster/index.html">Buildmaster</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/misc/index.html">Specs/Misc</a>
+                            <a href="../buildslaves/index.html">Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/repositories-and-branches/index.html">Specs/Repositories And Branches</a>
+                            <a href="../implementation/flashtool/index.html">Implementation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/rootfs/index.html">Specs/Rootfs</a>
+                            <a href="../implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/toolchains/index.html">Specs/Toolchains</a>
+                            <a href="../implementation/misc/index.html">Implementation/Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../specs/uboot/index.html">Specs/Uboot</a>
+                            <a href="../implementation/repositories-and-branches/index.html">Implementation/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/rootfs/index.html">Implementation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/toolchains/index.html">Implementation/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/uboot/index.html">Implementation/Uboot</a>
                         </li>
                     
                         <li >
@@ -306,7 +326,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../background/index.html">
+                    <a rel="next" href="../buildserver/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -327,9 +347,13 @@
     
         <li class="main active"><a href="#project-requirements-htwg-context">Project Requirements (HTWG context)</a></li>
         
-            <li><a href="#phase-1">Phase 1</a></li>
+            <li><a href="#generic-requirements">Generic Requirements</a></li>
         
-            <li><a href="#phase-2">Phase 2</a></li>
+            <li><a href="#lab-course-specific-requirements">Lab-Course Specific Requirements</a></li>
+        
+            <li><a href="#hardware-platforms">Hardware Platforms</a></li>
+        
+            <li><a href="#product-specific-requirements">Product Specific Requirements</a></li>
         
     
     </ul>
@@ -337,18 +361,23 @@
             <div class="col-md-9" role="main">
 
 <h1 id="project-requirements-htwg-context">Project Requirements (HTWG context)</h1>
-<p>The generic and automated approach that needs to be found by this project must
-meet the sum of the requirements for every single lab-course. The determination
-for this set of requirements has to be done in two phases.</p>
-<p>In the first phase, lab-course specific requirements need to be expressed, while
-the second phase consists of breaking them down to their elements to extract
-similarities and form requirements that are generic enough to meet every
-lab-course's requirements. An additional phase of finding requirements
-will take place in an early phase of implementation, adding requirements by
-analyzing the feature road-maps for the chosen technologies and by respecting
-changes that will happen in the near future.</p>
-<h2 id="phase-1">Phase 1</h2>
-<h3 id="lab-course-overview">Lab-Course Overview</h3>
+<p>The first action towards implementing the <strong>embEDUx</strong> project is to collect the
+necessary requirements. While requirements were exchanged and discussed between
+the team members and Prof. Dr. Mächtel, others were identified by analyzing the
+lab-specific scenarios.</p>
+<p>Hence the resulting set of requirements is a compound of generic requirements to
+the nature of the resulting system and requirements that are necessary due to
+technicalities.</p>
+<h2 id="generic-requirements">Generic Requirements</h2>
+<ul>
+<li>Usage of mainline sources whenever possible</li>
+<li>User-provided configuration for builds</li>
+<li>Build automation</li>
+<li>Simple extensibility</li>
+</ul>
+<h2 id="lab-course-specific-requirements">Lab-Course Specific Requirements</h2>
+<p>In order to estimate the requirements list for all lab-courses we need to look
+at the lab-courses in detail. </p>
 <table>
 <thead>
 <tr>
@@ -385,7 +414,7 @@ changes that will happen in the near future.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="hardware-platforms">Hardware Platforms</h3>
+<h2 id="hardware-platforms">Hardware Platforms</h2>
 <p>The following hardware platforms will be used by the lab-courses</p>
 <table>
 <thead>
@@ -423,11 +452,14 @@ changes that will happen in the near future.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="phase-2">Phase 2</h2>
+<h2 id="product-specific-requirements">Product Specific Requirements</h2>
+<p>The lab-course specific requirements can now be summed up and ordered by
+products. Afterwards, it will be possible to design the system to meet the
+product requirements.</p>
 <h3 id="linux-kernel">Linux-Kernel</h3>
 <ul>
 <li>Support for<ul>
-<li>Raspberr Pi</li>
+<li>Raspberry Pi</li>
 <li>Iris Board (Tegra 2 w/ changed pins)</li>
 <li>Beaglebone Black</li>
 <li>Banana Pi</li>
@@ -449,8 +481,8 @@ changes that will happen in the near future.</p>
 <li>Avahi Daemon</li>
 <li>iw-utility for configuring 802.11s MESH</li>
 <li>Generic Python Support<ul>
-<li>Python2.7 for a wide choice of modules</li>
-<li>Python3.4 </li>
+<li>Python2 for a wide choice of modules</li>
+<li>Python3 </li>
 </ul>
 </li>
 <li>Support for arbitrary packages</li>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Evaluation - embEDUx Project</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../index.html">embEDUx Project</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../usage/usage/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/common/build-monitoring/index.html">Common/Build Monitoring</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/uboot/index.html">Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/linux/index.html">Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/rootfs/index.html">Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/rootfs/advanced/run-containers/index.html">Rootfs/Advanced/Run Containers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/rootfs/configuration.yml/index.html">Rootfs/Configuration.Yml</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/misc/index.html">Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../usage/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../setup/setup/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/repositories/index.html">Repositories</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/adminstation/index.html">Adminstation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/index.html">Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/buildmaster/index.html">Buildserver/Buildmaster</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/buildserver/customize-supported-platforms/index.html">Buildserver/Customize Supported Platforms</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/post-install/toolchains/index.html">Post Install/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/post-install/user-documentation/index.html">Post Install/User Documentation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/workstation/development/flashtool/index.html">Workstation/Development/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/examples/user-documentation-DEMO/index.html">Examples/User Documentation Demo</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../setup/examples/user-documentation-HTWG/index.html">Examples/User Documentation Htwg</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Background <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../background/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../buildserver/index.html">Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../requirements/index.html">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/index.html">Design</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/architecture/index.html">Design/Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/bootloader/index.html">Design/Bootloader</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/continuous-integration/index.html">Design/Continuous Integration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/flashtool/index.html">Design/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/linux/index.html">Design/Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/misc/index.html">Design/Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/rootfs/index.html">Design/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../design/toolchain/index.html">Design/Toolchain</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="index.html">Evaluation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="continuous-integration/index.html">Evaluation/Continuous Integration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="flashtool/index.html">Evaluation/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="rootfs/index.html">Evaluation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../buildmaster/index.html">Buildmaster</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../buildslaves/index.html">Buildslaves</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/flashtool/index.html">Implementation/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/linux/index.html">Implementation/Linux</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/misc/index.html">Implementation/Misc</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/repositories-and-branches/index.html">Implementation/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/rootfs/index.html">Implementation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/toolchains/index.html">Implementation/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/uboot/index.html">Implementation/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../terminology/index.html">Terminology</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Troubleshooting <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../troubleshooting/troubleshooting/index.html">Overview</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../troubleshooting/entering-build-environment/index.html">Entering Build Environment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../troubleshooting/local-testing/index.html">Local Testing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../troubleshooting/rootfs/entering-build-environment/index.html">Rootfs/Entering Build Environment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../troubleshooting/rootfs/monitoring-package-installation/index.html">Rootfs/Monitoring Package Installation</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../support/contact-team/index.html">Contact Team</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../design/toolchain/index.html">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="continuous-integration/index.html">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#evaluation">Evaluation</a></li>
+        
+            <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
+        
+            <li><a href="#bootloader">Bootloader</a></li>
+        
+            <li><a href="#linux-kernel">Linux Kernel</a></li>
+        
+            <li><a href="#toolchain">Toolchain</a></li>
+        
+            <li><a href="#rootfs">RootFS</a></li>
+        
+            <li><a href="#buildserver">Buildserver</a></li>
+        
+            <li><a href="#how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</a></li>
+        
+            <li><a href="#how-can-we-setup-the-ci">How can we setup the CI?</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="evaluation">Evaluation</h1>
+<h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Buildroot</th>
+<th>Yocto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup</td>
+<td><code>git clone git://git.buildroot.net/buildroot</code></td>
+<td><code>git clone -b dizzy git://git.yoctoproject.org/poky.git</code></td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><code>make menuconfig</code></td>
+<td>Configuration is happening in conf files, although there is also a GUI</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Bootloader, Kernel, RootFS, Toolchain</td>
+<td>SD Card Image</td>
+</tr>
+<tr>
+<td>Platform Support</td>
+<td>-</td>
+<td>Common platforms are supported or available through so called <em>Board Support Packages (BSP)</em>, otherwise manual configuration can be done</td>
+</tr>
+<tr>
+<td>Software Support</td>
+<td>-</td>
+<td>Common software is available, otherwise can be added by creating own recipes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conclusion">Conclusion:</h3>
+<p>As we want to have a highly dynamic system, where we still offer up-to date
+products, non of the aforementioned projects offer a satisfying solution.
+Therefore developing our own projects is necessary.</p>
+<h2 id="bootloader">Bootloader</h2>
+<p>Different platforms use the same source code, when the same version of
+<strong>U-Boot</strong> should be build. This also means storing the source code within the
+<strong>U-Boot</strong> repository within each <em>branch</em> will lead to a huge overhead of
+source code file within the repository.</p>
+<p>Another option would be to download the source code during build by specifying
+the whole build process within a build script, which will be executed by the
+build server. With this solution only the required build script will be
+redundant within the <strong>U-Boot</strong> repository.</p>
+<p>The final solution is to not just add <em>branches</em> for each platform and
+<strong>U-Boot</strong> version, but also add a source code branch for each <strong>U-Boot</strong>
+version. This branch contains a script for downloading the source code of that
+certain <strong>U-Boot</strong> version. All the other platform branches can execute that
+script and retrieve the source code at runtime.</p>
+<h2 id="linux-kernel">Linux Kernel</h2>
+<p>Due to keeping the possibility to build the kernel locally, emerging the kernel
+sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the
+sources within the <strong>Linux</strong> repository, will as already mentioned in the
+bootloader chapter, lead to a lot of redundancy when different platforms use the
+same sources. Therefore a promising solution is to add for each <strong>Linux</strong> kernel
+version, which should be build, a branch that contains a script to download the
+sources at runtime. The other branches for each platform can then execute that
+script and retrieve the sources at runtime.</p>
+<h2 id="toolchain">Toolchain</h2>
+<p>Toolchains built with buildroot have absolute symbolic links compiled within the
+binaries.  As we want to have a portable toolchain, this fact disqualifies
+buildroot for our needs. Fortunately, Crosstool-NG offers the possibility to
+build static toolchains. Even toolchains, that are built on host with
+architecture X, compiled for architecture Y, which cross-compile for
+architecture Z are possible with Crosstool-NG. These kind of toolchains are
+called <em>canadian</em> toolchain.</p>
+<h2 id="rootfs">RootFS</h2>
+<h2 id="buildserver">Buildserver</h2>
+<h2 id="how-can-we-configure-and-build-the-products-automatically-different-platformsarchitectures">How can we configure and build the products automatically (different platforms/architectures)</h2>
+<ul>
+<li>Design Continuous Integration</li>
+<li>call user build script within a repository</li>
+<li>cross compilation for kernel/uboot</li>
+<li>find solution for rootfs</li>
+</ul>
+<h2 id="how-can-we-setup-the-ci">How can we setup the CI?</h2>
+<ul>
+<li>ansible</li>
+</ul>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

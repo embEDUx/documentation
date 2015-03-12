@@ -167,6 +167,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../buildserver/index.html">Buildserver</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../requirements/index.html">Requirements</a>
                         </li>
                     
@@ -176,6 +180,10 @@
                     
                         <li >
                             <a href="../architecture/index.html">Design/Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
                         <li >
@@ -203,51 +211,63 @@
                         </li>
                     
                         <li >
-                            <a href="../toolchains/index.html">Design/Toolchains</a>
+                            <a href="../toolchain/index.html">Design/Toolchain</a>
                         </li>
                     
                         <li >
-                            <a href="../uboot/index.html">Design/Uboot</a>
+                            <a href="../../evaluation/index.html">Evaluation</a>
                         </li>
                     
                         <li >
-                            <a href="../../eval/continuous-integration/index.html">Eval/Continuous Integration</a>
+                            <a href="../../evaluation/continuous-integration/index.html">Evaluation/Continuous Integration</a>
                         </li>
                     
                         <li >
-                            <a href="../../eval/flashtool/index.html">Eval/Flashtool</a>
+                            <a href="../../evaluation/flashtool/index.html">Evaluation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../../eval/yocto-project/index.html">Eval/Yocto Project</a>
+                            <a href="../../evaluation/rootfs/index.html">Evaluation/Rootfs</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/flashtool/index.html">Specs/Flashtool</a>
+                            <a href="../../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/linux/index.html">Specs/Linux</a>
+                            <a href="../../buildmaster/index.html">Buildmaster</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/misc/index.html">Specs/Misc</a>
+                            <a href="../../buildslaves/index.html">Buildslaves</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/repositories-and-branches/index.html">Specs/Repositories And Branches</a>
+                            <a href="../../implementation/flashtool/index.html">Implementation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/rootfs/index.html">Specs/Rootfs</a>
+                            <a href="../../implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/toolchains/index.html">Specs/Toolchains</a>
+                            <a href="../../implementation/misc/index.html">Implementation/Misc</a>
                         </li>
                     
                         <li >
-                            <a href="../../specs/uboot/index.html">Specs/Uboot</a>
+                            <a href="../../implementation/repositories-and-branches/index.html">Implementation/Repositories And Branches</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/rootfs/index.html">Implementation/Rootfs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/toolchains/index.html">Implementation/Toolchains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/uboot/index.html">Implementation/Uboot</a>
                         </li>
                     
                         <li >
@@ -327,6 +347,15 @@
     
         <li class="main active"><a href="#linux-buildprocess-design">Linux Buildprocess Design</a></li>
         
+            <li><a href="#linux-version">Linux-Version</a></li>
+        
+            <li><a href="#build-process">Build Process</a></li>
+        
+            <li><a href="#build-steps">Build Steps</a></li>
+        
+    
+        <li class="main "><a href="#build-process-generalization">Build Process Generalization</a></li>
+        
     
     </ul>
 </div></div>
@@ -334,6 +363,39 @@
 
 <h1 id="linux-buildprocess-design">Linux Buildprocess Design</h1>
 <p><strong>(work in progress)</strong></p>
+<h2 id="linux-version">Linux-Version</h2>
+<p>No specific <strong>Linux</strong> kernel version is required and the software solution must
+not be restricted to a specific kernel version. It would be reasonable to have
+the same kernel sources for all of the platforms, and only provide platform
+specific patches to the common base where necessary. In addition to these
+patches, it should be able to provide a specific configuration for a build.</p>
+<h2 id="build-process">Build Process</h2>
+<p>To retrieve the <strong>Linux</strong> kernel sources, there are the following possibilities.</p>
+<ul>
+<li>User has to provide the sources within the <strong>Linux</strong> repository</li>
+<li>Emerge <strong>Gentoo</strong> kernel sources ebuild during build process</li>
+<li>Download and patch kernel sources manually from
+  <a href="https://kernel.org">www.kernel.org</a> during build process</li>
+</ul>
+<h2 id="build-steps">Build Steps</h2>
+<p>The build process must include the following steps.</p>
+<ol>
+<li>Retrieve the build specifications from the <strong>Linux</strong>-repository</li>
+<li>Retrieve <strong>Linux</strong> kernel sources</li>
+<li>Apply required patches provided from the <strong>Linux</strong>-repository</li>
+<li>(Cross-)Compile kernel for target architecture with kernel config provided by
+   the specifications</li>
+<li>Create two archives from the necessary files.<ul>
+<li>destination boot partition (kernel image, device tree blob)</li>
+<li>destination root partition (e.g. modules)</li>
+</ul>
+</li>
+</ol>
+<h1 id="build-process-generalization">Build Process Generalization</h1>
+<p>Platform specific source code must be avoided as far as possible. This leads to
+to using the mainline sources whenever it is possible. Differences in the
+platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
+will lead to the same workflow for each platform and each product.</p>
 </div>
         </div>
 
