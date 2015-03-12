@@ -11,7 +11,7 @@ All of [the common prerequisites apply](../../usage/usage.md#Prerequisites).
     At the end of the setup, the Administrator is instructed to create the [User
     Documentation](user-documentation.md).
 
-* Git Repository *toolchains*
+* Git Repository *toolchains-specs*
 * **buildserver** setup for desired platform architecture
 * Crosstool NG [ct-ng](http://crosstool-ng.org/) locally installed.
 
@@ -47,17 +47,17 @@ toolchain | < host-arch \>\_< target-arch \>-ctng-linux-< abi \> | armv6j-ctng-l
 ## Step-by-Step Example
 The following example will give you a detailed overview of the necessary steps
 to build the toolchain for the raspberry pi (armv6j). We assume that at this point the
-*toolchains* repository is empty.
+*toolchains-specs* repository is empty.
 
 ## Add a new toolchain
 
-1. Clone the *toolchains* repository with the URL provided in the user documentation.
+1. Clone the *toolchains-specs* repository with the URL provided in the user documentation.
   
     ```
 $ git clone git@apu.in.htwg-konstanz.de:labworks-embEDUx/toolchains.git
     ```
  
-1. Add a *toolchain* branch to the *toolchains* repository. It is necessary that you
+1. Add a *toolchain* branch to the *toolchains-specs* repository. It is necessary that you
    push the branch at this point upstream, so the **buildserver** can find the
    new *toolchain* branch.
    

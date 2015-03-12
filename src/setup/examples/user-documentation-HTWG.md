@@ -5,11 +5,11 @@ and overview of the contents they have to put in their User Documentation.
 ## Repositories
 Product | Repository URL
 --- | ---
-U-Boot | [https://apu.in.htwg-konstanz.de/labworks-embEDUx/uboot.git](https://apu.in.htwg-konstanz.de/labworks-embEDUx/uboot.git)
-Linux | [https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git](https://apu.in.htwg-konstanz.de/labworks-embEDUx/linux.git)
-RootFS | [https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git](https://apu.in.htwg-konstanz.de/labworks-embEDUx/rootfs.git)
-Miscellaneous files | [https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git](https://apu.in.htwg-konstanz.de/labworks-embEDUx/misc.git)
-Toolchains | [https://apu.in.htwg-konstanz.de/labworks-embEDUx/toolchains.git](https://apu.in.htwg-konstanz.de/labworks-embEDUx/toolchains.git)
+U-Boot | [https://github.com/embEDUx/uboot-specs.git](https://github.com/embEDUx/uboot-specs.git)
+Linux | [https://github.com/embEDUx/linux-specs.git](https://github.com/embEDUx/linux-specs.git)
+RootFS | [https://github.com/embEDUx/rootfs-specs.git](https://github.com/embEDUx/rootfs-specs.git)
+Miscellaneous files | [https://github.com/embEDUx/misc-specs.git](https://github.com/embEDUx/misc-specs.git)
+Toolchains | [https://github.com/embEDUx/toolchain-specs.git](https://github.com/embEDUx/toolchain-specs.git)
 
 #### Permissions
 If you need permissions to these repositories, please contact your
@@ -49,7 +49,7 @@ Toolchain | './build'
 RootFS | *special ansible buildroutine: TODO LINK*
 
 ## Output Directories
-Product | Buildcommands
+Product | Output Folder
 --- | --- 
 Linux | output
 Uboot | output 

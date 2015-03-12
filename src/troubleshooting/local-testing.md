@@ -38,11 +38,16 @@ $ wget http://moe.in.htwg-konstanz.de:8010/toolchains/armv6j-ctng-linux-gnueabi/
         
         2015-03-09 13:00:54 (3.88 MB/s) - ‘amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2’ saved [80099059/80099059]
 
+    ```
+$ sudo mkdir /opt/toolchain
+$ tar -xf amd64_armv6j-ctng-linux-gnueabi_20150306112501_f5cb21e_toolchain.tar.bz2 -C /opt/toolchain
+    ```
+
 1. Set the necessary environment variables
 
     ```
 $ export ARCH=arm
-$ export CROSS_COMPILE=/opt/toolchain/amd64_armv6j-ctng-linux-gnueabi/armv6j-ctng-linux-gnueabi/bin/armv6j-ctng-linux-gnueabi-
+$ export CROSS_COMPILE=/opt/toolchain/armv6j-ctng-linux-gnueabihf/bin/armv6j-ctng-linux-gnueabihf-
 $ export EMBEDUX_TMP=/var/tmp
     ```
 

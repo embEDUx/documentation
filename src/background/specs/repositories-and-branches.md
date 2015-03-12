@@ -13,11 +13,11 @@ buildserver.
 
 Repository Name | Desired build output
 --- | ---
-linux |  Linux-Kernel images, DeviceTreeBlobs, module archives
-uboot |  U-Boot image blobs
-toolchain |  Toolchain archives
-rootfs |  RootFS content archives
-misc |  Miscellaneous files archives (needed on boot and root partitions)
+linux-specs |  Linux-Kernel images, DeviceTreeBlobs, module archives
+uboot-specs |  U-Boot image blobs
+toolchain-specs |  Toolchain archives
+rootfs-specs |  RootFS content archives
+misc-specs |  Miscellaneous files archives (needed on boot and root partitions)
 
 ## Visualization
 This is a visualization of the relations between the different products and
