@@ -231,6 +231,10 @@
                         </li>
                     
                         <li >
+                            <a href="uboot/index.html">Evaluation/Uboot</a>
+                        </li>
+                    
+                        <li >
                             <a href="yocto-project/index.html">Evaluation/Yocto Project</a>
                         </li>
                     
@@ -349,8 +353,6 @@
         
             <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
-            <li><a href="#bootloader">Bootloader</a></li>
-        
             <li><a href="#linux-kernel">Linux Kernel</a></li>
         
             <li><a href="#toolchain">Toolchain</a></li>
@@ -410,20 +412,6 @@
 <p>As we want to have a highly dynamic system, where we still offer up-to date
 products, non of the aforementioned projects offer a satisfying solution.
 Therefore developing our own projects is necessary.</p>
-<h2 id="bootloader">Bootloader</h2>
-<p>Different platforms use the same source code, when the same version of
-<strong>U-Boot</strong> should be build. This also means storing the source code within the
-<strong>U-Boot</strong> repository within each <em>branch</em> will lead to a huge overhead of
-source code file within the repository.</p>
-<p>Another option would be to download the source code during build by specifying
-the whole build process within a build script, which will be executed by the
-build server. With this solution only the required build script will be
-redundant within the <strong>U-Boot</strong> repository.</p>
-<p>The final solution is to not just add <em>branches</em> for each platform and
-<strong>U-Boot</strong> version, but also add a source code branch for each <strong>U-Boot</strong>
-version. This branch contains a script for downloading the source code of that
-certain <strong>U-Boot</strong> version. All the other platform branches can execute that
-script and retrieve the source code at runtime.</p>
 <h2 id="linux-kernel">Linux Kernel</h2>
 <p>Due to keeping the possibility to build the kernel locally, emerging the kernel
 sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the

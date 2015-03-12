@@ -231,6 +231,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../evaluation/uboot/index.html">Evaluation/Uboot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
                         </li>
                     
@@ -347,14 +351,13 @@
     
         <li class="main active"><a href="#bootloader-design">Bootloader Design</a></li>
         
-            <li><a href="#bootloader-choice">Bootloader Choice</a></li>
+            <li><a href="#sources">Sources</a></li>
+        
+            <li><a href="#repository">Repository</a></li>
         
             <li><a href="#build-process">Build Process</a></li>
         
-            <li><a href="#build-steps">BUild Steps</a></li>
-        
-    
-        <li class="main "><a href="#build-process-generalization">Build Process Generalization</a></li>
+            <li><a href="#build-steps">Build Steps</a></li>
         
     
     </ul>
@@ -362,33 +365,43 @@
             <div class="col-md-9" role="main">
 
 <h1 id="bootloader-design">Bootloader Design</h1>
-<p><strong>(work in progress)</strong></p>
-<h2 id="bootloader-choice">Bootloader Choice</h2>
-<p>As some platforms at the HTWG already run <strong>Das U-Boot</strong> as bootloader, a soft
-requirement is <strong>U-Boot</strong>. However the software solution must not be restricted
-to a specific <strong>U-Boot</strong> version. <strong>U-Boot</strong> also has TFTP/BootP support in
-general, but it has to be evaluated if it's supported for all required
-platforms.</p>
+<p>With having to support a wide variety of <a href="../../requirements/index.html">platforms</a>, there
+is no other option, then using <strong>Das U-Boot</strong> as bootloader. A positive
+side-effect of this choice is the fact, that most of the platforms at the HTWG
+Konstanz already run <strong>Das U-Boot</strong> as bootloader and therefore the
+configuration for those platforms exist.</p>
+<h2 id="sources">Sources</h2>
+<p>As directly derived from the <a href="../../requirements/index.html">requirements</a> the mainline
+sources of <strong>U-Boot</strong> must be used. However there can't be any restriction to a
+specify version. To be able to run any platform with the mainline sources of
+<strong>U-Boot</strong> the possibility of applying user patches during build has to be
+considered.</p>
+<h2 id="repository">Repository</h2>
+<p>A repository for each platform is needed. It might also be necessary to build
+different <strong>U-Boot</strong> versions for the same platform. Therefore one repository
+has to exist for each platform for the desired <strong>U-Boot</strong> version. That means
+two repositories have to exist <strong>U-Boot</strong> version 1.0 and 1.2 should be build
+for platform A. A possible solution might be abusing the branch system of
+  <strong>Git</strong>.</p>
 <h2 id="build-process">Build Process</h2>
-<p>To retrieve the <strong>U-Boot</strong> sources, the following possibilities exist</p>
+<p>As mainline sources have to be used, those sources need to be retrieved somehow
+before the build process. Also the user has to provide the configuration or at
+least define the config, that should be applied for the build process. Two
+possible options to retrieve the sources are:</p>
 <ul>
-<li>User has to provide sources within the <strong>U-Boot</strong> repository</li>
-<li>Download sources from official website during build process</li>
+<li>The User has to provide sources within the repository</li>
+<li>The sources are downloaded before each build process</li>
 </ul>
-<h2 id="build-steps">BUild Steps</h2>
-<p>The build process must include the following steps.</p>
+<h2 id="build-steps">Build Steps</h2>
+<p>Building <strong>U-Boot</strong> has to include the following steps:</p>
 <ol>
 <li>Retrieve the build specifications from the <strong>U-Boot</strong>-repository</li>
 <li>Retrieve the <strong>U-Boot</strong> sources</li>
+<li>Apply required patches</li>
 <li>(Cross-)Compile <strong>U-Boot</strong> for target architecture with config provided by
    the specifications</li>
 <li>Create an archive from the necessary files.</li>
 </ol>
-<h1 id="build-process-generalization">Build Process Generalization</h1>
-<p>Platform specific source code must be avoided as far as possible. This leads to
-to using the mainline sources whenever it is possible. Differences in the
-platform architecture are represented and stored differentially. As the base sources, for each product and platform are the same, this
-will lead to the same workflow for each platform and each product.</p>
 </div>
         </div>
 
