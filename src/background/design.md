@@ -89,9 +89,9 @@ The build process must include the following steps.
 
 ## Toolchains for Building Kernel and Bootloader
 The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these.
-In oder to build these products for the different platforms it will require a
-Toolchain with the respective build targets. The toolchain should also be user
+otherwise the user is not able to provide the configuration for these.  In oder
+to build these products for the different platforms a Toolchain wit the
+respective build targets is required. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of
 toolchain creation.
 
@@ -271,44 +271,43 @@ Output | Bootloader, Kernel, RootFS, Toolchain | SD Card Image
 
 ## Bootloader
 Different platforms use the same source code, when the same version of
-**U-Boot** should be build. That also means storing the source code within the
+**U-Boot** should be build. This also means storing the source code within the
 **U-Boot** repository within each *branch* will lead to a huge overhead of
 source code file within the repository.
 
 Another option would be to download the source code during build by specifying
 the whole build process within a build script, which will be executed by the
-build server. With this solution only that build script would be redundant
-within the **U-Boot** repository.
+build server. With this solution only the required build script will be
+redundant within the **U-Boot** repository.
 
 The final solution is to not just add *branches* for each platform and
-**U-Boot** version, but also add a source code branch for the **U-Boot**
+**U-Boot** version, but also add a source code branch for each **U-Boot**
 version. This branch contains a script for downloading the source code of that
 certain **U-Boot** version. All the other platform branches can execute that
 script and retrieve the source code at runtime.
 
 ## Linux Kernel
 Due to keeping the possibility to build the kernel locally, emerging the kernel
-sources with OS dependent tool is not viable. Also keeping the sources within
-the **Linux** repository, will as already mentioned in the Bootloader chapter,
-lead to a lot of redundancy when different platforms use the same sources.
-Therefore a promising solution is to add a branch that contains a script to
-download the sources at runtime. The other branches for each platform can then
-execute that script and retrieve the source at runtime.
+sources with OS dependent tools (e.g. emerge) is not viable. Also keeping the
+sources within the **Linux** repository, will as already mentioned in the
+bootloader chapter, lead to a lot of redundancy when different platforms use the
+same sources. Therefore a promising solution is to add for each **Linux** kernel
+version, which should be build, a branch that contains a script to download the
+sources at runtime. The other branches for each platform can then execute that
+script and retrieve the sources at runtime.
 
-# DIY
+## Toolchain
+Toolchains built with buildroot have absolute symbolic links compiled within the
+binaries.  As we want to have a portable toolchain, this fact disqualifies
+buildroot for our needs. Fortunately, Crosstool-NG offers the possibility to
+build static toolchains. Even toolchains, that are built on host with
+architecture X, compiled for architecture Y, which cross-compile for
+architecture Z are possible with Crosstool-NG. These kind of toolchains are
+called *canadian* toolchain.
 
-## Products
+## RootFS
 
-### U-Boot
-- realize we need files which better not be assigned to the product
-### Kernel
-- realize we need files which better not be assigned to the product
-
-### Miscellaneous Files
-=> directly derived from U-Boot/Kernel 
-
-### Toolchain 
-### RootFS
+## Buildserver
 
 ## How can we configure and build the products automatically (different platforms/architectures)
 => Design Continuous Integration
@@ -318,31 +317,4 @@ execute that script and retrieve the source at runtime.
 
 ## How can we setup the CI?
 => ansible
-
-## What does the build script need to do for the different products
-
-### U-Boot
-- download sources
-- apply config
-- build
-- prepare output for boot partition 
-
-### Linux
-
-### Misc
-- contains files for root / boot
-- prepare output for boot partition
-- prepare output for root partition
-
-### Toolchain
-- apply config
-- build
-- prepare output
-
-### RootFS
-- config 
-- prepare output for root partition
-
----
-
 
