@@ -318,3 +318,8 @@ called *canadian* toolchain.
 ## How can we setup the CI?
 => ansible
 
+## Visualization
+The following graphic shows the aforementioned design decisions.
+
+[![](background/design/img/design.png)](background/design/img/design.png)
+
