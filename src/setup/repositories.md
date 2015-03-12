@@ -12,7 +12,7 @@ website of the repository.
 
 ## Backend Repositories
 The buildserver needs these two repositories in order to operate. They must be
-cloned from the repositories found on [GitHub](TODO).
+cloned from the repositories found on [GitHub](https://github.com/embEDUx)
 
 ### Buildserver Setup
 ### RootFS Buildroutine
