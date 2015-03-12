@@ -1,6 +1,7 @@
-# User Documentation HTWG
-This is the User Documentation for the HTWG. Others may use it as an orientation
-and overview of the contents they have to put in their User Documentation.
+# User Documentation Demo
+This is the User Documentation demonstration for the **Github** Repositories.
+Others may use it as an orientation and overview of the contents they have to
+put in their User Documentation.
 
 ## Repositories
 Product | Repository URL
