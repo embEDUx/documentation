@@ -11,7 +11,7 @@ between two program modules, one of which is often a library or operating
 system, at the level of machine code. An ABI determines such details as how
 functions are called and in which binary format information should be passed
 from one program component to the next, or to the operating system in the case
-of a system call. [S](http://en.wikipedia.org/wiki/Application_binary_interface)
+of a system call. ([Sources](http://en.wikipedia.org/wiki/Application_binary_interface))
 
 ## Architecture
 Architecture refers to a CPU's type of architecture. The CPU architecture
@@ -27,7 +27,7 @@ architectures and can therefore be run on many different systems.
 The boot loader is the first piece of software started by the BIOS or UEFI. It
 is responsible for loading the kernel with the wanted kernel parameters, and
 initial RAM disk before initiating the boot process.
-[S](https://wiki.archlinux.org/index.php/Boot_loaders)
+([Source](https://wiki.archlinux.org/index.php/Boot_loaders))
 
 ## ELF
 ELF (Executable and Linkable Format) is a format for binary application files.
