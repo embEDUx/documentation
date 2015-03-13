@@ -38,14 +38,23 @@ lot of configuration. Everything is capsulated within the recipes, so an easy
 editing of kernel version or user-space software is not possible.
 
 ### Result Yocto Project
-Criteria | Result | Nots
+Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | Manual configuration necessary 
 Package management | LIMITED | Package manager can be configured with own repository
 Buildroutine Automation | YES | -
 
 ## Buildroot
+A collection of bash scripts in order to build toolchains, Linux-kernels,
+bootloaders and root filesystems. It can be configured via an ncurses-based
+menu. 
 
+### Result Buildroot
+Criteria | Result | Notes
+--- | --- | ---
+Cross-target support | YES | Manual configuration necessary 
+Package management | LIMITED | Difficult to extend
+Buildroutine Automation | YES | -
 
 ## Gentoo Portage
 **Gentoo Portage** is a full-fledged source-based package management system that
@@ -178,7 +187,7 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | NO | not reliable
 Package management | YES | portage package manager included
-Buildroutien Automation | NO | needs wrapper
+Buildroutine Automation | NO | needs wrapper
 
 
 ## Qemu User Emulation
@@ -265,7 +274,7 @@ QEMU_AUDIO_DRV=none qemu-system-arm \
 
 
 ### Limitations
-In comparison, this method has siginificant limitations of different nature, due
+In comparison, this method has significant limitations of different nature, due
 to the following reasons:
 
 * Target Linux-Kernel required for the virtual machine
@@ -306,7 +315,7 @@ Cross-target support | YES | slow through complete system emulation
 
 
 ## Overview
-Candiate | Cross-target support | Package management | RootFS Buildroutine Automation
+Candidate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
 Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
