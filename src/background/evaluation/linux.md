@@ -2,6 +2,10 @@
 The considerations from the [design](../design/linux.md) will be evaluated
 within this chapter.
 
+## Cross Target Support
+**Linux** supports cross compilation and can therefore be compiled with a
+cross toolchain.
+
 ## Build process 
 Due to keeping the possibility to build the kernel locally, emerging the kernel
 sources with OS dependent tools (e.g. emerge with **Gentoo**) is not a viable

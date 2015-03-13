@@ -16,6 +16,10 @@ Therefore each platform / version combination needs to have its own branch. E.g.
 if **Linux** version 1.0 and 1.2 should be build for platform a two branches
   have to exist.
 
+## Cross Target Support
+As **Linux** has to be build for different architectures [cross target
+support](design.md#cross-target-support) needs to be considered. 
+
 ## Build Process
 As mainline sources have to be used, those sources need to be retrieved somehow
 before the build process. Two possible options to retrieve the sources are:

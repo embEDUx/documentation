@@ -19,7 +19,8 @@ version combination needs to get its own branch. E.g. two branches have to
 exist if **U-Boot** version 1.0 and 1.2 should be build for platform A.
 
 ## Cross Target Support
-s. [Design/Buildserver](buildserver.md)
+As **U-Boot** has to be build for different architectures [cross
+target support](design.md#cross-target-support) needs to be considered. 
 
 ## Build Process
 As mainline sources have to be used, those sources need to be retrieved somehow

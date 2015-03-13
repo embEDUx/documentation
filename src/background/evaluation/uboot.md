@@ -2,6 +2,10 @@
 The considerations from the [design](../design/bootloader.md) will be evaluated
 within this chapter.
 
+## Cross Target Support
+**U-Boot** supports cross compilation and can therefore be compiled with a
+cross toolchain.
+
 ## Build process 
 When building the same **U-Boot** version for different platforms, the same
 source code will be used. Storing the source code of the same **U-Boot** version
