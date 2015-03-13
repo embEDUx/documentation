@@ -7,13 +7,14 @@ the designed features:
 * Buildroutine Automation
 
 ## Yocto Project
-The **Yocto Project** is divided in multiple sub-projects. 
+The **Yocto Project** is divided in multiple sub-projects. After the build
+process an entire **Linux** distribution is created, including the toolchain.
 
 * Bitbake (build tool)
 
     **Bitbake** is the sub-project that builds the output system image, and is
     based on **Gentoo Portage**. The buildprocess uses meta data to calculcate 
-    the installation instcrutions. 
+    the installation instructions. 
 
 * Openembedded-Core - Meta data (available software)
 
@@ -24,8 +25,27 @@ The **Yocto Project** is divided in multiple sub-projects.
     packgaes, is updated less frequently when compared to other package
     management systems.
 
+* Hob (Human Oriented Builder)
+
+    **Hob** is a graphical user interface which allows the user to select a
+    platform (machine) and an image recip. The image recipe contains the
+    information of which packages should be build. This configuration can be
+    modified with **Hob**. **Hob** is a nice tool, once all the required meta
+    data exist to select and start the generation process.
+
+The **Yocto Project** offers a great set of tools and possibilities, but needs a
+lot of configuration. Everything is capsulated within the recipes, so an easy
+editing of kernel version or user-space software is not possible.
+
+### Result Yocto Project
+Criteria | Result | Nots
+--- | --- | ---
+Cross-target support | YES | Manual configuration necessary 
+Package management | LIMITED | Package manager can be configured with own repository
+Buildroutine Automation | YES | -
 
 ## Buildroot
+
 
 ## Gentoo Portage
 **Gentoo Portage** is a full-fledged source-based package management system that
