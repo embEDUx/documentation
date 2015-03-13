@@ -89,7 +89,7 @@ $ ls -hl
    the branch. In this example we will just use a sample configuration (`ct-ng armv6-rpi-linux-gnueabi`)
    and modify the [configuration](usage/toolchains/default/.config), to build a
    static toolchain. For further information read
-   [background/toolchains](../../background/implementation/toolchains.md).
+   [background/toolchains](../../background/implementation/toolchain.md).
 
 1. Test your toolchain configuration
   
