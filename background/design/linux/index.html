@@ -360,22 +360,20 @@
 <p>From the <a href="../../requirements/index.html">requirements</a> we can derive the following design
 criteria. </p>
 <h2 id="sources">Sources</h2>
-<p>The mainline sources of <strong>Linux</strong> must be used. However there can't be any
-restriction to a specify version. To be able to run any platform with the
-mainline sources of <strong>Linux</strong> the possibility of applying user patches during
-build has to be considered.</p>
+<p>As directly derived from the <a href="../../requirements/index.html">requirements</a> the mainline
+sources of <strong>Linux</strong> must be used. However there can't be any restriction to a
+specify version. To be able to run any platform with the mainline sources of
+<strong>Linux</strong> the possibility of applying user patches during build has to be
+considered.</p>
 <h2 id="repository">Repository</h2>
-<p>A repository for each platform is needed. It might also be necessary to build
-different <strong>Linux</strong> versions for the same platform. Therefore one repository
-has to exist for each platform for the desired <strong>Linux</strong> version. That means
-two repositories have to exist if <strong>Linux</strong> version 1.0 and 1.2 should be build
-for platform A. A possible solution might be abusing the branch system of
-  <strong>Git</strong>.</p>
+<p>The user specification, such as configuration of <strong>Linux</strong> and potential user
+patches for the mainline sources should be stored together in a repository.
+Therefore each platform / version combination needs to have its own branch. E.g.
+if <strong>Linux</strong> version 1.0 and 1.2 should be build for platform a two branches
+  have to exist.</p>
 <h2 id="build-process">Build Process</h2>
 <p>As mainline sources have to be used, those sources need to be retrieved somehow
-before the build process. Also the user has to provide the configuration or at
-least define the config, that should be applied for the build process. Two
-possible options to retrieve the sources are:</p>
+before the build process. Two possible options to retrieve the sources are:</p>
 <ul>
 <li>The User has to provide sources within the repository</li>
 <li>The sources are downloaded before each build process</li>
@@ -390,8 +388,8 @@ possible options to retrieve the sources are:</p>
 <li>(Cross-)Compile kernel for target architecture with kernel config provided by
    the specifications</li>
 <li>Create two archives from the necessary files.<ul>
-<li>destination boot partition (kernel image, device tree blob)</li>
-<li>destination root partition (e.g. modules)</li>
+<li>Files for the boot partition (kernel image, device tree blob)</li>
+<li>Files for the root partition (e.g. modules)</li>
 </ul>
 </li>
 </ol>

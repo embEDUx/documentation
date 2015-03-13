@@ -347,6 +347,8 @@
         
             <li><a href="#repository">Repository</a></li>
         
+            <li><a href="#cross-target-support">Cross Target Support</a></li>
+        
             <li><a href="#build-process">Build Process</a></li>
         
             <li><a href="#build-steps">Build Steps</a></li>
@@ -365,24 +367,22 @@ configuration for those platforms exist.</p>
 <h2 id="sources">Sources</h2>
 <p>As directly derived from the <a href="../../requirements/index.html">requirements</a> the mainline
 sources of <strong>U-Boot</strong> must be used. However there can't be any restriction to a
-specify version. To be able to run any platform with the mainline sources of
+specific version. To be able to run any platform with the mainline sources of
 <strong>U-Boot</strong> the possibility of applying user patches during build has to be
 considered.</p>
 <h2 id="repository">Repository</h2>
-<p>A repository for each platform is needed. It might also be necessary to build
-different <strong>U-Boot</strong> versions for the same platform. Therefore one repository
-has to exist for each platform for the desired <strong>U-Boot</strong> version. That means
-two repositories have to exist <strong>U-Boot</strong> version 1.0 and 1.2 should be build
-for platform A. A possible solution might be abusing the branch system of
-  <strong>Git</strong>.</p>
+<p>The user specification, such as configuration of <strong>U-Boot</strong> and user patches for
+the mainline sources should be stored within a repository. Therefore each platform /
+version combination needs to get its own branch. E.g. two branches have to
+exist if <strong>U-Boot</strong> version 1.0 and 1.2 should be build for platform A.</p>
+<h2 id="cross-target-support">Cross Target Support</h2>
+<p>s. <a href="../buildserver/index.html">Design/Buildserver</a></p>
 <h2 id="build-process">Build Process</h2>
 <p>As mainline sources have to be used, those sources need to be retrieved somehow
-before the build process. Also the user has to provide the configuration or at
-least define the config, that should be applied for the build process. Two
-possible options to retrieve the sources are:</p>
+before the build process. Two possible options to retrieve the sources are:</p>
 <ul>
 <li>The User has to provide sources within the repository</li>
-<li>The sources are downloaded before each build process</li>
+<li>The sources are downloaded before each build process at runtime</li>
 </ul>
 <h2 id="build-steps">Build Steps</h2>
 <p>Building <strong>U-Boot</strong> has to include the following steps:</p>

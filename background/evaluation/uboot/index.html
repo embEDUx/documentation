@@ -343,9 +343,9 @@
     
         <li class="main active"><a href="#evaluation-u-boot">Evaluation U-Boot</a></li>
         
-            <li><a href="#repository">Repository</a></li>
-        
             <li><a href="#build-process">Build process</a></li>
+        
+            <li><a href="#build-steps">Build steps</a></li>
         
     
     </ul>
@@ -355,10 +355,6 @@
 <h1 id="evaluation-u-boot">Evaluation U-Boot</h1>
 <p>The considerations from the <a href="../../design/bootloader/index.html">design</a> will be evaluated
 within this chapter.</p>
-<h2 id="repository">Repository</h2>
-<p>The branch system of <strong>Git</strong> to fulfills our needs to keep distinct versions of
-the specifications for each platform and <strong>U-Boot</strong> version within one
-repository. </p>
 <h2 id="build-process">Build process</h2>
 <p>When building the same <strong>U-Boot</strong> version for different platforms, the same
 source code will be used. Storing the source code of the same <strong>U-Boot</strong> version
@@ -372,14 +368,29 @@ version at runtime. Two possibilities should be considered.</p>
   the sources at runtime.</li>
 </ul>
 <p>The benefit of the latter obliterating the redundancy of the commands for
-downloading the sources for the specific <strong>U-Boot</strong> version. Together with
-abusing the branch structure of <strong>Git</strong> the following structure of the
-repository can be achieved.</p>
+downloading the sources for the specific <strong>U-Boot</strong> version. </p>
 <p>Each <strong>U-Boot</strong> version has a branch, which contains a script that downloads the
 specific sources. Each platform has a branch for each <strong>U-Boot</strong> version that
 should be build, containing a script, that executes the download script from the
 <strong>U-Boot</strong> version branch.</p>
 <p><img alt="Structure" src="../../../background/evaluation/img/eval_uboot.png" /></p>
+<h2 id="build-steps">Build steps</h2>
+<p>With the now evaluated build process, the build steps can be redefined.</p>
+<ol>
+<li>Checkout platform branch for <strong>U-Boot</strong> version X</li>
+<li>Checkout <strong>U-Boot</strong> version X branch</li>
+<li>Call build script from platform branch<ul>
+<li>set necessary build parameters</li>
+</ul>
+</li>
+<li>Call build script from <strong>U-Boot</strong> version X branch<ul>
+<li>download sources</li>
+<li>if provided apply patches</li>
+<li>build <strong>U-Boot</strong></li>
+<li>create archive</li>
+</ul>
+</li>
+</ol>
 </div>
         </div>
 

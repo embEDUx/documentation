@@ -344,21 +344,38 @@
         <li class="main active"><a href="#evaluation-toolchain">Evaluation Toolchain</a></li>
         
     
+        <li class="main "><a href="#repository">Repository</a></li>
+        
+    
+        <li class="main "><a href="#build-steps">Build steps</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
 <h2 id="evaluation-toolchain">Evaluation Toolchain</h2>
 <p>As written in the <a href="../../design/toolchain/index.html">design</a> there are two possible
-solutions. Unfortunately toolchains built with buildroot have absolute symbolic
-links compiled within the binaries and are therefore not portable. As we want to
-have a portable toolchain, this fact disqualifies buildroot for our needs.
-Fortunately, Crosstool-NG offers the possibility to build static toolchains.
-Wit Crosstool-NG even toolchains are possible, that are built on host with
-architecture X, compiled to be ran on architecture Y, cross-compiling for
-architecture Z. These kind of toolchains are called <em>canadian</em> toolchain.
-Crosstool-NG has also an <em>ncurses</em> based configuration menu similar to the
-<strong>Linux</strong> kernel <em>menuconfig</em>.</p>
+solutions. Unfortunately toolchains built with <strong>Buildroot</strong> have absolute
+symbolic links compiled within the binaries and are therefore the result is not
+portable. As we want to have a portable toolchain, this fact disqualifies
+buildroot for our needs. Fortunately, <strong>Crosstool-NG</strong> offers the possibility to
+build static toolchains. With <strong>Crosstool-NG</strong> even toolchains are possible, that
+are built on host with architecture X, compiled to be ran on architecture Y,
+cross-compiling for architecture Z. These kind of toolchains are called
+<em>canadian</em> toolchain.  Crosstool-NG has also an <em>ncurses</em> based configuration
+menu similar to the <strong>Linux</strong> kernel <em>menuconfig</em>. The configuration is stored
+in a .config file.</p>
+<h2 id="repository">Repository</h2>
+<p>Each toolchain gets its own branch. That means one branch contains a toolchain
+for a specified host and target architecture.</p>
+<h2 id="build-steps">Build steps</h2>
+<p>Following build steps are necessary to retrieve the toolchain.</p>
+<ol>
+<li>Checkout toolchain branch</li>
+<li>Build toolchain with <strong>Crosstool-NG</strong> and the given configuration</li>
+<li>Provide the output in an archive</li>
+</ol>
 </div>
         </div>
 

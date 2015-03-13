@@ -343,9 +343,9 @@
     
         <li class="main active"><a href="#evaluation-linux">Evaluation Linux</a></li>
         
-            <li><a href="#repository">Repository</a></li>
-        
             <li><a href="#build-process">Build process</a></li>
+        
+            <li><a href="#build-steps">Build steps</a></li>
         
     
     </ul>
@@ -355,29 +355,35 @@
 <h1 id="evaluation-linux">Evaluation Linux</h1>
 <p>The considerations from the <a href="../../design/linux/index.html">design</a> will be evaluated
 within this chapter.</p>
-<h2 id="repository">Repository</h2>
-<p>The branch system of <strong>Git</strong> to fulfills our needs to keep distinct versions of
-the specifications for each platform and <strong>Linux</strong> version within one
-repository. </p>
-<h3 id="content">Content</h3>
-<p>The repository has to contain the kernel configuration, the build script, and
-all the required patches. The build script has to apply the provided patches
-during the build process.</p>
 <h2 id="build-process">Build process</h2>
 <p>Due to keeping the possibility to build the kernel locally, emerging the kernel
 sources with OS dependent tools (e.g. emerge with <strong>Gentoo</strong>) is not a viable
 solution. As already mentioned in the <a href="../uboot/index.html">u-boot evaluation</a>, keeping the
 sources within the <strong>Linux</strong> repository will lead to a lot of overhead when the
-same <strong>Linux</strong> versions should be build for different platforms, as they use the
-same kernel sources. The same solution as already described in the <a href="../uboot/index.html">u-boot
-evaluation</a> will be used.</p>
-<p>Together with abusing the branch structure of <strong>Git</strong> the following structure of
-the repository can be achieved.</p>
+same <strong>Linux</strong> versions should be build for different platforms. The same
+solution as already described in the <a href="../uboot/index.html">u-boot evaluation</a> will be used.</p>
 <p>Each <strong>Linux</strong> version has a branch, which contains a script that downloads the
 specific sources. Each platform has a branch for each <strong>Linux</strong> version that
 should be build. This branch contains a script which executes the download
 script from the <strong>Linux</strong> version branch.</p>
 <p><img alt="Structure" src="../../../background/evaluation/img/eval_linux.png" /></p>
+<h2 id="build-steps">Build steps</h2>
+<p>With the now evaluated build process, the build steps can be redefined.</p>
+<ol>
+<li>Checkout platform branch for <strong>Linux</strong> version X</li>
+<li>Checkout <strong>Linux</strong> version X branch</li>
+<li>Call build script from platform branch<ul>
+<li>set necessary build parameters</li>
+</ul>
+</li>
+<li>Call build script from <strong>Linux</strong> version X branch<ul>
+<li>download sources</li>
+<li>if provided apply patches</li>
+<li>build <strong>Linux</strong></li>
+<li>create archive</li>
+</ul>
+</li>
+</ol>
 </div>
         </div>
 

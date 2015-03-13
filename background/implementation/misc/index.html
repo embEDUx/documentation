@@ -341,26 +341,39 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#implementation-misc">Implementation Misc</a></li>
+        <li class="main active"><a href="#implementation-building-miscellaneous-files">Implementation building miscellaneous files</a></li>
+        
+            <li><a href="#build-steps-script">Build steps &amp; script</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="implementation-misc">Implementation Misc</h1>
-<p><strong>(work in progress)</strong></p>
-<p>Throughout the development we realized, that some platforms need files present
-at the boot partition. However these files couldn't be assigned logical to any
-of the existing repositories. Therefore we added the <em>misc-spec</em> repository. It
-basically contains the files that have to be provided either to the boot or the
-root partition. </p>
+<h1 id="implementation-building-miscellaneous-files">Implementation building miscellaneous files</h1>
+<p>During the implementation of the <strong>Linux</strong> and <strong>U-Boot</strong> build process,
+scenarios occurred, where files needed to be provided to the boot or root
+partition. Unfortunately these files couldn't be assigned to any of the existing
+repositories.</p>
+<p>Therefore the <em>misc-spec</em> repository was added. The solely purpose of this
+repository is to store files for the platform. Each platform has one branch
+within the repository. Each branch contains the build script and two folder,
+which represent the destination partition.</p>
 <ul>
-<li>Each platform has one branch within the repository. </li>
-<li>Each branch contains two folder <em>src_boot</em> and <em>src_root</em>.</li>
-<li>The files lay within this folder within their folder structure (e.g.
-  src_root/etc/inittab). </li>
-<li>The build script only packs content of the two folder into two archives.</li>
+<li>src_boot</li>
+<li>src_root</li>
+</ul>
+<p>The files are stored in the respective folder within their folder structure,
+which means that e.g. the <em>inittab</em> file is stored in <em>src_\root/etc/inittab</em>.
+Another example would be the firmware blobs for the raspberry pi or the
+<strong>U-Boot</strong> script, which need to be stored within root directory of the boot
+partition. These files would be stored in <em>src_boot/</em>.</p>
+<h2 id="build-steps-script">Build steps &amp; script</h2>
+<p>The build scripts only purpose is to provide the archives for each destination
+partition. Therefore is only archives the two folders <em>src_boot</em> and
+<em>scr_root</em>.</p>
+<ul>
+<li><a href="../../../usage/misc/default/platform_build">build</a></li>
 </ul>
 </div>
         </div>

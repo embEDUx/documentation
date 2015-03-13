@@ -343,7 +343,11 @@
     
         <li class="main active"><a href="#implementation-for-building-toolchain">Implementation for building Toolchain</a></li>
         
-            <li><a href="#build-script">Build Script</a></li>
+            <li><a href="#repository">Repository</a></li>
+        
+            <li><a href="#build-steps">Build steps</a></li>
+        
+            <li><a href="#build-script">Build script</a></li>
         
     
     </ul>
@@ -351,17 +355,19 @@
             <div class="col-md-9" role="main">
 
 <h1 id="implementation-for-building-toolchain">Implementation for building Toolchain</h1>
-<p>For each toolchain, the <em>toolchain-specs</em> repository contains exactly one
-branch. The branch contains the <em>.config</em> file for <strong>Crosstool-NG</strong> and the
-build script, that will do the following steps:</p>
+<p>The <a href="../../design/toolchain/index.html">design</a> and the
+<a href="../../evaluation/toolchain/index.html">evaluation</a> result in the following implementation.</p>
+<h2 id="repository">Repository</h2>
+<p>The repository is called <em>toolchain-specs</em>. Each host architecture / target
+architecture combination gets its own branch. The branch contains the build
+script and the toolchain configuration required for <strong>Crosstool-NG</strong>.</p>
+<h2 id="build-steps">Build steps</h2>
 <ol>
 <li>Call <code>ct-ng build</code></li>
 <li>Compress output in archive.</li>
 </ol>
-<h2 id="build-script">Build Script</h2>
-<p>For simplicity bash is used for the script language. As an example the two
-scripts, which were implemented and uses throughout the whole development and
-test process are provided:</p>
+<h2 id="build-script">Build script</h2>
+<p>The following build script reflects the build steps.</p>
 <ul>
 <li><a href="../../../setup/post-install/toolchains/default/toolchain_build">build</a></li>
 </ul>
