@@ -355,8 +355,6 @@
     
         <li class="main active"><a href="#continuous-integration-evaluation">Continuous Integration Evaluation</a></li>
         
-            <li><a href="#design-decisions">Design Decisions</a></li>
-        
             <li><a href="#gitlab-ci">Gitlab-CI</a></li>
         
             <li><a href="#buildbot">Buildbot</a></li>
@@ -373,17 +371,10 @@
             <div class="col-md-9" role="main">
 
 <h1 id="continuous-integration-evaluation">Continuous Integration Evaluation</h1>
-<p><strong>(work in progress)</strong></p>
 <p>The continuous integration system is responsible for scheduling the builds
 according the changes in the product repositories. It delegates scheduled builds
 to builders that are prepared with build environments specific to their mapped
 platform or the platform's architecture.</p>
-<h2 id="design-decisions">Design Decisions</h2>
-<ul>
-<li>Observation of Git-Repositories</li>
-<li>Trigger specific builds on changes</li>
-<li>Distributed Architecture of Scheduler and Executors</li>
-</ul>
 <h2 id="gitlab-ci">Gitlab-CI</h2>
 <p>Gitlab-CI aims to integrate with the Gitlab Collaboration Server. At the time of
 the project evaluation the project is hosted at a <strong>Gitlab</strong>-Server at the HTWG, but
