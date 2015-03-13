@@ -115,4 +115,5 @@ Webinterface at ***http://<buildserver-IP\>:8010***. Additionally, you should be
 able to login with the user-password combinations you've stored in the vault
 file.
 
-TODO: screenshot
+[![](setup/img/web-interface.png)](setup/img/web-interface.png)
+
