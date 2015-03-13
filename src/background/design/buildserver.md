@@ -29,15 +29,8 @@ specifications in their repositories.
 1. Flexible build job specifications
 
 All of the above matches exactly to what is generally referred as *continuous
-integration*. This topic has received lots of attention from the open source
-community and there are a couple of source projects available that could possibly
-deliver the needed functionality. The following list of contiuous integration
-systems shall be evaluated in order to find the best suiting system.
-
-### Build Automation Candidates
-* Gitlab-CI
-* Buildbot
-* Jenkins
+integration*, which will be further discussed in the [Continuous Integration
+Design Chapter](continuous-integration.md).
 
 ## Platform Support Extensibility 
 Adding support for additional hardware platforms must be simple. The user should

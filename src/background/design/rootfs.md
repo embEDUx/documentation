@@ -1,6 +1,4 @@
 # RootFS Design
-**(work in progress)**
-
 According to the requirements it needs to be possible to install various
 packages in the RootFS. Combined with the requirement for simple extension, the
 only sane design choice is to include a package management system. Basically,
@@ -62,7 +60,7 @@ The following candidates are possible techniques and tools that need to be evalu
     * Qemu system emulation
 
 
-## Build Automation Routine
+## RootFS Build Automation Routine
 The build process must include the following steps.
 
 1. Retrieve the build specifications from the RootFS-repository

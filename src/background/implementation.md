@@ -1,8 +1,6 @@
 # Implementation
-**(work in progress)**
-
 The implementation of the system components must follow the [post-evaluation
-system design](../evaluation.md#post-evaluation-system-overall-design)
+system design](evaluation.md#post-evaluation-system-overall-design)
 
 ## [Buildserver Setuproutine](implementation/buildserver.md#setuproutine)
 ## [Container Utility](implementation/buildserver.md#container-utility)
