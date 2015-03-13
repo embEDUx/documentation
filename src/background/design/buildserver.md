@@ -1,8 +1,7 @@
 # Buildserver
+**(work in progress)**
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.
-
-**(work in progress)**
 
 ## Build Automation
 The builds should run in an automated manner as soon as the build specifications
@@ -82,18 +81,20 @@ the template if necessary.
 
 ### Setup Automation Routine Candidates
 The setuproutine should be automated using an appropriate programming or
-scripting language. The candidates for the task are:
+scripting language. The chosen language needs to flexible in detecting
+conditions, since every setup run will have different conditions.
+The candidates are:
 
-* Shell
 * Python
 * Ansible
 
-The criteria must include:
+The criteria that will be evaluated include:
 
 * Reusable components availability
-* Code readability
-* Extensibility
+* Task efficiency
+* Extensibility effort
 * Templating features
+* Code readability
 
 ## Abstraction Layer For Automation
 In order to have an automated build system, all components should be setup and
