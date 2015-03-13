@@ -6,7 +6,15 @@ the designed features:
 * Package management
 * Buildroutine Automation
 
-## YOCTO 
+## Yocto Project
+The **Yocto Project** is divided in multiple sub-projects. The project, that
+creates the **Linux** image is called **Bitbake**. **Bitbake** is a
+**Gentoo-Portage** based tool, that creates the **Linux** image from the
+provided meta data. The meta data are provided by the **openembedded-core**
+sub-project. The meta data are ebuild-like recipes which are used by **Bitbake**
+to build the packages. As the **Yocto Project** is mainly used for creating
+**Linux** images for the embedded domain, it seems that 
+
 ## Buildroot
 
 ## Gentoo Portage
