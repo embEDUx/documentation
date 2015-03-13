@@ -29,7 +29,7 @@ The user is able to define how to partition a *MMC* storage device of the
 platform and where the products should be loaded. The **Flashtool** supports the
 *MMC* storage device, because the platforms used in the HTWG context use
 SD-cards as storage media. How to implement a new recipe type is explained in
-the [development section](setup/workstation/development/flashtool.md) of the
+the [development section](../../setup/workstation/development/flashtool.md) of the
 **Flashtool**.
 
 ### Language
@@ -126,14 +126,14 @@ information about the **buildbot master** and which data is useful for the
         /{url}/{file name}
 
 
-## Recognizing MMC devices
+## Recognizing *MMC* devices
 
-To recognize a plugged in MMC device the **Flashtool** uses the *pyudev* package. This
-package allows to listen to the udev events on the system and filter them by
+To recognize a plugged in *MMC* device the **Flashtool** uses the *pyudev* package. This
+package allows to listen to the *udev* events on the system and filter them by
 some keywords. 
 
-First of all the user will be asked to remove the MMC media first. After
-confirming this step, the python script listen on for a udev event:
+First of all the user will be asked to remove the *MMC* media first. After
+confirming this step, the python script listen on for a *udev* event:
 
     context = Context()
     monitor_mmc = Monitor.from_netlink(context)
@@ -144,13 +144,13 @@ confirming this step, the python script listen on for a udev event:
             self.__count(action, device)
             break
 
-The udev system will trigger various events when plugging in a *MMC* device.
+The *udev* system will trigger various events when plugging in a *MMC* device.
 Every event returns an *action* and a *device* name. The important event actions
 are the *add* and *change* event. We will count these events for every device.
 
 With this information, the **Flashtool** decides which of the recorded devices
 were plugged in by the user. There are 4 scenarios how the user could plug in a
-MMC card.
+*MMC* card.
 
     1. User insert *MMC* device into a external *MMC card reader* with multiple
         MMC slots:
@@ -207,10 +207,17 @@ corrupted sector in the storage where the *MBR* or *GPT* is saved.
 
 ## Partition the device
 
-In the section [evaluation](background/evaluation/flashtool.md) a decision was
+In the section [evaluation](../evaluation/flashtool.md) a decision was
 made for the *pyparted* package for partitioning the *MMC* device. The Partition
 layout will be given by the specified recipe file. The usage of the *MMC* recipe
-is described in the [usage section of the flashtool](usage/flashtool.md). 
+is described in the [usage section of the flashtool](../../usage/flashtool.md). 
+
+
+## Format the partitions
+
+The **Flashtool** uses the *mkfs* tools of the system to format the partitions.
+These command will be executed with the
+[subprocess](https://docs.python.org/3.4/library/subprocess.html) package. 
 
 
 ## Load the products on the *MMC* device
@@ -246,8 +253,83 @@ Found multiple versions for product uboot with regex .*.*
 [MANUAL-MODE] Please select a file: [0-1]:
 ```
 
+After selecting the product versions the *MMC* device will be partition and the
+partitions will be formated first. Then the **Flashtool** will download the
+product files with the python package [urllib](https://docs.python.org/3.4/library/urllib.html).
 
-## List of feature
+Before loading the files on the device, the **Flashtool** will check if all data
+will fit in the partitions of the *MMC* device. If this check pass the files
+will be extracted on the *MMC* device.
+
+```bash
+   +-------------------+
+   | LOAD FILES ON MMC |
+   +-------------------+
+
+GET BUILD FILES ROOTFS, LINUX, UBOOT, MISC FOR PLATFORM RASPBERRY-PI
+
+  [rootfs]:
+    DOWNLOAD FILE:
+    URL:  http://moe.in.htwg-konstanz.de:8010/rootfs/factory-systemd/armv6j_hardfp_factory-systemd_20150306055251_c7ce255_rootfs.tbz2
+    FILE: armv6j_hardfp_factory-systemd_20150306055251_c7ce255_rootfs.tbz2
+    
+     0.5% of 83.7818 MBytes
+
+```
+
+
+## Generating *fstab*
+
+At the end of the **Flashtool** it generates a *fstab* file and copies it to the
+rootfs partition of the *MMC* device. The *fstab* will be generated with a
+[jinja2](http://jinja.pocoo.org/) template and with the information given by the
+recipe file and by pyudev. 
+
+**Example:**
+
+*Recipe file:*
+
+```
+---
+type: mmc
+
+recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point: /boot
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: btrfs
+            mount_point: /
+            mount_opts:
+            flags: 
+...
+```
+
+*jinja2 template:*
+
+```
+# <fs>			<mountpoint>	<type>		<opts>		<dump/pass>
+{% for obj in info %}
+{{obj.uuid}}     {{obj.mountpoint}}     {{obj.type}}     {{obj.options}}     {{obj.dump}}     {{obj.pas}}
+{% endfor %}
+```
+
+*result fstab:*
+
+```
+# <fs>			<mountpoint>	<type>		<opts>		<dump/pass>
+UUID=cb7afe2c-d2de-4127-ba87-e8734f144b5f   /boot        vfat       defaults    0       0         
+UUID=dc47945f-0282-4994-827e-fdc468bbc432   /        btrfs       defaults    0       0         
+```
+
+
+## List of features
 The table below shows a quick overview of the features of the **Flashtool**.
 A detailed description of the command can be found in the [usage
 section](../../usage/flashtool.md) of the **Flashtool**
@@ -264,5 +346,40 @@ section](../../usage/flashtool.md) of the **Flashtool**
 
 
  
+ ## Directory structure of the **Flashtool**
+
+```bash
+flashtool
+├── configmanager               # Handles the flashtool configuration file
+│   └── __init__.py
+├── server                      # Modules to connec to a Server
+│   ├── buildserver.py          # Buildbot server, parsing json data, download files
+│   ├── cfgserver.py            # Cloning and pulling from git server
+│   └── __init__.py
+├── setup                       # Setup related modules
+│   ├── constants.py
+│   ├── deploy                  # All packages for preparing hardware and loading software on device
+│   │   ├── __init__.py
+│   │   ├── load.py
+│   │   ├── mmc.py
+│   │   └── templateloader.py
+│   ├── recipe                  # Python recipe representation, check keywords and values
+│   │   ├── __init__.py
+│   │   └── mmc.py
+│   ├── setupfactory            # Loads the right modules statet in the recipe file
+│   │   └── __init__.py
+│   ├── udev                    # All udev related modules
+│   │   ├── __init__.py
+│   │   └── mmc.py              # Udev recognition of MMC devices
+│   └── __init__.py
+├── templates                   # Templates
+│   └── fstab                   # fstab template
+├── utility                     # Helper functions which are commonly used
+│   └── __init__.py
+│
+└── __init__.py
+
+```
+
 
 
