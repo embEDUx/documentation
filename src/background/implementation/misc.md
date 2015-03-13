@@ -13,7 +13,7 @@ which represent the destination partition.
 * src\_root
 
 The files are stored in the respective folder within their folder structure,
-which means that e.g. the *inittab* file is stored in *src_\root/etc/inittab*.
+which means that e.g. the *inittab* file is stored in *src\_root/etc/inittab*.
 Another example would be the firmware blobs for the raspberry pi or the
 **U-Boot** script, which need to be stored within root directory of the boot
 partition. These files would be stored in *src\_boot/*.
