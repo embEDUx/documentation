@@ -1,6 +1,4 @@
 # Implementation
-**(work in progress)**
-
 The implementation of the system components must follow the [post-evaluation
 system design](evaluation.md#post-evaluation-system-overall-design)
 
