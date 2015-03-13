@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (implementation.vue) 2015-03-13 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 13 13:56:50 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Fri Mar 13 14:19:12 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="implementation.vue" created="1426247864265" x="0.0" y="0.0"
     width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1426251410644" size="27128"
+    <resource referenceCreated="1426252752519" size="32957"
         spec="/home/lars/Documents/embedux/documentation/concept/implementation.vue"
         type="1" xsi:type="URLResource">
         <title>implementation.vue</title>
@@ -277,7 +277,7 @@
         width="300.94116" height="97.62072" strokeWidth="2.0"
         strokeStyle="3" autoSized="false" controlCount="1"
         arrowState="2" xsi:type="link">
-        <strokeColor>#7F7F7F</strokeColor>
+        <strokeColor>#000000</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-18</font>
         <URIString>http://vue.tufts.edu/rdf/resource/13295c9c7f00000137af7310b726b762</URIString>
@@ -376,9 +376,9 @@
         <label>Buildserver Host</label>
     </child>
     <child ID="104"
-        label="delegates&#xa;    &#xa;    &#xa;      buildjob"
+        label="delegate&#xa;    &#xa;    &#xa;      buildjob"
         layerID="1" created="1426251149178" x="877.9759" y="360.78296"
-        width="77.0" height="43.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
+        width="76.0" height="44.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
         <textColor>#000000</textColor>
         <font>-plain-16</font>
@@ -397,7 +397,7 @@
   &lt;/head&gt;
   &lt;body&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
-      &lt;font style="font-size:16;"&gt;delegates
+      &lt;font style="font-size:16;"&gt;delegate
 &lt;/font&gt;    &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
       &lt;font style="font-size:16;"&gt;buildjob&lt;/font&gt;
@@ -405,15 +405,15 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-        <label>delegates
+        <label>delegate
     
     
       buildjob</label>
     </child>
     <child ID="107"
-        label="delegates&#xa;    &#xa;    &#xa;      buildjob"
-        layerID="1" created="1426251310742" x="644.63184" y="187.29736"
-        width="79.0" height="43.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
+        label="delegate&#xa;    &#xa;    &#xa;      buildjob"
+        layerID="1" created="1426251310742" x="671.8263" y="188.30458"
+        width="78.0" height="43.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
         <textColor>#000000</textColor>
         <font>-plain-16</font>
@@ -432,7 +432,7 @@
   &lt;/head&gt;
   &lt;body&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
-      &lt;font style="font-size:16;"&gt;delegates &lt;/font&gt;
+      &lt;font style="font-size:16;"&gt;delegate&lt;/font&gt;
     &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
       &lt;font style="font-size:16;"&gt;buildjob&lt;/font&gt;
@@ -440,15 +440,15 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-        <label>delegates
+        <label>delegate
     
     
       buildjob</label>
     </child>
     <child ID="108"
-        label="delegates&#xa;    &#xa;    &#xa;      buildjob"
-        layerID="1" created="1426251313414" x="1095.6318" y="188.29736"
-        width="79.0" height="43.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
+        label="delegate&#xa;    &#xa;    &#xa;      buildjob"
+        layerID="1" created="1426251313414" x="1053.3293" y="185.27571"
+        width="78.0" height="43.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
         <textColor>#000000</textColor>
         <font>-plain-16</font>
@@ -467,7 +467,7 @@
   &lt;/head&gt;
   &lt;body&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
-      &lt;font style="font-size:16;"&gt;delegates &lt;/font&gt;
+      &lt;font style="font-size:16;"&gt;delegate&lt;/font&gt;
     &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
       &lt;font style="font-size:16;"&gt;buildjob&lt;/font&gt;
@@ -475,7 +475,7 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-        <label>delegates
+        <label>delegate
     
     
       buildjob</label>
