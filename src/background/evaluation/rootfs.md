@@ -70,63 +70,17 @@ into the system.
     translate directly to options that are passed to the `./configure`-step int
     he compilation process.
 
-In the vast number of provided packages are many dependencies between this packages. Some dependencies are required and must be resolved by the package manger,  some are optional depending on the scope of features a user want to have (e.g. vim can be installed with a graphical  or just with a textual interface). 
+* Binary package support
 
-The portage system offers users a mechanism to indicate which software features they would like to include or exclude while building packages. This mechanism is called ___USE flags___. 
-
-_USE flags_ are managed in Gentoo systems at several areas. There are profile flags, default flags, package or atom flags and temporary flags. This flags are evaluated due installation in this order. This means a _Use flag_ defined in a higher instance will be overwritten by an _USE flag_ in a lower instance.
-
-### Let's make a recipe: ebuild
-
-As mentioned before an _ebuild_ is not more as a recipe (precisely a script) which defines how to build a certain package. The used language is _bash_.
-
-To retain the overview in the _portage tree_ every _ebuild_ is dedicated to a specific category. It is also possible that several package have the same name but are dedicated in different categories.
-
-The next example will explain how to create an own _ebuild_. The basic requirement for a new software package is a valid _makefile_ with an "install" target. The following example will be an _ebuild_ for the [car2car library](https://apu.in.htwg-konstanz.de/armrider/car2car/raw/master/doc/thesis_final.pdf) package.
-
-The basic _Gentoo ebuilds_ are stored in the normal _portage tree_ at _"/usr/portage". Own _ebuilds_ can't be stored at this location since a _portage_ update would delete all inofficial _ebuilds_ from this _portage tree_. So it's advisable to create an so called ___overlay___ (read more about ovelrays in chapter [Expanding portage: Creating a portage overlay](Gentoo-Portage#expanding-portage-creating-a-portage-overlay)). This overlay is located at ```/usr/local/portage-car2car```. Next the car2car package must dedicated to a _portage-category_. There's a list with all available _portage-categories_ at ```/usr/portage/profiles/categories```. In this case we use the category __"net-libs"__, so ther must be created a new directory in the overlay.
-
-``` mkdir -p /usr/local/portage-car2car/net-libs/libcar2car```
-
-Next a ebuild will be defined at this location. It must contain the version of the program as suffix. The complete path of the ebuild is ```/usr/local/portage-car2car/net-libs/libcar2car/libcar2car-1.0.ebuild```:
-
-```bash
-EAPI=4
-
-DESCRIPTION="C2C Library which is needed to communicate with other ARMrider"
-HOMEPAGE="http://armrider.in.htwg-konstanz.de"
-SRC_URI="${P}.tar.bz2"
-RESTRICT="fetch"
-
-LICENSE=""
-SLOT="0"
-KEYWORDS="amd64 i386 arm"
-IUSE=""
-
-DEPEND="dev-libs/boost
-        >=sys-devel/gcc-4.7.3"
-RDEPEND="${DEPEND}"
-
-src_install() {
-    # Install lib.
-    dolib.so libcar2car.so || die
-
-    # Install headerfiles from ./libcar2car
-    insinto /usr/include/libcar2car
-    cd include
-    doins -r * || die
-}
-```
-
-### Binary Pakage support
+* portage-tree overlay support
 
 
-TODO: Use this text:
-http://armrider.in.htwg-konstanz.de/index.php/Gentoo_-_Einf%C3%BChrung
+### Result Gentoo Portage
+Criteria | Result | Notes
+--- | --- | ---
+Cross-target support | NO / native-only | uses installed system buildtools for
+compilation
 
-
-### Expanding portage: Creating a portage overlay * **README**
-http://dev.gentoo.org/~ulm/pms/head/pms.html#x1-350004.4
 
 ## Gentoo Catalyst
 
@@ -212,7 +166,7 @@ Experimentation with different versions for glibc, binutils, kernel headers and
 gcc version did hot help. either.
 
 ### Results Crossdev and Emerge-Crossdev
-Criteria | Result | Nots
+Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | NO | not reliable
 Package management | YES | portage package manager included
@@ -270,7 +224,7 @@ cmd/go
 Errors like these make qemu-user an unreliable solution for the **embEDUx** project.
 
 ### Result Qemu user emulation
-Criteria | Result | Nots
+Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | NO | not reliable
 
@@ -301,9 +255,21 @@ QEMU_AUDIO_DRV=none qemu-system-arm \
   -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
 ```
 
-### Performance Loss
-In comparison, this method has siginificant
-performance limitations and overhead, due to the following reasons:
+The following structure gives an outline of the scenario and the direct result of the mentioned
+9p-fs bug:
+```
+- Hardware Host @ OpenVZ Kernel 2.6.32.something
+  - QEMU/KVM VM @ Gentoo Kernel 3.19
+    - Docker container that contains another chroot_rootfs
+      - running as user $ sudo proot chroot_inside_container sshd -p 2222
+        - running as user $ ssh root@localhost -p 2222
+          - running as chroot root # su some_user -s /bin/true 
+            --> FAILS WITH 'Permission Denied'
+```
+
+### Limitations
+In comparison, this method has siginificant limitations of different nature, due
+to the following reasons:
 
 * Target Linux-Kernel required for the virtual machine
 
@@ -337,7 +303,7 @@ the evaluation phase.
 While a virtual machine itself would add extra complexity to the build process,
 it would allow to run arbitrary
 
-Criteria | Result | Nots
+Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | slow through complete system emulation
 
@@ -345,9 +311,9 @@ Cross-target support | YES | slow through complete system emulation
 ## Evaluation Result 
 
 ### Feature Overview
-Candiate | Cross-target support | Package management | Buildroutine Automation
+Candiate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
-Gentoo Portage | - | YES | -
+Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
 YOCTO | LIMITED | LIMITED / difficult to extend | YES 
 Buildroot | YES | LIMITED / difficult to extend | YES
