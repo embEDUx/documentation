@@ -13,7 +13,8 @@ technicalities.
 * Simple to extend with new hardware platforms
 * Usage of mainline sources whenever possible
 * User-provided configuration for builds
-* Automated processes
+* Automated setup
+* Automated build processes
 
 ## Lab-Course Specific Requirements
 In order to estimate the requirements list for all lab-courses we need to look

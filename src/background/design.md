@@ -1,6 +1,4 @@
 # Design
-**(work in progress)**
-
 The design for the **embEDUx** system must be created by carefully analyzing the
 [project requirements](requirements.md). These include a wide variety of
 necessary configuration options, which in turn requires a configurable build
@@ -10,7 +8,7 @@ system. The build system must be able to build the following software
 * Bootloader
 * RootFS containing the system and user-space application
 
-while build configuration must be user providable for each build.
+while the build configuration must be user providable for each build.
 
 The software that is built by the build system will be referred as
 ***products*** within the further documentation.
@@ -38,7 +36,7 @@ projects.
 * Yocto Project
     TODO lars
     
-## Product-Specification Storage Units
+## Repositories - Product-Specification Storage Units
 It must be possible to build the products independently from each other.
 Therefore, each product specification should be managed in a separate storage
 unit which will be referred as a *repository* from this point on. Additionally
@@ -58,71 +56,6 @@ requirements of the corresponding product. The requirements chapter lists
 different requirements for each product, which must therefore be analyzed
 separately.
 
-
-
-## Portability 
-In order to have a portable build system, all components should live and run in
-systems that are separated from the buildserver's host system. Possible
-technologies for this are either Virtual Machines or Linux Containers.
-
-### Virtualization and Container Technologies
-* Virtual Machines are completely abstracted from the host system's hardware.
-  They run on a so-called Hypervisor, which simulates a complete machine for the
-  target system. The target system runs it's own kernel, and needs to boot and
-  initialize an Operating System from scratch. Security is considered very high,
-  since the Hypervisor has full control over soft- and hardware-resources that
-  are passed to the guest system.   The architecture of an operating system
-  inside a virtual machine can be completely different to the host architecture,
-  and thus is highly portable.  Depending on available acceleration
-  technologies, the performance of the virtual CPU, RAM and disk can suffer
-  significantly.
-
-* Linux Containers utilize a feature in recent Linux Kernels which allow
-  separating processes from each other. This includes the separation of host and
-  contained processes, as well as different contained processes from each other.
-  These contained processes can be an initialization processes to boot a
-  different Linux System on the running host Linux kernel, or simply any other
-  application available. Recently there has been a lot of development and
-  activity on Linux Containers in the community, namely because of a software
-  called Docker.  Security is highly dependent on the implementation of the
-  process separating that happens in the host kernel.   The host kernel must
-  obviously be able to run the contained application.  Therefore, the
-  application must either be in the host's native or compatible executable
-  format, or the system needs an emulator to run the foreign architecture. The
-  performance for contained processes does not differ significantly compared to
-  a regular running process. This is not entirely true for executables that
-  require emulation because the CPU instructions must be translated before they
-  can be run.
-
-In favor of speed (see [Comparison of VM and Linux
-Containers](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf))
-container technologies should be chosen as the base for the buildsystem. In
-environments where security is a high requirement, the containers can live
-inside a virtual machine, but that is beyond the design for the buildsystem
-itself.
-
-### Splitting Functionality Into Containers
-Performance wise, containers are relatively cheap entities for the system. This
-allows the buildsystem to be split into several containers for the different
-parts of the buildsystem, without losing performance over a flat installation on
-the system. The container infrastructure could split the following
-functionalities
-
-* Build process manager
-    * Watch repository for changes
-    * Delegate build processes to other containers
-* Architecture specific build tools
-    * toolchains
-    * compiler flags
-    * base system archives
-
-### Container Management Software
-The choice of the container management software still needs to be evaluated, but in favor
-of popularity Docker should be the main candidate. Candidates:
-
-* Docker
-* LXC
-* OpenVZ
 
 ## Platform Support Extensibility 
 Adding support for additional hardware platforms must be simple. The user should
