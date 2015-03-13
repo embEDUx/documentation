@@ -47,21 +47,22 @@ and compiler flags during the build process. These options shall be provided
 together with the package lists.
 
 ## Cross Target Support
-Even though the number of ARM-systems is growing, most Desktops and Servers are
-still running on x86-based architectures. In order to build the products for the
-platforms used within the lab-courses, it is necessary to either use
-cross-toolchains or emulators. The following candidates for the different
-techniques need to be evaluated for every of the embEDUx products.
+As stated in the [identically named chapter on the buildserver
+page](buildserver.md#cross-target-support), a strategy for cross-building RootFS
+needs to be designed.
+
+The following candidates are possible techniques and tools that need to be evaluated:
 
 * Cross-Compilation
-    * Gentoo crossdev
+    * Gentoo's crossdev and cross-emerge
     * YOCTO
+    * Buildroot
 * Emulation
     * Qemu user emulation
     * Qemu system emulation
 
 
-## Build Steps
+## Build Automation Routine
 The build process must include the following steps.
 
 1. Retrieve the build specifications from the RootFS-repository

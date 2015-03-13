@@ -3,12 +3,21 @@
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.
 
-## Build Automation
-The builds should run in an automated manner as soon as the build specifications
-are updated by the user. As the build specifications are stored inside the product
-repositories, the buildserver should watch them for changes and trigger a new
-build on detected changes. The builds should only be triggered for the products
-that received new build specifications in their repositories.
+## Cross-Target Support
+Even though the number of ARM-systems is growing, most Desktops and Servers are
+still running on x86-based architectures. In order to build the products for the
+platforms used within the lab-courses, it is necessary to either use
+cross-toolchains or emulators. 
+
+## Build Automation Routines
+
+## Automated Build Triggering
+The builds for the different products should be triggered in an automated manner
+as soon as the build specifications are updated by the user. As the build
+specifications are stored inside the product repositories, the buildserver needs
+to watch them for changes and trigger a new build on detected changes. The
+builds should only be triggered for the products that received new build
+specifications in their repositories.
 
 ### Main Tasks
 * Watch product repositories for changes
@@ -105,7 +114,7 @@ without having to care about the underlying hardware and system configuration.
 Possible technologies for abstracting applications and whole operating systems
 include Virtual Machines and Linux Containers.
 
-## Virtualization Machines
+## Virtual Machines
 Virtual Machines are completely abstracted from the host system's hardware.
 They run on a so-called Hypervisor, which simulates a complete machine for the
 target system. The target system runs it's own kernel, and needs to boot and

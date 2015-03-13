@@ -42,6 +42,13 @@ projects.
     helpful starting point for developers."
     ([Source](https://wiki.yoctoproject.org/wiki/FAQ#What_is_the_Yocto_Project.3F))
     
+
+## Cross-Target Support
+Even though the number of ARM-systems is growing, most Desktops and Servers are
+still running on x86-based architectures. In order to build the products for the
+platforms used within the lab-courses, it is necessary to either use
+cross-toolchains or emulators. 
+
 ## Repositories - Product-Specification Storage Units
 It must be possible to build the products independently from each other.
 Therefore, each product specification should be managed in a separate storage
