@@ -1,11 +1,8 @@
 # Implementation
 **(work in progress)**
 
-# Post-Evaluation System Overall Design
-The system that now needs to be implemented must follow the post-evaluation
-system design.
-
-![](background/img/post-eval_result_design.png)
+The implementation of the system components must follow the [post-evaluation
+system design](../evaluation.md#post-evaluation-system-overall-design)
 
 ## [Buildserver Setuproutine](implementation/buildserver.md#setuproutine)
 ## [Container Utility](implementation/buildserver.md#container-utility)
@@ -15,4 +12,3 @@ system design.
 ## [RootFS](implementation/rootfs.md)
 ## [Toolchain](implementation/toolchain.md)
 ## [U-Boot](implementation/uboot.md)
-
