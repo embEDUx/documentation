@@ -23,7 +23,7 @@ The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
 * Ubuntu Linux 14.04
 * Ubuntu Linux 14.10
-* Gentoo Linux with a Docker compatible Kernel Configuration *TODO: link to options*
+* Gentoo Linux with a Docker compatible [Kernel Configuration](http://wiki.gentoo.org/wiki/LXC)
 
 Other Linux Distributions might work too if they use **apt** or **portage** as
 their package manager. Please share your experiences!
@@ -39,7 +39,7 @@ You either need **root**-access on the buildserver, or a **user that has
 permissions to run arbitrary commands with sudo**.
 
 * Allow SSH access via key authentication - the setuproutine and the
-  instructions on thie page assume that you are using key-based authentication
+  instructions on the page assume that you are using key-based authentication
   for the user you chose in the host details.
 
 ## Suggestions
@@ -115,4 +115,5 @@ Webinterface at ***http://<buildserver-IP\>:8010***. Additionally, you should be
 able to login with the user-password combinations you've stored in the vault
 file.
 
-TODO: screenshot
+[![](setup/img/web-interface.png)](setup/img/web-interface.png)
+

@@ -6,13 +6,14 @@ The design for the **embEDUx** system must be created by carefully analyzing the
 necessary configuration options, which in turn requires a configurable build
 system. The build system must be able to build the following software
 
-* [Linux Kernel](design/linux.md)
-* [Bootloader](design/bootloader.md)
-* [RootFS](design/rootfs.md)
+## [Linux Kernel](design/linux.md)
+## [Bootloader](design/bootloader.md)
+## [RootFS](design/rootfs.md)
 
-while the build configuration must be user providable for each build.
+while the build configuration must be user providable for each individual build.
 
-The software that is built by the **[buildserver](design/buildserver)** will be
+## [Buildserver](design/buildserver)
+The software that is built by the buildserver will be
 referred as ***products*** within the further documentation.
 
 ## Comparison With Similar Projects
@@ -49,35 +50,8 @@ still running on x86-based architectures. In order to build the products for the
 platforms used within the lab-courses, it is necessary to either use
 cross-toolchains or emulators. 
 
-## Repositories - Product-Specification Storage Units
-It must be possible to build the products independently from each other.
-Therefore, each product specification should be managed in a separate storage
-unit which will be referred as a *repository* from this point on. Additionally
-each platform needs to have its own identifiable storage subunit within the
-*respository*. The storage subunits will be referred as *branches* from this
-point on.
+## [Repositories](design/repositories.md) - Product-Specification Storage Units
 
-### Repository Format
-Configuration files and specification files are most certainly provided by the
-user as text files. For this purpose, a version control system should be used in
-order to have a history of build changes and allow easier handling of the
-repositories.
-
-## Product Requirement Analysis
-The build process and the configuration options of each product must fulfill the
-requirements of the corresponding product. The requirements chapter lists
-different requirements for each product, which must therefore be analyzed
-separately.
-
-
-## Platform Support Extensibility 
-Adding support for additional hardware platforms must be simple. The user should
-not be forced to have a complete understanding of the **embEDUx** build system
-to be able to add his platform. One way to look at extensibility is to already
-take the initial setup into account, where the hardware platforms are
-practically added too, just to a zero-base. Designing this step to be as easy as
-possible, will allow to extend the system as easy as possible. Therefore, this
-criteria is moved over to the [setup process](setup-process).
 
 
 ## Overall System Design

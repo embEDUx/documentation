@@ -26,7 +26,7 @@ specific sources. Each platform has a branch for each **U-Boot** version that
 should be build, containing a script, that executes the download script from the
 **U-Boot** version branch.
 
-![Structure](background/evaluation/img/eval_uboot.png)
+[![Structure](background/evaluation/img/eval_uboot.png)](background/evaluation/img/eval_uboot.png)
 
 ## Build steps
 With the now evaluated build process, the build steps can be redefined.

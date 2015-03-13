@@ -29,15 +29,17 @@ specifications in their repositories.
 1. Flexible build job specifications
 
 All of the above matches exactly to what is generally referred as *continuous
-integration*. This topic has received lots of attention from the open source
-community and there are a couple of source projects available that could possibly
-deliver the needed functionality. The following list of contiuous integration
-systems shall be evaluated in order to find the best suiting system.
+integration*, which will be further discussed in the [Continuous Integration
+Design Chapter](continuous-integration.md).
 
-### Build Automation Candidates
-* Gitlab-CI
-* Buildbot
-* Jenkins
+## Platform Support Extensibility 
+Adding support for additional hardware platforms must be simple. The user should
+not be forced to have a complete understanding of the **embEDUx** build system
+to be able to add his platform. One way to look at extensibility is to already
+take the initial setup into account, where the hardware platforms are
+practically added too, just to a zero-base. Designing this step to be as easy as
+possible, will allow to extend the system as easy as possible. Therefore, this
+criteria is moved over to the [setup design](setup-automation-routine).
 
 ## Setup Automation Routine
 The buildserver will undoubtedly be a complex structure of software components.
@@ -98,6 +100,7 @@ The criteria that will be evaluated include:
 * Extensibility effort
 * Templating features
 * Code readability
+
 
 ## Abstraction Layer For Automation
 In order to have an automated build system, all components should be setup and

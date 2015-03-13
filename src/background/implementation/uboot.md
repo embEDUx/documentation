@@ -8,7 +8,7 @@ its own branch, which will be referred as *version\_platform* branch. Each
 version has also one branch, which will be referred as *version\_generic*
 branch. 
 
-![Repository](usage/uboot/img/example_uboot_repository.png)
+[![Repository](usage/uboot/img/example_uboot_repository.png)](usage/uboot/img/example_uboot_repository.png)
 
 **Important**: Each *version\_platform* branch depends on a *version\_generic*
 branch.

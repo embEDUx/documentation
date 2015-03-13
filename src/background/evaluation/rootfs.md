@@ -38,14 +38,23 @@ lot of configuration. Everything is capsulated within the recipes, so an easy
 editing of kernel version or user-space software is not possible.
 
 ### Result Yocto Project
-Criteria | Result | Nots
+Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | Manual configuration necessary 
 Package management | LIMITED | Package manager can be configured with own repository
 Buildroutine Automation | YES | -
 
 ## Buildroot
+A collection of bash scripts in order to build toolchains, Linux-kernels,
+bootloaders and root filesystems. It can be configured via an ncurses-based
+menu. 
 
+### Result Buildroot
+Criteria | Result | Notes
+--- | --- | ---
+Cross-target support | YES | Manual configuration necessary 
+Package management | LIMITED | Difficult to extend
+Buildroutine Automation | YES | -
 
 ## Gentoo Portage
 **Gentoo Portage** is a full-fledged source-based package management system that
@@ -65,14 +74,22 @@ into the system.
     occurred during the proccess.
 
 * USE-flags - package customization
+
     USE-flags are one of **Porage**'s excellent features that allows the user to
     custmize the packages that are available for installation. Most USE-flags
     translate directly to options that are passed to the `./configure`-step int
     he compilation process.
 
 * Binary package support
+    
+    Successfull package builds can be stored in a binary package format. They
+    can be resued for further installations without the need to compile the same
+    package more than once.
 
 * portage-tree overlay support
+
+    It is possible to define additional portage trees in order to extend the
+    available ebuils and therefore extend the available software packages.
 
 
 ### Result Gentoo Portage
@@ -170,7 +187,7 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | NO | not reliable
 Package management | YES | portage package manager included
-Buildroutien Automation | NO | needs wrapper
+Buildroutine Automation | NO | needs wrapper
 
 
 ## Qemu User Emulation
@@ -257,7 +274,7 @@ QEMU_AUDIO_DRV=none qemu-system-arm \
 
 
 ### Limitations
-In comparison, this method has siginificant limitations of different nature, due
+In comparison, this method has significant limitations of different nature, due
 to the following reasons:
 
 * Target Linux-Kernel required for the virtual machine
@@ -297,10 +314,8 @@ Criteria | Result | Notes
 Cross-target support | YES | slow through complete system emulation
 
 
-## Evaluation Result 
-
-### Feature Overview
-Candiate | Cross-target support | Package management | RootFS Buildroutine Automation
+## Overview
+Candidate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
 Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
@@ -310,7 +325,7 @@ Gentoo crossdev and cross-emerge | NOT RELIABLE | YES | -
 Qemu user emulation | LIMITED / not fully reliable | - | -
 Qemu system emulation | YES / slow | - | -
 
-### Conclusion
+## Conclusion
 It seems like there is no solution that is ready to be integrated into the
 designed continuous integration system without further modifications or
 automation processes wrapped around. As a result, **the choice will favor

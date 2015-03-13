@@ -1,30 +1,16 @@
 # Evaluation
-**(work in progress)**
+The [design considerations](design.md) will be evaluated within this chapter.
+Please select a topic of interest. The design that resulted from the evaluation
+process can be seen at the bottom of the page.
 
-The considerations from the [design](design.md) will be evaluated within this
-chapter.
+## [Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
+## [Container Utility](evaluation/container-utility.md)
+## [Continuous Integration](evaluation/continuous-integration.md)
+## [Flashtool](evaluation/flashtool.md)
+## [Linux-Kernel](evaluation/linux.md)
+## [RootFS](evaluation/rootfs.md)
+## [Toolchain](evaluation/toolchain.md)
+## [U-Boot](evaluation/uboot.md)
 
-## Comparison With Similar Projects
-- | Buildroot | Yocto
---- | --- | ---
-Setup | `git clone git://git.buildroot.net/buildroot` | `git clone -b dizzy git://git.yoctoproject.org/poky.git`
-Configuration | `make menuconfig` | Configuration is happening in conf files, although there is also a GUI 
-Output | Bootloader, Kernel, RootFS, Toolchain | SD Card Image
-Platform Support | - | Common platforms are supported or available through so called *Board Support Packages (BSP)* or can be added manually.
-Software Support | - | Common software is available or otherwise can be added by creating own recipes
-Up-to-dateness, compared to consumer distributions | - | Poor
-
-### Conclusion
-As we want to have a highly dynamic system, where we still offer up-to date
-products, non of the aforementioned projects offer a satisfying solution.
-Therefore developing our own projects is necessary.
-
-## Buildserver
-The buildserver evaluation is split into one subpage per software component.
-
-[Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
-
-[Continuous Integration](evaluation/continuous-integration.md)
-
-[Container Utility](evaluation/container-utility.md)
-
+## Post-Evaluation System Overall Design
+[![](background/img/post-eval_result_design.png)](background/img/post-eval_result_design.png)

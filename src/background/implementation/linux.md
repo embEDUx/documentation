@@ -8,7 +8,7 @@ its own branch, which will be referred as *version\_platform* branch. Each
 version has also one branch, which will be referred as *version\_generic*
 branch. 
 
-![Repository](usage/linux/img/example_linux_repository.png)
+[![Repository](usage/linux/img/example_linux_repository.png)](usage/linux/img/example_linux_repository.png)
 
 **Important**: Each *version\_platform* branch depends on a *version\_generic*
 branch.

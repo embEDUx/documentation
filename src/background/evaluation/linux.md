@@ -19,7 +19,7 @@ specific sources. Each platform has a branch for each **Linux** version that
 should be build. This branch contains a script which executes the download
 script from the **Linux** version branch.
 
-![Structure](background/evaluation/img/eval_linux.png)
+[![Structure](background/evaluation/img/eval_linux.png)](background/evaluation/img/eval_linux.png)
 
 ## Build steps
 With the now evaluated build process, the build steps can be redefined.
