@@ -1,5 +1,9 @@
 # Background
-**(work in progress)**
+## Overview
+#### **[1. Project Requirements](requirements.md)**
+#### **[2. Design](design.md)**
+#### **[3. Evaluation](evaluation.md)**
+#### **[4. Implementation](implementation.md)**
 
 ## The Beginning
 The name **embEDUx** includes hints for the words *embedded linux* and
@@ -20,6 +24,7 @@ for tasks concerning the preparation of soft- and hardware for these lab-courses
 offered at the HTWG, which is the reason why the embEDUx requirements will have
 a strong bias towards the requirements specific to the lab-courses.
 
+
 ## Initial contributors
 The project started off with three master students of computer science working
 on a team-project, supervised by a professor. Namely, these are
@@ -32,4 +37,4 @@ on a team-project, supervised by a professor. Namely, these are
 Head over to the [contacts and support page](../support/contact-team.md) if you
 want to contact any of these people.
 
-## [Project Requirements](requirements.md)
+

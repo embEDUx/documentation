@@ -1,4 +1,4 @@
-# RootFS Buildprocess Design
+# RootFS Design
 **(work in progress)**
 
 According to the requirements it needs to be possible to install various

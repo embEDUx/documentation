@@ -6,14 +6,14 @@ The design for the **embEDUx** system must be created by carefully analyzing the
 necessary configuration options, which in turn requires a configurable build
 system. The build system must be able to build the following software
 
-* Linux Kernel
-* Bootloader
-* RootFS containing the system and user-space application
+* [Linux Kernel](design/linux.md)
+* [Bootloader](design/bootloader.md)
+* [RootFS](design/rootfs.md)
 
 while the build configuration must be user providable for each build.
 
-The software that is built by the build system will be referred as
-***products*** within the further documentation.
+The software that is built by the **[buildserver](design/buildserver)** will be
+referred as ***products*** within the further documentation.
 
 ## Comparison With Similar Projects
 The idea of building a complete Linux-based system for a specific platform is
@@ -71,6 +71,7 @@ take the initial setup into account, where the hardware platforms are
 practically added too, just to a zero-base. Designing this step to be as easy as
 possible, will allow to extend the system as easy as possible. Therefore, this
 criteria is moved over to the [setup process](setup-process).
+
 
 ## Overall System Design
 [![](background/design/img/design.png)](background/design/img/design.png)
