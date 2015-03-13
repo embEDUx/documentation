@@ -12,9 +12,9 @@ the designed features:
 ## Gentoo Portage
 Gentoo Portage is a complete package management system that is well maintained 
 
-## Gentoo catalyst
+## Gentoo Catalyst
 
-## Gentoo Crossdev and Cross-emerge
+## Gentoo Crossdev and Cross-Emerge
 Gentoo's crossdev is a utility that can create cross-toolchains and setup
 wrappers for the emerge utility to use the cross-toolchain on the target RootFS that is
 laying in the host system's filesystem. 
@@ -95,7 +95,7 @@ during the system installation could not be fixed nor completely explained.
 Experimentation with different versions for glibc, binutils, kernel headers and
 gcc version did hot help. either.
 
-### Results crossdev and emerge-crossdev
+### Results Crossdev and Emerge-Crossdev
 Criteria | Result | Nots
 --- | --- | ---
 Cross-target support | NO | not reliable
@@ -103,7 +103,7 @@ Package management | YES | portage package manager included
 Buildroutien Automation | NO | needs wrapper
 
 
-## Qemu user emulation
+## Qemu User Emulation
 Qemu user emulation makes uses of the BINFMT\_SUPPORT to execute binaries of
 foreign binary formats by executing them with a binary simulator for the
 corresponding architecture. 
@@ -158,7 +158,7 @@ Criteria | Result | Nots
 --- | --- | ---
 Cross-target support | NO | not reliable
 
-## Qemu system emulation
+## Qemu System Emulation
 System Emulation was already a considered as an abstraction technique in the
 [Buildserver Design - Virtual Machines](virtual-machines). In comparison to
 [Qemu user emulation](Qemu-user-emulation), a complete system is emulated
@@ -190,11 +190,18 @@ In comparison, this method has siginificant
 performance limitations and overhead, due to the following reasons:
 
 * Target Linux-Kernel required for the virtual machine
+
     In order to run a virtual machine, a kernel that supports executing in the
     target system must be configured and compiled using a cross-toolchain. The
     preperation of the kernel for the virtual machine shall not be covered in
     the RootFS evaluation.
+
 * No multi-core support for ARM architectures
+
+    While **Qemu** supports the simulation of multiple ARM-CPU-cores inside the
+    virtual machine, it does not use more than one processor on the host.
+    Multicore build machines can therefore not be fully utilized by single
+    virtual ARM machines.
 
 
 * [Bugs in the 9p-fs filesystem](https://bugs.launchpad.net/qemu/+bug/1336794)
@@ -219,28 +226,26 @@ Criteria | Result | Nots
 Cross-target support | YES | slow through complete system emulation
 
 
-
 ## Evaluation Result 
 
 ### Feature Overview
 Candiate | Cross-target support | Package management | Buildroutine Automation
 --- | --- | --- | ---
-YOCTO | LIMITED | LIMITED / difficult to extend | YES 
-Buildroot | YES | LIMITED / difficult to extend | YES
-Gentoo Crossdev and Cross-emerge | NOT RELIABLE | YES | -
-Qemu user emulation | LIMITED / not fully reliable | - | -
-Qemu system emulation | YES / slow | - | -
 Gentoo Portage | - | YES | -
 Gentoo catalyst | NO | - | YES
+YOCTO | LIMITED | LIMITED / difficult to extend | YES 
+Buildroot | YES | LIMITED / difficult to extend | YES
+Gentoo crossdev and cross-emerge | NOT RELIABLE | YES | -
+Qemu user emulation | LIMITED / not fully reliable | - | -
+Qemu system emulation | YES / slow | - | -
 
 ### Conclusion
-Apparently there is no solution that is ready to be integrated into the designed
-continuous integration system without further modifications or automation
-processes wrapped around. As a result, **the choice will favor reliability in
-cross-target support, and package management qualities** and incorporate the
-winners into a custom automated buildroutine.
+It seems like there is no solution that is ready to be integrated into the
+designed continuous integration system without further modifications or
+automation processes wrapped around. As a result, **the choice will favor
+reliability in cross-target support, and package management qualities** and
+incorporate the winners into a custom automated buildroutine.
 
 # Evaluation RootFS Buildroutine Automation
 As described in the design chapter [Buildserver - Build Automation
 Routines](../design/buildserver.md#build-automation-routines), the automated RootFS buildroutine will be triggered by the continuous integration master component.
-
