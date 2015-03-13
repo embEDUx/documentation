@@ -175,6 +175,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../design/continuous-integration/index.html">Design/Continuous Integration</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../design/flashtool/index.html">Design/Flashtool</a>
                         </li>
                     
@@ -236,6 +240,10 @@
                     
                         <li >
                             <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/continuous-integration/index.html">Implementation/Continuous Integration</a>
                         </li>
                     
                         <li >
@@ -347,7 +355,17 @@
     
         <li class="main active"><a href="#continuous-integration-evaluation">Continuous Integration Evaluation</a></li>
         
-            <li><a href="#repository-dependencies">Repository Dependencies</a></li>
+            <li><a href="#design-decisions">Design Decisions</a></li>
+        
+            <li><a href="#gitlab-ci">Gitlab-CI</a></li>
+        
+            <li><a href="#buildbot">Buildbot</a></li>
+        
+            <li><a href="#jenkins">Jenkins</a></li>
+        
+            <li><a href="#result-continuous-integration-evaluation">Result Continuous Integration Evaluation</a></li>
+        
+            <li><a href="#master-and-slave-terminologies">Master and Slave Terminologies</a></li>
         
     
     </ul>
@@ -360,15 +378,37 @@
 according the changes in the product repositories. It delegates scheduled builds
 to builders that are prepared with build environments specific to their mapped
 platform or the platform's architecture.</p>
-<h2 id="repository-dependencies">Repository Dependencies</h2>
-<p>Gitlab at thE HTWG</p>
-<h3 id="gitlab-ci">Gitlab-CI</h3>
-<p>Here go the pros and cons of the Gitlab-CI</p>
-<h3 id="buildbot">buildbot</h3>
-<p>Here go the pros and cons of the buildbot</p>
-<h3 id="scheduler-configuratoin">Scheduler configuratoin</h3>
-<p>A suitable scheduler for our purpose could be the
-<a href="http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler">anybranchscheduler</a>.</p>
+<h2 id="design-decisions">Design Decisions</h2>
+<ul>
+<li>Observation of Git-Repositories</li>
+<li>Trigger specific builds on changes</li>
+<li>Distributed Architecture of Scheduler and Executors</li>
+</ul>
+<h2 id="gitlab-ci">Gitlab-CI</h2>
+<p>Gitlab-CI aims to integrate with the Gitlab Collaboration Server. At the time of
+the project evaluation the project is hosted at a <strong>Gitlab</strong>-Server at the HTWG, but
+it is planned to be published on <strong>GitHub</strong>. Therefore, Gitlab-CI is not an
+option.</p>
+<h2 id="buildbot">Buildbot</h2>
+<p>Buildbot is based on Python, and is also completely configurable through the
+Python language. This brings both, complexity and flexibility. Judging by the
+list of features and examining the documentation, all of the above design
+decisions are possible to implement using <strong>Buildbot</strong>.</p>
+<h2 id="jenkins">Jenkins</h2>
+<p>Java Based continous integration tool, which is the first and last criteria
+to analyze.</p>
+<h2 id="result-continuous-integration-evaluation">Result Continuous Integration Evaluation</h2>
+<p><strong>Buildbot</strong> will be chosen as the CI-system used within the <strong>embEDUX</strong>
+build system. It was chosen, because</p>
+<ul>
+<li>it fulfills all of the design decisions</li>
+<li>it is Python based, which is very flexible and all team members are
+  already familiar with Python</li>
+<li>there is no serious competition</li>
+</ul>
+<h2 id="master-and-slave-terminologies">Master and Slave Terminologies</h2>
+<p><strong>Buildbot</strong> uses the terms <strong>Buildmaster</strong> and <strong>Buildslaves</strong> as a referall to
+the active scheduling component and the passive executors.</p>
 </div>
         </div>
 

@@ -175,6 +175,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/design/continuous-integration/index.html">Design/Continuous Integration</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/design/flashtool/index.html">Design/Flashtool</a>
                         </li>
                     
@@ -236,6 +240,10 @@
                     
                         <li >
                             <a href="../../background/implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/implementation/continuous-integration/index.html">Implementation/Continuous Integration</a>
                         </li>
                     
                         <li >
@@ -427,7 +435,7 @@ help:   Local path where Flashtool should save downloaded products if option is 
 : |
 </code></pre>
 
-<p>You can change these settings by calling the comand:</p>
+<p>You can change these settings by calling the command:</p>
 <p><code>$ flashtool config</code></p>
 <p>The tool will ask for each setting if you want to change the value or not.</p>
 <h2 id="get-recipes-from-git-server">Get <strong>recipes</strong> from git server</h2>
@@ -435,8 +443,8 @@ help:   Local path where Flashtool should save downloaded products if option is 
 system on a platform (e.g. Raspberry Pi) and how to setup the platform. You 
 find more information about <strong>recipe</strong> file in chapter 
 <a href="#recipe-files">Recipe files</a>.</p>
-<p>On the gitlab server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git</strong>
-there are provided some <strong>recipe</strong> files for different hardware.</p>
+<p>On the <strong>Gitlab</strong> server <strong>git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git</strong>
+some <strong>recipe</strong> files for different hardware are provided.</p>
 <p>To get the <strong>recipe</strong> files from the repository for the Flashtool run the following command:</p>
 <p><code>$ flashtool platform_recipes init</code></p>
 <p>The <strong>recipe</strong> files will be stored at the directory <strong><em>{working_directory}/platforms</em></strong>.
@@ -448,7 +456,7 @@ To do so type in:</p>
 <p>This command will list all <strong>recipe</strong> files grouped by their prefix.</p>
 <h3 id="list-finished-builds-from-the-configured-buildbot-server">List finished builds from the configured <strong>Buildbot</strong> server</h3>
 <p>The <strong>Buildbot</strong> server provides all needed products for an <strong>embEDUx</strong> system.
-All products for every configured platform can be listet by the <strong>Flashtool</strong> with
+All products for every configured platform can be listed by the <strong>Flashtool</strong> with
 the following command:</p>
 <p><code>$ flashtool list_builds</code></p>
 <p>There are several options available for this command:</p>
@@ -500,7 +508,7 @@ If you want to implement new features to the <strong>Flashtool</strong>, please 
 reading the development section for the <strong>Flashtool</strong>. The new functionality
 must be triggered by a recipe file an must be explained in the <a href="#recipe-files">recipe
 files</a> chapter.</p>
-<p>This setup procedure requires an exisiting <a href="#How_to_write_a_recipe_file">recipe</a> 
+<p>This setup procedure requires an existing <a href="#How_to_write_a_recipe_file">recipe</a> 
 file. The basic command for this procedure is <code>Flashtool setup</code>.</p>
 <p><strong>Important: You need access rights for reading and writing on a mmc device and
 mounting a mmc device</strong></p>
