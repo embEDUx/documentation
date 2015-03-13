@@ -8,26 +8,25 @@ configuration for those platforms exist.
 ## Sources 
 As directly derived from the [requirements](../requirements.md) the mainline
 sources of **U-Boot** must be used. However there can't be any restriction to a
-specify version. To be able to run any platform with the mainline sources of
+specific version. To be able to run any platform with the mainline sources of
 **U-Boot** the possibility of applying user patches during build has to be
 considered.
  
 ## Repository
-A repository for each platform is needed. It might also be necessary to build
-different **U-Boot** versions for the same platform. Therefore one repository
-has to exist for each platform for the desired **U-Boot** version. That means
-two repositories have to exist **U-Boot** version 1.0 and 1.2 should be build
-for platform A. A possible solution might be abusing the branch system of
-  **Git**.
+The user specification, such as configuration of **U-Boot** and user patches for
+the mainline sources should be stored within a repository. Therefore each platform /
+version combination needs to get its own branch. E.g. two branches have to
+exist if **U-Boot** version 1.0 and 1.2 should be build for platform A.
+
+## Cross Target Support
+s. [Design/Buildserver](buildserver.md)
 
 ## Build Process
 As mainline sources have to be used, those sources need to be retrieved somehow
-before the build process. Also the user has to provide the configuration or at
-least define the config, that should be applied for the build process. Two
-possible options to retrieve the sources are:
+before the build process. Two possible options to retrieve the sources are:
 
 * The User has to provide sources within the repository
-* The sources are downloaded before each build process
+* The sources are downloaded before each build process at runtime
 
 ## Build Steps
 Building **U-Boot** has to include the following steps:
@@ -37,6 +36,5 @@ Building **U-Boot** has to include the following steps:
 1. Apply required patches
 1. (Cross-)Compile **U-Boot** for target architecture with config provided by
    the specifications
-1. Create an archive from the necessary files.
-
+2. Create an archive from the necessary files.
 

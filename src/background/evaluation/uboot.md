@@ -2,11 +2,6 @@
 The considerations from the [design](../design/bootloader.md) will be evaluated
 within this chapter.
 
-## Repository
-The branch system of **Git** to fulfills our needs to keep distinct versions of
-the specifications for each platform and **U-Boot** version within one
-repository. 
-
 ## Build process 
 When building the same **U-Boot** version for different platforms, the same
 source code will be used. Storing the source code of the same **U-Boot** version
@@ -20,9 +15,7 @@ version at runtime. Two possibilities should be considered.
   the sources at runtime.
 
 The benefit of the latter obliterating the redundancy of the commands for
-downloading the sources for the specific **U-Boot** version. Together with
-abusing the branch structure of **Git** the following structure of the
-repository can be achieved.
+downloading the sources for the specific **U-Boot** version. 
 
 Each **U-Boot** version has a branch, which contains a script that downloads the
 specific sources. Each platform has a branch for each **U-Boot** version that
@@ -30,4 +23,17 @@ should be build, containing a script, that executes the download script from the
 **U-Boot** version branch.
 
 ![Structure](background/evaluation/img/eval_uboot.png)
+
+## Build steps
+With the now evaluated build process, the build steps can be redefined.
+
+1. Checkout platform branch for **U-Boot** version X
+1. Checkout **U-Boot** version X branch
+1. Call build script from platform branch
+    * set necessary build parameters
+1. Call build script from **U-Boot** version X branch
+    * download sources
+    * if provided apply patches
+    * build **U-Boot**
+    * create archive
 
