@@ -1,15 +1,16 @@
 # Evaluation
-**(work in progress)**
+The [design considerations](design.md) will be evaluated within this chapter.
+Please select a topic of interest. The design that resulted from the evaluation
+process can be seen at the bottom of the page.
 
-The considerations from the [design](design.md) will be evaluated within this
-chapter.
+## [Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
+## [Container Utility](evaluation/container-utility.md)
+## [Continuous Integration](evaluation/continuous-integration.md)
+## [Flashtool](evaluation/flashtool.md)
+## [Linux-Kernel](evaluation/linux.md)
+## [RootFS](evaluation/rootfs.md)
+## [Toolchain](evaluation/toolchain.md)
+## [U-Boot](evaluation/uboot.md)
 
-## Buildserver
-The buildserver evaluation is split into one subpage per software component.
-
-[Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
-
-[Continuous Integration](evaluation/continuous-integration.md)
-
-[Container Utility](evaluation/container-utility.md)
-
+# Post-Evaluation System Overall Design
+![](background/evaluation/img/eval_result_design.png)

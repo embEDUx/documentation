@@ -1,8 +1,8 @@
-# Specification - Repositories and Branches
+# Implementation - Repositories and Branches
 **(work in progress)**
 
 This is the specification that has been worked out according to the [design on
-repositories and branches](../design/repositories-and-branches.md).
+repositories and branches](../design/repositories.md).
 
 ## Textual Specification
 The five repositories form the base structure which allows an independent

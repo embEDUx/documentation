@@ -65,14 +65,22 @@ into the system.
     occurred during the proccess.
 
 * USE-flags - package customization
+
     USE-flags are one of **Porage**'s excellent features that allows the user to
     custmize the packages that are available for installation. Most USE-flags
     translate directly to options that are passed to the `./configure`-step int
     he compilation process.
 
 * Binary package support
+    
+    Successfull package builds can be stored in a binary package format. They
+    can be resued for further installations without the need to compile the same
+    package more than once.
 
 * portage-tree overlay support
+
+    It is possible to define additional portage trees in order to extend the
+    available ebuils and therefore extend the available software packages.
 
 
 ### Result Gentoo Portage
@@ -297,9 +305,7 @@ Criteria | Result | Notes
 Cross-target support | YES | slow through complete system emulation
 
 
-## Evaluation Result 
-
-### Feature Overview
+## Overview
 Candiate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
 Gentoo Portage | NO | YES | -
@@ -310,7 +316,7 @@ Gentoo crossdev and cross-emerge | NOT RELIABLE | YES | -
 Qemu user emulation | LIMITED / not fully reliable | - | -
 Qemu system emulation | YES / slow | - | -
 
-### Conclusion
+## Conclusion
 It seems like there is no solution that is ready to be integrated into the
 designed continuous integration system without further modifications or
 automation processes wrapped around. As a result, **the choice will favor
