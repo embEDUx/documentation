@@ -24,23 +24,24 @@ point, these parameters include
     Default usernames and passwords are possible security holes, and should not
     be provided by the setuproutine.
 
-
-### Default Setup Parameters
-All other setup parameters should be provided as defaults by the setuproutine.
+### Optional Setup Parameters These setup parameters are likely to be adjusted
+by the administrator, but should be shipped with defaults from the HTWG setup.
 
 * Target Platform and Architectures
     
     The platform names and their corresponding architecture.  The architectures
-    will be supported as build targets. By default, all tested platforms
-    will be available as supported. The user is not forced to use them, but it
-    is useful to already have working examples in the local installation.
+    will be supported as build targets. By default, all tested platforms will be
+    available as supported. The user is not forced to use them, but it is useful
+    to already have working examples in the local installation.
 
+### Default Setup Parameters All other setup parameters should be provided as
+defaults by the setuproutine.
 
-### Configuration Generation From Templates
-The user-provided and default setup parameters should be used to generate the
-configuration files for the buildsystem. For commonly used changes, the
-generator can be extended and can be utilized by beginners immediately.
-Advanced users will still be able to modify the template if necessary.
+### Configuration Generation From Templates The configured and default setup
+parameters should be used to generate the configuration files for the
+buildsystem. For commonly used changes, the generator can be extended and can be
+utilized by beginners immediately.  Advanced users will still be able to modify
+the template if necessary. 
 
 
 
