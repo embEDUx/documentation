@@ -347,15 +347,20 @@
         
             <li><a href="#buildroot">Buildroot</a></li>
         
+            <li><a href="#gentoo-portage">Gentoo Portage</a></li>
+        
+            <li><a href="#gentoo-catalyst">Gentoo catalyst</a></li>
+        
             <li><a href="#gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-emerge</a></li>
         
             <li><a href="#qemu-user-emulation">Qemu user emulation</a></li>
         
             <li><a href="#qemu-system-emulation">Qemu system emulation</a></li>
         
-            <li><a href="#gentoo-portage">Gentoo Portage</a></li>
+            <li><a href="#evaluation-result">Evaluation Result</a></li>
         
-            <li><a href="#gentoo-catalyst">Gentoo catalyst</a></li>
+    
+        <li class="main "><a href="#evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</a></li>
         
     
     </ul>
@@ -372,6 +377,9 @@ the designed features:</p>
 </ul>
 <h2 id="yocto">YOCTO</h2>
 <h2 id="buildroot">Buildroot</h2>
+<h2 id="gentoo-portage">Gentoo Portage</h2>
+<p>Gentoo Portage is a complete package management system that is well maintained </p>
+<h2 id="gentoo-catalyst">Gentoo catalyst</h2>
 <h2 id="gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-emerge</h2>
 <p>Gentoo's crossdev is a utility that can create cross-toolchains and setup
 wrappers for the emerge utility to use the cross-toolchain on the target RootFS that is
@@ -521,6 +529,7 @@ of the Golang-compiler fails with an error from the tcg (<a href="http://wiki.qe
 </code></pre>
 
 <p>Errors like these make qemu-user an unreliable solution for the <strong>embEDUx</strong> project.</p>
+<h3 id="result-qemu-user-emulation">Result Qemu user emulation</h3>
 <table>
 <thead>
 <tr>
@@ -539,9 +548,56 @@ of the Golang-compiler fails with an error from the tcg (<a href="http://wiki.qe
 </table>
 <h2 id="qemu-system-emulation">Qemu system emulation</h2>
 <p>System Emulation was already a considered as an abstraction technique in the
-<a href="../../../virtual-machines">Buildserver Design - Virtual Machines</a></p>
-<p>Throughout the RootFS buildprocess, a virtual machine could be used to run a
-native compiler for the target architecture.</p>
+<a href="../../../virtual-machines">Buildserver Design - Virtual Machines</a>. In comparison to
+<a href="../../../Qemu-user-emulation">Qemu user emulation</a>, a complete system is emulated
+instead of translating the foreign machine code into the machine code executable
+by the running host machine. </p>
+<h3 id="filesystem-passthrough-via-9p-fs">Filesystem Passthrough via 9p-fs</h3>
+<p>The first approach is to store a target RootFS directly on the filesystem of
+the build machine, and pass it to the virtual machine via the <strong>9p-fs</strong>.</p>
+<pre><code>QEMU_AUDIO_DRV=none qemu-system-arm \
+  -M virt \
+  -m 4095 \
+  -nographic \
+  -kernel output/zImage \
+  -append &quot;root=root rw rootflags=rw,trans=virtio,version=9p2000.L rootfstype=9p console=ttyAMA0&quot; \
+  -net user \
+  -netdev user,id=vnet0 \
+  -device virtio-net-device,netdev=vnet0 \
+  -device virtio-serial-device \
+  -chardev socket,path=/tmp/foo,server,nowait,id=vconsole \
+  -device virtserialport,chardev=vconsole,name=vconsole \
+  -fsdev local,id=root,path=rootfs/,security_model=passthrough \
+  -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
+</code></pre>
+
+<h3 id="performance-loss">Performance Loss</h3>
+<p>In comparison, this method has siginificant
+performance limitations and overhead, due to the following reasons:</p>
+<ul>
+<li>Target Linux-Kernel required for the virtual machine
+    In order to run a virtual machine, a kernel that supports executing in the
+    target system must be configured and compiled using a cross-toolchain. The
+    preperation of the kernel for the virtual machine shall not be covered in
+    the RootFS evaluation.</li>
+<li>
+<p>No multi-core support for ARM architectures</p>
+</li>
+<li>
+<p><a href="https://bugs.launchpad.net/qemu/+bug/1336794">Bugs in the 9p-fs filesystem</a>
+  that make it impossible to use the virtual machine like in a chroot-manner</p>
+<p>The bug in the 9p-fs makes it necessary to create and maintain a disk image for
+the virtual machine, which introduces additional overhead in the disk I/O that
+happens within the virtual machine. This topic will not be evaluated further
+since it is not new to the team members, and will be considered for the
+implementation if <em>Qemu system emulation</em> will make it into the next round.</p>
+</li>
+</ul>
+<h3 id="result-qemu-system-emulation">Result Qemu system emulation</h3>
+<p>Besides the performance overhead, the virtual machine performs reliable during
+the evaluation phase.</p>
+<p>While a virtual machine itself would add extra complexity to the build process,
+it would allow to run arbitrary</p>
 <table>
 <thead>
 <tr>
@@ -558,9 +614,8 @@ native compiler for the target architecture.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="gentoo-portage">Gentoo Portage</h2>
-<h2 id="gentoo-catalyst">Gentoo catalyst</h2>
-<h3 id="evaluation-result-overview">Evaluation Result Overview</h3>
+<h2 id="evaluation-result">Evaluation Result</h2>
+<h3 id="feature-overview">Feature Overview</h3>
 <table>
 <thead>
 <tr>
@@ -574,13 +629,13 @@ native compiler for the target architecture.</p>
 <tr>
 <td>YOCTO</td>
 <td>LIMITED</td>
-<td>LIMITED</td>
+<td>LIMITED / difficult to extend</td>
 <td>YES</td>
 </tr>
 <tr>
 <td>Buildroot</td>
 <td>YES</td>
-<td>LIMITED</td>
+<td>LIMITED / difficult to extend</td>
 <td>YES</td>
 </tr>
 <tr>
@@ -591,13 +646,13 @@ native compiler for the target architecture.</p>
 </tr>
 <tr>
 <td>Qemu user emulation</td>
-<td>NOT RELIABLE</td>
-<td>NO</td>
-<td>NO</td>
+<td>LIMITED / not fully reliable</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
 <td>Qemu system emulation</td>
-<td>YES/SLOW</td>
+<td>YES / slow</td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -610,11 +665,20 @@ native compiler for the target architecture.</p>
 <tr>
 <td>Gentoo catalyst</td>
 <td>NO</td>
-<td>YES</td>
+<td>-</td>
 <td>YES</td>
 </tr>
 </tbody>
 </table>
+<h3 id="conclusion">Conclusion</h3>
+<p>Apparently there is no solution that is ready to be integrated into the designed
+continuous integration system without further modifications or automation
+processes wrapped around. As a result, <strong>the choice will favor reliability in
+cross-target support, and package management qualities</strong> and incorporate the
+winners into a custom automated buildroutine.</p>
+<h1 id="evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</h1>
+<p>As described in the design chapter <a href="../../design/buildserver/index.html#build-automation-routines">Buildserver - Build Automation
+Routines</a>, the automated RootFS buildroutine will be triggered by the continuous integration master component.</p>
 </div>
         </div>
 
