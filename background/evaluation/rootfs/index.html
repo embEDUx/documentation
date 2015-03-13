@@ -343,13 +343,13 @@
     
         <li class="main active"><a href="#evaluation-rootfs">Evaluation RootFS</a></li>
         
-            <li><a href="#yocto">YOCTO</a></li>
+            <li><a href="#yocto-project">Yocto Project</a></li>
         
             <li><a href="#buildroot">Buildroot</a></li>
         
             <li><a href="#gentoo-portage">Gentoo Portage</a></li>
         
-            <li><a href="#gentoo-catalyst">Gentoo catalyst</a></li>
+            <li><a href="#gentoo-catalyst">Gentoo Catalyst</a></li>
         
             <li><a href="#gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-Emerge</a></li>
         
@@ -375,11 +375,80 @@ the designed features:</p>
 <li>Package management</li>
 <li>Buildroutine Automation</li>
 </ul>
-<h2 id="yocto">YOCTO</h2>
+<h2 id="yocto-project">Yocto Project</h2>
+<p>The <strong>Yocto Project</strong> is divided in multiple sub-projects. </p>
+<ul>
+<li>
+<p>Bitbake (build tool)</p>
+<p><strong>Bitbake</strong> is the sub-project that builds the output system image, and is
+based on <strong>Gentoo Portage</strong>. The buildprocess uses meta data to calculcate 
+the installation instcrutions. </p>
+</li>
+<li>
+<p>Openembedded-Core - Meta data (available software)</p>
+<p>The meta data is provided by the <strong>openembedded-core</strong> and is stored as
+recipes which are used by <strong>Bitbake</strong> to build the packages. As the <strong>Yocto
+Project</strong> is mainly targetted on creating images for the embedded
+domain, it seems that the meta data, and therefore the available software
+packgaes, is updated less frequently when compared to other package
+management systems.</p>
+</li>
+</ul>
 <h2 id="buildroot">Buildroot</h2>
 <h2 id="gentoo-portage">Gentoo Portage</h2>
-<p>Gentoo Portage is a complete package management system that is well maintained </p>
-<h2 id="gentoo-catalyst">Gentoo catalyst</h2>
+<p><strong>Gentoo Portage</strong> is a full-fledged source-based package management system that
+can install, uninstall and update a huge variety of software package on a Linux
+System. The so called <em>portage tree</em> holds the package specification files
+<em>(ebuilds)</em> that allows the <code>emerge</code>-utility to build and install the packages
+into the system.</p>
+<ul>
+<li>
+<p><code>emerge</code>-utility</p>
+<p>The <code>emerge</code>-utility written in python for accessing the features of
+<strong>Portage</strong> from the command line. The program calculates dependencies and
+arranges the package installation order accordingly. The build process
+itself happens inside a sandbox environment. This protects the system from
+possibly dangerous commands inside  ebuilds. The compilation and
+installation into the system will only succeed of no sandbox violation
+occurred during the proccess.</p>
+</li>
+<li>
+<p>USE-flags - package customization
+    USE-flags are one of <strong>Porage</strong>'s excellent features that allows the user to
+    custmize the packages that are available for installation. Most USE-flags
+    translate directly to options that are passed to the <code>./configure</code>-step int
+    he compilation process.</p>
+</li>
+<li>
+<p>Binary package support</p>
+</li>
+<li>
+<p>portage-tree overlay support</p>
+</li>
+</ul>
+<h3 id="result-gentoo-portage">Result Gentoo Portage</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Result</th>
+<th>Nots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-target support</td>
+<td>NO / native-only</td>
+<td>uses installed system buildtools for</td>
+</tr>
+<tr>
+<td>compilation</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="gentoo-catalyst">Gentoo Catalyst</h2>
 <h2 id="gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-Emerge</h2>
 <p>Gentoo's crossdev is a utility that can create cross-toolchains and setup
 wrappers for the emerge utility to use the cross-toolchain on the target RootFS that is
@@ -571,6 +640,16 @@ the build machine, and pass it to the virtual machine via the <strong>9p-fs</str
   -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
 </code></pre>
 
+<p>The following structure gives an outline of the scenario and the direct result of the mentioned
+9p-fs bug:</p>
+<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
+  - QEMU/KVM VM @ Gentoo Kernel 3.19
+    - Docker container that contains another chroot_rootfs
+      - running as user $ sudo proot chroot_inside_container sshd -p 2222
+        - running as user $ ssh root@localhost -p 2222
+          - running as chroot root # su some_user -s /bin/true -- FAILS WITH 'Permission Denied'
+</code></pre>
+
 <h3 id="performance-loss">Performance Loss</h3>
 <p>In comparison, this method has siginificant
 performance limitations and overhead, due to the following reasons:</p>
@@ -628,13 +707,13 @@ it would allow to run arbitrary</p>
 <th>Candiate</th>
 <th>Cross-target support</th>
 <th>Package management</th>
-<th>Buildroutine Automation</th>
+<th>RootFS Buildroutine Automation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Gentoo Portage</td>
-<td>-</td>
+<td>NO</td>
 <td>YES</td>
 <td>-</td>
 </tr>
