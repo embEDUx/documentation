@@ -43,7 +43,7 @@ permissions to run arbitrary commands with sudo**.
   for the user you chose in the host details.
 
 ## Suggestions
-* Understand the [Background Information](../background/background.md)
+* Understand the [Implementation Details](../background/implementation.md)
 
 
 ## Configure the hosts details

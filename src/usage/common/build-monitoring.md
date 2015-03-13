@@ -38,9 +38,9 @@ last builds.
 ![buildmaster at HTWG - Builders - all Idle](usage/common/img/buildmaster_builders_view.png)
 
 #### Force builds
-Depending on the [buildmaster's scheduler
-configuration](../../setup/buildserver/buildmaster.md#Scheduler), it is also possible
-to schedule forced builds via the builders view.
+To force builds you must have received login credentials for the buildmaster's
+web-interface. After login in you should then be able to chose a builder 
+in the *builders view* and force a build for a specific branch and repository.
 
 ## Troubleshooting
 If you need a more insight of what is going on, please visit the

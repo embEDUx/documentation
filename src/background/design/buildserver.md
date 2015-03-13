@@ -1,4 +1,7 @@
-# Automated Builds and Setup
+# Buildserver
+This chapter describes the design of the buildserver components and the setup
+routine which is used to install these components on the buildserver machine.
+
 **(work in progress)**
 
 ## Build Automation
