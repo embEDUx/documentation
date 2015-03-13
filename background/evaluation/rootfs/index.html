@@ -183,7 +183,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../design/repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                            <a href="../../design/repositories/index.html">Design/Repositories</a>
                         </li>
                     
                         <li >
@@ -288,6 +288,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../troubleshooting/faq/index.html">Faq</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
@@ -357,7 +361,9 @@
         
             <li><a href="#qemu-system-emulation">Qemu System Emulation</a></li>
         
-            <li><a href="#evaluation-result">Evaluation Result</a></li>
+            <li><a href="#overview">Overview</a></li>
+        
+            <li><a href="#conclusion">Conclusion</a></li>
         
     
         <li class="main "><a href="#evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</a></li>
@@ -452,17 +458,22 @@ installation into the system will only succeed of no sandbox violation
 occurred during the proccess.</p>
 </li>
 <li>
-<p>USE-flags - package customization
-    USE-flags are one of <strong>Porage</strong>'s excellent features that allows the user to
-    custmize the packages that are available for installation. Most USE-flags
-    translate directly to options that are passed to the <code>./configure</code>-step int
-    he compilation process.</p>
+<p>USE-flags - package customization</p>
+<p>USE-flags are one of <strong>Porage</strong>'s excellent features that allows the user to
+custmize the packages that are available for installation. Most USE-flags
+translate directly to options that are passed to the <code>./configure</code>-step int
+he compilation process.</p>
 </li>
 <li>
 <p>Binary package support</p>
+<p>Successfull package builds can be stored in a binary package format. They
+can be resued for further installations without the need to compile the same
+package more than once.</p>
 </li>
 <li>
 <p>portage-tree overlay support</p>
+<p>It is possible to define additional portage trees in order to extend the
+available ebuils and therefore extend the available software packages.</p>
 </li>
 </ul>
 <h3 id="result-gentoo-portage">Result Gentoo Portage</h3>
@@ -728,8 +739,7 @@ it would allow to run arbitrary</p>
 </tr>
 </tbody>
 </table>
-<h2 id="evaluation-result">Evaluation Result</h2>
-<h3 id="feature-overview">Feature Overview</h3>
+<h2 id="overview">Overview</h2>
 <table>
 <thead>
 <tr>
@@ -784,7 +794,7 @@ it would allow to run arbitrary</p>
 </tr>
 </tbody>
 </table>
-<h3 id="conclusion">Conclusion</h3>
+<h2 id="conclusion">Conclusion</h2>
 <p>It seems like there is no solution that is ready to be integrated into the
 designed continuous integration system without further modifications or
 automation processes wrapped around. As a result, <strong>the choice will favor

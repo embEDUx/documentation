@@ -183,7 +183,7 @@
                         </li>
                     
                         <li >
-                            <a href="repositories-and-branches/index.html">Design/Repositories And Branches</a>
+                            <a href="repositories/index.html">Design/Repositories</a>
                         </li>
                     
                         <li >
@@ -288,6 +288,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../troubleshooting/faq/index.html">Faq</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
@@ -343,13 +347,19 @@
     
         <li class="main active"><a href="#design">Design</a></li>
         
+            <li><a href="#linux-kernel">Linux Kernel</a></li>
+        
+            <li><a href="#bootloader">Bootloader</a></li>
+        
+            <li><a href="#rootfs">RootFS</a></li>
+        
+            <li><a href="#buildserver">Buildserver</a></li>
+        
             <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
             <li><a href="#cross-target-support">Cross-Target Support</a></li>
         
             <li><a href="#repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</a></li>
-        
-            <li><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
             <li><a href="#platform-support-extensibility">Platform Support Extensibility</a></li>
         
@@ -366,13 +376,12 @@
 <a href="../requirements/index.html">project requirements</a>. These include a wide variety of
 necessary configuration options, which in turn requires a configurable build
 system. The build system must be able to build the following software</p>
-<ul>
-<li><a href="linux/index.html">Linux Kernel</a></li>
-<li><a href="bootloader/index.html">Bootloader</a></li>
-<li><a href="rootfs/index.html">RootFS</a></li>
-</ul>
+<h2 id="linux-kernel"><a href="linux/index.html">Linux Kernel</a></h2>
+<h2 id="bootloader"><a href="bootloader/index.html">Bootloader</a></h2>
+<h2 id="rootfs"><a href="rootfs/index.html">RootFS</a></h2>
 <p>while the build configuration must be user providable for each build.</p>
-<p>The software that is built by the <strong><a href="../../design/buildserver">buildserver</a></strong> will be
+<h2 id="buildserver"><a href="../../design/buildserver">Buildserver</a></h2>
+<p>The software that is built by the buildserver will be
 referred as <strong><em>products</em></strong> within the further documentation.</p>
 <h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
 <p>The idea of building a complete Linux-based system for a specific platform is
@@ -407,23 +416,7 @@ helpful starting point for developers."
 still running on x86-based architectures. In order to build the products for the
 platforms used within the lab-courses, it is necessary to either use
 cross-toolchains or emulators. </p>
-<h2 id="repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</h2>
-<p>It must be possible to build the products independently from each other.
-Therefore, each product specification should be managed in a separate storage
-unit which will be referred as a <em>repository</em> from this point on. Additionally
-each platform needs to have its own identifiable storage subunit within the
-<em>respository</em>. The storage subunits will be referred as <em>branches</em> from this
-point on.</p>
-<h3 id="repository-format">Repository Format</h3>
-<p>Configuration files and specification files are most certainly provided by the
-user as text files. For this purpose, a version control system should be used in
-order to have a history of build changes and allow easier handling of the
-repositories.</p>
-<h2 id="product-requirement-analysis">Product Requirement Analysis</h2>
-<p>The build process and the configuration options of each product must fulfill the
-requirements of the corresponding product. The requirements chapter lists
-different requirements for each product, which must therefore be analyzed
-separately.</p>
+<h2 id="repositories-product-specification-storage-units"><a href="repositories/index.html">Repositories</a> - Product-Specification Storage Units</h2>
 <h2 id="platform-support-extensibility">Platform Support Extensibility</h2>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
