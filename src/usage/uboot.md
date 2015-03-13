@@ -167,7 +167,7 @@ $ ls -hl
         -rwxr-xr-x 1 user user 431 Mar  2 18:59 build
         -rw-r--r-- 1 user user   0 Mar  2 18:57 README
 
-1. Modify *< uboot-version \>* to thhe desired *version\_generic* branch. Then
+1. Modify *< uboot-version \>* to the desired *version\_generic* branch. Then
    modify *< def-config \>* to the platform configuration for **U-Boot**. In
    this case we expect a default configuration for you platform within the
    **U-Boot** source. If this isn't the case, please read further informations

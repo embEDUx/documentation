@@ -83,9 +83,10 @@ root@localhost ~ # genlop -ct
     
 
 1. The next step shows how to monitor the output of the package build log. Those
-   who are familiar with the [portage package manager](TODO) already know what
-   to do. The example uses `tail` to continuously read the ***build.log*** and
-   to initially display the most current line in in the ***build.log***.
+   who are familiar with the [portage package
+   manager](http://wiki.gentoo.org/wiki/Portage) already know what to do. The
+   example uses `tail` to continuously read the ***build.log*** and to initially
+   display the most current line in in the ***build.log***.
 
     ```
 root@localhost ~ # tail -n1 -f /var/tmp/portage/net-wireless/gnuradio-3.7.6.1-r2/temp/build.log 

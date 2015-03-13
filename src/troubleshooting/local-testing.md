@@ -18,7 +18,7 @@ The following example is based on modifying the ***build*** script for the
 **Linux** kernel for the raspberry-pi. We assume that you already have your
 files according to [Usage/Linux](../usage/linux.md).
 
-1. Get the the toolchain product download URL from your [User
+1. Get the toolchain product download URL from your [User
 Documentation](../setup/post-install/user-documentation.md) then download and
 extract the toolchain archive *amd64_armv6j-ct-ng-linux-gnueabi* to
 */opt/toolchain/amd64_armv6j-ct-ng-linux-gnueabi/*

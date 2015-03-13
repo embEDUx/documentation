@@ -22,7 +22,7 @@ are needed for the usage of every product.
 
 ### Suggestions
 * Understand the [RootFS Background Information](../background/implementation/rootfs.md). The
-  buldsystem itself and **Gentoo** as base distribution introduce a high level
+  buildsystem itself and **Gentoo** as base distribution introduce a high level
   of customization options. These come with complexity and must be
   understood to be fully utilized.
 * Get familiar with the [YAML-Syntax](http://yaml.org/)
@@ -103,7 +103,7 @@ filesystem overlays that will be copied over the target RootFS at specified
 times. 
 
 Note that that file attributes cannot be preserved. If you need special
-attributes or permissions on files, you have the following possiblities:
+attributes or permissions on files, you have the following possibilities:
 * set attributes in on the files of the install\_commands.
 * `tar` your files in the overlay directories and `untar` them in one of the
   install\_commands 
