@@ -1,4 +1,6 @@
 # Design
+**(work in progress)**
+
 The design for the **embEDUx** system must be created by carefully analyzing the
 [project requirements](requirements.md). These include a wide variety of
 necessary configuration options, which in turn requires a configurable build

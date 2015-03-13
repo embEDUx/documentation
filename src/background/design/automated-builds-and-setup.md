@@ -1,6 +1,40 @@
 # Automated Builds and Setup
+**(work in progress)**
 
-## Automated Setup Routine
+## Build Automation
+The builds should run in an automated manner as soon as the build specifications
+are updated by the user. As the build specifications are stored inside the product
+repositories, the buildserver should watch them for changes and trigger a new
+build on detected changes. The builds should only be triggered for the products
+that received new build specifications in their repositories.
+
+### Main Tasks
+* Watch product repositories for changes
+* Start build process for detected change
+
+### Additional Tasks and Features
+1. Split functionality
+    * Repository Observer, Build Scheduler
+    * Build Executor
+1. Provide an overview of recent and running builds
+1. View Log-files or recent and running builds
+1. Allow to manually manage build jobs
+    * (Re-)schedule builds
+    * Cancel builds
+1. Flexible build job specifications
+
+All of the above matches exactly to what is generally referred as *continuous
+integration*. This topic has received lots of attention from the open source
+community and there are a couple of source projects available that could possibly
+deliver the needed functionality. The following list of contiuous integration
+systems shall be evaluated in order to find the best suiting system.
+
+### Build Automation Candidates
+* Gitlab-CI
+* Buildbot
+* Jenkins
+
+## Setup Automation Routine
 The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.
 
@@ -43,9 +77,7 @@ buildsystem. For commonly used changes, the generator can be extended and can be
 utilized by beginners immediately.  Advanced users will still be able to modify
 the template if necessary. 
 
-
-
-### Language Choice
+### Setup Automation Routine Candidates
 The setuproutine should be automated using an appropriate programming or
 scripting language. The candidates for the task are:
 
@@ -60,7 +92,7 @@ The criteria must include:
 * Extensibility
 * Templating features
 
-# Abstraction Layer For Automation
+## Abstraction Layer For Automation
 In order to have an automated build system, all components should be setup and
 run abstracted from the buildserver's host system as far as possible.
 Abstraction methods make it possible to deploy and run complex infrastructures
@@ -106,12 +138,12 @@ components. In environments where security is a high requirement, the containers
 can live inside a virtual machine, but that is beyond the design for the
 buildsystem itself.
 
-## Splitting Functionality into Linux Containers
+### Splitting Functionality Into Containers
 Performance wise, containers are relatively cheap entities for the system. This
 allows the buildsystem to be split into several containers for the different
 parts of the buildsystem, without losing performance over a flat installation on
-the system. The container infrastructure could split the following
-functionalities
+the system. The container infrastructure could split the different components of
+the continuous integration system into containers.
 
 * One Buildmaster
 
@@ -129,10 +161,11 @@ functionalities
     * Compiler flags
     * Base system archive
 
-### Container Management Software
-The choice of the container management software still needs to be evaluated, but in favor
-of popularity Docker should be the main candidate. Candidates:
+## Linux-Containers Utility Candidates
+There is still the choice to make which utility should be used in order to
+utilize the Linux-Containers functionality.
 
-* Docker
-* LXC
-* OpenVZ
+* **Docker**
+* **LXC**
+* **OpenVZ**
+
