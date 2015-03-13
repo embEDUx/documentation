@@ -10,10 +10,10 @@ branch.
 
 ![Repository](usage/uboot/img/example_uboot_repository.png)
 
-#**Important**: Each *version\_platform* branch depends on a *version\_generic*
+**Important**: Each *version\_platform* branch depends on a *version\_generic*
 branch.
 
-## version\_generic
+### version\_generic
 This branch exists exactly one time per **U-Boot** version. It contains the
 script, that downloads the sources for the version it is designed for. For
 obliterating the redundancy throughout the different platforms, it also
