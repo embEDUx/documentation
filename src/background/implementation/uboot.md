@@ -33,4 +33,4 @@ scripts, which were implemented and uses throughout the whole development and
 test process are provided:
 
 * [version\_generic](usage/uboot/default/generic_build)
-* [version\_platform](usgae/uboot/default/platform_build)
+* [version\_platform](usage/uboot/default/platform_build)
