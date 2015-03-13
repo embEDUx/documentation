@@ -165,19 +165,31 @@ Cross-target support | YES | slow through complete system emulation
 
 
 ## Gentoo Portage
+Gentoo Portage is a complete package management system that is well maintained 
 
 ## Gentoo catalyst
 
+## Evaluation Result 
 
-### Evaluation Result Overview
-
+### Feature Overview
 Candiate | Cross-target support | Package management | Buildroutine Automation
 --- | --- | --- | ---
-YOCTO | LIMITED | LIMITED | YES
-Buildroot | YES | LIMITED | YES
+YOCTO | LIMITED | LIMITED / difficult to extend | YES 
+Buildroot | YES | LIMITED / difficult to extend | YES
 Gentoo Crossdev and Cross-emerge | NOT RELIABLE | YES | -
-Qemu user emulation | NOT RELIABLE | NO | NO
-Qemu system emulation | YES/SLOW | - | -
+Qemu user emulation | LIMITED / not fully reliable | - | -
+Qemu system emulation | YES / slow | - | -
 Gentoo Portage | - | YES | -
-Gentoo catalyst | NO | YES | YES
+Gentoo catalyst | NO | - | YES
+
+### Conclusion
+Apparently there is no solution that is ready to be integrated into the designed
+continuous integration system without further modifications or automation
+processes wrapped around. As a result, **the choice will favor reliability in
+cross-target support, and package management qualities** and incorporate the
+winners into a custom automated buildroutine.
+
+# Evaluation RootFS Buildroutine Automation
+As described in the design chapter [Buildserver - Build Automation
+Routines](../design/buildserver.md#build-automation-routines), the automated RootFS buildroutine will be triggered by the continuous integration master component.
 
