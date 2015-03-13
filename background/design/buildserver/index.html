@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Design/Continuous Integration - embEDUx Project</title>
+        <title>Design/Buildserver - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -114,14 +114,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/buildserver/buildmaster/index.html">Buildserver/Buildmaster</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
                         </li>
                     
@@ -167,10 +159,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../buildserver/index.html">Buildserver</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../requirements/index.html">Requirements</a>
                         </li>
                     
@@ -179,15 +167,11 @@
                         </li>
                     
                         <li >
-                            <a href="../automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
-                        </li>
-                    
-                        <li >
                             <a href="../bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Design/Continuous Integration</a>
+                            <a href="index.html">Design/Buildserver</a>
                         </li>
                     
                         <li >
@@ -215,6 +199,14 @@
                         </li>
                     
                         <li >
+                            <a href="../../evaluation/buildserver-setup/index.html">Evaluation/Buildserver Setup</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../evaluation/container-utility/index.html">Evaluation/Container Utility</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../evaluation/continuous-integration/index.html">Evaluation/Continuous Integration</a>
                         </li>
                     
@@ -239,11 +231,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../buildmaster/index.html">Buildmaster</a>
+                            <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
-                            <a href="../../buildslaves/index.html">Buildslaves</a>
+                            <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
                         </li>
                     
                         <li >
@@ -349,33 +341,196 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#design-continuous-integration-ci">Design - Continuous Integration (CI)</a></li>
+        <li class="main active"><a href="#buildserver">Buildserver</a></li>
         
-    
-        <li class="main "><a href="#tasks">Tasks</a></li>
+            <li><a href="#build-automation">Build Automation</a></li>
+        
+            <li><a href="#setup-automation-routine">Setup Automation Routine</a></li>
+        
+            <li><a href="#abstraction-layer-for-automation">Abstraction Layer For Automation</a></li>
+        
+            <li><a href="#virtualization-machines">Virtualization Machines</a></li>
+        
+            <li><a href="#linux-containers-utility-candidates">Linux-Containers Utility Candidates</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="design-continuous-integration-ci">Design - Continuous Integration (CI)</h1>
-<p>The continuous integration system is responsible for scheduling the builds
-according the changes in the product repositories. It delegates scheduled builds
-to builders that are prepared with build environments specific to their mapped
-platform or the platform's architecture.</p>
-<h1 id="tasks">Tasks</h1>
+<h1 id="buildserver">Buildserver</h1>
+<p>This chapter describes the design of the buildserver components and the setup
+routine which is used to install these components on the buildserver machine.</p>
+<p><strong>(work in progress)</strong></p>
+<h2 id="build-automation">Build Automation</h2>
+<p>The builds should run in an automated manner as soon as the build specifications
+are updated by the user. As the build specifications are stored inside the product
+repositories, the buildserver should watch them for changes and trigger a new
+build on detected changes. The builds should only be triggered for the products
+that received new build specifications in their repositories.</p>
+<h3 id="main-tasks">Main Tasks</h3>
+<ul>
+<li>Watch product repositories for changes</li>
+<li>Start build process for detected change</li>
+</ul>
+<h3 id="additional-tasks-and-features">Additional Tasks and Features</h3>
 <ol>
-<li>provide an overview of recent and running builds</li>
+<li>Split functionality<ul>
+<li>Repository Observer, Build Scheduler</li>
+<li>Build Executor</li>
+</ul>
+</li>
+<li>Provide an overview of recent and running builds</li>
 <li>View Log-files or recent and running builds</li>
 <li>Allow to manually manage build jobs<ul>
-<li>(re-) Schedule builds</li>
+<li>(Re-)schedule builds</li>
 <li>Cancel builds</li>
 </ul>
 </li>
-<li>Flexible build job specifications, not limited to specific commands or
-  structures</li>
+<li>Flexible build job specifications</li>
 </ol>
+<p>All of the above matches exactly to what is generally referred as <em>continuous
+integration</em>. This topic has received lots of attention from the open source
+community and there are a couple of source projects available that could possibly
+deliver the needed functionality. The following list of contiuous integration
+systems shall be evaluated in order to find the best suiting system.</p>
+<h3 id="build-automation-candidates">Build Automation Candidates</h3>
+<ul>
+<li>Gitlab-CI</li>
+<li>Buildbot</li>
+<li>Jenkins</li>
+</ul>
+<h2 id="setup-automation-routine">Setup Automation Routine</h2>
+<p>The buildserver will undoubtedly be a complex structure of software components.
+To make the setup as easy as possible it should be automated as far as possible.</p>
+<h3 id="required-setup-parameters">Required Setup Parameters</h3>
+<p>The administrator should only have to configure the parameters that can't
+possibly be known upfront, or are not convenient to be predefined. At this
+point, these parameters include</p>
+<ul>
+<li>
+<p>Buildserver Machine Address</p>
+<p>The target machine shall by default run all containers that belong to the
+buildsystem</p>
+</li>
+<li>
+<p>Authentication credentials between system components</p>
+<p>While this could in general be generated randomly, it is chosen to let the
+user set the credentials for system internal communication.</p>
+</li>
+<li>
+<p>Authentication credentials between the system components and the users</p>
+<p>Default usernames and passwords are possible security holes, and should not
+be provided by the setuproutine.</p>
+</li>
+</ul>
+<h3 id="optional-setup-parameters-these-setup-parameters-are-likely-to-be-adjusted">Optional Setup Parameters These setup parameters are likely to be adjusted</h3>
+<p>by the administrator, but should be shipped with defaults from the HTWG setup.</p>
+<ul>
+<li>
+<p>Target Platform and Architectures</p>
+<p>The platform names and their corresponding architecture.  The architectures
+will be supported as build targets. By default, all tested platforms will be
+available as supported. The user is not forced to use them, but it is useful
+to already have working examples in the local installation.</p>
+</li>
+</ul>
+<h3 id="default-setup-parameters-all-other-setup-parameters-should-be-provided-as">Default Setup Parameters All other setup parameters should be provided as</h3>
+<p>defaults by the setuproutine.</p>
+<h3 id="configuration-generation-from-templates-the-configured-and-default-setup">Configuration Generation From Templates The configured and default setup</h3>
+<p>parameters should be used to generate the configuration files for the
+buildsystem. For commonly used changes, the generator can be extended and can be
+utilized by beginners immediately.  Advanced users will still be able to modify
+the template if necessary. </p>
+<h3 id="setup-automation-routine-candidates">Setup Automation Routine Candidates</h3>
+<p>The setuproutine should be automated using an appropriate programming or
+scripting language. The candidates for the task are:</p>
+<ul>
+<li>Shell</li>
+<li>Python</li>
+<li>Ansible</li>
+</ul>
+<p>The criteria must include:</p>
+<ul>
+<li>Reusable components availability</li>
+<li>Code readability</li>
+<li>Extensibility</li>
+<li>Templating features</li>
+</ul>
+<h2 id="abstraction-layer-for-automation">Abstraction Layer For Automation</h2>
+<p>In order to have an automated build system, all components should be setup and
+run abstracted from the buildserver's host system as far as possible.
+Abstraction methods make it possible to deploy and run complex infrastructures
+without having to care about the underlying hardware and system configuration.</p>
+<p>Possible technologies for abstracting applications and whole operating systems
+include Virtual Machines and Linux Containers.</p>
+<h2 id="virtualization-machines">Virtualization Machines</h2>
+<p>Virtual Machines are completely abstracted from the host system's hardware.
+They run on a so-called Hypervisor, which simulates a complete machine for the
+target system. The target system runs it's own kernel, and needs to boot and
+initialize an Operating System from scratch. Security is considered very high,
+since the Hypervisor has full control over soft- and hardware-resources that are
+passed to the guest system.   The architecture of an operating system inside a
+virtual machine can be completely different to the host architecture, and thus
+is highly portable.  Depending on available acceleration technologies, the
+performance of the virtual CPU, RAM and disk can suffer significantly.</p>
+<h3 id="linux-containers">Linux Containers</h3>
+<p>Linux Containers utilize a feature in recent Linux Kernels which allow
+separating processes from each other. This includes the separation of host and
+contained processes, as well as different contained processes from each other.
+These contained processes can be an initialization processes to boot a
+different Linux System on the running host Linux kernel, or simply any other
+application available. Recently there has been a lot of development and
+activity on Linux Containers in the community, namely because of a software
+called Docker.  Security is highly dependent on the implementation of the
+process separating that happens in the host kernel.   The host kernel must
+obviously be able to run the contained application.  Therefore, the
+application must either be in the host's native or compatible executable
+format, or the system needs an emulator to run the foreign architecture. The
+performance for contained processes does not differ significantly compared to
+a regular running process. This is not entirely true for executables that
+require emulation because the CPU instructions must be translated before they
+can be run.</p>
+<h3 id="choosing-linux-containers">Choosing Linux-Containers</h3>
+<p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
+Containers</a>)
+container technologies should be chosen as the base for the buildsystem
+components. In environments where security is a high requirement, the containers
+can live inside a virtual machine, but that is beyond the design for the
+buildsystem itself.</p>
+<h3 id="splitting-functionality-into-containers">Splitting Functionality Into Containers</h3>
+<p>Performance wise, containers are relatively cheap entities for the system. This
+allows the buildsystem to be split into several containers for the different
+parts of the buildsystem, without losing performance over a flat installation on
+the system. The container infrastructure could split the different components of
+the continuous integration system into containers.</p>
+<ul>
+<li>
+<p>One Buildmaster</p>
+<p>Running with native buildserver host architecture, and has the following
+responsibilities</p>
+<ul>
+<li>Watch all the product repositories for changes</li>
+<li>Delegate build processes to buildslaves on changes</li>
+<li>Buildslaves with target architecture specific build tools</li>
+</ul>
+<p>Runs emulated or natively with the target architecture, and has the
+following target archtecture specific components:</p>
+<ul>
+<li>Toolchain</li>
+<li>Compiler flags</li>
+<li>Base system archive</li>
+</ul>
+</li>
+</ul>
+<h2 id="linux-containers-utility-candidates">Linux-Containers Utility Candidates</h2>
+<p>There is still the choice to make which utility should be used in order to
+utilize the Linux-Containers functionality.</p>
+<ul>
+<li><strong>Docker</strong></li>
+<li><strong>LXC</strong></li>
+<li><strong>OpenVZ</strong></li>
+</ul>
 </div>
         </div>
 

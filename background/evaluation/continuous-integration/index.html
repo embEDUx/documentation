@@ -114,14 +114,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/buildserver/buildmaster/index.html">Buildserver/Buildmaster</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/buildserver/buildslaves/index.html">Buildserver/Buildslaves</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/buildserver/customize-buildslaves/index.html">Buildserver/Customize Buildslaves</a>
                         </li>
                     
@@ -167,10 +159,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../buildserver/index.html">Buildserver</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../requirements/index.html">Requirements</a>
                         </li>
                     
@@ -179,15 +167,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../design/automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../design/bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
                         <li >
-                            <a href="../../design/continuous-integration/index.html">Design/Continuous Integration</a>
+                            <a href="../../design/buildserver/index.html">Design/Buildserver</a>
                         </li>
                     
                         <li >
@@ -212,6 +196,14 @@
                     
                         <li >
                             <a href="../index.html">Evaluation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../buildserver-setup/index.html">Evaluation/Buildserver Setup</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../container-utility/index.html">Evaluation/Container Utility</a>
                         </li>
                     
                         <li class="active">
@@ -239,11 +231,11 @@
                         </li>
                     
                         <li >
-                            <a href="../../buildmaster/index.html">Buildmaster</a>
+                            <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
-                            <a href="../../buildslaves/index.html">Buildslaves</a>
+                            <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
                         </li>
                     
                         <li >
@@ -330,7 +322,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../index.html">
+                    <a rel="next" href="../container-utility/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -349,19 +341,23 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#gitlab-ci">Gitlab-CI</a></li>
+        <li class="main active"><a href="#continuous-integration-evaluation">Continuous Integration Evaluation</a></li>
         
-    
-        <li class="main "><a href="#buildbot">buildbot</a></li>
-        
-    
-        <li class="main "><a href="#scheduler-configuratoin">Scheduler configuratoin</a></li>
+            <li><a href="#repository-dependencies">Repository Dependencies</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="continuous-integration-evaluation">Continuous Integration Evaluation</h1>
+<p><strong>(work in progress)</strong></p>
+<p>The continuous integration system is responsible for scheduling the builds
+according the changes in the product repositories. It delegates scheduled builds
+to builders that are prepared with build environments specific to their mapped
+platform or the platform's architecture.</p>
+<h2 id="repository-dependencies">Repository Dependencies</h2>
+<p>Gitlab at thE HTWG</p>
 <h3 id="gitlab-ci">Gitlab-CI</h3>
 <p>Here go the pros and cons of the Gitlab-CI</p>
 <h3 id="buildbot">buildbot</h3>
