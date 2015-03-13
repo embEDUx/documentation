@@ -355,11 +355,13 @@
     
         <li class="main active"><a href="#cointainer-utility-evaluation">Cointainer Utility Evaluation</a></li>
         
-            <li><a href="#docker">Docker</a></li>
+            <li><a href="#openvz">OpenVZ</a></li>
         
             <li><a href="#lxc">LXC</a></li>
         
-            <li><a href="#openvz">OpenVZ</a></li>
+            <li><a href="#docker">Docker</a></li>
+        
+            <li><a href="#result-container-utility-evaluation">Result Container Utility Evaluation</a></li>
         
     
     </ul>
@@ -367,10 +369,41 @@
             <div class="col-md-9" role="main">
 
 <h1 id="cointainer-utility-evaluation">Cointainer Utility Evaluation</h1>
-<p>Popularity is in favor of Docker, which should therefore be the main candidate.</p>
-<h2 id="docker">Docker</h2>
-<h2 id="lxc">LXC</h2>
 <h2 id="openvz">OpenVZ</h2>
+<ul>
+<li>Seperate Fork of the Linux-Kernel</li>
+<li>Backport of critical bugfixes and important features, otherwise still on Linux
+  version 2.6.<em>xx</em></li>
+<li>Installation of custom kernel is not straight forward on recent Linux
+  Distributions</li>
+<li>Emphasizes on security and encapsulation of the guest container</li>
+</ul>
+<h2 id="lxc">LXC</h2>
+<p>Stable project that has recently hit version 1.0, which brought the feature of </p>
+<ul>
+<li>Linux Mainline-Kernel support<ul>
+<li>Utilizes the Linux-Kernel Container capabilities</li>
+<li>Supported by all current Linux distributions</li>
+</ul>
+</li>
+<li>non-privileged containers configurable</li>
+<li>complex configuration possibilities</li>
+</ul>
+<h2 id="docker">Docker</h2>
+<ul>
+<li>Initially shipped with LXC as backend engine</li>
+<li>Meanwhile shipped with an self-developed</li>
+<li>Docker Inc. offers an official registry with many ready-to-pull-and-deploy container images</li>
+<li>Emphasizes simplicity and encapsulation of the guest container</li>
+</ul>
+<h2 id="result-container-utility-evaluation">Result Container Utility Evaluation</h2>
+<ul>
+<li>Compatibility,</li>
+<li>simplicity and therefore</li>
+<li>publicity 
+are all in favor of <strong>Docker</strong>. 
+This has also been confirmed in a meeting with the leading Professor.</li>
+</ul>
 </div>
         </div>
 
