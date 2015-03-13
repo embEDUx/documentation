@@ -361,8 +361,6 @@
         
             <li><a href="#repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</a></li>
         
-            <li><a href="#platform-support-extensibility">Platform Support Extensibility</a></li>
-        
             <li><a href="#overall-system-design">Overall System Design</a></li>
         
     
@@ -379,7 +377,7 @@ system. The build system must be able to build the following software</p>
 <h2 id="linux-kernel"><a href="linux/index.html">Linux Kernel</a></h2>
 <h2 id="bootloader"><a href="bootloader/index.html">Bootloader</a></h2>
 <h2 id="rootfs"><a href="rootfs/index.html">RootFS</a></h2>
-<p>while the build configuration must be user providable for each build.</p>
+<p>while the build configuration must be user providable for each individual build.</p>
 <h2 id="buildserver"><a href="../../design/buildserver">Buildserver</a></h2>
 <p>The software that is built by the buildserver will be
 referred as <strong><em>products</em></strong> within the further documentation.</p>
@@ -417,14 +415,6 @@ still running on x86-based architectures. In order to build the products for the
 platforms used within the lab-courses, it is necessary to either use
 cross-toolchains or emulators. </p>
 <h2 id="repositories-product-specification-storage-units"><a href="repositories/index.html">Repositories</a> - Product-Specification Storage Units</h2>
-<h2 id="platform-support-extensibility">Platform Support Extensibility</h2>
-<p>Adding support for additional hardware platforms must be simple. The user should
-not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
-to be able to add his platform. One way to look at extensibility is to already
-take the initial setup into account, where the hardware platforms are
-practically added too, just to a zero-base. Designing this step to be as easy as
-possible, will allow to extend the system as easy as possible. Therefore, this
-criteria is moved over to the <a href="../../setup-process">setup process</a>.</p>
 <h2 id="overall-system-design">Overall System Design</h2>
 <p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
 </div>
