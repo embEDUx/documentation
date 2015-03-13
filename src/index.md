@@ -1,5 +1,5 @@
 # The **embEDUx** Project
-The *embEDUx* project aims to deliver a **solution for building and deploying customimized
+The *embEDUx* project aims to deliver a **solution for building and deploying customized
 linux distributions for educational purposes**.
 
 The origin lays at a university of applied sciences called
