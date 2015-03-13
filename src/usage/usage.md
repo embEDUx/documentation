@@ -26,7 +26,7 @@ needed to use the buildserver.
 
 #### Git-Repositories
 For every product you want to build, it's necessary to have a local copy of the
-correspdonding Git-repository. The URLs are available in the aforementioned User
+corresponding Git-repository. The URLs are available in the aforementioned User
 Documentation. The detailed product build instructions will guide you in finding
 the needed repository.
 
@@ -118,7 +118,7 @@ products can be built and deployed if there are previous successful builds for
 the target platform.
 
 ### Manually
-If for some reason the flashtool is not working for you, there is always the
+If for some reason the Flashtool is not working for you, there is always the
 possibility to deploy the products manually. Retrieve the *Product Download
 URLs* from the [User Documentation](#User Documentation), or from the
 *Buildmaster Web-Interface*, where they are listed at the last build step for

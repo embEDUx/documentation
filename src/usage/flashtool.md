@@ -73,7 +73,7 @@ help:   Local path where Flashtool should save downloaded products if option is 
 : |
 ```
 
-You can change these settings by calling the comand:
+You can change these settings by calling the command:
 
 `$ flashtool config`
 
@@ -87,8 +87,8 @@ system on a platform (e.g. Raspberry Pi) and how to setup the platform. You
 find more information about **recipe** file in chapter 
 [Recipe files](#recipe-files).
 
-On the gitlab server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git**
-there are provided some **recipe** files for different hardware.
+On the **Gitlab** server **git@apu.in.htwg-konstanz.de:labworks-embEDUx/Flashtool_config.git**
+some **recipe** files for different hardware are provided.
 
 To get the **recipe** files from the repository for the Flashtool run the following command:
 
@@ -108,7 +108,7 @@ This command will list all **recipe** files grouped by their prefix.
 ### List finished builds from the configured **Buildbot** server
 
 The **Buildbot** server provides all needed products for an **embEDUx** system.
-All products for every configured platform can be listet by the **Flashtool** with
+All products for every configured platform can be listed by the **Flashtool** with
 the following command:
 
 `$ flashtool list_builds`
@@ -134,7 +134,7 @@ reading the development section for the **Flashtool**. The new functionality
 must be triggered by a recipe file an must be explained in the [recipe
 files](#recipe-files) chapter.
 
-This setup procedure requires an exisiting [recipe](#How_to_write_a_recipe_file) 
+This setup procedure requires an existing [recipe](#How_to_write_a_recipe_file) 
 file. The basic command for this procedure is `Flashtool setup`.
 
 **Important: You need access rights for reading and writing on a mmc device and

@@ -24,9 +24,9 @@ see in detail what has been going on during the build.
 
 #### Notes
 * The RootFS buildroutine sends its' output **after the command has finished**.
+
   For RootFS with many packages this can lead to long periods in between changes
   of the *stdio*.
-
 
 ### Builders View
 
