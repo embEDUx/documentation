@@ -418,7 +418,7 @@ editing of kernel version or user-space software is not possible.</p>
 <tr>
 <th>Criteria</th>
 <th>Result</th>
-<th>Nots</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -440,6 +440,36 @@ editing of kernel version or user-space software is not possible.</p>
 </tbody>
 </table>
 <h2 id="buildroot">Buildroot</h2>
+<p>A collection of bash scripts in order to build toolchains, Linux-kernels,
+bootloaders and root filesystems. It can be configured via an ncurses-based
+menu. </p>
+<h3 id="result-buildroot">Result Buildroot</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Result</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-target support</td>
+<td>YES</td>
+<td>Manual configuration necessary</td>
+</tr>
+<tr>
+<td>Package management</td>
+<td>LIMITED</td>
+<td>Difficult to extend</td>
+</tr>
+<tr>
+<td>Buildroutine Automation</td>
+<td>YES</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 <h2 id="gentoo-portage">Gentoo Portage</h2>
 <p><strong>Gentoo Portage</strong> is a full-fledged source-based package management system that
 can install, uninstall and update a huge variety of software package on a Linux
@@ -597,7 +627,7 @@ gcc version did hot help. either.</p>
 <td>portage package manager included</td>
 </tr>
 <tr>
-<td>Buildroutien Automation</td>
+<td>Buildroutine Automation</td>
 <td>NO</td>
 <td>needs wrapper</td>
 </tr>
@@ -691,7 +721,7 @@ the build machine, and pass it to the virtual machine via the <strong>9p-fs</str
 </code></pre>
 
 <h3 id="limitations">Limitations</h3>
-<p>In comparison, this method has siginificant limitations of different nature, due
+<p>In comparison, this method has significant limitations of different nature, due
 to the following reasons:</p>
 <ul>
 <li>
@@ -743,7 +773,7 @@ it would allow to run arbitrary</p>
 <table>
 <thead>
 <tr>
-<th>Candiate</th>
+<th>Candidate</th>
 <th>Cross-target support</th>
 <th>Package management</th>
 <th>RootFS Buildroutine Automation</th>
