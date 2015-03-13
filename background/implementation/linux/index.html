@@ -179,6 +179,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../design/automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../design/bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -200,10 +204,6 @@
                     
                         <li >
                             <a href="../../design/rootfs/index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../design/setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -349,15 +349,58 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#specification-for-building-linux">Specification for building Linux</a></li>
+        <li class="main active"><a href="#implementation-for-building-linux">Implementation for building Linux</a></li>
+        
+            <li><a href="#repository">Repository</a></li>
+        
+            <li><a href="#build-script">Build Script</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="specification-for-building-linux">Specification for building Linux</h1>
-<p><strong>(work in progress)</strong></p>
+<h1 id="implementation-for-building-linux">Implementation for building Linux</h1>
+<h2 id="repository">Repository</h2>
+<p>For each platform the <strong>Linux</strong> repository will have at least two branches,
+however the version_generic branches will only exist one time per version.</p>
+<p><img alt="Repository" src="../../../usage/linux/img/example_linux_repository.png" /></p>
+<h3 id="version95generic">version_generic</h3>
+<p>This branch exists exactly one time per <strong>Linux</strong> version. It contains the
+script, that downloads the sources for the version it is designed for. For
+obliterating the redundancy throughout the different platforms, it also
+implements the whole build process.</p>
+<ol>
+<li>Download sources</li>
+<li>Download <strong>Gentoo</strong> patches</li>
+<li>Apply <strong>Gentoo</strong> patches</li>
+<li>Apply User patches</li>
+<li>Copy config into source directory </li>
+<li>Build linux</li>
+<li>Build modules</li>
+<li>Provide two output archives<ul>
+<li>Kernel and DTB for boot partition</li>
+<li>Modules and sources for root partition</li>
+</ul>
+</li>
+</ol>
+<h3 id="version95platform">version_platform</h3>
+<p>This branch exists for each platform as many times as different version of
+<strong>Linux</strong> should be built. It contains a build script, which will do the
+following: </p>
+<ol>
+<li>Checkout the version_generic branch for the version it is defined for</li>
+<li>Set necessary parameter e.g. configration</li>
+<li>Execute the script from the version_generic branch</li>
+</ol>
+<h2 id="build-script">Build Script</h2>
+<p>For simplicity bash is used for the script language. As an example the two
+scripts, which were implemented and uses throughout the whole development and
+test process are provided:</p>
+<ul>
+<li><a href="../../../usage/linux/default/generic_build">version_generic</a></li>
+<li><a href="../../../usage/linux/default/platform_build">version_platform</a></li>
+</ul>
 </div>
         </div>
 

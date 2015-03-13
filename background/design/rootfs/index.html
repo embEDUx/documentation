@@ -179,6 +179,10 @@
                         </li>
                     
                         <li >
+                            <a href="../automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -200,10 +204,6 @@
                     
                         <li class="active">
                             <a href="index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -335,7 +335,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../setup/index.html">
+                    <a rel="prev" href="../toolchain/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -356,6 +356,8 @@
             <li><a href="#list-of-packages">List of Packages</a></li>
         
             <li><a href="#configuration-and-compiler-flags">Configuration and compiler flags</a></li>
+        
+            <li><a href="#cross-target-support">Cross Target Support</a></li>
         
             <li><a href="#build-steps">Build Steps</a></li>
         
@@ -397,9 +399,10 @@ installation based on the above comparison.</p>
 <p>The choice of the source package management system should be evaluated
 carefully. Candidates shall be</p>
 <ul>
-<li>Gentoo Portage</li>
-<li>Buildroot</li>
 <li>Yocto Project</li>
+<li>Buildroot</li>
+<li>Gentoo crossdev</li>
+<li>Gentoo catalyst</li>
 </ul>
 <h2 id="list-of-packages">List of Packages</h2>
 <p>For each build, a list of desired packages must be provided.</p>
@@ -408,6 +411,24 @@ carefully. Candidates shall be</p>
 management system will be chosen, should allow specification on configuration
 and compiler flags during the build process. These options shall be provided
 together with the package lists.</p>
+<h2 id="cross-target-support">Cross Target Support</h2>
+<p>Even though the number of ARM-systems is growing, most Desktops and Servers are
+still running on x86-based architectures. In order to build the products for the
+platforms used within the lab-courses, it is necessary to either use
+cross-toolchains or emulators. The following candidates for the different
+techniques need to be evaluated for every of the embEDUx products.</p>
+<ul>
+<li>Cross-Compilation<ul>
+<li>Gentoo crossdev</li>
+<li>YOCTO</li>
+</ul>
+</li>
+<li>Emulation<ul>
+<li>Qemu user emulation</li>
+<li>Qemu system emulation</li>
+</ul>
+</li>
+</ul>
 <h2 id="build-steps">Build Steps</h2>
 <p>The build process must include the following steps.</p>
 <ol>

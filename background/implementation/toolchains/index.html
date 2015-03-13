@@ -179,6 +179,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../design/automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../design/bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -200,10 +204,6 @@
                     
                         <li >
                             <a href="../../design/rootfs/index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../design/setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -349,11 +349,30 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#implementation-for-building-toolchain">Implementation for building Toolchain</a></li>
+        
+            <li><a href="#build-script">Build Script</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>TODO</p>
+<h1 id="implementation-for-building-toolchain">Implementation for building Toolchain</h1>
+<p>For each toolchain, the <em>toolchain-specs</em> repository contains exactly one
+branch. The branch contains the <em>.config</em> file for <strong>Crosstool-NG</strong> and the
+build script, that will do the following steps:</p>
+<ol>
+<li>Call <code>ct-ng build</code></li>
+<li>Compress output in archive.</li>
+</ol>
+<h2 id="build-script">Build Script</h2>
+<p>For simplicity bash is used for the script language. As an example the two
+scripts, which were implemented and uses throughout the whole development and
+test process are provided:</p>
+<ul>
+<li><a href="../../../setup/post-install/toolchains/default/toolchain_build">build</a></li>
+</ul>
 </div>
         </div>
 

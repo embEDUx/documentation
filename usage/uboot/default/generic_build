@@ -12,11 +12,7 @@ UBOOT_FILE="< uboot-file >"
 #####################
 
 function dl_src {
-  
-  # Download: for bla in source url
   wget -N ${UBOOT_URL}/${UBOOT_FILE} -P ${EMBEDUX_TMP}
-
-# Extract: for bla in source url
   tar -xf ${EMBEDUX_TMP}/${UBOOT_FILE} --strip 1 -C ${SRC_DIR}
 }
 

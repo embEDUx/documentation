@@ -179,6 +179,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../design/automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../design/bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -200,10 +204,6 @@
                     
                         <li >
                             <a href="../../design/rootfs/index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../design/setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -349,11 +349,26 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#implementation-misc">Implementation Misc</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>TODO</p>
+<h1 id="implementation-misc">Implementation Misc</h1>
+<p>Throughout the development we realized, that some platforms need files present
+at the boot partition. However these files couldn't be assigned logical to any
+of the existing repositories. Therefore we added the <em>misc-spec</em> repository. It
+basically contains the files that have to be provided either to the boot or the
+root partition. </p>
+<ul>
+<li>Each platform has one branch within the repository. </li>
+<li>Each branch contains two folder <em>src_boot</em> and <em>src_root</em>.</li>
+<li>The files lay within this folder within their folder structure (e.g.
+  src_root/etc/inittab). </li>
+<li>The build script only packs content of the two folder into two archives.</li>
+</ul>
 </div>
         </div>
 

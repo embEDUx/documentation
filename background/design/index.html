@@ -179,6 +179,10 @@
                         </li>
                     
                         <li >
+                            <a href="automated-builds-and-setup/index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
+                        <li >
                             <a href="bootloader/index.html">Design/Bootloader</a>
                         </li>
                     
@@ -200,10 +204,6 @@
                     
                         <li >
                             <a href="rootfs/index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="setup/index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -335,7 +335,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="bootloader/index.html">
+                    <a rel="prev" href="automated-builds-and-setup/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -353,11 +353,9 @@
         
             <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
-            <li><a href="#product-specification-storage-units">Product-Specification Storage Units</a></li>
+            <li><a href="#repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</a></li>
         
             <li><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
-        
-            <li><a href="#portability">Portability</a></li>
         
             <li><a href="#platform-support-extensibility">Platform Support Extensibility</a></li>
         
@@ -369,7 +367,6 @@
             <div class="col-md-9" role="main">
 
 <h1 id="design">Design</h1>
-<p><strong>(work in progress)</strong></p>
 <p>The design for the <strong>embEDUx</strong> system must be created by carefully analyzing the
 <a href="../requirements/index.html">project requirements</a>. These include a wide variety of
 necessary configuration options, which in turn requires a configurable build
@@ -379,7 +376,7 @@ system. The build system must be able to build the following software</p>
 <li>Bootloader</li>
 <li>RootFS containing the system and user-space application</li>
 </ul>
-<p>while build configuration must be user providable for each build.</p>
+<p>while the build configuration must be user providable for each build.</p>
 <p>The software that is built by the build system will be referred as
 <strong><em>products</em></strong> within the further documentation.</p>
 <h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
@@ -407,7 +404,7 @@ menu.</p>
 <li>Yocto Project
     TODO lars</li>
 </ul>
-<h2 id="product-specification-storage-units">Product-Specification Storage Units</h2>
+<h2 id="repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</h2>
 <p>It must be possible to build the products independently from each other.
 Therefore, each product specification should be managed in a separate storage
 unit which will be referred as a <em>repository</em> from this point on. Additionally
@@ -424,76 +421,6 @@ repositories.</p>
 requirements of the corresponding product. The requirements chapter lists
 different requirements for each product, which must therefore be analyzed
 separately.</p>
-<h2 id="portability">Portability</h2>
-<p>In order to have a portable build system, all components should live and run in
-systems that are separated from the buildserver's host system. Possible
-technologies for this are either Virtual Machines or Linux Containers.</p>
-<h3 id="virtualization-and-container-technologies">Virtualization and Container Technologies</h3>
-<ul>
-<li>
-<p>Virtual Machines are completely abstracted from the host system's hardware.
-  They run on a so-called Hypervisor, which simulates a complete machine for the
-  target system. The target system runs it's own kernel, and needs to boot and
-  initialize an Operating System from scratch. Security is considered very high,
-  since the Hypervisor has full control over soft- and hardware-resources that
-  are passed to the guest system.   The architecture of an operating system
-  inside a virtual machine can be completely different to the host architecture,
-  and thus is highly portable.  Depending on available acceleration
-  technologies, the performance of the virtual CPU, RAM and disk can suffer
-  significantly.</p>
-</li>
-<li>
-<p>Linux Containers utilize a feature in recent Linux Kernels which allow
-  separating processes from each other. This includes the separation of host and
-  contained processes, as well as different contained processes from each other.
-  These contained processes can be an initialization processes to boot a
-  different Linux System on the running host Linux kernel, or simply any other
-  application available. Recently there has been a lot of development and
-  activity on Linux Containers in the community, namely because of a software
-  called Docker.  Security is highly dependent on the implementation of the
-  process separating that happens in the host kernel.   The host kernel must
-  obviously be able to run the contained application.  Therefore, the
-  application must either be in the host's native or compatible executable
-  format, or the system needs an emulator to run the foreign architecture. The
-  performance for contained processes does not differ significantly compared to
-  a regular running process. This is not entirely true for executables that
-  require emulation because the CPU instructions must be translated before they
-  can be run.</p>
-</li>
-</ul>
-<p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
-Containers</a>)
-container technologies should be chosen as the base for the buildsystem. In
-environments where security is a high requirement, the containers can live
-inside a virtual machine, but that is beyond the design for the buildsystem
-itself.</p>
-<h3 id="splitting-functionality-into-containers">Splitting Functionality Into Containers</h3>
-<p>Performance wise, containers are relatively cheap entities for the system. This
-allows the buildsystem to be split into several containers for the different
-parts of the buildsystem, without losing performance over a flat installation on
-the system. The container infrastructure could split the following
-functionalities</p>
-<ul>
-<li>Build process manager<ul>
-<li>Watch repository for changes</li>
-<li>Delegate build processes to other containers</li>
-</ul>
-</li>
-<li>Architecture specific build tools<ul>
-<li>toolchains</li>
-<li>compiler flags</li>
-<li>base system archives</li>
-</ul>
-</li>
-</ul>
-<h3 id="container-management-software">Container Management Software</h3>
-<p>The choice of the container management software still needs to be evaluated, but in favor
-of popularity Docker should be the main candidate. Candidates:</p>
-<ul>
-<li>Docker</li>
-<li>LXC</li>
-<li>OpenVZ</li>
-</ul>
 <h2 id="platform-support-extensibility">Platform Support Extensibility</h2>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system

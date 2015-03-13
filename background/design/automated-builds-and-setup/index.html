@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Design/Setup - embEDUx Project</title>
+        <title>Design/Automated Builds And Setup - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -178,6 +178,10 @@
                             <a href="../index.html">Design</a>
                         </li>
                     
+                        <li class="active">
+                            <a href="index.html">Design/Automated Builds And Setup</a>
+                        </li>
+                    
                         <li >
                             <a href="../bootloader/index.html">Design/Bootloader</a>
                         </li>
@@ -200,10 +204,6 @@
                     
                         <li >
                             <a href="../rootfs/index.html">Design/Rootfs</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="index.html">Design/Setup</a>
                         </li>
                     
                         <li >
@@ -330,12 +330,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../rootfs/index.html">
+                    <a rel="next" href="../index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../toolchain/index.html">
+                    <a rel="prev" href="../bootloader/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -349,25 +349,27 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#setuproutine">Setuproutine</a></li>
+        <li class="main active"><a href="#automated-builds-and-setup">Automated Builds and Setup</a></li>
         
-            <li><a href="#required-setup-parameters">Required Setup Parameters</a></li>
+            <li><a href="#automated-setup-routine">Automated Setup Routine</a></li>
         
-            <li><a href="#default-setup-parameters">Default Setup Parameters</a></li>
+    
+        <li class="main "><a href="#abstraction-layer-for-automation">Abstraction Layer For Automation</a></li>
         
-            <li><a href="#configuration-generation-from-templates">Configuration Generation From Templates</a></li>
+            <li><a href="#virtualization-machines">Virtualization Machines</a></li>
         
-            <li><a href="#language-choice">Language Choice</a></li>
+            <li><a href="#splitting-functionality-into-linux-containers">Splitting Functionality into Linux Containers</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="setuproutine">Setuproutine</h1>
+<h1 id="automated-builds-and-setup">Automated Builds and Setup</h1>
+<h2 id="automated-setup-routine">Automated Setup Routine</h2>
 <p>The buildserver will undoubtedly be a complex structure of software components.
 To make the setup as easy as possible it should be automated as far as possible.</p>
-<h2 id="required-setup-parameters">Required Setup Parameters</h2>
+<h3 id="required-setup-parameters">Required Setup Parameters</h3>
 <p>The administrator should only have to configure the parameters that can't
 possibly be known upfront, or are not convenient to be predefined. At this
 point, these parameters include</p>
@@ -388,7 +390,7 @@ user set the credentials for system internal communication.</p>
 be provided by the setuproutine.</p>
 </li>
 </ul>
-<h2 id="default-setup-parameters">Default Setup Parameters</h2>
+<h3 id="default-setup-parameters">Default Setup Parameters</h3>
 <p>All other setup parameters should be provided as defaults by the setuproutine.</p>
 <ul>
 <li>
@@ -399,12 +401,12 @@ will be available as supported. The user is not forced to use them, but it
 is useful to already have working examples in the local installation.</p>
 </li>
 </ul>
-<h2 id="configuration-generation-from-templates">Configuration Generation From Templates</h2>
+<h3 id="configuration-generation-from-templates">Configuration Generation From Templates</h3>
 <p>The user-provided and default setup parameters should be used to generate the
 configuration files for the buildsystem. For commonly used changes, the
 generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary.</p>
-<h2 id="language-choice">Language Choice</h2>
+<h3 id="language-choice">Language Choice</h3>
 <p>The setuproutine should be automated using an appropriate programming or
 scripting language. The candidates for the task are:</p>
 <ul>
@@ -418,6 +420,80 @@ scripting language. The candidates for the task are:</p>
 <li>Code readability</li>
 <li>Extensibility</li>
 <li>Templating features</li>
+</ul>
+<h1 id="abstraction-layer-for-automation">Abstraction Layer For Automation</h1>
+<p>In order to have an automated build system, all components should be setup and
+run abstracted from the buildserver's host system as far as possible.
+Abstraction methods make it possible to deploy and run complex infrastructures
+without having to care about the underlying hardware and system configuration.</p>
+<p>Possible technologies for abstracting applications and whole operating systems
+include Virtual Machines and Linux Containers.</p>
+<h2 id="virtualization-machines">Virtualization Machines</h2>
+<p>Virtual Machines are completely abstracted from the host system's hardware.
+They run on a so-called Hypervisor, which simulates a complete machine for the
+target system. The target system runs it's own kernel, and needs to boot and
+initialize an Operating System from scratch. Security is considered very high,
+since the Hypervisor has full control over soft- and hardware-resources that are
+passed to the guest system.   The architecture of an operating system inside a
+virtual machine can be completely different to the host architecture, and thus
+is highly portable.  Depending on available acceleration technologies, the
+performance of the virtual CPU, RAM and disk can suffer significantly.</p>
+<h3 id="linux-containers">Linux Containers</h3>
+<p>Linux Containers utilize a feature in recent Linux Kernels which allow
+separating processes from each other. This includes the separation of host and
+contained processes, as well as different contained processes from each other.
+These contained processes can be an initialization processes to boot a
+different Linux System on the running host Linux kernel, or simply any other
+application available. Recently there has been a lot of development and
+activity on Linux Containers in the community, namely because of a software
+called Docker.  Security is highly dependent on the implementation of the
+process separating that happens in the host kernel.   The host kernel must
+obviously be able to run the contained application.  Therefore, the
+application must either be in the host's native or compatible executable
+format, or the system needs an emulator to run the foreign architecture. The
+performance for contained processes does not differ significantly compared to
+a regular running process. This is not entirely true for executables that
+require emulation because the CPU instructions must be translated before they
+can be run.</p>
+<h3 id="choosing-linux-containers">Choosing Linux-Containers</h3>
+<p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
+Containers</a>)
+container technologies should be chosen as the base for the buildsystem
+components. In environments where security is a high requirement, the containers
+can live inside a virtual machine, but that is beyond the design for the
+buildsystem itself.</p>
+<h2 id="splitting-functionality-into-linux-containers">Splitting Functionality into Linux Containers</h2>
+<p>Performance wise, containers are relatively cheap entities for the system. This
+allows the buildsystem to be split into several containers for the different
+parts of the buildsystem, without losing performance over a flat installation on
+the system. The container infrastructure could split the following
+functionalities</p>
+<ul>
+<li>
+<p>One Buildmaster</p>
+<p>Running with native buildserver host architecture, and has the following
+responsibilities</p>
+<ul>
+<li>Watch all the product repositories for changes</li>
+<li>Delegate build processes to buildslaves on changes</li>
+<li>Buildslaves with target architecture specific build tools</li>
+</ul>
+<p>Runs emulated or natively with the target architecture, and has the
+following target archtecture specific components:</p>
+<ul>
+<li>Toolchain</li>
+<li>Compiler flags</li>
+<li>Base system archive</li>
+</ul>
+</li>
+</ul>
+<h3 id="container-management-software">Container Management Software</h3>
+<p>The choice of the container management software still needs to be evaluated, but in favor
+of popularity Docker should be the main candidate. Candidates:</p>
+<ul>
+<li>Docker</li>
+<li>LXC</li>
+<li>OpenVZ</li>
 </ul>
 </div>
         </div>
