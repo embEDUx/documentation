@@ -351,11 +351,11 @@
         
             <li><a href="#gentoo-catalyst">Gentoo catalyst</a></li>
         
-            <li><a href="#gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-emerge</a></li>
+            <li><a href="#gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-Emerge</a></li>
         
-            <li><a href="#qemu-user-emulation">Qemu user emulation</a></li>
+            <li><a href="#qemu-user-emulation">Qemu User Emulation</a></li>
         
-            <li><a href="#qemu-system-emulation">Qemu system emulation</a></li>
+            <li><a href="#qemu-system-emulation">Qemu System Emulation</a></li>
         
             <li><a href="#evaluation-result">Evaluation Result</a></li>
         
@@ -380,7 +380,7 @@ the designed features:</p>
 <h2 id="gentoo-portage">Gentoo Portage</h2>
 <p>Gentoo Portage is a complete package management system that is well maintained </p>
 <h2 id="gentoo-catalyst">Gentoo catalyst</h2>
-<h2 id="gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-emerge</h2>
+<h2 id="gentoo-crossdev-and-cross-emerge">Gentoo Crossdev and Cross-Emerge</h2>
 <p>Gentoo's crossdev is a utility that can create cross-toolchains and setup
 wrappers for the emerge utility to use the cross-toolchain on the target RootFS that is
 laying in the host system's filesystem. </p>
@@ -457,7 +457,7 @@ properly, but better. <strong>Inconsistent results</strong> were achieved and bu
 during the system installation could not be fixed nor completely explained.
 Experimentation with different versions for glibc, binutils, kernel headers and
 gcc version did hot help. either.</p>
-<h3 id="results-crossdev-and-emerge-crossdev">Results crossdev and emerge-crossdev</h3>
+<h3 id="results-crossdev-and-emerge-crossdev">Results Crossdev and Emerge-Crossdev</h3>
 <table>
 <thead>
 <tr>
@@ -484,7 +484,7 @@ gcc version did hot help. either.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="qemu-user-emulation">Qemu user emulation</h2>
+<h2 id="qemu-user-emulation">Qemu User Emulation</h2>
 <p>Qemu user emulation makes uses of the BINFMT_SUPPORT to execute binaries of
 foreign binary formats by executing them with a binary simulator for the
 corresponding architecture. </p>
@@ -546,7 +546,7 @@ of the Golang-compiler fails with an error from the tcg (<a href="http://wiki.qe
 </tr>
 </tbody>
 </table>
-<h2 id="qemu-system-emulation">Qemu system emulation</h2>
+<h2 id="qemu-system-emulation">Qemu System Emulation</h2>
 <p>System Emulation was already a considered as an abstraction technique in the
 <a href="../../../virtual-machines">Buildserver Design - Virtual Machines</a>. In comparison to
 <a href="../../../Qemu-user-emulation">Qemu user emulation</a>, a complete system is emulated
@@ -575,13 +575,19 @@ the build machine, and pass it to the virtual machine via the <strong>9p-fs</str
 <p>In comparison, this method has siginificant
 performance limitations and overhead, due to the following reasons:</p>
 <ul>
-<li>Target Linux-Kernel required for the virtual machine
-    In order to run a virtual machine, a kernel that supports executing in the
-    target system must be configured and compiled using a cross-toolchain. The
-    preperation of the kernel for the virtual machine shall not be covered in
-    the RootFS evaluation.</li>
+<li>
+<p>Target Linux-Kernel required for the virtual machine</p>
+<p>In order to run a virtual machine, a kernel that supports executing in the
+target system must be configured and compiled using a cross-toolchain. The
+preperation of the kernel for the virtual machine shall not be covered in
+the RootFS evaluation.</p>
+</li>
 <li>
 <p>No multi-core support for ARM architectures</p>
+<p>While <strong>Qemu</strong> supports the simulation of multiple ARM-CPU-cores inside the
+virtual machine, it does not use more than one processor on the host.
+Multicore build machines can therefore not be fully utilized by single
+virtual ARM machines.</p>
 </li>
 <li>
 <p><a href="https://bugs.launchpad.net/qemu/+bug/1336794">Bugs in the 9p-fs filesystem</a>
@@ -627,6 +633,18 @@ it would allow to run arbitrary</p>
 </thead>
 <tbody>
 <tr>
+<td>Gentoo Portage</td>
+<td>-</td>
+<td>YES</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Gentoo catalyst</td>
+<td>NO</td>
+<td>-</td>
+<td>YES</td>
+</tr>
+<tr>
 <td>YOCTO</td>
 <td>LIMITED</td>
 <td>LIMITED / difficult to extend</td>
@@ -639,7 +657,7 @@ it would allow to run arbitrary</p>
 <td>YES</td>
 </tr>
 <tr>
-<td>Gentoo Crossdev and Cross-emerge</td>
+<td>Gentoo crossdev and cross-emerge</td>
 <td>NOT RELIABLE</td>
 <td>YES</td>
 <td>-</td>
@@ -656,26 +674,14 @@ it would allow to run arbitrary</p>
 <td>-</td>
 <td>-</td>
 </tr>
-<tr>
-<td>Gentoo Portage</td>
-<td>-</td>
-<td>YES</td>
-<td>-</td>
-</tr>
-<tr>
-<td>Gentoo catalyst</td>
-<td>NO</td>
-<td>-</td>
-<td>YES</td>
-</tr>
 </tbody>
 </table>
 <h3 id="conclusion">Conclusion</h3>
-<p>Apparently there is no solution that is ready to be integrated into the designed
-continuous integration system without further modifications or automation
-processes wrapped around. As a result, <strong>the choice will favor reliability in
-cross-target support, and package management qualities</strong> and incorporate the
-winners into a custom automated buildroutine.</p>
+<p>It seems like there is no solution that is ready to be integrated into the
+designed continuous integration system without further modifications or
+automation processes wrapped around. As a result, <strong>the choice will favor
+reliability in cross-target support, and package management qualities</strong> and
+incorporate the winners into a custom automated buildroutine.</p>
 <h1 id="evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</h1>
 <p>As described in the design chapter <a href="../../design/buildserver/index.html#build-automation-routines">Buildserver - Build Automation
 Routines</a>, the automated RootFS buildroutine will be triggered by the continuous integration master component.</p>
