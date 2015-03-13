@@ -32,9 +32,10 @@ installation based on the above comparison.
 The choice of the source package management system should be evaluated
 carefully. Candidates shall be
 
-* Gentoo Portage
-* Buildroot
 * Yocto Project
+* Buildroot
+* Gentoo crossdev
+* Gentoo catalyst
 
 ## List of Packages
 For each build, a list of desired packages must be provided.
@@ -44,6 +45,20 @@ The fact that a source based package
 management system will be chosen, should allow specification on configuration
 and compiler flags during the build process. These options shall be provided
 together with the package lists.
+
+## Cross Target Support
+Even though the number of ARM-systems is growing, most Desktops and Servers are
+still running on x86-based architectures. In order to build the products for the
+platforms used within the lab-courses, it is necessary to either use
+cross-toolchains or emulators. The following candidates for the different
+techniques need to be evaluated for every of the embEDUx products.
+
+* Cross-Compilation
+    * Gentoo crossdev
+    * YOCTO
+* Emulation
+    * Qemu user emulation
+    * Qemu system emulation
 
 
 ## Build Steps
