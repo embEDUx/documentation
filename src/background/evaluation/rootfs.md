@@ -9,6 +9,11 @@ the designed features:
 ## YOCTO 
 ## Buildroot
 
+## Gentoo Portage
+Gentoo Portage is a complete package management system that is well maintained 
+
+## Gentoo catalyst
+
 ## Gentoo Crossdev and Cross-emerge
 Gentoo's crossdev is a utility that can create cross-toolchains and setup
 wrappers for the emerge utility to use the cross-toolchain on the target RootFS that is
@@ -148,26 +153,72 @@ cmd/go
 ```
 Errors like these make qemu-user an unreliable solution for the **embEDUx** project.
 
+### Result Qemu user emulation
 Criteria | Result | Nots
 --- | --- | ---
 Cross-target support | NO | not reliable
 
 ## Qemu system emulation
 System Emulation was already a considered as an abstraction technique in the
-[Buildserver Design - Virtual Machines](virtual-machines)
+[Buildserver Design - Virtual Machines](virtual-machines). In comparison to
+[Qemu user emulation](Qemu-user-emulation), a complete system is emulated
+instead of translating the foreign machine code into the machine code executable
+by the running host machine. 
+### Filesystem Passthrough via 9p-fs
+The first approach is to store a target RootFS directly on the filesystem of
+the build machine, and pass it to the virtual machine via the **9p-fs**.
 
-Throughout the RootFS buildprocess, a virtual machine could be used to run a
-native compiler for the target architecture.
+```
+QEMU_AUDIO_DRV=none qemu-system-arm \
+  -M virt \
+  -m 4095 \
+  -nographic \
+  -kernel output/zImage \
+  -append "root=root rw rootflags=rw,trans=virtio,version=9p2000.L rootfstype=9p console=ttyAMA0" \
+  -net user \
+  -netdev user,id=vnet0 \
+  -device virtio-net-device,netdev=vnet0 \
+  -device virtio-serial-device \
+  -chardev socket,path=/tmp/foo,server,nowait,id=vconsole \
+  -device virtserialport,chardev=vconsole,name=vconsole \
+  -fsdev local,id=root,path=rootfs/,security_model=passthrough \
+  -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
+```
+
+### Performance Loss
+In comparison, this method has siginificant
+performance limitations and overhead, due to the following reasons:
+
+* Target Linux-Kernel required for the virtual machine
+    In order to run a virtual machine, a kernel that supports executing in the
+    target system must be configured and compiled using a cross-toolchain. The
+    preperation of the kernel for the virtual machine shall not be covered in
+    the RootFS evaluation.
+* No multi-core support for ARM architectures
+
+
+* [Bugs in the 9p-fs filesystem](https://bugs.launchpad.net/qemu/+bug/1336794)
+  that make it impossible to use the virtual machine like in a chroot-manner
+
+    The bug in the 9p-fs makes it necessary to create and maintain a disk image for
+    the virtual machine, which introduces additional overhead in the disk I/O that
+    happens within the virtual machine. This topic will not be evaluated further
+    since it is not new to the team members, and will be considered for the
+    implementation if *Qemu system emulation* will make it into the next round.
+
+
+### Result Qemu system emulation
+Besides the performance overhead, the virtual machine performs reliable during
+the evaluation phase.
+
+While a virtual machine itself would add extra complexity to the build process,
+it would allow to run arbitrary
 
 Criteria | Result | Nots
 --- | --- | ---
 Cross-target support | YES | slow through complete system emulation
 
 
-## Gentoo Portage
-Gentoo Portage is a complete package management system that is well maintained 
-
-## Gentoo catalyst
 
 ## Evaluation Result 
 
