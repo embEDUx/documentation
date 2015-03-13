@@ -235,17 +235,6 @@ QEMU_AUDIO_DRV=none qemu-system-arm \
   -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
 ```
 
-The following structure gives an outline of the scenario and the direct result of the mentioned
-9p-fs bug:
-```
-- Hardware Host @ OpenVZ Kernel 2.6.32.something
-  - QEMU/KVM VM @ Gentoo Kernel 3.19
-    - Docker container that contains another chroot_rootfs
-      - running as user $ sudo proot chroot_inside_container sshd -p 2222
-        - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true 
-            --> FAILS WITH 'Permission Denied'
-```
 
 ### Limitations
 In comparison, this method has siginificant limitations of different nature, due
