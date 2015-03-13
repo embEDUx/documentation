@@ -13,4 +13,4 @@ process can be seen at the bottom of the page.
 ## [U-Boot](evaluation/uboot.md)
 
 # Post-Evaluation System Overall Design
-![](background/evaluation/img/eval_result_design.png)
+![](background/img/post-eval_result_design.png)
