@@ -10,7 +10,7 @@ branch.
 
 ![Repository](usage/uboot/img/example_uboot_repository.png)
 
-#**Important**: Each *version\_platform* branch depends on a *version\_generic*
+**Important**: Each *version\_platform* branch depends on a *version\_generic*
 branch.
 
 ## version\_generic
