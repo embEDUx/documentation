@@ -20,7 +20,7 @@ exist if **U-Boot** version 1.0 and 1.2 should be build for platform A.
 
 ## Cross Target Support
 As **U-Boot** has to be build for different architectures [cross
-target support](design.md#cross-target-support) needs to be considered. 
+target support](../design.md#cross-target-support) needs to be considered. 
 
 ## Build Process
 As mainline sources have to be used, those sources need to be retrieved somehow
