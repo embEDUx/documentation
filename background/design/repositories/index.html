@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Design/Repositories And Branches - embEDUx Project</title>
+        <title>Design/Repositories - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -183,7 +183,7 @@
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Design/Repositories And Branches</a>
+                            <a href="index.html">Design/Repositories</a>
                         </li>
                     
                         <li >
@@ -288,6 +288,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../troubleshooting/faq/index.html">Faq</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../troubleshooting/local-testing/index.html">Local Testing</a>
                         </li>
                     
@@ -341,15 +345,34 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#design-repositories-and-branches">Design - Repositories and Branches</a></li>
+        <li class="main active"><a href="#design-repositories-product-specification-storage-units">Design Repositories - Product-Specification Storage Units</a></li>
+        
+            <li><a href="#repository-format">Repository Format</a></li>
+        
+            <li><a href="#product-requirement-analysis">Product Requirement Analysis</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="design-repositories-and-branches">Design - Repositories and Branches</h1>
-<p><strong>(work in progress)</strong></p>
+<h1 id="design-repositories-product-specification-storage-units">Design Repositories - Product-Specification Storage Units</h1>
+<p>It must be possible to build the products independently from each other.
+Therefore, each product specification should be managed in a separate storage
+unit which will be referred as a <em>repository</em> from this point on. Additionally
+each platform needs to have its own identifiable storage subunit within the
+<em>respository</em>. The storage subunits will be referred as <em>branches</em> from this
+point on.</p>
+<h2 id="repository-format">Repository Format</h2>
+<p>Configuration files and specification files are most certainly provided by the
+user as text files. For this purpose, a version control system should be used in
+order to have a history of build changes and allow easier handling of the
+repositories.</p>
+<h2 id="product-requirement-analysis">Product Requirement Analysis</h2>
+<p>The build process and the configuration options of each product must fulfill the
+requirements of the corresponding product. The requirements chapter lists
+different requirements for each product, which must therefore be analyzed
+separately.</p>
 </div>
         </div>
 
