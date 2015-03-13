@@ -343,6 +343,8 @@
     
         <li class="main active"><a href="#specification-for-building-the-rootfs">Specification for building the RootFS</a></li>
         
+            <li><a href="#occurred-problems">Occurred Problems</a></li>
+        
     
     </ul>
 </div></div>
@@ -350,6 +352,20 @@
 
 <h1 id="specification-for-building-the-rootfs">Specification for building the RootFS</h1>
 <p><strong>(work in progress)</strong></p>
+<h3 id="occurred-problems">Occurred Problems</h3>
+<h4 id="proot-upgrade-causes-unexpected-behavior-with-nested-sshd">proot upgrade causes unexpected behavior with nested SSHd</h4>
+<p>The following tructure gives an outline of the scenario and the direct result of
+the mentioned bug after upgrading <em>sys-apps/proot</em> to version 5.0.0 inside the
+container <em>buildslavei_rootfs_amd64</em>.</p>
+<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
+  - QEMU/KVM VM @ Gentoo Kernel 3.19
+    - Docker container that contains another chroot_rootfs
+      - running as user $ sudo proot chroot_inside_container sshd -p 2222
+        - running as user $ ssh root@localhost -p 2222
+          - running as chroot root # su some_user -s /bin/true 
+            --&gt; FAILS WITH 'Permission Denied'
+</code></pre>
+
 </div>
         </div>
 

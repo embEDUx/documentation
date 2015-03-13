@@ -679,17 +679,6 @@ the build machine, and pass it to the virtual machine via the <strong>9p-fs</str
   -device virtio-9p-device,fsdev=root,mount_tag=/dev/root
 </code></pre>
 
-<p>The following structure gives an outline of the scenario and the direct result of the mentioned
-9p-fs bug:</p>
-<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
-  - QEMU/KVM VM @ Gentoo Kernel 3.19
-    - Docker container that contains another chroot_rootfs
-      - running as user $ sudo proot chroot_inside_container sshd -p 2222
-        - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true 
-            --&gt; FAILS WITH 'Permission Denied'
-</code></pre>
-
 <h3 id="limitations">Limitations</h3>
 <p>In comparison, this method has siginificant limitations of different nature, due
 to the following reasons:</p>
