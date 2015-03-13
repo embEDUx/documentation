@@ -23,7 +23,7 @@ The machines must have a recent distribution of Linux installed.
 Currently the setup routine supports
 * Ubuntu Linux 14.04
 * Ubuntu Linux 14.10
-* Gentoo Linux with a Docker compatible Kernel Configuration *TODO: link to options*
+* Gentoo Linux with a Docker compatible [Kernel Configuration](http://wiki.gentoo.org/wiki/LXC)
 
 Other Linux Distributions might work too if they use **apt** or **portage** as
 their package manager. Please share your experiences!
