@@ -647,7 +647,8 @@ the build machine, and pass it to the virtual machine via the <strong>9p-fs</str
     - Docker container that contains another chroot_rootfs
       - running as user $ sudo proot chroot_inside_container sshd -p 2222
         - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true -- FAILS WITH 'Permission Denied'
+          - running as chroot root # su some_user -s /bin/true 
+            --&gt; FAILS WITH 'Permission Denied'
 </code></pre>
 
 <h3 id="performance-loss">Performance Loss</h3>
