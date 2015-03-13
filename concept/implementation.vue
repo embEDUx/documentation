@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (implementation.vue) 2015-03-13 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 13 14:19:12 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Fri Mar 13 15:20:55 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="implementation.vue" created="1426247864265" x="0.0" y="0.0"
     width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1426252752519" size="32957"
+    <resource referenceCreated="1426256455962" size="32957"
         spec="/home/lars/Documents/embedux/documentation/concept/implementation.vue"
         type="1" xsi:type="URLResource">
         <title>implementation.vue</title>
@@ -481,14 +481,14 @@
       buildjob</label>
     </child>
     <child ID="109" layerID="1" created="1426251342727" x="425.64386"
-        y="310.21558" width="125.058044" height="303.5"
+        y="291.21558" width="125.058044" height="322.5"
         strokeWidth="2.0" autoSized="false" xsi:type="group">
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
         <font>SansSerif-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/13356cec7f00000137af73104c7ed901</URIString>
         <child ID="93" label="Longterm&#xa;Process"
-            created="1426250321039" x="1.0" y="119.0" width="123.058044"
+            created="1426250321039" x="1.0" y="138.0" width="123.058044"
             height="46.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#D0D0D0</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -527,9 +527,9 @@
             <URIString>http://vue.tufts.edu/rdf/resource/13295ca97f00000137af73104953dc69</URIString>
             <shape xsi:type="rectangle"/>
         </child>
-        <child ID="26" label="Container" created="1426248331543" x="1.0"
-            y="92.0" width="123.058044" height="27.0" strokeWidth="1.0"
-            autoSized="false" xsi:type="node">
+        <child ID="26" label="Docker&#xa;Container"
+            created="1426248331543" x="1.0" y="92.0" width="123.058044"
+            height="46.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#FFC63B</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
@@ -538,7 +538,7 @@
             <shape xsi:type="rectangle"/>
         </child>
         <child ID="98" label="Encapsulation&#xa;Processe"
-            created="1426250435616" x="1.0" y="211.0" width="123.058044"
+            created="1426250435616" x="1.0" y="230.0" width="123.058044"
             height="46.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#EA2218</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -548,7 +548,7 @@
             <shape xsi:type="rectangle"/>
         </child>
         <child ID="99" label="Encapsulation&#xa;Storage"
-            created="1426250435616" x="1.0" y="257.0" width="123.058044"
+            created="1426250435616" x="1.0" y="276.0" width="123.058044"
             height="46.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#33A8F5</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -558,7 +558,7 @@
             <shape xsi:type="rectangle"/>
         </child>
         <child ID="101" label="Individual&#xa;Buildjobs"
-            created="1426250463340" x="1.0" y="165.0" width="123.058044"
+            created="1426250463340" x="1.0" y="184.0" width="123.058044"
             height="46.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
             <fillColor>#4C4C4C</fillColor>
             <strokeColor>#000000</strokeColor>
@@ -572,8 +572,8 @@
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/13295cb07f00000137af731046782337</URIString>
     </layer>
-    <userZoom>0.9928400954653938</userZoom>
-    <userOrigin x="-259.3521" y="-18.072308"/>
+    <userZoom>0.9857314496805761</userZoom>
+    <userOrigin x="-161.24457" y="-17.942911"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1426247864265"
