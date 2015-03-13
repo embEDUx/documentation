@@ -359,9 +359,9 @@
             <div class="col-md-9" role="main">
 
 <h1 id="buildserver">Buildserver</h1>
-<p>This chapter describes the design of the buildserver components and the setup
+<p><strong>(work in progress)</strong>
+This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.</p>
-<p><strong>(work in progress)</strong></p>
 <h2 id="build-automation">Build Automation</h2>
 <p>The builds should run in an automated manner as soon as the build specifications
 are updated by the user. As the build specifications are stored inside the product
@@ -444,18 +444,20 @@ utilized by beginners immediately.  Advanced users will still be able to modify
 the template if necessary. </p>
 <h3 id="setup-automation-routine-candidates">Setup Automation Routine Candidates</h3>
 <p>The setuproutine should be automated using an appropriate programming or
-scripting language. The candidates for the task are:</p>
+scripting language. The chosen language needs to flexible in detecting
+conditions, since every setup run will have different conditions.
+The candidates are:</p>
 <ul>
-<li>Shell</li>
 <li>Python</li>
 <li>Ansible</li>
 </ul>
-<p>The criteria must include:</p>
+<p>The criteria that will be evaluated include:</p>
 <ul>
 <li>Reusable components availability</li>
-<li>Code readability</li>
-<li>Extensibility</li>
+<li>Task efficiency</li>
+<li>Extensibility effort</li>
 <li>Templating features</li>
+<li>Code readability</li>
 </ul>
 <h2 id="abstraction-layer-for-automation">Abstraction Layer For Automation</h2>
 <p>In order to have an automated build system, all components should be setup and
