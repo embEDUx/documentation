@@ -51,7 +51,7 @@ cross-toolchains or emulators.
 
 ## Repositories - Product-Specification Storage Units
 It must be possible to build the products independently from each other.
-Therefore, each product specification wihich should be managed in a separate storage
+Therefore, each product specification should be managed in a separate storage
 unit which will be referred as a *repository* from this point on. Additionally
 each platform needs to have its own identifiable storage subunit within the
 *respository*. The storage subunits will be referred as *branches* from this
