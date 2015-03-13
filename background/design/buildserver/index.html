@@ -343,13 +343,13 @@
     
         <li class="main active"><a href="#buildserver">Buildserver</a></li>
         
-            <li><a href="#build-automation">Build Automation</a></li>
+            <li><a href="#build-automation-routines">Build Automation Routines</a></li>
+        
+            <li><a href="#automated-build-triggering">Automated Build Triggering</a></li>
         
             <li><a href="#setup-automation-routine">Setup Automation Routine</a></li>
         
             <li><a href="#abstraction-layer-for-automation">Abstraction Layer For Automation</a></li>
-        
-            <li><a href="#virtualization-machines">Virtualization Machines</a></li>
         
             <li><a href="#linux-containers-utility-candidates">Linux-Containers Utility Candidates</a></li>
         
@@ -362,12 +362,14 @@
 <p><strong>(work in progress)</strong>
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.</p>
-<h2 id="build-automation">Build Automation</h2>
-<p>The builds should run in an automated manner as soon as the build specifications
-are updated by the user. As the build specifications are stored inside the product
-repositories, the buildserver should watch them for changes and trigger a new
-build on detected changes. The builds should only be triggered for the products
-that received new build specifications in their repositories.</p>
+<h2 id="build-automation-routines">Build Automation Routines</h2>
+<h2 id="automated-build-triggering">Automated Build Triggering</h2>
+<p>The builds for the different products should be triggered in an automated manner
+as soon as the build specifications are updated by the user. As the build
+specifications are stored inside the product repositories, the buildserver needs
+to watch them for changes and trigger a new build on detected changes. The
+builds should only be triggered for the products that received new build
+specifications in their repositories.</p>
 <h3 id="main-tasks">Main Tasks</h3>
 <ul>
 <li>Watch product repositories for changes</li>
@@ -466,7 +468,7 @@ Abstraction methods make it possible to deploy and run complex infrastructures
 without having to care about the underlying hardware and system configuration.</p>
 <p>Possible technologies for abstracting applications and whole operating systems
 include Virtual Machines and Linux Containers.</p>
-<h2 id="virtualization-machines">Virtualization Machines</h2>
+<h3 id="virtual-machines">Virtual Machines</h3>
 <p>Virtual Machines are completely abstracted from the host system's hardware.
 They run on a so-called Hypervisor, which simulates a complete machine for the
 target system. The target system runs it's own kernel, and needs to boot and

@@ -351,7 +351,7 @@
         
             <li><a href="#cross-target-support">Cross Target Support</a></li>
         
-            <li><a href="#build-steps">Build Steps</a></li>
+            <li><a href="#build-automation-routine">Build Automation Routine</a></li>
         
     
     </ul>
@@ -404,15 +404,15 @@ management system will be chosen, should allow specification on configuration
 and compiler flags during the build process. These options shall be provided
 together with the package lists.</p>
 <h2 id="cross-target-support">Cross Target Support</h2>
-<p>Even though the number of ARM-systems is growing, most Desktops and Servers are
-still running on x86-based architectures. In order to build the products for the
-platforms used within the lab-courses, it is necessary to either use
-cross-toolchains or emulators. The following candidates for the different
-techniques need to be evaluated for every of the embEDUx products.</p>
+<p>As stated in the <a href="../buildserver/index.html#cross-target-support">identically named chapter on the buildserver
+page</a>, a strategy for cross-building RootFS
+needs to be designed.</p>
+<p>The following candidates are possible techniques and tools that need to be evaluated:</p>
 <ul>
 <li>Cross-Compilation<ul>
-<li>Gentoo crossdev</li>
+<li>Gentoo's crossdev and cross-emerge</li>
 <li>YOCTO</li>
+<li>Buildroot</li>
 </ul>
 </li>
 <li>Emulation<ul>
@@ -421,7 +421,7 @@ techniques need to be evaluated for every of the embEDUx products.</p>
 </ul>
 </li>
 </ul>
-<h2 id="build-steps">Build Steps</h2>
+<h2 id="build-automation-routine">Build Automation Routine</h2>
 <p>The build process must include the following steps.</p>
 <ol>
 <li>Retrieve the build specifications from the RootFS-repository</li>
