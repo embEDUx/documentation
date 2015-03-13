@@ -39,7 +39,7 @@ You either need **root**-access on the buildserver, or a **user that has
 permissions to run arbitrary commands with sudo**.
 
 * Allow SSH access via key authentication - the setuproutine and the
-  instructions on thie page assume that you are using key-based authentication
+  instructions on the page assume that you are using key-based authentication
   for the user you chose in the host details.
 
 ## Suggestions

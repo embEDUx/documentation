@@ -3,7 +3,7 @@
 ## Prerequisites
 ### Requirements
 * Ansible
-* buildserver_setup repository
+* buildserver\_setup repository
 * SSH root-access to the docker host running the buildslave(s) in question
 
 ### Suggestions
@@ -11,7 +11,7 @@
 * SSH root-access via key authentication
 
 ## Example - Adding 'sys-apps/dtc'
-1.  Gain access to the buildserver_setup repository
+1.  Gain access to the buildserver\_setup repository
 
 1.  Edit ***roles/docker_buildslave/templates/Dockerfile.j2***
 

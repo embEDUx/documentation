@@ -4,7 +4,7 @@
 ## Requirements
 * In order to setup the adminstation, you need access to the following
 buildserver-setuproutine repository. Please consult your [user
-documnetation](post-install/user-documentation.md) for the URLs.
+documentation](post-install/user-documentation.md) for the URLs.
 * SSH root-access to the docker host running the buildslave(s) in question
     * Allows the setup routine to access the target buildserver(s) without
       password

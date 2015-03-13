@@ -38,7 +38,7 @@ Documentation](user-documentation.md).
 Variable | Notes
 --- | ---
 host-arch | Architecture of the host system (where the toolchain is used)
-taget-arch | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](user-documentation.md)
+target-arch | Specified and mapped to the target architecture by the Administrator. Found in the [User Documentation](user-documentation.md)
 abi | Application Binary Interface (selected by toolchain configuration)
 
 ### Branches

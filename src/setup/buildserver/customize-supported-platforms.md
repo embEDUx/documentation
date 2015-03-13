@@ -2,7 +2,7 @@
 
 **(work in progress)**
 
-## Configuation File - **master.cfg** 
+## Configuration File - **master.cfg** 
 TODO: where is the ***master.cfg***?
 
 The following is directly taken from the ***HTWG buildmaster master.cfg***. 
