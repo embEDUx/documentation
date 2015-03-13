@@ -343,8 +343,6 @@
     
         <li class="main active"><a href="#evaluation">Evaluation</a></li>
         
-            <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
-        
             <li><a href="#buildserver">Buildserver</a></li>
         
     
@@ -356,52 +354,6 @@
 <p><strong>(work in progress)</strong></p>
 <p>The considerations from the <a href="../design/index.html">design</a> will be evaluated within this
 chapter.</p>
-<h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>Buildroot</th>
-<th>Yocto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Setup</td>
-<td><code>git clone git://git.buildroot.net/buildroot</code></td>
-<td><code>git clone -b dizzy git://git.yoctoproject.org/poky.git</code></td>
-</tr>
-<tr>
-<td>Configuration</td>
-<td><code>make menuconfig</code></td>
-<td>Configuration is happening in conf files, although there is also a GUI</td>
-</tr>
-<tr>
-<td>Output</td>
-<td>Bootloader, Kernel, RootFS, Toolchain</td>
-<td>SD Card Image</td>
-</tr>
-<tr>
-<td>Platform Support</td>
-<td>-</td>
-<td>Common platforms are supported or available through so called <em>Board Support Packages (BSP)</em> or can be added manually.</td>
-</tr>
-<tr>
-<td>Software Support</td>
-<td>-</td>
-<td>Common software is available or otherwise can be added by creating own recipes</td>
-</tr>
-<tr>
-<td>Up-to-dateness, compared to consumer distributions</td>
-<td>-</td>
-<td>Poor</td>
-</tr>
-</tbody>
-</table>
-<h3 id="conclusion">Conclusion</h3>
-<p>As we want to have a highly dynamic system, where we still offer up-to date
-products, non of the aforementioned projects offer a satisfying solution.
-Therefore developing our own projects is necessary.</p>
 <h2 id="buildserver">Buildserver</h2>
 <p>The buildserver evaluation is split into one subpage per software component.</p>
 <p><a href="buildserver-setuproutine/index.html">Buildserver Setuproutine</a></p>
