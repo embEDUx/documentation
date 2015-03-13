@@ -345,8 +345,8 @@ section](../../usage/flashtool.md) of the **Flashtool**
  check\_mmc | Does a filesystem check on every partition on a mmc media
 
 
- 
- ## Directory structure of the **Flashtool**
+
+## Directory structure of the **Flashtool**
 
 ```bash
 flashtool
