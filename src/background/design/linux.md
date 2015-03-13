@@ -31,9 +31,9 @@ before the build process. Two possible options to retrieve the sources are:
 ## Build Steps
 The build process must include the following steps.
 
-1. Retrieve the build specifications from the **Linux**-repository
-1. Retrieve **Linux** kernel sources
-1. Apply required patches provided from the **Linux**-repository
+1. Retrieve the build specifications from the repository
+1. Retrieve kernel sources
+1. Apply provided patches
 1. (Cross-)Compile kernel for target architecture with kernel config provided by
    the specifications
 1. Create two archives from the necessary files.
