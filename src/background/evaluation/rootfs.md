@@ -4,7 +4,7 @@ the designed features:
 
 * Cross-target support
 * Package management
-* Buildroutien Automation
+* Buildroutine Automation
 
 ## YOCTO 
 ## Buildroot
