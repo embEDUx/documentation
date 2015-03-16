@@ -3,4 +3,6 @@ use_directory_urls: false
 docs_dir: 'src'
 theme: cosmo
 theme_dir: 'theme'
+#markdown_extensions: [mathjax]
+#extra_javascript: ['https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML','js/mathjaxhelper.js']
 pages:

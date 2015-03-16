@@ -313,7 +313,6 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | slow through complete system emulation
 
-
 ## Overview
 Candidate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
@@ -328,10 +327,33 @@ Qemu system emulation | YES / slow | - | -
 ## Conclusion
 It seems like there is no solution that is ready to be integrated into the
 designed continuous integration system without further modifications or
-automation processes wrapped around. As a result, **the choice will favor
-reliability in cross-target support, and package management qualities** and
-incorporate the winners into a custom automated buildroutine.
+automation processes wrapped around. As a result, the choice is to pick 
+the components that **offer reliability in cross-target support, and package
+management qualities** and incorporate the them into a custom automated
+buildroutine. The components chosen for the task are **Gentoo Portage** paired
+with **Qemu system emulation** in case of Cross-Target buildjobs.
 
-# Evaluation RootFS Buildroutine Automation
+# Evaluation RootFS Buildroutine
 As described in the design chapter [Buildserver - Build Automation
 Routines](../design/buildserver.md#build-automation-routines), the automated RootFS buildroutine will be triggered by the continuous integration master component.
+
+## RootFS Buildroutine Steps
+Based on recent evaluation results and the described steps that were designed
+under [Design - RootFS Build Automation
+Routine](../design/rootfs.md#rootfs-build-automation-routine), the RootFS
+buildroutine can be specified in greater detail.
+
+1. If running on a Cross-Target Container
+    1. Ensure that the disk image for the virtual machine is prepared
+    1. Ensure that the Cross-Target Virtual Machine has been setup
+    1. Ensure the virtual machine is running and reachable
+1. If running on a native container
+    1. Ensure that the RootFS for the chroot is prepared
+    1. Esnure  that the SSHd
+1. Retrieve the build specifications from the RootFS-repository
+1. Parse the package list provided by the user
+1. Translate the package list into a format that is accepted by the package
+   manager
+   1. Cleanup the build files
+   1. Create an archive from the RootFS
+1. Pack the RootFS contents

@@ -1,4 +1,21 @@
 # Project Requirements (HTWG context)
+The origin of **embEDUx** plays a big role in the requirements of the whole
+project. In the [background introduction](background.md) it is briefly explained
+that **embEDUx** aims to create **Linux** distributions for embedded systems in
+educational environments. The specific educational environment at the HTWG
+consists of several lab-courses, which have specific software requirements on
+different hardware platforms.
+
+In order to understand the requirements of **embEDUX**, these requirements need
+to analyzed carefully.
+
+## Products - The distribution pieces
+The different parts of the distributions 
+The software that is built by the buildserver will be
+referred as ***products*** within the further documentation. This helps to
+distinguish between software that is used throughout the build system, and
+software that is being built uses the build system.
+
 The first action towards implementing the **embEDUx** project is to collect the
 necessary requirements. While requirements were exchanged and discussed between
 the team members and Prof. Dr. Mächtel, others were identified by analyzing the
