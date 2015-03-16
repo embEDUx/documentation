@@ -152,39 +152,39 @@ With this information, the **Flashtool** decides which of the recorded devices
 were plugged in by the user. There are 4 scenarios how the user could plug in a
 *MMC* card.
 
-    1. User insert *MMC* device into a external *MMC card reader* with multiple
-        MMC slots:
+1. User insert *MMC* device into a external *MMC card reader* with multiple
+    MMC slots:
 
-        Python dictionary looks like: (device *sdd* is *MMC* card)
-            
-            {'add': {}, 'change': {u'sdd': 2}}
+    Python dictionary looks like: (device *sdd* is *MMC* card)
+        
+        {'add': {}, 'change': {u'sdd': 2}}
 
-    2. User inserts the external *MMC card reader* in the *usb* port and then 
-        insert the *MMC* device into the card reader:
+2. User inserts the external *MMC card reader* in the *usb* port and then 
+    insert the *MMC* device into the card reader:
 
-        Python dictionary looks like: (device *sdd* is *MMC* card)
+    Python dictionary looks like: (device *sdd* is *MMC* card)
 
-            {'add': {u'sdb': 1, u'sdc': 1, u'sdd': 1, u'sde': 1, u'sdf': 1},
-             'change': {u'sdb': 1, u'sdc': 1, u'sdd': 5, u'sde': 1, u'sdf': 1}}
+        {'add': {u'sdb': 1, u'sdc': 1, u'sdd': 1, u'sde': 1, u'sdf': 1},
+         'change': {u'sdb': 1, u'sdc': 1, u'sdd': 5, u'sde': 1, u'sdf': 1}}
 
-    3. User inserts the external *MMC card reader* in the *usb* port and the
-        *MMC* device was already plugged in the external *MMC card reader*:
+3. User inserts the external *MMC card reader* in the *usb* port and the
+    *MMC* device was already plugged in the external *MMC card reader*:
 
-        Python dictionary looks like: (device *sdd* is *MMC* card)
+    Python dictionary looks like: (device *sdd* is *MMC* card)
 
-            {'add': {u'sdb': 1, u'sdc': 1, u'sdd': 1, u'sde': 1, u'sdf': 1},
-             'change': {u'sdb': 1, u'sdc': 1, u'sde': 1, u'sdf': 1}}
+        {'add': {u'sdb': 1, u'sdc': 1, u'sdd': 1, u'sde': 1, u'sdf': 1},
+         'change': {u'sdb': 1, u'sdc': 1, u'sde': 1, u'sdf': 1}}
 
-        This scenario could also lead to a state, that the Flashtoll would
-        recognize muliple *MMC* devices if there were plugged in multiple *MMC*
-        devices in the external reader. If that happens the tool will ask the
-        user to choose one of the recognized devices.
+    This scenario could also lead to a state, that the Flashtoll would
+    recognize muliple *MMC* devices if there were plugged in multiple *MMC*
+    devices in the external reader. If that happens the tool will ask the
+    user to choose one of the recognized devices.
 
-    4. User inserts *MMC* device into an internal *MMC card reader*:
+4. User inserts *MMC* device into an internal *MMC card reader*:
 
-        Python dictionary looks like: (device *mmcblk0* is *MMC* card)
+    Python dictionary looks like: (device *mmcblk0* is *MMC* card)
 
-            {'add': {u'mmcblk0': 1}, 'change': {}}
+        {'add': {u'mmcblk0': 1}, 'change': {}}
 
 After recognizing the *MMC* device, the **Flashtool** will proceed with its
 setup routine.
