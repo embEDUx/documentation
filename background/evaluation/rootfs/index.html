@@ -374,7 +374,9 @@
             <li><a href="#conclusion">Conclusion</a></li>
         
     
-        <li class="main "><a href="#evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</a></li>
+        <li class="main "><a href="#evaluation-rootfs-buildroutine">Evaluation RootFS Buildroutine</a></li>
+        
+            <li><a href="#rootfs-buildroutine-steps">RootFS Buildroutine Steps</a></li>
         
     
     </ul>
@@ -835,12 +837,39 @@ it would allow to run arbitrary</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>It seems like there is no solution that is ready to be integrated into the
 designed continuous integration system without further modifications or
-automation processes wrapped around. As a result, <strong>the choice will favor
-reliability in cross-target support, and package management qualities</strong> and
-incorporate the winners into a custom automated buildroutine.</p>
-<h1 id="evaluation-rootfs-buildroutine-automation">Evaluation RootFS Buildroutine Automation</h1>
+automation processes wrapped around. As a result, the choice is to pick 
+the components that <strong>offer reliability in cross-target support, and package
+management qualities</strong> and incorporate the them into a custom automated
+buildroutine. The components chosen for the task are <strong>Gentoo Portage</strong> paired
+with <strong>Qemu system emulation</strong> in case of Cross-Target buildjobs.</p>
+<h1 id="evaluation-rootfs-buildroutine">Evaluation RootFS Buildroutine</h1>
 <p>As described in the design chapter <a href="../../design/buildserver/index.html#build-automation-routines">Buildserver - Build Automation
 Routines</a>, the automated RootFS buildroutine will be triggered by the continuous integration master component.</p>
+<h2 id="rootfs-buildroutine-steps">RootFS Buildroutine Steps</h2>
+<p>Based on recent evaluation results and the described steps that were designed
+under <a href="../../design/rootfs/index.html#rootfs-build-automation-routine">Design - RootFS Build Automation
+Routine</a>, the RootFS
+buildroutine can be specified in greater detail.</p>
+<ol>
+<li>If running on a Cross-Target Container<ol>
+<li>Ensure that the disk image for the virtual machine is prepared</li>
+<li>Ensure that the Cross-Target Virtual Machine has been setup</li>
+<li>Ensure the virtual machine is running and reachable</li>
+</ol>
+</li>
+<li>If running on a native container<ol>
+<li>Ensure that the RootFS for the chroot is prepared</li>
+<li>Esnure  that the SSHd</li>
+</ol>
+</li>
+<li>Retrieve the build specifications from the RootFS-repository</li>
+<li>Parse the package list provided by the user</li>
+<li>Translate the package list into a format that is accepted by the package
+   manager</li>
+<li>Cleanup the build files</li>
+<li>Create an archive from the RootFS</li>
+<li>Pack the RootFS contents</li>
+</ol>
 </div>
         </div>
 
