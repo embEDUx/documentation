@@ -28,7 +28,7 @@ while the build configuration must be user providable for each individual build.
 Each individual build represents a configuration change that has been made by
 the user.
 
-* [Buildserver](design/buildserver)
+* [Buildserver](design/buildserver.md)
 
 ## Comparison With Similar Projects
 The idea of building a complete Linux-based system for a specific platform is
