@@ -29,8 +29,10 @@ bias towards the requirements specific to the lab-courses.
 * Automated build system for customized Linux distributions
 * Configurable setuproutine of the buildsystem, with sane defaults
 * Centralized build configurations for all your Platforms
-* Individual configuration and builds for Linux-Kernel, U-Boot, RootFS,
-  Misc-Files
+* Individual configuration and builds with specified targets, organized by
+    * Platform: for Linux-Kernel, U-Boot, Misc-Files
+    * Architecture: RootFS
+    * Hybrid: Toolchain
 * Working examples for Raspberry Pi, Beaglebone Black, 
 
 ## What is it not?
