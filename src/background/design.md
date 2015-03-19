@@ -40,20 +40,8 @@ analyzed and collected on the [requirements page](requirements.md).  The
 projects will be evaluated in order to find out if they suitable as base
 projects.
 
-* **Buildroot**
-
-    A collection of bash scripts in order to build toolchains, Linux-kernels,
-    bootloaders and root filesystems. It can be configured via an ncurses-based
-    menu.
-
-* **Yocto Project**
-
-    "Provides open source, high quality infrastructure and tools to help
-    developers create their own **Linux** distribution for any hardware
-    architecture, across muiltiple market segments. It is intended to provide a
-    helpful starting point for developers."
-    ([Source](https://wiki.yoctoproject.org/wiki/FAQ#What_is_the_Yocto_Project.3F))
-    
+* [Buildroot](evaluation/comparison/buildroot.md)
+* [Yocto Project](evaluation(comparison/yocto-project.md)
 
 ## Cross-Target Support
 Even though the number of ARM-systems is growing, most Desktops and Servers are
