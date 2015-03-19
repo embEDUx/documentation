@@ -19,89 +19,98 @@ create a configuration via a **ncurses**-based configuration menu similar to the
 
 This configuration will manage the following steps:
 
-* **Target options:**
+#### **Target options:**
 
-    Options which depend on the target architecture, like:
+Options which depend on the target architecture, like:
 
-    * Select the target architecture
-    * Application Binary Interface
+* Select the target architecture
+* Application Binary Interface
 
-* **Build options:**
+
+####  **Build options:**
     
-    Several options for the build procedure, e.g.:
+Several options for the build procedure, e.g.:
 
-    * Selecting the download locations and mirrors
-    * Selecting a directory for patchs
-    * gcc optimization
+* Selecting the download locations and mirrors
+* Selecting a directory for patchs
+* gcc optimization
 
-* **Toolchain:**
+
+#### **Toolchain:**
     
-    The user can decide whether **buildroot** should build its own toolchain or 
-    should use an external toolchain. For the a own builded toolchain there are
-    several options, e.g.:
+The user can decide whether **buildroot** should build its own toolchain or 
+should use an external toolchain. For the a own builded toolchain there are
+several options, e.g.:
 
-    * Selecting the kernel header version
-    * Selecting the C library
-    * Binutil options
-    * GCC options
+* Selecting the kernel header version
+* Selecting the C library
+* Binutil options
+* GCC options
 
-* **System configuration:**
 
-    The user can configure several options for the built system, e.g.:
+#### **System configuration:**
 
-    * System hostname
-    * Password encoding and root password
-    * Selecting a **Root FS** skeleton
+The user can configure several options for the built system, e.g.:
 
-* **Kernel:**
+* System hostname
+* Password encoding and root password
+* Selecting a **Root FS** skeleton
+
+
+#### **Kernel:**
     
-    All kernel related configurations, e.g.:
+All kernel related configurations, e.g.:
 
-    * Kernel version
-    * Kernel patches
-    * Kernel configuration file
-    * Kernel binary format
+* Kernel version
+* Kernel patches
+* Kernel configuration file
+* Kernel binary format
 
-* **Target packages:**
 
-    Selecting packages which will be installed with 
-    [busybox](http://www.busybox.net/) on the target **Root FS**. **Busybox** combines
-    many common unix utilities into a single executable. The provided packages for 
-    **busybox** are devided into several groups, e.g.:
+#### **Target packages:**
 
-    * Audio and video applications
-    * Development tools
-    * Hardware handling
+Selecting packages which will be installed with 
+[busybox](http://www.busybox.net/) on the target **Root FS**. **Busybox** combines
+many common unix utilities into a single executable. The provided packages for 
+**busybox** are devided into several groups, e.g.:
 
-* **Filesystem images:**
+* Audio and video applications
+* Development tools
+* Hardware handling
 
-    Filesystem related configurations for the **Root FS** image, e.g.:
 
-    * Filesystem type (ext2/3/4, jffs2, etc.)
-    * Building a cpio archive of the **Root FS**
-    * Building a tarball of the **Root FS**
+#### **Filesystem images:**
 
-* **Bootloaders:**
+Filesystem related configurations for the **Root FS** image, e.g.:
 
-    User can select the bootloader which should be build for the target system,
-    the **buildroot** configuration provides several bootloaders, e.g.:
+* Filesystem type (ext2/3/4, jffs2, etc.)
+* Building a cpio archive of the **Root FS**
+* Building a tarball of the **Root FS**
 
-    * Uboot and configuration (e.g. version, patches, binary format)
-    * Barebox
-    * Atmel related bootloaders
 
-* **Host utilities:**
+#### **Bootloaders:**
 
-    User can select various utilities for the host building system, e.g.:
+User can select the bootloader which should be build for the target system,
+the **buildroot** configuration provides several bootloaders, e.g.:
 
-    * Uboot tools
-    * Tools for different filesystems
+* Uboot and configuration (e.g. version, patches, binary format)
+* Barebox
+* Atmel related bootloaders
 
-* **Legacy config options:**
 
-    Shows the user which packages were removed or renamed from the buildroot
-    configuration. The list is divided in subsections for each **buildroot*
-    version.
+#### **Host utilities:**
+
+User can select various utilities for the host building system, e.g.:
+
+* Uboot tools
+* Tools for different filesystems
+
+
+#### **Legacy config options:**
+
+Shows the user which packages were removed or renamed from the buildroot
+configuration. The list is divided in subsections for each **buildroot**
+version.
 
 
 After going through the **buildroot** configuration a `.config` file will be
@@ -114,26 +123,26 @@ The user can also configure several package by itself after configuring
 **buildroot**. The following packages can be configured via the **ncurses**
 configuration procedure:
 
-* **BusyBox:**
+#### **Configuring BusyBox:**
 
-    `make busybox-menuconfig`
+`make busybox-menuconfig`
 
-    This allows the user to configure busybox in more detail.
+This allows the user to configure **BusyBox** in more detail.
 
-* **Linux kernel:**
+#### **Configuring Linux kernel:**
 
-    `make linux-menuconfig`
+`make linux-menuconfig`
 
-    This allows the user to make subsequent changes on the configuration the 
-    downloaded kernel with the standard configuration procedure of the linux kernel.
+This allows the user to make subsequent changes on the configuration the 
+downloaded kernel with the standard configuration procedure of the **Linux**
+kernel.
 
-* **uClibc:**
+#### **Configuring uClibc:**
 
-    `make uclibc-menuconfig`
+`make uclibc-menuconfig`
 
-    This allows the user to configure uclibc in te same way as for **BusyBox**.
+This allows the user to configure uclibc in te same way as for **BusyBox**.
     
-
 
 # Result
 
@@ -158,5 +167,5 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | Manual configuration necessary
 Package management | LIMITED | Difficult to extend
-Buildroutine Automation | YES | Uses the well known configuration procedure like Linux configuration
-Deployment | NO | System must be installed by Hand on the embedded device
+Buildroutine Automation | YES | Uses the well known configuration procedure like **Linux** configuration
+Deployment | NO | System must be installed by hand on the embedded device
