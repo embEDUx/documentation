@@ -4,7 +4,6 @@ bootloaders and root filesystems through cross-compilation. It can be
 configured via an **ncurses**-based menu.
 
 ## Workflow
-
 To start working with **buildroot** the user simply downloads the latest
 stable **buildroot** version as tarball or retrieves the development state via
 git. The [package requirements](http://buildroot.org/downloads/
@@ -20,7 +19,6 @@ create a configuration via a **ncurses**-based configuration menu similar to the
 This configuration will manage the following steps:
 
 #### **Target options:**
-
 Options which depend on the target architecture, like:
 
 * Select the target architecture
@@ -28,7 +26,6 @@ Options which depend on the target architecture, like:
 
 
 ####  **Build options:**
-    
 Several options for the build procedure, e.g.:
 
 * Selecting the download locations and mirrors
@@ -37,7 +34,6 @@ Several options for the build procedure, e.g.:
 
 
 #### **Toolchain:**
-    
 The user can decide whether **buildroot** should build its own toolchain or 
 should use an external toolchain. For the a own builded toolchain there are
 several options, e.g.:
@@ -49,7 +45,6 @@ several options, e.g.:
 
 
 #### **System configuration:**
-
 The user can configure several options for the built system, e.g.:
 
 * System hostname
@@ -58,7 +53,6 @@ The user can configure several options for the built system, e.g.:
 
 
 #### **Kernel:**
-    
 All kernel related configurations, e.g.:
 
 * Kernel version
@@ -68,7 +62,6 @@ All kernel related configurations, e.g.:
 
 
 #### **Target packages:**
-
 Selecting packages which will be installed with 
 [busybox](http://www.busybox.net/) on the target **Root FS**. **Busybox** combines
 many common unix utilities into a single executable. The provided packages for 
@@ -80,7 +73,6 @@ many common unix utilities into a single executable. The provided packages for
 
 
 #### **Filesystem images:**
-
 Filesystem related configurations for the **Root FS** image, e.g.:
 
 * Filesystem type (ext2/3/4, jffs2, etc.)
@@ -89,7 +81,6 @@ Filesystem related configurations for the **Root FS** image, e.g.:
 
 
 #### **Bootloaders:**
-
 User can select the bootloader which should be build for the target system,
 the **buildroot** configuration provides several bootloaders, e.g.:
 
@@ -99,7 +90,6 @@ the **buildroot** configuration provides several bootloaders, e.g.:
 
 
 #### **Host utilities:**
-
 User can select various utilities for the host building system, e.g.:
 
 * Uboot tools
@@ -107,7 +97,6 @@ User can select various utilities for the host building system, e.g.:
 
 
 #### **Legacy config options:**
-
 Shows the user which packages were removed or renamed from the buildroot
 configuration. The list is divided in subsections for each **buildroot**
 version.
@@ -145,22 +134,22 @@ This allows the user to configure uclibc in te same way as for **BusyBox**.
     
 
 # Result
-
-**Buildroot** is a nice tool to build an own Distribution for different target
-systems. The way of configuring the Distribution is well known and intuitive,
-for people who had contact with building a **Linux** kernel. Newbies has to 
-read a lot of documentation to build their first own distribution for a target
-device. The user must be willing to learn a lot about Linux configuration and 
-the hardware of the target system.
+**Buildroot** is a nice tool to build an own distribution for different target
+platforms. The way of configuring the distribution is well known and intuitive
+for people who previously configured and built a **Linux** kernel, and are
+familiar with the principle of cross compilation. People who are new to these
+topics need to read documentation that goes beyond the F1-help-text that is
+provided by the buildroot configuration menu.
 
 The **Buildroot** tool is able to provide a lot of packages for the target
-system via **BusyBox**. Every package is built with the **cross-toolchain**
-on the host system. There are often problems with cross-compiling software
-packages. Often there has to be done patches on the source code of a package to
-get it cross-compiled. This makes can make it hard to add new packages to
-**BusyBox**. A short instruction how to add a new package (called applet) can be
-found [here](http://www.busybox.net/FAQ.html#adding).
-
+system. It is also possible to build **BusyBox**-only RootFS. Every package is
+built on the host system, using a cross-toolchain, that can either be
+downloaded or also compiled configured and compiled within the
+*Buildroot*-context. It is possible to add own packages, and a short instruction
+how to add a new package (called applet) can be found [on the busybox
+website](http://www.busybox.net/FAQ.html#adding). Adding new software can be a
+cumbersome process, because it has to be cross-compilable and package
+dependencies need to be maintained manually.
 
 ## Overview
 Criteria | Result | Notes
