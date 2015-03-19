@@ -16,38 +16,48 @@ are similarities in each deployment procedure.
 To find these similarities the deployment procedure must be abstracted into
 several steps. 
 
-1. The first step is to recognize how the products can be deployed to the
-    platform. In every case this media will be a **storage device** which can be
-    accessed in different ways.
+### Storage device of the platform 
 
-    All platforms which are in use by the *HTWG Configuration* use MMC devices
-    as storage device for the products. But there might be other platforms which
-    use other storage devices (e.g. an internal NAND-Flash).
+The first step is to recognize how the products can be deployed to the
+platform. In every case this media will be a **storage device** which can be
+accessed in different ways.
 
-    It must be assumed that the deployment tool must be able to
-    access these devices in different ways (e.g. via Linux block device or via
-    USB with an external tool). 
-    
-    * The deployment tool must be open for new mechanisms and should
-        provide an interface to access other storage devices.
+All platforms which are in use by the *HTWG Configuration* use MMC devices
+as storage device for the products. But there might be other platforms which
+use other storage devices (e.g. an internal NAND-Flash).
+
+It must be assumed that the deployment tool must be able to
+access these devices in different ways (e.g. via Linux block device or via
+USB with an external tool). 
+
+* The deployment tool must be open for new mechanisms and should
+    provide an interface to access other storage devices.
         
-2. It is also important for the deployment tool that it is able to recognize the
-    storage device when it is plugged in. This mechanism can also differ
-    dependent on the type of the storage device.
+### Recognize the storage device
 
-    * The deployment tool must use a software or component of the host operating
-        system (Linux) which allows to recognize different device types and makes 
-        it possible to extend the deployment tool for this types.
+It is also important for the deployment tool that it is able to recognize the
+storage device when it is plugged in. This mechanism can also differ
+dependent on the type of the storage device.
 
-3. An other step is the possibility to partition the storage device in different
-    parts if needed. This depends on the configuration of the Linux kernel and
-    the Uboot. 
+* The deployment tool must use a software or component of the host operating
+    system (Linux) which allows to recognize different device types and makes 
+    it possible to extend the deployment tool for this types.
 
-    * The deployment tool must be able to let the user partition the storage
-        device for its needs. Dependend on the storage device this might require
-        different tools or mechanisms.
+### Partition the storage device
 
-4. 
+The next step is the possibility to partition the storage device in different
+parts if needed. This depends on the configuration of the Linux kernel and
+the Uboot. 
+
+* The deployment tool must be able to let the user partition the storage
+    device for its needs. Dependend on the storage device this might require
+    different tools or mechanisms.
+
+
+###
+
+
+### Main goals for the implementation 
 
 One of the main goals for the deployment tool is that it is open for new
 features and mechanisms to form different deployment procedures. It is
