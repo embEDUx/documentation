@@ -207,6 +207,14 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/comparison/buildroot/index.html">Evaluation/Comparison/Buildroot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../evaluation/comparison/yocto-project/index.html">Evaluation/Comparison/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../evaluation/container-utility/index.html">Evaluation/Container Utility</a>
                         </li>
                     
@@ -355,13 +363,7 @@
     
         <li class="main active"><a href="#design">Design</a></li>
         
-            <li><a href="#linux-kernel">Linux Kernel</a></li>
-        
-            <li><a href="#bootloader">Bootloader</a></li>
-        
-            <li><a href="#rootfs">RootFS</a></li>
-        
-            <li><a href="#buildserver">Buildserver</a></li>
+            <li><a href="#products-built-by-embedux">Products Built By embEDUx</a></li>
         
             <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
@@ -377,22 +379,39 @@
             <div class="col-md-9" role="main">
 
 <h1 id="design">Design</h1>
-<p><strong>(work in progress)</strong></p>
-<p>The design for the <strong>embEDUx</strong> system must be created by carefully analyzing the
-<a href="../requirements/index.html">project requirements</a>. These include a wide variety of
-necessary configuration options, which in turn requires a configurable build
-system. The build system must be able to build the following software</p>
-<h2 id="linux-kernel"><a href="linux/index.html">Linux Kernel</a></h2>
-<h2 id="bootloader"><a href="bootloader/index.html">Bootloader</a></h2>
-<h2 id="rootfs"><a href="rootfs/index.html">RootFS</a></h2>
-<p>while the build configuration must be user providable for each individual build.
-Each individual build represents a configuration change that has been made by
-the user.</p>
-<h2 id="buildserver"><a href="../../design/buildserver">Buildserver</a></h2>
+<p><strong>(work in progress)</strong>
+This page is the entry point of the design chapter and it includes many links to
+more detailed explanations of the mentioned topics. In order to understand the
+complete system design, please read the following page and all linked pages.</p>
+<h2 id="products-built-by-embedux">Products Built By <strong>embEDUx</strong></h2>
 <p>The software that is built by the buildserver will be
 referred as <strong><em>products</em></strong> within the further documentation. This helps to
 distinguish between software that is used throughout the build system, and
 software that is being built uses the build system.</p>
+<p>The design for the <strong>embEDUx</strong> system must be created carefully by analyzing the
+<a href="../requirements/index.html">project requirements</a> that have been determined by the
+underlying circumstances at the HTWG and it's lab-courses. </p>
+<p>The requirements include a wide variety of necessary configuration options which
+need to be considered for the design of the different products
+which in turn requires a configurable build system. The build system must be
+able to build the following software</p>
+<ul>
+<li><a href="linux/index.html">Linux Kernel</a></li>
+<li><a href="bootloader/index.html">Bootloader</a></li>
+<li><a href="rootfs/index.html">RootFS</a></li>
+</ul>
+<p>while the build configuration must be user providable for each individual build.
+Each individual build represents a configuration change that has been made by
+the user.</p>
+<ul>
+<li><a href="buildserver/index.html">Buildserver</a></li>
+</ul>
+<p>The built products can be deployed to the platform by hand from the user. This
+deployment will include several steps for a platofrm. To make this deployment
+process easy the <strong>embEDUx</strong> system provides an configurable deployment tool.</p>
+<ul>
+<li><a href="flashtool/index.html">Deployment Tool</a></li>
+</ul>
 <h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
 <p>The idea of building a complete Linux-based system for a specific platform is
 not new. Therefore it is of no surprise, that by the time of designing
@@ -403,27 +422,8 @@ analyzed and collected on the <a href="../requirements/index.html">requirements 
 projects will be evaluated in order to find out if they suitable as base
 projects.</p>
 <ul>
-<li>
-<p><strong>Emdebian</strong></p>
-<p>A <strong>Debian</strong> based distribution targetted for embedded systems.</p>
-<p>"As of July 2014, updates to the Emdebian distributions ceased. There will
-be no further updates and no further stable releases."
-<a href="http://www.emdebian.org/">link</a></p>
-</li>
-<li>
-<p><strong>Buildroot</strong></p>
-<p>A collection of bash scripts in order to build toolchains, Linux-kernels,
-bootloaders and root filesystems. It can be configured via an ncurses-based
-menu.</p>
-</li>
-<li>
-<p><strong>Yocto Project</strong></p>
-<p>"Provides open source, high quality infrastructure and tools to help
-developers create their own <strong>Linux</strong> distribution for any hardware
-architecture, across muiltiple market segments. It is intended to provide a
-helpful starting point for developers."
-(<a href="https://wiki.yoctoproject.org/wiki/FAQ#What_is_the_Yocto_Project.3F">Source</a>)</p>
-</li>
+<li><a href="../evaluation/comparison/buildroot/index.html">Buildroot</a></li>
+<li><a href="../evaluation/comparison/yocto-project/index.html">Yocto Project</a></li>
 </ul>
 <h2 id="cross-target-support">Cross-Target Support</h2>
 <p>Even though the number of ARM-systems is growing, most Desktops and Servers are
