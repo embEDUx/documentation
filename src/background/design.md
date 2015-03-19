@@ -15,21 +15,20 @@ The design for the **embEDUx** system must be created carefully by analyzing the
 [project requirements](requirements.md) that have been determined by the
 underlying circumstances at the HTWG and it's lab-courses. 
 
-
 The requirements include a wide variety of necessary configuration options which
 need to be considered for the design of the different products.
 which in turn requires a configurable build system. The build system must be
 able to build the following software
 
-## [Linux Kernel](design/linux.md)
-## [Bootloader](design/bootloader.md)
-## [RootFS](design/rootfs.md)
+* [Linux Kernel](design/linux.md)
+* [Bootloader](design/bootloader.md)
+* [RootFS](design/rootfs.md)
 
 while the build configuration must be user providable for each individual build.
 Each individual build represents a configuration change that has been made by
 the user.
 
-## [Buildserver](design/buildserver)
+* [Buildserver](design/buildserver)
 
 ## Comparison With Similar Projects
 The idea of building a complete Linux-based system for a specific platform is
