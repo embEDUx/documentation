@@ -41,7 +41,7 @@ projects will be evaluated in order to find out if they suitable as base
 projects.
 
 * [Buildroot](evaluation/comparison/buildroot.md)
-* [Yocto Project](evaluation(comparison/yocto-project.md)
+* [Yocto Project](evaluation/comparison/yocto-project.md)
 
 ## Cross-Target Support
 Even though the number of ARM-systems is growing, most Desktops and Servers are
