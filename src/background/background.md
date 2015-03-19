@@ -21,16 +21,25 @@ increased and so has the complexity and effort to prepare and maintain the
 systems in use.  
 
 The embEDUx project has been created to find a generic and automated approach
-for tasks concerning the preparation of soft- and hardware for these lab-courses
-offered at the HTWG, which is the reason why the embEDUx requirements will have
-a strong bias towards the requirements specific to the lab-courses.
+for tasks concerning the preparation of soft- and hardware for the lab-courses
+at the HTWG. Naturally, that's why the embEDUx requirements will have a strong
+bias towards the requirements specific to the lab-courses.
 
-## 
+## What is it, and what can it do?
+* Automated build system for customized Linux distributions
+* Centralized build configurations for all your Platforms
+* Individual configuration and builds for Linux-Kernel, U-Boot, RootFS,
+  Misc-Files
+* Working examples for Raspberry Pi, Beaglebone Black, 
+
+## What is it not?
+* Magic system guess all your Platforms configuration automatically
+
 
 
 ## Initial contributors
-The project started off with three master students of computer science working
-on a team-project, supervised by a professor. Namely, these are
+The project started off with three master students of computer science who have
+been working on this project in a team, supervised by a professor. Namely, these are
 
 * Prof. Dr. Michael Mächtel
 * Lars Eckervogt
@@ -39,5 +48,3 @@ on a team-project, supervised by a professor. Namely, these are
 
 Head over to the [contacts and support page](../support/contact-team.md) if you
 want to contact any of these people.
-
-
