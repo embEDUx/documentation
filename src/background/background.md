@@ -27,13 +27,14 @@ bias towards the requirements specific to the lab-courses.
 
 ## What is it, and what can it do?
 * Automated build system for customized Linux distributions
+* Configurable setuproutine of the buildsystem, with sane defaults
 * Centralized build configurations for all your Platforms
 * Individual configuration and builds for Linux-Kernel, U-Boot, RootFS,
   Misc-Files
 * Working examples for Raspberry Pi, Beaglebone Black, 
 
 ## What is it not?
-* Magic system guess all your Platforms configuration automatically
+* Magic system for guessing all your Platforms configuration automatically
 
 
 
