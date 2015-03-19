@@ -26,6 +26,7 @@ below is followed.
 - requests
 - jinja2
 - pyparted
+- pycrypto
 
 
 ## Installation
@@ -88,5 +89,5 @@ $ source {path/to/virtualenv}/bin/activate  # go into virtualenv
 Required python packages which can be installed via PyPI:
 
 ```sh
-$ pip install -r https://apu.in.htwg-konstanz.de/labworks-embEDUx/flashtool/raw/master/requirements.txt
+$ pip install -r https://raw.githubusercontent.com/embEDUx/flashtool/master/requirements.txt 
 ```

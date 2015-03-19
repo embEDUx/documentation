@@ -16,7 +16,7 @@ The design for the **embEDUx** system must be created carefully by analyzing the
 underlying circumstances at the HTWG and it's lab-courses. 
 
 The requirements include a wide variety of necessary configuration options which
-need to be considered for the design of the different products.
+need to be considered for the design of the different products
 which in turn requires a configurable build system. The build system must be
 able to build the following software
 
@@ -29,6 +29,13 @@ Each individual build represents a configuration change that has been made by
 the user.
 
 * [Buildserver](design/buildserver.md)
+
+The built products can be deployed to the platform by hand from the user. This
+deployment will include several steps for a platofrm. To make this deployment
+process easy the **embEDUx** system provides an configurable deployment tool.
+
+* [Deployment Tool](design/flashtool.md)
+
 
 ## Comparison With Similar Projects
 The idea of building a complete Linux-based system for a specific platform is
