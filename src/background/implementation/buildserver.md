@@ -1,5 +1,8 @@
 # Buildserver Implementation
-**(work in progress)**
+According to the design and evaluation chapters, the **embEDUx**' buildserver
+consists of several components who form a unit that is able to build the
+different products. The implementation of these components 
+
 
 ## Buildmaster
 ### **master.cfg**

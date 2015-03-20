@@ -16,9 +16,9 @@ The design for the **embEDUx** system must be created carefully by analyzing the
 underlying circumstances at the HTWG and it's lab-courses. 
 
 The requirements include a wide variety of necessary configuration options which
-need to be considered for the design of the different products
-which in turn requires a configurable build system. The build system must be
-able to build the following software
+need to be considered for the design of the different products.  This in turn
+requires a configurable build system, which must be able to build the following
+software
 
 * [Linux Kernel](design/linux.md)
 * [Bootloader](design/bootloader.md)
@@ -31,24 +31,12 @@ the user.
 * [Buildserver](design/buildserver.md)
 
 The built products can be deployed to the platform by hand from the user. This
-deployment will include several steps for a platofrm. To make this deployment
-process easy the **embEDUx** system provides an configurable deployment tool.
+deployment will include several steps for a platform. To make this deployment
+process easy **embEDUx** provides a deployment tool.
 
-* [Deployment Tool](design/flashtool.md)
+* [Flashtool](design/flashtool.md)
 
-
-## Comparison With Similar Projects
-The idea of building a complete Linux-based system for a specific platform is
-not new. Therefore it is of no surprise, that by the time of designing
-**embEDUx**, there are several open source projects that need to be considered
-as a base for the **embEDUx** project. The following projects have feature
-specifications, that could possibly fulfill the requirements that have been
-analyzed and collected on the [requirements page](requirements.md).  The
-projects will be evaluated in order to find out if they suitable as base
-projects.
-
-* [Buildroot](evaluation/comparison/buildroot.md)
-* [Yocto Project](evaluation/comparison/yocto-project.md)
+## [Repositories](design/repositories.md) - Product-Specification Storage Units
 
 ## Cross-Target Support
 Even though the number of ARM-systems is growing, most Desktops and Servers are
@@ -58,7 +46,19 @@ of the **embEDUx** buildsystem is to build and deploy complete Linux-based
 systems for these hardware platforms, cross-target support is absolutely
 necessary for the project to work.
 
-## [Repositories](design/repositories.md) - Product-Specification Storage Units
+## Comparison With Similar Projects
+The idea of building a complete Linux-based system for a specific platform is
+not new. Therefore it is of no surprise that by the time of designing
+**embEDUx** there are several open source projects that have similar project
+goals. These projects need to be considered as a base for the **embEDUx**
+project. The following projects have feature specifications, that could possibly
+fulfill the requirements that have been analyzed and collected on the
+[requirements page](requirements.md).  The projects will be evaluated in order
+to find out if they suitable as base projects.
+
+* [Buildroot](evaluation/comparison/buildroot.md)
+* [Yocto Project](evaluation/comparison/yocto-project.md)
+
 
 ## Overall System Design
 [![](background/design/img/design.png)](background/design/img/design.png)

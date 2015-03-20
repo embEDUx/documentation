@@ -163,6 +163,7 @@ the continuous integration system into containers.
 
     * Watch all the product repositories for changes
     * Delegate build processes to buildslaves on changes
+
 * Buildslaves with target architecture specific build tools
 
     Runs emulated or natively with the target architecture, and has the
@@ -180,3 +181,5 @@ utilize the Linux-Containers functionality.
 * **LXC**
 * **OpenVZ**
 
+The chapter [Container Utility Evaluation](../evaluation/container-utility.md)
+shows the investigation of the candidates.
