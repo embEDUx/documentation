@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (implementation_flashtool.vue) 2015-03-20 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/opt/vue/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 20 15:20:03 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
+<!-- Do Not Remove: Saved date Fri Mar 20 15:24:04 CET 2015 by lars on platform Linux 3.19.1-gentoo in JVM 1.7.0_76-b13 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="implementation_flashtool.vue" created="1426859902663" x="0.0"
     y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1426861203401"
+    <resource referenceCreated="1426861444501" size="17783"
         spec="/home/lars/Documents/embedux/documentation/concept/implementation_flashtool.vue"
         type="1" xsi:type="URLResource">
         <title>implementation_flashtool.vue</title>
@@ -190,7 +190,7 @@
         created="1426860237064" x="171.63815" y="160.12479"
         width="134.0" height="117.0759" strokeWidth="2.0"
         autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
-        <strokeColor>#7F7F7F</strokeColor>
+        <strokeColor>#000000</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-plain-18</font>
         <URIString>http://vue.tufts.edu/rdf/resource/378e1fee7f0000013dd67a36777145fa</URIString>
@@ -214,7 +214,7 @@
         x="359.6231" y="302.5766" width="80.79898" height="22.0"
         strokeWidth="2.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
-        <strokeColor>#7F7F7F</strokeColor>
+        <strokeColor>#000000</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-plain-18</font>
         <URIString>http://vue.tufts.edu/rdf/resource/378e1ff07f0000013dd67a363c3ec266</URIString>
