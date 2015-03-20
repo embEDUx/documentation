@@ -13,7 +13,7 @@ considered.
 The user specification, such as configuration of **Linux** and potential user
 patches for the mainline sources should be stored together in a repository.
 Therefore each platform / version combination needs to have its own branch. E.g.
-if **Linux** version 1.0 and 1.2 should be build for platform a two branches
+if **Linux** version 1.0 and 1.2 should be build for platform A, two branches
   have to exist.
 
 ## Cross Target Support
@@ -24,9 +24,11 @@ support](../design.md#cross-target-support) needs to be considered.
 As mainline sources have to be used, those sources need to be retrieved somehow
 before the build process. Two possible options to retrieve the sources are:
 
+* Yocto Project
+* Buildroot
 * The User has to provide sources within the repository
-* The sources are downloaded before each build process
-* Gentoo sources ebuild from with **Gentoo** is used
+* The sources have to be downloaded before each build process
+* Gentoo sources ebuild together with **Gentoo** has to be used
 
 ## Build Steps
 The build process must include the following steps.

@@ -26,8 +26,10 @@ target support](../design.md#cross-target-support) needs to be considered.
 As mainline sources have to be used, those sources need to be retrieved somehow
 before the build process. Two possible options to retrieve the sources are:
 
+* Yocto Project
+* Buildroot
 * The User has to provide sources within the repository
-* The sources are downloaded before each build process at runtime
+* The sources have to be downloaded before each build process at runtime
 
 ## Build Steps
 Building **U-Boot** has to include the following steps:
