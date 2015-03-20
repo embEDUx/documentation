@@ -80,7 +80,7 @@ tools and metadata that serves as a set of working examples.*
 
 ## Products 
 This part of the document evaluates the support for the defined
-[required](../../requirements.md).
+[requirements](../../requirements.md).
 
 ### Bootloader
 The default bootloader, which comes with **Poky** is **U-Boot**. The recipe in
