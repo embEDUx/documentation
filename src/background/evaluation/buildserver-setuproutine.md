@@ -23,14 +23,16 @@ Ansible actions are organized and configured with different entities.  All
 entities are defined in separate files, which are specified in the **YAML**
 language.
 
+#### Hosts Inventory
 The first entity that needs to be defined is the hosts inventory, with optional
 groups.
 
 * Hosts
 * Groups
 
+#### Tasks
 Tasks and other entities specify the used modules, parameters and the target
-machines they're executed on:
+machines they're executed on.
 
 * Tasks
 * Roles
@@ -38,6 +40,7 @@ machines they're executed on:
 * Playbooks
 
 
+#### Variables
 Variables can be attached to each element of the previous two entity groups.
 
 * Variables
