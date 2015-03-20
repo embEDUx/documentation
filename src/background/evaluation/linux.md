@@ -1,6 +1,8 @@
 # Evaluation Linux 
 The considerations from the [design](../design/linux.md) will be evaluated
-within this chapter.
+within this chapter. As the decision against the **Yocto Project** and
+**Buildroot** was already made, those two are no longer evaluated and a solution
+to build the **Linux** kernel with low configuration effort has to be found.
 
 ## Cross Target Support
 **Linux** supports cross compilation and can therefore be compiled with a

@@ -1,8 +1,7 @@
 # Evaluation Toolchain
-
 As written in the [design](../design/toolchain.md) there are two possible
-solutions, but with the [evaluation of buildroot](buildroot.md) in
-mind, there is only one solution left. 
+solutions, but with the evaluation of the [Yocto Project](yocto-project.md) and
+[buildroot](buildroot.md) already done, there is only one solution left.
 
 ## Crosstool-NG
 **Crosstoo-NG** offers the possibility to build static, and therefore portable
