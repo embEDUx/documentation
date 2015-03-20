@@ -65,9 +65,9 @@ All kernel related configurations, e.g.:
 
 #### Target packages
 Selecting packages which will be installed with 
-[busybox](http://www.busybox.net/) on the target **Root FS**. **Busybox** combines
+[busybox](http://www.busybox.net/) on the target **RootFS**. **Busybox** combines
 many common unix utilities into a single executable. The provided packages for 
-**busybox** are devided into several groups, e.g.:
+**BusyBox** are divided into several groups, e.g.:
 
 * Audio and video applications
 * Development tools
@@ -75,11 +75,11 @@ many common unix utilities into a single executable. The provided packages for
 
 
 #### Filesystem images
-Filesystem related configurations for the **Root FS** image, e.g.:
+Filesystem related configurations for the **RootFS** image, e.g.:
 
 * Filesystem type (ext2/3/4, jffs2, etc.)
-* Building a cpio archive of the **Root FS**
-* Building a tarball of the **Root FS**
+* Building a cpio archive of the **RootFS**
+* Building a tarball of the **RootFS**
 
 
 #### Bootloaders
@@ -107,7 +107,7 @@ version.
 After going through the **buildroot** configuration a `.config` file will be
 saved. With this config file the user can build the configured system with the
 `make` command. **Buildroot** will download all required software components and
-compile them for the target system. If no **corss-toolchain** was given, the tool 
+compile them for the target system. If no **cross-toolchain** was given, the tool 
 will build the toolchain first, and compile the other software with it.
 
 The user can also configure several package by itself after configuring
@@ -124,7 +124,7 @@ This allows the user to configure **BusyBox** in more detail.
 
 `make linux-menuconfig`
 
-This allows the user to make subsequent changes on the configuration the 
+This allows the user to make subsequent changes on the configuration of the 
 downloaded kernel with the standard configuration procedure of the **Linux**
 kernel.
 
@@ -132,7 +132,7 @@ kernel.
 
 `make uclibc-menuconfig`
 
-This allows the user to configure uclibc in te same way as for **BusyBox**.
+This allows the user to configure uclibc in the same way as for **BusyBox**.
     
 
 ## Summary
@@ -141,13 +141,13 @@ platforms. The way of configuring the distribution is well known and intuitive
 for people who previously configured and built a **Linux** kernel, and are
 familiar with the principle of cross compilation. People who are new to these
 topics need to read documentation that goes beyond the F1-help-text that is
-provided by the buildroot configuration menu.
+provided by the **Buildroot** configuration menu.
 
 The **Buildroot** tool is able to provide a lot of packages for the target
 system. It is also possible to build **BusyBox**-only RootFS. Every package is
 built on the host system, using a cross-toolchain, that can either be
 downloaded or also compiled configured and compiled within the
-*Buildroot*-context. It is possible to add own packages, and a short instruction
+**Buildroot**-context. It is possible to add own packages, and a short instruction
 how to add a new package (called applet) can be found [on the busybox
 website](http://www.busybox.net/FAQ.html#adding). Adding new software can be a
 cumbersome process, because it has to be cross-compilable and package
