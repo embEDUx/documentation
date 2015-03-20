@@ -2,14 +2,14 @@
 *Buildroot is a set of Makefiles and patches that makes it easy to generate a
 complete embedded Linux system. Buildroot can generate any or all of a
 cross-compilation toolchain, a root filesystem, a kernel image and a bootloader
-image.* ([source](http://buildroot.uclibc.org/about.html))
+image.* ([source](http://Buildroot.uclibc.org/about.html))
 
-This evaluation was done with the **buildroot** version *2014.02*.
+This evaluation was done with the **Buildroot** version *2014.02*.
 
 **Buildroot** uses a **ncurses**-based configuration menu similar to the
 **Linux** configuration menu. 
 
-![**Buildroot** configuration via **ncurses**](background/evaluation/comparison/img/buildroot_configuration.png)
+![**Buildroot** configuration via **ncurses**](background/evaluation/comparison/img/Buildroot_configuration.png)
 
 ## Products
 This part of the document evaluates the support for the defined
@@ -22,7 +22,7 @@ configuration files and patches. The configuration of **Uboot** and **Linux**
 can be done separately.
 
 ### Toolchain
-The user can decide whether **buildroot** should build its own toolchain or use
+The user can decide whether **Buildroot** should build its own toolchain or use
 an external toolchain. This resulting toolchain is designed to work within the
 **Buildroot** context. Unfortunately these toolchains have absolute symbolic
 links compiled within the binaries. As a result the toolchains are not portable
@@ -39,7 +39,7 @@ standard **Linux** userspace applications and libraries, it can be reasonably
 assumed that the required software packages for the different lab-courses must
 be added to the **Buildroot** 
 
-**Buildroot** allows the user to [add own packages](http://buildroot.uclibc.org/downloads/manual/manual.html#adding-packages).
+**Buildroot** allows the user to [add own packages](http://Buildroot.uclibc.org/downloads/manual/manual.html#adding-packages).
 But adding new software can be a cumbersome process, because it has to be 
 cross-compilable and package dependencies need to be maintained manually.
 
