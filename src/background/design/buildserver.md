@@ -90,18 +90,48 @@ scripting language. The chosen language needs to be flexible in detecting
 conditions, since every setup run will have different conditions.
 The candidates are:
 
-* Python
-* Ansible
+#### Python
+Python is a general purpose scripting language that offers a wide variety of standard and
+additional modules. In theory, there should be no limitation to the complexity
+of the setup process when Python is used.
 
+#### Ansible
+Ansible is an administration utility written in Python, with a focus on
+automation of predefined actions. The actions that are available correspond to
+modules, and can be customized according to the available module parameters.
+Standard modules include things like installing packages, enabling system
+services, manage user accounts, synchronize files to or from the target
+machines, and many more. Ansible can be extended with custom modules, but the
+builtin modules already provide great functionality. The connection to the
+target machine uses SSH. 
+
+
+#### Evaluation Criteria
 The criteria that will be evaluated include:
 
-* Reusable components availability
-* Task efficiency
+* Ready-for-use components availability
 * Extensibility effort
 * Templating features
 * Code readability
 
-The evaluation
+### Setup Automation Routine Tasks
+#### Execute commands on the target machine
+The most commonly remote control utility is **SSH**, which shall be used for the
+setuproutine too.
+    
+
+#### Package Installation
+**Docker** is the only non-default package that needs to be installed on the
+remote host. 
+
+As it has not been mentioned in previous evaluation steps, it is
+necessary to chose the supported package managers now. A sane decision is to
+support **Ubuntu** and **Gentoo** as buildserver machines, and therefore to
+support **apt** and **portage**.
+
+* apt
+* portage
+
 
 
 ## Abstraction Layer For Automation
@@ -173,6 +203,16 @@ the continuous integration system into containers.
     * Toolchain
     * Compiler flags
     * Base system archive
+
+#### Container Management Setup steps
+Managing containers includes more than starting and stopping them. The
+setuproutine needs to assemble the content from scratch.  This requires an image
+which the container setup process will be based on. The container management
+includes roughly the following steps. They will be specified in more detail in
+the evaluation step, when the container utility has been chosen.
+
+* Prepare Container Images
+* Build Containers according to Buildjob specifications
 
 ## Linux-Containers Utility Candidates
 There is still the choice to make which utility should be used in order to

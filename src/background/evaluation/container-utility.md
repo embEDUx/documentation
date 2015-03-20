@@ -1,4 +1,4 @@
-# Cointainer Utility Evaluation
+# Container Utility Evaluation
 
 ## OpenVZ
 * Seperate Fork of the Linux-Kernel
@@ -23,7 +23,7 @@
 
 ## Result Container Utility Evaluation
 * Compatibility,
-* simplicity and therefore
+* simplicity and
 * publicity 
 
 are all in favor of **Docker**. 
