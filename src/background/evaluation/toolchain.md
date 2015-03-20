@@ -1,16 +1,18 @@
 ## Evaluation Toolchain
 
 As written in the [design](../design/toolchain.md) there are two possible
-solutions. Unfortunately toolchains built with **Buildroot** have absolute
-symbolic links compiled within the binaries and are therefore the result is not
-portable. As we want to have a portable toolchain, this fact disqualifies
-buildroot for our needs. Fortunately, **Crosstool-NG** offers the possibility to
-build static toolchains. With **Crosstool-NG** even toolchains are possible, that
-are built on host with architecture X, compiled to be ran on architecture Y,
-cross-compiling for architecture Z. These kind of toolchains are called
-*canadian* toolchain.  Crosstool-NG has also an *ncurses* based configuration
-menu similar to the **Linux** kernel *menuconfig*. The configuration is stored
-in a .config file.
+solutions, but with the [evaluation of buildroot](comparison/buildroot.md) in
+mind, there is only one solition left. 
+
+### Crosstool-NG
+**Crosstool__NG offers the possibility to build static, and therefore portable
+toolchains. With **Crosstool-NG** even toolchains are possible, that are built
+on host with architecture X, compiled for architecture Y, cross-compiling for
+architecture Z. These kind of toolchains are called *canadian* toolchain.
+Crosstool-NG has also an *ncurses* based configuration menu similar to the
+**Linux** kernel *menuconfig*, wihch results in an intuitive usage. The
+configuration is stored in a .config file and can be stored within the
+specification storage unit.
 
 ## Repository
 Each toolchain gets its own branch. That means one branch contains a toolchain
