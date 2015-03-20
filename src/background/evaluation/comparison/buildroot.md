@@ -1,4 +1,4 @@
-# Buildroot
+# Evaluation Buildroot
 *Buildroot is a set of Makefiles and patches that makes it easy to generate a
 complete embedded Linux system. Buildroot can generate any or all of a
 cross-compilation toolchain, a root filesystem, a kernel image and a bootloader

@@ -1,4 +1,4 @@
-# Yocto Project
+# Evaluation Yocto Project
 *Provides open source, high quality infrastructure and tools to help developers
 create their own **Linux** distribution for any hardware architecture, across
 multiple market segments. It is intended to provide a helpful starting point
