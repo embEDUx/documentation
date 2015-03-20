@@ -3,8 +3,6 @@
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.
 
-## Build Automation Routines
-
 ## Automated Build Triggering
 The builds for the different products should be triggered in an automated manner
 as soon as the build specifications are updated by the user. As the build
