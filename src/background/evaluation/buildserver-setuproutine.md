@@ -45,6 +45,11 @@ target hosts. Tasks can be reused and grouped into several other entities.
 * Plays, can include several roles
 * Playbooks, can consist of several plays
 
+#### Variables
+Variable files can be specified to each element of the previous two entity
+groups. There's also a special variable file that, unless overriden,  is valid
+for all hosts at all times.
+
 
 ## Setup Steps Evaluation
 ### Executing commands on the target machine
