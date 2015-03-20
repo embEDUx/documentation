@@ -1,7 +1,7 @@
 # Flashtool
 
 This guide will help you through the several commands you need to deploy builds
-from the *buildserver* to hardware.
+from the buildserver to hardware.
 
 ## Prerequisites
 
@@ -213,7 +213,7 @@ The name of a **recipe** file should follow this naming scheme:
 **The name and identifier must not contain underscores, please use dashes instead.**
 The *underscore* is used to divide the recipe file name in the two parts 
 *hardware name* and *identifier*. It is important, that the platform name is also 
-registered on the **buildserver**. You will find the valid platform-strings for
+registered on the buildserver. You will find the valid platform-strings for
 your **embEDUx** system in the [User Documentation](../setup/post-install/user-documentation.md).
 
 The next example shows how to use this name scheme for a Raspberry Pi. This

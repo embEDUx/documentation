@@ -10,7 +10,6 @@ In order to understand the requirements of **embEDUX**, these requirements need
 to analyzed carefully.
 
 ## Products - The distribution pieces
-The different parts of the distributions 
 The software that is built by the buildserver will be
 referred as ***products*** within the further documentation. This helps to
 distinguish between software that is used throughout the build system, and
@@ -32,6 +31,8 @@ technicalities.
 * User-provided configuration for builds
 * Automated setup
 * Automated build processes
+* Automated deployment process
+
 
 ## Lab-Course Specific Requirements
 In order to estimate the requirements list for all lab-courses we need to look
@@ -44,6 +45,9 @@ Realtime-Systems | RPi | Linux w/ GPIO, C-(Cross)-Compiler, Bootloader with Netb
 ARMrider Project | Iris Board | Linux w/ PWM, GPIO, 802.11s WiFi MESH, UART, Avahi Daemon, C++11-(Cross)-Compiler 
 Software-Defined-Radio Project | Utilite Pro, Beaglebone Black, RPi, Banana Pi | Linux w/ USB-debugging and Tracing support, GNUradio Application, USB-Monitoring Userspace-Tools
 Operating-Systems | RPi | Linux w/ GPIO, C-(Cross)-Compiler, Python 3.4, various Debugging Tools like valgrind, gdb, etc..: might vary
+
+For every lab-course the user needs a toolchain to develop own software for the
+hardware platforms.
 
 ## Hardware Platforms
 The following hardware platforms will be used by the lab-courses
