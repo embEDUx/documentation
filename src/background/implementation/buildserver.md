@@ -10,27 +10,6 @@ different products. The implementation of these components
 ## Buildslaves
 
 # Buildserver Setuproutine
-## Ansible Quick Introduction
-Ansible actions are organized and configured with different entities.  All
-entities are defined in separate files, which are specified in the **YAML**
-language.
-
-### Hosts
-The first entity that needs to be defined is the hosts inventory. The hosts
-inventory contains the address, SSH username and other host specific
-information.
-
-* Hosts
-* Groups, can consist of several hosts
-
-### Tasks
-Tasks use modules and module parameters to define actions that can be run on
-target hosts. Tasks can be reused and grouped into several other entities.
-
-* Tasks
-* Roles, can consist of several tasks
-* Plays, can include several roles
-* Playbooks, can consist of several plays
 
 
 ### Variables
@@ -46,3 +25,9 @@ for all hosts at all times.
 ## Configuration Generation
 ## Container Creation
 ## Container Startup
+
+# Continuous Integration Implementation
+
+### Scheduler Choice
+A suitable scheduler for our purpose could be the
+[anybranchscheduler](http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler).
