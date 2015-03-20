@@ -25,8 +25,8 @@ As mainline sources have to be used, those sources need to be retrieved somehow
 before the build process. Two possible options to retrieve the sources are:
 
 * The User has to provide sources within the repository
-* The sources are downloaded before each build process
-* Gentoo sources ebuild from with **Gentoo** is used
+* The sources have to be downloaded before each build process
+* Gentoo sources ebuild together with **Gentoo** has to be used
 
 ## Build Steps
 The build process must include the following steps.
