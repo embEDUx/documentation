@@ -3,8 +3,14 @@ According to the design and evaluation chapters, the **embEDUx**' buildserver
 consists of several components who form a unit that is able to build the
 different products. The implementation of these components 
 
+# Continuous Integration Implementation
+
+### Scheduler Choice
+A suitable scheduler for our purpose could be the
+[anybranchscheduler](http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler).
 
 ## Buildmaster
+
 ### **master.cfg**
 
 ## Buildslaves
@@ -26,8 +32,3 @@ for all hosts at all times.
 ## Container Creation
 ## Container Startup
 
-# Continuous Integration Implementation
-
-### Scheduler Choice
-A suitable scheduler for our purpose could be the
-[anybranchscheduler](http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler).
