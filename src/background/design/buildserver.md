@@ -3,8 +3,6 @@
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.
 
-## Build Automation Routines
-
 ## Automated Build Triggering
 The builds for the different products should be triggered in an automated manner
 as soon as the build specifications are updated by the user. As the build
@@ -42,8 +40,9 @@ possible, will allow to extend the system as easy as possible. Therefore, this
 criteria is moved over to the [setup design](setup-automation-routine).
 
 ## Setup Automation Routine
-The buildserver will undoubtedly be a complex structure of software components.
-To make the setup as easy as possible it should be automated as far as possible.
+The job of the setuproutine is to setup all buildserver components.  The
+buildserver will undoubtedly be a complex structure of software components.  To
+make the setup as easy as possible it should be automated as far as possible.
 
 ### Required Setup Parameters
 The administrator should only have to configure the parameters that can't
