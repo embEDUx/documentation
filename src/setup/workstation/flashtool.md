@@ -19,6 +19,7 @@ These package will be automatically installed when the [installation
 instruction](#installation-python)
 below is followed.
 
+- setuptools
 - colorama
 - pyudev
 - argcomplete
@@ -86,7 +87,15 @@ $ deactivate
 $ source {path/to/virtualenv}/bin/activate  # go into virtualenv
 ```
 
-Required python packages which can be installed via PyPI:
+Before you can install the package via *pip* you must ensure that the
+*setuptools* package is installed.
+
+```sh
+$ pip install setuptools
+```
+
+Now you can install the required python packages and the **Flashtool** 
+with the following command:
 
 ```sh
 $ pip install -r https://raw.githubusercontent.com/embEDUx/flashtool/master/requirements.txt 
