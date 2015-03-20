@@ -13,27 +13,43 @@ manual/manual.html#requirement) for **buildroot** must be installed before the u
 is able to use **buildroot**.
 
 
-### Configuration and Building
+## Configuration and Building
 To start working with **buildroot** the user simply types `make menuconfig` to
 create a configuration via a **ncurses**-based configuration menu similar to the
-**Linux** configuration menu.
+**Linux** configuration menu. The configured distribution can be build with the
+`make` command.
 
 ![**Buildroot** configuration via **ncurses**](background/evaluation/comparison/img/buildroot_configuration.png)
 
-#### Linux Kernel an Uboot
+### Linux Kernel an Uboot
 
 **Buildroot** supplies a mechanism to build any **Linux** kernel or **Uboot** version
 the user want to. It provides an interface to add additional configuration
 files and patches. The configuration of **Uboot** and **Linux** can be done
 separately.
 
-
-#### Toolchain
+### Toolchain
 The user can decide whether **buildroot** should build its own toolchain or 
 should use an external toolchain. This built toolchain is designed to work 
 in the **Buildroot** context. Unfortunately the built toolchains from
 **Buildroot** have absolute symbolic links compiled within the binaries. As a
-result the toolchains are not portable.
+result the toolchains are not portable which is a
+[requirement](../../requirements.md#lab-course-specific-requirements) for the
+**embEDUx** system.
+
+
+### Package Management
+The **Buildroot** tool is able to provide a lot of packages for the target
+system. It is also possible to build **BusyBox**-only RootFS. Every package is
+built on the host system, using a cross-toolchain.
+
+It is possible to add own packages, and a short instruction how to add a new
+package (called applet) can be found [on the busybox website]
+(http://www.busybox.net/FAQ.html#adding). But adding new software can be a
+cumbersome process, because it has to be cross-compilable and package
+dependencies need to be maintained manually.
+
+The user is dependent on the 
 
 
 
@@ -45,15 +61,6 @@ familiar with the principle of cross compilation. People who are new to these
 topics need to read documentation that goes beyond the F1-help-text that is
 provided by the **Buildroot** configuration menu.
 
-The **Buildroot** tool is able to provide a lot of packages for the target
-system. It is also possible to build **BusyBox**-only RootFS. Every package is
-built on the host system, using a cross-toolchain, that can either be
-downloaded or also compiled configured and compiled within the
-**Buildroot**-context. It is possible to add own packages, and a short instruction
-how to add a new package (called applet) can be found [on the busybox
-website](http://www.busybox.net/FAQ.html#adding). Adding new software can be a
-cumbersome process, because it has to be cross-compilable and package
-dependencies need to be maintained manually.
 
 ## Overview
 Criteria | Result | Notes
