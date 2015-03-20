@@ -1,14 +1,26 @@
-# Setup Instructions Overview
-**(work in progress)**
+# Setup Instructions 
+This document will give give you instructions on how to setup and maintain the
+**embEDUx** build system.
 
+## Setup
+These steps are necessary to setup the complete structure for the **embEDUx**
+build system.
 
-## Maintenance
-### Adding packages to buildslaves workspace
-* [Adding packages to buildslaves](buildserver/customize-buildslaves.md)
+* [Adminstation](adminstation.md)
+* [Buildserver](buildserver.md)
+* [Repositories](repositories.md)
+* [Workstation](workstation/flashtool.md)
 
-## Create The User-Documentation
-The last step is to create the documentation that will be necessary for the
-usage of the setup buildserver.
+## Post Install
+These steps are necessary after the setup was done successfully.
 
-[HTWG User Documentation (example)](examples/user-documentation-HTWG.md)
+* [Toolchains](post-install/toolchains.md)
+* [User Documentation](post-install/user-documentation.md)
+
+## Customization 
+These steps can be done before executing the setup steps.
+
+* [Add packages to buildslaves](buildserver/customize-buildslaves.md)
+* [Add new platforms to the
+  buildserver](buildserver/customize-supported-platforms.md)
 
