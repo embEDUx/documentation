@@ -1,8 +1,6 @@
 # Evaluation
 The [design considerations](design.md) will be evaluated within this chapter.
-Please select a topic of interest. The design that resulted from the evaluation
-process can be seen at the bottom of the page.
-
+Please select a topic of interest. 
 * [Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
 * [Container Utility](evaluation/container-utility.md)
 * [Continuous Integration](evaluation/continuous-integration.md)
@@ -13,6 +11,11 @@ process can be seen at the bottom of the page.
 * [U-Boot](evaluation/uboot.md)
 
 ## Post-Evaluation System Overall Design
+These is the design which resulted from the evaluation process. For a better
+understanding the **embEDUx** buildserver side and the **Flashtool** side are
+divided into two images.
+
 [![](background/img/post-eval_result_design.png)](background/img/post-eval_result_design.png)
 
 [![](background/img/post-eval_result_design_flashtool.png)](background/img/post-eval_result_design_flashtool.png)
+
