@@ -30,7 +30,7 @@ bias towards the requirements specific to the lab-courses.
 * Configurable setuproutine of the buildsystem, with sane defaults
 * Centralized build configurations for all your platforms
 * Individual configuration and builds with specified targets, organized by
-    * platform: for Linux-Kernel, U-Boot
+    * Platform: for Linux-Kernel, U-Boot
     * Architecture: RootFS
     * Hybrid: Toolchain, Misc-Files
 * Working examples for Raspberry Pi, Beaglebone Black, 
