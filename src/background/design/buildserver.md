@@ -37,7 +37,8 @@ to be able to add his platform. One way to look at extensibility is to already
 take the initial setup into account, where the hardware platforms are
 practically added too, just to a zero-base. Designing this step to be as easy as
 possible, will allow to extend the system as easy as possible. Therefore, this
-criteria is moved over to the [setup design](setup-automation-routine).
+criteria is moved over to the [setup automation routine
+design](#setup-automation-routine), which is the next chapter.
 
 ## Setup Automation Routine
 The job of the setuproutine is to setup all buildserver components.  The
