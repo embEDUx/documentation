@@ -86,7 +86,7 @@ Advanced users will still be able to modify the template if necessary.
 
 ### Setup Automation Routine Candidates
 The setuproutine should be automated using an appropriate programming or
-scripting language. The chosen language needs to flexible in detecting
+scripting language. The chosen language needs to be flexible in detecting
 conditions, since every setup run will have different conditions.
 The candidates are:
 
@@ -100,6 +100,8 @@ The criteria that will be evaluated include:
 * Extensibility effort
 * Templating features
 * Code readability
+
+The evaluation
 
 
 ## Abstraction Layer For Automation
