@@ -32,15 +32,16 @@ process.
 
 * [Buildserver](design/buildserver.md)
 
-The built products can be deployed to the platform by hand from the user. This
-deployment will include several steps for a platform. To make this deployment
-process easy **embEDUx** provides a deployment tool.
+## Hardware Deployment Tool Provided By **embEDUx**
+
+The hardware deployment includes several steps for a platform. To make this 
+deployment process easy, **embEDUx** provides a deployment tool.
 
 * [Flashtool](design/flashtool.md)
 
 ## Storage
-To store the user configurations further information, product specification
-storage units must be implemented. 
+To store the product specifications corresponding storage units must be
+implemented. 
 
 * [Repositories](design/repositories.md)
 
