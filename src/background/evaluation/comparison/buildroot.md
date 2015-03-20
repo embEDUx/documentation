@@ -10,6 +10,8 @@ git. The [package requirements](http://buildroot.org/downloads/
 manual/manual.html#requirement) for **buildroot** must be installed before the user
 is able to use **buildroot**.
 
+
+### Configuration
 To start working with **buildroot** the user simply types `make menuconfig` to
 create a configuration via a **ncurses**-based configuration menu similar to the
 **Linux** configuration menu.
@@ -18,41 +20,41 @@ create a configuration via a **ncurses**-based configuration menu similar to the
 
 This configuration will manage the following steps:
 
-#### **Target options:**
+#### Target options
 Options which depend on the target architecture, like:
 
 * Select the target architecture
 * Application Binary Interface
 
 
-####  **Build options:**
+#### Build options
 Several options for the build procedure, e.g.:
 
 * Selecting the download locations and mirrors
-* Selecting a directory for patchs
-* gcc optimization
+* Selecting a directory for patches
+* gcc flags
 
 
-#### **Toolchain:**
+#### Toolchain
 The user can decide whether **buildroot** should build its own toolchain or 
 should use an external toolchain. For the a own builded toolchain there are
 several options, e.g.:
 
-* Selecting the kernel header version
-* Selecting the C library
+* C library: glibc, musl, uclibc
+* Kernel header version
 * Binutil options
 * GCC options
 
 
-#### **System configuration:**
+#### System configuration
 The user can configure several options for the built system, e.g.:
 
 * System hostname
 * Password encoding and root password
-* Selecting a **Root FS** skeleton
+* Selecting a RootFS skeleton
 
 
-#### **Kernel:**
+#### Kernel
 All kernel related configurations, e.g.:
 
 * Kernel version
@@ -61,7 +63,7 @@ All kernel related configurations, e.g.:
 * Kernel binary format
 
 
-#### **Target packages:**
+#### Target packages
 Selecting packages which will be installed with 
 [busybox](http://www.busybox.net/) on the target **Root FS**. **Busybox** combines
 many common unix utilities into a single executable. The provided packages for 
@@ -72,7 +74,7 @@ many common unix utilities into a single executable. The provided packages for
 * Hardware handling
 
 
-#### **Filesystem images:**
+#### Filesystem images
 Filesystem related configurations for the **Root FS** image, e.g.:
 
 * Filesystem type (ext2/3/4, jffs2, etc.)
@@ -80,7 +82,7 @@ Filesystem related configurations for the **Root FS** image, e.g.:
 * Building a tarball of the **Root FS**
 
 
-#### **Bootloaders:**
+#### Bootloaders
 User can select the bootloader which should be build for the target system,
 the **buildroot** configuration provides several bootloaders, e.g.:
 
@@ -89,14 +91,14 @@ the **buildroot** configuration provides several bootloaders, e.g.:
 * Atmel related bootloaders
 
 
-#### **Host utilities:**
+#### Host utilities
 User can select various utilities for the host building system, e.g.:
 
 * Uboot tools
 * Tools for different filesystems
 
 
-#### **Legacy config options:**
+#### Legacy config options
 Shows the user which packages were removed or renamed from the buildroot
 configuration. The list is divided in subsections for each **buildroot**
 version.
@@ -112,13 +114,13 @@ The user can also configure several package by itself after configuring
 **buildroot**. The following packages can be configured via the **ncurses**
 configuration procedure:
 
-#### **Configuring BusyBox:**
+#### Configuring BusyBox
 
 `make busybox-menuconfig`
 
 This allows the user to configure **BusyBox** in more detail.
 
-#### **Configuring Linux kernel:**
+#### Configuring Linux kernel
 
 `make linux-menuconfig`
 
@@ -126,14 +128,14 @@ This allows the user to make subsequent changes on the configuration the
 downloaded kernel with the standard configuration procedure of the **Linux**
 kernel.
 
-#### **Configuring uClibc:**
+#### Configuring uClibc
 
 `make uclibc-menuconfig`
 
 This allows the user to configure uclibc in te same way as for **BusyBox**.
     
 
-# Result
+## Summary
 **Buildroot** is a nice tool to build an own distribution for different target
 platforms. The way of configuring the distribution is well known and intuitive
 for people who previously configured and built a **Linux** kernel, and are
@@ -156,5 +158,5 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | YES | Manual configuration necessary
 Package management | LIMITED | Difficult to extend
-Buildroutine Automation | YES | Uses the well known configuration procedure like **Linux** configuration
+Buildroutine Automation | YES | .config support 
 Deployment | NO | System must be installed by hand on the embedded device
