@@ -17,7 +17,7 @@
 
 ## Docker
 * Initially shipped with LXC as backend engine
-* Meanwhile shipped with an self-developed
+* Meanwhile independent from LXC and shipped with its own backend engine
 * Docker Inc. offers an official registry with many ready-to-pull-and-deploy container images
 * Emphasizes simplicity and encapsulation of the guest container
 

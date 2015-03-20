@@ -68,3 +68,7 @@ to find out if they suitable as base projects.
 
 ## Overall System Design
 [![](background/design/img/design.png)](background/design/img/design.png)
+
+This is how the system has been designed. Take a look at [post-evaluation system
+design](evaluation.md#post-evaluation-system-overall-design) how the design
+evolved throughout the evaluation phase.
