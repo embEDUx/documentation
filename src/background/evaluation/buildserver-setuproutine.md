@@ -6,7 +6,7 @@ candidates for the implementation are Python and Ansible.
 
 ## Python
 Python is a general purpose scripting language that offers a wide variety of standard and
-additional modules. 
+additional modules.
 
 ## Ansible
 Ansible is an administration utility written in Python, with a focus on
@@ -23,25 +23,25 @@ Ansible actions are organized and configured with different entities.  All
 entities are defined in separate files, which are specified in the **YAML**
 language.
 
-#### Hosts Inventory
-The first entity that needs to be defined is the hosts inventory, with optional
-groups.
+#### Hosts
+The first entity that needs to be defined is the hosts inventory. The hosts
+inventory contains the address, SSH username and other host specific
+information.
 
 * Hosts
-* Groups
+* Groups, can consist of several hosts
 
 #### Tasks
 Tasks use modules and module parameters to define actions that can be run on
 target hosts. Tasks can be reused and grouped into several other entities.
 
 * Tasks
-* Roles
-* Plays
-* Playbooks
+* Roles, can consist of several tasks
+* Plays, can include several roles
+* Playbooks, can consist of several plays
 
 
 #### Variables
-Variables can be attached to each element of the previous two entity groups.
-
-* Variables
-
+Variable files can be specified to each element of the previous two entity
+groups. There's also a special variable file that, unless overriden,  is valid
+for all hosts at all times.
