@@ -29,7 +29,7 @@ were chosen for the core of the solution are
 * Das U-Boot Bootloader
 * Git
 
-If you are interested in why these choice were made, please head over to the
+If you are interested in why these choices were made, please head over to the
 [background section](background/background.md)
 
 ## Focus on Hardware
@@ -55,7 +55,7 @@ These systems consist of distinct products, namely
 * Root Filesystem
 
 and finally some miscellaneous files and a toolchain to support the build
-process.
+process and later application development.
 
 If you are not familiar with any of these terms, please consider reading through
 the [terminology](background/terminology.md), and if necessary study other
