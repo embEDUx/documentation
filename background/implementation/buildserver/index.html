@@ -251,10 +251,6 @@
                         </li>
                     
                         <li >
-                            <a href="../continuous-integration/index.html">Implementation/Continuous Integration</a>
-                        </li>
-                    
-                        <li >
                             <a href="../flashtool/index.html">Implementation/Flashtool</a>
                         </li>
                     
@@ -347,7 +343,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../continuous-integration/index.html">
+                    <a rel="prev" href="../flashtool/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -370,7 +366,7 @@
     
         <li class="main "><a href="#buildserver-setuproutine">Buildserver Setuproutine</a></li>
         
-            <li><a href="#ansible-quick-introduction">Ansible Quick Introduction</a></li>
+            <li><a href="#variables">Variables</a></li>
         
             <li><a href="#tasks-overview">Tasks Overview</a></li>
         
@@ -387,6 +383,11 @@
             <li><a href="#container-startup">Container Startup</a></li>
         
     
+        <li class="main "><a href="#continuous-integration-implementation">Continuous Integration Implementation</a></li>
+        
+            <li><a href="#scheduler-choice">Scheduler Choice</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -399,27 +400,6 @@ different products. The implementation of these components </p>
 <h3 id="mastercfg"><strong>master.cfg</strong></h3>
 <h2 id="buildslaves">Buildslaves</h2>
 <h1 id="buildserver-setuproutine">Buildserver Setuproutine</h1>
-<h2 id="ansible-quick-introduction">Ansible Quick Introduction</h2>
-<p>Ansible actions are organized and configured with different entities.  All
-entities are defined in separate files, which are specified in the <strong>YAML</strong>
-language.</p>
-<h3 id="hosts">Hosts</h3>
-<p>The first entity that needs to be defined is the hosts inventory. The hosts
-inventory contains the address, SSH username and other host specific
-information.</p>
-<ul>
-<li>Hosts</li>
-<li>Groups, can consist of several hosts</li>
-</ul>
-<h3 id="tasks">Tasks</h3>
-<p>Tasks use modules and module parameters to define actions that can be run on
-target hosts. Tasks can be reused and grouped into several other entities.</p>
-<ul>
-<li>Tasks</li>
-<li>Roles, can consist of several tasks</li>
-<li>Plays, can include several roles</li>
-<li>Playbooks, can consist of several plays</li>
-</ul>
 <h3 id="variables">Variables</h3>
 <p>Variable files can be specified to each element of the previous two entity
 groups. There's also a special variable file that, unless overriden,  is valid
@@ -431,6 +411,10 @@ for all hosts at all times.</p>
 <h2 id="configuration-generation">Configuration Generation</h2>
 <h2 id="container-creation">Container Creation</h2>
 <h2 id="container-startup">Container Startup</h2>
+<h1 id="continuous-integration-implementation">Continuous Integration Implementation</h1>
+<h3 id="scheduler-choice">Scheduler Choice</h3>
+<p>A suitable scheduler for our purpose could be the
+<a href="http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler">anybranchscheduler</a>.</p>
 </div>
         </div>
 
