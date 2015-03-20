@@ -79,8 +79,8 @@ should be shipped with defaults from the HTWG setup.
 ### Default Setup Parameters
 All other setup parameters should be provided as defaults by the setuproutine.
 
-### Configuration Generation
-From Templates The configured and default setup parameters should be used to
+### Configuration Generation From Templates 
+The configured and default setup parameters should be used to
 generate the configuration files for the buildsystem. For commonly used changes,
 the generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary. 
@@ -117,22 +117,20 @@ The criteria that will be evaluated include:
 
 ### Setup Automation Routine Tasks
 #### Execute commands on the target machine
-The most commonly remote control utility is **SSH**, which shall be used for the
-setuproutine too.
-    
+Executing commands on the target machine will be necessary in order to complete
+the setup. The most commonly remote control utility is **SSH**, which shall be
+used for the setuproutine too, without any further evaluation.
 
 #### Package Installation
-**Docker** is the only non-default package that needs to be installed on the
-remote host. 
-
-As it has not been mentioned in previous evaluation steps, it is
-necessary to chose the supported package managers now. A sane decision is to
-support **Ubuntu** and **Gentoo** as buildserver machines, and therefore to
-support **apt** and **portage**.
+The build environment requires all the necessary tools to be installed on the
+buildserver. It is assumed that the buildserver runs a Linux distribution that
+has a package manager available. As it has not been mentioned in any previous
+steps, it is necessary to chose the supported package managers now. A sane
+decision is to support **Ubuntu** and **Gentoo** as buildserver machines, and
+therefore to support **apt** and **portage**.
 
 * apt
 * portage
-
 
 
 ## Abstraction Layer For Automation
@@ -163,7 +161,7 @@ These contained processes can be an initialization processes to boot a
 different Linux System on the running host Linux kernel, or simply any other
 application available. Recently there has been a lot of development and
 activity on Linux Containers in the community, namely because of a software
-called Docker.  Security is highly dependent on the implementation of the
+called Docker. Security is highly dependent on the implementation of the
 process separating that happens in the host kernel.   The host kernel must
 obviously be able to run the contained application.  Therefore, the
 application must either be in the host's native or compatible executable
@@ -205,7 +203,7 @@ the continuous integration system into containers.
     * Compiler flags
     * Base system archive
 
-#### Container Management Setup steps
+#### Container Management Setup Steps
 Managing containers includes more than starting and stopping them. The
 setuproutine needs to assemble the content from scratch.  This requires an image
 which the container setup process will be based on. The container management
