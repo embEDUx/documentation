@@ -1,7 +1,8 @@
 # Buildroot
-A collection of Makefiles and bash scripts in order to build toolchains, Linux-kernels,
-bootloaders and root filesystems through cross-compilation. It can be 
-configured via an **ncurses**-based menu.
+*Buildroot is a set of Makefiles and patches that makes it easy to generate a
+complete embedded Linux system. Buildroot can generate any or all of a
+cross-compilation toolchain, a root filesystem, a kernel image and a bootloader
+image.* ([source](http://buildroot.uclibc.org/about.html))
 
 ## Workflow
 To start working with **buildroot** the user simply downloads the latest

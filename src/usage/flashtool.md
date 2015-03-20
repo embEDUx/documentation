@@ -31,46 +31,44 @@ The tool needs a *working directory* which is set at the home directory
 by default. (***${HOME}/.Flashtool***) It can be set by the user with the option
 *-w | --working-dir*.
 
-`$ flashtool -w /path/to/own/working_dir`
+`$ flashtool -w /path/to/own/working_dir init`
 
-The tool will ask the user for some parameter to set, the next example shows
-this procedure:
+The tool will ask the user for some parameter to set. The next example shows this 
+procedure. The given values are for the HTWG Environment:
 
 ```bash
-$ flashtool init
+[mahieke@hakunamatata test2]$ flashtool -w ./.flashtool init
+Working directory does not exist at ./.flashtool
+Do you want to setup working directory "./.flashtool" [(Y)|(y)|(N)|(n)]
+Answer: y
 Type in a value for
-    [Buildbot]->server
-help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
-: | 
-
-...
-
-Type in a value for
-    [Buildbot]->port
-help:   Port of the web frontend of the buildbot server
-: |
-
-...
-
-Type in a value for
-    [Recipes]->server
+   [Recipes]->server
 help:   Address or URL to a git server which contains yml recipes for different platforms
-Must look like: git@{URL-to-server}:{path-to-git-repository}.git
-: |
+  Must look like: git@{URL-to-server}:{path-to-git-repository}.git
+  or 
+  https://{URL-to-server}/{path-to-git-repository}.git
 
-...
+: https://github.com/embEDUx/flashtool-recipes.git
 
 Type in a value for
    [Recipes]->user
-help:   Directory where the user can save own recipe files.
-: |
-
-...
+help:   Directory where the user can save own recipe files. Path must not include underscores!
+: /home/mahieke/.flashtool/own-recipes
 
 Type in a value for
-    [Local]->products
-help:   Local path where Flashtool should save downloaded products if option is selected.
-: |
+   [Local]->products
+help:   Local path where flashtool should save downloaded products if option is selected.
+: /home/mahieke/.flashtool/downloaded-products 
+
+Type in a value for
+   [Buildbot]->server
+help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
+: http://moe.in.htwg-konstanz.de            
+
+Type in a value for
+   [Buildbot]->port
+help:   Port of the web frontend of the buildbot server
+: 8010
 ```
 
 You can change these settings by calling the command:

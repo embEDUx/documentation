@@ -81,11 +81,12 @@ recipe type. Let's call the new recipe type *hdd*.
     /setup/recipe/hdd.py*). When found it will pass the values of *recipe* into
     the constructor of the python class (In this case *HDD*). Of course there is
     no class defined at *flashtool/setup/recipe/hdd.py*, this brings us to step
-    2.
+    two.
+
 
 2. Implement python representation for the recipe. The python representation of 
-    the recipe type is a python class and must have the same name written in 
-    *CAPITAL* letters and inherits from the class *YAML*. 
+    the recipe type is a python class and should have the same name written in 
+    *CAPITAL* letters and must inherit from the class *YAML*.
 
         from flashtool.setup.recipe import YAML
         
@@ -120,6 +121,8 @@ recipe type. Let's call the new recipe type *hdd*.
                 ... # DO SOME VALUE CHECKS HERE
                 YAML.__init__(self, attributes)
 
+        __entry__ = HDD
+
     The classes inherit the method `check_attributes(self, attributes)` from the
     super class *YAML*. It will check if the given attributes contains all
     keywords given in the class member *attr*. If not a exception will be
@@ -132,6 +135,10 @@ recipe type. Let's call the new recipe type *hdd*.
 
         hdd_obj.partition_type  # get partition types
         hdd_obj.partitions      # get list of partitions
+
+    The module variable __entry__ must be set with the class name of the
+    implemented recipe class. With this value the **Flashtool** can create an
+    instance of the new recipe class. 
 
 
 3. Load attribute:
