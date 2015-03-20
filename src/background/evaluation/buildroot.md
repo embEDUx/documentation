@@ -9,7 +9,7 @@ This evaluation was done with the **Buildroot** version *2014.02*.
 **Buildroot** uses a **ncurses**-based configuration menu similar to the
 **Linux** configuration menu. 
 
-![**Buildroot** configuration via **ncurses**](background/evaluation/comparison/img/Buildroot_configuration.png)
+[![**Buildroot** configuration via **ncurses**](background/evaluation/img/buildroot_configuration.png)](background/evaluation/img/buildroot_configuration.png)
 
 ## Products
 This part of the document evaluates the support for the defined
