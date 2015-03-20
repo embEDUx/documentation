@@ -126,6 +126,7 @@ The original criteria can now be analyzed according to the results of the steps
 evaluation.
 
 Eval criteria | Python | Ansible
+--- | --- | ---
 Ready-for-use components availability | ok | ok
 Extensibility effort | medium | easy
 Templating features | uncomfortable | comfortable
