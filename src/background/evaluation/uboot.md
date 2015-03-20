@@ -41,3 +41,18 @@ With the now evaluated build process, the build steps can be redefined.
     * build **U-Boot**
     * create archive
 
+## Build Tools
+These tools are needed to successfully iterate through the build steps.
+
+* bash
+* make 
+* gcc
+* git
+* wget
+* patch
+* tar
+* bzip2
+* awk
+* sed
+* mkimage
+

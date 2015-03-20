@@ -6,7 +6,7 @@ within this chapter.
 **Linux** supports cross compilation and can therefore be compiled with a
 cross toolchain.
 
-## Build process 
+## Build Process 
 Due to keeping the possibility to build the kernel locally, emerging the kernel
 sources with OS dependent tools (e.g. emerge with **Gentoo**) is not a viable
 solution. As already mentioned in the [u-boot evaluation](uboot.md), keeping the
@@ -21,7 +21,7 @@ script from the **Linux** version branch.
 
 [![Structure](background/evaluation/img/eval_linux.png)](background/evaluation/img/eval_linux.png)
 
-## Build steps
+## Build Steps
 With the now evaluated build process, the build steps can be redefined.
 
 1. Checkout platform branch for **Linux** version X
@@ -33,4 +33,18 @@ With the now evaluated build process, the build steps can be redefined.
     * if provided apply patches
     * build **Linux**
     * create archive
+
+## Build Tools
+These tools are needed to successfully iterate through the build steps.
+
+* bash
+* make 
+* gcc
+* git
+* wget
+* patch
+* tar
+* bzip2
+* awk
+* sed
 

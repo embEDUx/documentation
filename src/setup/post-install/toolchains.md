@@ -91,6 +91,22 @@ $ ls -hl
    static toolchain. For further information read
    [background/toolchains](../../background/implementation/toolchain.md).
 
+      The parameters for a static toolchain should be set as following:
+
+       * Disable progress bar (otherwise build.log ends up beeing huge)
+          * CT_LOG_PROGRESS_BAR is not set
+       * Storage directory
+          * CT_LOCAL_TARBALLS_DIR="/var/tmp/embedux/download"
+          * CT_SAVE_TARBALLS=y
+       * Output directory for ctng
+          * CT_PREFIX_DIR="${CT_TOP_DIR}/output/${CT_TARGET}"
+       * Static toolchain
+          * CT_STATIC_TOOLCHAIN=y and all dependencies
+          * CT_CC_STATIC_LIBSTDCXX=y
+          * CT_GDB_CROSS_STATIC=y
+          * CT_BINUTILS_LINKERS_LIST="ld" (building static toolchain doesn't work with gold)
+
+
 1. Test your toolchain configuration
   
     ```

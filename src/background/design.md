@@ -62,8 +62,8 @@ fulfill the requirements that have been analyzed and collected on the
 [requirements page](requirements.md).  The projects will be evaluated in order
 to find out if they suitable as base projects.
 
-* [Buildroot](evaluation/comparison/buildroot.md)
-* [Yocto Project](evaluation/comparison/yocto-project.md)
+* [Buildroot](evaluation/buildroot.md)
+* [Yocto Project](evaluation/yocto-project.md)
 
 
 ## Overall System Design

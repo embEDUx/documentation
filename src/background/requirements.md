@@ -46,8 +46,11 @@ ARMrider Project | Iris Board | Linux w/ PWM, GPIO, 802.11s WiFi MESH, UART, Ava
 Software-Defined-Radio Project | Utilite Pro, Beaglebone Black, RPi, Banana Pi | Linux w/ USB-debugging and Tracing support, GNUradio Application, USB-Monitoring Userspace-Tools
 Operating-Systems | RPi | Linux w/ GPIO, C-(Cross)-Compiler, Python 3.4, various Debugging Tools like valgrind, gdb, etc..: might vary
 
-For every lab-course the user needs a toolchain to develop own software for the
-hardware platforms.
+The students participating in the different courses will develop all kind of
+software components on the laboratory computers. Furthermore as the laboratory
+computers currently are based on x86_64 architecture a toolchain for
+cross-compiling for the target hardware architecture is needed. This toolchain
+has to be portable, as those computers are not part of the build system. 
 
 ## Hardware Platforms
 The following hardware platforms will be used by the lab-courses

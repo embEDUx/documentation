@@ -1,4 +1,4 @@
-# Yocto Project
+# Evaluation Yocto Project
 *Provides open source, high quality infrastructure and tools to help developers
 create their own **Linux** distribution for any hardware architecture, across
 multiple market segments. It is intended to provide a helpful starting point
@@ -8,7 +8,7 @@ for developers.*
 This is the introduction of the **Yocto Project** which greats you at the
 [homepage](https://www.yoctoproject.org) for the project. It makes the **Yocto
 Project** one possible solution, which follows our defined
-[requirements](../../requirements.md). Therefore we will analyze the
+[requirements](../requirements.md). Therefore we will analyze the
 functionality and usability of the **Yocto Project**.
 
 ## Sub-Projects
@@ -44,7 +44,7 @@ seems that the meta data, and therefore the available software packages, are
 updated less frequently when compared to other package management systems. E.g.
 at the time of evaluation there wasn't a **Python 3** version available through
 the **openembedded-core** project, which is violating the defined
-[requirements](../../requirements.md#product-specific-requirements).
+[requirements](../requirements.md#product-specific-requirements).
 
 ### ADT (Application Development Toolkit)
 From the
@@ -80,7 +80,7 @@ tools and metadata that serves as a set of working examples.*
 
 ## Products 
 This part of the document evaluates the support for the defined
-[required](../../requirements.md).
+[requirements](../requirements.md).
 
 ### Bootloader
 The default bootloader, which comes with **Poky** is **U-Boot**. The recipe in
@@ -96,9 +96,9 @@ version.
 
 ### RootFS
 **Poky** contains by default a lot of user-space program recipes. As the effort
-of comparing all the included recipes with the current versions would exceed
-this evaluation, only the packages from the
-[requirements](../../requirements.md) are evaluated.
+of comparing all the included recipes with the current available versions would
+exceed this evaluation, only the important packages from the
+[requirements](../requirements.md) are evaluated.
 
 Software | Poky | Available
 --- | --- | ---
@@ -112,7 +112,7 @@ Python3 | n/a | 3.4
 
 At the time of this evaluation and as aforementioned, **Yocto** doesn't provide
 a **Python 3** recipe, which is violating the defined
-[requirements](../../requirements.md).
+[requirements](../requirements.md).
 
 ## Summary
 By default the **Yocto** Project is missing the majority of the platforms that
@@ -123,12 +123,19 @@ pure amount of additional recipes needed for the **Linux** kernel and
 **Yocto Project** is a good choice, if you want to develop for a single
 platform. As soon as multi platform development is needed, the amount of
 individual configuration and modification needed for building with **Yocto**
-doesn't justify the results. Another not negligible fact is also the sense able
+doesn't justify the results. Another not negligible fact is also the sensible
 lack of up-to-date versions for the different recipes. This would result in a
 scenario where anyone using the build system has to have knowledge about
 **Yocto** and **BitBake** to configure and write the required recipes.
 
 In the end the **Yocto Project** is what it intends to be: *A helpful starting
 point for developers.* But it is not, what we need to fulfill the
-[requirements](../../requirements.md).
+[requirements](../requirements.md).
+
+Criteria | Result | Notes 
+--- | --- | --- 
+Cross-target support | YES | Manual configuration necessary 
+Package management | LIMITED | Extensible through recipes, although it needs a lot of configuration
+Buildroutine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
+Deployment | LIMITED | Result of build process is an image, which can be deployed on a sd card with `dd`
 
