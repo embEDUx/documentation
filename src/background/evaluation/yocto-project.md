@@ -123,7 +123,7 @@ pure amount of additional recipes needed for the **Linux** kernel and
 **Yocto Project** is a good choice, if you want to develop for a single
 platform. As soon as multi platform development is needed, the amount of
 individual configuration and modification needed for building with **Yocto**
-doesn't justify the results. Another not negligible fact is also the sense able
+doesn't justify the results. Another not negligible fact is also the sensible
 lack of up-to-date versions for the different recipes. This would result in a
 scenario where anyone using the build system has to have knowledge about
 **Yocto** and **BitBake** to configure and write the required recipes.
