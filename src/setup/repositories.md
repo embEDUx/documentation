@@ -2,7 +2,7 @@
 The storage units for the product specifications done by the user is realized in
 the form of git repositories. In order for the build system to work properly
 these repositories need to be set up. For further information have a look at the
-[background](../background.md).
+[background](../background/background.md).
 
 ## Product Repositories
 Setup an empty repository for each of the products. They will be used by the
