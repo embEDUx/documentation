@@ -84,7 +84,7 @@ In this part of the document evaluates the support for the defined
 
 ### Bootloader
 The default bootloader, which comes with **Poky** is **U-Boot**. The recipe in
-**Poky** is for version 2013.07, which is compared to upstream 2015.01-re pretty
+**Poky** is for version 2013.07, which is compared to upstream 2015.01-rc1 pretty
 old. Version 2014.07 is within in the **openembedded-core** repository since
 12.11.2014, however they aren't part of the reference system **Poky**.
 
