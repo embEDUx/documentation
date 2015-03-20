@@ -13,7 +13,7 @@ considered.
 The user specification, such as configuration of **Linux** and potential user
 patches for the mainline sources should be stored together in a repository.
 Therefore each platform / version combination needs to have its own branch. E.g.
-if **Linux** version 1.0 and 1.2 should be build for platform a two branches
+if **Linux** version 1.0 and 1.2 should be build for platform A two branches
   have to exist.
 
 ## Cross Target Support
