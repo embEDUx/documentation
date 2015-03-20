@@ -15,7 +15,7 @@ build system.
 These steps are necessary after the setup was done successfully.
 
 * [Toolchains](post-install/toolchains.md)
-* [User Documentation](post-install(user-documentation.de)
+* [User Documentation](post-install/user-documentation.md)
 
 ## Customization 
 These steps can be done before executing the setup steps.
