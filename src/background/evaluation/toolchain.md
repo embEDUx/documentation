@@ -1,7 +1,7 @@
 # Evaluation Toolchain
 
 As written in the [design](../design/toolchain.md) there are two possible
-solutions, but with the [evaluation of buildroot](comparison/buildroot.md) in
+solutions, but with the [evaluation of buildroot](buildroot.md) in
 mind, there is only one solution left. 
 
 ## Crosstool-NG
@@ -24,4 +24,16 @@ Following build steps are necessary to retrieve the toolchain.
 1. Checkout toolchain branch
 1. Build toolchain with **Crosstool-NG** and the given configuration
 1. Provide the output in an archive
+
+
+## Build Tools
+These tools are needed to successfully iterate through the build steps.
+
+* ct-ng 
+* bash > 3.0
+* date
+* git
+* tar
+* bzip2
+* sed
 

@@ -265,8 +265,8 @@ Cross-target support | YES | slow through complete system emulation
 
 ## Overview
 From the aforementioned evaluation and the evaluation of
-[buildroot](comparison/buildroot.md) and the [Yocto
-Project](comparison/yocto-project.md) the results are as shown.
+[buildroot](buildroot.md) and the [Yocto Project](yocto-project.md) the results
+are as shown.
 
 Candidate | Cross-target support | Package management | RootFS Buildroutine Automation
 --- | --- | --- | ---
