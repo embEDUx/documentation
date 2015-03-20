@@ -1,10 +1,10 @@
-## Evaluation Toolchain
+# Evaluation Toolchain
 
 As written in the [design](../design/toolchain.md) there are two possible
 solutions, but with the [evaluation of buildroot](comparison/buildroot.md) in
 mind, there is only one solution left. 
 
-### Crosstool-NG
+## Crosstool-NG
 **Crosstoo-NG** offers the possibility to build static, and therefore portable
 toolchains. With **Crosstool-NG** even toolchains , that are built on host with
 architecture X, compiled for architecture Y, cross-compiling for architecture Z
