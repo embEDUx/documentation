@@ -79,7 +79,7 @@ tools and metadata that serves as a set of working examples.*
 ([Source](https://www.yoctoproject.org/tools-resources/projects/poky))
 
 ## Products 
-In this part of the document evaluates the support for the defined
+This part of the document evaluates the support for the defined
 [required](../../requirements.md).
 
 ### Bootloader
