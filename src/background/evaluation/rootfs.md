@@ -274,18 +274,17 @@ Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
 YOCTO | LIMITED | LIMITED / difficult to extend | YES 
 Buildroot | YES | LIMITED / difficult to extend | YES
-Gentoo crossdev and cross-emerge | NOT RELIABLE | YES | -
+Gentoo crossdev and cross-emerge | NOT RELIABLE | YES / portage | -
 Qemu user emulation | LIMITED / not fully reliable | - | -
 Qemu system emulation | YES / slow | - | -
 
 ## Conclusion
-It seems like there is no solution that is ready to be integrated into the
-designed continuous integration system without further modifications or
-automation processes wrapped around. As a result, the choice is to pick 
-the components that **offer reliability in cross-target support, and package
-management qualities** and incorporate the them into a custom automated
-buildroutine. The components chosen for the task are **Gentoo Portage** paired
-with **Qemu system emulation** in case of Cross-Target buildjobs.
+It seems like there is no completely ready solution for building RootFS. As a
+result, the choice is to pick the components that **offer reliability in
+cross-target support, and package management qualities** and incorporate the
+them into a custom automated buildroutine. The components chosen for the task
+are **Gentoo Portage** paired with **Qemu system emulation** in case of
+Cross-Target buildjobs.
 
 # Evaluation RootFS Buildroutine
 As described in the design chapter [Buildserver - Build Automation
