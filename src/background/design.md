@@ -24,9 +24,11 @@ software
 * [Bootloader](design/bootloader.md)
 * [RootFS](design/rootfs.md)
 
-while the build configuration must be user providable for each individual build.
+## Buildserver
+While the build configuration must be user providable for each individual build.
 Each individual build represents a configuration change that has been made by
-the user.
+the user. The buildserver must react to these changes and start the build
+process.
 
 * [Buildserver](design/buildserver.md)
 
@@ -36,7 +38,11 @@ process easy **embEDUx** provides a deployment tool.
 
 * [Flashtool](design/flashtool.md)
 
-## [Repositories](design/repositories.md) - Product-Specification Storage Units
+## Storage
+To store the user configurations further information, product specification
+storage units must be implemented. 
+
+* [Repositories](design/repositories.md)
 
 ## Cross-Target Support
 Even though the number of ARM-systems is growing, most Desktops and Servers are
