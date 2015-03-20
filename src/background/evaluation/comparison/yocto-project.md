@@ -119,8 +119,7 @@ By default the **Yocto** Project is missing the majority of the platforms that
 would be used with the build system solution. Looking through the additional
 [board support packages](http://git.yoctoproject.org/cgit/cgit.cgi/) and their
 pure amount of additional recipes needed for the **Linux** kernel and
-**U-Boot**, it seems like the **Yocto** Project is not the right choice to
-fulfill our [requirements](../../requirements.md). From our point of view the
+**U-Boot**, it seems that the overhead to add a new platform is quiet huge. The
 **Yocto Project** is a good choice, if you want to develop for a single
 platform. As soon as multi platform development is needed, the amount of
 individual configuration and modification needed for building with **Yocto**
@@ -130,6 +129,6 @@ scenario where anyone using the build system has to have knowledge about
 **Yocto** and **BitBake** to configure and write the required recipes.
 
 In the end the **Yocto Project** is what it intends to be: *A helpful starting
-point for developers.* But it is not, what we need to fulfill our
+point for developers.* But it is not, what we need to fulfill the
 [requirements](../../requirements.md).
 
