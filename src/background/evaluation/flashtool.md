@@ -1,7 +1,86 @@
 # Evaluation of software components for the **Flashtool**
 
-For several tasks of the **Flashtool** there are multiple python packages to do
-the job.
+The **Flashtool** design describes the [automation of the deployment process]
+(../design/flashtool.md). To implement the described design decisions there must
+be evaluate several steps.
+
+## Programming language
+
+The decision for a programming language is very important step due to the
+development procedure of a software. The **Flashtool** needs a programming 
+language which is supported on a **Linux** distribution and runs on different
+architectures. The script languages **Bash** and **Python** was considered to be
+used as programming language. 
+
+### Python
+
+[Python] is a script language which is easy to learn, 
+supports interfaces to other languages (like C), has a nice syntax and provides 
+thousands of third-party modules. 
+
+### Bash
+
+[Bash](https://www.gnu.org/software/bash/manual/bashref.html) is a command
+language interpreter and provides an own script language. 
+
+
+### Python vs Bash
+
+[Python](https://www.python.org/doc/) and [Bash](https://www.gnu.org/software/bash/manual/bashref.html)
+are both script languages which run on likely every UNIX system. Both
+languages must be compared on different disciplines, to decide which language
+fits best for the **Flashtool**.
+
+#### Development
+
+**Python** is more productive than **Bash** for the development processes,
+because it supports common programming paradigms like object-oriented
+programming and functional programming. 
+
+According to the design of the **Flashtool** the implementation will require a
+lot of code. To accomplish the development of the **Flashtool**  with **Bash** 
+would result in an confusing mass of **Bash**-scripts and would be hard to
+maintain.
+
+
+#### Community
+
+**Bash** and **Python** is often used on **Linux** systems and supports both a
+huge community and documentation. **Python** provides more third-party modules
+for several task than **Bash** and is a good candidate for writing lesser code
+to do the job. 
+
+
+#### Calling other executables
+
+Both languages provide a mechanism to call other executables easy.
+
+
+#### Performance
+
+**Python** is really fast in handling data structures (sorting, access) and
+doing calculations [compared to Bash](http://opennomad.com/content/performance-different-scripting-languages-shell-v-perl-v-python-v-ruby).
+
+
+#### Interfaces to other programming languages
+
+**Python** provides a library which provides C compatible data types, and allows
+calling functions in shared libraries. This makes it possible to wrap C
+libraries in pure python. ((ctypes)[https://docs.python.org/2/library/ctypes.html?highlight=ctypes#module-ctypes])
+There are other libraries like [swig](http://swig.org/Doc1.3/Python.html) and 
+[cython](http://cython.org/) to connect C and C++ with Python.
+
+Such mechanism are not **Bash**
+
+
+#### Summary
+
+**Python** is more suitable as programming language for the **Flashtool** than
+**Bash** because:
+
+* Python is faster (organizing data structures, *http* requests, etc.)
+* Large Python project are easier to maintain than with **Bash**
+* 
 
 ## User interface
 
