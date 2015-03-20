@@ -1,6 +1,7 @@
 # Evaluation
 The [design considerations](design.md) will be evaluated within this chapter.
 Please select a topic of interest. 
+
 * [Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
 * [Container Utility](evaluation/container-utility.md)
 * [Continuous Integration](evaluation/continuous-integration.md)
