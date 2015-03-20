@@ -359,6 +359,11 @@
     
         <li class="main active"><a href="#buildserver-implementation">Buildserver Implementation</a></li>
         
+    
+        <li class="main "><a href="#continuous-integration-implementation">Continuous Integration Implementation</a></li>
+        
+            <li><a href="#scheduler-choice">Scheduler Choice</a></li>
+        
             <li><a href="#buildmaster">Buildmaster</a></li>
         
             <li><a href="#buildslaves">Buildslaves</a></li>
@@ -383,11 +388,6 @@
             <li><a href="#container-startup">Container Startup</a></li>
         
     
-        <li class="main "><a href="#continuous-integration-implementation">Continuous Integration Implementation</a></li>
-        
-            <li><a href="#scheduler-choice">Scheduler Choice</a></li>
-        
-    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -396,6 +396,10 @@
 <p>According to the design and evaluation chapters, the <strong>embEDUx</strong>' buildserver
 consists of several components who form a unit that is able to build the
 different products. The implementation of these components </p>
+<h1 id="continuous-integration-implementation">Continuous Integration Implementation</h1>
+<h3 id="scheduler-choice">Scheduler Choice</h3>
+<p>A suitable scheduler for our purpose could be the
+<a href="http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler">anybranchscheduler</a>.</p>
 <h2 id="buildmaster">Buildmaster</h2>
 <h3 id="mastercfg"><strong>master.cfg</strong></h3>
 <h2 id="buildslaves">Buildslaves</h2>
@@ -411,10 +415,6 @@ for all hosts at all times.</p>
 <h2 id="configuration-generation">Configuration Generation</h2>
 <h2 id="container-creation">Container Creation</h2>
 <h2 id="container-startup">Container Startup</h2>
-<h1 id="continuous-integration-implementation">Continuous Integration Implementation</h1>
-<h3 id="scheduler-choice">Scheduler Choice</h3>
-<p>A suitable scheduler for our purpose could be the
-<a href="http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler">anybranchscheduler</a>.</p>
 </div>
         </div>
 
