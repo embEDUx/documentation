@@ -32,16 +32,24 @@ is required during the buildserver setup.
     setup.
 
 ## Package Installation
+**Docker** is the only non-default package that needs to be installed on the
+remote host. 
+
 * apt
 * portage
 
 
 ## Docker Container Management
-* TODO: explain Docker as eval winner
+By the time of the design phase, it hasn't been clear yet which container
+utility will be used to implement the abstraction. The [container utility
+evaluation](container-utility.md) has chosen **Docker**. The necessary steps for
+setting up the container infrastructure during the setup can now be listed, in
+order to find the right tool for the setuproutine.
 
-As specified in the [RootFS evaluation](rootfs.md#conclusion), the
-RootFS buildroutine needs Gentoo portage. Therefore, the Docker images for the 
-buildserver components will be based on stage3 archives too.
+As specified in the [RootFS
+evaluation](rootfs.md#conclusion), the RootFS buildroutine needs Gentoo portage.
+Therefore, the Docker images for the buildserver components will be based on
+stage3 archives too.
 
 * Download Gentoo stage3 archives for
     * buildmaster - native machine architecture
