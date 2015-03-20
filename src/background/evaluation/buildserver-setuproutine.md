@@ -31,8 +31,8 @@ groups.
 * Groups
 
 #### Tasks
-Tasks and other entities specify the used modules, parameters and the target
-machines they're executed on.
+Tasks use modules and module parameters to define actions that can be run on
+target hosts. Tasks can be reused and grouped into several other entities.
 
 * Tasks
 * Roles
