@@ -11,14 +11,14 @@ Please select a topic of interest.
 * [Toolchain](evaluation/toolchain.md)
 * [U-Boot](evaluation/uboot.md)
 
-## Post-Evaluation System Overall Design
+# Post-Evaluation System Overall Design
 These is the design which resulted from the evaluation process. For a better
 understanding the **embEDUx** buildserver side and the **Flashtool** side are
 divided into two images.
 
-### Buildserver
+## Buildserver
 [![](background/img/post-eval_result_design.png)](background/img/post-eval_result_design.png)
 
-### Flashtool
+## Flashtool
 [![](background/img/post-eval_result_design_flashtool.png)](background/img/post-eval_result_design_flashtool.png)
 
