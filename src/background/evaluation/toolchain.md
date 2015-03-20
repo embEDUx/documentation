@@ -5,7 +5,7 @@ solutions, but with the [evaluation of buildroot](comparison/buildroot.md) in
 mind, there is only one solition left. 
 
 ### Crosstool-NG
-**Crosstool__NG offers the possibility to build static, and therefore portable
+**Crosstoo-NG** offers the possibility to build static, and therefore portable
 toolchains. With **Crosstool-NG** even toolchains are possible, that are built
 on host with architecture X, compiled for architecture Y, cross-compiling for
 architecture Z. These kind of toolchains are called *canadian* toolchain.
