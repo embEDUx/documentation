@@ -9,7 +9,7 @@ mind, there is only one solution left.
 toolchains. With **Crosstool-NG** even toolchains , that are built on host with
 architecture X, compiled for architecture Y, cross-compiling for architecture Z
 are possible. These kind of toolchains are called *canadian* toolchain.
-**Crosstool-NG** also has an *ncurses* based configuration menu similar to the
+**Crosstool-NG** also has an **ncurses** based configuration menu similar to the
 **Linux** kernel *menuconfig*, which results in an intuitive usage. The
 configuration is stored in a .config file and can be stored within the
 specification storage unit.
