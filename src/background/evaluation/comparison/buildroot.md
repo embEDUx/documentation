@@ -39,8 +39,7 @@ standard **Linux** userspace applications and libraries, it can be reasonably
 assumed that the required software packages for the different lab-courses must
 be added to the **Buildroot** 
 
-**Buildroot** allows the user to [add own packages]
-(http://buildroot.uclibc.org/downloads/manual/manual.html#adding-packages).
+**Buildroot** allows the user to [add own packages](http://buildroot.uclibc.org/downloads/manual/manual.html#adding-packages).
 But adding new software can be a cumbersome process, because it has to be 
 cross-compilable and package dependencies need to be maintained manually.
 
@@ -59,10 +58,10 @@ provide a portable toolchain. This is not possible with **Buildroot** as
 mentioned before. Another unsatisfied requirement is the provision of userspace
 applications for the **RootFS**. 
 
-## Overview Criteria | Result | Notes 
+Criteria | Result | Notes 
 --- | --- | --- 
 Cross-target support | YES | Manual configuration necessary 
 Package management | LIMITED | Difficult to extend 
-Buildroutine Automation | YES | Includes Kernel, Toolchain, RootFS 
+Buildroutine Automation | YES | Includes Uboot, Kernel, Toolchain, RootFS 
 Deployment | NO | System must be installed by hand on the embedded device
 
