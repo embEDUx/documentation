@@ -71,13 +71,6 @@ It seemed obvious to call this tool "**Flashtool**"
 due to the fact that most of the embedded devices uses flash memories to store
 their operating system and files.
 
-## Programming language
-
-One of the first decisions which were made for the tool was to choose *python*
-as programming language. Python is a script language which is easy to learn,
-highly productive, has a nice syntax and provides plenty of packages and 
-libraries. It is also an often used language and will run on every Linux system.
-
 
 ## Design decisions
 
