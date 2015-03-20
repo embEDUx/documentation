@@ -17,7 +17,7 @@ list of features and examining the documentation, all of the above design
 decisions are possible to implement using **Buildbot**.
 
 ## Jenkins
-Java Based continous integration tool, which is the first and last criteria
+Java based continuous integration tool, which is the first and last criteria
 to analyze.
 
 ## Result Continuous Integration Evaluation
@@ -30,5 +30,5 @@ build system. It was chosen, because
 * there is no serious competition
 
 ## Master and Slave Terminologies
-**Buildbot** uses the terms **Buildmaster** and **Buildslaves** as a referall to
+**Buildbot** uses the terms **Buildmaster** and **Buildslaves** as a referral to
 the active scheduling component and the passive executors.

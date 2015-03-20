@@ -272,7 +272,7 @@ Candidate | Cross-target support | Package management | RootFS Buildroutine Auto
 --- | --- | --- | ---
 Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
-YOCTO | LIMITED | LIMITED / difficult to extend | YES 
+YOCTO | YES | LIMITED / difficult to extend | YES 
 Buildroot | YES | LIMITED / difficult to extend | YES
 Gentoo crossdev and cross-emerge | NOT RELIABLE | YES | -
 Qemu user emulation | LIMITED / not fully reliable | - | -
