@@ -13,7 +13,7 @@ This evaluation was done with the **buildroot** version *2014.02*.
 
 ## Products
 This part of the document evaluates the support for the defined
-[required](../../requirements.md).
+[requirements](../../requirements.md).
 
 ### Linux Kernel and U-Boot
 **Buildroot** supplies a mechanism to build any **Linux** kernel or **Uboot**
@@ -34,13 +34,15 @@ The **Buildroot** tool is able to provide a lot of packages for the target
 system. It is also possible to build **BusyBox**-only RootFS. Every package is
 built on the host system, using a cross-toolchain.
 
-It is possible to add own packages, and a short instruction how to add a new
-package (called applet) can be found [on the busybox
-website](http://www.busybox.net/FAQ.html#adding).  But adding new software can
-be a cumbersome process, because it has to be cross-compilable and package
-dependencies need to be maintained manually.
+Due to the fact, that **Buildroot** does only provide a small set of the
+standard **Linux** userspace applications and libraries, it can be reasonably
+assumed that the required software packages for the different lab-courses must
+be added to the **Buildroot** 
 
-The user is dependent on the...
+**Buildroot** allows the user to [add own packages]
+(http://buildroot.uclibc.org/downloads/manual/manual.html#adding-packages).
+But adding new software can be a cumbersome process, because it has to be 
+cross-compilable and package dependencies need to be maintained manually.
 
 
 ## Summary
@@ -50,6 +52,12 @@ known and intuitive for people who previously configured and built a **Linux**
 kernel, and are familiar with the principle of cross compilation. People who are
 new to these topics need to read documentation that goes beyond the F1-help-text
 that is provided by the **Buildroot** configuration menu.
+
+On the other hand **Buildroot** can't satisfy all requirements of the
+**embEDUx** project. One important requirement is, that the system should
+provide a portable toolchain. This is not possible with **Buildroot** as
+mentioned before. Another unsatisfied requirement is the provision of userspace
+applications for the **RootFS**. 
 
 ## Overview Criteria | Result | Notes 
 --- | --- | --- 
