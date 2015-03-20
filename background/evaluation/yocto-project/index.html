@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Evaluation/Flashtool - embEDUx Project</title>
+        <title>Evaluation/Yocto Project - embEDUx Project</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -218,8 +218,8 @@
                             <a href="../continuous-integration/index.html">Evaluation/Continuous Integration</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="index.html">Evaluation/Flashtool</a>
+                        <li >
+                            <a href="../flashtool/index.html">Evaluation/Flashtool</a>
                         </li>
                     
                         <li >
@@ -238,8 +238,8 @@
                             <a href="../uboot/index.html">Evaluation/Uboot</a>
                         </li>
                     
-                        <li >
-                            <a href="../yocto-project/index.html">Evaluation/Yocto Project</a>
+                        <li class="active">
+                            <a href="index.html">Evaluation/Yocto Project</a>
                         </li>
                     
                         <li >
@@ -346,12 +346,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../continuous-integration/index.html">
+                    <a rel="next" href="../uboot/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../linux/index.html">
+                    <a rel="prev" href="../../implementation/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -365,103 +365,201 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#evaluation-of-software-components-for-the-flashtool">Evaluation of software components for the Flashtool</a></li>
+        <li class="main active"><a href="#evaluation-yocto-project">Evaluation Yocto Project</a></li>
         
-            <li><a href="#programming-language">Programming language</a></li>
+            <li><a href="#sub-projects">Sub-Projects</a></li>
         
-            <li><a href="#user-interface">User interface</a></li>
+            <li><a href="#products">Products</a></li>
         
-            <li><a href="#partition-a-block-device">Partition a block device</a></li>
+            <li><a href="#summary">Summary</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="evaluation-of-software-components-for-the-flashtool">Evaluation of software components for the <strong>Flashtool</strong></h1>
-<p>The <strong>Flashtool</strong> design describes the [automation of the deployment process]
-(../design/flashtool.md). To implement the described design decisions there must
-be evaluate several steps.</p>
-<h2 id="programming-language">Programming language</h2>
-<p>The decision for a programming language is very important step due to the
-development procedure of a software. The <strong>Flashtool</strong> needs a programming 
-language which is supported on a <strong>Linux</strong> distribution and runs on different
-architectures. The script languages <strong>Bash</strong> and <strong>Python</strong> was considered to be
-used as programming language. </p>
-<h3 id="python">Python</h3>
-<p>[Python] is a script language which is easy to learn, 
-supports interfaces to other languages (like C), has a nice syntax and provides 
-thousands of third-party modules. </p>
-<h3 id="bash">Bash</h3>
-<p><a href="https://www.gnu.org/software/bash/manual/bashref.html">Bash</a> is a command
-language interpreter and provides an own script language. </p>
-<h3 id="python-vs-bash">Python vs Bash</h3>
-<p><a href="https://www.python.org/doc/">Python</a> and <a href="https://www.gnu.org/software/bash/manual/bashref.html">Bash</a>
-are both script languages which run on likely every UNIX system. Both
-languages must be compared on different disciplines, to decide which language
-fits best for the <strong>Flashtool</strong>.</p>
-<h4 id="development">Development</h4>
-<p><strong>Python</strong> is more productive than <strong>Bash</strong> for the development processes,
-because it supports common programming paradigms like object-oriented
-programming and functional programming. </p>
-<p>According to the design of the <strong>Flashtool</strong> the implementation will require a
-lot of code. To accomplish the development of the <strong>Flashtool</strong>  with <strong>Bash</strong> 
-would result in an confusing mass of <strong>Bash</strong>-scripts and would be hard to
-maintain.</p>
-<h4 id="community">Community</h4>
-<p><strong>Bash</strong> and <strong>Python</strong> is often used on <strong>Linux</strong> systems and supports both a
-huge community and documentation. <strong>Python</strong> provides more third-party modules
-for several task than <strong>Bash</strong> and is a good candidate for writing lesser code
-to do the job. </p>
-<h4 id="calling-other-executables">Calling other executables</h4>
-<p>Both languages provide a mechanism to call other executables easy.</p>
-<h4 id="performance">Performance</h4>
-<p><strong>Python</strong> is really fast in handling data structures (sorting, access) and
-doing calculations <a href="http://opennomad.com/content/performance-different-scripting-languages-shell-v-perl-v-python-v-ruby">compared to Bash</a>.</p>
-<h4 id="interfaces-to-other-programming-languages">Interfaces to other programming languages</h4>
-<p><strong>Python</strong> provides a library which provides C compatible data types, and allows
-calling functions in shared libraries. This makes it possible to wrap C
-libraries in pure python. ((ctypes)[https://docs.python.org/2/library/ctypes.html?highlight=ctypes#module-ctypes])
-There are other libraries like <a href="http://swig.org/Doc1.3/Python.html">swig</a> and 
-<a href="http://cython.org/">cython</a> to connect C and C++ with Python.</p>
-<p>Such mechanism are not <strong>Bash</strong></p>
-<h4 id="summary">Summary</h4>
-<p><strong>Python</strong> is more suitable as programming language for the <strong>Flashtool</strong> than
-<strong>Bash</strong> because:</p>
-<ul>
-<li>Python is faster (organizing data structures, <em>http</em> requests, etc.)</li>
-<li>Large Python project are easier to maintain than with <strong>Bash</strong></li>
-<li></li>
-</ul>
-<h2 id="user-interface">User interface</h2>
-<p>The <strong>Flashtool</strong> should be used in a command line interface and therefore it
-has to provide several program parameter to trigger the different tasks. </p>
-<p>To implement command line options we considered using <em>getopt</em> or <em>argparse</em>.
-The package <a href="https://docs.python.org/3.3/library/getopt.html">getopt</a> is a 
-C-style parser and is recommend for users of the C <em>getopt()</em> function. The
-documentation for the <em>getopt</em> package recommend the package <a href="https://docs.python.org/dev/library/argparse.html">argparse</a> 
-for users who want to write less code (who doesn't?) and get better help and 
-error messages. </p>
-<p>The decision to take the <em>argparse</em> package was easy, because a implementation
-of the various command line parameter, which each of them will have own options,
-will lead to a vast number of code with the <em>getopt</em> package. The <em>argparse</em>
-package is easy to use and leads to clean code. Extending the parser with new
-arguments is really easy.</p>
-<h2 id="partition-a-block-device">Partition a block device</h2>
-<p>For this purpose we had to choose between <a href="https://github.com/rhinstaller/blivet">blivet</a> and <a href="https://github.com/rhinstaller/pyparted">pyparted</a>.
-The <em>blivet</em> package is used by the fedora project and according to the
-<a href="http://blivet.readthedocs.org/en/latest/">documentation</a> it is easy to create
-partitions. A big disadvantage of the <em>blivet</em> package is, that it has many
-dependencies to other package, which must be installed by hand and are not
-automatically installed by the <em>setup.py</em> script of the package. There were also
-some difficulties to install some of the dependencies, because they only work
-with python 2.7 and not python 3 or above. 
-After failing to use the <em>blivet</em> package we decided to use the <em>pyparted</em>
-package. This package uses the <em>libparted</em> package. <em>libparted</em> is the library 
-of the GNU parted project. The <em>pyparted</em> is a good solution for the
-<strong>Flashtool</strong> to partition block devices. It supports all features which are
-given by the C library <em>libparted</em>. It took about 80 lines of code to implement
-the functionality for the <strong>Flashtool</strong>.</p>
+<h1 id="evaluation-yocto-project">Evaluation Yocto Project</h1>
+<p><em>Provides open source, high quality infrastructure and tools to help developers
+create their own <strong>Linux</strong> distribution for any hardware architecture, across
+multiple market segments. It is intended to provide a helpful starting point
+for developers.</em>
+  (<a href="https://wiki.yoctoproject.org/wiki/FAQ#What_is_the_Yocto_Project.3F">Source</a>)</p>
+<p>This is the introduction of the <strong>Yocto Project</strong> which greats you at the
+<a href="https://www.yoctoproject.org">homepage</a> for the project. It makes the <strong>Yocto
+Project</strong> one possible solution, which follows our defined
+<a href="../../requirements/index.html">requirements</a>. Therefore we will analyze the
+functionality and usability of the <strong>Yocto Project</strong>.</p>
+<h2 id="sub-projects">Sub-Projects</h2>
+<p>The <strong>Yocto Project</strong> is an umbrella project for a couple of self organizing
+sub-projects. Each sub-project has its own purpose.</p>
+<h3 id="hob-human-oriented-builder">Hob (Human Oriented Builder)</h3>
+<p><strong>Hob</strong> is a graphical user interface, which helps the user through the building
+process of <strong>Yocto</strong>. For a quick start have a look the
+<a href="https://www.yoctoproject.org/documentation/hob-manual-171">homepage</a>.</p>
+<p>With <strong>Hob</strong> the machine for which the image should be build and also which
+recipes should be used for that image can be selected. But <strong>Hob</strong> can't define
+recipes or board support packages. Basically <strong>Hob</strong> only visualizes all the
+board support packages and recipes in a nice way, so the user can choose which
+ones should be build. The user then can trigger the build process and <strong>Hob</strong>
+presents the necessary informations about success or failure for each recipe. </p>
+<h3 id="bitbake">Bitbake</h3>
+<p><strong>Bitbake</strong> is the sub-project that builds the image, and is inspired by the
+<strong>Portage</strong> package management system from <strong>Gentoo</strong>. The build process uses
+the meta data (recipes) from e.g. the <strong>openembedded-core</strong> to calculate the
+build instructions. With the recipe structure the content of the output image is
+highly configurable by the user. If a recipe for e.g. a user-space program is
+not available in the known sources like <strong>openembedded-core</strong>, the user has to
+write an own recipe.</p>
+<h3 id="openembedded-core">Openembedded-Core</h3>
+<p>The default meta data is provided by the <strong>openembedded-core</strong> and is stored as
+recipes which are used by <strong>Bitbake</strong> for building the packages. As the <strong>Yocto
+Project</strong> is mainly targeted on creating images for the embedded domain, it
+seems that the meta data, and therefore the available software packages, are
+updated less frequently when compared to other package management systems. E.g.
+at the time of evaluation there wasn't a <strong>Python 3</strong> version available through
+the <strong>openembedded-core</strong> project, which is violating the defined
+<a href="../../requirements/index.html#product-specific-requirements">requirements</a>.</p>
+<h3 id="adt-application-development-toolkit">ADT (Application Development Toolkit)</h3>
+<p>From the
+<a href="http://www.yoctoproject.org/docs/1.6.1/adt-manual/adt-manual.html#adt-intro">documentation</a>:</p>
+<pre><code>Fundamentally, the ADT consists of the following:
+
+* An architecture-specific cross-toolchain and matching sysroot both built by
+  the OpenEmbedded build system. The toolchain and sysroot are based on a
+  Metadata configuration and extensions, which allows you to cross-develop on
+  the host machine for the target hardware.
+
+* The Eclipse IDE Yocto Plug-in.
+
+* The Quick EMUlator (QEMU), which lets you simulate target hardware.
+
+* Various user-space tools that greatly enhance your application
+  development experience.
+</code></pre>
+
+<p>This description sounds like the swiss army knife we are looking for.
+Unfortunately it also comes with quiet a lot of configuration costs. Using the
+ADT as a development environment for the students wouldn't be a good solution,
+as for this use case a solution with lower prerequisite knowledge is likely
+preferable.</p>
+<h3 id="poky">Poky</h3>
+<p><em>Poky is a reference system of the Yocto Project - a collection of Yocto Project
+tools and metadata that serves as a set of working examples.</em>
+(<a href="https://www.yoctoproject.org/tools-resources/projects/poky">Source</a>)</p>
+<h2 id="products">Products</h2>
+<p>This part of the document evaluates the support for the defined
+<a href="../../requirements/index.html">requirements</a>.</p>
+<h3 id="bootloader">Bootloader</h3>
+<p>The default bootloader, which comes with <strong>Poky</strong> is <strong>U-Boot</strong>. The recipe in
+<strong>Poky</strong> is for version 2013.07, which is compared to upstream 2015.01-rc1 pretty
+old. Version 2014.07 is within in the <strong>openembedded-core</strong> repository since
+12.11.2014, however they aren't part of the reference system <strong>Poky</strong>.</p>
+<h3 id="linux-kernel">Linux Kernel</h3>
+<p><strong>Poky</strong> comes with the linux kernel versions 3.10, 3.14 and 3.17. These
+versions are quited outdated. Also adding the support for each of the platforms
+comes with modifying and adding multiple recipes for each of the desired kernel
+version.</p>
+<h3 id="rootfs">RootFS</h3>
+<p><strong>Poky</strong> contains by default a lot of user-space program recipes. As the effort
+of comparing all the included recipes with the current available versions would
+exceed this evaluation, only the important packages from the
+<a href="../../requirements/index.html">requirements</a> are evaluated.</p>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Poky</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gcc</td>
+<td>4.9.1</td>
+<td>4.9.1</td>
+</tr>
+<tr>
+<td>lighttpd</td>
+<td>1.4.35</td>
+<td>1.4.35</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>6.6.p1</td>
+<td>6.8.p1</td>
+</tr>
+<tr>
+<td>Avahi</td>
+<td>0.6.31</td>
+<td>0.6.31</td>
+</tr>
+<tr>
+<td>iw-utility</td>
+<td>n/a</td>
+<td>3.17</td>
+</tr>
+<tr>
+<td>Python2</td>
+<td>2.7.3</td>
+<td>2.7.3</td>
+</tr>
+<tr>
+<td>Python3</td>
+<td>n/a</td>
+<td>3.4</td>
+</tr>
+</tbody>
+</table>
+<p>At the time of this evaluation and as aforementioned, <strong>Yocto</strong> doesn't provide
+a <strong>Python 3</strong> recipe, which is violating the defined
+<a href="../../requirements/index.html">requirements</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>By default the <strong>Yocto</strong> Project is missing the majority of the platforms that
+would be used with the build system solution. Looking through the additional
+<a href="http://git.yoctoproject.org/cgit/cgit.cgi/">board support packages</a> and their
+pure amount of additional recipes needed for the <strong>Linux</strong> kernel and
+<strong>U-Boot</strong>, it seems that the overhead to add a new platform is quiet huge. The
+<strong>Yocto Project</strong> is a good choice, if you want to develop for a single
+platform. As soon as multi platform development is needed, the amount of
+individual configuration and modification needed for building with <strong>Yocto</strong>
+doesn't justify the results. Another not negligible fact is also the sensible
+lack of up-to-date versions for the different recipes. This would result in a
+scenario where anyone using the build system has to have knowledge about
+<strong>Yocto</strong> and <strong>BitBake</strong> to configure and write the required recipes.</p>
+<p>In the end the <strong>Yocto Project</strong> is what it intends to be: <em>A helpful starting
+point for developers.</em> But it is not, what we need to fulfill the
+<a href="../../requirements/index.html">requirements</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Result</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-target support</td>
+<td>YES</td>
+<td>Manual configuration necessary</td>
+</tr>
+<tr>
+<td>Package management</td>
+<td>LIMITED</td>
+<td>Extensible through recipes, although it needs a lot of configuration</td>
+</tr>
+<tr>
+<td>Buildroutine Automation</td>
+<td>YES</td>
+<td>Includes U-Boot, Kernel, Toolchain, RootFS</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>LIMITED</td>
+<td>Result of build process is an image, which can be deployed on a sd card with <code>dd</code></td>
+</tr>
+</tbody>
+</table>
 </div>
         </div>
 

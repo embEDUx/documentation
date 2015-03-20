@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../../background/evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../../background/evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../../../../background/evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../../background/implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../../../background/implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../../background/implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -435,12 +447,12 @@ representation in the recipe directory (In this case the file <em>flashtool
 /setup/recipe/hdd.py</em>). When found it will pass the values of <em>recipe</em> into
 the constructor of the python class (In this case <em>HDD</em>). Of course there is
 no class defined at <em>flashtool/setup/recipe/hdd.py</em>, this brings us to step
-2.</p>
+two.</p>
 </li>
 <li>
 <p>Implement python representation for the recipe. The python representation of 
-    the recipe type is a python class and must have the same name written in 
-    <em>CAPITAL</em> letters and inherits from the class <em>YAML</em>. </p>
+    the recipe type is a python class and should have the same name written in 
+    <em>CAPITAL</em> letters and must inherit from the class <em>YAML</em>.</p>
 <pre><code>from flashtool.setup.recipe import YAML
 
 class HDD(YAML):
@@ -471,6 +483,8 @@ class Partition(YAML):
         self.check_attributes(attributes)
         ... # DO SOME VALUE CHECKS HERE
         YAML.__init__(self, attributes)
+
+__entry__ = HDD
 </code></pre>
 <p>The classes inherit the method <code>check_attributes(self, attributes)</code> from the
 super class <em>YAML</em>. It will check if the given attributes contains all
@@ -483,6 +497,9 @@ dot <code>.</code> operator.</p>
 <pre><code>hdd_obj.partition_type  # get partition types
 hdd_obj.partitions      # get list of partitions
 </code></pre>
+<p>The module variable <strong>entry</strong> must be set with the class name of the
+implemented recipe class. With this value the <strong>Flashtool</strong> can create an
+instance of the new recipe class. </p>
 </li>
 <li>
 <p>Load attribute:

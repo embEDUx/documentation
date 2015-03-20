@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -365,7 +377,7 @@
 <h1 id="design-toolchain">Design Toolchain</h1>
 <p>The Linux-Kernel and the Bootloader must be compiled from their sources,
 otherwise the user is not able to provide the configuration for these. In order
-to build these products for the different platforms a Toolchain with the
+to build these products for the different platforms a Toolchain for the
 respective build targets is required. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of the
 toolchain creation.</p>
@@ -373,7 +385,9 @@ toolchain creation.</p>
 <li><a href="http://crosstool-ng.org/">Crosstool-NG</a></li>
 <li><a href="http://buildroot.uclibc.org/">Buildroot</a></li>
 </ul>
-<h3 id="build-process">Build process</h3>
+<p>Another derivation from the <a href="../../requirements/index.html">requirements</a> is the need for a
+portable toolchain.</p>
+<h2 id="build-process">Build process</h2>
 <ol>
 <li>Retrieve the build specifications from the repository</li>
 <li>Translate the toolchain specifications</li>

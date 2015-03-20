@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../background/evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../background/evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../../../background/evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../background/implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../../background/implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -483,6 +495,29 @@ $ git push --set-upstream origin amd64_armv6j-ctng-linux-gnueabi</code></p>
    and modify the <a href="../../../usage/toolchains/default/.config">configuration</a>, to build a
    static toolchain. For further information read
    <a href="../../../background/implementation/toolchain/index.html">background/toolchains</a>.</p>
+<p>The parameters for a static toolchain should be set as following:</p>
+<ul>
+<li>Disable progress bar (otherwise build.log ends up beeing huge)<ul>
+<li>CT_LOG_PROGRESS_BAR is not set</li>
+</ul>
+</li>
+<li>Storage directory<ul>
+<li>CT_LOCAL_TARBALLS_DIR="/var/tmp/embedux/download"</li>
+<li>CT_SAVE_TARBALLS=y</li>
+</ul>
+</li>
+<li>Output directory for ctng<ul>
+<li>CT_PREFIX_DIR="${CT_TOP_DIR}/output/${CT_TARGET}"</li>
+</ul>
+</li>
+<li>Static toolchain<ul>
+<li>CT_STATIC_TOOLCHAIN=y and all dependencies</li>
+<li>CT_CC_STATIC_LIBSTDCXX=y</li>
+<li>CT_GDB_CROSS_STATIC=y</li>
+<li>CT_BINUTILS_LINKERS_LIST="ld" (building static toolchain doesn't work with gold)</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
 <p>Test your toolchain configuration</p>

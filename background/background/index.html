@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -359,6 +371,10 @@
         
             <li><a href="#the-beginning">The Beginning</a></li>
         
+            <li><a href="#what-is-it-and-what-can-it-do">What is it, and what can it do?</a></li>
+        
+            <li><a href="#what-is-it-not">What is it not?</a></li>
+        
             <li><a href="#initial-contributors">Initial contributors</a></li>
         
     
@@ -368,29 +384,47 @@
 
 <h1 id="background">Background</h1>
 <h2 id="overview">Overview</h2>
-<h4 id="1-project-requirements"><strong><a href="../requirements/index.html">1. Project Requirements</a></strong></h4>
-<h4 id="2-design"><strong><a href="../design/index.html">2. Design</a></strong></h4>
-<h4 id="3-evaluation"><strong><a href="../evaluation/index.html">3. Evaluation</a></strong></h4>
-<h4 id="4-implementation"><strong><a href="../implementation/index.html">4. Implementation</a></strong></h4>
+<h4 id="1-project-requirements"><a href="../requirements/index.html">1. Project Requirements</a></h4>
+<h4 id="2-design"><a href="../design/index.html">2. Design</a></h4>
+<h4 id="3-evaluation"><a href="../evaluation/index.html">3. Evaluation</a></h4>
+<h4 id="4-implementation"><a href="../implementation/index.html">4. Implementation</a></h4>
 <h2 id="the-beginning">The Beginning</h2>
-<p>The name <strong>embEDUx</strong> includes hints for the words <em>embedded linux</em> and
+<p>The name <strong>embEDUx</strong> includes hints for the words <em>embedded</em> <strong><em>Linux</em></strong> and
 <em>education</em>. The goal to deliver an environment that eases the effort of creating various
-embedded linux distributions depending on the educational purpose that they are
+embedded <strong>Linux</strong> distributions depending on the educational purpose that they are
 specifically aiming for. </p>
-<p>The idea has its origin at the IT-faculty at the HTWG Constance, where embEDUx will
-have the use-case of preparing and maintaining linux distributions for the
-different lab-courses taken by students. All of these lab-courses evolve around
-the linux operating system, software applications for linux and hardware
-components that are capable of running linux. Over time, the diversity in soft-
-and hardware utilized in these lab-courses has increased and so has the
-complexity and effort to prepare and maintain the systems in use.  </p>
+<p>The project has its origin at the IT-faculty at the HTWG Constance, where
+embEDUx will have the use-case of preparing and maintaining <strong>Linux</strong>
+distributions for the different lab-courses taken by students. All of these
+lab-courses evolve around the <strong>Linux</strong> operating system, software applications
+for <strong>Linux</strong> and hardware components that are capable of running <strong>Linux</strong>. Over
+time, the diversity in soft- and hardware utilized in these lab-courses has
+increased and so has the complexity and effort to prepare and maintain the
+systems in use.  </p>
 <p>The embEDUx project has been created to find a generic and automated approach
-for tasks concerning the preparation of soft- and hardware for these lab-courses
-offered at the HTWG, which is the reason why the embEDUx requirements will have
-a strong bias towards the requirements specific to the lab-courses.</p>
+for tasks concerning the preparation of soft- and hardware for the lab-courses
+at the HTWG. Naturally, that's why the embEDUx requirements will have a strong
+bias towards the requirements specific to the lab-courses.</p>
+<h2 id="what-is-it-and-what-can-it-do">What is it, and what can it do?</h2>
+<ul>
+<li>Automated build system for customized Linux distributions</li>
+<li>Configurable setuproutine of the buildsystem, with sane defaults</li>
+<li>Centralized build configurations for all your platforms</li>
+<li>Individual configuration and builds with specified targets, organized by<ul>
+<li>Platform: for Linux-Kernel, U-Boot</li>
+<li>Architecture: RootFS</li>
+<li>Hybrid: Toolchain, Misc-Files</li>
+</ul>
+</li>
+<li>Working examples for Raspberry Pi, Beaglebone Black, </li>
+</ul>
+<h2 id="what-is-it-not">What is it not?</h2>
+<ul>
+<li>Magic system for guessing all your platforms configuration automatically</li>
+</ul>
 <h2 id="initial-contributors">Initial contributors</h2>
-<p>The project started off with three master students of computer science working
-on a team-project, supervised by a professor. Namely, these are</p>
+<p>The project started off with three master students of computer science who have
+been working on this project in a team, supervised by a professor. Namely, these are</p>
 <ul>
 <li>Prof. Dr. Michael Mächtel</li>
 <li>Lars Eckervogt</li>

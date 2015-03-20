@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../background/implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -372,7 +384,7 @@
 
 <h1 id="flashtool">Flashtool</h1>
 <p>This guide will help you through the several commands you need to deploy builds
-from the <em>buildserver</em> to hardware.</p>
+from the buildserver to hardware.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>The Flashtool must be installed on your system. Please read the <a href="../../setup/workstation/flashtool/index.html">setup
 chapter</a> of the <strong>Flashtool</strong>.</p>
@@ -396,43 +408,41 @@ has to be configured first. To do so, type in the following command:</p>
 <p>The tool needs a <em>working directory</em> which is set at the home directory
 by default. (<strong><em>${HOME}/.Flashtool</em></strong>) It can be set by the user with the option
 <em>-w | --working-dir</em>.</p>
-<p><code>$ flashtool -w /path/to/own/working_dir</code></p>
-<p>The tool will ask the user for some parameter to set, the next example shows
-this procedure:</p>
-<pre><code class="bash">$ flashtool init
+<p><code>$ flashtool -w /path/to/own/working_dir init</code></p>
+<p>The tool will ask the user for some parameter to set. The next example shows this 
+procedure. The given values are for the HTWG Environment:</p>
+<pre><code class="bash">[mahieke@hakunamatata test2]$ flashtool -w ./.flashtool init
+Working directory does not exist at ./.flashtool
+Do you want to setup working directory &quot;./.flashtool&quot; [(Y)|(y)|(N)|(n)]
+Answer: y
 Type in a value for
-    [Buildbot]-&gt;server
-help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
-: | 
-
-...
-
-Type in a value for
-    [Buildbot]-&gt;port
-help:   Port of the web frontend of the buildbot server
-: |
-
-...
-
-Type in a value for
-    [Recipes]-&gt;server
+   [Recipes]-&gt;server
 help:   Address or URL to a git server which contains yml recipes for different platforms
-Must look like: git@{URL-to-server}:{path-to-git-repository}.git
-: |
+  Must look like: git@{URL-to-server}:{path-to-git-repository}.git
+  or 
+  https://{URL-to-server}/{path-to-git-repository}.git
 
-...
+: https://github.com/embEDUx/flashtool-recipes.git
 
 Type in a value for
    [Recipes]-&gt;user
-help:   Directory where the user can save own recipe files.
-: |
-
-...
+help:   Directory where the user can save own recipe files. Path must not include underscores!
+: /home/mahieke/.flashtool/own-recipes
 
 Type in a value for
-    [Local]-&gt;products
-help:   Local path where Flashtool should save downloaded products if option is selected.
-: |
+   [Local]-&gt;products
+help:   Local path where flashtool should save downloaded products if option is selected.
+: /home/mahieke/.flashtool/downloaded-products 
+
+Type in a value for
+   [Buildbot]-&gt;server
+help:   Address or URL to a buildbot server. Optional Port must be set as next parameter.
+: http://moe.in.htwg-konstanz.de            
+
+Type in a value for
+   [Buildbot]-&gt;port
+help:   Port of the web frontend of the buildbot server
+: 8010
 </code></pre>
 
 <p>You can change these settings by calling the command:</p>
@@ -630,7 +640,7 @@ to setup a platform.</p>
 <p><strong>The name and identifier must not contain underscores, please use dashes instead.</strong>
 The <em>underscore</em> is used to divide the recipe file name in the two parts 
 <em>hardware name</em> and <em>identifier</em>. It is important, that the platform name is also 
-registered on the <strong>buildserver</strong>. You will find the valid platform-strings for
+registered on the buildserver. You will find the valid platform-strings for
 your <strong>embEDUx</strong> system in the <a href="../../setup/post-install/user-documentation/index.html">User Documentation</a>.</p>
 <p>The next example shows how to use this name scheme for a Raspberry Pi. This
 name scheme is also used in the 

@@ -203,15 +203,11 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../evaluation/comparison/buildroot/index.html">Evaluation/Comparison/Buildroot</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../evaluation/comparison/yocto-project/index.html">Evaluation/Comparison/Yocto Project</a>
                         </li>
                     
                         <li >
@@ -243,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -365,11 +369,15 @@
         
             <li><a href="#products-built-by-embedux">Products Built By embEDUx</a></li>
         
-            <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
+            <li><a href="#buildserver">Buildserver</a></li>
+        
+            <li><a href="#hardware-deployment-tool">Hardware Deployment Tool</a></li>
+        
+            <li><a href="#specification-storage">Specification Storage</a></li>
         
             <li><a href="#cross-target-support">Cross-Target Support</a></li>
         
-            <li><a href="#repositories-product-specification-storage-units">Repositories - Product-Specification Storage Units</a></li>
+            <li><a href="#comparison-with-similar-projects">Comparison With Similar Projects</a></li>
         
             <li><a href="#overall-system-design">Overall System Design</a></li>
         
@@ -392,38 +400,33 @@ software that is being built uses the build system.</p>
 <a href="../requirements/index.html">project requirements</a> that have been determined by the
 underlying circumstances at the HTWG and it's lab-courses. </p>
 <p>The requirements include a wide variety of necessary configuration options which
-need to be considered for the design of the different products
-which in turn requires a configurable build system. The build system must be
-able to build the following software</p>
+need to be considered for the design of the different products.  This in turn
+requires a configurable build system, which must be able to build the following
+software</p>
 <ul>
 <li><a href="linux/index.html">Linux Kernel</a></li>
 <li><a href="bootloader/index.html">Bootloader</a></li>
 <li><a href="rootfs/index.html">RootFS</a></li>
 </ul>
-<p>while the build configuration must be user providable for each individual build.
+<h2 id="buildserver">Buildserver</h2>
+<p>While the build configuration must be user providable for each individual build.
 Each individual build represents a configuration change that has been made by
-the user.</p>
+the user. The buildserver must react to these changes and start the build
+process.</p>
 <ul>
 <li><a href="buildserver/index.html">Buildserver</a></li>
 </ul>
-<p>The built products can be deployed to the platform by hand from the user. This
-deployment will include several steps for a platofrm. To make this deployment
-process easy the <strong>embEDUx</strong> system provides an configurable deployment tool.</p>
+<h2 id="hardware-deployment-tool">Hardware Deployment Tool</h2>
+<p>Deploying the built products to the platforms includes several steps.
+<strong>embEDUx</strong> provides a deployment tool to make this process easier for the user.</p>
 <ul>
-<li><a href="flashtool/index.html">Deployment Tool</a></li>
+<li><a href="flashtool/index.html">Flashtool</a></li>
 </ul>
-<h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
-<p>The idea of building a complete Linux-based system for a specific platform is
-not new. Therefore it is of no surprise, that by the time of designing
-<strong>embEDUx</strong>, there are several open source projects that need to be considered
-as a base for the <strong>embEDUx</strong> project. The following projects have feature
-specifications, that could possibly fulfill the requirements that have been
-analyzed and collected on the <a href="../requirements/index.html">requirements page</a>.  The
-projects will be evaluated in order to find out if they suitable as base
-projects.</p>
+<h2 id="specification-storage">Specification Storage</h2>
+<p>To store the product specifications corresponding storage units must be
+implemented. </p>
 <ul>
-<li><a href="../evaluation/comparison/buildroot/index.html">Buildroot</a></li>
-<li><a href="../evaluation/comparison/yocto-project/index.html">Yocto Project</a></li>
+<li><a href="repositories/index.html">Repositories</a></li>
 </ul>
 <h2 id="cross-target-support">Cross-Target Support</h2>
 <p>Even though the number of ARM-systems is growing, most Desktops and Servers are
@@ -432,7 +435,19 @@ within the lab-courses are all based on the ARM architecture. Since the purpose
 of the <strong>embEDUx</strong> buildsystem is to build and deploy complete Linux-based
 systems for these hardware platforms, cross-target support is absolutely
 necessary for the project to work.</p>
-<h2 id="repositories-product-specification-storage-units"><a href="repositories/index.html">Repositories</a> - Product-Specification Storage Units</h2>
+<h2 id="comparison-with-similar-projects">Comparison With Similar Projects</h2>
+<p>The idea of building a complete Linux-based system for a specific platform is
+not new. Therefore it is of no surprise that by the time of designing
+<strong>embEDUx</strong> there are several open source projects that have similar project
+goals. These projects need to be considered as a base for the <strong>embEDUx</strong>
+project. The following projects have feature specifications, that could possibly
+fulfill the requirements that have been analyzed and collected on the
+<a href="../requirements/index.html">requirements page</a>.  The projects will be evaluated in order
+to find out if they suitable as base projects.</p>
+<ul>
+<li><a href="../evaluation/buildroot/index.html">Buildroot</a></li>
+<li><a href="../evaluation/yocto-project/index.html">Yocto Project</a></li>
+</ul>
 <h2 id="overall-system-design">Overall System Design</h2>
 <p><a href="../../background/design/img/design.png"><img alt="" src="../../background/design/img/design.png" /></a></p>
 </div>

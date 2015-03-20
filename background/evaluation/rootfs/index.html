@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -355,10 +367,6 @@
     
         <li class="main active"><a href="#evaluation-rootfs">Evaluation RootFS</a></li>
         
-            <li><a href="#yocto-project">Yocto Project</a></li>
-        
-            <li><a href="#buildroot">Buildroot</a></li>
-        
             <li><a href="#gentoo-portage">Gentoo Portage</a></li>
         
             <li><a href="#gentoo-catalyst">Gentoo Catalyst</a></li>
@@ -391,95 +399,6 @@ the designed features:</p>
 <li>Package management</li>
 <li>Buildroutine Automation</li>
 </ul>
-<h2 id="yocto-project">Yocto Project</h2>
-<p>The <strong>Yocto Project</strong> is divided in multiple sub-projects. After the build
-process an entire <strong>Linux</strong> distribution is created, including the toolchain.</p>
-<ul>
-<li>
-<p>Bitbake (build tool)</p>
-<p><strong>Bitbake</strong> is the sub-project that builds the output system image, and is
-based on <strong>Gentoo Portage</strong>. The buildprocess uses meta data to calculcate 
-the installation instructions. </p>
-</li>
-<li>
-<p>Openembedded-Core - Meta data (available software)</p>
-<p>The meta data is provided by the <strong>openembedded-core</strong> and is stored as
-recipes which are used by <strong>Bitbake</strong> to build the packages. As the <strong>Yocto
-Project</strong> is mainly targetted on creating images for the embedded
-domain, it seems that the meta data, and therefore the available software
-packgaes, is updated less frequently when compared to other package
-management systems.</p>
-</li>
-<li>
-<p>Hob (Human Oriented Builder)</p>
-<p><strong>Hob</strong> is a graphical user interface which allows the user to select a
-platform (machine) and an image recip. The image recipe contains the
-information of which packages should be build. This configuration can be
-modified with <strong>Hob</strong>. <strong>Hob</strong> is a nice tool, once all the required meta
-data exist to select and start the generation process.</p>
-</li>
-</ul>
-<p>The <strong>Yocto Project</strong> offers a great set of tools and possibilities, but needs a
-lot of configuration. Everything is capsulated within the recipes, so an easy
-editing of kernel version or user-space software is not possible.</p>
-<h3 id="result-yocto-project">Result Yocto Project</h3>
-<table>
-<thead>
-<tr>
-<th>Criteria</th>
-<th>Result</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cross-target support</td>
-<td>YES</td>
-<td>Manual configuration necessary</td>
-</tr>
-<tr>
-<td>Package management</td>
-<td>LIMITED</td>
-<td>Package manager can be configured with own repository</td>
-</tr>
-<tr>
-<td>Buildroutine Automation</td>
-<td>YES</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="buildroot">Buildroot</h2>
-<p>A collection of bash scripts in order to build toolchains, Linux-kernels,
-bootloaders and root filesystems. It can be configured via an ncurses-based
-menu. </p>
-<h3 id="result-buildroot">Result Buildroot</h3>
-<table>
-<thead>
-<tr>
-<th>Criteria</th>
-<th>Result</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cross-target support</td>
-<td>YES</td>
-<td>Manual configuration necessary</td>
-</tr>
-<tr>
-<td>Package management</td>
-<td>LIMITED</td>
-<td>Difficult to extend</td>
-</tr>
-<tr>
-<td>Buildroutine Automation</td>
-<td>YES</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
 <h2 id="gentoo-portage">Gentoo Portage</h2>
 <p><strong>Gentoo Portage</strong> is a full-fledged source-based package management system that
 can install, uninstall and update a huge variety of software package on a Linux
@@ -780,6 +699,9 @@ it would allow to run arbitrary</p>
 </tbody>
 </table>
 <h2 id="overview">Overview</h2>
+<p>From the aforementioned evaluation and the evaluation of
+<a href="../buildroot/index.html">buildroot</a> and the <a href="../yocto-project/index.html">Yocto Project</a> the results
+are as shown.</p>
 <table>
 <thead>
 <tr>
@@ -804,7 +726,7 @@ it would allow to run arbitrary</p>
 </tr>
 <tr>
 <td>YOCTO</td>
-<td>LIMITED</td>
+<td>YES</td>
 <td>LIMITED / difficult to extend</td>
 <td>YES</td>
 </tr>
@@ -817,7 +739,7 @@ it would allow to run arbitrary</p>
 <tr>
 <td>Gentoo crossdev and cross-emerge</td>
 <td>NOT RELIABLE</td>
-<td>YES</td>
+<td>YES / portage</td>
 <td>-</td>
 </tr>
 <tr>
@@ -835,13 +757,12 @@ it would allow to run arbitrary</p>
 </tbody>
 </table>
 <h2 id="conclusion">Conclusion</h2>
-<p>It seems like there is no solution that is ready to be integrated into the
-designed continuous integration system without further modifications or
-automation processes wrapped around. As a result, the choice is to pick 
-the components that <strong>offer reliability in cross-target support, and package
-management qualities</strong> and incorporate the them into a custom automated
-buildroutine. The components chosen for the task are <strong>Gentoo Portage</strong> paired
-with <strong>Qemu system emulation</strong> in case of Cross-Target buildjobs.</p>
+<p>It seems like there is no completely ready solution for building RootFS. As a
+result, the choice is to pick the components that <strong>offer reliability in
+cross-target support, and package management qualities</strong> and incorporate the
+them into a custom automated buildroutine. The components chosen for the task
+are <strong>Gentoo Portage</strong> paired with <strong>Qemu system emulation</strong> in case of
+Cross-Target buildjobs.</p>
 <h1 id="evaluation-rootfs-buildroutine">Evaluation RootFS Buildroutine</h1>
 <p>As described in the design chapter <a href="../../design/buildserver/index.html#build-automation-routines">Buildserver - Build Automation
 Routines</a>, the automated RootFS buildroutine will be triggered by the continuous integration master component.</p>

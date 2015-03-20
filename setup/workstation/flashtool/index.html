@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../background/evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../background/evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../../../background/evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../background/implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../../background/implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../background/implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -382,6 +394,7 @@
 instruction</a>
 below is followed.</p>
 <ul>
+<li>setuptools</li>
 <li>colorama</li>
 <li>pyudev</li>
 <li>argcomplete</li>
@@ -389,6 +402,7 @@ below is followed.</p>
 <li>requests</li>
 <li>jinja2</li>
 <li>pyparted</li>
+<li>pycrypto</li>
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="required-packages">Required Packages</h3>
@@ -426,7 +440,13 @@ environment with the following command.</p>
 <pre><code class="sh">$ source {path/to/virtualenv}/bin/activate  # go into virtualenv
 </code></pre>
 
-<p>Required python packages which can be installed via PyPI:</p>
+<p>Before you can install the package via <em>pip</em> you must ensure that the
+<em>setuptools</em> package is installed.</p>
+<pre><code class="sh">$ pip install setuptools
+</code></pre>
+
+<p>Now you can install the required python packages and the <strong>Flashtool</strong> 
+with the following command:</p>
 <pre><code class="sh">$ pip install -r https://raw.githubusercontent.com/embEDUx/flashtool/master/requirements.txt 
 </code></pre>
 

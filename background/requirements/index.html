@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../evaluation/buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../evaluation/yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -355,6 +367,8 @@
     
         <li class="main active"><a href="#project-requirements-htwg-context">Project Requirements (HTWG context)</a></li>
         
+            <li><a href="#products-the-distribution-pieces">Products - The distribution pieces</a></li>
+        
             <li><a href="#generic-requirements">Generic Requirements</a></li>
         
             <li><a href="#lab-course-specific-requirements">Lab-Course Specific Requirements</a></li>
@@ -369,6 +383,19 @@
             <div class="col-md-9" role="main">
 
 <h1 id="project-requirements-htwg-context">Project Requirements (HTWG context)</h1>
+<p>The origin of <strong>embEDUx</strong> plays a big role in the requirements of the whole
+project. In the <a href="../background/index.html">background introduction</a> it is briefly explained
+that <strong>embEDUx</strong> aims to create <strong>Linux</strong> distributions for embedded systems in
+educational environments. The specific educational environment at the HTWG
+consists of several lab-courses, which have specific software requirements on
+different hardware platforms.</p>
+<p>In order to understand the requirements of <strong>embEDUX</strong>, these requirements need
+to analyzed carefully.</p>
+<h2 id="products-the-distribution-pieces">Products - The distribution pieces</h2>
+<p>The software that is built by the buildserver will be
+referred as <strong><em>products</em></strong> within the further documentation. This helps to
+distinguish between software that is used throughout the build system, and
+software that is being built uses the build system.</p>
 <p>The first action towards implementing the <strong>embEDUx</strong> project is to collect the
 necessary requirements. While requirements were exchanged and discussed between
 the team members and Prof. Dr. Mächtel, others were identified by analyzing the
@@ -384,6 +411,7 @@ technicalities.</p>
 <li>User-provided configuration for builds</li>
 <li>Automated setup</li>
 <li>Automated build processes</li>
+<li>Automated deployment process</li>
 </ul>
 <h2 id="lab-course-specific-requirements">Lab-Course Specific Requirements</h2>
 <p>In order to estimate the requirements list for all lab-courses we need to look
@@ -424,6 +452,11 @@ at the lab-courses in detail. </p>
 </tr>
 </tbody>
 </table>
+<p>The students participating in the different courses will develop all kind of
+software components on the laboratory computers. Furthermore as the laboratory
+computers currently are based on x86_64 architecture a toolchain for
+cross-compiling for the target hardware architecture is needed. This toolchain
+has to be portable, as those computers are not part of the build system. </p>
 <h2 id="hardware-platforms">Hardware Platforms</h2>
 <p>The following hardware platforms will be used by the lab-courses</p>
 <table>

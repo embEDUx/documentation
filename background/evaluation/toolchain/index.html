@@ -203,6 +203,10 @@
                         </li>
                     
                         <li >
+                            <a href="../buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
+                        <li >
                             <a href="../buildserver-setuproutine/index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
                     
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -355,29 +367,32 @@
     
         <li class="main active"><a href="#evaluation-toolchain">Evaluation Toolchain</a></li>
         
-    
-        <li class="main "><a href="#repository">Repository</a></li>
+            <li><a href="#crosstool-ng">Crosstool-NG</a></li>
         
-    
-        <li class="main "><a href="#build-steps">Build steps</a></li>
+            <li><a href="#repository">Repository</a></li>
+        
+            <li><a href="#build-steps">Build steps</a></li>
+        
+            <li><a href="#build-tools">Build Tools</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="evaluation-toolchain">Evaluation Toolchain</h2>
+<h1 id="evaluation-toolchain">Evaluation Toolchain</h1>
 <p>As written in the <a href="../../design/toolchain/index.html">design</a> there are two possible
-solutions. Unfortunately toolchains built with <strong>Buildroot</strong> have absolute
-symbolic links compiled within the binaries and are therefore the result is not
-portable. As we want to have a portable toolchain, this fact disqualifies
-buildroot for our needs. Fortunately, <strong>Crosstool-NG</strong> offers the possibility to
-build static toolchains. With <strong>Crosstool-NG</strong> even toolchains are possible, that
-are built on host with architecture X, compiled to be ran on architecture Y,
-cross-compiling for architecture Z. These kind of toolchains are called
-<em>canadian</em> toolchain.  Crosstool-NG has also an <em>ncurses</em> based configuration
-menu similar to the <strong>Linux</strong> kernel <em>menuconfig</em>. The configuration is stored
-in a .config file.</p>
+solutions, but with the <a href="../buildroot/index.html">evaluation of buildroot</a> in
+mind, there is only one solution left. </p>
+<h2 id="crosstool-ng">Crosstool-NG</h2>
+<p><strong>Crosstoo-NG</strong> offers the possibility to build static, and therefore portable
+toolchains. With <strong>Crosstool-NG</strong> even toolchains , that are built on host with
+architecture X, compiled for architecture Y, cross-compiling for architecture Z
+are possible. These kind of toolchains are called <em>canadian</em> toolchain.
+<strong>Crosstool-NG</strong> also has an <strong>ncurses</strong> based configuration menu similar to the
+<strong>Linux</strong> kernel <em>menuconfig</em>, which results in an intuitive usage. The
+configuration is stored in a .config file and can be stored within the
+specification storage unit.</p>
 <h2 id="repository">Repository</h2>
 <p>Each toolchain gets its own branch. That means one branch contains a toolchain
 for a specified host and target architecture.</p>
@@ -388,6 +403,17 @@ for a specified host and target architecture.</p>
 <li>Build toolchain with <strong>Crosstool-NG</strong> and the given configuration</li>
 <li>Provide the output in an archive</li>
 </ol>
+<h2 id="build-tools">Build Tools</h2>
+<p>These tools are needed to successfully iterate through the build steps.</p>
+<ul>
+<li>ct-ng </li>
+<li>bash &gt; 3.0</li>
+<li>date</li>
+<li>git</li>
+<li>tar</li>
+<li>bzip2</li>
+<li>sed</li>
+</ul>
 </div>
         </div>
 

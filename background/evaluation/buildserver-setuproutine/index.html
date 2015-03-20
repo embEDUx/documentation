@@ -202,6 +202,10 @@
                             <a href="../index.html">Evaluation</a>
                         </li>
                     
+                        <li >
+                            <a href="../buildroot/index.html">Evaluation/Buildroot</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="index.html">Evaluation/Buildserver Setuproutine</a>
                         </li>
@@ -235,11 +239,19 @@
                         </li>
                     
                         <li >
+                            <a href="../yocto-project/index.html">Evaluation/Yocto Project</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../implementation/index.html">Implementation</a>
                         </li>
                     
                         <li >
                             <a href="../../implementation/buildserver/index.html">Implementation/Buildserver</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
                         </li>
                     
                         <li >
@@ -334,7 +346,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../index.html">
+                    <a rel="next" href="../buildroot/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -353,10 +365,111 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#buildserver-setuproutine-evaluation">Buildserver Setuproutine Evaluation</a></li>
+        
+            <li><a href="#python">Python</a></li>
+        
+            <li><a href="#ansible">Ansible</a></li>
+        
+            <li><a href="#executing-commands-on-the-target-machine">Executing commands on the target machine</a></li>
+        
+            <li><a href="#configuration-templates">Configuration Templates</a></li>
+        
+            <li><a href="#package-installation">Package Installation</a></li>
+        
+            <li><a href="#docker-container-management">Docker Container Management</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="buildserver-setuproutine-evaluation">Buildserver Setuproutine Evaluation</h1>
+<p>The buildserver design describes the <a href="../../design/buildserver/index.html#setup-automation-routine">setup automation
+routine</a>. It is designed to
+install and initialize the different components of the <strong>embEDUx</strong> buildserver
+on the buildserver target machine.</p>
+<p>The two candidates for the implementation are Python and Ansible. In order to
+chose the better alternative, functionality needs to be compared according to
+the design specifications and previous evaluation results.</p>
+<h2 id="python">Python</h2>
+<p>Python is a general purpose scripting language that offers a wide variety of standard and
+additional modules. In theory, there should be no limitation to the complexity
+of the setup process when Python is used.</p>
+<h2 id="ansible">Ansible</h2>
+<p>Ansible is an administration utility written in Python, with a focus on
+automation of predefined actions. The actions that are available correspond to
+modules, and can be customized according to the available module parameters.
+Standard modules include things like installing packages, enabling system
+services, manage user accounts, synchronize files to or from the target
+machines, and many more. Ansible can be extended with custom modules, but the
+builtin modules already provide great functionality. The connection to the
+target machine uses SSH. </p>
+<h2 id="executing-commands-on-the-target-machine">Executing commands on the target machine</h2>
+<ul>
+<li>
+<p>SSH</p>
+</li>
+<li>
+<p>Python</p>
+</li>
+<li>Ansible</li>
+</ul>
+<h2 id="configuration-templates">Configuration Templates</h2>
+<p>As specified under <a href="../../design/buildserver/index.html#required-setup-parameters">configuration generation in the buildserver
+design</a>, template generation
+is required during the buildserver setup.</p>
+<ul>
+<li>
+<p>Python</p>
+<p>Several python modules offer template rendering. Among them is the Jinja2
+templating engine which is a suitable candidate.</p>
+</li>
+<li>
+<p>Ansible</p>
+<p>A module for Jinja2 template rendering is included with the default Ansible
+setup.</p>
+</li>
+</ul>
+<h2 id="package-installation">Package Installation</h2>
+<p><strong>Docker</strong> is the only non-default package that needs to be installed on the
+remote host. </p>
+<ul>
+<li>apt</li>
+<li>portage</li>
+</ul>
+<h2 id="docker-container-management">Docker Container Management</h2>
+<p>By the time of the design phase, it hasn't been clear yet which container
+utility will be used to implement the abstraction. The <a href="../container-utility/index.html">container utility
+evaluation</a> has chosen <strong>Docker</strong>. The necessary steps for
+setting up the container infrastructure during the setup can now be listed, in
+order to find the right tool for the setuproutine.</p>
+<p>As specified in the <a href="../rootfs/index.html#conclusion">RootFS
+evaluation</a>, the RootFS buildroutine needs Gentoo portage.
+Therefore, the Docker images for the buildserver components will be based on
+stage3 archives too.</p>
+<ul>
+<li>Download Gentoo stage3 archives for<ul>
+<li>buildmaster - native machine architecture</li>
+<li>buildslaves - one per target architecture</li>
+</ul>
+</li>
+<li>Build buildmaster container with the following packages<ul>
+<li>buildbot master component</li>
+</ul>
+</li>
+<li>Build containers for the the buildslave component.<ul>
+<li>Default buildslaves containers. Build environment for <ul>
+<li>Native and Cross-Target U-Boot, Linux, Misc, Toolchain</li>
+</ul>
+</li>
+<li>RootFS Buildslaves containers. Build environment for<ul>
+<li>Native- and Cross-Target RootFS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
         </div>
 
