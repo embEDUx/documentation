@@ -1,7 +1,7 @@
 # Design Toolchain
 The Linux-Kernel and the Bootloader must be compiled from their sources,
 otherwise the user is not able to provide the configuration for these. In order
-to build these products for the different platforms a Toolchain with the
+to build these products for the different platforms a Toolchain for the
 respective build targets is required. The toolchain should also be user
 configurable, which leaves the following projects for the evaluation of the
 toolchain creation.
@@ -9,7 +9,10 @@ toolchain creation.
 * [Crosstool-NG](http://crosstool-ng.org/)
 * [Buildroot](http://buildroot.uclibc.org/)
 
-### Build process
+Another derivation from the [requirements](../requirements.md) is the need for a
+portable toolchain.
+
+## Build process
 1. Retrieve the build specifications from the repository
 1. Translate the toolchain specifications
 1. Build toolchain
