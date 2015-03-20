@@ -132,3 +132,10 @@ In the end the **Yocto Project** is what it intends to be: *A helpful starting
 point for developers.* But it is not, what we need to fulfill the
 [requirements](../../requirements.md).
 
+Criteria | Result | Notes 
+--- | --- | --- 
+Cross-target support | YES | Manual configuration necessary 
+Package management | LIMITED | Extensible through recipes, although it needs a lot of configuration
+Buildroutine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
+Deployment | LIMITED | Result of build process is an image, which can be deployed on a sd card with `dd`
+
