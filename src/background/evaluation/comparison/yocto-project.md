@@ -91,7 +91,7 @@ old. Version 2014.07 is within in the **openembedded-core** repository since
 ### Linux Kernel
 **Poky** comes with the linux kernel versions 3.10, 3.14 and 3.17. These
 versions are quited outdated. Also adding the support for each of the platforms
-comes with modifying and adding configurations for each of the desired kernel
+comes with modifying and adding multiple recipes for each of the desired kernel
 version.
 
 ### RootFS
