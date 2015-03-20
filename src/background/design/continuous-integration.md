@@ -1,5 +1,4 @@
 # Continuous Integration Design
-
 The design decisions made in [Automated Build
 Triggering](buildserver.md#automated-build-triggering) and [Abstraction Layer
 For Automation](buildserver.md#abstraction-layer-for-automation) must now be

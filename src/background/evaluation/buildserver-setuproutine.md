@@ -8,6 +8,21 @@ The two candidates for the implementation are Python and Ansible. In order to
 chose the better alternative, functionality needs to be compared according to
 the design specifications and previous evaluation results.
 
+## Python
+Python is a general purpose scripting language that offers a wide variety of standard and
+additional modules. In theory, there should be no limitation to the complexity
+of the setup process when Python is used.
+
+## Ansible
+Ansible is an administration utility written in Python, with a focus on
+automation of predefined actions. The actions that are available correspond to
+modules, and can be customized according to the available module parameters.
+Standard modules include things like installing packages, enabling system
+services, manage user accounts, synchronize files to or from the target
+machines, and many more. Ansible can be extended with custom modules, but the
+builtin modules already provide great functionality. The connection to the
+target machine uses SSH. 
+
 ## Executing commands on the target machine
 * SSH
 
