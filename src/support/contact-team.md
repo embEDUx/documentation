@@ -1,7 +1,6 @@
 # Contact the Team
 
 ## Team members
-
 Member | Responsibilities
 --- | --- 
 [Lars Eckervogt](mailto:code@eckervogt.eu) | Platform Builds/Evaluation: U-Boot, Linux, Toolchain
