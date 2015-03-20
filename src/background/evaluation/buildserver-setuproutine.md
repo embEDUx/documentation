@@ -10,29 +10,35 @@ additional modules.
 
 ## Ansible
 Ansible is an administration utility written in Python, with a focus on
-automation of predefined tasks,  The
-actions that are available correspond to modules that are either
+automation of predefined actions. The actions that are available correspond to
+modules, and can be customized according to the available module parameters.
+Standard modules include things like installing packages, enabling system
+services, manage user accounts, synchronize files to or from the target
+machines, and many more. Ansible can be extended with custom modules, but the
+builtin modules already provide great functionality. The connection to the
+target machine uses SSH. 
 
 ### Entities
-All entities are defined in separate files, which are specified in the **YAML**
+Ansible actions are organized and configured with different entities.  All
+entities are defined in separate files, which are specified in the **YAML**
 language.
 
-The different entities can be assembled together.
-Target hosts can be grouped together. 
+The first entity that needs to be defined is the hosts inventory, with optional
+groups.
 
 * Hosts
 * Groups
 
-Tasks contain the instructions for the modules that takes actions on hosts or
-host groups.
-Tasks build roles, roles build
-plays and plays build playbooks. 
-Variables can be defined per entity, globally
+Tasks and other entities specify the used modules, parameters and the target
+machines they're executed on:
 
 * Tasks
 * Roles
 * Plays
 * Playbooks
+
+
+Variables can be attached to each element of the previous two entity groups.
 
 * Variables
 
