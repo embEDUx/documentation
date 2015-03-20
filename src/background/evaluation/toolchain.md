@@ -1,7 +1,7 @@
 # Evaluation Toolchain
 
 As written in the [design](../design/toolchain.md) there are two possible
-solutions, but with the [evaluation of buildroot](comparison/buildroot.md) in
+solutions, but with the [evaluation of buildroot](buildroot.md) in
 mind, there is only one solution left. 
 
 ## Crosstool-NG

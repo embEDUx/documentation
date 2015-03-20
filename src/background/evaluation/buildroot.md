@@ -13,7 +13,7 @@ This evaluation was done with the **Buildroot** version *2014.02*.
 
 ## Products
 This part of the document evaluates the support for the defined
-[requirements](../../requirements.md).
+[requirements](../requirements.md).
 
 ### Linux Kernel and U-Boot
 **Buildroot** supplies a mechanism to build any **Linux** kernel or **Uboot**
@@ -26,7 +26,7 @@ The user can decide whether **Buildroot** should build its own toolchain or use
 an external toolchain. This resulting toolchain is designed to work within the
 **Buildroot** context. Unfortunately these toolchains have absolute symbolic
 links compiled within the binaries. As a result the toolchains are not portable
-which is a [requirement](../../requirements.md#lab-course-specific-requirements)
+which is a [requirement](../requirements.md#lab-course-specific-requirements)
 for the **embEDUx** system.
 
 ### RootFS
