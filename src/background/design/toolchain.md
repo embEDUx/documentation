@@ -1,11 +1,12 @@
 # Design Toolchain
-The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these. In order
+The Linux-Kernel and the Bootloader must be able to be compiled from their
+sources, otherwise the user is not able to provide the configuration. In order
 to build these products for the different platforms a Toolchain for the
-respective build targets is required. The toolchain should also be user
-configurable, which leaves the following projects for the evaluation of the
+respective build targets is required. The toolchain should also be configurable
+by the user, which leaves the following projects for the evaluation of the
 toolchain creation.
 
+* [Yocto Project](https://www.yoctoproject.org/)
 * [Crosstool-NG](http://crosstool-ng.org/)
 * [Buildroot](http://buildroot.uclibc.org/)
 
@@ -14,7 +15,6 @@ portable toolchain.
 
 ## Build process
 1. Retrieve the build specifications from the repository
-1. Translate the toolchain specifications
-1. Build toolchain
+1. Build toolchain with provided configuration
 1. Create an archive with the toolchain
 
