@@ -1,12 +1,12 @@
 # Background
 ## Overview
-#### **[1. Project Requirements](requirements.md)**
-#### **[2. Design](design.md)**
-#### **[3. Evaluation](evaluation.md)**
-#### **[4. Implementation](implementation.md)**
+#### [1. Project Requirements](requirements.md)
+#### [2. Design](design.md)
+#### [3. Evaluation](evaluation.md)
+#### [4. Implementation](implementation.md)
 
 ## The Beginning
-The name **embEDUx** includes hints for the words *embedded****Linux*** and
+The name **embEDUx** includes hints for the words *embedded* ***Linux*** and
 *education*. The goal to deliver an environment that eases the effort of creating various
 embedded **Linux** distributions depending on the educational purpose that they are
 specifically aiming for. 
