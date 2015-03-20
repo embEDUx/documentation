@@ -126,6 +126,7 @@ The original criteria can now be analyzed according to the results of the steps
 evaluation.
 
 Eval criteria | Python | Ansible
+--- | --- | ---
 Ready-for-use components availability | ok | ok
 Extensibility effort | medium | easy
 Templating features | uncomfortable | comfortable
@@ -134,3 +135,4 @@ Code readability | good | very good
 
 Even though Python is a scripting programming language with many modules
 available, **Ansible** is better for the purpose of automating the given tasks.
+It has builtin modules for most of the required tasks.
