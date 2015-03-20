@@ -17,7 +17,7 @@ specification storage unit.
 Each toolchain gets its own branch. That means one branch contains a toolchain
 for a specified host and target architecture.
 
-## Build steps
+## Build Steps
 Following build steps are necessary to retrieve the toolchain.
 
 1. Checkout toolchain branch
