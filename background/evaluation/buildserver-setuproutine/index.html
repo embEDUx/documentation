@@ -251,10 +251,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../implementation/continuous-integration/index.html">Implementation/Continuous Integration</a>
                         </li>
                     
@@ -371,13 +367,9 @@
         
             <li><a href="#ansible">Ansible</a></li>
         
-            <li><a href="#executing-commands-on-the-target-machine">Executing commands on the target machine</a></li>
+            <li><a href="#setup-steps-evaluation">Setup Steps Evaluation</a></li>
         
-            <li><a href="#configuration-templates">Configuration Templates</a></li>
-        
-            <li><a href="#package-installation">Package Installation</a></li>
-        
-            <li><a href="#docker-container-management">Docker Container Management</a></li>
+            <li><a href="#result-buildserver-setuproutine-evaluation">Result Buildserver Setuproutine Evaluation</a></li>
         
     
     </ul>
@@ -390,12 +382,13 @@ routine</a>. It is designed to
 install and initialize the different components of the <strong>embEDUx</strong> buildserver
 on the buildserver target machine.</p>
 <p>The two candidates for the implementation are Python and Ansible. In order to
-chose the better alternative, functionality needs to be compared according to
-the design specifications and previous evaluation results.</p>
+chose the right one, the functionality needs to be compared to the
+design specifications and previous evaluation results.</p>
 <h2 id="python">Python</h2>
 <p>Python is a general purpose scripting language that offers a wide variety of standard and
 additional modules. In theory, there should be no limitation to the complexity
-of the setup process when Python is used.</p>
+of the setup process when Python is used. It is assumed that Python is already
+known to the reader.</p>
 <h2 id="ansible">Ansible</h2>
 <p>Ansible is an administration utility written in Python, with a focus on
 automation of predefined actions. The actions that are available correspond to
@@ -405,17 +398,46 @@ services, manage user accounts, synchronize files to or from the target
 machines, and many more. Ansible can be extended with custom modules, but the
 builtin modules already provide great functionality. The connection to the
 target machine uses SSH. </p>
-<h2 id="executing-commands-on-the-target-machine">Executing commands on the target machine</h2>
+<h3 id="quick-introduction">Quick Introduction</h3>
+<p>Ansible actions are organized and configured with different entities.  All
+entities are defined in separate files, which are specified in the <strong>YAML</strong>
+language.</p>
+<h4 id="hosts">Hosts</h4>
+<p>The first entity that needs to be defined is the hosts inventory. The hosts
+inventory contains the address, SSH username and other host specific
+information.</p>
+<ul>
+<li>Hosts</li>
+<li>Groups, can consist of several hosts</li>
+</ul>
+<h4 id="tasks">Tasks</h4>
+<p>Tasks use modules and module parameters to define actions that can be run on
+target hosts. Tasks can be reused and grouped into several other entities.</p>
+<ul>
+<li>Tasks</li>
+<li>Roles, can consist of several tasks</li>
+<li>Plays, can include several roles</li>
+<li>Playbooks, can consist of several plays</li>
+</ul>
+<h2 id="setup-steps-evaluation">Setup Steps Evaluation</h2>
+<h3 id="executing-commands-on-the-target-machine">Executing commands on the target machine</h3>
 <ul>
 <li>
 <p>SSH</p>
 </li>
 <li>
 <p>Python</p>
+<p>Several modules are available, but none seems to make use of an already
+running SSH-agent.</p>
 </li>
-<li>Ansible</li>
+<li>
+<p>Ansible</p>
+<p>Ansible is based on SSH connections, and uses it as the default method for
+connecting to the target machine. It makes use of already running
+SSH-agents.</p>
+</li>
 </ul>
-<h2 id="configuration-templates">Configuration Templates</h2>
+<h3 id="configuration-templates">Configuration Templates</h3>
 <p>As specified under <a href="../../design/buildserver/index.html#required-setup-parameters">configuration generation in the buildserver
 design</a>, template generation
 is required during the buildserver setup.</p>
@@ -428,17 +450,19 @@ templating engine which is a suitable candidate.</p>
 <li>
 <p>Ansible</p>
 <p>A module for Jinja2 template rendering is included with the default Ansible
-setup.</p>
+setup. It can be used for rendering templates to local or remote destination
+paths. Defined ansible variables will be used to replace
+template variables.</p>
 </li>
 </ul>
-<h2 id="package-installation">Package Installation</h2>
+<h3 id="package-installation">Package Installation</h3>
 <p><strong>Docker</strong> is the only non-default package that needs to be installed on the
 remote host. </p>
 <ul>
 <li>apt</li>
 <li>portage</li>
 </ul>
-<h2 id="docker-container-management">Docker Container Management</h2>
+<h3 id="docker-container-management">Docker Container Management</h3>
 <p>By the time of the design phase, it hasn't been clear yet which container
 utility will be used to implement the abstraction. The <a href="../container-utility/index.html">container utility
 evaluation</a> has chosen <strong>Docker</strong>. The necessary steps for
@@ -470,6 +494,75 @@ stage3 archives too.</p>
 </ul>
 </li>
 </ul>
+<h3 id="result-buildserver-setuproutine-steps-evaluation">Result Buildserver Setuproutine Steps Evaluation</h3>
+<table>
+<thead>
+<tr>
+<th>Setup steps</th>
+<th>Python</th>
+<th>Ansible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>Difficult / manual key management</td>
+<td>native method / uses SSH-agent</td>
+</tr>
+<tr>
+<td>Template Rendering</td>
+<td>addon jinja2 module / manual file handling</td>
+<td>native jinja2 template module / easy</td>
+</tr>
+<tr>
+<td>Package Installation</td>
+<td>command module manual SSH commands</td>
+<td>native apt module / easy</td>
+</tr>
+<tr>
+<td>Docker Container Management</td>
+<td>addon docker-py module / manual API calls</td>
+<td>native docker module / easy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="result-buildserver-setuproutine-evaluation">Result Buildserver Setuproutine Evaluation</h2>
+<p>The original criteria can now be analyzed according to the results of the steps
+evaluation.</p>
+<table>
+<thead>
+<tr>
+<th>Eval criteria</th>
+<th>Python</th>
+<th>Ansible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ready-for-use components availability</td>
+<td>ok</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>Extensibility effort</td>
+<td>medium</td>
+<td>easy</td>
+</tr>
+<tr>
+<td>Templating features</td>
+<td>uncomfortable</td>
+<td>comfortable</td>
+</tr>
+<tr>
+<td>Code readability</td>
+<td>good</td>
+<td>very good</td>
+</tr>
+</tbody>
+</table>
+<p>Even though Python is a scripting programming language with many modules
+available, <strong>Ansible</strong> is better for the purpose of automating the given tasks.
+It has builtin modules for most of the required tasks.</p>
 </div>
         </div>
 

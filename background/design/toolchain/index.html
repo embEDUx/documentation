@@ -251,10 +251,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../implementation/continuous-integration/index.html">Implementation/Continuous Integration</a>
                         </li>
                     
@@ -375,13 +371,14 @@
             <div class="col-md-9" role="main">
 
 <h1 id="design-toolchain">Design Toolchain</h1>
-<p>The Linux-Kernel and the Bootloader must be compiled from their sources,
-otherwise the user is not able to provide the configuration for these. In order
+<p>The Linux-Kernel and the Bootloader must be able to be compiled from their
+sources, otherwise the user is not able to provide the configuration. In order
 to build these products for the different platforms a Toolchain for the
-respective build targets is required. The toolchain should also be user
-configurable, which leaves the following projects for the evaluation of the
+respective build targets is required. The toolchain should also be configurable
+by the user, which leaves the following projects for the evaluation of the
 toolchain creation.</p>
 <ul>
+<li><a href="https://www.yoctoproject.org/">Yocto Project</a></li>
 <li><a href="http://crosstool-ng.org/">Crosstool-NG</a></li>
 <li><a href="http://buildroot.uclibc.org/">Buildroot</a></li>
 </ul>
@@ -390,8 +387,7 @@ portable toolchain.</p>
 <h2 id="build-process">Build process</h2>
 <ol>
 <li>Retrieve the build specifications from the repository</li>
-<li>Translate the toolchain specifications</li>
-<li>Build toolchain</li>
+<li>Build toolchain with provided configuration</li>
 <li>Create an archive with the toolchain</li>
 </ol>
 </div>

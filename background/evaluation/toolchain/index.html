@@ -251,10 +251,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../implementation/buildserver-setuproutine/index.html">Implementation/Buildserver Setuproutine</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../implementation/continuous-integration/index.html">Implementation/Continuous Integration</a>
                         </li>
                     
@@ -371,7 +367,7 @@
         
             <li><a href="#repository">Repository</a></li>
         
-            <li><a href="#build-steps">Build steps</a></li>
+            <li><a href="#build-steps">Build Steps</a></li>
         
             <li><a href="#build-tools">Build Tools</a></li>
         
@@ -382,8 +378,8 @@
 
 <h1 id="evaluation-toolchain">Evaluation Toolchain</h1>
 <p>As written in the <a href="../../design/toolchain/index.html">design</a> there are two possible
-solutions, but with the <a href="../buildroot/index.html">evaluation of buildroot</a> in
-mind, there is only one solution left. </p>
+solutions, but with the evaluation of the <a href="../yocto-project/index.html">Yocto Project</a> and
+<a href="../buildroot/index.html">buildroot</a> already done, there is only one solution left.</p>
 <h2 id="crosstool-ng">Crosstool-NG</h2>
 <p><strong>Crosstoo-NG</strong> offers the possibility to build static, and therefore portable
 toolchains. With <strong>Crosstool-NG</strong> even toolchains , that are built on host with
@@ -396,7 +392,7 @@ specification storage unit.</p>
 <h2 id="repository">Repository</h2>
 <p>Each toolchain gets its own branch. That means one branch contains a toolchain
 for a specified host and target architecture.</p>
-<h2 id="build-steps">Build steps</h2>
+<h2 id="build-steps">Build Steps</h2>
 <p>Following build steps are necessary to retrieve the toolchain.</p>
 <ol>
 <li>Checkout toolchain branch</li>
