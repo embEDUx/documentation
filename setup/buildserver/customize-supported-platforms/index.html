@@ -367,9 +367,9 @@
     
         <li class="main active"><a href="#add-new-platforms-to-the-buildserver">Add New Platforms To The Buildserver</a></li>
         
-            <li><a href="#configuration-file-mastercfg">Configuration File - master.cfg</a></li>
+            <li><a href="#setup-parameters-in-group_varsall">Setup parameters in group_vars/all</a></li>
         
-            <li><a href="#arch-62-platform-mapping">ARCH &lt;> Platform-Mapping</a></li>
+            <li><a href="#adding-your-platform">Adding Your Platform</a></li>
         
     
     </ul>
@@ -377,21 +377,39 @@
             <div class="col-md-9" role="main">
 
 <h1 id="add-new-platforms-to-the-buildserver">Add New Platforms To The Buildserver</h1>
-<p><strong>(work in progress)</strong></p>
-<h2 id="configuration-file-mastercfg">Configuration File - <strong>master.cfg</strong></h2>
-<p>TODO: where is the <strong><em>master.cfg</em></strong>?</p>
-<p>The following is directly taken from the <strong><em>HTWG buildmaster master.cfg</em></strong>. </p>
-<h2 id="arch-62-platform-mapping">ARCH &lt;> Platform-Mapping</h2>
-<p>The algorithm for choosing the correct buildslave for the specific platforms
-uses this dictionary as the information source.</p>
-<pre><code>arch_branch_res_map = {
-  &quot;amd64&quot;: [&quot;.*-ctng-.*&quot;, &quot;.*qemu-virt-amd64.*&quot;],
-  &quot;armv6j_hardfp&quot;: [&quot;.*raspberry-pi&quot;],
-  &quot;armv7a_hardfp&quot;: [&quot;.*beaglebone-black&quot;, &quot;.*banana-pi&quot;, &quot;.*irisboard&quot;, &quot;.*utilite-pro&quot;, &quot;.*qemu-virt-arm.*&quot;]
-}
+<p>If you have a hardware platform that is not yet supported by <strong>embEDUx</strong>, you
+have to adjust a couple of parameters in the build system.</p>
+<h2 id="setup-parameters-in-group_varsall">Setup parameters in <strong><em>group_vars/all</em></strong></h2>
+<p>It is assumed that you are the Adminsitrator who has installed the build system
+or you are still in the middle of that. Please file <strong><em>group_vars/all</em></strong>,
+relative the to the buildserver setup routine directory contains the variables
+for the buildmaster configuration. Please read the <a href="../../../background/implementation/buildserver/index.html#buildmaster-configuration-generation">buildmaster configuration
+generation</a>
+to understand what you are about to do.</p>
+<h2 id="adding-your-platform">Adding Your Platform</h2>
+<p>You need to know the <em>architecture</em> of your platform, and chose a name for it.
+The next step is to check if that architecture is already used by another
+platform.</p>
+<h3 id="existing-architecture">Existing Architecture</h3>
+<p>In this case, it should be as easy as adding the according platform regular
+expression to the <em>arch_branchregex</em>-dicitonary. Assuming, the chosen name for
+your platform is <strong>octaboard</strong> and it is based on ARMv7a with HardFloat-support,
+your change would look like this:</p>
+<pre><code class="yaml">...
+arch_branchregex:
+...
+    armv7a_hardfp: 
+        ...
+        - &quot;.*octaboard&quot;
+...
 </code></pre>
 
-<h3 id="add-a-new-platform-to-the-htwg-configuration">Add A New Platform To The HTWG Configuration</h3>
+<p>Afterwards you need to continue with or rerun the <strong>buildmaster.yml</strong> Playbook
+in order to make apply your changes.</p>
+<h3 id="new-architecture">New Architecture</h3>
+<p>This case is far more complex than the above one and is currently not covered by
+the documentation.</p>
+<h3 id="no-underscores-in-the-platform-names">No underscores in the platform names!</h3>
 <p>If you add a new platform by modifying the dictionary, it is <em>important</em> that it
 must not contain any underscores, use dashes instead!</p>
 </div>
