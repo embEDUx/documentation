@@ -59,7 +59,8 @@ were chosen for the core of the solution are
 
 If you are interested in why these components have been chosen, or how the system
 was designed and implemented using these components, please head over to the
-[***background section***](background/background.md).
+[***background section***](background/background.md). Also see the
+[summary](background/summary.md) for a more detailed feature overview.
 
 ## Building Customized Linux Distributions
 The embEDUx build system been designed to build customized Linux distributions.
