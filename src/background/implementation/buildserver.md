@@ -1,11 +1,15 @@
 **embEDUx** buildserver is a compound of several components. Together, these
 components form a unit that is designed to build different products
 automatically as soon as the user provides new build specifications via the
-product repositories.
+product repositories. All the components that run on the buildserver will be
+contained by **Docker** containers.
 
-# Setuproutine Playbooks
+# Setuproutine With Ansible
+The [evaluation chose Ansible](../evaluation/buildserver-setuproutine.md) for
+the implementation of the setuproutine. The implementation went 
 
 ## Playbook Overview
+TODO
 
 Play | Hosts | Actions
 --- | --- | ---
@@ -18,6 +22,7 @@ Play | Hosts | Actions
 
 
 ## Buildmaster Configuration Generation 
+TODO
 
 ### Provided Information - [***group_vars/all***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/group_vars/all)
 

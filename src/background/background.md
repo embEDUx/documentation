@@ -26,14 +26,14 @@ at the HTWG. Naturally, that's why the embEDUx requirements will have a strong
 bias towards the requirements specific to the lab-courses.
 
 ## What is it, and what can it do?
-* Automated build system for customized Linux distributions
-* Configurable setuproutine of the buildsystem, with sane defaults
+* Automated build system for complete customized Linux distributions
+* Easy to setup via the configurable setuproutine
 * Centralized build configurations for all your platforms
 * Individual configuration and builds with specified targets, organized by
     * Platform: for Linux-Kernel, U-Boot
     * Architecture: RootFS
     * Hybrid: Toolchain, Misc-Files
-* Working examples for Raspberry Pi, Beaglebone Black, 
+* Working examples for Raspberry Pi, Beaglebone Black, Banana Pi, Utilite Pro
 
 ## What is it not?
 * Magic system for guessing all your platforms configuration automatically

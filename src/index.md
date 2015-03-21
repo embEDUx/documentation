@@ -44,7 +44,7 @@ and development of the project. Successful builds have been produced for
 While we were able build, deploy to and run systems on these platforms, this
 project is not meant to provide the builds them self. Instead, you will find
 instructions how to setup or use an existing instance of the build system in
-order to produce you own customized builds.
+order to produce your own customized builds.
 
 ## Building Customized Linux Distributions
 The embEDUx build system been designed to build customized Linux distributions.
