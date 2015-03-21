@@ -377,23 +377,25 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#recipe-files">Recipe files</a></li>
+        <li class="main active"><a href="#add-a-new-recipe-file">Add A New Recipe File</a></li>
         
-            <li><a href="#recipe-files-name-scheme">Recipe files Name-Scheme</a></li>
+            <li><a href="#recipe-files-name-scheme">Recipe Files Name-Scheme</a></li>
         
             <li><a href="#recipe-skeletons">Recipe Skeletons</a></li>
+        
+            <li><a href="#example-for-a-recipe-file-with-a-mmc-recipe-utilite-proyml">Example for a recipe file with a mmc recipe (utilite-pro.yml):</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="recipe-files">Recipe files</h1>
+<h1 id="add-a-new-recipe-file">Add A New Recipe File</h1>
 <p>This chapter explains how to write a new recipe file for a platform. If you do
 not know what a recipe file is and which role it plays in the deployment
 procedure, please read the chapter <a href="../index.html">Deployment with the Flashtool</a> 
-first.</p>
-<h2 id="recipe-files-name-scheme">Recipe files Name-Scheme</h2>
+first. It is also recommended to </p>
+<h2 id="recipe-files-name-scheme">Recipe Files Name-Scheme</h2>
 <p>The name of a <strong>recipe</strong> file must follow this naming scheme:</p>
 <p>{hardware-name}_{identifier}.yml</p>
 <p><strong>The name and identifier must not contain underscores, please use dashes instead.</strong></p>
@@ -419,7 +421,7 @@ recipe skeleton which is used in every recipe file on the <strong>embEDUx</stron
 <a href="https://github.com/embEDUx/flashtool-recipes">repository</a>.  </p>
 <p>The recipe skeleton <em>mmc</em> can handle the most deployment procedures for a wide
 range of embedded hardware. If you need to implement a new recipe skeleton, please
-read the section <a href="../add-new-deployment/index.html">How to add a new deployment</a>.</p>
+read the section <a href="../add-new-deployment/index.html">How to add a new deployment procedure</a>.</p>
 <h3 id="mmc">MMC:</h3>
 <p>This recipe skeleton is used to configure platforms which use a <em>MMC</em> device as
 storage media. The template below shows, how to state this recipe skeleton in a 
@@ -464,8 +466,8 @@ recipe:
 <li>
 <p><strong><em>partitions</em></strong>:</p>
 <p>This section is used to define partitions on the mmc device. Each partition
-  must be listed with a dash and must contain the subsections name, size,
-  fs_type, mount_point, mount_opts and flags. If one of these section is not
+  must be listed with a dash and must contain the subsections <em>name, size,
+  fs_type, mount_point, mount_opts and flags</em>. If one of these section is not
   needed, just leave the value after the colon blank.</p>
 <ul>
 <li>
@@ -476,7 +478,7 @@ feature.</p>
 <li>
 <p><strong><em>size</em></strong>:</p>
 <p>Size of the partition. The used units are b (byte), kb (kilobyte), mb
-(megabyte), gb (gigabyte) and %. It is also possible to use the keyword
+(megabyte) and gb (gigabyte). It is also possible to use the keyword
 <em>max</em> for the last stated partition. If you want to state the size of the
 partion in percentage, please use the percentage notation for each
 partition.</p>
@@ -509,21 +511,23 @@ with a comma.</p>
   The user can choose between the option <em>device</em> or <em>command</em> for every
   subsection. If a software product should be loaded on a partition of the mmc
   device, the user must use the option <em>device</em> and state the index of the
-  partition which is defined in the section <strong>partitions</strong>. The index starts
+  partition, which is defined in the section <strong>partitions</strong>. The index starts
   with zero.</p>
-<p>If a product should be loaded with an external command to the mmc device, you
-  must use the option <strong>command</strong>. The value of the option is the external
-  command. For a command you can use the to template variables <em>${file}</em> and
-  <em>${device}</em>. The variable <em>${file}</em> will be replaced with the name of the
-  specific software product. The variable <em>${device}</em> will be replaced with the
-  <em>/dev path</em> of the mmc device or the <em>dev path</em> of the mmc partition, if a
-  number is written at the end of the variable (e.g. <em>${device0}</em>).</p>
-<p>The existing software products are Uboot, Linux_Boot, Linux_Root,
-  Linux_Config, Rootfs, Misc_Boot, Misc_Root.</p>
+<p>If a product should be loaded with an external command (e.g. dd) to the mmc
+  device, you must use the option <strong>command</strong>. For a command you can use the 
+  two template variables <em>${file}</em> and <em>${device}</em>. The variable <em>${file}</em> will
+  be replaced with the name of the specific software product. The variable 
+  <em>${device}</em> will be replaced with the <em>dev path</em> of the mmc device or the 
+  <em>dev path</em> of the mmc partition, if a number is written at the end of the
+  variable (e.g. <em>${device0}</em>).</p>
+<p>The existing software products are <strong><em>Uboot, Linux_Boot, Linux_Root,
+  Linux_Config, Rootfs_Root, Rootfs_Portage, Misc_Boot, Misc_Root</em></strong>.
+  Some products are divided into two parts. For example the product <em>Linux</em>
+  provides packages for boot partition and packages for the root parition.</p>
 </li>
 </ul>
-<p><strong>Example for a recipe file with a mmc recipe (utilite-pro.yml):</strong> - Also available in
-the HTWG configuration.</p>
+<h2 id="example-for-a-recipe-file-with-a-mmc-recipe-utilite-proyml">Example for a recipe file with a mmc recipe (utilite-pro.yml):</h2>
+<p>This recipe is also available in the HTWG configuration.</p>
 <pre><code>---
 type: mmc
 
@@ -551,10 +555,27 @@ recipe:
             device: 1
         Linux_Config:
             device: 1
-        Rootfs:
+        Rootfs_Root:
+            device: 1
+        Rootfs_Portage:
             device: 1
 </code></pre>
 
+<p>This recipe file will configure the deployment procedure for the utilite-pro as
+follow:</p>
+<ul>
+<li>
+<p>The MMC device will be partition into two partitions. The first partition will
+    have the size of <em>100 mb</em>, its label is <em>"boot"</em> and the filesystem format is
+    <em>fat32</em>. Also the <em>lba</em> flag set for the partition. The partition will be
+    mounted at <em>/boot</em> in the <em>RootFS</em>. The second partition will get the free
+    space of the MMC device as size, its label is <em>"rootfs"</em> and the filesystem
+    format is <em>btrfs</em>. The partition will be mounted at <em>/</em>. </p>
+</li>
+<li>
+<p>The uboot product and the </p>
+</li>
+</ul>
 </div>
         </div>
 

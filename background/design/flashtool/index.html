@@ -383,15 +383,12 @@
         
             <li><a href="#automated-and-configurable-deployment-tool">Automated And Configurable Deployment Tool</a></li>
         
-            <li><a href="#design-decisions">Design decisions</a></li>
-        
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
 <h1 id="design-of-a-deployment-tool-flashtool">Design Of A Deployment Tool - <strong>Flashtool</strong></h1>
-<p>(work in progress)</p>
 <p>This chapter describes the design of the <strong>Flashtool</strong> and its configuration
 components.</p>
 <h2 id="name-of-the-deployment-tool">Name Of The Deployment Tool</h2>
@@ -400,9 +397,9 @@ due to the fact that most of the embedded devices uses flash memories to store
 their operating system and files.</p>
 <h2 id="automated-and-configurable-deployment-tool">Automated And Configurable Deployment Tool</h2>
 <p>Deploying the software products built with the <strong>embEDUx</strong> system, must be done
-as easy and as fast as possible the user. Therefore a tool must be developed
+as easy and as fast as possible for the user. Therefore a tool must be developed
 which automates the several steps of the deployment procedure. The deployment 
-procedure will differ dependent on the needs of the user, but for all that there
+procedure will differ depending on the needs of the user, but for all that there
 are similarities in each deployment procedure.</p>
 <p>To find these similarities the deployment procedure must be abstracted into
 several steps. </p>
@@ -423,7 +420,7 @@ USB with an external tool). </p>
 <h3 id="recognize-the-storage-device">Recognize The Storage Device</h3>
 <p>It is also important for the deployment tool that it is able to recognize the
 storage device when it is plugged in. This mechanism can also differ
-dependent on the type of the storage device.</p>
+depending on the type of the storage device.</p>
 <ul>
 <li>The deployment tool must use a software or component of the host operating
     system (Linux) which allows to recognize different device types and makes 
@@ -465,7 +462,7 @@ ability of the used programming language.</p>
 <h3 id="getting-the-files-on-the-storage-media">Getting The Files On The Storage Media</h3>
 <p>The downloaded products must be prepared for deploying on the partitions of the
 storage device. Every product refers to a partition of the storage device or
-refer to a specific address on the storage device (e.g. boot sector). To manage
+refers to a specific address on the storage device (e.g. boot sector). To manage
 this task the following steps must be available on the <strong>Flashtool</strong>:</p>
 <ul>
 <li>
@@ -477,48 +474,22 @@ this task the following steps must be available on the <strong>Flashtool</strong
 <p>The <strong>Flashtool</strong> must copy the product to the storage device. The </p>
 </li>
 </ul>
-<h3 id="main-goals-for-the-implementation">Main goals for the implementation</h3>
-<p>One of the main goals for the deployment tool is that it is open for new
-features and mechanisms to form different deployment procedures. It is
-impossible to implement an automation tool which fulfills the requirements for
-all thinkable platforms. So there must be done constraints on the implementation
-of features but the software must be open to add new features easily.</p>
-<h2 id="design-decisions">Design decisions</h2>
-<p>There are basic tasks which must be fulfilled by the <strong>Flashtool</strong>:</p>
-<p>First of all the <strong>Flashtool</strong> must be usable for different <em>embEDUx</em>
+<h3 id="usable-in-different-environments">Usable In Different Environments</h3>
+<p>The <strong>Flashtool</strong> must be usable for different <em>embEDUx</em>
 environments. Therefore URLs to the <em>buildserver</em> or to repositories should not
 be hard coded. </p>
 <ul>
 <li>User must be able to configure several settings for the <strong>Flashtool</strong>, these
     settings should be saved in a configuration file.</li>
 </ul>
-<p>The <strong>Flashtool</strong> should be able to setup several platforms. For the platforms
-this includes partition a MMC device and load the software components to the
-partitions. It must be possible to configure this setup process for the needs of
-the user. And this configuration should be reusable, to setup several platforms
-with the same configuration.</p>
+<h3 id="main-goals-for-the-implementation">Main goals for the implementation</h3>
+<p>The <strong>Flashtool</strong> must be open for new features and mechanisms to form different
+deployment procedures. It is impossible to implement an automation tool which 
+fulfills the requirements for all thinkable platforms. So there must be done 
+constraints on the implementation of features but the software must be open to 
+add new features easily.</p>
 <ul>
-<li>User can create different configuration files for a platform to configure the
-    setup/deploy process. (recipes)</li>
-<li>The configuration language should be easy to use.</li>
-</ul>
-<p>Each software components will have several versions. These versions are
-available on the <em>buildserver</em>.</p>
-<ul>
-<li>User should be able to list all available software components versions for a
-    platform. </li>
-<li>User should be able to select a specific version for a setup procedure.</li>
-<li><strong>Flashtool</strong> must be able to reach all built software components on the
-    <em>buildserver</em></li>
-</ul>
-<p>To make the setup process as easy as possible for the user, the <strong>Flashtool</strong>
-should be able to recognize plugged in MMC media. </p>
-<ul>
-<li>Automatic recognition of plugged in MMC devices.</li>
-</ul>
-<p>The <strong>Flashtool</strong> should be extensible for future features.</p>
-<ul>
-<li>adding new setup routines for new platforms if needed.</li>
+<li>adding new deployment procedures for new platforms if needed.</li>
 <li>adding new commands for the <strong>Flashtool</strong>. </li>
 </ul>
 </div>
