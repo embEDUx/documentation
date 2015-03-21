@@ -1,4 +1,4 @@
-# Miscellaneous files
+# Miscellaneous Files
 This guide will help you through the steps to build archives, containing the
 files for your boot and root partition of your desired platform.
 
