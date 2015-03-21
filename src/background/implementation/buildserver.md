@@ -102,10 +102,14 @@ docker_image_prefix: "embedux"
 ```
 
 ### Configuration Template - [***master.cfg.j2***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/roles/docker_buildmaster/templates/master.cfg.j2)
-**This file will be rendered according to the information form the
-*group_vars/all* file**
+This file will be rendered according to the information from the
+*group_vars/all* file which contains the default configuration and can be edited
+by the Administrator. Additionally, secrets that have been defined in the vault
+are assigned to variables that are available in the buildmaster configuration.
+If interested, the instructions how to create the vault file are demonstrated
+within the [setup
+documentation](../../setup/buildserver.md#creating-the-password-vault)
 
-This section demonstrates how the automatic builds have been configured.
 
 #### PSK (Pre-Shared-Key)
 This variable is filled in by the buildsetup template renderer. 
@@ -113,10 +117,7 @@ This variable is filled in by the buildsetup template renderer.
 psk = "{{ buildbot_psk }}"
 ```
 The *buildbot_psk*-variable is special to the buildserver setuproutine, because
-it is stored in the password protected vault file. If interested, the
-instructions how to create the vault file are demonstrated within the [setup
-documentation](../../setup/buildserver.md#creating-the-password-vault)
-
+it is stored in the password protected vault file.
 #### Usernames and Passwords For Web-Interface
 User permissions for the web-interface are also defined in the previously
 mentioned *vault*-file.
