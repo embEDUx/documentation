@@ -35,7 +35,7 @@ With the now evaluated build process, the build steps can be redefined.
 
 1. Checkout platform branch for **U-Boot** version X
 1. Checkout **U-Boot** version X branch
-1. Call build script from platform branch
+1. Call build script ***build***from platform branch
     * set necessary build parameters
 1. Call build script from **U-Boot** version X branch
     * download sources

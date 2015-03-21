@@ -21,9 +21,8 @@ for a specified host and target architecture.
 Following build steps are necessary to retrieve the toolchain.
 
 1. Checkout toolchain branch
-1. Build toolchain with **Crosstool-NG** and the given configuration
+1. Call the build script ***build***.
 1. Provide the output in an archive
-
 
 ## Build Tools
 These tools are needed to successfully iterate through the build steps.

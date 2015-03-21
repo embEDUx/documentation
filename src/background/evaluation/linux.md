@@ -28,9 +28,9 @@ With the now evaluated build process, the build steps can be redefined.
 
 1. Checkout platform branch for **Linux** version X
 1. Checkout **Linux** version X branch
-1. Call build script from platform branch
+1. Call build script ***build*** from platform branch
     * set necessary build parameters
-1. Call build script from **Linux** version X branch
+1. Call build script ***build*** from **Linux** version X branch
     * download sources
     * if provided apply patches
     * build **Linux**
