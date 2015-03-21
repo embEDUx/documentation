@@ -122,6 +122,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../setup/post-install/build-qemu-kernels/index.html">Post Install/Build Qemu Kernels</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../setup/post-install/toolchains/index.html">Post Install/Toolchains</a>
                         </li>
                     
@@ -377,6 +381,8 @@
         
             <li><a href="#programming-language">Programming language</a></li>
         
+            <li><a href="#python-version">Python Version</a></li>
+        
             <li><a href="#user-interface">User interface</a></li>
         
             <li><a href="#partition-a-block-device">Partition a block device</a></li>
@@ -396,19 +402,17 @@ development procedure of a software. The <strong>Flashtool</strong> needs a prog
 language which is supported on a <strong>Linux</strong> distribution and runs on different
 architectures. The script languages <strong>Bash</strong> and <strong>Python</strong> was considered to be
 used as programming language. </p>
-<h3 id="python">Python</h3>
-<p>[Python] is a script language which is easy to learn, 
-supports interfaces to other languages (like C), has a nice syntax and provides 
+<p><a href="https://www.python.org/doc/">Python</a> is a script language which is easy to 
+learn, supports interfaces to other languages (like C), has a nice syntax and provides 
 thousands of third-party modules. </p>
-<h3 id="bash">Bash</h3>
 <p><a href="https://www.gnu.org/software/bash/manual/bashref.html">Bash</a> is a command
-language interpreter and provides an own script language. </p>
+language interpreter and provides an own script language. It is also the
+GNU/Linux standard shell.</p>
 <h3 id="python-vs-bash">Python vs Bash</h3>
-<p><a href="https://www.python.org/doc/">Python</a> and <a href="https://www.gnu.org/software/bash/manual/bashref.html">Bash</a>
-are both script languages which run on likely every UNIX system. Both
-languages must be compared on different disciplines, to decide which language
-fits best for the <strong>Flashtool</strong>.</p>
-<h4 id="development">Development</h4>
+<p>Python and Bash are both script languages which run on likely every UNIX system.
+Both languages must be compared on different disciplines, to decide which
+language fits best for the <strong>Flashtool</strong>.</p>
+<h4 id="development"><strong>Development</strong></h4>
 <p><strong>Python</strong> is more productive than <strong>Bash</strong> for the development processes,
 because it supports common programming paradigms like object-oriented
 programming and functional programming. </p>
@@ -416,51 +420,75 @@ programming and functional programming. </p>
 lot of code. To accomplish the development of the <strong>Flashtool</strong>  with <strong>Bash</strong> 
 would result in an confusing mass of <strong>Bash</strong>-scripts and would be hard to
 maintain.</p>
-<h4 id="community">Community</h4>
+<h4 id="community"><strong>Community</strong></h4>
 <p><strong>Bash</strong> and <strong>Python</strong> is often used on <strong>Linux</strong> systems and supports both a
 huge community and documentation. <strong>Python</strong> provides more third-party modules
 for several task than <strong>Bash</strong> and is a good candidate for writing lesser code
 to do the job. </p>
-<h4 id="calling-other-executables">Calling other executables</h4>
+<h4 id="calling-other-executables"><strong>Calling other executables</strong></h4>
 <p>Both languages provide a mechanism to call other executables easy.</p>
-<h4 id="performance">Performance</h4>
+<h4 id="performance"><strong>Performance</strong></h4>
 <p><strong>Python</strong> is really fast in handling data structures (sorting, access) and
 doing calculations <a href="http://opennomad.com/content/performance-different-scripting-languages-shell-v-perl-v-python-v-ruby">compared to Bash</a>.</p>
-<h4 id="interfaces-to-other-programming-languages">Interfaces to other programming languages</h4>
+<h4 id="interfaces-to-other-programming-languages"><strong>Interfaces to other programming languages</strong></h4>
 <p><strong>Python</strong> provides a library which provides C compatible data types, and allows
 calling functions in shared libraries. This makes it possible to wrap C
 libraries in pure python. ((ctypes)[https://docs.python.org/2/library/ctypes.html?highlight=ctypes#module-ctypes])
 There are other libraries like <a href="http://swig.org/Doc1.3/Python.html">swig</a> and 
 <a href="http://cython.org/">cython</a> to connect C and C++ with Python.</p>
 <p>Such mechanism are not known for <strong>Bash</strong>.</p>
-<h4 id="summary">Summary</h4>
+<h4 id="summary"><strong>Summary</strong></h4>
 <p><strong>Python</strong> is more suitable as programming language for the <strong>Flashtool</strong> than
 <strong>Bash</strong> because:</p>
 <ul>
 <li>Python is faster (organizing data structures, <em>http</em> requests, etc.)</li>
 <li>Large Python project are easier to maintain than with <strong>Bash</strong></li>
 <li>Python provides a wide variety of standard and additional modules</li>
+<li>and can interact with C/C++ libraries.</li>
 </ul>
+<h2 id="python-version">Python Version</h2>
+<p>After deciding to use python it is important to have in mind that there are
+two python versions which have many differences in their API. At the beginning
+of the development process, the goal was to implement the <strong>Flashtool</strong> 
+compatible to python 2.x and python 3.x. This goal was not able to be achieved
+for the following reasons:</p>
+<ul>
+<li>
+<p>The module <em>tarfile</em> has issues with <strong><em>unicode</em></strong> file names when used with
+    python 2.x. This issues did not appear in python 3.x.</p>
+</li>
+<li>
+<p>Providing python code compatible for both versions is sometimes cumbersome and 
+    extends the implementation time.</p>
+</li>
+</ul>
+<p>For these reasons the decision was made to use python 3.x for the <strong>Flashtool</strong>.</p>
 <h2 id="user-interface">User interface</h2>
-<p>The <strong>Flashtool</strong> should be used in a command line interface and therefore it
+<p>The <strong>Flashtool</strong> is used in a command line interface and therefore it
 has to provide several program parameter to trigger the different tasks. </p>
 <p>To implement command line options we considered using <em>getopt</em> or <em>argparse</em>.
 The package <a href="https://docs.python.org/3.3/library/getopt.html">getopt</a> is a 
 C-style parser and is recommend for users of the C <em>getopt()</em> function. The
 documentation for the <em>getopt</em> package recommend the package <a href="https://docs.python.org/dev/library/argparse.html">argparse</a> 
 for users who want to write less code (who doesn't?) and get better help and 
-error messages. </p>
+error messages.</p>
 <p>The decision to take the <em>argparse</em> package was easy, because a implementation
 of the various command line parameter, which each of them will have own options,
 will lead to a vast number of code with the <em>getopt</em> package. The <em>argparse</em>
-package is easy to use and leads to clean code. Extending the parser with new
-arguments is really easy.</p>
+package is easy to use and leads to clean code. Extending the <em>argparse</em> code
+with new arguments is really easy too.</p>
 <h2 id="partition-a-block-device">Partition a block device</h2>
-<p>For this purpose we had to choose between <a href="https://github.com/rhinstaller/blivet">blivet</a> and <a href="https://github.com/rhinstaller/pyparted">pyparted</a>.
-The <em>blivet</em> package is used by the fedora project and according to the
+<p>To partition block devices with python we considered to use
+<a href="https://github.com/rhinstaller/blivet">blivet</a> or 
+<a href="https://github.com/rhinstaller/pyparted">pyparted</a>.</p>
+<h3 id="blivet">blivet</h3>
+<p>The <em>blivet</em> package is used by the fedora project and according to the
 <a href="http://blivet.readthedocs.org/en/latest/">documentation</a> it is easy to create
-partitions. A big disadvantage of the <em>blivet</em> package is, that it has many
-dependencies to other package, which must be installed by hand and are not
+partitions. </p>
+<p>A big disadvantage of the <em>blivet</em> package is, that it has many
+dependencies to other package, which must be installed. During the evaluation
+process it turned out that most of the dependencies were not installed
+automatically with the pip by hand and are not
 automatically installed by the <em>setup.py</em> script of the package. There were also
 some difficulties to install some of the dependencies, because they only work
 with python 2.7 and not python 3 or above. 

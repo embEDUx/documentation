@@ -122,6 +122,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../setup/post-install/build-qemu-kernels/index.html">Post Install/Build Qemu Kernels</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../setup/post-install/toolchains/index.html">Post Install/Toolchains</a>
                         </li>
                     
@@ -375,9 +379,9 @@
     
         <li class="main active"><a href="#design-of-a-deployment-tool-flashtool">Design Of A Deployment Tool - Flashtool</a></li>
         
-            <li><a href="#automated-and-configurable-deployment-tool">Automated And Configurable Deployment Tool</a></li>
-        
             <li><a href="#name-of-the-deployment-tool">Name Of The Deployment Tool</a></li>
+        
+            <li><a href="#automated-and-configurable-deployment-tool">Automated And Configurable Deployment Tool</a></li>
         
             <li><a href="#design-decisions">Design decisions</a></li>
         
@@ -390,9 +394,13 @@
 <p>(work in progress)</p>
 <p>This chapter describes the design of the <strong>Flashtool</strong> and its configuration
 components.</p>
+<h2 id="name-of-the-deployment-tool">Name Of The Deployment Tool</h2>
+<p>It seemed obvious to call this tool "<strong>Flashtool</strong>"
+due to the fact that most of the embedded devices uses flash memories to store
+their operating system and files.</p>
 <h2 id="automated-and-configurable-deployment-tool">Automated And Configurable Deployment Tool</h2>
-<p>Deploying the software products built with the <strong>embEDUx</strong> system, should be done
-as easy and as fast as possible the user. Therefore a tool should be developed
+<p>Deploying the software products built with the <strong>embEDUx</strong> system, must be done
+as easy and as fast as possible the user. Therefore a tool must be developed
 which automates the several steps of the deployment procedure. The deployment 
 procedure will differ dependent on the needs of the user, but for all that there
 are similarities in each deployment procedure.</p>
@@ -402,7 +410,7 @@ several steps. </p>
 <p>The first step is to recognize how the products can be deployed to the
 platform. In every case this media will be a <strong>storage device</strong> which can be
 accessed in different ways.</p>
-<p>All platforms which are in use by the <em>HTWG Configuration</em> use MMC devices
+<p>All platforms which are in use by the <em>HTWG Configuration</em> use <em>MMC</em> devices
 as storage device for the products. But there might be other platforms which
 use other storage devices (e.g. an internal NAND-Flash).</p>
 <p>It must be assumed that the <strong>Flashtool</strong> must be able to
@@ -475,10 +483,6 @@ features and mechanisms to form different deployment procedures. It is
 impossible to implement an automation tool which fulfills the requirements for
 all thinkable platforms. So there must be done constraints on the implementation
 of features but the software must be open to add new features easily.</p>
-<h2 id="name-of-the-deployment-tool">Name Of The Deployment Tool</h2>
-<p>It seemed obvious to call this tool "<strong>Flashtool</strong>"
-due to the fact that most of the embedded devices uses flash memories to store
-their operating system and files.</p>
 <h2 id="design-decisions">Design decisions</h2>
 <p>There are basic tasks which must be fulfilled by the <strong>Flashtool</strong>:</p>
 <p>First of all the <strong>Flashtool</strong> must be usable for different <em>embEDUx</em>
