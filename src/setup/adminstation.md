@@ -26,8 +26,7 @@ The list also contains short explanations what they're needed for.
 ## Suggestions
 * Authentication as root via SSH-key - this is a comfort suggestion!
 
-
-## Clone the buildserver-setuproutine repository
+## Clone The Buildserver-Setuproutine Repository
 The setuproutine for the buildserver is currently stored in a Git repository on
 GitHub. It is suggested to use the latest version of the default (currently
 named *ansible*) branch, which can be retrieved as follows.
@@ -35,7 +34,7 @@ named *ansible*) branch, which can be retrieved as follows.
 `
 $ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
 `
-## Install the shipped Ansible into a virtual environment
+## Install The Shipped Ansible Into A Virtual Environment
 You can either reuse an existing virtual python environment, or create a new
 one. The following steps assume you chose the latter.
 

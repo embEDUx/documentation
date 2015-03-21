@@ -1,4 +1,4 @@
-# Adding new platforms to the buildserver
+# Add New Platforms To The Buildserver
 
 **(work in progress)**
 
@@ -19,6 +19,6 @@ arch_branch_res_map = {
 }
 ```
 
-### Adding a new platform to the HTWG configuration
+### Add A New Platform To The HTWG Configuration
 If you add a new platform by modifying the dictionary, it is *important* that it
 must not contain any underscores, use dashes instead!

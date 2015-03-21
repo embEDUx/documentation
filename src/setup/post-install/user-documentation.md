@@ -1,4 +1,4 @@
-# Creating the User Documentation
+# Creating The User Documentation
 The user documentation is essential to the usage of the buildserver that has
 been setup. You are encouraged to create the documentation carefully, and
 double-check any information you put in. 
@@ -9,7 +9,7 @@ If you want to see some examples, you can take a look at one of these:
 * [Demo User Documentation](../examples/user-documentation-DEMO.md).  
 * [HTWG User Documentation](../examples/user-documentation-HTWG.md).  
 
-## Gather information from the **master.cfg configuration**
+## Gather Information From The **master.cfg Configuration**
 Most of the information that is provided to the user derives from the
 buildserver setup. By default, the only information provided by the
 Administrator were the credentials and the address of the buildserver. Therefore

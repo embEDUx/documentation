@@ -52,7 +52,7 @@ The following example will give you a detailed overview of the necessary steps
 to build the toolchain for the raspberry pi (armv6j). We assume that at this point the
 *toolchains-specs* repository is empty.
 
-## Add a new toolchain
+## Add A New Toolchain
 
 1. Clone the *toolchains-specs* repository with the URL provided in the user documentation.
   
