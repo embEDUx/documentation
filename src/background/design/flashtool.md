@@ -5,10 +5,18 @@
 This chapter describes the design of the **Flashtool** and its configuration
 components.
 
+
+## Name Of The Deployment Tool
+
+It seemed obvious to call this tool "**Flashtool**"
+due to the fact that most of the embedded devices uses flash memories to store
+their operating system and files.
+
+
 ## Automated And Configurable Deployment Tool
 
-Deploying the software products built with the **embEDUx** system, should be done
-as easy and as fast as possible the user. Therefore a tool should be developed
+Deploying the software products built with the **embEDUx** system, must be done
+as easy and as fast as possible the user. Therefore a tool must be developed
 which automates the several steps of the deployment procedure. The deployment 
 procedure will differ dependent on the needs of the user, but for all that there
 are similarities in each deployment procedure.
@@ -22,7 +30,7 @@ The first step is to recognize how the products can be deployed to the
 platform. In every case this media will be a **storage device** which can be
 accessed in different ways.
 
-All platforms which are in use by the *HTWG Configuration* use MMC devices
+All platforms which are in use by the *HTWG Configuration* use *MMC* devices
 as storage device for the products. But there might be other platforms which
 use other storage devices (e.g. an internal NAND-Flash).
 
@@ -99,11 +107,6 @@ impossible to implement an automation tool which fulfills the requirements for
 all thinkable platforms. So there must be done constraints on the implementation
 of features but the software must be open to add new features easily.
 
-## Name Of The Deployment Tool
-
-It seemed obvious to call this tool "**Flashtool**"
-due to the fact that most of the embedded devices uses flash memories to store
-their operating system and files.
 
 
 ## Design decisions
