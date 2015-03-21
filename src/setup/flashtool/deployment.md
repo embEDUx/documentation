@@ -21,19 +21,19 @@ The preparation of a storage media (step 1) can differ in two ways:
 1. differences in the layout for the same storage media of a platform or
     different platforms
 
-2. different layout procedure for different storage medias
+2. different mechanisms to layout different storage medias
 
-and the third step can differ depending on the storage media layout and the
+and the third step differs depending on the storage media layout and the
 selected products which are needed for a platform.
 
 The mechanisms to layout a specific storage media type are the same but the
-configuration how to layout a storage media can be different. 
+configuration how to layout a storage media can be different.
 
 As a result the deployment configuration is divided by the type of the storage
 media and therefore there exist a ***recipe skeleton*** for each storage type.
-With this recipe skeleton the user can configure a recipe for the first and 
-the third step of the deployment. The configuration files which include the
-recipes for a platform are called ***recipe files***.
+With this recipe skeleton the user can configure the layout of a storage device
+and where the products should be stored on the storage device. The configuration
+files which include the recipes for a platform are called ***recipe files***.
 
 ## Further Reading
 

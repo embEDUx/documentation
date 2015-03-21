@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="211.103mm"
+   height="110.15915mm"
+   viewBox="0 0 748.00274 390.32769"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="flashtool-deployment.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4633"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4635"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker4454"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4456"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path4169"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="-183.83271"
+     inkscape:cy="352.06688"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="871"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(4.7906036,-185.99249)">
+    <rect
+       style="fill:#0091ff;fill-opacity:1;stroke:#000000;stroke-width:1.01119232;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4136"
+       width="138.13167"
+       height="63.845951"
+       x="34.200394"
+       y="319.8649" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4138"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(363.26623,27.997113)"><flowRegion
+         id="flowRegion4140"><rect
+           id="rect4142"
+           width="164.28572"
+           height="67.14286"
+           x="-317.14285"
+           y="302.36221" /></flowRegion><flowPara
+         id="flowPara4144"
+         style="font-size:30px">PyYAML</flowPara></flowRoot>    <path
+       id="path4149"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.62405908px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 133.70481,214.9596 0,6.01771 6.90922,0 m -73.995578,-6.01771 67.197798,0 6.79778,5.90627 0,50.25905 -73.995578,0 z"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="60.609146"
+       y="199.28839"
+       id="text4152"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4154"
+         x="60.609146"
+         y="199.28839">Recipe file</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4156"
+       y="246.76556"
+       x="82.327438"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="246.76556"
+         x="82.327438"
+         id="tspan4158"
+         sodipodi:role="line">.yml</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 100.69401,271.56071 3.98153,48.30419"
+       id="path4160"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-end="#rect4136"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.9306078px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="107.99626"
+       y="291.92316"
+       id="text4442"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4444"
+         x="107.99626"
+         y="291.92316">parse</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4454)"
+       d="m 172.73608,352.3265 142.43151,0"
+       id="path4446"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4482"
+       y="347.98663"
+       x="179.71709"
+       style="font-style:normal;font-weight:normal;font-size:12.9306078px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="347.98663"
+         x="179.71709"
+         sodipodi:role="line"
+         id="tspan4486"
+         style="font-size:12.5px">converted into</tspan><tspan
+         y="363.61163"
+         x="179.71709"
+         sodipodi:role="line"
+         id="tspan4488"
+         style="font-size:12.5px">python dictionary</tspan></text>
+    <rect
+       style="fill:#0091ff;fill-opacity:1;stroke:#000000;stroke-width:1.56095028;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4582"
+       width="149.94164"
+       height="55.492378"
+       x="317.97852"
+       y="324.26685" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4586"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(384.86812,62.588848)"><flowRegion
+         id="flowRegion4588"><rect
+           id="rect4590"
+           width="141.92644"
+           height="80.307129"
+           x="-58.083771"
+           y="265.95844" /></flowRegion><flowPara
+         id="flowPara4592">Python Recipe </flowPara><flowPara
+         id="flowPara4594">representation </flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4596"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(372.74628,54.548237)"><flowRegion
+         id="flowRegion4598"><rect
+           id="rect4600"
+           width="157.07872"
+           height="77.781776"
+           x="-50.507626"
+           y="329.59805" /></flowRegion><flowPara
+         id="flowPara4602"
+         style="font-size:12.5px">checks key value pairs</flowPara><flowPara
+         id="flowPara4604"
+         style="font-size:12.5px" /></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4633)"
+       d="m 466.69047,350.30619 155.5635,0 0,77.78175"
+       id="path4625"
+       inkscape:connector-curvature="0" />
+    <flowRoot
+       transform="translate(546.49252,-0.50507651)"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="flowRoot4680"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4682"><rect
+           y="329.59805"
+           x="-50.507626"
+           height="77.781776"
+           width="157.07872"
+           id="rect4684" /></flowRegion><flowPara
+         style="font-size:12.5px"
+         id="flowPara4686">recipe object</flowPara><flowPara
+         style="font-size:12.5px"
+         id="flowPara4688" /></flowRoot>    <rect
+       y="432.26941"
+       x="560.33136"
+       height="91.015259"
+       width="133.8472"
+       id="rect4690"
+       style="fill:#0091ff;fill-opacity:1;stroke:#000000;stroke-width:1.39340079;stroke-miterlimit:4;stroke-dasharray:none" />
+    <flowRoot
+       transform="translate(627.30473,170.67518)"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="flowRoot4692"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4694"><rect
+           y="265.95844"
+           x="-58.083771"
+           height="92.428963"
+           width="135.86552"
+           id="rect4696" /></flowRegion><flowPara
+         id="flowPara4700">Deployment procedure for recipe</flowPara></flowRoot>    <rect
+       style="fill:none;fill-opacity:1;stroke:#008000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:1.5, 3;stroke-dashoffset:0"
+       id="rect4702"
+       width="746.50275"
+       height="329.30972"
+       x="-4.0406036"
+       y="246.26047" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4704"
+       y="272.01935"
+       x="342.44168"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="272.01935"
+         x="342.44168"
+         id="tspan4706"
+         sodipodi:role="line">For each *YAML-Document* in the recipe file</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4710"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(603.06106,58.083771)"><flowRegion
+         id="flowRegion4712"><rect
+           id="rect4714"
+           width="75.256363"
+           height="24.243685"
+           x="-50.507626"
+           y="329.59805" /></flowRegion><flowPara
+         id="flowPara4716"
+         style="font-size:12.5px">configures</flowPara><flowPara
+         id="flowPara4718"
+         style="font-size:12.5px" /></flowRoot>    <rect
+       y="523.43634"
+       x="12.128616"
+       height="38.13166"
+       width="138.13167"
+       id="rect4720"
+       style="fill:#0091ff;fill-opacity:1;stroke:#000000;stroke-width:1.01119232;stroke-miterlimit:4;stroke-dasharray:none" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.01119232;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4722"
+       width="138.13167"
+       height="38.13166"
+       x="12.05751"
+       y="485.20407" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4724"
+       y="444.45618"
+       x="-363.74496"
+       style="font-style:normal;font-weight:normal;font-size:12.9306078px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="444.45618"
+         x="-363.74496"
+         id="tspan4726"
+         sodipodi:role="line" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="48.913254"
+       y="509.09778"
+       id="text4728"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4730"
+         x="48.913254"
+         y="509.09778">Legend</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4732"
+       y="547.73615"
+       x="14.868759"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="547.73615"
+         x="14.868759"
+         id="tspan4734"
+         sodipodi:role="line">Python module</tspan></text>
+  </g>
+</svg>

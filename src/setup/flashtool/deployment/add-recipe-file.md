@@ -1,11 +1,11 @@
-# Recipe files
+# Add A New Recipe File
 
 This chapter explains how to write a new recipe file for a platform. If you do
 not know what a recipe file is and which role it plays in the deployment
 procedure, please read the chapter [Deployment with the Flashtool](../deployment.md) 
-first.
+first. It is also recommended to 
 
-## Recipe files Name-Scheme
+## Recipe Files Name-Scheme
 
 The name of a **recipe** file must follow this naming scheme:
 
@@ -41,7 +41,7 @@ recipe skeleton which is used in every recipe file on the **embEDUx**
 
 The recipe skeleton *mmc* can handle the most deployment procedures for a wide
 range of embedded hardware. If you need to implement a new recipe skeleton, please
-read the section [How to add a new deployment](add-new-deployment.md).
+read the section [How to add a new deployment procedure](add-new-deployment.md).
 
 ### MMC:
 
@@ -90,8 +90,8 @@ recipe:
 * ***partitions***:
 
       This section is used to define partitions on the mmc device. Each partition
-      must be listed with a dash and must contain the subsections name, size,
-      fs\_type, mount\_point, mount\_opts and flags. If one of these section is not
+      must be listed with a dash and must contain the subsections *name, size,
+      fs\_type, mount\_point, mount\_opts and flags*. If one of these section is not
       needed, just leave the value after the colon blank.
 
       * ***name***:
@@ -102,7 +102,7 @@ recipe:
       * ***size***:
 
         Size of the partition. The used units are b (byte), kb (kilobyte), mb
-        (megabyte), gb (gigabyte) and %. It is also possible to use the keyword
+        (megabyte) and gb (gigabyte). It is also possible to use the keyword
         *max* for the last stated partition. If you want to state the size of the
         partion in percentage, please use the percentage notation for each
         partition.
@@ -133,24 +133,26 @@ recipe:
       The user can choose between the option *device* or *command* for every
       subsection. If a software product should be loaded on a partition of the mmc
       device, the user must use the option *device* and state the index of the
-      partition which is defined in the section **partitions**. The index starts
+      partition, which is defined in the section **partitions**. The index starts
       with zero.
 
-      If a product should be loaded with an external command to the mmc device, you
-      must use the option **command**. The value of the option is the external
-      command. For a command you can use the to template variables *${file}* and
-      *${device}*. The variable *${file}* will be replaced with the name of the
-      specific software product. The variable *${device}* will be replaced with the
-      */dev path* of the mmc device or the *dev path* of the mmc partition, if a
-      number is written at the end of the variable (e.g. *${device0}*).
+      If a product should be loaded with an external command (e.g. dd) to the mmc
+      device, you must use the option **command**. For a command you can use the 
+      two template variables *${file}* and *${device}*. The variable *${file}* will
+      be replaced with the name of the specific software product. The variable 
+      *${device}* will be replaced with the *dev path* of the mmc device or the 
+      *dev path* of the mmc partition, if a number is written at the end of the
+      variable (e.g. *${device0}*).
 
-      The existing software products are Uboot, Linux\_Boot, Linux\_Root,
-      Linux\_Config, Rootfs, Misc\_Boot, Misc\_Root.
+      The existing software products are ***Uboot, Linux\_Boot, Linux\_Root,
+      Linux\_Config, Rootfs\_Root, Rootfs\_Portage, Misc\_Boot, Misc\_Root***.
+      Some products are divided into two parts. For example the product *Linux*
+      provides packages for boot partition and packages for the root parition.
 
 
-**Example for a recipe file with a mmc recipe (utilite-pro.yml):** - Also available in
-the HTWG configuration.
+## Example for a recipe file with a mmc recipe (utilite-pro.yml):
 
+This recipe is also available in the HTWG configuration.
 
 ```
 ---
@@ -180,6 +182,20 @@ recipe:
             device: 1
         Linux_Config:
             device: 1
-        Rootfs:
+        Rootfs_Root:
+            device: 1
+        Rootfs_Portage:
             device: 1
 ```
+
+This recipe file will configure the deployment procedure for the utilite-pro as
+follow:
+
+* The MMC device will be partition into two partitions. The first partition will
+    have the size of *100 mb*, its label is *"boot"* and the filesystem format is
+    *fat32*. Also the *lba* flag set for the partition. The partition will be
+    mounted at */boot* in the *RootFS*. The second partition will get the free
+    space of the MMC device as size, its label is *"rootfs"* and the filesystem
+    format is *btrfs*. The partition will be mounted at */*. 
+
+* The uboot product and the 

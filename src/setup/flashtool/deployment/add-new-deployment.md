@@ -5,7 +5,7 @@
 This chapter describes how to implement new recipe types for the deployment
 procedure. If you are unsure about the concept of recipe files for the
 **Flashtool** please read the chapter [Deployment with the Flashtool](../deployment.md)
-and [Writing a new recipe file](add-recipe-file.md) first.
+and [Writing a new recipe file](add-recipe-file.md) first. 
 
 
 ## Common Procedure For A Developer
@@ -15,11 +15,15 @@ procedure to the **Flashtool**
 
 * Read the chapters below to understand where and how to add a new deployment
     procedure.
-* Fork the [Flashtool]() sources and start to implement the new feature
+* Fork the [Flashtool](https://github.com/embEDUx/flashtool) sources and
+    start to implement the new feature.
 * Create tests for the new feature in the directory tests. The Flashtool uses
     the module [pytest](http://pytest.org/latest/) for unit testing.
-* You can create a pull request for your feature to get it integrated in the
-  main **Flashtool** sources.
+* Please provide a documentation which describes how your recipe skeleton can be
+    used in a racipe file. This documentation will be added to the chapter 
+    [Add a new recipe file](add-recipe-file.md).
+* You should create a pull request for your feature to get it integrated in the
+    main **Flashtool** sources.
 
 ## General structure of a recipe file
 
@@ -46,19 +50,24 @@ multiple recipes. There must be at least one of it in a recipe file.
 Every recipe skeleton must contain a *type* keyword and a *recipe* keyword. 
 For the value of the *type* keyword a name of a implemented recipe skeleton is
 expected. The content of the *recipe* section depends on the selected recipe 
-and is defined in the python code of the **Flashtool**. The proceeding for
-adding a new .
+and is defined in the python code of the **Flashtool**.
 
 
 ## Recipe Skeletons And Their Python Representation
 
-The recipe files can be parsed easily by python. To avoid errors from the author
-of the recipe file, the given key value pairs in the recipe files, are parsed
-and checked by the **Flashtool**. The **Flashtool** provides an interface for
-new recipe skeletons.
+The given key value pairs in the recipe files, are parsed and checked by the 
+**Flashtool**. Converting the recipe file into a python dictionary is done by
+the [PyYAML](http://pyyaml.org/) module. This dictionary must be checked by the
+**Flashtool** before it will be used as configuration for a deployment
+procedure. This steps must be implemented in the setup module of the
+**Flashtool**.
 
+The next image shows a schematic sketch from reading the recipe file till up to
+the deployment step for a recipe.
 
-## Structure Of The Setup Module Of The Flashtool
+![Schematic sketch for the deployment procedure](setup/flashtool/deployment/img/flashtool-deployment.png)
+
+## Structure Of The Setup Module 
 
 A new recipe skeleton for a deployment must be defined and implemented in 
 python. The next figure will show where the python representation for a new 
@@ -142,10 +151,11 @@ structure.
 You can see that the indentation level of the keywords have an impact on the 
 structure of the python dictionary. 
 
-The setup routine will read the value of *type* and search for a python
-representation in the recipe directory (In this case the file *flashtool
-/setup/recipe/hdd.py*). When found, it will pass the values of *recipe* into
-the constructor of the python class (In this case *HDD*).
+The setup routine of the **Flashtool** will read the value of the key *type*
+and search for a python representation in the recipe directory (In this case
+the file *flashtool/setup/recipe/hdd.py*). When found, it will pass the values
+of the key *recipe* into the constructor of the python class (In this case *HDD*).
+This python class must be implemented next.
 
 
 #### 2. Implement the python representation for the recipe skeleton. 
@@ -161,10 +171,10 @@ have its name written in *CAPITAL* letters and must inherit from the class
 
 The valid keywords for the recipe must be added in a class attribute named
 *attr*. The *attr* variable is only for keywords in one indentation level.
-In this case a second class must be created for the *partition* keyword to
-manage the nested keywords of the *partition* Node.
+In this case a second class must be created for the *partition* keyword, to
+manage the nested keywords of the *partitions* Node.
 
-The constructor of the recipe representation must also provide a parameter.
+The constructor of the classes must also provide a parameter.
 
     ...
     class HDD(YAML):
@@ -192,14 +202,14 @@ The constructor of the recipe representation must also provide a parameter.
     __entry__ = HDD
 
 The classes inherits the method `check_attributes(self, attributes, subset=True)` 
-from the super class *YAML*. Depending on the parameter `subset` it will check the
+from the super class *YAML*. Depending on the parameter `subset`, it will check the
 given parameter attributes in two ways:
     
 * *`subset=True`*
 
     The dictionary attributes is only allowed to contain the keys which
-    are specified in the class member `attr`. It allows that a key can
-    be missing in the dictionary.
+    are specified in the class member `attr`. But it is allowed that a key
+    can miss in the dictionary.
 
 * *`subset=False`*
 
@@ -211,21 +221,21 @@ This method should be used to check the keys of the parsed *YAML document*.
 
 The last statement of the constructor is a call of the constructor of the
 super class *YAML*. It will save the given dictionary of the constructor parameter
-as attributes of the created object. It is now possible to access the key
-value pairs of dictionary with the dot `.` operator.
+as attributes of the new created instance. It is now possible to access the key
+value pairs with the dot `.` operator.
 
     hdd_obj.partition_type  # get partition types
     hdd_obj.partitions      # get list of partitions
 
-The module variable __entry__ must be set with the class name of the
-implemented recipe class. With this value the **Flashtool** can create an
-instance of the new recipe class. 
+The module variable __entry__ must be set with the name of the HDD class.
+With this value the **Flashtool** can create an instance of the new recipe
+class. 
 
 
 #### 3. The load attribute:
 
 The load structure can be used to map the software components to the defined
-partitions. To add this structure to your recipe type you have to do the
+partitions. To add this structure to your recipe skeleton, you have to do the
 following steps:
 
 1. Add the keyword *load* to the *attr* class member of your python class
@@ -265,9 +275,12 @@ Now the user can use the *load* structure in the *hdd* recipe
 
 
 #### 4. Deployment class
-Now we can add a deploy class for the *hdd* recipe type. This class must be
-stated in the file *hdd.py* and inherit from the super class Deploy. The 
-following constructor and methods must be implemented for this class.
+
+Now we can add a deploy class for the *hdd* recipe type. It must contain
+the steps for the deployment of the products to the *HDD* storage device.
+This class must be stated in the file *hdd.py* and inherit from the super
+class Deploy. The following constructor and methods must be implemented 
+for this class.
 
     `def __init__(self, recipe, actions, builds, platform, auto)`
     `def prepare(self)`
@@ -276,8 +289,8 @@ following constructor and methods must be implemented for this class.
 The setup routine will search for a python file with the name *hdd.py* in
 the directory *deploy*. The module variable `__entry__` must be set with the 
 class name of the implemented deploy class. Let's call this class
-`HddDeploy`. The following example will show the structure of the python
-file.
+`HddDeploy`. The following example will show the basic structure of the
+python file.
 
     from flashtool.setup.deploy import Deploy
     # other imports
@@ -314,9 +327,11 @@ It is important that the constructor signature `__init__` provides the parameter
     * `auto`: flag for if the user wants to run the deployment procedure in
         automatic mode.
 
-The setup routine will call first the `prepare()` method of all deployment
-classes according to the recipe file which are specified in the *YAML* file
-and then the `load()` methods. The 
+The setup routine will call first the `prepare()` method and then the 
+`load()` methods. The deployment procedure must be implemented into this two
+methods. The `prepare` method is used for preparation steps of the storage
+device (mostly partition the device). The `load` method is used to store the
+products on the prepared storage device.
 
 
 ## Useful Modules For The Deployment Class
@@ -329,17 +344,3 @@ which can help to speed up your development process.
 
 * [Code Documentation](../../../background/implementation/flashtool/code-documentation.md)
 
-     
-
-## Information to write in this chapter
-
-**Attention: the setup routine only allows to deploy products on platforms
-which use a mmc device as storage media. Support for other storage media must be implemented.**
-
-If you want to implement new features to the **Flashtool**, please consider
-reading the development section for the **Flashtool**. The new functionality
-must be triggered by a recipe file an must be explained in the [recipe
-files](#recipe-files) chapter.
-
-The setup procedure requires an existing [recipe](#How_to_write_a_recipe_file) 
-file.
