@@ -38,7 +38,7 @@ bias towards the requirements specific to the lab-courses.
 ## What is it not?
 * Magic system for guessing all your platforms configuration automatically
 
-## Initial contributors
+## Initial Contributors
 The project started off with three master students of computer science who have
 been working on this project in a team, supervised by a professor. Namely, these are
 
@@ -49,3 +49,4 @@ been working on this project in a team, supervised by a professor. Namely, these
 
 Head over to the [contacts and support page](../support/contact-team.md) if you
 want to contact any of these people.
+
