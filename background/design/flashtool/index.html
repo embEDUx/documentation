@@ -130,11 +130,27 @@
                         </li>
                     
                         <li >
+                            <a href="../../../setup/workstation/index.html">Workstation</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/development/flashtool/index.html">Workstation/Development/Flashtool</a>
+                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/flashtool/deployment/add-new-deployment/index.html">Flashtool/Deployment/Add New Deployment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../setup/flashtool/deployment/add-recipe-file/index.html">Flashtool/Deployment/Add Recipe File</a>
                         </li>
                     
                         <li >
@@ -378,25 +394,25 @@ components.</p>
 <p>Deploying the software products built with the <strong>embEDUx</strong> system, should be done
 as easy and as fast as possible the user. Therefore a tool should be developed
 which automates the several steps of the deployment procedure. The deployment 
-procedure will differ, dependent on the needs of the user but for all that there
-are similarities in each deployment procedure. </p>
+procedure will differ dependent on the needs of the user, but for all that there
+are similarities in each deployment procedure.</p>
 <p>To find these similarities the deployment procedure must be abstracted into
 several steps. </p>
-<h3 id="storage-device-of-the-platform">Storage device of the platform</h3>
+<h3 id="access-storage-device-of-the-platform">Access Storage Device Of The Platform</h3>
 <p>The first step is to recognize how the products can be deployed to the
 platform. In every case this media will be a <strong>storage device</strong> which can be
 accessed in different ways.</p>
 <p>All platforms which are in use by the <em>HTWG Configuration</em> use MMC devices
 as storage device for the products. But there might be other platforms which
 use other storage devices (e.g. an internal NAND-Flash).</p>
-<p>It must be assumed that the deployment tool must be able to
+<p>It must be assumed that the <strong>Flashtool</strong> must be able to
 access these devices in different ways (e.g. via Linux block device or via
 USB with an external tool). </p>
 <ul>
-<li>The deployment tool must be open for new mechanisms and should
-    provide an interface to access other storage devices.</li>
+<li>The <strong>Flashtool</strong> must be open for new mechanisms and should
+    provide an interface to access storage devices.</li>
 </ul>
-<h3 id="recognize-the-storage-device">Recognize the storage device</h3>
+<h3 id="recognize-the-storage-device">Recognize The Storage Device</h3>
 <p>It is also important for the deployment tool that it is able to recognize the
 storage device when it is plugged in. This mechanism can also differ
 dependent on the type of the storage device.</p>
@@ -405,16 +421,54 @@ dependent on the type of the storage device.</p>
     system (Linux) which allows to recognize different device types and makes 
     it possible to extend the deployment tool for this types.</li>
 </ul>
-<h3 id="partition-the-storage-device">Partition the storage device</h3>
+<h3 id="partition-the-storage-device">Partition The Storage Device</h3>
 <p>The next step is the possibility to partition the storage device in different
 parts if needed. This depends on the configuration of the Linux kernel and
 the Uboot. </p>
 <ul>
-<li>The deployment tool must be able to let the user partition the storage
-    device for its needs. Dependend on the storage device this might require
-    different tools or mechanisms.</li>
+<li>
+<p>The <strong>Flashtool</strong> must provide a mechanism for the user to partition the 
+    storage device for its needs. Dependend on the storage device this might
+    require different tools or mechanisms.</p>
+</li>
+<li>
+<p>Since many platforms require partition flags, the <strong>Flashtool</strong> must be 
+    able to set flags for the partitions.</p>
+</li>
 </ul>
-<h3></h3>
+<h3 id="getting-built-products">Getting Built Products</h3>
+<p>The <strong>embEDUx</strong> build system provides the built products with a web server.
+These products must be downloaded from the web server. The following steps
+are needed to manage this task:</p>
+<ul>
+<li>
+<p>The <strong>Flashtool</strong> must retrieve information about all available products on
+    the web server.</p>
+</li>
+<li>
+<p>The <strong>Flashtool</strong> must select a specific version of a product.</p>
+</li>
+<li>
+<p>The <strong>Flashtool</strong> must download the selected products from the web server.</p>
+</li>
+</ul>
+<p>The complexity of this tasks depends on the API of the web server and the 
+ability of the used programming language.</p>
+<h3 id="getting-the-files-on-the-storage-media">Getting The Files On The Storage Media</h3>
+<p>The downloaded products must be prepared for deploying on the partitions of the
+storage device. Every product refers to a partition of the storage device or
+refer to a specific address on the storage device (e.g. boot sector). To manage
+this task the following steps must be available on the <strong>Flashtool</strong>:</p>
+<ul>
+<li>
+<p>The <strong>Flashtool</strong> must contain a distinct mapping of a product to a partition
+    or an address on the storage device for each platform and should be
+    extensible for future mappings of other platforms.</p>
+</li>
+<li>
+<p>The <strong>Flashtool</strong> must copy the product to the storage device. The </p>
+</li>
+</ul>
 <h3 id="main-goals-for-the-implementation">Main goals for the implementation</h3>
 <p>One of the main goals for the deployment tool is that it is open for new
 features and mechanisms to form different deployment procedures. It is

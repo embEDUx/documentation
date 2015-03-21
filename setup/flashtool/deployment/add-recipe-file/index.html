@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../../img/favicon.ico">
 
-        <title>Workstation/Development/Flashtool - embEDUx Project</title>
+        <title>Flashtool/Deployment/Add Recipe File - embEDUx Project</title>
 
         <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -130,11 +130,27 @@
                         </li>
                     
                         <li >
-                            <a href="../../flashtool/index.html">Workstation/Flashtool</a>
+                            <a href="../../../workstation/index.html">Workstation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../workstation/flashtool/index.html">Workstation/Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../index.html">Flashtool/Deployment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../add-new-deployment/index.html">Flashtool/Deployment/Add New Deployment</a>
                         </li>
                     
                         <li class="active">
-                            <a href="index.html">Workstation/Development/Flashtool</a>
+                            <a href="index.html">Flashtool/Deployment/Add Recipe File</a>
                         </li>
                     
                         <li >
@@ -338,7 +354,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../../flashtool/index.html">
+                    <a rel="next" href="../add-new-deployment/index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -357,219 +373,184 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#adding-new-recipe-types">Adding new recipe types</a></li>
+        <li class="main active"><a href="#recipe-files">Recipe files</a></li>
         
-            <li><a href="#python-representation-of-a-recipe-type">Python representation of a recipe type</a></li>
+            <li><a href="#recipe-files-name-scheme">Recipe files Name-Scheme</a></li>
+        
+            <li><a href="#recipe-skeletons">Recipe Skeletons</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="adding-new-recipe-types">Adding new recipe types</h2>
-<p>A recipe file is written in <em>YAML-Syntax</em> an can easily read in by python. To
-avoid errors from the author of the recipe file, the given key value pairs in
-the recipe files, are parsed and checked by the <strong>Flashtool</strong>. The <strong>Flashtool</strong>
-provides an interface for new recipe types.</p>
-<p>A new recipe type for the setup procedure of the <strong>Flashtool</strong> must be defined
-and implemented in python. The next figure will show the structure of the 
-setup part of the <strong>Flashtool</strong>.</p>
-<pre><code>./setup
-├── init.py 
-├── deploy
-│   ├── __init__.py
-│   ├── ...
-│   └── mmc.py
-│ 
-├── recipe
-│   ├── __init__.py
-│   ├── ...
-│   └── mmc.py
-...
-</code></pre>
+<h1 id="recipe-files">Recipe files</h1>
+<p>This chapter explains how to write a new recipe file for a platform. If you do
+not know what a recipe file is and which role it plays in the deployment
+procedure, please read the chapter <a href="../index.html">Deployment with the Flashtool</a> 
+first.</p>
+<h2 id="recipe-files-name-scheme">Recipe files Name-Scheme</h2>
+<p>The name of a <strong>recipe</strong> file must follow this naming scheme:</p>
+<p>{hardware-name}_{identifier}.yml</p>
+<p><strong>The name and identifier must not contain underscores, please use dashes instead.</strong></p>
+<p>The <em>underscore</em> is used to divide the recipe file name in the two parts 
+<em>platform name</em> and <em>identifier</em>. It is important that the platform name is also 
+registered on the buildserver. You will find the valid platform-strings for
+your <strong>embEDUx</strong> system in the <a href="../../../post-install/user-documentation/index.html">User Documentation</a>.</p>
+<p>The next example shows how to use this name scheme for a Raspberry Pi. This
+name scheme is also used in the 
+<a href="../../../examples/user-documentation-HTWG/index.html#platform-strings">HTWG setup</a> of <strong>embEDUx</strong>.</p>
+<blockquote>
+<p>raspberry-pi.yml</p>
+<p>raspberry-pi_media-center.yml</p>
+</blockquote>
+<p>The name for a Raspberry Pi in this <strong>embEDUx</strong> configuration is <em>"raspberry-pi"</em>.
+This name will be used in branches of the <strong>git repositories</strong> and on the
+<strong>buildbot</strong> server to identify a Raspberry Pi.</p>
+<h2 id="recipe-skeletons">Recipe Skeletons</h2>
+<p>For the extensibility of the <strong>Flashtool</strong>, it provides the possibility to
+define different recipe skeletons. Each skeleton must have its counterpart
+implemented in the python code of the <strong>Flashtool</strong>. By now we support the <em>mmc</em>
+recipe skeleton which is used in every recipe file on the <strong>embEDUx</strong>
+<a href="https://github.com/embEDUx/flashtool-recipes">repository</a>.  </p>
+<p>The recipe skeleton <em>mmc</em> can handle the most deployment procedures for a wide
+range of embedded hardware. If you need to implement a new recipe skeleton, please
+read the section <a href="../add-new-deployment/index.html">How to add a new deployment</a>.</p>
+<h3 id="mmc">MMC:</h3>
+<p>This recipe skeleton is used to configure platforms which use a <em>MMC</em> device as
+storage media. The template below shows, how to state this recipe skeleton in a 
+recipe file.</p>
+<pre><code class="yaml">---
 
-<p>The <strong>Flashtool</strong> will read in the recipe file from top to bottom. Each <em>YAML 
-document</em> in the recipe file represents a recipe. The type of the recipe 
-is given by the key <code>type</code>. Only values are allowed which are mapped as python 
-file in the deploy and recipe section. In this example the user can only state 
-the recipe type <code>type: mmc</code>.</p>
-<h3 id="python-representation-of-a-recipe-type">Python representation of a recipe type</h3>
-<p>The next example will show you how to implement a python representation for a 
-recipe type. Let's call the new recipe type <em>hdd</em>. </p>
-<ol>
-<li>
-<p>Specify a <em>YAML document</em> with all keywords which the recipe type <em>hdd</em> should
-    have. The keywords for the recipe must be stated in the <code>recipe:</code> section. 
-    If you do not know how the <em>YAML</em> syntax look like, please have a closer look 
-    <a href="http://www.yaml.org/spec/1.2/spec.html#id2759963">here</a>.</p>
-<pre><code>---
-type: hdd
+type: mmc
 
 recipe:
-    partition_type:
-    partition:
-        - name: 
-          fs_type:
-          size:
-          flags:
-</code></pre>
-<p>The python representation must check the <em>YAML document</em> for the keywords 
-<em>partition_type</em>, <em>paritition</em> and for every partition the keywords 
-<em>name</em>, <em>fs_type</em>, <em>size</em> and <em>flags</em>.</p>
-<p>The recipe file will be parsed with the <a href="http://pyyaml.org/">PyYaml</a> module.
-The <em>YAML document</em> above will be represented in python as the following
-structure.</p>
-<pre><code>{
-    'type' : 'HDD',
-    'recipe' : {
-        partition_type : None,
-        partitions : [
-            {
-                name : None
-                fs_type : None,
-                size : None,
-                flags : None,
-            }
-        ],
-    },
-}
-</code></pre>
-<p>The setup routine will read the value of <em>type</em> and search for a python
-representation in the recipe directory (In this case the file <em>flashtool
-/setup/recipe/hdd.py</em>). When found it will pass the values of <em>recipe</em> into
-the constructor of the python class (In this case <em>HDD</em>). Of course there is
-no class defined at <em>flashtool/setup/recipe/hdd.py</em>, this brings us to step
-two.</p>
-</li>
-<li>
-<p>Implement python representation for the recipe. The python representation of 
-    the recipe type is a python class and should have the same name written in 
-    <em>CAPITAL</em> letters and must inherit from the class <em>YAML</em>.</p>
-<pre><code>from flashtool.setup.recipe import YAML
-
-class HDD(YAML):
-    ...
-</code></pre>
-<p>The valid keywords for the recipe must be added in a class attribute named
-<em>attr</em>. In this case we will provide a second class for the keyword
-<em>partition</em>. The constructor must also provide a parameter called
-<em>attributes</em>.</p>
-<pre><code>...
-class HDD(YAML):
-    attr = ['partition_type', 'partitions']
-
-    def __init__(self, attributes):
-        self.check_attributes(attributes)
-        ... # DO SOME VALUE CHECKS HERE
-        parts = []
-        for part_attr in attributes['partitions']:
-            part = Partition(part_attr)
-            parts.append(part)
-        attributes['partitions'] = parts
-        YAML.__init__(self, attributes)
-
-class Partition(YAML):
-    attr = ['name', 'fs_type', 'size', 'flags']
-
-    def __init__(self, attributes):
-        self.check_attributes(attributes)
-        ... # DO SOME VALUE CHECKS HERE
-        YAML.__init__(self, attributes)
-
-__entry__ = HDD
-</code></pre>
-<p>The classes inherit the method <code>check_attributes(self, attributes)</code> from the
-super class <em>YAML</em>. It will check if the given attributes contains all
-keywords given in the class member <em>attr</em>. If not a exception will be
-raised.</p>
-<p>The last statement of the constructor is the call of the constructor of the
-super class <em>YAML</em>. It will save the attributes as attributes of the created
-object. It is now pssible to access the values of the attributes vith the
-dot <code>.</code> operator.</p>
-<pre><code>hdd_obj.partition_type  # get partition types
-hdd_obj.partitions      # get list of partitions
-</code></pre>
-<p>The module variable <strong>entry</strong> must be set with the class name of the
-implemented recipe class. With this value the <strong>Flashtool</strong> can create an
-instance of the new recipe class. </p>
-</li>
-<li>
-<p>Load attribute:
-    The load structure can be used to map the software components to the defined
-    partitions. To add this structure to your recipe type you have to do the
-    following steps:</p>
-<ol>
-<li>
-<p>Add the keyword <em>load</em> to the <em>attr</em> class member of your python class
-    first (In this example HDD).</p>
-<pre><code>attr = ['paritions', 'partition_table', 'load']
-</code></pre>
-</li>
-<li>
-<p>Pass the value of the attribute <em>load</em> to the constructor of the class
-   <em>Load</em> and save the <em>Load</em> object as new value of the <em>load</em> attribute.</p>
-<pre><code>from flashtool.setup.recipe import Load
-...
-    attributes['load'] = Load(attributes['load'])
-    YAML.__init__(self, attributes)
-</code></pre>
-</li>
-</ol>
-<p>Now the user can use the <em>load</em> structure in the <em>hdd</em> recipe 
-    ---
-    type: hdd</p>
-<pre><code>recipe:
-    partition_type:
-    partition:
-        - name: 
-          fs_type:
-          size:
-          flags:
-
-    load: 
+    partition_table: #partition table type
+    partitions: # list with partition information
+        -   name: # label
+            size: # size of partition (allowed %/b/kb/mb/gb/)
+            fs_type: # filesystem type (e.g. fat32, ext4)
+            mount_point: # Mount point in System
+            mount_opts:  # Mount options
+            flags: # flags for partition
+        -   #...
+    load:
         Uboot:
-            device: 
+            # device: or command:
         Linux_Boot:
-            device: 
+            # device: or command:
         Linux_Root:
-            device: 
-            ...
+            # device: or command:
+        Linux_Config:
+            # device: or command:
+        Rootfs:
+            # device: or command:
+        Misc_Boot:
+            # device: or command:
+        Misc_Root:
+            # device: or command:
 </code></pre>
+
+<ul>
+<li>
+<p><strong><em>partition_table</em></strong>:</p>
+<p>This section defines the partition table of the mmc device. The most embedded
+  devices use <em>msods</em> or <em>gpt</em> for the partition table.</p>
 </li>
 <li>
-<p>Now we can add a deploy class for the <em>hdd</em> recipe type. This class must be
-    stated in the file <em>hdd.py</em> and inherit from the super class Deploy. The 
-    following constructor and methods must be implemented for this class.</p>
-<pre><code>`def __init__(self, recipe, actions, builds, platform, auto)`
-`def prepare(self)`
-`def load(self)`
-</code></pre>
-<p>The setup routine will search for a python file with the name <em>hdd.py</em> in
-the directory <em>deploy</em>. The module variable <code>__entry__</code> must be set with the 
-class name of the implemented deploy class. Let's call this class
-<code>HddDeploy</code>. The following example will show the structure of the python
-file.</p>
-<pre><code>from flashtool.setup.deploy import Deploy
-# other imports
-
-class HddDeploy(Deploy):
-
-    def __init__(self, recipe, actions, builds, platforms, auto):
-        # do initialization steps for the class ...
-
-    def prepare(self):
-        # code for preparation steps of the hardware, like partition
-        # the device
-
-    def load(self):
-        # loading products to the device.
-
-__entry__ = HddDeploy
-</code></pre>
-<p>The setup routine will call first all <code>prepare()</code> methods of all objects
-which were specified in the <em>YAML</em> file and then all <code>load()</code> methods.</p>
+<p><strong><em>partitions</em></strong>:</p>
+<p>This section is used to define partitions on the mmc device. Each partition
+  must be listed with a dash and must contain the subsections name, size,
+  fs_type, mount_point, mount_opts and flags. If one of these section is not
+  needed, just leave the value after the colon blank.</p>
+<ul>
+<li>
+<p><strong><em>name</em></strong>:</p>
+<p>Name or label of the partition. The partition table type must support this
+feature.</p>
 </li>
-</ol>
+<li>
+<p><strong><em>size</em></strong>:</p>
+<p>Size of the partition. The used units are b (byte), kb (kilobyte), mb
+(megabyte), gb (gigabyte) and %. It is also possible to use the keyword
+<em>max</em> for the last stated partition. If you want to state the size of the
+partion in percentage, please use the percentage notation for each
+partition.</p>
+</li>
+<li>
+<p><strong><em>fs_type</em></strong>:</p>
+<p>Filesystem type of the system. The <strong>Flashtool</strong> supports ext2, ext3, ext4,
+fat32 and btrfs.</p>
+</li>
+<li>
+<p><strong><em>mount_point</em></strong>:</p>
+<p>Specifies the mount point which will be written in the <strong>fstab</strong> of the linux
+system.</p>
+</li>
+<li>
+<p><strong><em>mount_opts</em></strong>:</p>
+<p>Specifies the mount options for the partition which will be written in the
+<strong>fstab</strong> of the linux system.</p>
+</li>
+<li>
+<p><strong><em>flags</em></strong>:</p>
+<p>Flag for the partition. e.g. <em>boot</em>, <em>lba</em>. Multiple flags must be seperated 
+with a comma.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><em>load</em></strong>:</p>
+<p>This section defines on which partition a software product should be loaded.
+  The user can choose between the option <em>device</em> or <em>command</em> for every
+  subsection. If a software product should be loaded on a partition of the mmc
+  device, the user must use the option <em>device</em> and state the index of the
+  partition which is defined in the section <strong>partitions</strong>. The index starts
+  with zero.</p>
+<p>If a product should be loaded with an external command to the mmc device, you
+  must use the option <strong>command</strong>. The value of the option is the external
+  command. For a command you can use the to template variables <em>${file}</em> and
+  <em>${device}</em>. The variable <em>${file}</em> will be replaced with the name of the
+  specific software product. The variable <em>${device}</em> will be replaced with the
+  <em>/dev path</em> of the mmc device or the <em>dev path</em> of the mmc partition, if a
+  number is written at the end of the variable (e.g. <em>${device0}</em>).</p>
+<p>The existing software products are Uboot, Linux_Boot, Linux_Root,
+  Linux_Config, Rootfs, Misc_Boot, Misc_Root.</p>
+</li>
+</ul>
+<p><strong>Example for a recipe file with a mmc recipe (utilite-pro.yml):</strong> - Also available in
+the HTWG configuration.</p>
+<pre><code>---
+type: mmc
+
+recipe:
+    partition_table: msdos
+    partitions:
+        -   name: boot
+            size: 100mb
+            fs_type: fat32
+            mount_point: /boot
+            mount_opts:
+            flags: lba
+        -   name: rootfs
+            size: max
+            fs_type: btrfs
+            mount_point: /
+            mount_opts:
+            flags: 
+    load:
+        Uboot:
+            command: dd if=${file} of=${device} bs=1K skip=1 seek=1 oflag=dsync
+        Linux_Boot:
+            device: 0
+        Linux_Root:
+            device: 1
+        Linux_Config:
+            device: 1
+        Rootfs:
+            device: 1
+</code></pre>
+
 </div>
         </div>
 

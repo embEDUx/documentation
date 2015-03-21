@@ -129,12 +129,28 @@
                             <a href="../../post-install/user-documentation/index.html">Post Install/User Documentation</a>
                         </li>
                     
+                        <li >
+                            <a href="../index.html">Workstation</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="index.html">Workstation/Flashtool</a>
                         </li>
                     
                         <li >
-                            <a href="../development/flashtool/index.html">Workstation/Development/Flashtool</a>
+                            <a href="../../flashtool/index.html">Flashtool</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../flashtool/deployment/index.html">Flashtool/Deployment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../flashtool/deployment/add-new-deployment/index.html">Flashtool/Deployment/Add New Deployment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../flashtool/deployment/add-recipe-file/index.html">Flashtool/Deployment/Add Recipe File</a>
                         </li>
                     
                         <li >
@@ -338,12 +354,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../../post-install/user-documentation/index.html">
+                    <a rel="next" href="../index.html">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../development/flashtool/index.html">
+                    <a rel="prev" href="../../flashtool/index.html">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -357,90 +373,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#setup-of-the-flashtool">Setup of the Flashtool</a></li>
-        
-            <li><a href="#requirements">Requirements</a></li>
-        
-            <li><a href="#installation">Installation</a></li>
-        
-    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
-
-<h1 id="setup-of-the-flashtool">Setup of the Flashtool</h1>
-<h2 id="requirements">Requirements</h2>
-<p><strong>System:</strong></p>
-<ul>
-<li>python3</li>
-<li>python3-dev</li>
-<li>virtualenv</li>
-<li>libudev &gt;= 151</li>
-<li>libparted</li>
-<li>gcc</li>
-<li>sed</li>
-<li>git</li>
-</ul>
-<p><strong>Python packages:</strong></p>
-<p>These package will be automatically installed when the <a href="#installation-python">installation
-instruction</a>
-below is followed.</p>
-<ul>
-<li>setuptools</li>
-<li>colorama</li>
-<li>pyudev</li>
-<li>argcomplete</li>
-<li>PyYAML</li>
-<li>requests</li>
-<li>jinja2</li>
-<li>pyparted</li>
-<li>pycrypto</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<h3 id="required-packages">Required Packages</h3>
-<h4 id="installation-ubuntudebian">Installation Ubuntu/Debian:</h4>
-<pre><code class="sh">$ apt-get install gcc python3 python3-dev python-virtualenvironment libudev-dev libparted sed git
-</code></pre>
-
-<h4 id="installation-arch-linux">Installation Arch Linux:</h4>
-<pre><code class="sh">$ pacman -S gcc python3 python-virtualenv libsystemd parted sed git
-</code></pre>
-
-<h4 id="installation-fedora-linux">Installation Fedora Linux:</h4>
-<pre><code class="sh">$ yum install gcc python3 python3-devel python-virtualenv udev parted sed git
-</code></pre>
-
-<h4 id="installation-python">Installation Python:</h4>
-<p><strong>Virtualenv:</strong></p>
-<p>Creating an virtual environment for python (python version must be &gt;=3)</p>
-<pre><code class="sh">$ virtualenv -p python3  {path/for/virtualenv}  # python3 can also be python3.x
-</code></pre>
-
-<p>Go into the virtual environment. All packages installed via pip will only be
-installed at the location of the virtual environment ({path/for/virtual-env})</p>
-<pre><code class="sh">$ source {path/for/virtualenv}/bin/activate
-</code></pre>
-
-<p>All python related packages will now be executed from virtual environment path 
-The python installation of the system will be untouched.</p>
-<p>After working with the virtual environment you can leave the virtual 
-environment with the following command.</p>
-<pre><code class="sh">$ deactivate
-</code></pre>
-
-<p><strong>Installation of python packages via pip:</strong></p>
-<pre><code class="sh">$ source {path/to/virtualenv}/bin/activate  # go into virtualenv
-</code></pre>
-
-<p>Before you can install the package via <em>pip</em> you must ensure that the
-<em>setuptools</em> package is installed.</p>
-<pre><code class="sh">$ pip install setuptools
-</code></pre>
-
-<p>Now you can install the required python packages and the <strong>Flashtool</strong> 
-with the following command:</p>
-<pre><code class="sh">$ pip install -r https://raw.githubusercontent.com/embEDUx/flashtool/master/requirements.txt 
-</code></pre>
 
 </div>
         </div>
