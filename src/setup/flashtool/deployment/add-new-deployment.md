@@ -1,11 +1,56 @@
-## Adding new recipe types
+# Add A New Deployment Procedure
+
+**(work in progress)**
+
+This chapter describes how to implement new recipe types for the deployment
+procedure. If you are unsure about the concept of recipe files for the
+**Flashtool** please read the chapter [Deployment with the Flashtool](../deployment.md)
+and [Writing a new recipe file](add-recipe-file.md) first.
+
+
+## Common Procedure For A Developer
+
+(TODO)
+
+## General structure of a recipe file
+
+The recipe files for the **Flashtool** are written in 
+[YAML-Syntax](http://yaml.org/). The next example shows the general structure
+of a recipe file.
+
+```yaml
+---
+type: # name of recipe type
+
+recipe: 
+    # specific configurations of the recipe
+    # ...
+
+---
+type: # next recipe
+
+recipe:
+    # ...
+```
+
+The `---` is necessary to indicate a *YAML-document*. The example shows that a
+recipe file can contain multiple *YAML-documents*. There must be at least one of
+it.
+Every *YAML-document* must contain a *type* keyword and a *recipe* keyword. The
+content of the *recipe* section depends on the selected type. This is shown
+in the next chapter.
+
+
+## Recipe Skeletons And Their Python Representation
 
 A recipe file is written in *YAML-Syntax* an can easily read in by python. To
 avoid errors from the author of the recipe file, the given key value pairs in
 the recipe files, are parsed and checked by the **Flashtool**. The **Flashtool**
-provides an interface for new recipe types.
+provides an interface for new recipe skeletons.
 
-A new recipe type for the setup procedure of the **Flashtool** must be defined
+## Structure Of The Setup Module Of The Flashtool
+
+A new recipe skeleton for a deployment must be defined
 and implemented in python. The next figure will show the structure of the 
 setup part of the **Flashtool**.
 
@@ -25,21 +70,23 @@ setup part of the **Flashtool**.
 ```
 
 The **Flashtool** will read in the recipe file from top to bottom. Each *YAML 
-document* in the recipe file represents a recipe. The type of the recipe 
-is given by the key `type`. Only values are allowed which are mapped as python 
-file in the deploy and recipe section. In this example the user can only state 
-the recipe type `type: mmc`.
+document* in the recipe file represents a recipe skeleton. The type of the recipe 
+skeleton is given by the key `type`. Only values are allowed which are mapped 
+as python file in the deploy and recipe directory. 
+
+According to the directory structure above the user can only state the recipe 
+skeleton for *MMC* devices (`type: mmc`).
 
 
-### Python representation of a recipe type
+### Python Representation Of A Recipe Skeleton
 
 The next example will show you how to implement a python representation for a 
-recipe type. Let's call the new recipe type *hdd*. 
+recipe skeleton. Let's create recipe skeleton for a *HDD* device. 
 
-1. Specify a *YAML document* with all keywords which the recipe type *hdd* should
-    have. The keywords for the recipe must be stated in the `recipe:` section. 
-    If you do not know how the *YAML* syntax look like, please have a closer look 
-    [here](http://www.yaml.org/spec/1.2/spec.html#id2759963).
+1. Specify a *YAML document* with all keywords which the recipe skeleton for
+   *hdd* devices should have. The keywords for the recipe must be stated in the
+   `recipe:` section.  If you do not know how the *YAML* syntax look like,
+   please have a closer look [here](http://www.yaml.org/spec/1.2/spec.html#id2759963).
 
 
         ---
@@ -214,3 +261,17 @@ recipe type. Let's call the new recipe type *hdd*.
 
     The setup routine will call first all `prepare()` methods of all objects
     which were specified in the *YAML* file and then all `load()` methods.
+
+
+## Information to write in this chapter
+
+**Attention: the setup routine only allows to deploy products on platforms
+which use a mmc device as storage media. Support for other storage media must be implemented.**
+
+If you want to implement new features to the **Flashtool**, please consider
+reading the development section for the **Flashtool**. The new functionality
+must be triggered by a recipe file an must be explained in the [recipe
+files](#recipe-files) chapter.
+
+The setup procedure requires an existing [recipe](#How_to_write_a_recipe_file) 
+file.

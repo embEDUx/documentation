@@ -35,9 +35,8 @@ key_order = {
         'Linux',
         'Root',
         'Misc',
+        'Workstation',
         'Flashtool',
-        'Workstation/Flashtool',
-        'Workstation/Development',
         ], 
     'back': [ 
         'Customization/',

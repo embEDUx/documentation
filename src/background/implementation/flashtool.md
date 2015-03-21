@@ -29,8 +29,8 @@ The user is able to define how to partition a *MMC* storage device of the
 platform and where the products should be loaded. The **Flashtool** supports the
 *MMC* storage device, because the platforms used in the HTWG context use
 SD-cards as storage media. How to implement a new recipe type is explained in
-the [development section](../../setup/workstation/development/flashtool.md) of the
-**Flashtool**.
+the [deployment section](../../setup/flashtool/deployment/add-new-deployment.md) 
+of the **Flashtool**.
 
 ### Language
 

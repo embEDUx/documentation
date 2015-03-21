@@ -70,7 +70,7 @@ libraries in pure python. ((ctypes)[https://docs.python.org/2/library/ctypes.htm
 There are other libraries like [swig](http://swig.org/Doc1.3/Python.html) and 
 [cython](http://cython.org/) to connect C and C++ with Python.
 
-Such mechanism are not **Bash**
+Such mechanism are not known for **Bash**.
 
 
 #### Summary
@@ -80,7 +80,7 @@ Such mechanism are not **Bash**
 
 * Python is faster (organizing data structures, *http* requests, etc.)
 * Large Python project are easier to maintain than with **Bash**
-* 
+* Python provides a wide variety of standard and additional modules
 
 ## User interface
 
