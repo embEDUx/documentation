@@ -59,8 +59,6 @@ were chosen for the core of the solution are
 If you are interested in why these choices were made, please head over to the
 [background section](background/background.md)
 
-
-
 ## Building Customized Linux Distributions
 The embEDUx build system been designed to build customized Linux distributions.
 These systems consist of distinct products, namely
@@ -88,46 +86,20 @@ its usage, here we go!
 
 ### Setup
 If you already have access to a fully setup instance of the build system, you
-can skip this chapter. Otherwise, please follow the [Setup
-Instructions](setup/setup.md)
+can skip this chapter. 
 
-### Post Install
-The post installation procedures will guide the Administrator through creating
-toolchains and the user documentation. These are very important steps, because
-the objects are required by the user to use the buildsystem.
-
-* [Toolchains](setup/post-install/toolchains.md)
-* [User Documentation](setup/post-install/user-documentation.md)
+* [Setup Instructions](setup/setup.md)
 
 ### Usage
 The customized Linux distribution will consist of the aforementioned products,
 of which you will have to build ***all*** in order to achieve ultimate glory
 with a complete system for your target platform!
 
-[![Abstract](img/abstract.png)](img/abstract.png)
+* [Usage Overview](usage/usage.md)
 
-#### Overview
-We strongly suggest that you have a look at the [usage
-overview](usage/usage.md). The overview will give you an idea of how the process
-of building a product looks like in a general sense.
+### Deploy
+**embEDUx** ships a CLI-style [Flashtool](usage/flashtool.md) for
+easy deployment to your hardware! 
 
-#### Build
-If you feel ready, please begin to **build your products**!
-
-* [U-Boot](usage/uboot.md) images
-* [Linux](usage/linux.md)-Kernel images and modules
-* [RootFS](usage/rootfs.md)-archives based on Gentoo
-
-
-Some platforms, e.g. the Raspberry Pi, require additional files that do not
-strictly belong to any of the three products from above. These miscellaneous
-files are stored in their very own repository which is handled separately.
-
-* [Misc](usage/misc.md)-archives
-
-#### Deploy
-**embEDUx** ships a CLI-style [Flashtool](background/implementation/flashtool.md) for
-easy deployment to your hardware!  More information and instructions for manual
-deployment shall be found at the end of the [usage
-overview](usage/usage.md#hardware-deployment)
+* [Hardware Deployment](usage/usage.md#hardware-deployment)
 

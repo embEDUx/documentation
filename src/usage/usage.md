@@ -111,8 +111,8 @@ After the required build have successfully completed you can finally deploy the
 products to your hardware.
 
 ### Flashtool 
-You can [deploy your builds to hardware in a semi-automated manner using the
-flashtool](../usage/flashtool.md). Please note that to deploy a complete system,
+You can deploy your builds to hardware in a semi-automated manner using the
+[Flashtool](flashtool.md). Please note that to deploy a complete system,
 successful builds of all products need to be available.  This means, single
 products can be built and deployed if there are previous successful builds for
 the target platform.
