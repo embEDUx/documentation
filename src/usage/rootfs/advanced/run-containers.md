@@ -1,6 +1,4 @@
 # Run RootFS' as Containers
-(work in progress)
-
 Once a RootFS has successfully been built and uploaded to the *buildmaster*, it
 can be imported into and run by various container management systems. As there are many of
 them and the number is growing, the examples cover the currently
@@ -26,7 +24,7 @@ embedux/amd64_factory          20150122184525_294b218   8d02c7806b47        5 mi
 ```
 
 ### Run Interactive Container
-TODO
+***TODO: explain how to run a Docker container interactively***
 
 
 ## Systemd
