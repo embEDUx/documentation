@@ -1,6 +1,4 @@
 # RootFS Build Implementation
-**(work in progress)**
-
 This chapter explains the implementation of the RootFS build routine. According
 to the [RootFS evaluation results](../evaluation/rootfs.md), **Ansible** has
 been used for the implementation. 
@@ -37,7 +35,7 @@ Altogether, the build routine consists of 10 plays. The following table gives a
 brief overview about all the plays. The host column is directly taken from the
 `ansible-playbook --list-tasks` commands, and gives some insight how the host
 organization options have been used. The example shows the procedure for a fresh
-build enviornment. Some of these steps are automatically skipped on subsequent
+build environment. Some of these steps are automatically skipped on subsequent
 build jobs, e.g. play #3 and #6.
 
 Play # | Cross/Native | Host | Summary
@@ -58,7 +56,6 @@ The actions that are **marked bold** process the **configuration.yml and overlay
 directories** that have been stored in the RootFS product specification
 repository. If you are interested in an example, please have a look at the
 [RootFS Usage page](../../usage/rootfs.md#repository-file-structure).
-
 
 The table has been simplified, since all plays consists of a total of 137 tasks.
 Please investigate the [source code of the build

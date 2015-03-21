@@ -4,11 +4,12 @@
 
 ### Requirements
 * Ansible
-* buildserver\_setup repository
+* buildserver-setuproutine repository
 * SSH root-access to the docker host running the buildslave(s) in question
 
 ### Suggestions
-* Read and understand TODO: Add link to background page
+* Understand how the [buildserver setup
+  routine](../../background/implementation/buildserver.md#) works
 * SSH root-access via key authentication
 
 ## Example - Adding 'sys-apps/dtc'

@@ -1,57 +1,14 @@
 # FAQ
-This should one day be realized as a standalone bugtracker.
 
+## GitHub Issue Trackers
+Future issues are going to be tracked on their GitHub Issue pages.
 
-# RootFS
-## Package Specific Problems
-### *net-wireless/gnuradio* - fails on armv6\_hardfp due to lack of NEON support
-This was first encountered with package during the RootFS buildjob on the armv6j\_hardfp buildslave.
-
-#### Build Log Snippet
-```
-libvolk.so.0.0.0: undefined reference to `volk_16i_max_star_horizontal_16i_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_x2_multiply_32fc_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_32f_dot_prod_32fc_a_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32f_x2_dot_prod_32f_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32f_x2_dot_prod_32f_neonasm_opts'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_32f_dot_prod_32fc_a_neonpipeline'
-collect2: error: ld returned 1 exit status
-volk/lib/CMakeFiles/test_all.dir/build.make:119: recipe for target 'volk/lib/test_all' failed
-make[2]: *** [volk/lib/test_all] Error 1
-make[2]: Leaving directory '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
-CMakeFiles/Makefile2:132: recipe for target 'volk/lib/CMakeFiles/test_all.dir/all' failed
-make[1]: *** [volk/lib/CMakeFiles/test_all.dir/all] Error 2
-make[1]: Leaving directory '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
-Makefile:146: recipe for target 'all' failed
-make: *** [all] Error 2
- * ERROR: net-wireless/gnuradio-3.7.6::gentoo failed (compile phase):
- *   emake failed
- * 
- * If you need support, post the output of `emerge --info '=net-wireless/gnuradio-3.7.6::gentoo'`,
- * the complete build log and the output of `emerge -pqv '=net-wireless/gnuradio-3.7.6::gentoo'`.
- * The complete build log is located at '/var/tmp/portage/net-wireless/gnuradio-3.7.6/temp/build.log'.
- * The ebuild environment file is located at '/var/tmp/portage/net-wireless/gnuradio-3.7.6/temp/environment'.
- * Working directory: '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
- * S: '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6'
-```
-
-#### Solution
-* Upstream bug ticket: https://gnuradio.org/redmine/issues/692
-**(work in progress)**
-
-## Build Routine Problems
-
-### proot upgrade causes unexpected behavior with nested SSHd
-The following structure gives an outline of the scenario and the direct result of
-the mentioned bug after upgrading *sys-apps/proot* to version 5.0.0 inside the
-container *buildslavei\_rootfs\_amd64*.
-
-```
-- Hardware Host @ OpenVZ Kernel 2.6.32.something
-  - QEMU/KVM VM @ Gentoo Kernel 3.19
-    - Docker container that contains another chroot_rootfs
-      - running as user $ sudo proot chroot_inside_container sshd -p 2222
-        - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true 
-            --> FAILS WITH 'Permission Denied'
-```
+Component | URL
+--- | ---
+Buildserver setup routine | <https://github.com/embEDUx/buildserver-setuproutine/issues>
+RootFS build routine | <https://github.com/embEDUx/rootfs-buildroutine/issues>
+Flashtool | <https://github.com/embEDUx/flashtool/issues>
+Linux-Kernel spec examples | <https://github.com/embEDUx/linux-specs/issues>
+Toolchain spec examples | <https://github.com/embEDUx/toolchain-specs/issues>
+U-Boot spec examples | <https://github.com/embEDUx/uboot-specs/issues>
+RootFS spec examples | <https://github.com/embEDUx/rootfs-specs/issues>

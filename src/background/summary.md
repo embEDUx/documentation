@@ -43,4 +43,5 @@ need to be resolved in order to improve the build system make it viable for more
 generic scenarios.
 
 As the project lives on GitHub now, the publicly available issue trackers will
-be used.
+be used. A list of all issue trackers can be found on the [FAQ
+page](../troubleshooting/faq.md).

@@ -11,7 +11,7 @@ documentation](post-install/user-documentation.md) for the URLs.
       password
 
 ### Installed Packages
-The follow list of packages are required to be installed on the adminstation.
+The follow list of packages are required to be installed on the Adminstation.
 The list also contains short explanations what they're needed for.
 
 * Git
