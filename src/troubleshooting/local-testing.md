@@ -75,9 +75,9 @@ $ ./build
         Cloning into 'linux'...
         ... 
 
-Any errors that occur during the build process should be fixed before you push
-the build script or any modifications on configuration files upstream! If you
-build script runs locally, it should also run on the buildserver. Please test
-the script locally, and confirm it works, before you contact an Administrator
-for further guidance..
+**Important**: Any errors that occur during the build process should be fixed
+before you push the build script or any modifications on configuration files
+upstream! If you build script runs locally, it should also run on the
+buildserver. Please test the script locally, and confirm it works, before you
+contact an Administrator for further guidance..
 
