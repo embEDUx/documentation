@@ -1,23 +1,102 @@
-# Repository Setup
-**(work in progress)**
+# Setup of the Flashtool
 
-## Product Repositories
-Setup an empty repository for each of the products. They will be used by the
-users to provide their build specifications to the buildserver.
+## Requirements
 
-Product | Repository
---- | ---
-U-Boot | uboot-specs
-Linux | linux-specs
-RootFS | rootfs-specs
-Miscellaneous files | misc-specs
-Toolchain | toolchain-specs
+__System:__
 
-If you don't know how to setup empty repositories, have a look at [github hello
-world](https://guides.github.com/activities/hello-world/#repository). Please
-document the repositories URLs in the [User
-Documentation](post-install/user-documentation.md). For the **embEDUx** build
-system you need the *https* version of the URL, which can be obtained on the
-lower right side on the [Github](https://github.com) website of the repository.
+- python3
+- python3-dev
+- virtualenv
+- libudev >= 151
+- libparted
+- gcc
+- sed
+- git
 
-![Repository URL](setup/img/github_url.png)
+__Python packages:__
+
+These package will be automatically installed when the [installation
+instruction](#installation-python)
+below is followed.
+
+- setuptools
+- colorama
+- pyudev
+- argcomplete
+- PyYAML
+- requests
+- jinja2
+- pyparted
+- pycrypto
+
+
+## Installation
+
+### Required Packages
+
+#### Installation Ubuntu/Debian:
+
+```sh
+$ apt-get install gcc python3 python3-dev python-virtualenvironment libudev-dev libparted sed git
+```
+
+#### Installation Arch Linux:
+
+```sh
+$ pacman -S gcc python3 python-virtualenv libsystemd parted sed git
+```
+
+#### Installation Fedora Linux:
+
+```sh
+$ yum install gcc python3 python3-devel python-virtualenv udev parted sed git
+```
+
+#### Installation Python:
+
+
+**Virtualenv:**
+
+Creating an virtual environment for python (python version must be >=3)
+
+```sh
+$ virtualenv -p python3  {path/for/virtualenv}  # python3 can also be python3.x
+```
+
+Go into the virtual environment. All packages installed via pip will only be
+installed at the location of the virtual environment ({path/for/virtual-env})
+
+```sh
+$ source {path/for/virtualenv}/bin/activate
+```
+
+All python related packages will now be executed from virtual environment path 
+The python installation of the system will be untouched.
+
+After working with the virtual environment you can leave the virtual 
+environment with the following command.
+
+```sh
+$ deactivate
+```
+
+
+**Installation of python packages via pip:**
+
+```sh
+$ source {path/to/virtualenv}/bin/activate  # go into virtualenv
+```
+
+Before you can install the package via *pip* you must ensure that the
+*setuptools* package is installed.
+
+```sh
+$ pip install setuptools
+```
+
+Now you can install the required python packages and the **Flashtool** 
+with the following command:
+
+```sh
+$ pip install -r https://raw.githubusercontent.com/embEDUx/flashtool/master/requirements.txt 
+```

@@ -9,7 +9,7 @@ build system.
 * [Adminstation](adminstation.md)
 * [Buildserver](buildserver.md)
 * [Repositories](repositories.md)
-* [Workstation](workstation/flashtool.md)
+* [Workstation](workstation.md)
 
 ## Post Install
 These steps are necessary after the setup was done successfully.
