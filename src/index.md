@@ -76,13 +76,11 @@ subject related literature.
 
 
 ## Getting Started with ***your*** Distribution
-The task of building a customized Linux distribution is rather complex, 
-and the **embEDUx** tries to not take away flexibility with the provided
-solution. Therefore, a good understanding of the matter is needed and it is
-not possible to provide you with a static instruction list.
-
-Like every software system, the very basic topics are about its setup and
-its usage, here we go!
+The task of building a customized Linux distribution is rather complex, and the
+**embEDUx** tries to not take away flexibility with the provided solution.
+Therefore, a good understanding of the matter is needed and it is not possible
+to provide you with a static instruction list. Like every software system, the
+very basic topics are about its setup and its usage, here we go!
 
 ### Setup
 If you already have access to a fully setup instance of the build system, you
