@@ -84,7 +84,7 @@ echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/e
 
 ### Start In Background
 
-Starting the container happens with the `macinectl start` command. It should not
+Starting the container happens with the `machinectl start` command. It should not
 take any longer than a couple of seconds.
 
 ```
