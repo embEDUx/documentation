@@ -2,7 +2,7 @@
 The implementation of the system components must follow the [post-evaluation
 system design](evaluation.md#post-evaluation-system-overall-design)
 
-* [Buildserver Setuproutine](implementation/buildserver.md#setuproutine)
+* [Buildserver Setup routine](implementation/buildserver.md#setuproutine)
 * [Container Utility](implementation/buildserver.md#container-utility)
 * [Continuous Integration](implementation/buildserver.md#continuous-integration)
 * [Flashtool](implementation/flashtool.md)

@@ -47,7 +47,7 @@ Linux | './build'
 Uboot | './build'
 Misc | './build'
 Toolchain | './build'
-RootFS | *special ansible buildroutine: TODO LINK*
+RootFS | *special ansible build routine: TODO LINK*
 
 ## Output Directories
 Product | Output Folder
@@ -56,7 +56,7 @@ Linux | output
 Uboot | output 
 Misc | output
 Toolchain | output
-RootFS | *special ansible buildroutine: TODO LINK*
+RootFS | *special ansible build routine: TODO LINK*
 
 ## Output File-Scheme
 Product / Description | Nr of Files / File-Scheme

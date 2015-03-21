@@ -4,7 +4,7 @@ the designed features:
 
 * Cross-target support
 * Package management
-* Buildroutine Automation
+* Build routine Automation
 
 ## Gentoo Portage
 **Gentoo Portage** is a full-fledged source-based package management system that
@@ -137,7 +137,7 @@ Criteria | Result | Notes
 --- | --- | ---
 Cross-target support | NO | not reliable
 Package management | YES | portage package manager included
-Buildroutine Automation | NO | needs wrapper
+Build routine Automation | NO | needs wrapper
 
 
 ## Qemu User Emulation
@@ -268,7 +268,7 @@ From the aforementioned evaluation and the evaluation of
 [buildroot](buildroot.md) and the [Yocto Project](yocto-project.md) the results
 are as shown.
 
-Candidate | Cross-target support | Package management | RootFS Buildroutine Automation
+Candidate | Cross-target support | Package management | RootFS Build routine Automation
 --- | --- | --- | ---
 Gentoo Portage | NO | YES | -
 Gentoo catalyst | NO | - | YES
@@ -282,19 +282,19 @@ Qemu system emulation | YES / slow | - | -
 It seems like there is no completely ready solution for building RootFS. As a
 result, the choice is to pick the components that **offer reliability in
 cross-target support, and package management qualities** and incorporate the
-them into a custom automated buildroutine. The components chosen for the task
+them into a custom automated build routine. The components chosen for the task
 are **Gentoo Portage** paired with **Qemu system emulation** in case of
 Cross-Target buildjobs.
 
-# Evaluation RootFS Buildroutine
+# Evaluation RootFS Build routine
 As described in the design chapter [Buildserver - Build Automation
-Routines](../design/buildserver.md#build-automation-routines), the automated RootFS buildroutine will be triggered by the continuous integration master component.
+Routines](../design/buildserver.md#build-automation-routines), the automated RootFS build routine will be triggered by the continuous integration master component.
 
-## RootFS Buildroutine Steps
+## RootFS Build routine Steps
 Based on recent evaluation results and the described steps that were designed
 under [Design - RootFS Build Automation
 Routine](../design/rootfs.md#rootfs-build-automation-routine), the RootFS
-buildroutine can be specified in greater detail.
+build routine can be specified in greater detail.
 
 1. If running on a Cross-Target Container
     1. Ensure that the disk image for the virtual machine is prepared

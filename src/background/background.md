@@ -27,7 +27,7 @@ bias towards the requirements specific to the lab-courses.
 
 ## What Is It And What Can It Do?
 * Automated build system for complete customized Linux distributions
-* Easy to setup via the configurable setuproutine
+* Easy to setup via the configurable setup routine
 * Centralized build configurations for all your platforms
 * Individual configuration and builds with specified targets, organized by
     * Platform: for Linux-Kernel, U-Boot
