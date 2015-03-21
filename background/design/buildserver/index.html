@@ -263,6 +263,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../implementation/flashtool/code-documentation/index.html">Implementation/Flashtool/Code Documentation</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
@@ -284,6 +288,10 @@
                     
                         <li >
                             <a href="../../implementation/uboot/index.html">Implementation/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../summary/index.html">Summary</a>
                         </li>
                     
                         <li >
@@ -383,8 +391,7 @@
             <div class="col-md-9" role="main">
 
 <h1 id="buildserver">Buildserver</h1>
-<p><strong>(work in progress)</strong>
-This chapter describes the design of the buildserver components and the setup
+<p>This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.</p>
 <h2 id="automated-build-triggering">Automated Build Triggering</h2>
 <p>The builds for the different products should be triggered in an automated manner
@@ -421,14 +428,15 @@ Design Chapter</a>.</p>
 <p>Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the <strong>embEDUx</strong> build system
 to be able to add his platform. One way to look at extensibility is to already
-take the initial setup into account, where the hardware platforms are
-practically added too, just to a zero-base. Designing this step to be as easy as
-possible, will allow to extend the system as easy as possible. Therefore, this
-criteria is moved over to the <a href="#setup-automation-routine">setup automation routine
-design</a>, which is the next chapter.</p>
+take the initial setup into account. At this point, adding a new platform should
+be no different than adding a new platform later. Designing this step to be as
+easy as possible will be beneficial to the initial setup and to the
+extensibility at the same time. Therefore, this criteria is moved over to the
+<a href="#setup-automation-routine">setup automation routine design</a>, which is the next
+chapter.</p>
 <h2 id="setup-automation-routine">Setup Automation Routine</h2>
-<p>The job of the setup routine is to setup all buildserver components.  The
-buildserver will undoubtedly be a complex structure of software components.  To
+<p>The job of the setup routine is to setup all buildserver components. The
+buildserver will undoubtedly be a complex structure of software components. To
 make the setup as easy as possible it should be automated as far as possible.</p>
 <h3 id="required-setup-parameters">Required Setup Parameters</h3>
 <p>The administrator should only have to configure the parameters that can't
@@ -457,7 +465,7 @@ should be shipped with defaults from the HTWG setup.</p>
 <ul>
 <li>
 <p>Target Platform and Architectures</p>
-<p>The platform names and their corresponding architecture.  The architectures
+<p>The platform names and their corresponding architecture. The architectures
 will be supported as build targets. By default, all tested platforms will be
 available as supported. The user is not forced to use them, but it is useful
 to already have working examples in the local installation.</p>
@@ -466,9 +474,9 @@ to already have working examples in the local installation.</p>
 <h3 id="default-setup-parameters">Default Setup Parameters</h3>
 <p>All other setup parameters should be provided as defaults by the setup routine.</p>
 <h3 id="configuration-generation-from-templates">Configuration Generation From Templates</h3>
-<p>The configured and default setup parameters should be used to
-generate the configuration files for the buildsystem. For commonly used changes,
-the generator can be extended and can be utilized by beginners immediately.
+<p>The configured and default setup parameters should be used to generate the
+configuration files for the buildsystem. For commonly used changes, the
+generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary. </p>
 <h3 id="setup-automation-routine-candidates">Setup Automation Routine Candidates</h3>
 <p>The setup routine should be automated using an appropriate programming or
@@ -488,6 +496,7 @@ The candidates are</p>
 <li>Code readability</li>
 </ul>
 <h3 id="setup-automation-routine-tasks">Setup Automation Routine Tasks</h3>
+<p>The following tasks need to be done by the setup routine.</p>
 <h4 id="execute-commands-on-the-target-machine">Execute commands on the target machine</h4>
 <p>Executing commands on the target machine will be necessary in order to complete
 the setup. The most commonly remote control utility is <strong>SSH</strong>, which shall be
@@ -499,10 +508,6 @@ has a package manager available. As it has not been mentioned in any previous
 steps, it is necessary to chose the supported package managers now. A sane
 decision is to support <strong>Ubuntu</strong> and <strong>Gentoo</strong> as buildserver machines, and
 therefore to support <strong>apt</strong> and <strong>portage</strong>.</p>
-<ul>
-<li>apt</li>
-<li>portage</li>
-</ul>
 <h2 id="abstraction-layer-for-automation">Abstraction Layer For Automation</h2>
 <p>In order to have an automated build system, all components should be setup and
 run abstracted from the buildserver's host system as far as possible.
@@ -516,27 +521,26 @@ They run on a so-called Hypervisor, which simulates a complete machine for the
 target system. The target system runs it's own kernel, and needs to boot and
 initialize an Operating System from scratch. Security is considered very high,
 since the Hypervisor has full control over soft- and hardware-resources that are
-passed to the guest system.   The architecture of an operating system inside a
+passed to the guest system. The architecture of an operating system inside a
 virtual machine can be completely different to the host architecture, and thus
-is highly portable.  Depending on available acceleration technologies, the
+is highly portable. Depending on available acceleration technologies, the
 performance of the virtual CPU, RAM and disk can suffer significantly.</p>
 <h3 id="linux-containers">Linux Containers</h3>
 <p>Linux Containers utilize a feature in recent Linux Kernels which allow
 separating processes from each other. This includes the separation of host and
 contained processes, as well as different contained processes from each other.
-These contained processes can be an initialization processes to boot a
-different Linux System on the running host Linux kernel, or simply any other
-application available. Recently there has been a lot of development and
-activity on Linux Containers in the community, namely because of a software
-called Docker. Security is highly dependent on the implementation of the
-process separating that happens in the host kernel.   The host kernel must
-obviously be able to run the contained application.  Therefore, the
-application must either be in the host's native or compatible executable
-format, or the system needs an emulator to run the foreign architecture. The
-performance for contained processes does not differ significantly compared to
-a regular running process. This is not entirely true for executables that
-require emulation because the CPU instructions must be translated before they
-can be run.</p>
+These contained processes can be an initialization processes to boot a different
+Linux System on the running host Linux kernel, or simply any other application
+available. Recently there has been a lot of development and activity on Linux
+Containers in the community, namely because of a software called Docker.
+Security is highly dependent on the implementation of the process separating
+that happens in the host kernel. The host kernel must obviously be able to run
+the contained application. Therefore, the application must either be in the
+host's native or compatible executable format, or the system needs an emulator
+to run the foreign architecture. The performance for contained processes does
+not differ significantly compared to a regular running process. This is not
+entirely true for executables that require emulation because the CPU
+instructions must be translated before they can be run.</p>
 <h3 id="choosing-linux-containers">Choosing Linux-Containers</h3>
 <p>In favor of speed (see <a href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf">Comparison of VM and Linux
 Containers</a>)
@@ -572,11 +576,11 @@ following target archtecture specific components:</p>
 </li>
 </ul>
 <h4 id="container-management-setup-steps">Container Management Setup Steps</h4>
-<p>Managing containers includes more than starting and stopping them. The
-setup routine needs to assemble the content from scratch.  This requires an image
-which the container setup process will be based on. The container management
-includes roughly the following steps. They will be specified in more detail in
-the evaluation step, when the container utility has been chosen.</p>
+<p>Managing containers includes more than starting and stopping them. The setup
+routine needs to assemble the content from scratch. This requires an image which
+the container setup process will be based on. The container management includes
+roughly the following steps. They will be specified in more detail in the
+evaluation step, when the container utility has been chosen.</p>
 <ul>
 <li>Prepare Container Images</li>
 <li>Build Containers according to Buildjob specifications</li>

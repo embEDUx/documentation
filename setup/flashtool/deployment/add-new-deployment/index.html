@@ -263,6 +263,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../../../background/implementation/flashtool/code-documentation/index.html">Implementation/Flashtool/Code Documentation</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../../../background/implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
@@ -284,6 +288,10 @@
                     
                         <li >
                             <a href="../../../../background/implementation/uboot/index.html">Implementation/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../../../background/summary/index.html">Summary</a>
                         </li>
                     
                         <li >
@@ -375,6 +383,8 @@
         
             <li><a href="#structure-of-the-setup-module-of-the-flashtool">Structure Of The Setup Module Of The Flashtool</a></li>
         
+            <li><a href="#useful-modules-for-the-deployment-class">Useful Modules For The Deployment Class</a></li>
+        
             <li><a href="#information-to-write-in-this-chapter">Information to write in this chapter</a></li>
         
     
@@ -389,12 +399,22 @@ procedure. If you are unsure about the concept of recipe files for the
 <strong>Flashtool</strong> please read the chapter <a href="../index.html">Deployment with the Flashtool</a>
 and <a href="../add-recipe-file/index.html">Writing a new recipe file</a> first.</p>
 <h2 id="common-procedure-for-a-developer">Common Procedure For A Developer</h2>
-<p>(TODO)</p>
+<p>The following steps should be done, if you want to add a new deployment
+procedure to the <strong>Flashtool</strong></p>
+<ul>
+<li>Read the chapters below to understand where and how to add a new deployment
+    procedure.</li>
+<li>Fork the <a href="">Flashtool</a> sources and start to implement the new feature</li>
+<li>Create tests for the new feature in the directory tests. The Flashtool uses
+    the module <a href="http://pytest.org/latest/">pytest</a> for unit testing.</li>
+<li>You can create a pull request for your feature to get it integrated in the
+  main <strong>Flashtool</strong> sources.</li>
+</ul>
 <h2 id="general-structure-of-a-recipe-file">General structure of a recipe file</h2>
 <p>The recipe files for the <strong>Flashtool</strong> are written in 
 <a href="http://yaml.org/">YAML-Syntax</a>. The next example shows the general structure
 of a recipe file.</p>
-<pre><code class="yaml">---
+<pre><code>---
 type: # name of recipe type
 
 recipe: 
@@ -407,51 +427,56 @@ type: # next recipe
 recipe:
     # ...
 </code></pre>
-
-<p>The <code>---</code> is necessary to indicate a <em>YAML-document</em>. The example shows that a
-recipe file can contain multiple <em>YAML-documents</em>. There must be at least one of
-it.
-Every <em>YAML-document</em> must contain a <em>type</em> keyword and a <em>recipe</em> keyword. The
-content of the <em>recipe</em> section depends on the selected type. This is shown
-in the next chapter.</p>
+<p>The <code>---</code> is necessary to indicate a <em>YAML-document</em>. The <em>YAML-document</em>
+represents a recipe. The example shows that a recipe file can contain 
+multiple recipes. There must be at least one of it in a recipe file. 
+Every recipe skeleton must contain a <em>type</em> keyword and a <em>recipe</em> keyword. 
+For the value of the <em>type</em> keyword a name of a implemented recipe skeleton is
+expected. The content of the <em>recipe</em> section depends on the selected recipe 
+and is defined in the python code of the <strong>Flashtool</strong>. The proceeding for
+adding a new .</p>
 <h2 id="recipe-skeletons-and-their-python-representation">Recipe Skeletons And Their Python Representation</h2>
-<p>A recipe file is written in <em>YAML-Syntax</em> an can easily read in by python. To
-avoid errors from the author of the recipe file, the given key value pairs in
-the recipe files, are parsed and checked by the <strong>Flashtool</strong>. The <strong>Flashtool</strong>
-provides an interface for new recipe skeletons.</p>
+<p>The recipe files can be parsed easily by python. To avoid errors from the author
+of the recipe file, the given key value pairs in the recipe files, are parsed
+and checked by the <strong>Flashtool</strong>. The <strong>Flashtool</strong> provides an interface for
+new recipe skeletons.</p>
 <h2 id="structure-of-the-setup-module-of-the-flashtool">Structure Of The Setup Module Of The Flashtool</h2>
-<p>A new recipe skeleton for a deployment must be defined
-and implemented in python. The next figure will show the structure of the 
-setup part of the <strong>Flashtool</strong>.</p>
-<pre><code>./setup
-├── init.py 
-├── deploy
-│   ├── __init__.py
-│   ├── ...
-│   └── mmc.py
-│ 
-├── recipe
-│   ├── __init__.py
-│   ├── ...
-│   └── mmc.py
+<p>A new recipe skeleton for a deployment must be defined and implemented in 
+python. The next figure will show where the python representation for a new 
+recipe skeleton must be implemented in the <strong>Flashtool</strong> code structure.</p>
+<pre><code>flashtool
+├── setup
+│   ├── __init__.py 
+│   ├── deploy              # deployment procedures for a storage device
+│   │   ├── __init__.py
+│   │   ├── ...
+│   │   └── mmc.py
+│   │ 
+│   ├── recipe              # recipe skeleton implementation
+│   │   ├── __init__.py
+│   │   ├── ...
+│   │   └── mmc.py
+│   │
+│   └── devlayout           # modules to layout storage devices
+│       ├── __init__.py
+│       └── blockdev.py
 ...
 </code></pre>
-
-<p>The <strong>Flashtool</strong> will read in the recipe file from top to bottom. Each <em>YAML 
-document</em> in the recipe file represents a recipe skeleton. The type of the recipe 
-skeleton is given by the key <code>type</code>. Only values are allowed which are mapped 
-as python file in the deploy and recipe directory. </p>
+<p>The <strong>Flashtool</strong> will read in the recipe file from top to bottom. The type of
+the recipe skeleton is given by the key <code>type</code> in the <em>YAML-document</em>. The
+corresponding python files for the recipe skeleton must be mapped as python
+file in the deploy and recipe directory. The name of these files must be the
+recipe skeleton type name with a <em>py</em> extension.</p>
 <p>According to the directory structure above the user can only state the recipe 
 skeleton for <em>MMC</em> devices (<code>type: mmc</code>).</p>
 <h3 id="python-representation-of-a-recipe-skeleton">Python Representation Of A Recipe Skeleton</h3>
 <p>The next example will show you how to implement a python representation for a 
 recipe skeleton. Let's create recipe skeleton for a <em>HDD</em> device. </p>
-<ol>
-<li>
-<p>Specify a <em>YAML document</em> with all keywords which the recipe skeleton for
-   <em>hdd</em> devices should have. The keywords for the recipe must be stated in the
-   <code>recipe:</code> section.  If you do not know how the <em>YAML</em> syntax look like,
-   please have a closer look <a href="http://www.yaml.org/spec/1.2/spec.html#id2759963">here</a>.</p>
+<h4 id="1-specify-an-example-yaml-document">1. Specify an example <em>YAML document</em></h4>
+<p>The example shows all keywords which the recipe skeleton for <em>hdd</em> devices should
+provide. The keywords for the recipe must be stated in the <code>recipe:</code> section. 
+If you do not know how the <em>YAML</em> syntax look like, please have a closer look
+<a href="http://www.yaml.org/spec/1.2/spec.html#id2759963">here</a>.</p>
 <pre><code>---
 type: hdd
 
@@ -484,26 +509,26 @@ structure.</p>
     },
 }
 </code></pre>
+<p>You can see that the indentation level of the keywords have an impact on the 
+structure of the python dictionary. </p>
 <p>The setup routine will read the value of <em>type</em> and search for a python
 representation in the recipe directory (In this case the file <em>flashtool
-/setup/recipe/hdd.py</em>). When found it will pass the values of <em>recipe</em> into
-the constructor of the python class (In this case <em>HDD</em>). Of course there is
-no class defined at <em>flashtool/setup/recipe/hdd.py</em>, this brings us to step
-two.</p>
-</li>
-<li>
-<p>Implement python representation for the recipe. The python representation of 
-    the recipe type is a python class and should have the same name written in 
-    <em>CAPITAL</em> letters and must inherit from the class <em>YAML</em>.</p>
+/setup/recipe/hdd.py</em>). When found, it will pass the values of <em>recipe</em> into
+the constructor of the python class (In this case <em>HDD</em>).</p>
+<h4 id="2-implement-the-python-representation-for-the-recipe-skeleton">2. Implement the python representation for the recipe skeleton.</h4>
+<p>The python representation of the recipe skeleton is a python class and should
+have its name written in <em>CAPITAL</em> letters and must inherit from the class
+<em>YAML</em>.</p>
 <pre><code>from flashtool.setup.recipe import YAML
 
 class HDD(YAML):
     ...
 </code></pre>
 <p>The valid keywords for the recipe must be added in a class attribute named
-<em>attr</em>. In this case we will provide a second class for the keyword
-<em>partition</em>. The constructor must also provide a parameter called
-<em>attributes</em>.</p>
+<em>attr</em>. The <em>attr</em> variable is only for keywords in one indentation level.
+In this case a second class must be created for the <em>partition</em> keyword to
+manage the nested keywords of the <em>partition</em> Node.</p>
+<p>The constructor of the recipe representation must also provide a parameter.</p>
 <pre><code>...
 class HDD(YAML):
     attr = ['partition_type', 'partitions']
@@ -518,36 +543,48 @@ class HDD(YAML):
         attributes['partitions'] = parts
         YAML.__init__(self, attributes)
 
+
 class Partition(YAML):
     attr = ['name', 'fs_type', 'size', 'flags']
 
     def __init__(self, attributes):
-        self.check_attributes(attributes)
+        self.check_attributes(attributes, False)
         ... # DO SOME VALUE CHECKS HERE
         YAML.__init__(self, attributes)
 
 __entry__ = HDD
 </code></pre>
-<p>The classes inherit the method <code>check_attributes(self, attributes)</code> from the
-super class <em>YAML</em>. It will check if the given attributes contains all
-keywords given in the class member <em>attr</em>. If not a exception will be
-raised.</p>
-<p>The last statement of the constructor is the call of the constructor of the
-super class <em>YAML</em>. It will save the attributes as attributes of the created
-object. It is now pssible to access the values of the attributes vith the
-dot <code>.</code> operator.</p>
+<p>The classes inherits the method <code>check_attributes(self, attributes, subset=True)</code> 
+from the super class <em>YAML</em>. Depending on the parameter <code>subset</code> it will check the
+given parameter attributes in two ways:</p>
+<ul>
+<li>
+<p><em><code>subset=True</code></em></p>
+<p>The dictionary attributes is only allowed to contain the keys which
+are specified in the class member <code>attr</code>. It allows that a key can
+be missing in the dictionary.</p>
+</li>
+<li>
+<p><em><code>subset=False</code></em></p>
+<p>The dictionary must contain exactly the keys which are specified in 
+the class attribute <code>attr</code>.</p>
+</li>
+</ul>
+<p>This method should be used to check the keys of the parsed <em>YAML document</em>.</p>
+<p>The last statement of the constructor is a call of the constructor of the
+super class <em>YAML</em>. It will save the given dictionary of the constructor parameter
+as attributes of the created object. It is now possible to access the key
+value pairs of dictionary with the dot <code>.</code> operator.</p>
 <pre><code>hdd_obj.partition_type  # get partition types
 hdd_obj.partitions      # get list of partitions
 </code></pre>
 <p>The module variable <strong>entry</strong> must be set with the class name of the
 implemented recipe class. With this value the <strong>Flashtool</strong> can create an
 instance of the new recipe class. </p>
-</li>
-<li>
-<p>Load attribute:
-    The load structure can be used to map the software components to the defined
-    partitions. To add this structure to your recipe type you have to do the
-    following steps:</p>
+<h4 id="3-the-load-attribute">3. The load attribute:</h4>
+<p>The load structure can be used to map the software components to the defined
+partitions. To add this structure to your recipe type you have to do the
+following steps:</p>
 <ol>
 <li>
 <p>Add the keyword <em>load</em> to the <em>attr</em> class member of your python class
@@ -565,10 +602,11 @@ instance of the new recipe class. </p>
 </code></pre>
 </li>
 </ol>
-<p>Now the user can use the <em>load</em> structure in the <em>hdd</em> recipe 
-    ---
-    type: hdd</p>
-<pre><code>recipe:
+<p>Now the user can use the <em>load</em> structure in the <em>hdd</em> recipe </p>
+<pre><code>---
+type: hdd
+
+recipe:
     partition_type:
     partition:
         - name: 
@@ -585,11 +623,10 @@ instance of the new recipe class. </p>
             device: 
             ...
 </code></pre>
-</li>
-<li>
+<h4 id="4-deployment-class">4. Deployment class</h4>
 <p>Now we can add a deploy class for the <em>hdd</em> recipe type. This class must be
-    stated in the file <em>hdd.py</em> and inherit from the super class Deploy. The 
-    following constructor and methods must be implemented for this class.</p>
+stated in the file <em>hdd.py</em> and inherit from the super class Deploy. The 
+following constructor and methods must be implemented for this class.</p>
 <pre><code>`def __init__(self, recipe, actions, builds, platform, auto)`
 `def prepare(self)`
 `def load(self)`
@@ -604,7 +641,7 @@ file.</p>
 
 class HddDeploy(Deploy):
 
-    def __init__(self, recipe, actions, builds, platforms, auto):
+    def __init__(self, recipe, actions, builds, platform, auto):
         # do initialization steps for the class ...
 
     def prepare(self):
@@ -616,10 +653,33 @@ class HddDeploy(Deploy):
 
 __entry__ = HddDeploy
 </code></pre>
-<p>The setup routine will call first all <code>prepare()</code> methods of all objects
-which were specified in the <em>YAML</em> file and then all <code>load()</code> methods.</p>
-</li>
-</ol>
+<p>It is important that the constructor signature <code>__init__</code> provides the parameter
+<code>recipe, actions, builds, platforms, auto</code>:</p>
+<pre><code>* `recipe`: stores the python representation object for the recipe.
+
+* `actions`: dictionary with the key value pairs (keys: 
+    `linux, uboot, misc, rootfs`). The values represent the version the user
+    selected at the call of the **Flashtool**.
+
+* `builds`: *build server* object for downloading the products from the web
+    server.
+
+* `platform`: the name of the platform
+
+* `auto`: flag for if the user wants to run the deployment procedure in
+    automatic mode.
+</code></pre>
+<p>The setup routine will call first the <code>prepare()</code> method of all deployment
+classes according to the recipe file which are specified in the <em>YAML</em> file
+and then the <code>load()</code> methods. The </p>
+<h2 id="useful-modules-for-the-deployment-class">Useful Modules For The Deployment Class</h2>
+<p>Besides the limitations stated in chapter above, you are free in your way of
+implementation of the deployment class.</p>
+<p>The following link provides information about modules in the <strong>Flashtool</strong> sources
+which can help to speed up your development process.</p>
+<ul>
+<li><a href="../../../../background/implementation/flashtool/code-documentation/index.html">Code Documentation</a></li>
+</ul>
 <h2 id="information-to-write-in-this-chapter">Information to write in this chapter</h2>
 <p><strong>Attention: the setup routine only allows to deploy products on platforms
 which use a mmc device as storage media. Support for other storage media must be implemented.</strong></p>

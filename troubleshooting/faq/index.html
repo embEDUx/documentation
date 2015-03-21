@@ -263,6 +263,10 @@
                         </li>
                     
                         <li >
+                            <a href="../../background/implementation/flashtool/code-documentation/index.html">Implementation/Flashtool/Code Documentation</a>
+                        </li>
+                    
+                        <li >
                             <a href="../../background/implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
@@ -284,6 +288,10 @@
                     
                         <li >
                             <a href="../../background/implementation/uboot/index.html">Implementation/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../background/summary/index.html">Summary</a>
                         </li>
                     
                         <li >
@@ -367,12 +375,7 @@
     
         <li class="main active"><a href="#faq">FAQ</a></li>
         
-    
-        <li class="main "><a href="#rootfs">RootFS</a></li>
-        
-            <li><a href="#package-specific-problems">Package Specific Problems</a></li>
-        
-            <li><a href="#build-routine-problems">Build Routine Problems</a></li>
+            <li><a href="#github-issue-trackers">GitHub Issue Trackers</a></li>
         
     
     </ul>
@@ -380,57 +383,46 @@
             <div class="col-md-9" role="main">
 
 <h1 id="faq">FAQ</h1>
-<p>This should one day be realized as a standalone bugtracker.</p>
-<h1 id="rootfs">RootFS</h1>
-<h2 id="package-specific-problems">Package Specific Problems</h2>
-<h3 id="net-wirelessgnuradio-fails-on-armv695hardfp-due-to-lack-of-neon-support"><em>net-wireless/gnuradio</em> - fails on armv6_hardfp due to lack of NEON support</h3>
-<p>This was first encountered with package during the RootFS buildjob on the armv6j_hardfp buildslave.</p>
-<h4 id="build-log-snippet">Build Log Snippet</h4>
-<pre><code>libvolk.so.0.0.0: undefined reference to `volk_16i_max_star_horizontal_16i_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_x2_multiply_32fc_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_32f_dot_prod_32fc_a_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32f_x2_dot_prod_32f_neonasm'
-libvolk.so.0.0.0: undefined reference to `volk_32f_x2_dot_prod_32f_neonasm_opts'
-libvolk.so.0.0.0: undefined reference to `volk_32fc_32f_dot_prod_32fc_a_neonpipeline'
-collect2: error: ld returned 1 exit status
-volk/lib/CMakeFiles/test_all.dir/build.make:119: recipe for target 'volk/lib/test_all' failed
-make[2]: *** [volk/lib/test_all] Error 1
-make[2]: Leaving directory '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
-CMakeFiles/Makefile2:132: recipe for target 'volk/lib/CMakeFiles/test_all.dir/all' failed
-make[1]: *** [volk/lib/CMakeFiles/test_all.dir/all] Error 2
-make[1]: Leaving directory '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
-Makefile:146: recipe for target 'all' failed
-make: *** [all] Error 2
- * ERROR: net-wireless/gnuradio-3.7.6::gentoo failed (compile phase):
- *   emake failed
- * 
- * If you need support, post the output of `emerge --info '=net-wireless/gnuradio-3.7.6::gentoo'`,
- * the complete build log and the output of `emerge -pqv '=net-wireless/gnuradio-3.7.6::gentoo'`.
- * The complete build log is located at '/var/tmp/portage/net-wireless/gnuradio-3.7.6/temp/build.log'.
- * The ebuild environment file is located at '/var/tmp/portage/net-wireless/gnuradio-3.7.6/temp/environment'.
- * Working directory: '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6_build'
- * S: '/var/tmp/portage/net-wireless/gnuradio-3.7.6/work/gnuradio-3.7.6'
-</code></pre>
-
-<h4 id="solution">Solution</h4>
-<ul>
-<li>Upstream bug ticket: https://gnuradio.org/redmine/issues/692
-<strong>(work in progress)</strong></li>
-</ul>
-<h2 id="build-routine-problems">Build Routine Problems</h2>
-<h3 id="proot-upgrade-causes-unexpected-behavior-with-nested-sshd">proot upgrade causes unexpected behavior with nested SSHd</h3>
-<p>The following structure gives an outline of the scenario and the direct result of
-the mentioned bug after upgrading <em>sys-apps/proot</em> to version 5.0.0 inside the
-container <em>buildslavei_rootfs_amd64</em>.</p>
-<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
-  - QEMU/KVM VM @ Gentoo Kernel 3.19
-    - Docker container that contains another chroot_rootfs
-      - running as user $ sudo proot chroot_inside_container sshd -p 2222
-        - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true 
-            --&gt; FAILS WITH 'Permission Denied'
-</code></pre>
-
+<h2 id="github-issue-trackers">GitHub Issue Trackers</h2>
+<p>Future issues are going to be tracked on their GitHub Issue pages.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buildserver setup routine</td>
+<td><a href="https://github.com/embEDUx/buildserver-setuproutine/issues">https://github.com/embEDUx/buildserver-setuproutine/issues</a></td>
+</tr>
+<tr>
+<td>RootFS build routine</td>
+<td><a href="https://github.com/embEDUx/rootfs-buildroutine/issues">https://github.com/embEDUx/rootfs-buildroutine/issues</a></td>
+</tr>
+<tr>
+<td>Flashtool</td>
+<td><a href="https://github.com/embEDUx/flashtool/issues">https://github.com/embEDUx/flashtool/issues</a></td>
+</tr>
+<tr>
+<td>Linux-Kernel spec examples</td>
+<td><a href="https://github.com/embEDUx/linux-specs/issues">https://github.com/embEDUx/linux-specs/issues</a></td>
+</tr>
+<tr>
+<td>Toolchain spec examples</td>
+<td><a href="https://github.com/embEDUx/toolchain-specs/issues">https://github.com/embEDUx/toolchain-specs/issues</a></td>
+</tr>
+<tr>
+<td>U-Boot spec examples</td>
+<td><a href="https://github.com/embEDUx/uboot-specs/issues">https://github.com/embEDUx/uboot-specs/issues</a></td>
+</tr>
+<tr>
+<td>RootFS spec examples</td>
+<td><a href="https://github.com/embEDUx/rootfs-specs/issues">https://github.com/embEDUx/rootfs-specs/issues</a></td>
+</tr>
+</tbody>
+</table>
 </div>
         </div>
 

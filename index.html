@@ -263,6 +263,10 @@
                         </li>
                     
                         <li >
+                            <a href="background/implementation/flashtool/code-documentation/index.html">Implementation/Flashtool/Code Documentation</a>
+                        </li>
+                    
+                        <li >
                             <a href="background/implementation/linux/index.html">Implementation/Linux</a>
                         </li>
                     
@@ -284,6 +288,10 @@
                     
                         <li >
                             <a href="background/implementation/uboot/index.html">Implementation/Uboot</a>
+                        </li>
+                    
+                        <li >
+                            <a href="background/summary/index.html">Summary</a>
                         </li>
                     
                         <li >
@@ -375,7 +383,7 @@
         
             <li><a href="#what-is-it-not">What Is It Not?</a></li>
         
-            <li><a href="#the-core">The Core</a></li>
+            <li><a href="#design-and-implementation-choices">Design and Implementation Choices</a></li>
         
             <li><a href="#building-customized-linux-distributions">Building Customized Linux Distributions</a></li>
         
@@ -430,9 +438,10 @@ project is not meant to provide the builds them self. Instead, you will find
 instructions how to setup or use an existing instance of the build system in
 order to produce your own customized builds.</li>
 </ul>
-<h2 id="the-core">The Core</h2>
-<p>embEDUx is completely based on Open Source software. The biggest projects that
+<h2 id="design-and-implementation-choices">Design and Implementation Choices</h2>
+<p><strong>embEDUx</strong> is completely based on Open Source software. The biggest projects that
 were chosen for the core of the solution are</p>
+<h3 id="the-core">The Core</h3>
 <ul>
 <li>GNU Toolchain</li>
 <li>Crosstool-NG</li>
@@ -443,8 +452,9 @@ were chosen for the core of the solution are</p>
 <li>Das U-Boot Bootloader</li>
 <li>Git</li>
 </ul>
-<p>If you are interested in why these choices were made, please head over to the
-<a href="background/background/index.html">background section</a></p>
+<p>If you are interested in why these components have been chosen, or how the system
+was designed and implemented using these components, please head over to the
+<a href="background/background/index.html"><strong><em>background section</em></strong></a>.</p>
 <h2 id="building-customized-linux-distributions">Building Customized Linux Distributions</h2>
 <p>The embEDUx build system been designed to build customized Linux distributions.
 These systems consist of distinct products, namely</p>
