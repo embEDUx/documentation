@@ -1,11 +1,10 @@
-# Background
-## Overview
+# Background Overview
 #### [1. Project Requirements](requirements.md)
 #### [2. Design](design.md)
 #### [3. Evaluation](evaluation.md)
 #### [4. Implementation](implementation.md)
 
-## The Beginning
+# The Beginning
 The name **embEDUx** includes hints for the words *embedded* ***Linux*** and
 *education*. The goal to deliver an environment that eases the effort of creating various
 embedded **Linux** distributions depending on the educational purpose that they are
@@ -25,7 +24,7 @@ for tasks concerning the preparation of soft- and hardware for the lab-courses
 at the HTWG. Naturally, that's why the embEDUx requirements will have a strong
 bias towards the requirements specific to the lab-courses.
 
-## Initial Contributors
+# Initial Contributors
 The project started off with three master students of computer science who have
 been working on this project in a team, supervised by a professor. Namely, these are
 
