@@ -163,8 +163,6 @@ below will explain all parameters:
     situation depending whether the -a/--auto flag is set or not(see description 
     above). The default value for each option will match all files.
 
-    **Important: All three options must be stated or none of them.**
-
      Parameter | Argument[s] | Description
      --------- | ----------- | -----------
     -l, --linux | version    | Select linux version.
