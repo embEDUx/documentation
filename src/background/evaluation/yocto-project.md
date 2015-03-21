@@ -115,7 +115,7 @@ a **Python 3** recipe, which is violating the defined
 [requirements](../requirements.md).
 
 ## Summary
-By default the **Yocto** Project is missing the majority of the platforms that
+By default the **Yocto Project** is missing the majority of the platforms that
 would be used with the build system solution. Looking through the additional
 [board support packages](http://git.yoctoproject.org/cgit/cgit.cgi/) and their
 sheer amount of additional recipes needed for the **Linux** kernel and
