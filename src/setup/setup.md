@@ -14,6 +14,7 @@ build system.
 ## Post Install
 These steps are necessary after the setup was done successfully.
 
+* [Build Qemu Kernel](post-install/build-qemu-kernels.md)
 * [Toolchains](post-install/toolchains.md)
 * [User Documentation](post-install/user-documentation.md)
 
