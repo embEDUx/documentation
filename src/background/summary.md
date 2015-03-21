@@ -2,7 +2,7 @@
 This page gives a summary of what has been achieved with the **embEDUx**
 project.
 
-## Features and used Core Components
+## Features And Used Core Components
 * cross target support (**Qemu**, **Crosstool-NG**)
 * automated yet configurable setup (**Ansible**, configuration templates)
     * low initial entry barrier
@@ -18,7 +18,7 @@ project.
 * plenty of recent software packages for the RootFS (**Gentoo**/**Portage**)
 * possibility of manual or semi-automatic deployment
 
-## Main Advantages over existing Projects
+## Main Advantages Over Comparable Projects
 * Designed for continuous integration
 * [Yocto Project](evaluation/yocto-project.md#summary)
     * less platform integration overhead
@@ -28,7 +28,7 @@ project.
     * better package availability
     * portable toolchain
 
-## Main Disadvantages over existing Projects
+## Main Disadvantages Over Comparable Projects
 * Slow cross RootFS builds due to Qemu System Emulation
 
 ## Future Development
