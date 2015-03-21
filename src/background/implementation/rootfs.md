@@ -1,5 +1,19 @@
-# RootFS Build Routine
+# RootFS Build Implementation
 **(work in progress)**
+The RootFS build process is triggered for every change in the RootFS product
+specifications repository. Please have a look at the following picture,
+especially how the build delegation to the RootFS containers is visualized. 
+
+[![](background/img/post-eval_result_design_rootfs.png)](background/img/post-eval_result_design_rootfs.png)
+
+According to the design and evaluation results, the RootFS build routine can
+either be run in a RootFS container for the native or cross architecture. Both
+scenarios must be handled by the build routine differently, since they requires a different setup
+of preparing the target RootFS.
+
+The build process involves setting up the build environment depending on whether
+it is a cross container or not.
+
 
 
 ### Occurred Problems

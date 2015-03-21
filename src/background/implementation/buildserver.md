@@ -4,7 +4,7 @@ automatically as soon as the user provides new build specifications via the
 product repositories. All the components that run on the buildserver will be
 contained by **Docker** containers.
 
-# Setup routine With Ansible
+# Setup Routine With Ansible
 The [evaluation chose Ansible](../evaluation/buildserver-setuproutine.md) for
 the implementation of the setup routine. The tasks are be grouped into roles and
 plays, with the target architectures being variable. This allows to reuse
