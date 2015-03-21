@@ -3,6 +3,7 @@
 #### [2. Design](design.md)
 #### [3. Evaluation](evaluation.md)
 #### [4. Implementation](implementation.md)
+#### [5. Summary](summary.md)
 
 # The Beginning
 The name **embEDUx** includes hints for the words *embedded* ***Linux*** and
