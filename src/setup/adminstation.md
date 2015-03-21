@@ -1,8 +1,9 @@
 # Adminstation Setup
-**(work in progress)**
+The Adminstation is needed in order to conclude the setup process for the build
+server.
 
 ## Requirements
-* In order to setup the adminstation, you need access to the following
+* In order to setup the Adminstation, you need access to the following
 buildserver-setuproutine repository. Please consult your [user
 documentation](post-install/user-documentation.md) for the URLs.
 * SSH root-access to the docker host running the buildslave(s) in question
