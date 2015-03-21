@@ -3,8 +3,8 @@ The user documentation is essential to the usage of the buildserver that has
 been setup. You are encouraged to create the documentation carefully, and
 double-check any information you put in. 
 
-## Example - HTWG User Documentation
-If you want to see an example, you can take a look at one of these:
+## Example User Documentation
+If you want to see some examples, you can take a look at one of these:
 
 * [Demo User Documentation](../examples/user-documentation-DEMO.md).  
 * [HTWG User Documentation](../examples/user-documentation-HTWG.md).  
@@ -17,7 +17,6 @@ it should be straight forward to put the user documentation together, and can in
 most cases be very similar to the provided examples.
 
 In general **nobody is asking you to include any passwords in here**.
-
 
 ## Product Repository URLs
 The http(s) URLs for the Git-repositories of all products must be included.
