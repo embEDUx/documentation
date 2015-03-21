@@ -101,7 +101,7 @@ setting up the container infrastructure during the setup can now be listed, in
 order to find the right tool for the setup routine.
 
 As specified in the [RootFS
-evaluation](rootfs.md#conclusion), the RootFS buildroutine needs Gentoo portage.
+evaluation](rootfs.md#conclusion), the RootFS build routine needs Gentoo portage.
 Therefore, the Docker images for the buildserver components will be based on
 stage3 archives too.
 

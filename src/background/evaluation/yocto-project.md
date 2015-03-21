@@ -136,6 +136,6 @@ Criteria | Result | Notes
 --- | --- | --- 
 Cross-target support | YES | Manual configuration necessary 
 Package management | LIMITED | Extensible through recipes, although it needs a lot of configuration
-Buildroutine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
+Build routine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
 Deployment | LIMITED | Result of build process is an image, which can be deployed on a sd card with `dd`
 
