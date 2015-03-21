@@ -6,7 +6,7 @@ contained by **Docker** containers.
 
 # Setuproutine With Ansible
 The [evaluation chose Ansible](../evaluation/buildserver-setuproutine.md) for
-the implementation of the setuproutine. The tasks are be grouped into roles and
+the implementation of the setup routine. The tasks are be grouped into roles and
 plays, with the target architectures being variable. This allows to reuse
 tasks and roles for the different target architectures, but requires a high
 flexibility in the tasks.
@@ -28,6 +28,7 @@ Play | Hosts | Actions
 #4 | buildslaves-amd64 | Setup and run amd64 buildslaves
 #5 | buildslaves-armv6j_hardfp | Setup and run arm6j_hardfp buildslave containers
 #6 | buildslaves-armv7a_hardfp | Setup armv7a_hardfp buildslave containers
+
     
 ### [dependencies.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/dependencies.yml)
 The dependencies Playbook takes care of installing and starting **Docker** on the target
@@ -59,7 +60,7 @@ this chapter.
 
 ### Provided Information - [***group_vars/all***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/group_vars/all)
 
-The following file is the default configuration file for the setuproutine. It
+The following file is the default configuration file for the setup routine. It
 contains the setup that has been running at the HTWG, and it includes the
 supported platforms used at the HTWG.
 
@@ -116,7 +117,7 @@ This variable is filled in by the buildsetup template renderer.
 ```
 psk = "{{ buildbot_psk }}"
 ```
-The *buildbot_psk*-variable is special to the buildserver setuproutine, because
+The *buildbot_psk*-variable is special to the buildserver setup routine, because
 it is stored in the password protected vault file.
 #### Usernames and Passwords For Web-Interface
 User permissions for the web-interface are also defined in the previously
@@ -152,7 +153,7 @@ git_repo_uris = {
 }
 ```
 
-As seen, the *repo_url_base* variable that is provided by the setuproutine
+As seen, the *repo_url_base* variable that is provided by the setup routine
 defines the URLs that are later being configured for change detection.
 
 ## Continuous Integration
@@ -259,7 +260,7 @@ factory_default.addStep(ShellCommand(command=["./build"], haltOnFailure=True, us
 
 ##### RootFS factory - runs the [ansible-playbook from the RootFS-Buildroutine](rootfs.md)
 The RootFS factory works completely different compared to the default factory.
-It retrieves the [RootFS buildroutine](rootfs.md) from the previously defined
+It retrieves the [RootFS build routine](rootfs.md) from the previously defined
 repository URL. Afterwards it runs the Playbook named **site.yml** which
 processes the RootFS specifications from the changed RootFS repository branch.
 

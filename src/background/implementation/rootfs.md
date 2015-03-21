@@ -1,10 +1,11 @@
-# Specification for building the RootFS
+# RootFS Build Routine
 **(work in progress)**
+
 
 ### Occurred Problems
 
 #### proot upgrade causes unexpected behavior with nested SSHd
-The following tructure gives an outline of the scenario and the direct result of
+The following structure gives an outline of the scenario and the direct result of
 the mentioned bug after upgrading *sys-apps/proot* to version 5.0.0 inside the
 container *buildslavei\_rootfs\_amd64*.
 
