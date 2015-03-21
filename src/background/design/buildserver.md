@@ -33,11 +33,12 @@ Design Chapter](continuous-integration.md).
 Adding support for additional hardware platforms must be simple. The user should
 not be forced to have a complete understanding of the **embEDUx** build system
 to be able to add his platform. One way to look at extensibility is to already
-take the initial setup into account, where the hardware platforms are
-practically added too, just to a zero-base. Designing this step to be as easy as
-possible, will allow to extend the system as easy as possible. Therefore, this
-criteria is moved over to the [setup automation routine
-design](#setup-automation-routine), which is the next chapter.
+take the initial setup into account. At this point, adding a new platform should
+be no different than adding a new platform later. Designing this step to be as
+easy as possible will be beneficial to the initial setup and to the
+extensibility at the same time. Therefore, this criteria is moved over to the
+[setup automation routine design](#setup-automation-routine), which is the next
+chapter.
 
 ## Setup Automation Routine
 The job of the setup routine is to setup all buildserver components. The
