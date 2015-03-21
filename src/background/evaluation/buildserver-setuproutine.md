@@ -1,4 +1,4 @@
-# Buildserver Setuproutine Evaluation
+# Buildserver Setup routine Evaluation
 The buildserver design describes the [setup automation
 routine](../design/buildserver.md#setup-automation-routine). It is designed to
 install and initialize the different components of the **embEDUx** buildserver
@@ -98,7 +98,7 @@ By the time of the design phase, it hasn't been clear yet which container
 utility will be used to implement the abstraction. The [container utility
 evaluation](container-utility.md) has chosen **Docker**. The necessary steps for
 setting up the container infrastructure during the setup can now be listed, in
-order to find the right tool for the setuproutine.
+order to find the right tool for the setup routine.
 
 As specified in the [RootFS
 evaluation](rootfs.md#conclusion), the RootFS buildroutine needs Gentoo portage.
@@ -118,7 +118,7 @@ stage3 archives too.
 * Start Containers
 
 
-### Result Buildserver Setuproutine Steps Evaluation
+### Result Buildserver Setup routine Steps Evaluation
 
 Setup steps | Python | Ansible
 --- | --- | ---
@@ -127,7 +127,7 @@ Template Rendering | addon jinja2 module / manual file handling | native jinja2 
 Package Installation | command module manual SSH commands | native apt module / easy
 Docker Container Management | addon docker-py module / manual API calls | native docker module / easy
 
-## Result Buildserver Setuproutine Evaluation
+## Result Buildserver Setup routine Evaluation
 The original criteria can now be analyzed according to the results of the steps
 evaluation.
 

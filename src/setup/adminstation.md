@@ -28,7 +28,7 @@ The list also contains short explanations what they're needed for.
 
 
 ## Clone the buildserver-setuproutine repository
-The setuproutine for the buildserver is currently stored in a Git repository on
+The setup routine for the buildserver is currently stored in a Git repository on
 GitHub. It is suggested to use the latest version of the default (currently
 named *ansible*) branch, which can be retrieved as follows.
 

@@ -13,7 +13,7 @@ system solution.
 
 Please select a topic of interest. 
 
-* [Buildserver Setuproutine](evaluation/buildserver-setuproutine.md)
+* [Buildserver Setup routine](evaluation/buildserver-setuproutine.md)
 * [Container Utility](evaluation/container-utility.md)
 * [Continuous Integration](evaluation/continuous-integration.md)
 * [Flashtool](evaluation/flashtool.md)
