@@ -8,7 +8,7 @@ about this!
 * Adminstation setup completed - If you haven't already setup your adminstation,
   please follow [these instructions](adminstation.md).
 
-### Buildserver Machine requirements
+### Buildserver Machine Requirements
 #### Hardware
 HW-Component | Requirement
 --- | ---
