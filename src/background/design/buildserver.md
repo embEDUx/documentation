@@ -1,5 +1,4 @@
 # Buildserver
-**(work in progress)**
 This chapter describes the design of the buildserver components and the setup
 routine which is used to install these components on the buildserver machine.
 
@@ -41,8 +40,8 @@ criteria is moved over to the [setup automation routine
 design](#setup-automation-routine), which is the next chapter.
 
 ## Setup Automation Routine
-The job of the setup routine is to setup all buildserver components.  The
-buildserver will undoubtedly be a complex structure of software components.  To
+The job of the setup routine is to setup all buildserver components. The
+buildserver will undoubtedly be a complex structure of software components. To
 make the setup as easy as possible it should be automated as far as possible.
 
 ### Required Setup Parameters
@@ -71,7 +70,7 @@ should be shipped with defaults from the HTWG setup.
 
 * Target Platform and Architectures
     
-    The platform names and their corresponding architecture.  The architectures
+    The platform names and their corresponding architecture. The architectures
     will be supported as build targets. By default, all tested platforms will be
     available as supported. The user is not forced to use them, but it is useful
     to already have working examples in the local installation.
@@ -80,9 +79,9 @@ should be shipped with defaults from the HTWG setup.
 All other setup parameters should be provided as defaults by the setup routine.
 
 ### Configuration Generation From Templates 
-The configured and default setup parameters should be used to
-generate the configuration files for the buildsystem. For commonly used changes,
-the generator can be extended and can be utilized by beginners immediately.
+The configured and default setup parameters should be used to generate the
+configuration files for the buildsystem. For commonly used changes, the
+generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary. 
 
 ### Setup Automation Routine Candidates
@@ -104,6 +103,8 @@ The criteria that will be evaluated are
 * Code readability
 
 ### Setup Automation Routine Tasks
+The following tasks need to be done by the setup routine.
+
 #### Execute commands on the target machine
 Executing commands on the target machine will be necessary in order to complete
 the setup. The most commonly remote control utility is **SSH**, which shall be
@@ -116,10 +117,6 @@ has a package manager available. As it has not been mentioned in any previous
 steps, it is necessary to chose the supported package managers now. A sane
 decision is to support **Ubuntu** and **Gentoo** as buildserver machines, and
 therefore to support **apt** and **portage**.
-
-* apt
-* portage
-
 
 ## Abstraction Layer For Automation
 In order to have an automated build system, all components should be setup and
@@ -136,28 +133,27 @@ They run on a so-called Hypervisor, which simulates a complete machine for the
 target system. The target system runs it's own kernel, and needs to boot and
 initialize an Operating System from scratch. Security is considered very high,
 since the Hypervisor has full control over soft- and hardware-resources that are
-passed to the guest system.   The architecture of an operating system inside a
+passed to the guest system. The architecture of an operating system inside a
 virtual machine can be completely different to the host architecture, and thus
-is highly portable.  Depending on available acceleration technologies, the
+is highly portable. Depending on available acceleration technologies, the
 performance of the virtual CPU, RAM and disk can suffer significantly.
 
 ### Linux Containers
 Linux Containers utilize a feature in recent Linux Kernels which allow
 separating processes from each other. This includes the separation of host and
 contained processes, as well as different contained processes from each other.
-These contained processes can be an initialization processes to boot a
-different Linux System on the running host Linux kernel, or simply any other
-application available. Recently there has been a lot of development and
-activity on Linux Containers in the community, namely because of a software
-called Docker. Security is highly dependent on the implementation of the
-process separating that happens in the host kernel.   The host kernel must
-obviously be able to run the contained application.  Therefore, the
-application must either be in the host's native or compatible executable
-format, or the system needs an emulator to run the foreign architecture. The
-performance for contained processes does not differ significantly compared to
-a regular running process. This is not entirely true for executables that
-require emulation because the CPU instructions must be translated before they
-can be run.
+These contained processes can be an initialization processes to boot a different
+Linux System on the running host Linux kernel, or simply any other application
+available. Recently there has been a lot of development and activity on Linux
+Containers in the community, namely because of a software called Docker.
+Security is highly dependent on the implementation of the process separating
+that happens in the host kernel. The host kernel must obviously be able to run
+the contained application. Therefore, the application must either be in the
+host's native or compatible executable format, or the system needs an emulator
+to run the foreign architecture. The performance for contained processes does
+not differ significantly compared to a regular running process. This is not
+entirely true for executables that require emulation because the CPU
+instructions must be translated before they can be run.
 
 ### Choosing Linux-Containers
 In favor of speed (see [Comparison of VM and Linux
@@ -192,11 +188,11 @@ the continuous integration system into containers.
     * Base system archive
 
 #### Container Management Setup Steps
-Managing containers includes more than starting and stopping them. The
-setup routine needs to assemble the content from scratch.  This requires an image
-which the container setup process will be based on. The container management
-includes roughly the following steps. They will be specified in more detail in
-the evaluation step, when the container utility has been chosen.
+Managing containers includes more than starting and stopping them. The setup
+routine needs to assemble the content from scratch. This requires an image which
+the container setup process will be based on. The container management includes
+roughly the following steps. They will be specified in more detail in the
+evaluation step, when the container utility has been chosen.
 
 * Prepare Container Images
 * Build Containers according to Buildjob specifications
