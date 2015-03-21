@@ -27,7 +27,7 @@ Python and Bash are both script languages which run on likely every UNIX system.
 Both languages must be compared on different disciplines, to decide which
 language fits best for the **Flashtool**.
 
-#### **Development**
+#### Development
 
 **Python** is more productive than **Bash** for the development processes,
 because it supports common programming paradigms like object-oriented
@@ -39,7 +39,7 @@ would result in an confusing mass of **Bash**-scripts and would be hard to
 maintain.
 
 
-#### **Community**
+#### Community
 
 **Bash** and **Python** is often used on **Linux** systems and supports both a
 huge community and documentation. **Python** provides more third-party modules
@@ -47,18 +47,18 @@ for several task than **Bash** and is a good candidate for writing lesser code
 to do the job. 
 
 
-#### **Calling other executables**
+#### Calling other executables
 
 Both languages provide a mechanism to call other executables easy.
 
 
-#### **Performance**
+#### Performance
 
 **Python** is really fast in handling data structures (sorting, access) and
 doing calculations [compared to Bash](http://opennomad.com/content/performance-different-scripting-languages-shell-v-perl-v-python-v-ruby).
 
 
-#### **Interfaces to other programming languages**
+#### Interfaces to other programming languages
 
 **Python** provides a library which provides C compatible data types, and allows
 calling functions in shared libraries. This makes it possible to wrap C
@@ -68,7 +68,7 @@ There are other libraries like [swig](http://swig.org/Doc1.3/Python.html) and
 
 Such mechanism are not known for **Bash**.
 
-#### **Summary**
+#### Summary
 
 **Python** is more suitable as programming language for the **Flashtool** than
 **Bash** because:
@@ -93,7 +93,6 @@ for the following reasons:
     extends the implementation time.
 
 For these reasons the decision was made to use python 3.x for the **Flashtool**.
-
 
 
 ## User interface
@@ -130,13 +129,18 @@ partitions.
 A big disadvantage of the *blivet* package is, that it has many
 dependencies to other package, which must be installed. During the evaluation
 process it turned out that most of the dependencies were not installed
-automatically with the pip by hand and are not
-automatically installed by the *setup.py* script of the package. There were also
-some difficulties to install some of the dependencies, because they only work
-with python 2.7 and not python 3 or above. 
+automatically with the pip installation routine. The single dependencies had to
+be installed by hand. There were also some difficulties to install some of the
+dependencies, because they only work with python 2.7 and not python 3 or above.
+
 After failing to use the *blivet* package we decided to use the *pyparted*
-package. This package uses the *libparted* package. *libparted* is the library 
-of the GNU parted project. The *pyparted* is a good solution for the
+package.
+
+### pyparted
+
+This package uses the *libparted* package. *libparted* is the library 
+of the GNU parted project. The *pyparted* module is a good solution for the
 **Flashtool** to partition block devices. It supports all features which are
-given by the C library *libparted*. It took about 80 lines of code to implement
-the functionality for the **Flashtool**.
+given by the C library *libparted*. 
+
+It took about 80 lines of code to implement the functionality for the **Flashtool**.

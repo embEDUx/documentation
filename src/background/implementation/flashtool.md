@@ -10,7 +10,7 @@ The next figure shows the structure of the **Flashtool**.
 ![Flashtool_overview](background/implementation/img/flashtool_overview.png)
 
 
-## **Flashtool** configuration file and working directory
+## Configuration File And Working Directory
 
 The configuration file for the **Flashtool** is saved in a own working
 directory for the **Flashtool**. This working directory can be set by the user
@@ -22,7 +22,7 @@ This working directory is used to save the configuration files for the
 platforms and logging files of the **Flashtool**.
 
 
-## Recipe file for platforms
+## Recipe File For Platforms
 
 The configuration file for the platform act as recipe for the setup procedure.
 The user is able to define how to partition a *MMC* storage device of the
@@ -37,8 +37,8 @@ of the **Flashtool**.
 The language of the recipe file is *YAML*. A recipe file must contain at least
 one *YAML document*. Each *YAML document* specifies a recipe. So a recipe file
 contains one or more recipes. Each recipe must have a python counterpart, which
-ensures if all required settings are given and checks the values of the
-settings.
+ensures if all required settings are given, checks the values of the
+settings and implements the deployment procedure for the storage device.
 
     ---
     type : ${recipe type}
@@ -68,8 +68,9 @@ a platform.
 
 The **Flashtool** retrieves its recipe files via a repository which is
 configured on [github](https://github.com/embEDUx/flashtool-recipes). This
-repository already contains recipe files, which are used in the HTWG context.
-The administrator can also create its own repository with for own recipe files.
+repository already contains recipe files for the rapsberry pi, beaglebone black,
+utilite pro and banana pi, which are used in the HTWG context.
+It is also possible to use an other repository with other recipe files.
 
 The repository must be a git repository and the URL to it must be configured in the
 **Flashtool** configuration.
@@ -78,8 +79,8 @@ The repository must be a git repository and the URL to it must be configured in 
 ### User defined recipe files
 
 It is also possible for the user to add a directory for the **Flashtool** where
-the user can add own recipe files. This directory must be configured in the 
-**Flashtool** configuration.
+the user can add own recipe files. This directory is configured in the **Flashtool**
+configuration file by the user.
 
 
 ## Retrieving software products 
@@ -125,15 +126,20 @@ information about the **buildbot master** and which data is useful for the
     
         /{url}/{file name}
 
+The retrieved information of the web server tells the **Flashtool** which
+product is available for which platform. The information for the architecture of
+a platform is also provided in the JSON strings. This information is **not** stored
+in the Flashtool and can only be retrieved from the **buildserver**.
+
 
 ## Recognizing *MMC* devices
 
-To recognize a plugged in *MMC* device the **Flashtool** uses the *pyudev* package. This
-package allows to listen to the *udev* events on the system and filter them by
+To recognize a plugged in *MMC* device the **Flashtool** uses the *pyudev* package. 
+This package allows to listen to the *udev* events on the system and filter them by
 some keywords. 
 
 First of all the user will be asked to remove the *MMC* media first. After
-confirming this step, the python script listen on for a *udev* event:
+confirming this step, the python script listens for a *udev* event:
 
     context = Context()
     monitor_mmc = Monitor.from_netlink(context)
@@ -146,13 +152,13 @@ confirming this step, the python script listen on for a *udev* event:
 
 The *udev* system will trigger various events when plugging in a *MMC* device.
 Every event returns an *action* and a *device* name. The important event actions
-are the *add* and *change* event. We will count these events for every device.
+are the *add* and *change* event. These events are counted for every device.
 
 With this information, the **Flashtool** decides which of the recorded devices
 were plugged in by the user. There are 4 scenarios how the user could plug in a
 *MMC* card.
 
-1. User insert *MMC* device into a external *MMC card reader* with multiple
+1. User inserts *MMC* device into a external *MMC card reader* with multiple
     MMC slots:
 
     Python dictionary looks like: (device *sdd* is *MMC* card)
@@ -160,7 +166,7 @@ were plugged in by the user. There are 4 scenarios how the user could plug in a
         {'add': {}, 'change': {u'sdd': 2}}
 
 2. User inserts the external *MMC card reader* in the *usb* port and then 
-    insert the *MMC* device into the card reader:
+    inserts the *MMC* device into the card reader:
 
     Python dictionary looks like: (device *sdd* is *MMC* card)
 
@@ -175,8 +181,8 @@ were plugged in by the user. There are 4 scenarios how the user could plug in a
         {'add': {u'sdb': 1, u'sdc': 1, u'sdd': 1, u'sde': 1, u'sdf': 1},
          'change': {u'sdb': 1, u'sdc': 1, u'sde': 1, u'sdf': 1}}
 
-    This scenario could also lead to a state, that the Flashtoll would
-    recognize muliple *MMC* devices if there were plugged in multiple *MMC*
+    This scenario could also lead to a state, that the **Flashtool** would
+    recognize multiple *MMC* devices, if there were plugged in multiple *MMC*
     devices in the external reader. If that happens the tool will ask the
     user to choose one of the recognized devices.
 
@@ -190,12 +196,12 @@ After recognizing the *MMC* device, the **Flashtool** will proceed with its
 setup routine.
 
 
-## Setup the *MMC* device
+## Deployment Of Products To The *MMC* Device
 
-For the setup procedure several steps has to be done, the sections below will
+For the deployment procedure several steps has to be done. The sections below will
 describe these steps:
 
-## Checking First MB of *MMC* device
+### Checking First MB of *MMC* device
 
 Before partition the *MMC* device, the **Flashtool** generates one Megabyte of
 random data and copies this data on the first Megabyte of the *MMC* device. 
@@ -205,28 +211,29 @@ compared. When the hash strings are the same, the tool assumes that there is no
 corrupted sector in the storage where the *MBR* or *GPT* is saved.
 
 
-## Partition the device
+### Partition The Device
 
 In the section [evaluation](../evaluation/flashtool.md) a decision was
 made for the *pyparted* package for partitioning the *MMC* device. The Partition
 layout will be given by the specified recipe file. The usage of the *MMC* recipe
-is described in the [usage section of the flashtool](../../usage/flashtool.md). 
+is described in the [usage section of the flashtool](../../usage/flashtool.md).
 
 
-## Format the partitions
+### Format The Partitions
 
 The **Flashtool** uses the *mkfs* tools of the system to format the partitions.
-These command will be executed with the
-[subprocess](https://docs.python.org/3.4/library/subprocess.html) package. 
+These command will be executed with the [subprocess](https://docs.python.org/3.4/library/subprocess.html) 
+package. 
 
 
-## Load the products on the *MMC* device
+### Load The Products On The *MMC* Device
 
 The **Flashtool** retrieves all information about built products of the
 **buildbot** server. The user can select which version of a product he wants to
-load on the device. This can be at the call of the **Flashtool** by specified
-arguments. Or must be done during the setup process, when the keyword for a
-product matches for multiple product versions.
+load on the device. This can be done at the call of the **Flashtool** with the
+options `linux, uboot, misc, rootfs` (see [usage Chapter](../../usage/flashtool.md#deploy-products-on-the-platform)).
+If the string from the user matches for multiple files the specific file must be
+selected during the deployment procedure.
 
 Example:
 
@@ -253,13 +260,9 @@ Found multiple versions for product uboot with regex .*.*
 [MANUAL-MODE] Please select a file: [0-1]:
 ```
 
-After selecting the product versions the *MMC* device will be partition and the
-partitions will be formated first. Then the **Flashtool** will download the
+After selecting the product versions, the *MMC* device will be partition and the
+partitions will be formated. Then the **Flashtool** will download the
 product files with the python package [urllib](https://docs.python.org/3.4/library/urllib.html).
-
-Before loading the files on the device, the **Flashtool** will check if all data
-will fit in the partitions of the *MMC* device. If this check pass the files
-will be extracted on the *MMC* device.
 
 ```bash
    +-------------------+
@@ -282,8 +285,8 @@ GET BUILD FILES ROOTFS, LINUX, UBOOT, MISC FOR PLATFORM RASPBERRY-PI
 
 At the end of the **Flashtool** it generates a *fstab* file and copies it to the
 rootfs partition of the *MMC* device. The *fstab* will be generated with a
-[jinja2](http://jinja.pocoo.org/) template and with the information given by the
-recipe file and by pyudev. 
+[jinja2](http://jinja.pocoo.org/) template. The values for the template are
+retrieved from the given recipe file and the information of pyudev. 
 
 **Example:**
 
@@ -352,10 +355,12 @@ section](../../usage/flashtool.md) of the **Flashtool**
 flashtool
 ├── configmanager               # Handles the flashtool configuration file
 │   └── __init__.py
+│
 ├── server                      # Modules to connec to a Server
 │   ├── buildserver.py          # Buildbot server, parsing json data, download files
 │   ├── cfgserver.py            # Cloning and pulling from git server
 │   └── __init__.py
+│ 
 ├── setup                       # Setup related modules
 │   ├── constants.py
 │   ├── deploy                  # All packages for preparing hardware and loading software on device
@@ -363,6 +368,9 @@ flashtool
 │   │   ├── load.py
 │   │   ├── mmc.py
 │   │   └── templateloader.py
+│   ├── devlaout                # Contains all modules for setting up a layout for a storage device
+│   │   ├── __init__.py
+│   │   └── blockdev            # Functions for partition a blockdevice
 │   ├── recipe                  # Python recipe representation, check keywords and values
 │   │   ├── __init__.py
 │   │   └── mmc.py
@@ -372,12 +380,20 @@ flashtool
 │   │   ├── __init__.py
 │   │   └── mmc.py              # Udev recognition of MMC devices
 │   └── __init__.py
+│
 ├── templates                   # Templates
 │   └── fstab                   # fstab template
+│
 ├── utility                     # Helper functions which are commonly used
 │   └── __init__.py
 │
-└── __init__.py
+├── tests                       # Directory for unit tests
+│   ├── test_recipe.py
+│   ├── test_recipe_load.py
+│   ├── test_recipe_mmc.py
+│   └── mock_path               # path mocks
+│
+└── __init__.py                 # Entry point of the Flashtool
 
 ```
 
