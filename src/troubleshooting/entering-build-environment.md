@@ -32,7 +32,8 @@ buildserver ~ # docker exec -it buildslave_amd64.amd64 bash
         buildbot@52e612976b16 / $
 
 1. Switch to the working directory, where the build slave is processing the
-   ***build*** script.
+   ***build*** script after cloning the respective branch from the git
+   repository.
 
     ```
 buildbot@52e612976b16 / $ cd /var/lib/buildslave/amd64/build
