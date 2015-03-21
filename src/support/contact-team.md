@@ -8,5 +8,5 @@ Member | Responsibilities
 [Stefan Junker](mailto:code@stefanjunker.de) | RootFS, Buildserver (Setup, Continuous Integration, Container)
 
 ## IRC
-The project does not have an own IRC channel yet, but you're welcomed to join us
-on of us in [\#wackyard on FreeNode](irc://irc.freenode.org/wackyard)
+The project does not have its own IRC channel yet, but you're welcomed to join
+us in [\#wackyard on FreeNode](irc://irc.freenode.org/wackyard)
