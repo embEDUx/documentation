@@ -16,6 +16,33 @@ Before continuing, please make sure that you are familiar with the
 crudities, you are encouraged to inform us by either opening an issue or putting
 up a pull-request.
 
+## Focus on Hardware
+A variety from low up to high end ARM-boards were available during the design
+and development of the project. Successful builds have been produced for
+
+* Raspberry Pi
+* Banana Pi
+* Beaglebone Black
+* Utilite Pro
+
+## What Is It And What Can It Do?
+* Automated build system for complete customized Linux distributions
+* Easy to setup via the configurable setup routine
+* Centralized build configurations for all your platforms
+* Individual configuration and builds with specified targets, organized by
+    * Platform: for Linux-Kernel, U-Boot
+    * Architecture: RootFS
+    * Hybrid: Toolchain, Misc-Files
+* Working examples for the aforementioned hardware platforms
+
+
+## What Is It Not? 
+* Magic system for guessing all your platforms configuration automatically
+* While we were able build, deploy to and run systems on these platforms, this
+project is not meant to provide the builds them self. Instead, you will find
+instructions how to setup or use an existing instance of the build system in
+order to produce your own customized builds.
+
 ## The Core
 embEDUx is completely based on Open Source software. The biggest projects that
 were chosen for the core of the solution are
@@ -32,19 +59,7 @@ were chosen for the core of the solution are
 If you are interested in why these choices were made, please head over to the
 [background section](background/background.md)
 
-## Focus on Hardware
-A variety from low up to high end ARM-boards were available during the design
-and development of the project. Successful builds have been produced for
 
-* Raspberry Pi
-* Banana Pi
-* Beaglebone Black
-* Utilite Pro
-
-While we were able build, deploy to and run systems on these platforms, this
-project is not meant to provide the builds them self. Instead, you will find
-instructions how to setup or use an existing instance of the build system in
-order to produce your own customized builds.
 
 ## Building Customized Linux Distributions
 The embEDUx build system been designed to build customized Linux distributions.
