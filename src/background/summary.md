@@ -31,8 +31,16 @@ project.
 ## Main Disadvantages over existing Projects
 * Slow cross RootFS builds due to Qemu System Emulation
 
-## Successful Integrated Platforms
-* Raspberry Pi
-* Beaglebone Black
-* Banana Pi
-* Utilite Pro
+## Future Development
+The initial project authors transferred the **embEDUx** project to GitHub in
+order to make it available for public use and to attract further developers.
+
+## Critics
+Starting off as a study project, many of the early decisions were heavily biased
+by the university environment. These decisions were later reviewed and efforts
+were made to make the project portable. However, there are still issues that
+need to be resolved in order to improve the build system make it viable for more
+generic scenarios.
+
+As the project lives on GitHub now, the publicly available issue trackers will
+be used.
