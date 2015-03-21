@@ -1,7 +1,7 @@
 # Build Monitoring
 
 
-## Buildbot buildmaster Webinterface
+## Buildbot Buildmaster Webinterface
 The *buildmaster* provides a webinterface that can be used to control and
 monitor the buildmaster's behavior. The two most important views are the
 waterfall view and the builders view.

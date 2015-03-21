@@ -73,7 +73,7 @@ The following example will give you a detailed overview of the necessary steps
 to build **U-Boot** 2015.01 for the raspberry pi. We assume that at this point the
 *uboot-specs* repository is empty.
 
-## Add new upstream U-Boot
+## Add New Upstream U-Boot
 Before you can add [a new platform](#add-new-platform), for which you want to
 build a **U-Boot** image, you first need to add a *version\_generic* branch to
 the *uboot-specs* repository.

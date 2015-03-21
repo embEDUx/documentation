@@ -4,7 +4,6 @@ This page is the entry point of the design chapter and it includes many links to
 more detailed explanations of the mentioned topics. In order to understand the
 complete system design, please read the following page and all linked pages.
 
-
 ## Products Built By **embEDUx** 
 The software that is built by the buildserver will be
 referred as ***products*** within the further documentation. This helps to
