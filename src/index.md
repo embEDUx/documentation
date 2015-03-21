@@ -7,8 +7,9 @@ The origin lays at a university of applied sciences called
 Germany.  For the complete story have a look at the [the
 beginning](background/background.md#The Beginning).
 
-We are working on making the current state publicly available.  We will also
-upload the build specification files that allow you to reproduce our builds!
+#### embEDUx on GitHub!
+Meanwhile all bits and pieces of the **embEDUx** project have been published
+on GitHub at <https://github.com/embEDUx>.
 
 #### Terminology
 Before continuing, please make sure that you are familiar with the
