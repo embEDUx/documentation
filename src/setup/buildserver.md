@@ -5,7 +5,7 @@ considered mere suggestions. We'd be happy to receive suggestions and feedback
 about this!
 
 ## Requirements
-* Adminstation setup completed - If you haven't already setup your adminstation,
+* Adminstation setup completed - If you haven't already setup your Adminstation,
   please follow [these instructions](adminstation.md).
 
 ### Buildserver Machine Requirements
