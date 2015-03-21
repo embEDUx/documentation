@@ -45,6 +45,11 @@ target hosts. Tasks can be reused and grouped into several other entities.
 * Plays, can include several roles
 * Playbooks, can consist of several plays
 
+#### Variables
+Variable files can be specified to each element of the previous two entity
+groups. There's also a special variable file that, unless overriden,  is valid
+for all hosts at all times.
+
 
 ## Setup Steps Evaluation
 ### Executing commands on the target machine
@@ -126,6 +131,7 @@ The original criteria can now be analyzed according to the results of the steps
 evaluation.
 
 Eval criteria | Python | Ansible
+--- | --- | ---
 Ready-for-use components availability | ok | ok
 Extensibility effort | medium | easy
 Templating features | uncomfortable | comfortable
@@ -134,3 +140,4 @@ Code readability | good | very good
 
 Even though Python is a scripting programming language with many modules
 available, **Ansible** is better for the purpose of automating the given tasks.
+It has builtin modules for most of the required tasks.

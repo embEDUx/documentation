@@ -18,7 +18,7 @@ Another example would be the firmware blobs for the raspberry pi or the
 **U-Boot** script, which need to be stored within root directory of the boot
 partition. These files would be stored in *src\_boot/*.
 
-## Build steps & script
+## Build Steps & Script
 The build scripts only purpose is to provide the archives for each destination
 partition. Therefore is only archives the two folders *src\_boot* and
 *scr\_root*.

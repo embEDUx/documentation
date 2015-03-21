@@ -1,48 +1,294 @@
-# Buildserver Implementation
-According to the design and evaluation chapters, the **embEDUx**' buildserver
-consists of several components who form a unit that is able to build the
-different products. The implementation of these components 
+**embEDUx** buildserver is a compound of several components. Together, these
+components form a unit that is designed to build different products
+automatically as soon as the user provides new build specifications via the
+product repositories.
+
+# Setuproutine Playbooks
+
+## Playbook Overview
+
+Play | Hosts | Actions
+--- | --- | ---
+#1 | all | Dependency Installation
+#2 | buildmaster | Buildmaster Container Setup
+#3 | all | Define groups for target architectures
+#4 | buildslaves-amd64 | Setup and run amd64 buildslaves
+#5 | buildslaves-armv6j_hardfp | Setup and run arm6j_hardfp buildslave containers
+#6 | buildslaves-armv7a_hardfp | Setup armv7a_hardfp buildslave containers
 
 
-## Buildmaster
-### **master.cfg**
+## Buildmaster Configuration Generation 
 
-## Buildslaves
+### Provided Information - [***group_vars/all***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/group_vars/all)
 
-# Buildserver Setuproutine
-## Ansible Quick Introduction
-Ansible actions are organized and configured with different entities.  All
-entities are defined in separate files, which are specified in the **YAML**
-language.
+The following file is the default configuration file for the setuproutine. It
+contains the setup that has been running at the HTWG, and it includes the
+supported platforms used at the HTWG.
 
-### Hosts
-The first entity that needs to be defined is the hosts inventory. The hosts
-inventory contains the address, SSH username and other host specific
-information.
+```yaml
+---
+# Variables listed here are applicable to all host groups
+base_dir: /var/tmp/embedux
+config_dir: "{{ base_dir }}/config"
+embedux_tmp: /var/tmp/embedux
+repos_url_base: "https://github.com/embEDUx"
 
-* Hosts
-* Groups, can consist of several hosts
+arch_branchregex:
+    amd64:
+        - ".*-ctng-.*"
+        - ".*qemu-virt-amd64.*"
 
-### Tasks
-Tasks use modules and module parameters to define actions that can be run on
-target hosts. Tasks can be reused and grouped into several other entities.
+    armv6j_hardfp: 
+        - ".*raspberry-pi"
 
-* Tasks
-* Roles, can consist of several tasks
-* Plays, can include several roles
-* Playbooks, can consist of several plays
+    armv7a_hardfp: 
+        - ".*beaglebone-black"
+        - ".*banana-pi"
+        - ".*irisboard"
+        - ".*utilite-pro"
+        - ".*qemu-virt-arm.*"
+
+arch_map:
+    x86_64: amd64
+    armv6l: armv6j_hardfp
+    armv7l: armv7a_hardfp
+arch_short_map:
+    amd64: amd64
+    armv6j_hardfp: arm
+    armv7a_hardfp: arm
+
+native_arch: "{{ arch_map[ansible_architecture] }}"
+native_arch_short: "{{ arch_short_map[native_arch] }}"
+
+docker_image_prefix: "embedux"
+```
+
+### Configuration Template - [***master.cfg.j2***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/roles/docker_buildmaster/templates/master.cfg.j2)
+**This file will be rendered according to the information form the
+*group_vars/all* file**
+
+This section demonstrates how the automatic builds have been configured.
+
+#### PSK (Pre-Shared-Key)
+This variable is filled in by the buildsetup template renderer. 
+```
+psk = "{{ buildbot_psk }}"
+```
+The *buildbot_psk*-variable is special to the buildserver setuproutine, because
+it is stored in the password protected vault file. If interested, the
+instructions how to create the vault file are demonstrated within the [setup
+documentation](../../setup/buildserver.md#creating-the-password-vault)
+
+#### Usernames and Passwords For Web-Interface
+User permissions for the web-interface are also defined in the previously
+mentioned *vault*-file.
+
+```
+users = [
+    {% for user,pw in users.items() %}
+    ("{{ user}}", "{{ pw }}"),
+    {% endfor %}
+]
+```
+
+#### Branch <-> Platform <-> Architecture Mapping / Repository URLs
+The buildmaster configuration template implements the mapping between
+repository branches and the corresponding platform or architecture. 
+
+These data structures are filled in by the buildsetup template renderer.
+
+```
+arch_branch_res_map = {
+    {% for arch, regex_list in arch_branchregex.items() %}
+    "{{ arch }}": {{ regex_list }},
+    {% endfor %}
+}
+git_repo_uris = {
+    "default": ["{{ repos_url_base }}/linux-specs.git",
+        "{{ repos_url_base }}/uboot-specs.git",
+        "{{ repos_url_base }}/toolchain-specs.git",
+        "{{ repos_url_base }}/misc-specs.git"],
+    "rootfs": ["{{ repos_url_base }}/rootfs-specs.git"],
+    "rootfs_buildroutine": "{{ repos_url_base }}/rootfs-buildroutine.git",
+}
+```
+
+As seen, the *repo_url_base* variable that is provided by the setuproutine
+defines the URLs that are later being configured for change detection.
+
+## Continuous Integration - Buildmaster Configuration
+### Buildslaves
+Each architecture is configured with two buildslaves, one for default builds
+and one for rootfs builds.
+
+```
+c["slaves"] = [BuildSlave(arch, psk) for arch in arch_branch_res_map.keys()]
+c["slaves"].extend([BuildSlave("rootfs_"+arch, psk) for arch in
+arch_branch_res_map.keys()])
+
+from buildbot.changes.gitpoller import GitPoller
+c['change_source'] = []
+for git_repo_uri in git_repo_uris["default"]+git_repo_uris["rootfs"]:
+    c['change_source'].append(GitPoller(
+        repourl=git_repo_uri,
+        branches=True,
+        pollinterval=30))
+
+```
 
 
-### Variables
-Variable files can be specified to each element of the previous two entity
-groups. There's also a special variable file that, unless overriden,  is valid
-for all hosts at all times.
+### Repository Poller
+Buildbot offers a poller for most repository formats. The
+[GitPoller](http://docs.buildbot.net/current/manual/cfg-changesources.html?highlight=gitpoller#gitpoller)
+allows polling the above repositories for changes.
+
+```
+from buildbot.changes.gitpoller import GitPoller
+c['change_source'] = []
+for git_repo_uri in git_repo_uris["default"]+git_repo_uris["rootfs"]:
+  c['change_source'].append(GitPoller(
+          repourl=git_repo_uri,
+          branches=True,
+          pollinterval=30))
+```
+The repositories are polled for changes every 30 seconds.
+
+### Schedule Builds on Repository Changes
+Schedulers are notified by the Repository Pollers on any change. The scheduler
+can then decide if a build should be scheduled or not.  Buildbot offers several
+schedulers. A suitable scheduler for our purpose is the
+[AnyBranchScheduler](http://docs.buildbot.net/current/manual/cfg-schedulers.html#anybranchscheduler).
+In the following snippet, they are used together with regex expressions to
+accomplish the mapping shown in the previous code.
+
+```
+def default_repos(repository):
+  return repository in git_repo_uris["default"]
+
+def rootfs_repos(repository):
+  return repository in git_repo_uris["rootfs"]
+
+c['schedulers'] = []
+for arch,branch_res in arch_branch_res_map.items():
+  for branch_re in branch_res:
+    c['schedulers'].append(AnyBranchScheduler(
+      name="default / arch: %s / branch-filter: '%s'" % (arch, branch_re),
+      change_filter=filter.ChangeFilter(branch_re=branch_re,
+                                        repository_fn=default_repos),
+      treeStableTimer=10,
+      builderNames=[arch]))
+
+for arch in arch_branch_res_map.keys():
+  branch_re="%s.*" % arch
+  c['schedulers'].append(AnyBranchScheduler(
+    name="rootfs / arch: %s / branch-filter: '%s'" % (arch, branch_re),
+    change_filter=filter.ChangeFilter(branch_re=branch_re,
+                                      repository_fn=rootfs_repos),
+    treeStableTimer=10,
+    builderNames=["rootfs_"+arch]))
+```
+
+### Build Factories and Builders
+The actual build jobs are defined as
+[BuildFactories](http://docs.buildbot.net/current/developer/cls-buildfactory.html?highlight=buildfactory),
+and are then assigned to the respective
+[Builders](http://docs.buildbot.net/current/manual/cfg-builders.html?highlight=builder#builder-configuration)
+These builders will receive build jobs by the scheduler accordingly.
+
+#### Build Factories
+The build factories for default and rootfs builds implement the buildjobs.
+After checking out the changed repository branches
+
+##### Default factories run the *./build* script 
+
+```
+# default factory
+factory_default = BuildFactory()
+...
+factory_default.addStep(ShellCommand(command=["./build"], haltOnFailure=True, usePTY=True))
+...
+factory_default.addStep(
+  DirectoryUpload(
+    slavesrc="output",
+    masterdest=Interpolate("/var/lib/buildmaster/public_html/%(prop:product)s/%(prop:platform)s"),
+    url=Interpolate("/%(prop:product)s/%(prop:platform)s")
+  )
+)
+```
+
+##### RootFS factories run the [ansible-playbook from the RootFS-Buildroutine](rootfs.md)
+
+```
+# rootfs factory
+factory_rootfs = BuildFactory()
+...
+factory_rootfs.addStep(ShellCommand(command="/usr/bin/git clone --single-branch --depth 1 %s .ansible" % git_repo_uris['rootfs_buildroutine']))
+factory_rootfs.addStep(ShellCommand(command=" ansible-playbook -i .ansible/hosts .ansible/site.yml -vvvvv",
+                                    timeout=None, usePTY=True, haltOnFailure=True, 
+                                    env={ "TERM": "vt100",
+                                          "ANSIBLE_CONFIG": ".ansible/ansible.cfg",
+                                          "ANSIBLE_FORCE_COLOR": "1",
+                                          "BUILDMASTER_URL": buildaster_url,
+                                    }))
+```
+##### Afterwards, the output directory is uploaded to the buildmaster webserver.
+
+```
+factory_rootfs.addStep(
+  DirectoryUpload(
+    slavesrc="output",
+    masterdest=Interpolate("/var/lib/buildmaster/public_html/%(prop:product)s/%(prop:platform)s"),
+    url=Interpolate("/%(prop:product)s/%(prop:platform)s")
+  )
+)
+```
+Since the build factories are pretty big, please consult the master.cfg file
+directly for more details.
+
+#### Builders
+The builder assignment implements the arch <-> branch <-> platform mapping.
+Effectively, the builders are assigned per architecture, since the platform
+mappings are already mapped to their according architecture.
 
 
-## Tasks Overview
-## Configuration Parameters
-## Dependency Installation
-## Credential Storage
-## Configuration Generation
-## Container Creation
-## Container Startup
+```
+c['builders'] = []
+
+for arch in arch_branch_res_map.iterkeys():
+  c['builders'].append(
+      BuilderConfig(
+        name=arch,
+        slavenames=arch,
+        factory=factory_default,
+        ))
+for arch in arch_branch_res_map.iterkeys():
+  c['builders'].append(
+      BuilderConfig(
+        name="rootfs_"+arch,
+        slavenames="rootfs_"+arch,
+        factory=factory_rootfs,
+        ))
+```
+
+### Authentication and Permissions
+Last but not least, the permissions for the previously rendered userlist are
+configured.
+```
+authz_cfg=authz.Authz(
+    # change any of these to True to enable; see the manual for more
+    # options
+    auth=auth.BasicAuth(users),
+    gracefulShutdown = 'auth',
+    forceBuild = 'auth', # use this to test your slave once it is set up
+    stopBuild = 'auth',
+    stopAllBuilds = 'auth',
+    cancelPendingBuild = 'auth',
+    pingBuilder = True,
+)
+```
+
+This configuration only authenticated users to scheduler and abort any builds
+manually.  Consult the official docs at
+[Webstatus](http://docs.buildbot.net/current/developer/webstatus.html?highlight=authz#web-authorization-framework)
+for more details on these options.
+
