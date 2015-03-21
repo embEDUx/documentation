@@ -372,6 +372,8 @@
         
             <li><a href="#package-specific-problems">Package Specific Problems</a></li>
         
+            <li><a href="#build-routine-problems">Build Routine Problems</a></li>
+        
     
     </ul>
 </div></div>
@@ -415,6 +417,20 @@ make: *** [all] Error 2
 <li>Upstream bug ticket: https://gnuradio.org/redmine/issues/692
 <strong>(work in progress)</strong></li>
 </ul>
+<h2 id="build-routine-problems">Build Routine Problems</h2>
+<h3 id="proot-upgrade-causes-unexpected-behavior-with-nested-sshd">proot upgrade causes unexpected behavior with nested SSHd</h3>
+<p>The following structure gives an outline of the scenario and the direct result of
+the mentioned bug after upgrading <em>sys-apps/proot</em> to version 5.0.0 inside the
+container <em>buildslavei_rootfs_amd64</em>.</p>
+<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
+  - QEMU/KVM VM @ Gentoo Kernel 3.19
+    - Docker container that contains another chroot_rootfs
+      - running as user $ sudo proot chroot_inside_container sshd -p 2222
+        - running as user $ ssh root@localhost -p 2222
+          - running as chroot root # su some_user -s /bin/true 
+            --&gt; FAILS WITH 'Permission Denied'
+</code></pre>
+
 </div>
         </div>
 

@@ -369,9 +369,13 @@
         
             <li><a href="#terminology">Terminology</a></li>
         
-            <li><a href="#the-core">The Core</a></li>
-        
             <li><a href="#focus-on-hardware">Focus on Hardware</a></li>
+        
+            <li><a href="#what-is-it-and-what-can-it-do">What Is It And What Can It Do?</a></li>
+        
+            <li><a href="#what-is-it-not">What Is It Not?</a></li>
+        
+            <li><a href="#the-core">The Core</a></li>
         
             <li><a href="#building-customized-linux-distributions">Building Customized Linux Distributions</a></li>
         
@@ -396,6 +400,36 @@ upload the build specification files that allow you to reproduce our builds!</p>
 <a href="background/terminology/index.html">terminology</a>. If you keep an open eye for
 crudities, you are encouraged to inform us by either opening an issue or putting
 up a pull-request.</p>
+<h2 id="focus-on-hardware">Focus on Hardware</h2>
+<p>A variety from low up to high end ARM-boards were available during the design
+and development of the project. Successful builds have been produced for</p>
+<ul>
+<li>Raspberry Pi</li>
+<li>Banana Pi</li>
+<li>Beaglebone Black</li>
+<li>Utilite Pro</li>
+</ul>
+<h2 id="what-is-it-and-what-can-it-do">What Is It And What Can It Do?</h2>
+<ul>
+<li>Automated build system for complete customized Linux distributions</li>
+<li>Easy to setup via the configurable setup routine</li>
+<li>Centralized build configurations for all your platforms</li>
+<li>Individual configuration and builds with specified targets, organized by<ul>
+<li>Platform: for Linux-Kernel, U-Boot</li>
+<li>Architecture: RootFS</li>
+<li>Hybrid: Toolchain, Misc-Files</li>
+</ul>
+</li>
+<li>Working examples for the aforementioned hardware platforms</li>
+</ul>
+<h2 id="what-is-it-not">What Is It Not?</h2>
+<ul>
+<li>Magic system for guessing all your platforms configuration automatically</li>
+<li>While we were able build, deploy to and run systems on these platforms, this
+project is not meant to provide the builds them self. Instead, you will find
+instructions how to setup or use an existing instance of the build system in
+order to produce your own customized builds.</li>
+</ul>
 <h2 id="the-core">The Core</h2>
 <p>embEDUx is completely based on Open Source software. The biggest projects that
 were chosen for the core of the solution are</p>
@@ -411,19 +445,6 @@ were chosen for the core of the solution are</p>
 </ul>
 <p>If you are interested in why these choices were made, please head over to the
 <a href="background/background/index.html">background section</a></p>
-<h2 id="focus-on-hardware">Focus on Hardware</h2>
-<p>A variety from low up to high end ARM-boards were available during the design
-and development of the project. Successful builds have been produced for</p>
-<ul>
-<li>Raspberry Pi</li>
-<li>Banana Pi</li>
-<li>Beaglebone Black</li>
-<li>Utilite Pro</li>
-</ul>
-<p>While we were able build, deploy to and run systems on these platforms, this
-project is not meant to provide the builds them self. Instead, you will find
-instructions how to setup or use an existing instance of the build system in
-order to produce your own customized builds.</p>
 <h2 id="building-customized-linux-distributions">Building Customized Linux Distributions</h2>
 <p>The embEDUx build system been designed to build customized Linux distributions.
 These systems consist of distinct products, namely</p>
@@ -438,51 +459,30 @@ process and later application development.</p>
 the <a href="background/terminology/index.html">terminology</a>, and if necessary study other
 subject related literature.</p>
 <h2 id="getting-started-with-your-distribution">Getting Started with <strong><em>your</em></strong> Distribution</h2>
-<p>The task of building a customized Linux distribution is rather complex, 
-and the <strong>embEDUx</strong> tries to not take away flexibility with the provided
-solution. Therefore, a good understanding of the matter is needed and it is
-not possible to provide you with a static instruction list.</p>
-<p>Like every software system, the very basic topics are about its setup and
-its usage, here we go!</p>
+<p>The task of building a customized Linux distribution is rather complex, and the
+<strong>embEDUx</strong> tries to not take away flexibility with the provided solution.
+Therefore, a good understanding of the matter is needed and it is not possible
+to provide you with a static instruction list. Like every software system, the
+very basic topics are about its setup and its usage, here we go!</p>
 <h3 id="setup">Setup</h3>
 <p>If you already have access to a fully setup instance of the build system, you
-can skip this chapter. Otherwise, please follow the <a href="setup/setup/index.html">Setup
-Instructions</a></p>
-<h3 id="post-install">Post Install</h3>
-<p>The post installation procedures will guide the Administrator through creating
-toolchains and the user documentation. These are very important steps, because
-the objects are required by the user to use the buildsystem.</p>
+can skip this chapter. </p>
 <ul>
-<li><a href="setup/post-install/toolchains/index.html">Toolchains</a></li>
-<li><a href="setup/post-install/user-documentation/index.html">User Documentation</a></li>
+<li><a href="setup/setup/index.html">Setup Instructions</a></li>
 </ul>
 <h3 id="usage">Usage</h3>
 <p>The customized Linux distribution will consist of the aforementioned products,
 of which you will have to build <strong><em>all</em></strong> in order to achieve ultimate glory
 with a complete system for your target platform!</p>
-<p><a href="./img/abstract.png"><img alt="Abstract" src="./img/abstract.png" /></a></p>
-<h4 id="overview">Overview</h4>
-<p>We strongly suggest that you have a look at the <a href="usage/usage/index.html">usage
-overview</a>. The overview will give you an idea of how the process
-of building a product looks like in a general sense.</p>
-<h4 id="build">Build</h4>
-<p>If you feel ready, please begin to <strong>build your products</strong>!</p>
 <ul>
-<li><a href="usage/uboot/index.html">U-Boot</a> images</li>
-<li><a href="usage/linux/index.html">Linux</a>-Kernel images and modules</li>
-<li><a href="usage/rootfs/index.html">RootFS</a>-archives based on Gentoo</li>
+<li><a href="usage/usage/index.html">Usage Overview</a></li>
 </ul>
-<p>Some platforms, e.g. the Raspberry Pi, require additional files that do not
-strictly belong to any of the three products from above. These miscellaneous
-files are stored in their very own repository which is handled separately.</p>
+<h3 id="deploy">Deploy</h3>
+<p><strong>embEDUx</strong> ships a CLI-style <a href="usage/flashtool/index.html">Flashtool</a> for
+easy deployment to your hardware! </p>
 <ul>
-<li><a href="usage/misc/index.html">Misc</a>-archives</li>
+<li><a href="usage/usage/index.html#hardware-deployment">Hardware Deployment</a></li>
 </ul>
-<h4 id="deploy">Deploy</h4>
-<p><strong>embEDUx</strong> ships a CLI-style <a href="background/implementation/flashtool/index.html">Flashtool</a> for
-easy deployment to your hardware!  More information and instructions for manual
-deployment shall be found at the end of the <a href="usage/usage/index.html#hardware-deployment">usage
-overview</a></p>
 </div>
         </div>
 

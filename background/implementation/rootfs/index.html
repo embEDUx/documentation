@@ -365,31 +365,135 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#rootfs-build-routine">RootFS Build Routine</a></li>
+        <li class="main active"><a href="#rootfs-build-implementation">RootFS Build Implementation</a></li>
         
-            <li><a href="#occurred-problems">Occurred Problems</a></li>
+            <li><a href="#steps">Steps</a></li>
+        
+            <li><a href="#context-awareness">Context Awareness</a></li>
+        
+            <li><a href="#nativecross-rootfs-detection">Native/Cross RootFS Detection</a></li>
+        
+            <li><a href="#plays-overview">Plays Overview</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="rootfs-build-routine">RootFS Build Routine</h1>
+<h1 id="rootfs-build-implementation">RootFS Build Implementation</h1>
 <p><strong>(work in progress)</strong></p>
-<h3 id="occurred-problems">Occurred Problems</h3>
-<h4 id="proot-upgrade-causes-unexpected-behavior-with-nested-sshd">proot upgrade causes unexpected behavior with nested SSHd</h4>
-<p>The following structure gives an outline of the scenario and the direct result of
-the mentioned bug after upgrading <em>sys-apps/proot</em> to version 5.0.0 inside the
-container <em>buildslavei_rootfs_amd64</em>.</p>
-<pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something
-  - QEMU/KVM VM @ Gentoo Kernel 3.19
-    - Docker container that contains another chroot_rootfs
-      - running as user $ sudo proot chroot_inside_container sshd -p 2222
-        - running as user $ ssh root@localhost -p 2222
-          - running as chroot root # su some_user -s /bin/true 
-            --&gt; FAILS WITH 'Permission Denied'
-</code></pre>
-
+<p>This chapter explains the implementation of the RootFS build routine. According
+to the <a href="../../evaluation/rootfs/index.html">RootFS evaluation results</a>, <strong>Ansible</strong> has
+been used for the implementation. </p>
+<p>The implementation is available online in the <a href="https://github.com/embEDUx/rootfs-buildroutine">RootFS build routine
+repository</a>.</p>
+<h2 id="steps">Steps</h2>
+<p>The necessary steps for the RootFS Build routine have already been specified in
+the <a href="../../../rootfs-build-routine-steps">corresponding evaluation chapter</a>. As it can be
+seen there, the build steps are different for native and cross containers.
+Therefore, the RootFS build routine needs to be aware of the context.</p>
+<h2 id="context-awareness">Context Awareness</h2>
+<p>The RootFS build process is triggered for every change in the RootFS product
+specifications repository. Please have a look at the following picture,
+especially how the build delegation to the RootFS containers is visualized. </p>
+<p><a href="../../../background/img/post-eval_result_design_rootfs.png"><img alt="" src="../../../background/img/post-eval_result_design_rootfs.png" /></a></p>
+<p>According to the design and evaluation results, the RootFS build routine can
+either be run in a RootFS container for the native or cross architecture. </p>
+<h2 id="nativecross-rootfs-detection">Native/Cross RootFS Detection</h2>
+<p>Both scenarios must be handled differently. Environment variables are used to
+indicate the target architecture in the buildslave container. A comparison of
+the target architecture and the detected native architecture indicates whether
+the build routine must handle a native or cross target RootFS. The build routine
+involves setting up the build environment depending on whether it is a cross
+container or not.</p>
+<h2 id="plays-overview">Plays Overview</h2>
+<p>Altogether, the build routine consists of 10 plays. The following table gives a
+brief overview about all the plays. The host column is directly taken from the
+<code>ansible-playbook --list-tasks</code> commands, and gives some insight how the host
+organization options have been used. The example shows the procedure for a fresh
+build enviornment. Some of these steps are automatically skipped on subsequent
+build jobs, e.g. play #3 and #6.</p>
+<table>
+<thead>
+<tr>
+<th>Play #</th>
+<th>Cross/Native</th>
+<th>Host</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#1</td>
+<td>both</td>
+<td>localhost</td>
+<td>Native/Cross detection and fact assignment</td>
+</tr>
+<tr>
+<td>#2</td>
+<td>both</td>
+<td>localhost</td>
+<td>Download stage3; Prepare and mount the RootFS image; Unpack stage3; Sync portage tree</td>
+</tr>
+<tr>
+<td>#3</td>
+<td>cross</td>
+<td>localhost</td>
+<td>Create dummy hosts group for cross targets</td>
+</tr>
+<tr>
+<td>#4</td>
+<td>cross</td>
+<td>localhost_cross</td>
+<td>Download and unpack Qemu kernel files</td>
+</tr>
+<tr>
+<td>#5</td>
+<td>cross</td>
+<td>target_cross</td>
+<td>Estimate the crossdev parameters</td>
+</tr>
+<tr>
+<td>#6</td>
+<td>cross</td>
+<td>localhost_cross</td>
+<td>Build the cross-toolchain using crossdev; Setup distccd</td>
+</tr>
+<tr>
+<td>#7</td>
+<td>both</td>
+<td>localhost</td>
+<td>Start the target system accordingly (Qemu or proot)</td>
+</tr>
+<tr>
+<td>#8</td>
+<td>both</td>
+<td>target</td>
+<td><strong>Copy Pre-Overlay; Run Pre-Install-Comands; Install Packages</strong></td>
+</tr>
+<tr>
+<td>#9</td>
+<td>both</td>
+<td>target</td>
+<td><strong>Copy Post-Overlay; Run Post-Install-Comands</strong></td>
+</tr>
+<tr>
+<td>#10</td>
+<td>both</td>
+<td>localhost</td>
+<td>Pack the RootFS content and Portage Snapshots</td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes">Notes</h4>
+<p>The actions that are <strong>marked bold</strong> process the <strong>configuration.yml and overlay
+directories</strong> that have been stored in the RootFS product specification
+repository. If you are interested in an example, please have a look at the
+<a href="../../../usage/rootfs/index.html#repository-file-structure">RootFS Usage page</a>.</p>
+<p>The table has been simplified, since all plays consists of a total of 137 tasks.
+Please investigate the <a href="https://github.com/embEDUx/rootfs-buildroutine">source code of the build
+routine</a> if you are interested
+in more details.</p>
 </div>
         </div>
 
