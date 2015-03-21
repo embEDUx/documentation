@@ -109,7 +109,7 @@ attributes or permissions on files, you have the following possibilities:
   install\_commands 
 
 
-## Advanced use cases
+## Advanced Use Cases
 This section will provide some interesting use-cases for the output of the
 RootFS-builds.
 

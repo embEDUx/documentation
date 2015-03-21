@@ -75,7 +75,7 @@ The following example will give you a detailed overview of the necessary steps
 to build kernel 3.18.7 for the raspberry pi. We assume that at this point the
 *linux-specs* repository is empty.
 
-### Add new upstream kernel
+### Add New Upstream Kernel
 Before you can add [a new platfom](#add-new-platform), for which you want to
 build a **Linux** kernel, you first need to add a *version\_generic* branch to
 the *linux-specs* repository. 
@@ -141,7 +141,7 @@ $ git push
    version within your *linux-specs* repository, the next step is to add a *version\_platform*
    branch.
 
-### Add new platform
+### Add New Platform
 This step requires an existing [*version\_genereric*](#add-new-upstream-kernel)
 branch for the **Linux** kernel version you want to add a platform.
 

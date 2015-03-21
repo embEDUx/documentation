@@ -46,7 +46,7 @@ Branch | Scheme | Example
 --- | --- | ---
 platform | < platform-string \> |  raspberry-pi
 
-### Side note
+### Side Note
 Two mandatory files, which are always needed are:
 
 File | Folder | Notes
@@ -65,7 +65,7 @@ The following example will give you a detailed overview of the necessary steps
 to build the misc files for the raspberry pi. We assume that at this point the
 *misc-specs* repository is empty.
 
-## Add new platform
+## Add New Platform
 
 1. Clone the *misc-specs* repository with the URL provided in the user documentation.
 
