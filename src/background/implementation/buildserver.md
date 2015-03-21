@@ -33,12 +33,12 @@ Play | Hosts | Actions
 The dependencies Playbook takes care of installing and starting **Docker** on the target
 machine. As required by design and evaluation, it can do this on **Ubuntu** and
 **Gentoo** machines. It has been tested on Virtual Machines that were installed
-with the mentioned Linux variants.
+with the mentioned Linux derivatives.
 
 ### [buildmaster.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildmaster.yml)
 The buildmaster Playbook builds and runs the buildmaster container on the target
 machine. The architecture will be chosen according to the target machine
-architecture. In theory, this should work on any target architecture that are
+architecture. In theory, this should work on any target architecture that is
 available as **Gentoo** stage3, but it has only been tested on x86\_64 target
 machines so far.
 
@@ -154,10 +154,16 @@ git_repo_uris = {
 As seen, the *repo_url_base* variable that is provided by the setuproutine
 defines the URLs that are later being configured for change detection.
 
-## Continuous Integration - Buildmaster Configuration
+## Continuous Integration
+While the above chapter gives an introduction of how the setup incorporates the
+variables into the buildmaster configuration, this part will demonstrate how the
+Continuous Integration-aspects have been implemented with **Buildbot**.
+
 ### Buildslaves
-Each architecture is configured with two buildslaves, one for default builds
-and one for rootfs builds.
+Every buildslave container needs an equivalent buildslave configuration. Each
+architecture is configured with two buildslaves, one for default builds and one
+for rootfs builds. All buildslaves use the previously explained PSK as a
+password.
 
 ```
 c["slaves"] = [BuildSlave(arch, psk) for arch in arch_branch_res_map.keys()]
@@ -237,7 +243,10 @@ These builders will receive build jobs by the scheduler accordingly.
 The build factories for default and rootfs builds implement the buildjobs.
 After checking out the changed repository branches
 
-##### Default factories run the *./build* script 
+##### Default factory - runs the *./build* executable
+The default factory expects the repository to have an executable named
+**build**. It will be executed after the changed repository branch has been
+checked out to the filesystem.
 
 ```
 # default factory
@@ -245,23 +254,20 @@ factory_default = BuildFactory()
 ...
 factory_default.addStep(ShellCommand(command=["./build"], haltOnFailure=True, usePTY=True))
 ...
-factory_default.addStep(
-  DirectoryUpload(
-    slavesrc="output",
-    masterdest=Interpolate("/var/lib/buildmaster/public_html/%(prop:product)s/%(prop:platform)s"),
-    url=Interpolate("/%(prop:product)s/%(prop:platform)s")
-  )
-)
 ```
 
-##### RootFS factories run the [ansible-playbook from the RootFS-Buildroutine](rootfs.md)
+##### RootFS factory - runs the [ansible-playbook from the RootFS-Buildroutine](rootfs.md)
+The RootFS factory works completely different compared to the default factory.
+It retrieves the [RootFS buildroutine](rootfs.md) from the previously defined
+repository URL. Afterwards it runs the Playbook named **site.yml** which
+processes the RootFS specifications from the changed RootFS repository branch.
 
 ```
 # rootfs factory
 factory_rootfs = BuildFactory()
 ...
 factory_rootfs.addStep(ShellCommand(command="/usr/bin/git clone --single-branch --depth 1 %s .ansible" % git_repo_uris['rootfs_buildroutine']))
-factory_rootfs.addStep(ShellCommand(command=" ansible-playbook -i .ansible/hosts .ansible/site.yml -vvvvv",
+factory_rootfs.addStep(ShellCommand(command="ansible-playbook -i .ansible/hosts .ansible/site.yml -vvvvv",
                                     timeout=None, usePTY=True, haltOnFailure=True, 
                                     env={ "TERM": "vt100",
                                           "ANSIBLE_CONFIG": ".ansible/ansible.cfg",
@@ -269,7 +275,9 @@ factory_rootfs.addStep(ShellCommand(command=" ansible-playbook -i .ansible/hosts
                                           "BUILDMASTER_URL": buildaster_url,
                                     }))
 ```
-##### Afterwards, the output directory is uploaded to the buildmaster webserver.
+##### Upload The Output 
+Afterwards the factories successfully complete their build processes, the
+content of directory called ***output*** is uploaded to the buildmaster webserver.
 
 ```
 factory_rootfs.addStep(
@@ -280,8 +288,9 @@ factory_rootfs.addStep(
   )
 )
 ```
-Since the build factories are pretty big, please consult the master.cfg file
-directly for more details.
+
+Many build steps have been skipped for this overview, please consult the
+***master.cfg.j2*** file directly for more details.
 
 #### Builders
 The builder assignment implements the arch <-> branch <-> platform mapping.
@@ -310,7 +319,9 @@ for arch in arch_branch_res_map.iterkeys():
 
 ### Authentication and Permissions
 Last but not least, the permissions for the previously rendered userlist are
-configured.
+configured. This configuration only authenticated users to scheduler and abort
+any builds manually. 
+
 ```
 authz_cfg=authz.Authz(
     # change any of these to True to enable; see the manual for more
@@ -324,9 +335,6 @@ authz_cfg=authz.Authz(
     pingBuilder = True,
 )
 ```
-
-This configuration only authenticated users to scheduler and abort any builds
-manually.  Consult the official docs at
+Please consult the official docs at
 [Webstatus](http://docs.buildbot.net/current/developer/webstatus.html?highlight=authz#web-authorization-framework)
 for more details on these options.
-
