@@ -25,7 +25,7 @@ for tasks concerning the preparation of soft- and hardware for the lab-courses
 at the HTWG. Naturally, that's why the embEDUx requirements will have a strong
 bias towards the requirements specific to the lab-courses.
 
-## What is it, and what can it do?
+## What Is It And What Can It Do?
 * Automated build system for complete customized Linux distributions
 * Easy to setup via the configurable setuproutine
 * Centralized build configurations for all your platforms
@@ -35,7 +35,7 @@ bias towards the requirements specific to the lab-courses.
     * Hybrid: Toolchain, Misc-Files
 * Working examples for Raspberry Pi, Beaglebone Black, Banana Pi, Utilite Pro
 
-## What is it not?
+## What Is It Not? 
 * Magic system for guessing all your platforms configuration automatically
 
 ## Initial Contributors
