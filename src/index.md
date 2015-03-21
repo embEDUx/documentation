@@ -1,6 +1,6 @@
 # The **embEDUx** Project
-The *embEDUx* project aims to deliver a **solution for building and deploying customized
-linux distributions for educational purposes**.
+The *embEDUx* project aims to deliver a **complete solution for building and
+deploying customized linux distributions for educational purposes**.
 
 The origin lays at a university of applied sciences called
 [HTWG Konstanz](http://www.htwg-konstanz.de/English.20.0.html) located in Constance,

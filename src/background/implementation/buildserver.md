@@ -6,10 +6,19 @@ contained by **Docker** containers.
 
 # Setuproutine With Ansible
 The [evaluation chose Ansible](../evaluation/buildserver-setuproutine.md) for
-the implementation of the setuproutine. The implementation went 
+the implementation of the setuproutine. The tasks are be grouped into roles and
+plays, with the target architectures being variable. This allows to reuse
+tasks and roles for the different target architectures, but requires a high
+flexibility in the tasks.
 
-## Playbook Overview
-TODO
+## Playbooks
+The implementation includes one Playbook for every major setup task, and another
+one that includes all of them.
+
+### [buildserver.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildserver.yml)
+
+This playbook is the one that contains all major setup tasks. The Plays that are
+executed in the default configuration are listed in the following table.
 
 Play | Hosts | Actions
 --- | --- | ---
@@ -19,10 +28,34 @@ Play | Hosts | Actions
 #4 | buildslaves-amd64 | Setup and run amd64 buildslaves
 #5 | buildslaves-armv6j_hardfp | Setup and run arm6j_hardfp buildslave containers
 #6 | buildslaves-armv7a_hardfp | Setup armv7a_hardfp buildslave containers
+    
+### [dependencies.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/dependencies.yml)
+The dependencies Playbook takes care of installing and starting **Docker** on the target
+machine. As required by design and evaluation, it can do this on **Ubuntu** and
+**Gentoo** machines. It has been tested on Virtual Machines that were installed
+with the mentioned Linux variants.
+
+### [buildmaster.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildmaster.yml)
+The buildmaster Playbook builds and runs the buildmaster container on the target
+machine. The architecture will be chosen according to the target machine
+architecture. In theory, this should work on any target architecture that are
+available as **Gentoo** stage3, but it has only been tested on x86\_64 target
+machines so far.
+
+### [buildslaves.yml](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildslaves.yml)
+The buildslaves Playbook builds and runs the buildslaves containers on the
+target machine. By default, the target machine is the buildmaster itself, thus
+the buildslaves for all targets architectures will run on the buildmaster.  It
+should be possible to distribute the buildslaves to several machines, including
+foreign architectures, but that scenario has not been tested yet.
 
 
 ## Buildmaster Configuration Generation 
-TODO
+The buildmaster configuration is highly dependent on the configuration that is
+provided by the setup variables. As designed and evaluated, a template engine is
+used to generate the ***master.cfg*** during the setup procedure. A detailed
+explanation of how the variables and template are connected will be given in
+this chapter.
 
 ### Provided Information - [***group_vars/all***](https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/group_vars/all)
 
