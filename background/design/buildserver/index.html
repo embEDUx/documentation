@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -435,7 +427,7 @@ possible, will allow to extend the system as easy as possible. Therefore, this
 criteria is moved over to the <a href="#setup-automation-routine">setup automation routine
 design</a>, which is the next chapter.</p>
 <h2 id="setup-automation-routine">Setup Automation Routine</h2>
-<p>The job of the setuproutine is to setup all buildserver components.  The
+<p>The job of the setup routine is to setup all buildserver components.  The
 buildserver will undoubtedly be a complex structure of software components.  To
 make the setup as easy as possible it should be automated as far as possible.</p>
 <h3 id="required-setup-parameters">Required Setup Parameters</h3>
@@ -456,7 +448,7 @@ user set the credentials for system internal communication.</p>
 <li>
 <p>Authentication credentials between the system components and the users</p>
 <p>Default usernames and passwords are possible security holes, and should not
-be provided by the setuproutine.</p>
+be provided by the setup routine.</p>
 </li>
 </ul>
 <h3 id="optional-setup-parameters">Optional Setup Parameters</h3>
@@ -472,14 +464,14 @@ to already have working examples in the local installation.</p>
 </li>
 </ul>
 <h3 id="default-setup-parameters">Default Setup Parameters</h3>
-<p>All other setup parameters should be provided as defaults by the setuproutine.</p>
+<p>All other setup parameters should be provided as defaults by the setup routine.</p>
 <h3 id="configuration-generation-from-templates">Configuration Generation From Templates</h3>
 <p>The configured and default setup parameters should be used to
 generate the configuration files for the buildsystem. For commonly used changes,
 the generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary. </p>
 <h3 id="setup-automation-routine-candidates">Setup Automation Routine Candidates</h3>
-<p>The setuproutine should be automated using an appropriate programming or
+<p>The setup routine should be automated using an appropriate programming or
 scripting language. The chosen language needs to be flexible in detecting
 conditions, since every setup run will have different conditions.
 The candidates are</p>
@@ -499,7 +491,7 @@ The candidates are</p>
 <h4 id="execute-commands-on-the-target-machine">Execute commands on the target machine</h4>
 <p>Executing commands on the target machine will be necessary in order to complete
 the setup. The most commonly remote control utility is <strong>SSH</strong>, which shall be
-used for the setuproutine too, without any further evaluation.</p>
+used for the setup routine too, without any further evaluation.</p>
 <h4 id="package-installation">Package Installation</h4>
 <p>The build environment requires all the necessary tools to be installed on the
 buildserver. It is assumed that the buildserver runs a Linux distribution that
@@ -581,7 +573,7 @@ following target archtecture specific components:</p>
 </ul>
 <h4 id="container-management-setup-steps">Container Management Setup Steps</h4>
 <p>Managing containers includes more than starting and stopping them. The
-setuproutine needs to assemble the content from scratch.  This requires an image
+setup routine needs to assemble the content from scratch.  This requires an image
 which the container setup process will be based on. The container management
 includes roughly the following steps. They will be specified in more detail in
 the evaluation step, when the container utility has been chosen.</p>

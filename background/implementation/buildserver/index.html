@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -373,13 +365,13 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#setuproutine-playbooks">Setuproutine Playbooks</a></li>
+        <li class="main active"><a href="#setup-routine-with-ansible">Setup routine With Ansible</a></li>
         
-            <li><a href="#playbook-overview">Playbook Overview</a></li>
+            <li><a href="#playbooks">Playbooks</a></li>
         
             <li><a href="#buildmaster-configuration-generation">Buildmaster Configuration Generation</a></li>
         
-            <li><a href="#continuous-integration-buildmaster-configuration">Continuous Integration - Buildmaster Configuration</a></li>
+            <li><a href="#continuous-integration">Continuous Integration</a></li>
         
     
     </ul>
@@ -389,11 +381,20 @@
 <p><strong>embEDUx</strong> buildserver is a compound of several components. Together, these
 components form a unit that is designed to build different products
 automatically as soon as the user provides new build specifications via the
-product repositories.</p>
-<h1 id="setuproutine-playbooks">Setuproutine Playbooks</h1>
-<p>TODO</p>
-<h2 id="playbook-overview">Playbook Overview</h2>
-<p>TODO</p>
+product repositories. All the components that run on the buildserver will be
+contained by <strong>Docker</strong> containers.</p>
+<h1 id="setup-routine-with-ansible">Setup routine With Ansible</h1>
+<p>The <a href="../../evaluation/buildserver-setuproutine/index.html">evaluation chose Ansible</a> for
+the implementation of the setup routine. The tasks are be grouped into roles and
+plays, with the target architectures being variable. This allows to reuse
+tasks and roles for the different target architectures, but requires a high
+flexibility in the tasks.</p>
+<h2 id="playbooks">Playbooks</h2>
+<p>The implementation includes one Playbook for every major setup task, and another
+one that includes all of them.</p>
+<h3 id="buildserveryml"><a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildserver.yml">buildserver.yml</a></h3>
+<p>This playbook is the one that contains all major setup tasks. The Plays that are
+executed in the default configuration are listed in the following table.</p>
 <table>
 <thead>
 <tr>
@@ -435,10 +436,31 @@ product repositories.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="dependenciesyml"><a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/dependencies.yml">dependencies.yml</a></h3>
+<p>The dependencies Playbook takes care of installing and starting <strong>Docker</strong> on the target
+machine. As required by design and evaluation, it can do this on <strong>Ubuntu</strong> and
+<strong>Gentoo</strong> machines. It has been tested on Virtual Machines that were installed
+with the mentioned Linux derivatives.</p>
+<h3 id="buildmasteryml"><a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildmaster.yml">buildmaster.yml</a></h3>
+<p>The buildmaster Playbook builds and runs the buildmaster container on the target
+machine. The architecture will be chosen according to the target machine
+architecture. In theory, this should work on any target architecture that is
+available as <strong>Gentoo</strong> stage3, but it has only been tested on x86_64 target
+machines so far.</p>
+<h3 id="buildslavesyml"><a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/buildslaves.yml">buildslaves.yml</a></h3>
+<p>The buildslaves Playbook builds and runs the buildslaves containers on the
+target machine. By default, the target machine is the buildmaster itself, thus
+the buildslaves for all targets architectures will run on the buildmaster.  It
+should be possible to distribute the buildslaves to several machines, including
+foreign architectures, but that scenario has not been tested yet.</p>
 <h2 id="buildmaster-configuration-generation">Buildmaster Configuration Generation</h2>
-<p>TODO</p>
+<p>The buildmaster configuration is highly dependent on the configuration that is
+provided by the setup variables. As designed and evaluated, a template engine is
+used to generate the <strong><em>master.cfg</em></strong> during the setup procedure. A detailed
+explanation of how the variables and template are connected will be given in
+this chapter.</p>
 <h3 id="provided-information-group_varsall">Provided Information - <a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/group_vars/all"><strong><em>group_vars/all</em></strong></a></h3>
-<p>The following file is the default configuration file for the setuproutine. It
+<p>The following file is the default configuration file for the setup routine. It
 contains the setup that has been running at the HTWG, and it includes the
 supported platforms used at the HTWG.</p>
 <pre><code class="yaml">---
@@ -479,18 +501,20 @@ docker_image_prefix: &quot;embedux&quot;
 </code></pre>
 
 <h3 id="configuration-template-mastercfgj2">Configuration Template - <a href="https://github.com/embEDUx/buildserver-setuproutine/blob/ansible/roles/docker_buildmaster/templates/master.cfg.j2"><strong><em>master.cfg.j2</em></strong></a></h3>
-<p><strong>This file will be rendered according to the information form the
-<em>group_vars/all</em> file</strong></p>
-<p>This section demonstrates how the automatic builds have been configured.</p>
+<p>This file will be rendered according to the information from the
+<em>group_vars/all</em> file which contains the default configuration and can be edited
+by the Administrator. Additionally, secrets that have been defined in the vault
+are assigned to variables that are available in the buildmaster configuration.
+If interested, the instructions how to create the vault file are demonstrated
+within the <a href="../../../setup/buildserver/index.html#creating-the-password-vault">setup
+documentation</a></p>
 <h4 id="psk-pre-shared-key">PSK (Pre-Shared-Key)</h4>
 <p>This variable is filled in by the buildsetup template renderer. </p>
 <pre><code>psk = &quot;{{ buildbot_psk }}&quot;
 </code></pre>
 
-<p>The <em>buildbot_psk</em>-variable is special to the buildserver setuproutine, because
-it is stored in the password protected vault file. If interested, the
-instructions how to create the vault file are demonstrated within the <a href="../../../setup/buildserver/index.html#creating-the-password-vault">setup
-documentation</a></p>
+<p>The <em>buildbot_psk</em>-variable is special to the buildserver setup routine, because
+it is stored in the password protected vault file.</p>
 <h4 id="usernames-and-passwords-for-web-interface">Usernames and Passwords For Web-Interface</h4>
 <p>User permissions for the web-interface are also defined in the previously
 mentioned <em>vault</em>-file.</p>
@@ -520,12 +544,17 @@ git_repo_uris = {
 }
 </code></pre>
 
-<p>As seen, the <em>repo_url_base</em> variable that is provided by the setuproutine
+<p>As seen, the <em>repo_url_base</em> variable that is provided by the setup routine
 defines the URLs that are later being configured for change detection.</p>
-<h2 id="continuous-integration-buildmaster-configuration">Continuous Integration - Buildmaster Configuration</h2>
+<h2 id="continuous-integration">Continuous Integration</h2>
+<p>While the above chapter gives an introduction of how the setup incorporates the
+variables into the buildmaster configuration, this part will demonstrate how the
+Continuous Integration-aspects have been implemented with <strong>Buildbot</strong>.</p>
 <h3 id="buildslaves">Buildslaves</h3>
-<p>Each architecture is configured with two buildslaves, one for default builds
-and one for rootfs builds.</p>
+<p>Every buildslave container needs an equivalent buildslave configuration. Each
+architecture is configured with two buildslaves, one for default builds and one
+for rootfs builds. All buildslaves use the previously explained PSK as a
+password.</p>
 <pre><code>c[&quot;slaves&quot;] = [BuildSlave(arch, psk) for arch in arch_branch_res_map.keys()]
 c[&quot;slaves&quot;].extend([BuildSlave(&quot;rootfs_&quot;+arch, psk) for arch in
 arch_branch_res_map.keys()])
@@ -596,27 +625,27 @@ These builders will receive build jobs by the scheduler accordingly.</p>
 <h4 id="build-factories">Build Factories</h4>
 <p>The build factories for default and rootfs builds implement the buildjobs.
 After checking out the changed repository branches</p>
-<h5 id="default-factories-run-the-build-script">Default factories run the <em>./build</em> script</h5>
+<h5 id="default-factory-runs-the-build-executable">Default factory - runs the <em>./build</em> executable</h5>
+<p>The default factory expects the repository to have an executable named
+<strong>build</strong>. It will be executed after the changed repository branch has been
+checked out to the filesystem.</p>
 <pre><code># default factory
 factory_default = BuildFactory()
 ...
 factory_default.addStep(ShellCommand(command=[&quot;./build&quot;], haltOnFailure=True, usePTY=True))
 ...
-factory_default.addStep(
-  DirectoryUpload(
-    slavesrc=&quot;output&quot;,
-    masterdest=Interpolate(&quot;/var/lib/buildmaster/public_html/%(prop:product)s/%(prop:platform)s&quot;),
-    url=Interpolate(&quot;/%(prop:product)s/%(prop:platform)s&quot;)
-  )
-)
 </code></pre>
 
-<h5 id="rootfs-factories-run-the-ansible-playbook-from-the-rootfs-buildroutine">RootFS factories run the <a href="../rootfs/index.html">ansible-playbook from the RootFS-Buildroutine</a></h5>
+<h5 id="rootfs-factory-runs-the-ansible-playbook-from-the-rootfs-buildroutine">RootFS factory - runs the <a href="../rootfs/index.html">ansible-playbook from the RootFS-Buildroutine</a></h5>
+<p>The RootFS factory works completely different compared to the default factory.
+It retrieves the <a href="../rootfs/index.html">RootFS build routine</a> from the previously defined
+repository URL. Afterwards it runs the Playbook named <strong>site.yml</strong> which
+processes the RootFS specifications from the changed RootFS repository branch.</p>
 <pre><code># rootfs factory
 factory_rootfs = BuildFactory()
 ...
 factory_rootfs.addStep(ShellCommand(command=&quot;/usr/bin/git clone --single-branch --depth 1 %s .ansible&quot; % git_repo_uris['rootfs_buildroutine']))
-factory_rootfs.addStep(ShellCommand(command=&quot; ansible-playbook -i .ansible/hosts .ansible/site.yml -vvvvv&quot;,
+factory_rootfs.addStep(ShellCommand(command=&quot;ansible-playbook -i .ansible/hosts .ansible/site.yml -vvvvv&quot;,
                                     timeout=None, usePTY=True, haltOnFailure=True, 
                                     env={ &quot;TERM&quot;: &quot;vt100&quot;,
                                           &quot;ANSIBLE_CONFIG&quot;: &quot;.ansible/ansible.cfg&quot;,
@@ -625,7 +654,9 @@ factory_rootfs.addStep(ShellCommand(command=&quot; ansible-playbook -i .ansible/
                                     }))
 </code></pre>
 
-<h5 id="afterwards-the-output-directory-is-uploaded-to-the-buildmaster-webserver">Afterwards, the output directory is uploaded to the buildmaster webserver.</h5>
+<h5 id="upload-the-output">Upload The Output</h5>
+<p>Afterwards the factories successfully complete their build processes, the
+content of directory called <strong><em>output</em></strong> is uploaded to the buildmaster webserver.</p>
 <pre><code>factory_rootfs.addStep(
   DirectoryUpload(
     slavesrc=&quot;output&quot;,
@@ -635,8 +666,8 @@ factory_rootfs.addStep(ShellCommand(command=&quot; ansible-playbook -i .ansible/
 )
 </code></pre>
 
-<p>Since the build factories are pretty big, please consult the master.cfg file
-directly for more details.</p>
+<p>Many build steps have been skipped for this overview, please consult the
+<strong><em>master.cfg.j2</em></strong> file directly for more details.</p>
 <h4 id="builders">Builders</h4>
 <p>The builder assignment implements the arch &lt;-&gt; branch &lt;-&gt; platform mapping.
 Effectively, the builders are assigned per architecture, since the platform
@@ -661,7 +692,8 @@ for arch in arch_branch_res_map.iterkeys():
 
 <h3 id="authentication-and-permissions">Authentication and Permissions</h3>
 <p>Last but not least, the permissions for the previously rendered userlist are
-configured.</p>
+configured. This configuration only authenticated users to scheduler and abort
+any builds manually. </p>
 <pre><code>authz_cfg=authz.Authz(
     # change any of these to True to enable; see the manual for more
     # options
@@ -675,8 +707,7 @@ configured.</p>
 )
 </code></pre>
 
-<p>This configuration only authenticated users to scheduler and abort any builds
-manually.  Consult the official docs at
+<p>Please consult the official docs at
 <a href="http://docs.buildbot.net/current/developer/webstatus.html?highlight=authz#web-authorization-framework">Webstatus</a>
 for more details on these options.</p>
 </div>

@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -373,7 +365,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#buildserver-setuproutine-evaluation">Buildserver Setuproutine Evaluation</a></li>
+        <li class="main active"><a href="#buildserver-setup-routine-evaluation">Buildserver Setup routine Evaluation</a></li>
         
             <li><a href="#python">Python</a></li>
         
@@ -381,14 +373,14 @@
         
             <li><a href="#setup-steps-evaluation">Setup Steps Evaluation</a></li>
         
-            <li><a href="#result-buildserver-setuproutine-evaluation">Result Buildserver Setuproutine Evaluation</a></li>
+            <li><a href="#result-buildserver-setup-routine-evaluation">Result Buildserver Setup routine Evaluation</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="buildserver-setuproutine-evaluation">Buildserver Setuproutine Evaluation</h1>
+<h1 id="buildserver-setup-routine-evaluation">Buildserver Setup routine Evaluation</h1>
 <p>The buildserver design describes the <a href="../../design/buildserver/index.html#setup-automation-routine">setup automation
 routine</a>. It is designed to
 install and initialize the different components of the <strong>embEDUx</strong> buildserver
@@ -483,9 +475,9 @@ remote host. </p>
 utility will be used to implement the abstraction. The <a href="../container-utility/index.html">container utility
 evaluation</a> has chosen <strong>Docker</strong>. The necessary steps for
 setting up the container infrastructure during the setup can now be listed, in
-order to find the right tool for the setuproutine.</p>
+order to find the right tool for the setup routine.</p>
 <p>As specified in the <a href="../rootfs/index.html#conclusion">RootFS
-evaluation</a>, the RootFS buildroutine needs Gentoo portage.
+evaluation</a>, the RootFS build routine needs Gentoo portage.
 Therefore, the Docker images for the buildserver components will be based on
 stage3 archives too.</p>
 <ul>
@@ -509,8 +501,9 @@ stage3 archives too.</p>
 </li>
 </ul>
 </li>
+<li>Start Containers</li>
 </ul>
-<h3 id="result-buildserver-setuproutine-steps-evaluation">Result Buildserver Setuproutine Steps Evaluation</h3>
+<h3 id="result-buildserver-setup-routine-steps-evaluation">Result Buildserver Setup routine Steps Evaluation</h3>
 <table>
 <thead>
 <tr>
@@ -542,7 +535,7 @@ stage3 archives too.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="result-buildserver-setuproutine-evaluation">Result Buildserver Setuproutine Evaluation</h2>
+<h2 id="result-buildserver-setup-routine-evaluation">Result Buildserver Setup routine Evaluation</h2>
 <p>The original criteria can now be analyzed according to the results of the steps
 evaluation.</p>
 <table>
@@ -578,7 +571,8 @@ evaluation.</p>
 </table>
 <p>Even though Python is a scripting programming language with many modules
 available, <strong>Ansible</strong> is better for the purpose of automating the given tasks.
-It has builtin modules for most of the required tasks.</p>
+It has builtin modules for all of the required tasks which should allow for an
+efficient implementation.</p>
 </div>
         </div>
 

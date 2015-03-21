@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -390,9 +382,9 @@
             <li><a href="#conclusion">Conclusion</a></li>
         
     
-        <li class="main "><a href="#evaluation-rootfs-buildroutine">Evaluation RootFS Buildroutine</a></li>
+        <li class="main "><a href="#evaluation-rootfs-build-routine">Evaluation RootFS Build routine</a></li>
         
-            <li><a href="#rootfs-buildroutine-steps">RootFS Buildroutine Steps</a></li>
+            <li><a href="#rootfs-build-routine-steps">RootFS Build routine Steps</a></li>
         
     
     </ul>
@@ -405,7 +397,7 @@ the designed features:</p>
 <ul>
 <li>Cross-target support</li>
 <li>Package management</li>
-<li>Buildroutine Automation</li>
+<li>Build routine Automation</li>
 </ul>
 <h2 id="gentoo-portage">Gentoo Portage</h2>
 <p><strong>Gentoo Portage</strong> is a full-fledged source-based package management system that
@@ -564,7 +556,7 @@ gcc version did hot help. either.</p>
 <td>portage package manager included</td>
 </tr>
 <tr>
-<td>Buildroutine Automation</td>
+<td>Build routine Automation</td>
 <td>NO</td>
 <td>needs wrapper</td>
 </tr>
@@ -716,7 +708,7 @@ are as shown.</p>
 <th>Candidate</th>
 <th>Cross-target support</th>
 <th>Package management</th>
-<th>RootFS Buildroutine Automation</th>
+<th>RootFS Build routine Automation</th>
 </tr>
 </thead>
 <tbody>
@@ -768,17 +760,17 @@ are as shown.</p>
 <p>It seems like there is no completely ready solution for building RootFS. As a
 result, the choice is to pick the components that <strong>offer reliability in
 cross-target support, and package management qualities</strong> and incorporate the
-them into a custom automated buildroutine. The components chosen for the task
+them into a custom automated build routine. The components chosen for the task
 are <strong>Gentoo Portage</strong> paired with <strong>Qemu system emulation</strong> in case of
 Cross-Target buildjobs.</p>
-<h1 id="evaluation-rootfs-buildroutine">Evaluation RootFS Buildroutine</h1>
+<h1 id="evaluation-rootfs-build-routine">Evaluation RootFS Build routine</h1>
 <p>As described in the design chapter <a href="../../design/buildserver/index.html#build-automation-routines">Buildserver - Build Automation
-Routines</a>, the automated RootFS buildroutine will be triggered by the continuous integration master component.</p>
-<h2 id="rootfs-buildroutine-steps">RootFS Buildroutine Steps</h2>
+Routines</a>, the automated RootFS build routine will be triggered by the continuous integration master component.</p>
+<h2 id="rootfs-build-routine-steps">RootFS Build routine Steps</h2>
 <p>Based on recent evaluation results and the described steps that were designed
 under <a href="../../design/rootfs/index.html#rootfs-build-automation-routine">Design - RootFS Build Automation
 Routine</a>, the RootFS
-buildroutine can be specified in greater detail.</p>
+build routine can be specified in greater detail.</p>
 <ol>
 <li>If running on a Cross-Target Container<ol>
 <li>Ensure that the disk image for the virtual machine is prepared</li>

@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -385,26 +377,32 @@
             <div class="col-md-9" role="main">
 
 <h1 id="local-testing">Local Testing</h1>
-<p>Sometimes it is necessary to test your build scripts locally on your machine. As
-most of the time your target platform is a different platform than your host
-machine, you need to use a cross toolchain. You will learn how to use the
-toolchain in this chapter.</p>
+<p>It is recommended to locally test your build scripts before pushing them
+upstream, as the changes will immediately trigger a build process for the
+buildserver. If the target platform has a different architecture than your host
+platform, you need to use a cross toolchain. This guide will show you how to use
+the toolchain for cross compiling. </p>
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li>Toolchain Download URL from User Documentation</li>
+<li>Toolchain Download URL from <a href="../../setup/post-install/user-documentation/index.html">User
+  Documentation</a></li>
 <li>Necessary software to run the build script<ul>
+<li>bash</li>
 <li>Git</li>
 <li>wget</li>
 <li>diff</li>
 <li>patch</li>
 <li>tar</li>
+<li>bzip2</li>
+<li>sed</li>
+<li>awk</li>
 </ul>
 </li>
 </ul>
 <h2 id="step-by-step-example">Step-by-Step Example</h2>
 <p>The following example is based on modifying the <strong><em>build</em></strong> script for the
-<strong>Linux</strong> kernel for the raspberry-pi. We assume that you already have your
-files according to <a href="../../usage/linux/index.html">Usage/Linux</a>.</p>
+<strong>Linux</strong> kernel for the raspberry-pi (armv6j). We assume that you already have
+your files according to <a href="../../usage/linux/index.html">Usage/Linux</a>.</p>
 <ol>
 <li>
 <p>Get the toolchain product download URL from your <a href="../../setup/post-install/user-documentation/index.html">User
@@ -449,10 +447,11 @@ Cloning into 'linux'...
 </code></pre>
 </li>
 </ol>
-<p>Any errors that occur during the build process should be fixed before you push
-the build script upstream! If you build script runs locally, it should also run
-on the buildserver. Please test the script locally, and confirm it works, before
-you contact an Administrator.</p>
+<p><strong>Important</strong>: Any errors that occur during the build process should be fixed
+before you push the build script or any modifications on configuration files
+upstream! If you build script runs locally, it should also run on the
+buildserver. Please test the script locally, and confirm it works, before you
+contact an Administrator for further guidance..</p>
 </div>
         </div>
 

@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -377,7 +369,7 @@
         
             <li><a href="#docker">Docker</a></li>
         
-            <li><a href="#systemd">systemd</a></li>
+            <li><a href="#systemd">Systemd</a></li>
         
     
     </ul>
@@ -385,6 +377,7 @@
             <div class="col-md-9" role="main">
 
 <h1 id="run-rootfs-as-containers">Run RootFS' as Containers</h1>
+<p>(work in progress)</p>
 <p>Once a RootFS has successfully been built and uploaded to the <em>buildmaster</em>, it
 can be imported into and run by various container management systems. As there are many of
 them and the number is growing, the examples cover the currently
@@ -403,9 +396,9 @@ REPOSITORY                     TAG                      IMAGE ID            CREA
 embedux/amd64_factory          20150122184525_294b218   8d02c7806b47        5 minutes ago       1.156 GB
 </code></pre>
 
-<h3 id="run-interactive-container">Run interactive container</h3>
+<h3 id="run-interactive-container">Run Interactive Container</h3>
 <p>TODO</p>
-<h2 id="systemd">systemd</h2>
+<h2 id="systemd">Systemd</h2>
 <p>Starting with version 219 of <strong>systemd</strong>, the utility <code>machinectl</code> provides the
 functionality of downloading and importing a RootFS to the local machine.</p>
 <h3 id="downloadimport_1">Download/Import</h3>
@@ -428,7 +421,7 @@ Exiting.
 
 <p>The RootFS is imported as a container image to the local system and can be listed with
 <code>machinectl list-images</code>.</p>
-<h3 id="set-a-root-password">Set a root password</h3>
+<h3 id="set-a-root-password">Set A Root Password</h3>
 <p>By default the build system does not set a passwort for <em>root</em>, therefore it
 needs to be set manually. It's possible to run the container's <code>passwd</code> command,
 as on a normal Linux system.</p>
@@ -443,14 +436,14 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 </code></pre>
 
-<h3 id="allow-login-via-machinectl">Allow login via machinectl</h3>
+<h3 id="allow-login-via-machinectl">Allow Login Via Machinectl</h3>
 <p><code>machinectl</code> is connecting via <em>pts/0</em>, which is excluded from
 <strong><em>/etc/securetty</em></strong> on <strong>Gentoo</strong>. This prevents <em>root</em>-login via <code>machinectl login</code>
 and needs to be changed as follows.</p>
 <pre><code>echo &quot;pts/0&quot; &gt;&gt; /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
 </code></pre>
 
-<h3 id="start-in-background">Start in background</h3>
+<h3 id="start-in-background">Start In Background</h3>
 <p>Starting the container happens with the <code>macinectl start</code> command. It should not
 take any longer than a couple of seconds.</p>
 <pre><code># machinectl start amd64_factory_systemd_20150228172018_faa83f5
@@ -475,12 +468,12 @@ root@amd64_factory_systemd_20150228172018_faa83f5 ~ #
 
 <p>We're in!</p>
 <h3 id="notes">Notes</h3>
-<p>The default setup of a container is heavily based on the 
-<strong><em><a href="https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service">systemd-nspawn@.service.in</a></em></strong>-Template installed in the system, which may
-differ between Linux distributions. This has an influence on many aspects of the
-containers, including but not limited to it's network connection. As an
-example, on <strong>Gentoo</strong> the default setup does not automatically setup an internet
-connection for containers.</p>
+<p>The default setup of a container is heavily based on the
+<strong><em><a href="https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service">systemd-nspawn@.service.in</a></em></strong>-Template
+installed in the system, which may differ between Linux distributions. This has
+an influence on many aspects of the containers, including but not limited to
+it's network connection. As an example, on <strong>Gentoo</strong> the default setup does not
+automatically setup an Internet connection for containers.</p>
 </div>
         </div>
 

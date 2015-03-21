@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -373,7 +365,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#specification-for-building-the-rootfs">Specification for building the RootFS</a></li>
+        <li class="main active"><a href="#rootfs-build-routine">RootFS Build Routine</a></li>
         
             <li><a href="#occurred-problems">Occurred Problems</a></li>
         
@@ -382,11 +374,11 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="specification-for-building-the-rootfs">Specification for building the RootFS</h1>
+<h1 id="rootfs-build-routine">RootFS Build Routine</h1>
 <p><strong>(work in progress)</strong></p>
 <h3 id="occurred-problems">Occurred Problems</h3>
 <h4 id="proot-upgrade-causes-unexpected-behavior-with-nested-sshd">proot upgrade causes unexpected behavior with nested SSHd</h4>
-<p>The following tructure gives an outline of the scenario and the direct result of
+<p>The following structure gives an outline of the scenario and the direct result of
 the mentioned bug after upgrading <em>sys-apps/proot</em> to version 5.0.0 inside the
 container <em>buildslavei_rootfs_amd64</em>.</p>
 <pre><code>- Hardware Host @ OpenVZ Kernel 2.6.32.something

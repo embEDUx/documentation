@@ -134,14 +134,6 @@
                         </li>
                     
                         <li >
-                            <a href="../../../setup/workstation/flashtool/index.html">Workstation/Flashtool</a>
-                        </li>
-                    
-                        <li >
-                            <a href="../../../setup/flashtool/index.html">Flashtool</a>
-                        </li>
-                    
-                        <li >
                             <a href="../../../setup/flashtool/deployment/index.html">Flashtool/Deployment</a>
                         </li>
                     
@@ -398,24 +390,24 @@ image.</em> (<a href="http://Buildroot.uclibc.org/about.html">source</a>)</p>
 <a href="../../requirements/index.html">requirements</a>.</p>
 <h3 id="linux-kernel-and-u-boot">Linux Kernel and U-Boot</h3>
 <p><strong>Buildroot</strong> supplies a mechanism to build any <strong>Linux</strong> kernel or <strong>Uboot</strong>
-version is provided by the user. It provides an interface to add additional
+version provided by the user. It provides an interface to add additional
 configuration files and patches. The configuration of <strong>Uboot</strong> and <strong>Linux</strong>
 can be done separately.</p>
-<h3 id="toolchain">Toolchain</h3>
-<p>The user can decide whether <strong>Buildroot</strong> should build its own toolchain or use
-an external toolchain. This resulting toolchain is designed to work within the
-<strong>Buildroot</strong> context. Unfortunately these toolchains have absolute symbolic
-links compiled within the binaries. As a result the toolchains are not portable
-which is a <a href="../../requirements/index.html#lab-course-specific-requirements">requirement</a>
-for the <strong>embEDUx</strong> system.</p>
+<h3 id="toolchain-the-user-can-decide-whether-buildroot-should-build-its-own">Toolchain The user can decide whether <strong>Buildroot</strong> should build its own</h3>
+<p>toolchain or use an external one. This resulting toolchain is designed to work
+within the <strong>Buildroot</strong> context. Unfortunately these toolchains contain
+binaries compiled with absolute symbolic links. As a result the toolchains are
+not portable which is a
+<a href="../../requirements/index.html#lab-course-specific-requirements">requirement</a> for the
+build system.</p>
 <h3 id="rootfs">RootFS</h3>
 <p>The <strong>Buildroot</strong> tool is able to provide a lot of packages for the target
 system. It is also possible to build <strong>BusyBox</strong>-only RootFS. Every package is
-built on the host system, using a cross-toolchain.</p>
+built on the host system using a cross-toolchain.</p>
 <p>Due to the fact, that <strong>Buildroot</strong> does only provide a small set of the
 standard <strong>Linux</strong> userspace applications and libraries, it can be reasonably
 assumed that the required software packages for the different lab-courses must
-be added to the <strong>Buildroot</strong> </p>
+be added to the <strong>Buildroot</strong> manually.</p>
 <p><strong>Buildroot</strong> allows the user to <a href="http://Buildroot.uclibc.org/downloads/manual/manual.html#adding-packages">add own packages</a>.
 But adding new software can be a cumbersome process, because it has to be 
 cross-compilable and package dependencies need to be maintained manually.</p>
@@ -425,12 +417,12 @@ different target platforms. The way of configuring the distribution is well
 known and intuitive for people who previously configured and built a <strong>Linux</strong>
 kernel, and are familiar with the principle of cross compilation. People who are
 new to these topics need to read documentation that goes beyond the F1-help-text
-that is provided by the <strong>Buildroot</strong> configuration menu.</p>
+which is provided by the <strong>Buildroot</strong> configuration menu.</p>
 <p>On the other hand <strong>Buildroot</strong> can't satisfy all requirements of the
-<strong>embEDUx</strong> project. One important requirement is, that the system should
-provide a portable toolchain. This is not possible with <strong>Buildroot</strong> as
-mentioned before. Another unsatisfied requirement is the provision of userspace
-applications for the <strong>RootFS</strong>. </p>
+<strong>embEDUx</strong> project. The important requirement that the system has to provide a
+portable toolchain, is as aforementioned not satisfied with <strong>Buildroot</strong>.
+Another unsatisfied requirement is the provision of userspace applications for
+the <strong>RootFS</strong> with low configuration effort.</p>
 <table>
 <thead>
 <tr>
@@ -451,9 +443,9 @@ applications for the <strong>RootFS</strong>. </p>
 <td>Difficult to extend</td>
 </tr>
 <tr>
-<td>Buildroutine Automation</td>
+<td>Build routine Automation</td>
 <td>YES</td>
-<td>Includes Uboot, Kernel, Toolchain, RootFS</td>
+<td>Includes U-boot, Kernel, Toolchain, RootFS</td>
 </tr>
 <tr>
 <td>Deployment</td>
