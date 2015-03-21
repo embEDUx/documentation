@@ -57,4 +57,5 @@ These tools are needed to successfully iterate through the build steps.
 * awk
 * sed
 * mkimage
+* dtc
 

@@ -67,7 +67,7 @@ the CPU. The term platform is often interchanged with the term board, but it
 should be kept in mind that a system can consist of multiple boards that are
 stacked upon each other.
 
-## Root-Filesystem *(RootFS*)
+## Root-Filesystem *(RootFS)*
 The RootFS is a collection of software that is executable by a system running
 the linux kernel. It can stored on many different types of storage, from which
 it can be loaded by the linux kernel. The location and content of a RootFS is

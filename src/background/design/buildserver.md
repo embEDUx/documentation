@@ -41,7 +41,7 @@ criteria is moved over to the [setup automation routine
 design](#setup-automation-routine), which is the next chapter.
 
 ## Setup Automation Routine
-The job of the setuproutine is to setup all buildserver components.  The
+The job of the setup routine is to setup all buildserver components.  The
 buildserver will undoubtedly be a complex structure of software components.  To
 make the setup as easy as possible it should be automated as far as possible.
 
@@ -63,7 +63,7 @@ point, these parameters include
 * Authentication credentials between the system components and the users
 
     Default usernames and passwords are possible security holes, and should not
-    be provided by the setuproutine.
+    be provided by the setup routine.
 
 ### Optional Setup Parameters
 These setup parameters are likely to be adjusted by the administrator, but
@@ -77,7 +77,7 @@ should be shipped with defaults from the HTWG setup.
     to already have working examples in the local installation.
 
 ### Default Setup Parameters
-All other setup parameters should be provided as defaults by the setuproutine.
+All other setup parameters should be provided as defaults by the setup routine.
 
 ### Configuration Generation From Templates 
 The configured and default setup parameters should be used to
@@ -86,7 +86,7 @@ the generator can be extended and can be utilized by beginners immediately.
 Advanced users will still be able to modify the template if necessary. 
 
 ### Setup Automation Routine Candidates
-The setuproutine should be automated using an appropriate programming or
+The setup routine should be automated using an appropriate programming or
 scripting language. The chosen language needs to be flexible in detecting
 conditions, since every setup run will have different conditions.
 The candidates are
@@ -107,7 +107,7 @@ The criteria that will be evaluated are
 #### Execute commands on the target machine
 Executing commands on the target machine will be necessary in order to complete
 the setup. The most commonly remote control utility is **SSH**, which shall be
-used for the setuproutine too, without any further evaluation.
+used for the setup routine too, without any further evaluation.
 
 #### Package Installation
 The build environment requires all the necessary tools to be installed on the
@@ -193,7 +193,7 @@ the continuous integration system into containers.
 
 #### Container Management Setup Steps
 Managing containers includes more than starting and stopping them. The
-setuproutine needs to assemble the content from scratch.  This requires an image
+setup routine needs to assemble the content from scratch.  This requires an image
 which the container setup process will be based on. The container management
 includes roughly the following steps. They will be specified in more detail in
 the evaluation step, when the container utility has been chosen.

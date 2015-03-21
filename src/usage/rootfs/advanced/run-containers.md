@@ -1,5 +1,5 @@
 # Run RootFS' as Containers
-
+(work in progress)
 
 Once a RootFS has successfully been built and uploaded to the *buildmaster*, it
 can be imported into and run by various container management systems. As there are many of
@@ -25,11 +25,11 @@ REPOSITORY                     TAG                      IMAGE ID            CREA
 embedux/amd64_factory          20150122184525_294b218   8d02c7806b47        5 minutes ago       1.156 GB
 ```
 
-### Run interactive container
+### Run Interactive Container
 TODO
 
 
-## systemd
+## Systemd
 Starting with version 219 of **systemd**, the utility `machinectl` provides the
 functionality of downloading and importing a RootFS to the local machine.
 
@@ -56,7 +56,7 @@ The RootFS is imported as a container image to the local system and can be liste
 `machinectl list-images`.
 
 
-### Set a root password
+### Set A Root Password
 By default the build system does not set a passwort for *root*, therefore it
 needs to be set manually. It's possible to run the container's `passwd` command,
 as on a normal Linux system.
@@ -73,7 +73,7 @@ Container amd64_factory_systemd_20150228172018_faa83f5 exited successfully.
 
 ```
 
-### Allow login via machinectl
+### Allow Login Via Machinectl
 `machinectl` is connecting via *pts/0*, which is excluded from
 ***/etc/securetty*** on **Gentoo**. This prevents *root*-login via `machinectl login`
 and needs to be changed as follows.
@@ -82,9 +82,9 @@ and needs to be changed as follows.
 echo "pts/0" >> /var/lib/machines/amd64_factory_systemd_20150228172018_faa83f5/etc/securetty
 ```
 
-### Start in background
+### Start In Background
 
-Starting the container happens with the `macinectl start` command. It should not
+Starting the container happens with the `machinectl start` command. It should not
 take any longer than a couple of seconds.
 
 ```
@@ -112,10 +112,10 @@ root@amd64_factory_systemd_20150228172018_faa83f5 ~ #
 We're in!
 
 ### Notes
+The default setup of a container is heavily based on the
+***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template
+installed in the system, which may differ between Linux distributions. This has
+an influence on many aspects of the containers, including but not limited to
+it's network connection. As an example, on **Gentoo** the default setup does not
+automatically setup an Internet connection for containers.
 
-The default setup of a container is heavily based on the 
-***[systemd-nspawn@.service.in](https://github.com/systemd/systemd/blob/master/units/systemd-nspawn@.service)***-Template installed in the system, which may
-differ between Linux distributions. This has an influence on many aspects of the
-containers, including but not limited to it's network connection. As an
-example, on **Gentoo** the default setup does not automatically setup an internet
-connection for containers.

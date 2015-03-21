@@ -1,8 +1,9 @@
 # Adminstation Setup
-**(work in progress)**
+The Adminstation is needed in order to conclude the setup process for the build
+server.
 
 ## Requirements
-* In order to setup the adminstation, you need access to the following
+* In order to setup the Adminstation, you need access to the following
 buildserver-setuproutine repository. Please consult your [user
 documentation](post-install/user-documentation.md) for the URLs.
 * SSH root-access to the docker host running the buildslave(s) in question
@@ -26,16 +27,15 @@ The list also contains short explanations what they're needed for.
 ## Suggestions
 * Authentication as root via SSH-key - this is a comfort suggestion!
 
-
-## Clone the buildserver-setuproutine repository
-The setuproutine for the buildserver is currently stored in a Git repository on
+## Clone The Buildserver-Setuproutine Repository
+The setup routine for the buildserver is currently stored in a Git repository on
 GitHub. It is suggested to use the latest version of the default (currently
 named *ansible*) branch, which can be retrieved as follows.
 
 `
 $ git clone https://github.com/embEDUx/buildserver-setuproutine.git --single-branch --depth 1
 `
-## Install the shipped Ansible into a virtual environment
+## Install The Shipped Ansible Into A Virtual Environment
 You can either reuse an existing virtual python environment, or create a new
 one. The following steps assume you chose the latter.
 

@@ -32,13 +32,13 @@ their package manager. Please share your experiences!
 Please make sure that these packages are installed and properly setup on the
 buildserver machine.
 
-* SSH Server - the setuproutine controls the buildserver via SSH
+* SSH Server - the setup routine controls the buildserver via SSH
 
 #### User Permissions
 You either need **root**-access on the buildserver, or a **user that has
 permissions to run arbitrary commands with sudo**.
 
-* Allow SSH access via key authentication - the setuproutine and the
+* Allow SSH access via key authentication - the setup routine and the
   instructions on the page assume that you are using key-based authentication
   for the user you chose in the host details.
 

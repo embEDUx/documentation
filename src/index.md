@@ -16,9 +16,37 @@ Before continuing, please make sure that you are familiar with the
 crudities, you are encouraged to inform us by either opening an issue or putting
 up a pull-request.
 
-## The Core
-embEDUx is completely based on Open Source software. The biggest projects that
+## Focus on Hardware
+A variety from low up to high end ARM-boards were available during the design
+and development of the project. Successful builds have been produced for
+
+* Raspberry Pi
+* Banana Pi
+* Beaglebone Black
+* Utilite Pro
+
+## What Is It And What Can It Do?
+* Automated build system for complete customized Linux distributions
+* Easy to setup via the configurable setup routine
+* Centralized build configurations for all your platforms
+* Individual configuration and builds with specified targets, organized by
+    * Platform: for Linux-Kernel, U-Boot
+    * Architecture: RootFS
+    * Hybrid: Toolchain, Misc-Files
+* Working examples for the aforementioned hardware platforms
+
+
+## What Is It Not? 
+* Magic system for guessing all your platforms configuration automatically
+* While we were able build, deploy to and run systems on these platforms, this
+project is not meant to provide the builds them self. Instead, you will find
+instructions how to setup or use an existing instance of the build system in
+order to produce your own customized builds.
+
+## Design and Implementation Choices
+**embEDUx** is completely based on Open Source software. The biggest projects that
 were chosen for the core of the solution are
+### The Core
 
 * GNU Toolchain
 * Crosstool-NG
@@ -29,22 +57,9 @@ were chosen for the core of the solution are
 * Das U-Boot Bootloader
 * Git
 
-If you are interested in why these choices were made, please head over to the
-[background section](background/background.md)
-
-## Focus on Hardware
-A variety from low up to high end ARM-boards were available during the design
-and development of the project. Successful builds have been produced for
-
-* Raspberry Pi
-* Banana Pi
-* Beaglebone Black
-* Utilite Pro
-
-While we were able build, deploy to and run systems on these platforms, this
-project is not meant to provide the builds them self. Instead, you will find
-instructions how to setup or use an existing instance of the build system in
-order to produce your own customized builds.
+If you are interested in why these components have been chosen, or how the system
+was designed and implemented using these components, please head over to the
+[***background section***](background/background.md).
 
 ## Building Customized Linux Distributions
 The embEDUx build system been designed to build customized Linux distributions.
@@ -63,56 +78,28 @@ subject related literature.
 
 
 ## Getting Started with ***your*** Distribution
-The task of building a customized Linux distribution is rather complex, 
-and the **embEDUx** tries to not take away flexibility with the provided
-solution. Therefore, a good understanding of the matter is needed and it is
-not possible to provide you with a static instruction list.
-
-Like every software system, the very basic topics are about its setup and
-its usage, here we go!
+The task of building a customized Linux distribution is rather complex, and the
+**embEDUx** tries to not take away flexibility with the provided solution.
+Therefore, a good understanding of the matter is needed and it is not possible
+to provide you with a static instruction list. Like every software system, the
+very basic topics are about its setup and its usage, here we go!
 
 ### Setup
 If you already have access to a fully setup instance of the build system, you
-can skip this chapter. Otherwise, please follow the [Setup
-Instructions](setup/setup.md)
+can skip this chapter. 
 
-### Post Install
-The post installation procedures will guide the Administrator through creating
-toolchains and the user documentation. These are very important steps, because
-the objects are required by the user to use the buildsystem.
-
-* [Toolchains](setup/post-install/toolchains.md)
-* [User Documentation](setup/post-install/user-documentation.md)
+* [Setup Instructions](setup/setup.md)
 
 ### Usage
 The customized Linux distribution will consist of the aforementioned products,
 of which you will have to build ***all*** in order to achieve ultimate glory
 with a complete system for your target platform!
 
-[![Abstract](img/abstract.png)](img/abstract.png)
+* [Usage Overview](usage/usage.md)
 
-#### Overview
-We strongly suggest that you have a look at the [usage
-overview](usage/usage.md). The overview will give you an idea of how the process
-of building a product looks like in a general sense.
+### Deploy
+**embEDUx** ships a CLI-style [Flashtool](usage/flashtool.md) for
+easy deployment to your hardware! 
 
-#### Build
-If you feel ready, please begin to **build your products**!
-
-* [U-Boot](usage/uboot.md) images
-* [Linux](usage/linux.md)-Kernel images and modules
-* [RootFS](usage/rootfs.md)-archives based on Gentoo
-
-
-Some platforms, e.g. the Raspberry Pi, require additional files that do not
-strictly belong to any of the three products from above. These miscellaneous
-files are stored in their very own repository which is handled separately.
-
-* [Misc](usage/misc.md)-archives
-
-#### Deploy
-**embEDUx** ships a CLI-style [Flashtool](background/implementation/flashtool.md) for
-easy deployment to your hardware!  More information and instructions for manual
-deployment shall be found at the end of the [usage
-overview](usage/usage.md#hardware-deployment)
+* [Hardware Deployment](usage/usage.md#hardware-deployment)
 

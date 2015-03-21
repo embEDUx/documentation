@@ -1,6 +1,7 @@
 # FAQ
 This should one day be realized as a standalone bugtracker.
 
+
 # RootFS
 ## Package Specific Problems
 ### *net-wireless/gnuradio* - fails on armv6\_hardfp due to lack of NEON support
@@ -37,3 +38,20 @@ make: *** [all] Error 2
 #### Solution
 * Upstream bug ticket: https://gnuradio.org/redmine/issues/692
 **(work in progress)**
+
+## Build Routine Problems
+
+### proot upgrade causes unexpected behavior with nested SSHd
+The following structure gives an outline of the scenario and the direct result of
+the mentioned bug after upgrading *sys-apps/proot* to version 5.0.0 inside the
+container *buildslavei\_rootfs\_amd64*.
+
+```
+- Hardware Host @ OpenVZ Kernel 2.6.32.something
+  - QEMU/KVM VM @ Gentoo Kernel 3.19
+    - Docker container that contains another chroot_rootfs
+      - running as user $ sudo proot chroot_inside_container sshd -p 2222
+        - running as user $ ssh root@localhost -p 2222
+          - running as chroot root # su some_user -s /bin/true 
+            --> FAILS WITH 'Permission Denied'
+```

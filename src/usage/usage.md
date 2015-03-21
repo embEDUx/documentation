@@ -100,19 +100,18 @@ web-interface](../usage/common/build-monitoring.md).
 
 In case of a build failure please either
 
-1. contact the Administrator and provide the Link to your failed build job if
+1. Contact the Administrator and provide the Link to your failed build job if
 you need support,
 
-1. or fix the specification and commit them again
-
+1. Or fix the specification and commit them again
 
 ## Hardware Deployment
 After the required build have successfully completed you can finally deploy the
 products to your hardware.
 
 ### Flashtool 
-You can [deploy your builds to hardware in a semi-automated manner using the
-flashtool](../usage/flashtool.md). Please note that to deploy a complete system,
+You can deploy your builds to hardware in a semi-automated manner using the
+[Flashtool](flashtool.md). Please note that to deploy a complete system,
 successful builds of all products need to be available.  This means, single
 products can be built and deployed if there are previous successful builds for
 the target platform.

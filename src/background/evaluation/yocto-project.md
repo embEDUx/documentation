@@ -115,11 +115,11 @@ a **Python 3** recipe, which is violating the defined
 [requirements](../requirements.md).
 
 ## Summary
-By default the **Yocto** Project is missing the majority of the platforms that
+By default the **Yocto Project** is missing the majority of the platforms that
 would be used with the build system solution. Looking through the additional
 [board support packages](http://git.yoctoproject.org/cgit/cgit.cgi/) and their
-pure amount of additional recipes needed for the **Linux** kernel and
-**U-Boot**, it seems that the overhead to add a new platform is quiet huge. The
+sheer amount of additional recipes needed for the **Linux** kernel and
+**U-Boot**, it seems that the overhead to add a new platform is quite huge. The
 **Yocto Project** is a good choice, if you want to develop for a single
 platform. As soon as multi platform development is needed, the amount of
 individual configuration and modification needed for building with **Yocto**
@@ -136,6 +136,6 @@ Criteria | Result | Notes
 --- | --- | --- 
 Cross-target support | YES | Manual configuration necessary 
 Package management | LIMITED | Extensible through recipes, although it needs a lot of configuration
-Buildroutine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
+Build routine Automation | YES | Includes U-Boot, Kernel, Toolchain, RootFS 
 Deployment | LIMITED | Result of build process is an image, which can be deployed on a sd card with `dd`
 

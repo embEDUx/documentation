@@ -1,22 +1,28 @@
 # Local Testing 
-Sometimes it is necessary to test your build scripts locally on your machine. As
-most of the time your target platform is a different platform than your host
-machine, you need to use a cross toolchain. You will learn how to use the
-toolchain in this chapter.
+It is recommended to locally test your build scripts before pushing them
+upstream, as the changes will immediately trigger a build process for the
+buildserver. If the target platform has a different architecture than your host
+platform, you need to use a cross toolchain. This guide will show you how to use
+the toolchain for cross compiling. 
 
 ## Requirements
-* Toolchain Download URL from User Documentation
+* Toolchain Download URL from [User
+  Documentation](../setup/post-install/user-documentation.md)
 * Necessary software to run the build script
+    * bash
     * Git
     * wget
     * diff
     * patch
     * tar
+    * bzip2
+    * sed
+    * awk
 
 ## Step-by-Step Example
 The following example is based on modifying the ***build*** script for the
-**Linux** kernel for the raspberry-pi. We assume that you already have your
-files according to [Usage/Linux](../usage/linux.md).
+**Linux** kernel for the raspberry-pi (armv6j). We assume that you already have
+your files according to [Usage/Linux](../usage/linux.md).
 
 1. Get the toolchain product download URL from your [User
 Documentation](../setup/post-install/user-documentation.md) then download and
@@ -69,8 +75,9 @@ $ ./build
         Cloning into 'linux'...
         ... 
 
-Any errors that occur during the build process should be fixed before you push
-the build script upstream! If you build script runs locally, it should also run
-on the buildserver. Please test the script locally, and confirm it works, before
-you contact an Administrator.
+**Important**: Any errors that occur during the build process should be fixed
+before you push the build script or any modifications on configuration files
+upstream! If you build script runs locally, it should also run on the
+buildserver. Please test the script locally, and confirm it works, before you
+contact an Administrator for further guidance..
 

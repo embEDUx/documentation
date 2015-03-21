@@ -26,7 +26,6 @@ key_order = {
         'Buildserver',
         'Buildserver/Customize',
         'Maintainance',
-        'Terminilogy',
         'Design',
         'Eval',
         'Implementation',
