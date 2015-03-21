@@ -7,6 +7,8 @@ The origin lays at a university of applied sciences called
 Germany.  For the complete story have a look at the [the
 beginning](background/background.md#The Beginning).
 
+
+##### Public Announcement
 All bits and pieces of the **embEDUx** project have been published
 on [GitHub](https://github.com/embEDUx)!
 
