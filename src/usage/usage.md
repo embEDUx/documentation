@@ -100,11 +100,10 @@ web-interface](../usage/common/build-monitoring.md).
 
 In case of a build failure please either
 
-1. contact the Administrator and provide the Link to your failed build job if
+1. Contact the Administrator and provide the Link to your failed build job if
 you need support,
 
-1. or fix the specification and commit them again
-
+1. Or fix the specification and commit them again
 
 ## Hardware Deployment
 After the required build have successfully completed you can finally deploy the
