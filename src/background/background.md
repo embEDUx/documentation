@@ -39,7 +39,6 @@ bias towards the requirements specific to the lab-courses.
 * Magic system for guessing all your platforms configuration automatically
 
 
-
 ## Initial contributors
 The project started off with three master students of computer science who have
 been working on this project in a team, supervised by a professor. Namely, these are
