@@ -412,7 +412,7 @@ GNU/Linux standard shell.</p>
 <p>Python and Bash are both script languages which run on likely every UNIX system.
 Both languages must be compared on different disciplines, to decide which
 language fits best for the <strong>Flashtool</strong>.</p>
-<h4 id="development"><strong>Development</strong></h4>
+<h4 id="development">Development</h4>
 <p><strong>Python</strong> is more productive than <strong>Bash</strong> for the development processes,
 because it supports common programming paradigms like object-oriented
 programming and functional programming. </p>
@@ -420,24 +420,24 @@ programming and functional programming. </p>
 lot of code. To accomplish the development of the <strong>Flashtool</strong>  with <strong>Bash</strong> 
 would result in an confusing mass of <strong>Bash</strong>-scripts and would be hard to
 maintain.</p>
-<h4 id="community"><strong>Community</strong></h4>
+<h4 id="community">Community</h4>
 <p><strong>Bash</strong> and <strong>Python</strong> is often used on <strong>Linux</strong> systems and supports both a
 huge community and documentation. <strong>Python</strong> provides more third-party modules
 for several task than <strong>Bash</strong> and is a good candidate for writing lesser code
 to do the job. </p>
-<h4 id="calling-other-executables"><strong>Calling other executables</strong></h4>
+<h4 id="calling-other-executables">Calling other executables</h4>
 <p>Both languages provide a mechanism to call other executables easy.</p>
-<h4 id="performance"><strong>Performance</strong></h4>
+<h4 id="performance">Performance</h4>
 <p><strong>Python</strong> is really fast in handling data structures (sorting, access) and
 doing calculations <a href="http://opennomad.com/content/performance-different-scripting-languages-shell-v-perl-v-python-v-ruby">compared to Bash</a>.</p>
-<h4 id="interfaces-to-other-programming-languages"><strong>Interfaces to other programming languages</strong></h4>
+<h4 id="interfaces-to-other-programming-languages">Interfaces to other programming languages</h4>
 <p><strong>Python</strong> provides a library which provides C compatible data types, and allows
 calling functions in shared libraries. This makes it possible to wrap C
 libraries in pure python. ((ctypes)[https://docs.python.org/2/library/ctypes.html?highlight=ctypes#module-ctypes])
 There are other libraries like <a href="http://swig.org/Doc1.3/Python.html">swig</a> and 
 <a href="http://cython.org/">cython</a> to connect C and C++ with Python.</p>
 <p>Such mechanism are not known for <strong>Bash</strong>.</p>
-<h4 id="summary"><strong>Summary</strong></h4>
+<h4 id="summary">Summary</h4>
 <p><strong>Python</strong> is more suitable as programming language for the <strong>Flashtool</strong> than
 <strong>Bash</strong> because:</p>
 <ul>
@@ -488,16 +488,17 @@ partitions. </p>
 <p>A big disadvantage of the <em>blivet</em> package is, that it has many
 dependencies to other package, which must be installed. During the evaluation
 process it turned out that most of the dependencies were not installed
-automatically with the pip by hand and are not
-automatically installed by the <em>setup.py</em> script of the package. There were also
-some difficulties to install some of the dependencies, because they only work
-with python 2.7 and not python 3 or above. 
-After failing to use the <em>blivet</em> package we decided to use the <em>pyparted</em>
-package. This package uses the <em>libparted</em> package. <em>libparted</em> is the library 
-of the GNU parted project. The <em>pyparted</em> is a good solution for the
+automatically with the pip installation routine. The single dependencies had to
+be installed by hand. There were also some difficulties to install some of the
+dependencies, because they only work with python 2.7 and not python 3 or above.</p>
+<p>After failing to use the <em>blivet</em> package we decided to use the <em>pyparted</em>
+package.</p>
+<h3 id="pyparted">pyparted</h3>
+<p>This package uses the <em>libparted</em> package. <em>libparted</em> is the library 
+of the GNU parted project. The <em>pyparted</em> module is a good solution for the
 <strong>Flashtool</strong> to partition block devices. It supports all features which are
-given by the C library <em>libparted</em>. It took about 80 lines of code to implement
-the functionality for the <strong>Flashtool</strong>.</p>
+given by the C library <em>libparted</em>. </p>
+<p>It took about 80 lines of code to implement the functionality for the <strong>Flashtool</strong>.</p>
 </div>
         </div>
 
